@@ -22,7 +22,12 @@ ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC",
 
 STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS
 
-SECTORS = {... existing ...,
+SECTORS = {
+    "PSO": "Oil Marketing", "TREET": "Diversified/Consumer", "FABL": "Islamic Banking",
+    "AIRLINK": "Technology/Telecom Devices", "MEBL": "Islamic Banking",
+    "SYS": "Technology/IT Exports", "LUCK": "Cement/Conglomerate",
+    "FFC": "Fertilizer", "OGDC": "Oil & Gas Exploration", "MARI": "Oil & Gas Exploration",
+    "NRL": "Refinery", "DGKC": "Cement",
     "PPL": "Oil & Gas Exploration", "HUBC": "Power Generation",
     "ENGROH": "Conglomerate", "EFERT": "Fertilizer", "FCCL": "Cement",
     "MLCF": "Cement", "NML": "Textile", "PAEL": "Electrical Goods",
@@ -153,7 +158,7 @@ MACRO_STALE_DAYS = 45
 # ---------------------------------------------------------------------------
 # 7. SCHEDULING
 # ---------------------------------------------------------------------------
-RUN_INTERVAL_MINUTES = 10
+RUN_INTERVAL_MINUTES = 15
 MARKET_OPEN = "09:15"     # PSX regular session (Mon-Thu 09:32-15:30 approx;
 MARKET_CLOSE = "15:45"    # Fri split session). Slightly widened window.
 MARKET_DAYS = [0, 1, 2, 3, 4]          # Mon..Fri

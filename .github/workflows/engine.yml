@@ -1,13 +1,13 @@
 name: PSX Engine Loop
 
 # Times are UTC. PSX runs on Asia/Karachi (UTC+5, no DST).
-#   04:45 & 04:55 UTC = 09:45 & 09:55 PKT   (your requested 09:45 start)
-#   05:00-10:50 UTC    = 10:00-15:50 PKT     (every 10 min through the session)
+#   04:45 UTC        = 09:45 PKT             (your requested 09:45 start)
+#   05:00-10:45 UTC  = 10:00-15:45 PKT       (every 15 min through the session)
 # NOTE: GitHub Actions cron is best-effort and may be delayed 5-15 min.
 on:
   schedule:
-    - cron: '45,55 4 * * 1-5'
-    - cron: '*/10 5-10 * * 1-5'
+    - cron: '45 4 * * 1-5'
+    - cron: '*/15 5-10 * * 1-5'
   workflow_dispatch: {}   # lets you run it on demand from the Actions tab
 
 permissions:
