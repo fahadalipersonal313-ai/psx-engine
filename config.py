@@ -15,16 +15,21 @@ DEFAULT_STOCKS = ["PSO", "TREET", "FABL", "AIRLINK"]
 
 # 6 additional candidates — chosen ONLY from the officially verified KMI-30
 # constituent list (see SHARIAH section below). Diversified across sectors.
-ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC"]
+ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC",
+    "OGDC", "PPL", "MARI", "HUBC", "ENGROH", "EFERT", "FCCL", "MLCF",
+    "NML", "PAEL", "SEARL", "HCAR", "PRL", "ATRL", "SNGP", "SSGC",
+    "SAZEW", "FFL", "CPHL", "GHNI"]
 
 STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS
 
-SECTORS = {
-    "PSO": "Oil Marketing", "TREET": "Diversified/Consumer", "FABL": "Islamic Banking",
-    "AIRLINK": "Technology/Telecom Devices", "MEBL": "Islamic Banking",
-    "SYS": "Technology/IT Exports", "LUCK": "Cement/Conglomerate",
-    "FFC": "Fertilizer", "OGDC": "Oil & Gas Exploration", "MARI": "Oil & Gas Exploration",
-}
+SECTORS = {... existing ...,
+    "PPL": "Oil & Gas Exploration", "HUBC": "Power Generation",
+    "ENGROH": "Conglomerate", "EFERT": "Fertilizer", "FCCL": "Cement",
+    "MLCF": "Cement", "NML": "Textile", "PAEL": "Electrical Goods",
+    "SEARL": "Pharmaceuticals", "HCAR": "Auto Assembler", "PRL": "Refinery",
+    "ATRL": "Refinery", "SNGP": "Gas Distribution", "SSGC": "Gas Distribution",
+    "SAZEW": "Auto Assembler", "FFL": "Food", "CPHL": "Pharmaceuticals",
+    "GHNI": "Glass/Holding"}
 
 # ---------------------------------------------------------------------------
 # 2. SHARIAH COMPLIANCE — VERIFIED SOURCE OF TRUTH
@@ -122,7 +127,14 @@ COMPANY_NEWS_QUERY = {
     "NRL": "National Refinery Limited Pakistan",
     "DGKC": "DG Khan Cement",
     "OGDC": "Oil and Gas Development Company Pakistan",
-    "MARI": "Mari Petroleum Energies",
+    "MARI": "Mari Petroleum Energies","PPL": "Pakistan Petroleum", "HUBC": "Hub Power Company",
+    "ENGROH": "Engro Holdings", "EFERT": "Engro Fertilizers",
+    "FCCL": "Fauji Cement", "MLCF": "Maple Leaf Cement", "NML": "Nishat Mills",
+    "PAEL": "Pak Elektron", "SEARL": "Searle Company Pakistan",
+    "HCAR": "Honda Atlas Cars", "PRL": "Pakistan Refinery",
+    "ATRL": "Attock Refinery", "SNGP": "Sui Northern Gas",
+    "SSGC": "Sui Southern Gas", "SAZEW": "Sazgar Engineering",
+    "FFL": "Fauji Foods", "CPHL": "Citi Pharma"
 }
 
 # ---------------------------------------------------------------------------
