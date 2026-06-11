@@ -62,16 +62,16 @@ latest = pd.DataFrame(rows)
 latest = latest.sort_values("final_score", ascending=False)
 
 tab_rank, tab_stock, tab_history, tab_news, tab_reports = st.tabs(
-    ["🏆 Top 10", "🔍 Stock detail", "📈 History", "📰 News", "📋 Reports"])
+    ["🏆 Ranking", "🔍 Stock detail", "📈 History", "📰 News", "📋 Reports"])
 
 with tab_rank:
-    st.subheader("Latest ranking")
+    st.subheader(f"Latest ranking ({len(latest)} stocks)")
     cols = ["symbol", "shariah_status", "final_score", "macro_news_score",
             "sentiment_score", "technical_score", "price", "support",
             "resistance", "stop_loss", "target1", "risk_level", "signal",
             "confidence", "data_quality", "run_time"]
-    st.dataframe(latest[cols].head(10), use_container_width=True, hide_index=True)
-    for _, r in latest.head(10).iterrows():
+    st.dataframe(latest[cols], use_container_width=True, hide_index=True)
+    for _, r in latest.iterrows():
         if r["risk_level"] == "High" or "weak" in str(r["data_quality"]):
             st.warning(f"{r['symbol']}: risk={r['risk_level']}, "
                        f"data={r['data_quality']} — {r['main_risk']}")

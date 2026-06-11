@@ -26,9 +26,9 @@ jobs:
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
       EMAIL_MODE: actionable      # email only when a Buy/Strong Buy/Exit appears
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.10'
           cache: pip

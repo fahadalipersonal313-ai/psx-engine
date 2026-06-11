@@ -25,11 +25,11 @@ def build_run_report(results, market_notes):
     lines = [f"# PSX Shariah Engine Report — {datetime.now():%Y-%m-%d %H:%M}",
              "", "## Market summary",
              market_notes or "No macro headlines captured this run.",
-             "", "## Top 10 ranking (shariah-verified only)", ""]
+             "", "## Ranking (shariah-verified only)", ""]
     hdr = ("| # | Stock | Shariah | Final | Macro | Sent | Tech | Price | "
            "Support | Resist | Entry zone | Stop | Target | Risk | Signal | Conf |")
     lines += [hdr, "|" + "---|" * 16]
-    for i, r in enumerate(ranked[:10], 1):
+    for i, r in enumerate(ranked, 1):
         t, s = r["technical"], r["scoring"]
         entry = (f"{_fmt(t.get('support'))}–{_fmt(t.get('ema20'))}"
                  if t.get("support") else "n/a")
