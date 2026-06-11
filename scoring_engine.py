@@ -1,10 +1,12 @@
-"""scoring_engine.py — Blends the three section scores into a final 0-100
-score and a confidence percentage.
+"""scoring_engine.py — Blends the section scores into a final 0-100 score and
+a confidence percentage.
 
-Weights stay fixed at 40/30/30 (per spec). Learning adjusts CONFIDENCE, not
-weights: if a stock's past signals keep failing, confidence drops; if they
-keep working, it rises modestly. Small samples are flagged as overfitting
-risk and barely move confidence.
+Weights are configurable in config.WEIGHTS (currently technical-first:
+technical 0.65 / macro_news 0.20 / sentiment 0.15). Learning adjusts
+CONFIDENCE, not weights: if a stock's past signals keep failing, confidence
+drops; if they keep working, it rises modestly. Small samples are flagged as
+overfitting risk and barely move confidence. The weak-section confidence
+penalty is weight-aware, so a minor section can't dominate confidence.
 """
 
 import logging
@@ -49,7 +51,13 @@ def compute(symbol, macro, sentiment, technical):
 
     # ---- confidence
     confidence = 70.0
-    confidence -= 12 * len(weak)
+    # Weight-aware penalty: a weak section dents confidence in proportion to how
+    # much it actually drives the score. With the technical-first weights, a
+    # quiet/empty news section barely matters, while weak technicals (the core)
+    # matter most. (Old behaviour was a flat 12 pts per weak section.)
+    _key = {"macro/news": "macro_news", "sentiment": "sentiment",
+            "technical": "technical"}
+    confidence -= sum(36 * w.get(_key.get(s, s), 0) for s in weak)
     # agreement bonus: all three sections pointing the same way
     scores = [macro["score"], sentiment["score"], technical["score"]]
     if max(scores) - min(scores) < 15:

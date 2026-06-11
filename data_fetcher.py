@@ -141,20 +141,56 @@ def _clean(text):
     return re.sub(r"<[^>]+>", "", text).strip()
 
 
-def _parse_rss_items(text, source, symbols, now):
-    """Parse <item> blocks from RSS text into our news-item dicts."""
+def _published_recent(pub_str, max_age_days=None):
+    """True if the article's publish date is within the freshness window.
+    Unknown/unparseable dates are kept (we don't over-filter), but dated-old
+    items are dropped so stale news can't pollute scoring."""
+    if max_age_days is None:
+        max_age_days = config.NEWS_MAX_AGE_DAYS
+    if not pub_str:
+        return True
+    try:
+        from email.utils import parsedate_to_datetime
+        from datetime import timezone
+        dt = parsedate_to_datetime(pub_str)
+        if dt is None:
+            return True
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        age_days = (datetime.now(timezone.utc) - dt).total_seconds() / 86400
+        return age_days <= max_age_days
+    except Exception:
+        return True
+
+
+def _parse_rss_items(text, source, symbols=None, now=None, tag_keywords=False):
+    """Parse <item> blocks from RSS text into our news-item dicts.
+
+    Drops headlines older than config.NEWS_MAX_AGE_DAYS by publish date. If
+    tag_keywords is True, each item is tagged with any matching symbols via
+    COMPANY_KEYWORDS; otherwise the given `symbols` list is used.
+    """
+    now = now or datetime.now().isoformat()
     out = []
     for raw in _ITEM_RE.findall(text)[:40]:
         m = _TAG_RE["title"].search(raw)
         title = _clean(m.group(1)) if m else ""
         if not title:
             continue
-        link = _clean(_TAG_RE["link"].search(raw).group(1)) \
-            if _TAG_RE["link"].search(raw) else ""
         pub = _clean(_TAG_RE["pubDate"].search(raw).group(1)) \
             if _TAG_RE["pubDate"].search(raw) else ""
+        if not _published_recent(pub):
+            continue
+        link = _clean(_TAG_RE["link"].search(raw).group(1)) \
+            if _TAG_RE["link"].search(raw) else ""
+        if tag_keywords:
+            low = title.lower()
+            syms = [s for s, kws in COMPANY_KEYWORDS.items()
+                    if any(k in low for k in kws)]
+        else:
+            syms = list(symbols or [])
         out.append({"fetched_at": now, "source": source, "title": title,
-                    "link": link, "published": pub, "symbols": list(symbols)})
+                    "link": link, "published": pub, "symbols": syms})
     return out
 
 
@@ -188,23 +224,11 @@ def fetch_news():
         try:
             r = _get(url)
             r.raise_for_status()
-            for raw in _ITEM_RE.findall(r.text)[:40]:
-                title = _clean((_TAG_RE["title"].search(raw) or [None, ""])[1]
-                               if _TAG_RE["title"].search(raw) else "")
-                if not title:
-                    continue
-                link = _clean(_TAG_RE["link"].search(raw).group(1)) \
-                    if _TAG_RE["link"].search(raw) else ""
-                pub = _clean(_TAG_RE["pubDate"].search(raw).group(1)) \
-                    if _TAG_RE["pubDate"].search(raw) else ""
-                low = title.lower()
-                syms = [s for s, kws in COMPANY_KEYWORDS.items()
-                        if any(k in low for k in kws)]
-                items.append({"fetched_at": now, "source": name, "title": title,
-                              "link": link, "published": pub, "symbols": syms})
+            items += _parse_rss_items(r.text, name, now=now, tag_keywords=True)
         except Exception as e:
             log.warning("News feed %s failed: %s", name, e)
     if items:
         db.save_news(items)
-    log.info("Fetched %d news items", len(items))
+    log.info("Fetched %d recent news items (<= %d days old)",
+             len(items), config.NEWS_MAX_AGE_DAYS)
     return items

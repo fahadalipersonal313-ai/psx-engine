@@ -73,7 +73,12 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-WEIGHTS = {"macro_news": 0.40, "sentiment": 0.30, "technical": 0.30}
+# Technical-first blend (Option 2): price action drives the score, news is a
+# smaller context/safety input. Must sum to 1.0.
+# FUTURE (Option 3 — fundamentals): when the fundamentals layer is wired in, a
+# good target is technical 0.50 / fundamentals 0.25 / macro_news 0.15 /
+# sentiment 0.10 — add a "fundamentals" key here and in scoring_engine.compute.
+WEIGHTS = {"macro_news": 0.20, "sentiment": 0.15, "technical": 0.65}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
@@ -115,11 +120,16 @@ NEWS_FEEDS = [
 REQUEST_TIMEOUT = 15
 REQUEST_HEADERS = {"User-Agent": "PSX-Research-Engine/1.0 (personal research tool)"}
 
+# Drop any news headline whose PUBLISH date is older than this many days, so
+# stale/irrelevant articles can't pollute scoring (filters on real publish
+# date, not fetch time).
+NEWS_MAX_AGE_DAYS = 3
+
 # Per-company PUBLIC news/sentiment via Google News RSS search (login-free,
 # published for consumption). Each query is scoped to the company so the
 # sentiment module gets real per-symbol mentions instead of market-wide noise.
 GOOGLE_NEWS_RSS = ("https://news.google.com/rss/search?q={query}"
-                   "+when:7d&hl=en-PK&gl=PK&ceid=PK:en")
+                   "+when:2d&hl=en-PK&gl=PK&ceid=PK:en")
 COMPANY_NEWS_QUERY = {
     "PSO": "Pakistan State Oil",
     "TREET": "Treet Corporation Pakistan",
