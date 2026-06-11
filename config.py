@@ -1,0 +1,184 @@
+"""
+config.py — Central configuration for the PSX Shariah-Compliant Analysis Engine.
+
+EDIT THIS FILE to change stocks, weights, risk rules, and data sources.
+Never hard-code values elsewhere; all modules read from here.
+"""
+
+import os
+
+# ---------------------------------------------------------------------------
+# 1. STOCK UNIVERSE
+# ---------------------------------------------------------------------------
+# Default 4 stocks requested by the user:
+DEFAULT_STOCKS = ["PSO", "TREET", "FABL", "AIRLINK"]
+
+# 6 additional candidates — chosen ONLY from the officially verified KMI-30
+# constituent list (see SHARIAH section below). Diversified across sectors.
+ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC"]
+
+STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS
+
+SECTORS = {
+    "PSO": "Oil Marketing", "TREET": "Diversified/Consumer", "FABL": "Islamic Banking",
+    "AIRLINK": "Technology/Telecom Devices", "MEBL": "Islamic Banking",
+    "SYS": "Technology/IT Exports", "LUCK": "Cement/Conglomerate",
+    "FFC": "Fertilizer", "OGDC": "Oil & Gas Exploration", "MARI": "Oil & Gas Exploration",
+}
+
+# ---------------------------------------------------------------------------
+# 2. SHARIAH COMPLIANCE — VERIFIED SOURCE OF TRUTH
+# ---------------------------------------------------------------------------
+# Official KMI-30 constituents per PSX re-composition notification,
+# screening date 2025-12-31, effective 2026-05-25.
+# Source: PSX notification (dps.psx.com.pk/download/attachment/277332-1.pdf),
+# reported by Mettis Global, 2026-05-18.
+# IMPORTANT: KMI-30 is recomposed semi-annually. Re-verify this list every
+# 6 months. The engine warns when the verification date is older than
+# SHARIAH_STALE_DAYS.
+KMI30_VERIFIED = {
+    "AIRLINK", "ATRL", "CPHL", "DGKC", "EFERT", "ENGROH", "FCCL", "FFC", "FFL",
+    "GAL", "GHNI", "HCAR", "HUBC", "LUCK", "MARI", "MEBL", "MLCF", "NML", "NRL",
+    "OGDC", "PAEL", "PPL", "PRL", "PSO", "SAZEW", "SEARL", "SNGP", "SSGC",
+    "SYS", "TREET",
+}
+KMI30_VERIFICATION_DATE = "2026-05-25"   # effective date of recomposition
+KMI30_SOURCE = "PSX KMI-30 recomposition notice (screening 2025-12-31)"
+SHARIAH_STALE_DAYS = 200  # warn if verification older than this
+
+# Stocks compliant via another verified route (not in KMI-30 top-30 ranking
+# but shariah compliant per company structure). Each entry MUST carry a
+# reason and a manual re-check note. Anything not in KMI30_VERIFIED or here
+# is marked "Needs manual verification" and EXCLUDED from the top-10 ranking.
+OTHER_COMPLIANT = {
+    "FABL": {
+        "reason": ("Faysal Bank converted to a full-fledged Islamic bank "
+                   "(conversion completed Jan 2023); operates under SBP Islamic "
+                   "banking licence."),
+        "verify_note": ("Confirm continued inclusion in PSX KMI All Share Index "
+                        "and SECP shariah-compliant securities list each quarter."),
+    },
+}
+
+# ---------------------------------------------------------------------------
+# 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
+# ---------------------------------------------------------------------------
+WEIGHTS = {"macro_news": 0.40, "sentiment": 0.30, "technical": 0.30}
+
+SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
+    "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
+}
+
+# ---------------------------------------------------------------------------
+# 4. RISK MANAGEMENT
+# ---------------------------------------------------------------------------
+RISK = {
+    "max_risk_per_trade_pct": 1.5,     # % of total capital risked per trade
+    "max_position_pct": 15.0,          # never put more than this % in one stock
+    "min_risk_reward": 2.0,            # reject setups below 2:1
+    "default_stop_atr_mult": 2.0,      # stop loss = entry - 2*ATR (or support)
+    "min_avg_daily_volume": 100_000,   # below this -> illiquid warning
+    "max_volatility_pct": 6.0,         # daily ATR% above this -> high risk
+    "no_leverage": True,
+    "manual_confirmation_required": True,
+}
+
+# ---------------------------------------------------------------------------
+# 5. DATA SOURCES (public, no login, no protection bypass)
+# ---------------------------------------------------------------------------
+PSX_DPS_BASE = "https://dps.psx.com.pk"
+PSX_INTRADAY_URL = PSX_DPS_BASE + "/timeseries/int/{symbol}"
+PSX_EOD_URL = PSX_DPS_BASE + "/timeseries/eod/{symbol}"
+PSX_COMPANY_URL = PSX_DPS_BASE + "/company/{symbol}"
+
+# Public RSS feeds for news + sentiment (respecting robots/ToS — RSS is
+# explicitly published for consumption).
+NEWS_FEEDS = [
+    ("Business Recorder", "https://www.brecorder.com/feeds/latest-news"),
+    ("Dawn Business", "https://www.dawn.com/feeds/business"),
+    ("The News Business", "https://www.thenews.com.pk/rss/1/8"),
+    ("Tribune Business", "https://tribune.com.pk/feed/business"),
+    # Profit (profit.pakistantoday.com.pk/feed) and Mettis (mettisglobal.news/rss)
+    # were removed 2026-06-11: both feed URLs now return HTTP 404.
+]
+
+REQUEST_TIMEOUT = 15
+REQUEST_HEADERS = {"User-Agent": "PSX-Research-Engine/1.0 (personal research tool)"}
+
+# Per-company PUBLIC news/sentiment via Google News RSS search (login-free,
+# published for consumption). Each query is scoped to the company so the
+# sentiment module gets real per-symbol mentions instead of market-wide noise.
+GOOGLE_NEWS_RSS = ("https://news.google.com/rss/search?q={query}"
+                   "+when:7d&hl=en-PK&gl=PK&ceid=PK:en")
+COMPANY_NEWS_QUERY = {
+    "PSO": "Pakistan State Oil",
+    "TREET": "Treet Corporation Pakistan",
+    "FABL": "Faysal Bank",
+    "AIRLINK": "Air Link Communication Pakistan",
+    "MEBL": "Meezan Bank",
+    "SYS": "Systems Limited Pakistan",
+    "LUCK": "Lucky Cement",
+    "FFC": "Fauji Fertilizer Company",
+    "NRL": "National Refinery Limited Pakistan",
+    "DGKC": "DG Khan Cement",
+    "OGDC": "Oil and Gas Development Company Pakistan",
+    "MARI": "Mari Petroleum Energies",
+}
+
+# ---------------------------------------------------------------------------
+# 6. MACRO INPUTS — manually maintained (update from SBP/PBS releases).
+#    The engine also scores macro news automatically; these anchors give it
+#    a baseline. Each carries an as_of date; stale values trigger warnings.
+# ---------------------------------------------------------------------------
+MACRO_ANCHORS = {
+    "policy_rate_pct":   {"value": None, "as_of": None, "source": "SBP — fill in"},
+    "cpi_yoy_pct":       {"value": None, "as_of": None, "source": "PBS — fill in"},
+    "usd_pkr":           {"value": None, "as_of": None, "source": "SBP/open market — fill in"},
+    "fx_reserves_usd_bn":{"value": None, "as_of": None, "source": "SBP — fill in"},
+}
+MACRO_STALE_DAYS = 45
+
+# ---------------------------------------------------------------------------
+# 7. SCHEDULING
+# ---------------------------------------------------------------------------
+RUN_INTERVAL_MINUTES = 10
+MARKET_OPEN = "09:15"     # PSX regular session (Mon-Thu 09:32-15:30 approx;
+MARKET_CLOSE = "15:45"    # Fri split session). Slightly widened window.
+MARKET_DAYS = [0, 1, 2, 3, 4]          # Mon..Fri
+MORNING_REPORT_TIME = "09:00"
+EVENING_REPORT_TIME = "21:00"
+TIMEZONE = "Asia/Karachi"
+
+# ---------------------------------------------------------------------------
+# 8. STORAGE / LOGGING
+# ---------------------------------------------------------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "psx_engine.db")
+LOG_PATH = os.path.join(BASE_DIR, "engine.log")
+REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
+EXCEL_DIR = REPORT_DIR
+
+# ---------------------------------------------------------------------------
+# 9. NOTIFICATIONS / EMAIL  (secrets come from the ENVIRONMENT — never commit
+#    them. On the cloud these are injected from GitHub Actions Secrets.)
+# ---------------------------------------------------------------------------
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER")                  # sending Gmail address
+SMTP_APP_PASSWORD = os.environ.get("SMTP_APP_PASSWORD")  # 16-char app password
+EMAIL_TO = os.environ.get("EMAIL_TO")                    # recipient address
+# How often to email: "actionable" (default) emails only when a Buy/Strong Buy/
+# Exit appears — avoids spamming you every 10 minutes; "always" = every run;
+# "off" = never.
+EMAIL_MODE = os.environ.get("EMAIL_MODE", "actionable")
+ACTIONABLE_SIGNALS = {"Strong Buy", "Buy", "Exit"}
+
+# Dashboard view password (set in Streamlit Cloud secrets; falls back to env).
+DASHBOARD_PASSWORD = os.environ.get("DASHBOARD_PASSWORD")
+
+DISCLAIMER = (
+    "This tool is decision support, NOT financial advice. No system can "
+    "guarantee profit or zero loss. Setups are labelled low/medium/high risk. "
+    "Always confirm manually before trading and never risk money you cannot "
+    "afford to lose."
+)
