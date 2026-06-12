@@ -10,9 +10,27 @@ Per-symbol dict keys (all optional): pe, eps_growth (%), roe (%),
 de (debt/equity ratio), div_yield (%).
 """
 
+import json
+import os
+
 import config
 
 log_neutral = 50.0
+
+# Auto-fetched ratios cache (written by fundamentals_fetcher.py). Manual entries
+# in config.FUNDAMENTALS override anything here.
+_CACHE_PATH = os.path.join(os.path.dirname(__file__), "fundamentals.json")
+
+
+def _load_cache():
+    try:
+        with open(_CACHE_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"data": {}, "as_of": None}
+
+
+_CACHE = _load_cache()
 
 
 def _lin(x, lo, hi, lo_score, hi_score):
@@ -27,14 +45,17 @@ def _lin(x, lo, hi, lo_score, hi_score):
 
 
 def analyze(symbol):
-    data = (getattr(config, "FUNDAMENTALS", {}) or {}).get(symbol)
-    as_of = getattr(config, "FUNDAMENTALS_AS_OF", "n/a")
+    # Merge auto-fetched cache with manual config overrides (config wins).
+    data = dict(_CACHE.get("data", {}).get(symbol, {}))
+    data.update((getattr(config, "FUNDAMENTALS", {}) or {}).get(symbol, {}))
+    as_of = (getattr(config, "FUNDAMENTALS_AS_OF", "") or _CACHE.get("as_of")
+             or "n/a")
     if not data:
         return {"symbol": symbol, "score": log_neutral, "low_confidence": True,
                 "as_of": as_of, "have": [],
-                "notes": ["No fundamentals data — neutral 50. Fill "
-                          f"config.FUNDAMENTALS['{symbol}'] from the latest "
-                          "audited report to activate."]}
+                "notes": ["No fundamentals data — neutral 50. Run "
+                          "`python fundamentals_fetcher.py` or add "
+                          f"config.FUNDAMENTALS['{symbol}']."]}
 
     parts, have, notes = [], [], []
     pe = data.get("pe")

@@ -146,6 +146,12 @@ def main():
         sym = sys.argv[2].upper() if len(sys.argv) > 2 else "PSO"
         res = backtester.backtest(sym)
         import json; print(json.dumps(res, indent=2, default=str))
+    elif cmd == "fundamentals":
+        import fundamentals_fetcher
+        p = fundamentals_fetcher.fetch_all()
+        n = len(p["data"]); fields = sum(len(v) for v in p["data"].values())
+        print(f"Fundamentals refreshed: {n}/{len(config.STOCKS)} stocks, "
+              f"{fields} ratios, as_of {p['as_of']}")
     elif cmd == "accuracy":
         print("Signal accuracy:", db.signal_accuracy())
         print("Indicator accuracy:", db.indicator_stats())
