@@ -73,11 +73,12 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-# Technical + fundamentals blend (Option 3). News/sentiment are kept only as a
-# tiny context/safety input (2.5% each) but still drive the bad-news override.
+# Technical + fundamentals only. News/sentiment weight is ZERO (news judged to be
+# noise) — both sections are still COMPUTED for display and to drive the bad-news
+# SAFETY override in risk_manager, but they no longer move the score.
 # Must sum to 1.0.
-WEIGHTS = {"technical": 0.65, "fundamentals": 0.30,
-           "macro_news": 0.025, "sentiment": 0.025}
+WEIGHTS = {"technical": 0.70, "fundamentals": 0.30,
+           "macro_news": 0.0, "sentiment": 0.0}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,

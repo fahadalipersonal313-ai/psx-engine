@@ -61,6 +61,9 @@ if not rows:
 latest = pd.DataFrame(rows)
 latest = latest.sort_values("final_score", ascending=False)
 
+st.caption(f"🕒 Latest data: {latest['run_time'].max()}  ·  "
+           f"if this looks old, reboot the app (Manage app → Reboot).")
+
 tab_rank, tab_stock, tab_history, tab_news, tab_reports = st.tabs(
     ["🏆 Ranking", "🔍 Stock detail", "📈 History", "📰 News", "📋 Reports"])
 
