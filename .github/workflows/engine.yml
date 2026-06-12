@@ -1,14 +1,13 @@
 name: PSX Engine Loop
 
-# Times are UTC. PSX runs on Asia/Karachi (UTC+5, no DST).
-#   04:45 UTC        = 09:45 PKT             (your requested 09:45 start)
-#   05:00-10:45 UTC  = 10:00-15:45 PKT       (every 15 min through the session)
-# NOTE: GitHub Actions cron is best-effort and may be delayed 5-15 min.
+# Scheduling: GitHub's own cron proved unreliable here (zero scheduled runs
+# fired) — the 15-min cadence is driven by an EXTERNAL pinger (cron-job.org)
+# calling workflow_dispatch. See DEPLOY.md "Reliable scheduling".
+# The single cron below (09:45 PKT kickoff) is kept as a dormant backup only.
 on:
   schedule:
-    - cron: '45 4 * * 1-5'          # 09:45 PKT — morning kickoff
-    - cron: '3,18,33,48 5-10 * * 1-5'   # ~every 15 min, 10:00-15:48 PKT (offset off the hour)
-  workflow_dispatch: {}   # lets you run it on demand from the Actions tab
+    - cron: '45 4 * * 1-5'          # 09:45 PKT — backup morning kickoff
+  workflow_dispatch: {}   # primary trigger: cron-job.org pinger + manual runs
 
 permissions:
   contents: write          # needed to commit the updated database
@@ -34,7 +33,7 @@ jobs:
           cache: pip
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-ci.txt
 
       - name: Run analysis (+ email if actionable)
         run: python main.py run

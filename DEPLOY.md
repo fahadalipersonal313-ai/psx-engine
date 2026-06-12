@@ -106,3 +106,35 @@ to **15:50**, Mon–Fri; **evening summary 21:00**.
 - The dashboard shows data as of the **last committed run**, not a live tick.
 - Sentiment uses public Google News per company; coverage of thin-traded names
   (e.g. TREET) can be sparse — the engine lowers confidence accordingly.
+
+## Reliable scheduling via cron-job.org (set up 2026-06-12)
+
+GitHub's own `schedule:` cron fired **zero** times on this private repo, so the
+15-minute cadence is driven externally: a free https://cron-job.org account
+POSTs to the GitHub API, which starts the workflow via `workflow_dispatch`.
+
+Auth: a **fine-grained PAT** (Settings → Developer settings → Personal access
+tokens → Fine-grained), Repository access = only `psx-engine`, Permissions =
+**Actions: Read and write** (Metadata: read is added automatically). The token
+lives ONLY in cron-job.org's header config. If it expires, runs silently stop —
+re-create the token and update the jobs.
+
+Each cron-job.org job (all timezone **Asia/Karachi**, treat 204 as success):
+- URL: `https://api.github.com/repos/fahadalipersonal313-ai/psx-engine/actions/workflows/engine.yml/dispatches`
+  (evening job: same URL with `evening.yml`)
+- Method: POST; body (raw JSON): `{"ref":"main"}`
+- Headers: `Authorization: Bearer <TOKEN>`, `Accept: application/vnd.github+json`,
+  `Content-Type: application/json`
+
+| Job | Schedule (PKT) | Days | Workflow |
+|---|---|---|---|
+| Morning kickoff | 09:45 | Mon–Fri | engine.yml |
+| Market loop | minutes 0,15,30,45, hours 10–15 | Mon–Fri | engine.yml |
+| Evening summary | 21:00 | Mon–Fri | evening.yml |
+
+**Minutes budget (free private repo = 2,000 min/month):** each engine run bills
+~3 min with the slim `requirements-ci.txt` (~5 min with the full install — do
+NOT point the workflows back at `requirements.txt`). 25 runs/day ≈ 1,700
+min/month — inside the free tier, with little headroom. If GitHub ever emails
+about hitting the Actions limit, either widen the interval to 20–30 min or make
+the repo public (public repos have unlimited Actions minutes).
