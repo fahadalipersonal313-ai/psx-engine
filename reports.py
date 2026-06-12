@@ -26,17 +26,18 @@ def build_run_report(results, market_notes):
              "", "## Market summary",
              market_notes or "No macro headlines captured this run.",
              "", "## Ranking (shariah-verified only)", ""]
-    hdr = ("| # | Stock | Shariah | Final | Macro | Sent | Tech | Price | "
+    hdr = ("| # | Stock | Shariah | Final | Tech | Fund | Macro | Sent | Price | "
            "Support | Resist | Entry zone | Stop | Target | Risk | Signal | Conf |")
-    lines += [hdr, "|" + "---|" * 16]
+    lines += [hdr, "|" + "---|" * 17]
     for i, r in enumerate(ranked, 1):
         t, s = r["technical"], r["scoring"]
         entry = (f"{_fmt(t.get('support'))}–{_fmt(t.get('ema20'))}"
                  if t.get("support") else "n/a")
         lines.append(
             f"| {i} | {r['symbol']} | {r['shariah']['status'].split('(')[0].strip()} "
-            f"| {s['final_score']} | {s['breakdown']['macro_news']} "
-            f"| {s['breakdown']['sentiment']} | {s['breakdown']['technical']} "
+            f"| {s['final_score']} | {s['breakdown']['technical']} "
+            f"| {s['breakdown'].get('fundamentals', '-')} "
+            f"| {s['breakdown']['macro_news']} | {s['breakdown']['sentiment']} "
             f"| {_fmt(t.get('price'))} | {_fmt(t.get('support'))} "
             f"| {_fmt(t.get('resistance'))} | {entry} | {_fmt(t.get('stop_loss'))} "
             f"| {_fmt(t.get('target1'))} | {r['risk']['risk_level']} "

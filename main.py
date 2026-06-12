@@ -28,6 +28,7 @@ import shariah_checker
 import macro_news_analyzer
 import sentiment_analyzer
 import technical_analyzer
+import fundamentals_analyzer
 import scoring_engine
 import risk_manager
 import signal_generator
@@ -51,7 +52,9 @@ def analyze_stock(symbol, news_items):
     technical = technical_analyzer.analyze(symbol, eod, quote)
     sentiment = sentiment_analyzer.analyze(symbol, news_items)
     macro = macro_news_analyzer.analyze(symbol, news_items)
-    scoring = scoring_engine.compute(symbol, macro, sentiment, technical)
+    fundamentals = fundamentals_analyzer.analyze(symbol)
+    scoring = scoring_engine.compute(symbol, macro, sentiment, technical,
+                                     fundamentals)
     risk = risk_manager.assess(symbol, technical, sentiment, macro)
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
@@ -82,6 +85,7 @@ def analyze_stock(symbol, news_items):
 
     return {"symbol": symbol, "shariah": shariah, "quote": quote,
             "technical": technical, "sentiment": sentiment, "macro": macro,
+            "fundamentals": fundamentals,
             "scoring": scoring, "risk": risk, "signal": signal}
 
 

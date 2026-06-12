@@ -73,15 +73,24 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-# Technical-first blend (Option 2): price action drives the score, news is a
-# smaller context/safety input. Must sum to 1.0.
-# FUTURE (Option 3 — fundamentals): when the fundamentals layer is wired in, a
-# good target is technical 0.50 / fundamentals 0.25 / macro_news 0.15 /
-# sentiment 0.10 — add a "fundamentals" key here and in scoring_engine.compute.
-WEIGHTS = {"macro_news": 0.20, "sentiment": 0.15, "technical": 0.65}
+# Technical + fundamentals blend (Option 3). News/sentiment are kept only as a
+# tiny context/safety input (2.5% each) but still drive the bad-news override.
+# Must sum to 1.0.
+WEIGHTS = {"technical": 0.65, "fundamentals": 0.30,
+           "macro_news": 0.025, "sentiment": 0.025}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
+}
+
+# Fundamentals table (manually maintained — the engine NEVER invents these).
+# Fill per symbol from the latest audited quarterly/annual report. Any symbol
+# left out scores a neutral 50 and is flagged low-confidence (see
+# fundamentals_analyzer.py). Keys (all optional): pe, eps_growth (%), roe (%),
+# de (debt/equity), div_yield (%).
+FUNDAMENTALS_AS_OF = ""   # e.g. "2026-03-31 (Q3 FY26)"; blank = not yet filled
+FUNDAMENTALS = {
+    # "PSO": {"pe": 4.2, "eps_growth": 12, "roe": 18, "de": 0.6, "div_yield": 7},
 }
 
 # ---------------------------------------------------------------------------

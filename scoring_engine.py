@@ -36,17 +36,20 @@ def historical_confidence_adjust(symbol):
         f"History: {wins}W/{losses}L (win rate {win_rate:.0%}) over {total} signals."
 
 
-def compute(symbol, macro, sentiment, technical):
+def compute(symbol, macro, sentiment, technical, fundamentals=None):
     w = config.WEIGHTS
+    fund = fundamentals or {"score": 50.0, "low_confidence": True}
     final = round(w["macro_news"] * macro["score"]
                   + w["sentiment"] * sentiment["score"]
-                  + w["technical"] * technical["score"], 1)
+                  + w["technical"] * technical["score"]
+                  + w.get("fundamentals", 0) * fund["score"], 1)
 
     # ---- data quality
     weak = []
     if macro.get("low_confidence"): weak.append("macro/news")
     if sentiment.get("low_confidence"): weak.append("sentiment")
     if technical.get("low_confidence"): weak.append("technical")
+    if fund.get("low_confidence"): weak.append("fundamentals")
     data_quality = "good" if not weak else ("weak: " + ", ".join(weak))
 
     # ---- confidence
@@ -56,10 +59,11 @@ def compute(symbol, macro, sentiment, technical):
     # quiet/empty news section barely matters, while weak technicals (the core)
     # matter most. (Old behaviour was a flat 12 pts per weak section.)
     _key = {"macro/news": "macro_news", "sentiment": "sentiment",
-            "technical": "technical"}
+            "technical": "technical", "fundamentals": "fundamentals"}
     confidence -= sum(36 * w.get(_key.get(s, s), 0) for s in weak)
-    # agreement bonus: all three sections pointing the same way
-    scores = [macro["score"], sentiment["score"], technical["score"]]
+    # agreement bonus: all sections pointing the same way
+    scores = [macro["score"], sentiment["score"], technical["score"],
+              fund["score"]]
     if max(scores) - min(scores) < 15:
         confidence += 8
     adj, hist_note = historical_confidence_adjust(symbol)
@@ -71,4 +75,5 @@ def compute(symbol, macro, sentiment, technical):
             "breakdown": {"macro_news": macro["score"],
                           "sentiment": sentiment["score"],
                           "technical": technical["score"],
+                          "fundamentals": fund["score"],
                           "weights": w}}
