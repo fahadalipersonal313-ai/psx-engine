@@ -29,6 +29,7 @@ import macro_news_analyzer
 import sentiment_analyzer
 import technical_analyzer
 import fundamentals_analyzer
+import market_regime
 import scoring_engine
 import risk_manager
 import signal_generator
@@ -43,13 +44,15 @@ logging.basicConfig(
 log = logging.getLogger("main")
 
 
-def analyze_stock(symbol, news_items):
+def analyze_stock(symbol, news_items, index_eod=None, regime=None):
     """Full pipeline for one symbol. Returns the result dict and stores it."""
     shariah = shariah_checker.check(symbol)
     quote = data_fetcher.latest_quote(symbol)
     eod, eod_meta = data_fetcher.fetch_eod(symbol)
 
-    technical = technical_analyzer.analyze(symbol, eod, quote)
+    rs = market_regime.relative_strength(eod, index_eod) if index_eod is not None else None
+    rs_score = rs["rs_score"] if rs else None
+    technical = technical_analyzer.analyze(symbol, eod, quote, rs_score=rs_score)
     sentiment = sentiment_analyzer.analyze(symbol, news_items)
     macro = macro_news_analyzer.analyze(symbol, news_items)
     fundamentals = fundamentals_analyzer.analyze(symbol)
@@ -58,7 +61,8 @@ def analyze_stock(symbol, news_items):
     risk = risk_manager.assess(symbol, technical, sentiment, macro)
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
-                                       shariah, technical)
+                                       shariah, technical,
+                                       regime=(regime or {}).get("regime"))
 
     db.save_run({
         "run_time": datetime.now().isoformat(), "symbol": symbol,
@@ -74,6 +78,8 @@ def analyze_stock(symbol, news_items):
         "resistance": technical.get("resistance"),
         "risk_level": risk["risk_level"], "shariah_status": shariah["status"],
         "data_quality": scoring["data_quality"],
+        "relative_strength": rs_score,
+        "market_regime": (regime or {}).get("regime"),
         "main_reason": "; ".join(signal["reasons"])[:400],
         "main_risk": (risk["warnings"][0] if risk["warnings"] else "")[:400],
     })
@@ -85,7 +91,7 @@ def analyze_stock(symbol, news_items):
 
     return {"symbol": symbol, "shariah": shariah, "quote": quote,
             "technical": technical, "sentiment": sentiment, "macro": macro,
-            "fundamentals": fundamentals,
+            "fundamentals": fundamentals, "relative_strength": rs,
             "scoring": scoring, "risk": risk, "signal": signal}
 
 
@@ -98,12 +104,19 @@ def full_run():
         news_items += data_fetcher.fetch_company_news(s)
     backtester.update_outcomes()          # learning loop first
 
-    results = [analyze_stock(s, news_items) for s in config.STOCKS]
+    # Tier 2: fetch the benchmark index ONCE; judge the market regime. Both feed
+    # relative strength (per stock) and the regime gate (market-wide).
+    index_eod, index_meta = market_regime.fetch_index()
+    regime = market_regime.assess_regime(index_eod)
+    log.info("Market regime: %s", regime["note"])
+
+    results = [analyze_stock(s, news_items, index_eod, regime)
+               for s in config.STOCKS]
 
     macro_titles = [n["title"] for n in news_items][:6]
-    market_notes = ("Latest public headlines: "
-                    + " | ".join(t[:80] for t in macro_titles)
-                    if macro_titles else None)
+    market_notes = "Market regime: " + regime["note"]
+    if macro_titles:
+        market_notes += " | Headlines: " + " | ".join(t[:80] for t in macro_titles)
     report = reports.build_run_report(results, market_notes)
     print("\n" + report)
     reports.save_report(report, "run")

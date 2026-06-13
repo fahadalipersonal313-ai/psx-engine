@@ -73,6 +73,12 @@ def conn():
 def init_db():
     with conn() as c:
         c.executescript(SCHEMA)
+        # Lightweight migrations: add newer columns to `runs` if they're missing
+        # (CREATE TABLE IF NOT EXISTS won't add columns to a pre-existing table).
+        existing = {r[1] for r in c.execute("PRAGMA table_info(runs)")}
+        for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT")):
+            if col not in existing:
+                c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)
 
 

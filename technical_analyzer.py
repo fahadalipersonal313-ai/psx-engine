@@ -95,9 +95,11 @@ def candle_signal(close):
 
 
 # ----------------------------- main entry ---------------------------------
-def analyze(symbol, eod_df, quote):
-    """eod_df: DataFrame[date, close, volume] (real fetched data) or None.
+def analyze(symbol, eod_df, quote, rs_score=None):
+    """eod_df: DataFrame[date, (open,) close, volume] (real fetched data) or None.
     quote: dict from data_fetcher.latest_quote.
+    rs_score: optional 0-100 relative-strength vs the benchmark index
+    (market_regime.relative_strength); folded into the score when provided.
     Returns dict with score (0-100), classification, levels, and notes."""
     notes, missing = [], []
     out = {"symbol": symbol, "score": None, "classification": "No data",
@@ -238,6 +240,14 @@ def analyze(symbol, eod_df, quote):
                      "direction unconfirmed")
     add(bb_pts, 10, "bollinger")
 
+    # Relative strength (config.RS_POINTS) — is the stock BEATING the index? A
+    # stock can be in an uptrend yet still LAG the market; RS catches that and
+    # steers the score toward genuine leaders. Skipped if the index was missing.
+    if rs_score is not None:
+        add(rs_score / 100 * config.RS_POINTS, config.RS_POINTS, "relative_strength",
+            f"Relative strength {rs_score:.0f}/100 vs {config.BENCHMARK_INDEX} "
+            + ("(outperforming)" if rs_score >= 50 else "(LAGGING the market)"))
+
     final = round(score / max_pts * 100, 1) if max_pts else 50.0
 
     cls = ("Strong bullish" if final >= 80 else "Bullish" if final >= 65
@@ -278,6 +288,7 @@ def analyze(symbol, eod_df, quote):
         "adx_proxy": last_adx,
         "momentum_20d": momentum_20d, "obv_up": obv_trend_up,
         "stop_loss": stop_loss, "target1": target1, "target2": target2,
-        "risk_reward": rr, "low_confidence": len(close) < 60,
+        "risk_reward": rr, "relative_strength": rs_score,
+        "low_confidence": len(close) < 60,
     })
     return out

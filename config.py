@@ -84,6 +84,22 @@ SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
 }
 
+# ---------------------------------------------------------------------------
+# 3b. MARKET REGIME & RELATIVE STRENGTH (Tier 2)
+# ---------------------------------------------------------------------------
+# Benchmark index for the regime gate + relative-strength ranking. PSX DPS
+# serves index EOD at the same /timeseries/eod/{symbol} endpoint as stocks.
+# KMI30 = the Shariah index matching this engine's universe (KSE100 = broad
+# market). Confirmed live 2026-06-14: KSE100, KMI30, KSE30, ALLSHR, KMIALLSHR.
+BENCHMARK_INDEX = "KMI30"
+REGIME_EMA_SPAN = 50           # index must be above this EMA for a "risk-on" market
+REGIME_GATE_ENABLED = True     # in a risk-off market, soften Buy/Strong Buy -> Watch
+# Relative strength: stock return minus index return over these trading-day
+# windows, blended (recent weighted a touch less than the 3-/6-month trend).
+RS_LOOKBACKS = {"1m": 21, "3m": 63, "6m": 126}
+RS_WEIGHTS = {"1m": 0.25, "3m": 0.40, "6m": 0.35}
+RS_POINTS = 15                 # relative strength's contribution to the technical score
+
 # Fundamentals table (manually maintained — the engine NEVER invents these).
 # Fill per symbol from the latest audited quarterly/annual report. Any symbol
 # left out scores a neutral 50 and is flagged low-confidence (see

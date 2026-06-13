@@ -17,7 +17,7 @@ log = logging.getLogger("signal")
 T = config.SIGNAL_THRESHOLDS
 
 
-def generate(symbol, final_score, confidence, risk, shariah, technical):
+def generate(symbol, final_score, confidence, risk, shariah, technical, regime=None):
     reasons, override = [], None
 
     # No usable price this run -> not analysable. Emit an explicit "No data"
@@ -67,7 +67,11 @@ def generate(symbol, final_score, confidence, risk, shariah, technical):
 
     # ---- soft downgrades
     if base in ("Strong Buy", "Buy"):
-        if "poor_rr" in risk["vetoes"]:
+        if config.REGIME_GATE_ENABLED and regime == "risk-off":
+            base = "Watch"; reasons.append(
+                f"Downgraded: market regime risk-off ({config.BENCHMARK_INDEX} below "
+                f"its {config.REGIME_EMA_SPAN}-EMA) — don't buy into a falling market")
+        elif "poor_rr" in risk["vetoes"]:
             base = "Watch"; reasons.append("Downgraded: risk/reward below minimum")
         elif "manipulation_risk" in risk["vetoes"]:
             base = "Watch"; reasons.append("Downgraded: hype/pump risk — verify first")
