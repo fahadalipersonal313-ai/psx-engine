@@ -68,6 +68,22 @@ def fetch_intraday(symbol):
         last = df.iloc[-1]
         db.save_price(symbol, str(last["ts"]), float(last["price"]),
                       float(last["volume"]), meta["source"])
+        # Option B: bank today's REAL high/low from the ticks. PSX EOD has no
+        # H/L, so over time this builds genuine daily OHLC history -> true
+        # ATR/ADX become possible once enough days accumulate.
+        try:
+            day = df.copy()
+            day["d"] = day["ts"].dt.date
+            for d, g in day.groupby("d"):
+                db.save_daily_ohlc(symbol, str(d),
+                                   float(g["price"].iloc[0]),    # open
+                                   float(g["price"].max()),      # high
+                                   float(g["price"].min()),      # low
+                                   float(g["price"].iloc[-1]),   # close
+                                   float(g["volume"].sum()),     # volume
+                                   meta["source"])
+        except Exception as e:
+            log.debug("Daily OHLC capture skipped for %s: %s", symbol, e)
         return df, meta
     except Exception as e:
         log.warning("Intraday fetch failed for %s: %s", symbol, e)
@@ -85,15 +101,17 @@ def fetch_eod(symbol):
         data = r.json().get("data", [])
         if not data:
             raise ValueError("empty payload")
-        # PSX DPS EOD rows are now [ts, close, volume, open]; older format had
-        # three. Keep the first three columns so both layouts parse cleanly.
-        df = pd.DataFrame([row[:3] for row in data],
-                          columns=["ts", "close", "volume"])
+        # PSX DPS EOD rows are [ts, close, volume, open]; older format had only
+        # three. Keep `open` when present (used for a gap/body-aware volatility
+        # estimate — PSX gives no High/Low). Missing open -> NaN, handled downstream.
+        recs = [(row[0], row[1], row[2], row[3] if len(row) > 3 else None)
+                for row in data]
+        df = pd.DataFrame(recs, columns=["ts", "close", "volume", "open"])
         df["date"] = pd.to_datetime(df["ts"], unit="s")
         df = df.sort_values("date").reset_index(drop=True)
         meta = {"source": "PSX DPS end-of-day", "as_of": str(df["date"].iloc[-1].date()),
                 "live": True, "warning": None}
-        return df[["date", "close", "volume"]], meta
+        return df[["date", "open", "close", "volume"]], meta
     except Exception as e:
         log.warning("EOD fetch failed for %s: %s", symbol, e)
         return None, {"source": "PSX DPS end-of-day", "as_of": None,

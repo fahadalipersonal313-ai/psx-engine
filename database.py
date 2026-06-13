@@ -48,6 +48,14 @@ CREATE TABLE IF NOT EXISTS indicator_accuracy (
     indicator TEXT, symbol TEXT, hits INTEGER DEFAULT 0,
     misses INTEGER DEFAULT 0, PRIMARY KEY (indicator, symbol)
 );
+
+-- Real daily OHLC banked from the intraday feed (PSX EOD has no High/Low).
+-- Accumulates over time so true ATR/ADX/candles become possible later.
+CREATE TABLE IF NOT EXISTS daily_ohlc (
+    symbol TEXT, date TEXT, open REAL, high REAL, low REAL,
+    close REAL, volume REAL, source TEXT,
+    PRIMARY KEY (symbol, date)
+);
 """
 
 
@@ -81,6 +89,25 @@ def save_price(symbol, ts, price, volume, source):
     with conn() as c:
         c.execute("INSERT OR IGNORE INTO prices VALUES (?,?,?,?,?)",
                   (symbol, ts, price, volume, source))
+
+
+def save_daily_ohlc(symbol, date, o, h, l, c, volume, source):
+    """Bank one real daily OHLC bar (from intraday). REPLACE so re-runs on the
+    same day refine the high/low as more ticks arrive."""
+    with conn() as cx:
+        cx.execute("""INSERT OR REPLACE INTO daily_ohlc
+            (symbol, date, open, high, low, close, volume, source)
+            VALUES (?,?,?,?,?,?,?,?)""",
+                   (symbol, date, o, h, l, c, volume, source))
+
+
+def daily_ohlc_count(symbol=None):
+    q = "SELECT COUNT(*) n FROM daily_ohlc"
+    args = []
+    if symbol:
+        q += " WHERE symbol=?"; args.append(symbol)
+    with conn() as c:
+        return c.execute(q, args).fetchone()["n"]
 
 
 def save_news(items):

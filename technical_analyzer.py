@@ -48,6 +48,21 @@ def atr_from_close(close, period=14):
     return tr.rolling(period).mean()
 
 
+def range_proxy(open_, close):
+    """Daily true-range estimate from open+close (PSX EOD has no H/L).
+
+    Uses max(body, overnight gap, close-to-close) so it captures opening gaps
+    and the day's body — wider and more realistic than close-to-close alone,
+    which makes ATR-based stops less likely to whipsaw. It is still an
+    UNDER-estimate (intraday wicks are invisible) and is labelled as such.
+    """
+    prev_close = close.shift(1)
+    body = (close - open_).abs()
+    gap = (open_ - prev_close).abs()
+    c2c = (close - prev_close).abs()
+    return pd.concat([body, gap, c2c], axis=1).max(axis=1)
+
+
 def adx_proxy(close, period=14):
     """Directional-strength proxy from close data (true ADX needs H/L).
     Returns 0-100 style trend-strength estimate, clearly labelled a proxy."""
@@ -109,7 +124,12 @@ def analyze(symbol, eod_df, quote):
         missing.append("EMA-200 (needs 200 sessions)")
     bb_up, bb_mid, bb_lo = bollinger(close)
     obv_series = obv(close, vol)
-    atr = atr_from_close(close)
+    if "open" in df.columns and df["open"].notna().sum() >= 20:
+        atr = range_proxy(df["open"].astype(float), close).rolling(14).mean()
+        atr_method = "open+close range (gaps & body; no intraday wicks)"
+    else:
+        atr = atr_from_close(close)
+        atr_method = "close-to-close (open unavailable)"
     adx = adx_proxy(close)
     support, resistance, recent_lo, recent_hi = support_resistance(close)
 
@@ -188,6 +208,36 @@ def analyze(symbol, eod_df, quote):
     else:
         missing.append("ADX proxy")
 
+    # Bollinger Bands (10 pts). These were computed but UNUSED before. The value
+    # here isn't another trend vote — it's volatility regime + position:
+    #   * a "squeeze" (bands unusually tight) = coiled volatility, a move brewing;
+    #     a squeeze resolving upward is a high-probability setup.
+    #   * %B says where price sits in the band (top = strength, bottom = weakness).
+    bb_u, bb_m, bb_l = float(bb_up.iloc[-1]), float(bb_mid.iloc[-1]), float(bb_lo.iloc[-1])
+    bb_pct_b = (price - bb_l) / (bb_u - bb_l) if (bb_u - bb_l) else 0.5
+    bb_bandwidth = (bb_u - bb_l) / bb_m if bb_m else None
+    _recent_bw = ((bb_up - bb_lo) / bb_mid).dropna().tail(100)
+    bb_squeeze = bool(bb_bandwidth is not None and len(_recent_bw) >= 20
+                      and bb_bandwidth <= _recent_bw.quantile(0.25))
+    if bb_squeeze and bb_pct_b >= 0.6:
+        bb_pts = 10
+        notes.append(f"Bollinger SQUEEZE resolving up (%B={bb_pct_b:.2f}) — coiled "
+                     "volatility breaking higher")
+    elif bb_pct_b > 1.0:
+        bb_pts = 5
+        notes.append(f"Above upper Bollinger band (%B={bb_pct_b:.2f}) — strong but extended")
+    elif 0.5 <= bb_pct_b <= 1.0:
+        bb_pts = 7
+    elif bb_pct_b < 0.2:
+        bb_pts = 2
+        notes.append(f"Hugging lower Bollinger band (%B={bb_pct_b:.2f}) — weak")
+    else:
+        bb_pts = 5
+    if bb_squeeze and bb_pct_b < 0.6:
+        notes.append("Bollinger squeeze (low volatility) — breakout brewing, "
+                     "direction unconfirmed")
+    add(bb_pts, 10, "bollinger")
+
     final = round(score / max_pts * 100, 1) if max_pts else 50.0
 
     cls = ("Strong bullish" if final >= 80 else "Bullish" if final >= 65
@@ -195,8 +245,15 @@ def analyze(symbol, eod_df, quote):
     cs = candle_signal(close)
     if cs:
         notes.append("Candle proxy: " + cs)
+    # Real open-vs-close read (Option A): PSX gaps often, and we now have `open`.
+    if "open" in df.columns and pd.notna(df["open"].iloc[-1]) and len(close) >= 2:
+        o_last, prev_c = float(df["open"].iloc[-1]), float(close.iloc[-2])
+        if o_last > prev_c * 1.015:
+            notes.append(f"Gap-up open ({(o_last/prev_c-1)*100:+.1f}% vs prev close)")
+        elif o_last < prev_c * 0.985:
+            notes.append(f"Gap-down open ({(o_last/prev_c-1)*100:+.1f}% vs prev close)")
     if atr_pct and atr_pct > config.RISK["max_volatility_pct"]:
-        notes.append(f"High volatility: ATR≈{atr_pct:.1f}% of price")
+        notes.append(f"High volatility: ATR≈{atr_pct:.1f}% of price ({atr_method})")
 
     stop_loss = round(max(support, price - config.RISK["default_stop_atr_mult"]
                           * (last_atr or price * 0.02)), 2)
@@ -211,11 +268,14 @@ def analyze(symbol, eod_df, quote):
         "rsi": last_rsi, "macd_hist": float(macd_hist.iloc[-1]),
         "ema20": float(ema20.iloc[-1]), "ema50": float(ema50.iloc[-1]),
         "ema200": float(ema200.iloc[-1]) if ema200 is not None else None,
-        "bb_upper": float(bb_up.iloc[-1]), "bb_lower": float(bb_lo.iloc[-1]),
+        "bb_upper": bb_u, "bb_lower": bb_l, "bb_pct_b": round(bb_pct_b, 3),
+        "bb_bandwidth": (round(bb_bandwidth, 4) if bb_bandwidth is not None else None),
+        "bb_squeeze": bb_squeeze,
         "support": support, "resistance": resistance,
         "recent_high": recent_hi, "recent_low": recent_lo,
         "breakout": breakout, "breakdown": breakdown,
-        "atr": last_atr, "atr_pct": atr_pct, "adx_proxy": last_adx,
+        "atr": last_atr, "atr_pct": atr_pct, "atr_method": atr_method,
+        "adx_proxy": last_adx,
         "momentum_20d": momentum_20d, "obv_up": obv_trend_up,
         "stop_loss": stop_loss, "target1": target1, "target2": target2,
         "risk_reward": rr, "low_confidence": len(close) < 60,
