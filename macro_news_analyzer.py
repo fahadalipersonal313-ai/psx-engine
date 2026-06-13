@@ -111,13 +111,23 @@ def analyze(symbol, news_items):
     # Weighted blend: macro 35%, sector 30%, company news 35%
     score = round(0.35 * macro_score + 0.30 * sector_score + 0.35 * comp_score, 1)
 
-    bad_news = [t for t in comp_titles if _polarity(t) < -0.4]
+    # ---- "Material" bad-news test (was: ANY headline < -0.4, which let a single
+    # noisy Google-News result hard-convert a high-scoring Buy into Avoid).
+    # Now a veto requires EITHER a strongly negative headline (< -0.6, i.e. real
+    # distress words like default/crash/loss) OR at least two negatives that
+    # clearly outweigh the positive flow. A lone mildly-negative headline amid
+    # neutral/positive coverage no longer hides a strong technical setup.
+    neg = [t for t in comp_titles if _polarity(t) < -0.4]
+    strong_neg = [t for t in comp_titles if _polarity(t) < -0.6]
+    pos = [t for t in comp_titles if _polarity(t) > 0.4]
+    material_bad = bool(strong_neg) or (len(neg) >= 2 and len(neg) > len(pos))
+    bad_news = strong_neg or neg
     explanation = _explain(symbol, sector, components, macro_hits[:5],
-                           comp_titles[:5], bad_news)
+                           comp_titles[:5], bad_news if material_bad else [])
 
     return {"symbol": symbol, "score": score, "components": components,
             "explanation": explanation, "notes": notes,
-            "bad_news_flag": bool(bad_news), "bad_news": bad_news[:3],
+            "bad_news_flag": material_bad, "bad_news": bad_news[:3],
             "low_confidence": stale_count >= 3 or (not macro_pol and not comp_titles),
             "sources": "Public RSS feeds (Business Recorder, Dawn, Profit, "
                        "Mettis) + config macro anchors"}

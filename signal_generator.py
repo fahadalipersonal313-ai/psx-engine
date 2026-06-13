@@ -20,6 +20,16 @@ T = config.SIGNAL_THRESHOLDS
 def generate(symbol, final_score, confidence, risk, shariah, technical):
     reasons, override = [], None
 
+    # No usable price this run -> not analysable. Emit an explicit "No data"
+    # signal so a fetch failure can never masquerade as a Hold/Watch with a
+    # bogus 0.00 price/stop/target sitting in the ranking.
+    price = technical.get("price")
+    if not price or price <= 0:
+        return {"signal": "No data",
+                "reasons": ["No usable price for this symbol this run — "
+                            "excluded from ranking until the feed returns."],
+                "confidence": 0}
+
     if not shariah["eligible_for_ranking"]:
         override = "Avoid"
         reasons.append("Shariah status unverified — excluded by policy")
@@ -30,9 +40,9 @@ def generate(symbol, final_score, confidence, risk, shariah, technical):
             ("Buy", "Strong Buy", "Hold") else "Avoid"
         reasons.append("Technical breakdown below support")
 
-    if "bad_news" in risk["vetoes"] and override is None:
-        override = "Avoid"
-        reasons.append("Material negative news — wait for clarity")
+    # NOTE: material negative news is NO LONGER a hard Avoid override. A noisy
+    # headline used to hide strong setups entirely; it is now a soft downgrade
+    # to Watch (handled below) so the setup stays visible WITH the caution.
 
     if override:
         return {"signal": override, "reasons": reasons,
@@ -61,6 +71,9 @@ def generate(symbol, final_score, confidence, risk, shariah, technical):
             base = "Watch"; reasons.append("Downgraded: risk/reward below minimum")
         elif "manipulation_risk" in risk["vetoes"]:
             base = "Watch"; reasons.append("Downgraded: hype/pump risk — verify first")
+        elif "bad_news" in risk["vetoes"]:
+            base = "Watch"; reasons.append("Downgraded: material negative news — "
+                                           "verify the headline before acting")
         elif risk["risk_level"] == "High":
             base = "Watch"; reasons.append("Downgraded: overall risk level High")
         elif confidence < 45:

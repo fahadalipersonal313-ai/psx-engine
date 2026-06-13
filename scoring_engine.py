@@ -44,12 +44,15 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None):
                   + w["technical"] * technical["score"]
                   + w.get("fundamentals", 0) * fund["score"], 1)
 
-    # ---- data quality
+    # ---- data quality. Only sections that ACTUALLY drive the score count here.
+    # News/sentiment are 0-weight, so their (usually low) confidence must not
+    # paint every stock "weak" — that was making 28/30 stocks look low-quality
+    # when the weighted sections (technical, fundamentals) were fine.
     weak = []
-    if macro.get("low_confidence"): weak.append("macro/news")
-    if sentiment.get("low_confidence"): weak.append("sentiment")
-    if technical.get("low_confidence"): weak.append("technical")
-    if fund.get("low_confidence"): weak.append("fundamentals")
+    if macro.get("low_confidence") and w.get("macro_news", 0) > 0: weak.append("macro/news")
+    if sentiment.get("low_confidence") and w.get("sentiment", 0) > 0: weak.append("sentiment")
+    if technical.get("low_confidence") and w.get("technical", 0) > 0: weak.append("technical")
+    if fund.get("low_confidence") and w.get("fundamentals", 0) > 0: weak.append("fundamentals")
     data_quality = "good" if not weak else ("weak: " + ", ".join(weak))
 
     # ---- confidence

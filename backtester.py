@@ -28,7 +28,10 @@ log = logging.getLogger("backtester")
 # Outcome tracking
 # ---------------------------------------------------------------------------
 def _price_on_or_after(eod, when):
-    sub = eod[eod["date"] >= pd.Timestamp(when)]
+    # EOD timestamps sit at midnight; run_time carries an intraday time. Without
+    # normalising, "3 days after a 15:17 run" skips that day's midnight EOD and
+    # lands a session late. Compare on calendar date so the horizon is exact.
+    sub = eod[eod["date"] >= pd.Timestamp(when).normalize()]
     return float(sub["close"].iloc[0]) if len(sub) else None
 
 
