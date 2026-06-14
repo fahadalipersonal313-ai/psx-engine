@@ -59,6 +59,49 @@ def _anchor_status():
     return notes, stale
 
 
+def _clamp(x, lo, hi):
+    return max(lo, min(hi, x))
+
+
+def _anchor_score():
+    """Convert the macro anchors into a 0-100 'macro environment' score where
+    higher = more equity-supportive. Level-based (a snapshot of the economy),
+    blended into the macro component so the macro WEIGHT rests on real economic
+    conditions rather than headline polarity alone.
+
+    Three drivers with a clear 'lower/higher is better' reading:
+      * policy rate  — lower rates ease equity discount rates & leverage cost.
+      * CPI YoY      — lower inflation = less tightening pressure, real returns.
+      * FX reserves  — higher reserves = lower external-default / import risk.
+    USD/PKR is kept as an informational anchor only: a single level without a
+    trend is not scoreable; rupee momentum is a later add (we already store EOD).
+
+    Returns (score or None if no usable anchors, note string, parts list).
+    """
+    a = config.MACRO_ANCHORS
+    subs, parts = [], []
+
+    rate = a.get("policy_rate_pct", {}).get("value")
+    if rate is not None:                       # 7%→90 ... 22%→20
+        s = _clamp(90 - (rate - 7) * 70 / 15, 20, 90)
+        subs.append(s); parts.append(f"policy rate {rate}%")
+
+    cpi = a.get("cpi_yoy_pct", {}).get("value")
+    if cpi is not None:                        # 7%→85 ... 25%→20
+        s = _clamp(85 - (cpi - 7) * 65 / 18, 20, 85)
+        subs.append(s); parts.append(f"CPI {cpi}%")
+
+    res = a.get("fx_reserves_usd_bn", {}).get("value")
+    if res is not None:                        # $5bn→25 ... $20bn→85
+        s = _clamp(25 + (res - 5) * 60 / 15, 25, 85)
+        subs.append(s); parts.append(f"reserves ${res}bn")
+
+    if not subs:
+        return None, "", []
+    return round(sum(subs) / len(subs), 1), \
+        "Macro anchors: " + ", ".join(parts), parts
+
+
 def analyze(symbol, news_items):
     """Returns dict: score (0-100), explanation, components, notes."""
     sector = config.SECTORS.get(symbol, "Unknown")
@@ -71,7 +114,10 @@ def analyze(symbol, news_items):
                  [n["title"] for n in db.recent_news(72)]
     all_titles = list(dict.fromkeys(all_titles))
 
-    # ---- 1) Macro environment score (0-100) from macro headlines
+    # ---- 1) Macro environment score (0-100): anchor fundamentals + headlines.
+    # The anchors (rates/CPI/reserves) set the structural backdrop; macro news
+    # nudges it for live developments. When anchors are set they lead (0.6),
+    # news adjusts (0.4); with no anchors we fall back to news-only as before.
     macro_hits, macro_pol = [], []
     for t in all_titles:
         low = t.lower()
@@ -80,9 +126,15 @@ def analyze(symbol, news_items):
                 macro_hits.append((theme, t))
                 macro_pol.append(_polarity(t))
                 break
-    macro_score = 50 + (sum(macro_pol) / len(macro_pol)) * 40 if macro_pol else 50
+    news_macro = 50 + (sum(macro_pol) / len(macro_pol)) * 40 if macro_pol else 50
+    anchor_macro, anchor_note, _ = _anchor_score()
+    if anchor_macro is not None:
+        macro_score = round(0.6 * anchor_macro + 0.4 * news_macro, 1)
+        notes.append(anchor_note + f" → backdrop {anchor_macro}/100.")
+    else:
+        macro_score = news_macro
     components["macro_environment"] = round(macro_score, 1)
-    if not macro_pol:
+    if not macro_pol and anchor_macro is None:
         notes.append("No macro headlines captured this run — macro component "
                      "neutral with low confidence.")
 
@@ -128,7 +180,10 @@ def analyze(symbol, news_items):
     return {"symbol": symbol, "score": score, "components": components,
             "explanation": explanation, "notes": notes,
             "bad_news_flag": material_bad, "bad_news": bad_news[:3],
-            "low_confidence": stale_count >= 3 or (not macro_pol and not comp_titles),
+            # With anchors set the macro backdrop is grounded, so absent news
+            # alone no longer marks the section low-confidence.
+            "low_confidence": stale_count >= 3 or
+                              (anchor_macro is None and not macro_pol and not comp_titles),
             "sources": "Public RSS feeds (Business Recorder, Dawn, Profit, "
                        "Mettis) + config macro anchors"}
 

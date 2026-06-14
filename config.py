@@ -77,8 +77,12 @@ OTHER_COMPLIANT = {
 # noise) — both sections are still COMPUTED for display and to drive the bad-news
 # SAFETY override in risk_manager, but they no longer move the score.
 # Must sum to 1.0.
-WEIGHTS = {"technical": 0.70, "fundamentals": 0.30,
-           "macro_news": 0.0, "sentiment": 0.0}
+# Tier B: macro given a real (conservative) weight. The macro_news score is now
+# anchor-informed (rates/CPI/reserves), not pure headline polarity — see
+# macro_news_analyzer._anchor_score. Technical stays dominant. Tune `macro_news`
+# down to 0.0 to revert to the technical-0.70/fundamentals-0.30 model.
+WEIGHTS = {"technical": 0.60, "fundamentals": 0.25,
+           "macro_news": 0.15, "sentiment": 0.0}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
@@ -216,10 +220,10 @@ COMPANY_NEWS_QUERY = {
 #    a baseline. Each carries an as_of date; stale values trigger warnings.
 # ---------------------------------------------------------------------------
 MACRO_ANCHORS = {
-    "policy_rate_pct":   {"value": None, "as_of": None, "source": "SBP — fill in"},
-    "cpi_yoy_pct":       {"value": None, "as_of": None, "source": "PBS — fill in"},
-    "usd_pkr":           {"value": None, "as_of": None, "source": "SBP/open market — fill in"},
-    "fx_reserves_usd_bn":{"value": None, "as_of": None, "source": "SBP — fill in"},
+    "policy_rate_pct":   {"value": 11.5,   "as_of": "2026-04-27", "source": "SBP MPC (raised +100bps to 11.5%)"},
+    "cpi_yoy_pct":       {"value": 11.7,   "as_of": "2026-05-31", "source": "PBS (May 2026 CPI YoY)"},
+    "usd_pkr":           {"value": 278.75, "as_of": "2026-06-14", "source": "Interbank"},
+    "fx_reserves_usd_bn":{"value": 17.22,  "as_of": "2026-06-05", "source": "SBP-held reserves"},
 }
 MACRO_STALE_DAYS = 45
 
