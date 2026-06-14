@@ -1,0 +1,71 @@
+{
+  "as_of": "2026-06-14T09:00:00+05:00",
+  "generated_by": "claude-news-routine (seed: 4 of 30; rest fall back to RSS/VADER)",
+  "source_allowlist": [
+    "dps.psx.com.pk", "psx.com.pk", "sbp.org.pk", "brecorder.com", "dawn.com",
+    "profit.pakistantoday.com.pk", "mettisglobal.news", "thenews.com.pk"
+  ],
+  "schema": "score 0-100 (50=neutral); direction positive|negative|neutral; materiality normal|material_negative|material_positive; confidence high|medium|low",
+  "signals": {
+    "LUCK": {
+      "score": 64,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "FY25 consolidated profit +17% YoY (standalone +18%), exports +53%, total dispatches +9%; VIS reaffirmed AA+/A1+ Stable.",
+      "headlines": [
+        "Lucky Cement rated AA+ on strong liquidity",
+        "Lucky Cement FY25: profit +17% YoY on higher exports and other income"
+      ],
+      "sources": [
+        "https://mettisglobal.news/Lucky-Cement-rated-AA-on-strong-liquidity-58796",
+        "https://www.brecorder.com/news/40400106"
+      ]
+    },
+    "FFC": {
+      "score": 70,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 2026 profit +31.6% YoY to Rs17.48bn; Rs8.50 interim dividend; urea offtake up, market share +9% to 58%; turnover +49.8% YoY.",
+      "headlines": [
+        "FFC posts 32% profit growth, Rs8.50 dividend declared",
+        "FFC delivers strong profit, yet sends PSX sliding"
+      ],
+      "sources": [
+        "https://mettisglobal.news/FFC-posts-32-profit-growth-Rs850-dividend-declared-60091",
+        "https://dps.psx.com.pk/company/FFC"
+      ]
+    },
+    "OGDC": {
+      "score": 58,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Fresh Bobi Deep-1 (Sindh) oil & gas discovery (2,000 bpd + 1.1 MMSCFD) is a positive catalyst, but 1HFY26 profit fell 11% YoY on lower realized prices; Rs4.25 interim dividend.",
+      "headlines": [
+        "Bobi Deep-1 in Sindh: OGDC makes significant oil and gas discovery",
+        "OGDC's profit down 11% in 1HFY26 amid lower sales"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40423877/bobi-deep-1-in-sindh-ogdc-makes-significant-oil-and-gas-discovery",
+        "https://www.brecorder.com/news/40408554/ogdcs-profit-down-11-in-1hfy26-amid-lower-sales"
+      ]
+    },
+    "MEBL": {
+      "score": 48,
+      "direction": "neutral",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 2026 profit flat at Rs22.40bn (EPS Rs12.39); Rs7.5 dividend. CY25 profit -11% YoY; Minimum Deposit Rate remains an industry-wide headwind on margins.",
+      "headlines": [
+        "MEBL rewards shareholders with Rs7.5 dividend in Q1CY26",
+        "Meezan Bank posts Rs92bn profit (CY25), down 11% YoY on MDR pressure"
+      ],
+      "sources": [
+        "https://mettisglobal.news/MEBL-rewards-shareholders-with-Rs75-dividend-in-Q1CY26-59930",
+        "https://mettisglobal.news/Meezan-Bank-posts-Rs92bn-profit-dividend-strong-58286"
+      ]
+    }
+  }
+}

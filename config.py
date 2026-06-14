@@ -77,12 +77,13 @@ OTHER_COMPLIANT = {
 # noise) — both sections are still COMPUTED for display and to drive the bad-news
 # SAFETY override in risk_manager, but they no longer move the score.
 # Must sum to 1.0.
-# Tier B: macro given a real (conservative) weight. The macro_news score is now
-# anchor-informed (rates/CPI/reserves), not pure headline polarity — see
-# macro_news_analyzer._anchor_score. Technical stays dominant. Tune `macro_news`
-# down to 0.0 to revert to the technical-0.70/fundamentals-0.30 model.
-WEIGHTS = {"technical": 0.60, "fundamentals": 0.25,
-           "macro_news": 0.15, "sentiment": 0.0}
+# Tier B: macro is anchor-informed (rates/CPI/reserves — see
+# macro_news_analyzer._anchor_score). The `sentiment` slot now carries AUTHENTIC
+# news: a daily Claude routine writes news_signals.json (LLM-judged headlines
+# with source URLs); sentiment_analyzer reads it (VADER RSS is the fallback when
+# the file is stale/missing). Technical stays dominant. Zero a slot to disable it.
+WEIGHTS = {"technical": 0.55, "fundamentals": 0.20,
+           "macro_news": 0.15, "sentiment": 0.10}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
@@ -245,6 +246,23 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "psx_engine.db")
 LOG_PATH = os.path.join(BASE_DIR, "engine.log")
 REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
+
+# Authentic news feed — produced by the daily Claude news routine (see
+# news_routine.md). news_signals.json holds per-symbol LLM-judged news verdicts
+# with source URLs. The engine reads it via news_feed.py; if the file is missing
+# or older than NEWS_SIGNALS_MAX_AGE_HOURS, it falls back to RSS/VADER scoring.
+NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
+NEWS_SIGNALS_MAX_AGE_HOURS = 36          # weekend gap tolerated; Mon refresh
+# Only these sources count as authentic for the news routine (no social/rumor).
+NEWS_SOURCE_ALLOWLIST = [
+    "dps.psx.com.pk", "psx.com.pk",      # PSX official announcements/filings
+    "sbp.org.pk",                        # State Bank
+    "brecorder.com",                     # Business Recorder
+    "dawn.com",                          # Dawn Business
+    "profit.pakistantoday.com.pk",       # Profit
+    "mettisglobal.news", "mg.mettisglobal.com",  # Mettis Global
+    "thenews.com.pk",                    # The News
+]
 EXCEL_DIR = REPORT_DIR
 
 # ---------------------------------------------------------------------------

@@ -17,6 +17,7 @@ from datetime import datetime
 
 import config
 import database as db
+import news_feed
 
 log = logging.getLogger("sentiment")
 
@@ -64,7 +65,37 @@ def _load_public_comments(symbol):
 
 
 def analyze(symbol, news_items):
-    """Returns dict: score (0-100), counts, trend, flags, verdict, notes."""
+    """Returns dict: score (0-100), counts, trend, flags, verdict, notes.
+
+    Primary path: the authentic news feed (news_signals.json, LLM-judged with
+    source URLs). Falls back to RSS/VADER below when the feed has no fresh
+    verdict for this symbol — see _analyze_vader."""
+    av = news_feed.get(symbol)
+    if av and av.get("score") is not None:
+        run_time = datetime.now().isoformat()
+        score = round(float(av["score"]), 1)
+        conf = (av.get("confidence") or "medium").lower()
+        flags = []
+        if av.get("materiality") == "material_negative":
+            flags.append("MATERIAL NEGATIVE news (authentic source)")
+        if av.get("materiality") == "material_positive":
+            flags.append("Material positive news (authentic source)")
+        verdict = (av.get("summary") or av.get("direction") or "")[:200]
+        db.save_sentiment(run_time, symbol, score, 0, 0, 0,
+                          len(av.get("headlines") or []), flags)
+        return {"symbol": symbol, "score": score,
+                "bullish": 0, "bearish": 0, "neutral": 0,
+                "mentions": len(av.get("headlines") or []),
+                "trend_vs_prev": None, "flags": flags, "verdict": verdict,
+                "notes": [f"Authentic news ({conf} confidence): {verdict}"],
+                "low_confidence": conf == "low",
+                "sources": "Authentic news feed (" +
+                           ", ".join((av.get("sources") or [])[:3]) + ")"}
+    return _analyze_vader(symbol, news_items)
+
+
+def _analyze_vader(symbol, news_items):
+    """RSS/VADER fallback (keyword-lexicon scoring) when no authentic verdict."""
     run_time = datetime.now().isoformat()
     texts = [n["title"] for n in news_items
              if symbol in n.get("symbols", []) or symbol in (n.get("symbols") or "")]

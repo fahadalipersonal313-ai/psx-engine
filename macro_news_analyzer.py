@@ -16,6 +16,7 @@ from datetime import datetime
 
 import config
 import database as db
+import news_feed
 from sentiment_analyzer import _polarity  # reuse polarity engine
 
 log = logging.getLogger("macro")
@@ -169,11 +170,19 @@ def analyze(symbol, news_items):
     # distress words like default/crash/loss) OR at least two negatives that
     # clearly outweigh the positive flow. A lone mildly-negative headline amid
     # neutral/positive coverage no longer hides a strong technical setup.
-    neg = [t for t in comp_titles if _polarity(t) < -0.4]
-    strong_neg = [t for t in comp_titles if _polarity(t) < -0.6]
-    pos = [t for t in comp_titles if _polarity(t) > 0.4]
-    material_bad = bool(strong_neg) or (len(neg) >= 2 and len(neg) > len(pos))
-    bad_news = strong_neg or neg
+    # Prefer the authentic news feed's materiality call when available (an LLM
+    # read the article); fall back to VADER keyword polarity otherwise.
+    av = news_feed.get(symbol)
+    if av and av.get("materiality") in ("material_negative", "material_positive", "normal"):
+        material_bad = av.get("materiality") == "material_negative"
+        bad_news = ([av.get("summary")] if material_bad and av.get("summary")
+                    else (av.get("headlines") or [])[:2] if material_bad else [])
+    else:
+        neg = [t for t in comp_titles if _polarity(t) < -0.4]
+        strong_neg = [t for t in comp_titles if _polarity(t) < -0.6]
+        pos = [t for t in comp_titles if _polarity(t) > 0.4]
+        material_bad = bool(strong_neg) or (len(neg) >= 2 and len(neg) > len(pos))
+        bad_news = strong_neg or neg
     explanation = _explain(symbol, sector, components, macro_hits[:5],
                            comp_titles[:5], bad_news if material_bad else [])
 
