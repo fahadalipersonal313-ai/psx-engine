@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-06-14T09:30:00+05:00",
-  "generated_by": "claude-news-routine (events-only; financial-results entries removed)",
+  "as_of": "2026-06-14T23:30:00+05:00",
+  "generated_by": "claude-news-routine (manual run; events-only, 3 sources)",
   "source_allowlist": [
     "brecorder.com",
     "dawn.com",
@@ -8,18 +8,122 @@
   ],
   "schema": "score 0-100 (50=neutral); direction positive|negative|neutral; materiality normal|material_negative|material_positive; confidence high|medium|low. EVENT signal only — no routine results/dividends (fundamentals layer covers those).",
   "signals": {
-    "OGDC": {
-      "score": 62,
+    "PSO": {
+      "score": 55,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "ECC approved a Rs100bn sovereign-guaranteed financing facility to ease PSO's liquidity/circular-debt strain; additional Oman oil cargoes secured.",
+      "headlines": ["PSO & Oman Trading discuss provision of additional oil cargoes"],
+      "sources": ["https://www.brecorder.com/news/40413379"]
+    },
+    "TREET": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Treet Battery signed an MoU with China's CNTE (CATL-backed) to develop energy-storage solutions and potential local assembly.",
+      "headlines": ["Treet Battery Limited Signs MOU with CNTE"],
+      "sources": ["https://mettisglobal.news/Treet-Battery-Limited-Signs-MOU-with-CNTE-60789"]
+    },
+    "AIRLINK": {
+      "score": 66,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "high",
-      "summary": "Bobi Deep-1 oil & gas discovery in Sindh (2,000 bpd + 1.1 MMSCFD) — fresh reserve-add catalyst.",
+      "summary": "Establishing an 8-acre Sundar SEZ production facility (1.4mn sq ft, 1MW solar) and launched Hisense in Pakistan — major manufacturing expansion.",
       "headlines": [
-        "Bobi Deep-1 in Sindh: OGDC makes significant oil and gas discovery"
+        "Expanding operations: Air Link to establish production facility in Lahore",
+        "Airlink officially launches Hisense in Pakistan"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40423877/bobi-deep-1-in-sindh-ogdc-makes-significant-oil-and-gas-discovery"
+        "https://www.brecorder.com/news/40385272/expanding-operations-air-link-to-establish-production-facility-in-lahore",
+        "https://www.brecorder.com/news/amp/40424387"
       ]
+    },
+    "MEBL": {
+      "score": 54,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Added to the MZNPI index (June 10, replacing PAEL) — passive-flow tailwind; plans 100-150 new branches in CY26.",
+      "headlines": ["Meezan Bank replaces PEL in MZNPI"],
+      "sources": ["https://mettisglobal.news/Meezan-Bank-replaces-PEL-in-MZNPI-60964"]
+    },
+    "SYS": {
+      "score": 64,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Lahore High Court sanctioned the amalgamation with Confiz (effective Jan 1, 2026); issuing 57.6mn new shares — IT-services consolidation.",
+      "headlines": ["LHC greenlights Systems Limited's amalgamation with Confiz"],
+      "sources": ["https://mettisglobal.news/LHC-greenlights-Systems-Limiteds-amalgamation-with-Confiz-60726"]
+    },
+    "LUCK": {
+      "score": 63,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Congo (NYA JV) capacity expansion to 2.91 MTPA and Iraq Samawah plant online; Rs1.2bn into National Resources copper/gold mining — offshore + diversification.",
+      "headlines": ["Lucky Cement supercharges Congo capacity with major expansion"],
+      "sources": ["https://mettisglobal.news/Lucky-Cement-supercharges-Congo-capacity-with-major-expansion-57024"]
+    },
+    "FFC": {
+      "score": 64,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Signed a $1.12bn coal-to-urea FEED agreement under CPEC 2.0 (717k tpa urea, commissioning 2030-31); PEF gas-supply pact with Mari Energies.",
+      "headlines": ["Fauji Fertilizer inks $1.12bn project under CPEC 2.0"],
+      "sources": ["https://www.brecorder.com/news/40422885"]
+    },
+    "MARI": {
+      "score": 64,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "New Shams-1 gas/condensate discovery in Ghotki (~48 MMSCFD); Spinwam-1 Waziristan production commenced; secured 11 new exploration blocks.",
+      "headlines": [
+        "Mari Energies discovers gas in Sindh",
+        "Production from Spinwam-1 well in Waziristan commences"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40412352",
+        "https://www.brecorder.com/news/40414375"
+      ]
+    },
+    "HUBC": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Gharo CKD auto plant (25k units/yr) and BYD EV local assembly both due H2 2026; building a Karachi-Peshawar EV charging network; exploring an aluminium smelter.",
+      "headlines": ["HUBCO's Gharo plant set to come online in second half of 2026, eyes 25,000 vehicles annually"],
+      "sources": ["https://www.brecorder.com/news/amp/40409118"]
+    },
+    "ENGROH": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Lotte Chemical non-binding offer for ~56% of Engro Polymer (EPCL); board approved a buyback of up to 45mn shares; Deodar tower portfolio to 15,012.",
+      "headlines": [
+        "Engro Corp gets Lotte Chemical non-binding offer for majority stake in EPCL",
+        "Engro Holdings board proposes buyback of up to 45mn shares"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/amp/40411445",
+        "https://www.brecorder.com/news/40413791"
+      ]
+    },
+    "NML": {
+      "score": 58,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Nishat-led consortium to acquire ~75% of Rafhan Maize; expanding solar (+4MW), open-end yarn capacity, and Rs5bn into Nishat Sutas Dairy.",
+      "headlines": ["Nishat-linked consortium eyes 75% control of RMPL"],
+      "sources": ["https://mettisglobal.news/Nishatlinked-consortium-eyes-75-control-of-RMPL-58357"]
     },
     "FCCL": {
       "score": 60,
@@ -27,12 +131,8 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Partnering with KAPCO to acquire ~84% of Attock Cement via public offer — sector consolidation / capacity expansion.",
-      "headlines": [
-        "Fauji Cement, KAPCO kick off Attock Cement takeover"
-      ],
-      "sources": [
-        "https://mettisglobal.news/Fauji-Cement-KAPCO-kick-off-Attock-Cement-takeover-59409"
-      ]
+      "headlines": ["Fauji Cement, KAPCO kick off Attock Cement takeover"],
+      "sources": ["https://mettisglobal.news/Fauji-Cement-KAPCO-kick-off-Attock-Cement-takeover-59409"]
     },
     "MLCF": {
       "score": 58,
@@ -40,12 +140,44 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Public offer for 69.75% of Pioneer Cement (~$270.5mn) — large M&A-led capacity expansion, sizeable capital outlay.",
-      "headlines": [
-        "Maple Leaf Cement to acquire majority stake in Pioneer Cement for $270.5mn"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40398102"
-      ]
+      "headlines": ["Maple Leaf Cement to acquire majority stake in Pioneer Cement for $270.5mn"],
+      "sources": ["https://www.brecorder.com/news/40398102"]
+    },
+    "CPHL": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Board approved 100% acquisition of Pakheim International Pharmaceuticals; launched Citi Veterinary subsidiary and approved biological/insulin and antibiotic plants.",
+      "headlines": ["CPHL targets full takeover of Pakheim International Pharmaceuticals"],
+      "sources": ["https://mettisglobal.news/CPHL-targets-full-takeover-of-Pakheim-International-Pharmaceuticals-60261"]
+    },
+    "SEARL": {
+      "score": 57,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Acquired Searle IV Solutions & SVPL (Rs7.25bn); transferring biologic portfolio to Nextar (up to Rs4bn) and divesting 90.6% of Searle Pakistan to an IJARA-led consortium — portfolio restructuring.",
+      "headlines": ["Searle acquires Searle IV Solutions and SVPL in Rs7.25bn deal"],
+      "sources": ["https://mettisglobal.news/searle-acquires-searle-iv-solutions-and-svpl-in-rs7-25bn-deal/"]
+    },
+    "HCAR": {
+      "score": 54,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Plans a hybrid model and a Rs5bn hybrid assembly plant (no firm timeline) as auto policy shifts toward eco-friendly vehicles.",
+      "headlines": ["Honda Atlas to launch hybrid model in Pakistan with advanced sensing tech"],
+      "sources": ["https://www.brecorder.com/news/40378437/honda-atlas-to-launch-hybrid-model-in-pakistan-with-advanced-sensing-tech"]
+    },
+    "OGDC": {
+      "score": 62,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Bobi Deep-1 oil & gas discovery in Sindh (2,000 bpd + 1.1 MMSCFD) — fresh reserve-add catalyst.",
+      "headlines": ["Bobi Deep-1 in Sindh: OGDC makes significant oil and gas discovery"],
+      "sources": ["https://www.brecorder.com/news/40423877/bobi-deep-1-in-sindh-ogdc-makes-significant-oil-and-gas-discovery"]
     },
     "PPL": {
       "score": 60,
@@ -53,12 +185,8 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Added to JSMFI as leading constituent (19.65% weight) in the June 5 rebalancing — passive-flow tailwind.",
-      "headlines": [
-        "PSX recomposes MII30, JSMFI"
-      ],
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
-      ]
+      "headlines": ["PSX recomposes MII30, JSMFI"],
+      "sources": ["https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"]
     },
     "DGKC": {
       "score": 58,
@@ -66,12 +194,17 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Added to JSMFI (16.53% weight) in the June 5 rebalancing — passive-flow tailwind.",
-      "headlines": [
-        "PSX recomposes MII30, JSMFI"
-      ],
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
-      ]
+      "headlines": ["PSX recomposes MII30, JSMFI"],
+      "sources": ["https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"]
+    },
+    "PAEL": {
+      "score": 48,
+      "direction": "neutral",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Removed from the MZNPI index (replaced by MEBL) — passive-flow headwind; partly offset by structural US transformer-export expansion ($44mn orders).",
+      "headlines": ["Meezan Bank replaces PEL in MZNPI"],
+      "sources": ["https://mettisglobal.news/Meezan-Bank-replaces-PEL-in-MZNPI-60964"]
     },
     "ATRL": {
       "score": 44,
@@ -79,12 +212,8 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Removed from JSMFI effective June 5, 2026 — passive-flow headwind for refinery names.",
-      "headlines": [
-        "PSX recomposes MII30, JSMFI"
-      ],
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
-      ]
+      "headlines": ["PSX recomposes MII30, JSMFI"],
+      "sources": ["https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"]
     },
     "NRL": {
       "score": 44,
@@ -92,12 +221,8 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Removed from JSMFI effective June 5, 2026 — passive-flow headwind for refinery names.",
-      "headlines": [
-        "PSX recomposes MII30, JSMFI"
-      ],
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
-      ]
+      "headlines": ["PSX recomposes MII30, JSMFI"],
+      "sources": ["https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"]
     },
     "PRL": {
       "score": 44,
@@ -105,12 +230,8 @@
       "materiality": "normal",
       "confidence": "medium",
       "summary": "Removed from JSMFI effective June 5, 2026 — passive-flow headwind for refinery names.",
-      "headlines": [
-        "PSX recomposes MII30, JSMFI"
-      ],
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
-      ]
+      "headlines": ["PSX recomposes MII30, JSMFI"],
+      "sources": ["https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"]
     },
     "SNGP": {
       "score": 45,
@@ -118,12 +239,8 @@
       "materiality": "normal",
       "confidence": "low",
       "summary": "Govt kept gas prices unchanged; SNGPL to work with OGRA on RLNG-to-domestic profit-calculation mechanism — regulatory uncertainty.",
-      "headlines": [
-        "Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"
-      ]
+      "headlines": ["Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"],
+      "sources": ["https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"]
     },
     "SSGC": {
       "score": 43,
@@ -131,12 +248,8 @@
       "materiality": "normal",
       "confidence": "low",
       "summary": "Govt gas-price freeze; SSGCL under the same OGRA profit-calculation review — sector pricing headwinds.",
-      "headlines": [
-        "Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"
-      ]
+      "headlines": ["Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"],
+      "sources": ["https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"]
     },
     "SAZEW": {
       "score": 44,
@@ -144,12 +257,8 @@
       "materiality": "normal",
       "confidence": "low",
       "summary": "Auto Policy 2016-21 concessional period ending June 2026; used-car imports at 40% regulatory duty may pressure local assembler volumes.",
-      "headlines": [
-        "Sazgar Engineering Works Limited — BR Research"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40409768"
-      ]
+      "headlines": ["Sazgar Engineering Works Limited — BR Research"],
+      "sources": ["https://www.brecorder.com/news/40409768"]
     }
   }
 }
