@@ -254,14 +254,12 @@ REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
 NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
 NEWS_SIGNALS_MAX_AGE_HOURS = 36          # weekend gap tolerated; Mon refresh
 # Only these sources count as authentic for the news routine (no social/rumor).
+# Narrowed to 3 desks (2026-06-14) to keep the routine token-frugal — the first
+# full run naturally used only Mettis + BR anyway.
 NEWS_SOURCE_ALLOWLIST = [
-    "dps.psx.com.pk", "psx.com.pk",      # PSX official announcements/filings
-    "sbp.org.pk",                        # State Bank
     "brecorder.com",                     # Business Recorder
     "dawn.com",                          # Dawn Business
-    "profit.pakistantoday.com.pk",       # Profit
-    "mettisglobal.news", "mg.mettisglobal.com",  # Mettis Global
-    "thenews.com.pk",                    # The News
+    "mettisglobal.news",                 # Mettis Global
 ]
 EXCEL_DIR = REPORT_DIR
 
