@@ -39,11 +39,22 @@ jobs:
         run: python main.py run
 
       - name: Commit updated database
+        # psx_engine.db is a binary SQLite file; a plain `git pull --rebase`
+        # cannot 3-way-merge it, so overlapping runs used to hard-fail with a
+        # binary CONFLICT and stall the cadence. Instead: keep THIS run's fresh
+        # DB on conflict (-X theirs = the commit being replayed) and retry the
+        # push if remote advances mid-flight. Tradeoff: an overlapping loser's
+        # appended rows are dropped — acceptable for a 15-min self-healing loop.
         run: |
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
           git add psx_engine.db
           git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')" \
             || { echo "No data changes to commit."; exit 0; }
-          git pull --rebase --autostash origin ${{ github.ref_name }}
-          git push
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
+              || git rebase --abort
+            if git push; then echo "pushed on attempt $attempt"; exit 0; fi
+            echo "push raced, retrying ($attempt)..."; sleep 5
+          done
+          echo "could not push after retries"; exit 1
