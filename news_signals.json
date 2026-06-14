@@ -1,18 +1,65 @@
 {
-  "as_of": "2026-06-14T09:00:00+05:00",
-  "generated_by": "claude-news-routine (seed: 4 of 30; rest fall back to RSS/VADER)",
+  "as_of": "2026-06-14T09:30:00+05:00",
+  "generated_by": "claude-news-routine",
   "source_allowlist": [
-    "dps.psx.com.pk", "psx.com.pk", "sbp.org.pk", "brecorder.com", "dawn.com",
-    "profit.pakistantoday.com.pk", "mettisglobal.news", "thenews.com.pk"
+    "dps.psx.com.pk",
+    "psx.com.pk",
+    "sbp.org.pk",
+    "brecorder.com",
+    "dawn.com",
+    "profit.pakistantoday.com.pk",
+    "mettisglobal.news",
+    "mg.mettisglobal.com",
+    "thenews.com.pk"
   ],
-  "schema": "score 0-100 (50=neutral); direction positive|negative|neutral; materiality normal|material_negative|material_positive; confidence high|medium|low",
   "signals": {
+    "FFC": {
+      "score": 72,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 2026 profit +31.6% YoY to Rs17.48bn; urea market share up to 58%; Rs8.50/share interim dividend declared.",
+      "headlines": [
+        "FFC posts 32% profit growth, Rs8.50 dividend declared",
+        "FFC delivers strong profit, yet sends PSX sliding"
+      ],
+      "sources": [
+        "https://mettisglobal.news/FFC-posts-32-profit-growth-Rs850-dividend-declared-60091",
+        "https://mettisglobal.news/FFC-delivers-strong-profit-yet-sends-PSX-sliding-58096"
+      ]
+    },
+    "SYS": {
+      "score": 68,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 2026 net profit +21% to Rs3.03bn; revenue +32.6% to Rs23.98bn; IT export momentum intact.",
+      "headlines": [
+        "Systems Limited profit climbs 21% in strong Q1"
+      ],
+      "sources": [
+        "https://mettisglobal.news/Systems-Limited-profit-climbs-21-in-strong-Q1-60727"
+      ]
+    },
+    "GHNI": {
+      "score": 70,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "H1FY26 profit surged 2.1x to Rs2.74bn on strong Isuzu truck and bus demand.",
+      "headlines": [
+        "Ghandhara Industries profit surges over twofold in H1FY26"
+      ],
+      "sources": [
+        "https://mettisglobal.news/Ghandhara-Industries-profit-surges-over-twofold-in-H1FY26-58526"
+      ]
+    },
     "LUCK": {
       "score": 64,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "FY25 consolidated profit +17% YoY (standalone +18%), exports +53%, total dispatches +9%; VIS reaffirmed AA+/A1+ Stable.",
+      "summary": "FY25 consolidated profit +17% YoY; exports +53%; total dispatches +9%; VIS reaffirmed AA+/A1+ Stable.",
       "headlines": [
         "Lucky Cement rated AA+ on strong liquidity",
         "Lucky Cement FY25: profit +17% YoY on higher exports and other income"
@@ -22,27 +69,66 @@
         "https://www.brecorder.com/news/40400106"
       ]
     },
-    "FFC": {
-      "score": 70,
+    "FCCL": {
+      "score": 67,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "high",
-      "summary": "Q1 2026 profit +31.6% YoY to Rs17.48bn; Rs8.50 interim dividend; urea offtake up, market share +9% to 58%; turnover +49.8% YoY.",
+      "summary": "9MFY26 profit +15% to Rs10.78bn; partnering with KAPCO to acquire 84% stake in Attock Cement via public offer.",
       "headlines": [
-        "FFC posts 32% profit growth, Rs8.50 dividend declared",
-        "FFC delivers strong profit, yet sends PSX sliding"
+        "FCCL profit rises 15% in 9MFY26",
+        "Fauji Cement, KAPCO kick off Attock Cement takeover"
       ],
       "sources": [
-        "https://mettisglobal.news/FFC-posts-32-profit-growth-Rs850-dividend-declared-60091",
-        "https://dps.psx.com.pk/company/FFC"
+        "https://mettisglobal.news/FCCL-profit-rises-15-in-9MFY26-59966",
+        "https://mettisglobal.news/Fauji-Cement-KAPCO-kick-off-Attock-Cement-takeover-59409"
       ]
     },
-    "OGDC": {
-      "score": 58,
+    "EFERT": {
+      "score": 65,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 CY26 profit +14% to Rs3.32bn; net sales +25% to Rs37.79bn; Rs2/share interim dividend declared.",
+      "headlines": [
+        "EFERT Q1CY26 profit climbs 14%"
+      ],
+      "sources": [
+        "https://mettisglobal.news/EFERT-Q1CY26-profit-climbs-14-59853"
+      ]
+    },
+    "PPL": {
+      "score": 63,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "Fresh Bobi Deep-1 (Sindh) oil & gas discovery (2,000 bpd + 1.1 MMSCFD) is a positive catalyst, but 1HFY26 profit fell 11% YoY on lower realized prices; Rs4.25 interim dividend.",
+      "summary": "Added to JSMFI with leading constituent weight of 19.65% in June 5 rebalancing; capital rotating toward E&P sector.",
+      "headlines": [
+        "PSX recomposes MII30, JSMFI"
+      ],
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
+      ]
+    },
+    "DGKC": {
+      "score": 62,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Added to JSMFI with 16.53% weight in June 5 rebalancing; cement sector attracting capital rotation at PSX.",
+      "headlines": [
+        "PSX recomposes MII30, JSMFI"
+      ],
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
+      ]
+    },
+    "OGDC": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Bobi Deep-1 discovery in Sindh (2,000 bpd + 1.1 MMSCFD); positive catalyst despite 1HFY26 profit -11% on production curtailments; Rs7.75/share highest-ever H1 dividend.",
       "headlines": [
         "Bobi Deep-1 in Sindh: OGDC makes significant oil and gas discovery",
         "OGDC's profit down 11% in 1HFY26 amid lower sales"
@@ -52,12 +138,38 @@
         "https://www.brecorder.com/news/40408554/ogdcs-profit-down-11-in-1hfy26-amid-lower-sales"
       ]
     },
-    "MEBL": {
-      "score": 48,
+    "MLCF": {
+      "score": 60,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Public offer for 69.75% of Pioneer Cement at Rs75.8bn ($270.5mn); significant capacity expansion but large capital outlay; stock -28% YTD.",
+      "headlines": [
+        "Maple Leaf Cement to acquire majority stake in Pioneer Cement for $270.5mn"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40398102"
+      ]
+    },
+    "HUBC": {
+      "score": 55,
       "direction": "neutral",
       "materiality": "normal",
       "confidence": "high",
-      "summary": "Q1 2026 profit flat at Rs22.40bn (EPS Rs12.39); Rs7.5 dividend. CY25 profit -11% YoY; Minimum Deposit Rate remains an industry-wide headwind on margins.",
+      "summary": "3QFY26 cumulative profit -1% to Rs37.75bn; Rs5/share dividend; revenue -22% but finance costs halved; increasingly reliant on associate income.",
+      "headlines": [
+        "HUBC declares Rs5 per share dividend for 3QFY26"
+      ],
+      "sources": [
+        "https://mettisglobal.news/HUBC-declares-Rs5-per-share-dividend-for-3QFY26-59899"
+      ]
+    },
+    "MEBL": {
+      "score": 52,
+      "direction": "neutral",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Q1 CY26 profit flat at Rs22.40bn (EPS Rs12.39); Rs7.5/share dividend; core margins under MDR pressure but credit losses down 76%.",
       "headlines": [
         "MEBL rewards shareholders with Rs7.5 dividend in Q1CY26",
         "Meezan Bank posts Rs92bn profit (CY25), down 11% YoY on MDR pressure"
@@ -65,6 +177,110 @@
       "sources": [
         "https://mettisglobal.news/MEBL-rewards-shareholders-with-Rs75-dividend-in-Q1CY26-59930",
         "https://mettisglobal.news/Meezan-Bank-posts-Rs92bn-profit-dividend-strong-58286"
+      ]
+    },
+    "MARI": {
+      "score": 45,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "6M FY26 profit -6.4% to Rs28.44bn; Rs8.3/share interim dividend maintained despite earnings decline.",
+      "headlines": [
+        "Mari Energies profit declines 6%, keeps dividend intact at Rs8"
+      ],
+      "sources": [
+        "https://mettisglobal.news/Mari-Energies-profit-declines-6-keeps-dividend-intact-at-Rs8-58013"
+      ]
+    },
+    "FABL": {
+      "score": 45,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "FY25 profit -6% to Rs22.47bn (EPS Rs14.80); Rs2/share final dividend; earnings under pressure from lower rate environment.",
+      "headlines": [
+        "Faysal Bank's profit clocks in at Rs22.5bn in 2025"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40408058/faysal-banks-profit-clocks-in-at-rs225bn-in-2025"
+      ]
+    },
+    "ATRL": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Removed from JSMFI effective June 5, 2026; capital rotating away from refinery stocks toward fertilizers and cement.",
+      "headlines": [
+        "PSX recomposes MII30, JSMFI"
+      ],
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
+      ]
+    },
+    "NRL": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Removed from JSMFI effective June 5, 2026; cooling refinery sector sentiment driving index exits.",
+      "headlines": [
+        "PSX recomposes MII30, JSMFI"
+      ],
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
+      ]
+    },
+    "PRL": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Removed from JSMFI effective June 5, 2026; refinery sector facing broad capital outflow at PSX.",
+      "headlines": [
+        "PSX recomposes MII30, JSMFI"
+      ],
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-MII30-JSMFI-60861"
+      ]
+    },
+    "SNGP": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Gas prices kept unchanged by government; SNGPL working with OGRA on profit calculation for RLNG-to-domestic gas switch; regulatory uncertainty persists.",
+      "headlines": [
+        "Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"
+      ]
+    },
+    "SSGC": {
+      "score": 42,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Gas prices kept unchanged; SSGCL facing same OGRA profit-calculation review; sector headwinds from LNG disruption and pricing freeze.",
+      "headlines": [
+        "Gas prices kept unchanged: SNGPL, SSGCL will work with regulator on profit calculation"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40415991/gas-prices-kept-unchanged-sngpl-ssgcl-will-work-with-regulator-on-profit-calculation"
+      ]
+    },
+    "SAZEW": {
+      "score": 43,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Auto Policy 2016-21 concessional period ending June 2026; used car imports at 40% regulatory duty may challenge local assembler volumes.",
+      "headlines": [
+        "Sazgar Engineering Works Limited — BR Research"
+      ],
+      "sources": [
+        "https://www.brecorder.com/news/40409768"
       ]
     }
   }
