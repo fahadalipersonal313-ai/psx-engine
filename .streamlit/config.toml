@@ -1,0 +1,10 @@
+# Dark neon base theme. dashboard.py layers a CSS gradient + glow on top of
+# this; setting the base here makes the built-in widgets (inputs, selectboxes,
+# dataframe, tabs) adopt the dark palette instead of fighting the custom CSS.
+[theme]
+base = "dark"
+primaryColor = "#00e5ff"
+backgroundColor = "#070b16"
+secondaryBackgroundColor = "#0e1426"
+textColor = "#e7f0ff"
+font = "sans serif"

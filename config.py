@@ -125,6 +125,38 @@ RISK = {
 }
 
 # ---------------------------------------------------------------------------
+# 4b. PORTFOLIO-LEVEL RISK (Tier 2 #9)
+# ---------------------------------------------------------------------------
+# Per-trade sizing (above) caps the damage from ONE position. These caps apply
+# ACROSS every open/recommended Buy at once, because the real account-killer is
+# correlated risk: ten "safe" 1.5% trades that all gap down together, or a book
+# that is 80% cement. The engine sizes each Buy, then admits them greedily by
+# score until a cap binds — the rest are flagged "defer", never silently dropped.
+PORTFOLIO_RISK = {
+    "max_portfolio_heat_pct": 6.0,    # total capital at risk if EVERY open stop fills at once
+    "max_sector_exposure_pct": 30.0,  # max % of capital deployed into any one sector
+    "max_open_positions": 8,          # practical cap on concurrent positions
+}
+
+# ---------------------------------------------------------------------------
+# 4c. BACKTEST METRICS (Tier 2 #8)
+# ---------------------------------------------------------------------------
+# The backtest replays EOD history with the technical module and now reports the
+# metrics that actually predict whether an edge is real and tradeable:
+#   * expectancy   — average PKR/%, per trade, you can expect (the north star)
+#   * profit_factor— gross profit / gross loss (>1.5 = healthy, <1 = bleeding)
+#   * max_drawdown — worst peak-to-trough equity dip (can you stomach it?)
+#   * walk-forward — metrics on a held-out OUT-OF-SAMPLE tail + rolling folds,
+#                    so an edge that only exists in-sample is exposed as overfit.
+BACKTEST = {
+    "lookback": 250,            # trading days of history to replay
+    "hold_days": 5,            # bars held per trade (exit or stop)
+    "entry_score": 70,         # technical score threshold to open a backtest trade
+    "oos_fraction": 0.30,      # final fraction of the window held out (out-of-sample)
+    "walk_forward_folds": 4,   # rolling walk-forward folds for robustness
+}
+
+# ---------------------------------------------------------------------------
 # 5. DATA SOURCES (public, no login, no protection bypass)
 # ---------------------------------------------------------------------------
 PSX_DPS_BASE = "https://dps.psx.com.pk"

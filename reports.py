@@ -16,8 +16,40 @@ def _fmt(v, nd=2):
     return f"{v:,.{nd}f}" if isinstance(v, (int, float)) and v is not None else "n/a"
 
 
-def build_run_report(results, market_notes):
-    """results: list of per-stock result dicts from main.analyze_stock."""
+def _portfolio_section(portfolio):
+    """Render the book-level risk block (Tier 2 #9) for the run report."""
+    if not portfolio:
+        return []
+    b = portfolio["book"]
+    lines = ["", "## Portfolio risk (book-level)",
+             f"- Capital assumed: PKR {b['capital']:,.0f}",
+             f"- Open positions: {b['open_positions']} / {b['max_open_positions']} "
+             f"max",
+             f"- Total heat (loss if every stop fills): **{b['heat_pct']:.2f}%** "
+             f"of {b['max_heat_pct']:.0f}% cap "
+             f"({b['heat_room_pct']:.2f}% headroom)",
+             f"- Capital deployed: {b['deployed_pct']:.1f}% "
+             f"({b['cash_pct']:.1f}% cash)"]
+    if b["sector_exposure"]:
+        secs = ", ".join(f"{s} {v['pct']:.0f}%"
+                         for s, v in b["sector_exposure"].items())
+        lines.append(f"- Sector exposure (cap {b['max_sector_pct']:.0f}% each): {secs}")
+    if portfolio["admitted"]:
+        lines += ["", "**Fits the book now:**"]
+        for a in portfolio["admitted"]:
+            lines.append(f"  - {a['symbol']}: {a['shares']:,} sh "
+                         f"(PKR {a['value']:,.0f}, heat {a['heat_pct']:.2f}%, "
+                         f"{a['sector']})")
+    if portfolio["deferred"]:
+        lines += ["", "**Deferred — a cap would be breached:**"]
+        for d in portfolio["deferred"]:
+            lines.append(f"  - {d['symbol']}: {d['reason']}")
+    return lines
+
+
+def build_run_report(results, market_notes, portfolio=None):
+    """results: list of per-stock result dicts from main.analyze_stock.
+    portfolio: optional output of portfolio_risk.assess (book-level risk)."""
     ranked = sorted([r for r in results if r["shariah"]["eligible_for_ranking"]],
                     key=lambda r: r["scoring"]["final_score"], reverse=True)
     excluded = [r for r in results if not r["shariah"]["eligible_for_ranking"]]
@@ -60,8 +92,10 @@ def build_run_report(results, market_notes):
                   f"resistance and {_fmt(r['technical'].get('support'))} support; "
                   "next earnings/news flow.", ""]
 
+    lines += _portfolio_section(portfolio)
+
     if excluded:
-        lines += ["## Excluded (shariah unverified)", ""]
+        lines += ["", "## Excluded (shariah unverified)", ""]
         for r in excluded:
             lines.append(f"- {r['symbol']}: {r['shariah']['status']} — "
                          f"{'; '.join(r['shariah']['notes'])}")

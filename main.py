@@ -5,7 +5,9 @@ Usage (Windows-friendly):
     python main.py schedule       # auto-run every 10 min + 9AM/9PM reports
     python main.py morning        # print morning report
     python main.py evening        # print evening report
-    python main.py backtest PSO   # technical backtest for one symbol
+    python main.py backtest PSO   # technical backtest for one symbol (metrics)
+    python main.py metrics        # whole-universe edge: expectancy/PF/maxDD/OOS
+    python main.py portfolio      # book-level risk (heat + sector caps) from Buys
     python main.py accuracy       # signal & indicator accuracy stats
     python main.py history PSO    # recent stored runs for a symbol
 """
@@ -33,6 +35,7 @@ import market_regime
 import scoring_engine
 import risk_manager
 import signal_generator
+import portfolio_risk
 import reports
 import backtester
 
@@ -113,11 +116,23 @@ def full_run():
     results = [analyze_stock(s, news_items, index_eod, regime)
                for s in config.STOCKS]
 
+    # Tier 2 #9: book-level risk across every Buy this run (heat + sector caps).
+    candidates = [{"symbol": r["symbol"],
+                   "score": r["scoring"]["final_score"],
+                   "signal": r["signal"]["signal"],
+                   "price": r["technical"].get("price"),
+                   "stop": r["technical"].get("stop_loss"),
+                   "sector": config.SECTORS.get(r["symbol"], "Unknown")}
+                  for r in results
+                  if r["signal"]["signal"] in ("Buy", "Strong Buy")]
+    portfolio = portfolio_risk.assess(candidates)
+    log.info("Portfolio risk: %s", portfolio_risk.summary_line(portfolio))
+
     macro_titles = [n["title"] for n in news_items][:6]
     market_notes = "Market regime: " + regime["note"]
     if macro_titles:
         market_notes += " | Headlines: " + " | ".join(t[:80] for t in macro_titles)
-    report = reports.build_run_report(results, market_notes)
+    report = reports.build_run_report(results, market_notes, portfolio)
     print("\n" + report)
     reports.save_report(report, "run")
 
@@ -158,7 +173,54 @@ def main():
     elif cmd == "backtest":
         sym = sys.argv[2].upper() if len(sys.argv) > 2 else "PSO"
         res = backtester.backtest(sym)
+        res.pop("detail", None)            # keep the console summary readable
+        for v in ("in_sample", "out_of_sample"):
+            res.get(v, {}).pop("equity_curve", None)
+        res.pop("equity_curve", None)
         import json; print(json.dumps(res, indent=2, default=str))
+    elif cmd == "metrics":
+        # Whole-universe backtest with profit metrics (expectancy / profit
+        # factor / max drawdown) + out-of-sample verdict per symbol.
+        res = backtester.backtest_portfolio()
+        agg = res["aggregate"]
+        print(f"\n=== Strategy edge across {res['symbols_traded']} symbols "
+              f"({agg.get('trades', 0)} trades) ===")
+        print(f"Expectancy/trade: {agg.get('expectancy_pct')}%  |  "
+              f"Profit factor: {agg.get('profit_factor')}  |  "
+              f"Win rate: {agg.get('win_rate_pct')}%  |  "
+              f"Max drawdown: {agg.get('max_drawdown_pct')}%  |  "
+              f"Total return: {agg.get('total_return_pct')}%")
+        print("\nPer symbol:")
+        for s, m in sorted(res["per_symbol"].items(),
+                           key=lambda kv: (kv[1].get("expectancy_pct") or 0),
+                           reverse=True):
+            print(f"  {s:<7} trades={m['trades']:<3} "
+                  f"exp={m['expectancy_pct']}%  pf={m['profit_factor']}  "
+                  f"win={m['win_rate_pct']}%  maxDD={m['max_drawdown_pct']}%")
+        print("\n" + res["warning"])
+    elif cmd == "portfolio":
+        # Book-level risk from the latest stored Buys: heat + sector caps.
+        cap = int(sys.argv[2]) if len(sys.argv) > 2 else 1_000_000
+        cands = []
+        for s in config.STOCKS:
+            r = db.last_run(s)
+            if r and r["signal"] in ("Buy", "Strong Buy"):
+                cands.append({"symbol": s, "score": r["final_score"],
+                              "signal": r["signal"], "price": r["price"],
+                              "stop": r["stop_loss"],
+                              "sector": config.SECTORS.get(s, "Unknown")})
+        res = portfolio_risk.assess(cands, capital=cap)
+        print(f"\n=== Portfolio risk (capital PKR {cap:,}) ===")
+        print(portfolio_risk.summary_line(res))
+        print("\nAdmitted:")
+        for a in res["admitted"]:
+            print(f"  {a['symbol']:<7} {a['shares']:>6,} sh  "
+                  f"PKR {a['value']:>12,.0f}  heat {a['heat_pct']:.2f}%  "
+                  f"[{a['sector']}]")
+        if res["deferred"]:
+            print("Deferred (cap would be breached):")
+            for d in res["deferred"]:
+                print(f"  {d['symbol']:<7} — {d['reason']}")
     elif cmd == "fundamentals":
         import fundamentals_fetcher
         p = fundamentals_fetcher.fetch_all()

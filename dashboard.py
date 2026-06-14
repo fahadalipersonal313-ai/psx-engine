@@ -1,12 +1,16 @@
-"""dashboard.py — Streamlit dashboard, management-friendly "glimpse" view.
+"""dashboard.py — Streamlit dashboard, management-friendly "glimpse" view with a
+neon dark theme.
 
 Run:  streamlit run dashboard.py
 
 Top of page (no clicks needed): a status strip (market regime, actionable count,
 data health, last updated), a "what changed since last run" line, trade-plan
-cards for the actual Buys (with position sizing from your capital), and a
-"high score but NOT a Buy — why" panel. Drill-down tabs below hold the full
-colour-coded watchlist table, per-stock charts, history, news, and reports.
+cards for the actual Buys (with position sizing from your capital), a "high score
+but NOT a Buy — why" panel, and a book-level Portfolio-risk glimpse (total heat +
+sector caps, Tier 2 #9). Drill-down tabs below hold the full colour-coded
+watchlist, the Portfolio book, the strategy Edge backtest (expectancy / profit
+factor / max drawdown / out-of-sample, Tier 2 #8), per-stock charts, history,
+news, and reports.
 """
 
 import os
@@ -18,51 +22,148 @@ import plotly.graph_objects as go
 import config
 import database as db
 import data_fetcher
+import portfolio_risk
+import backtester
 
-st.set_page_config(page_title="PSX Shariah Engine", layout="wide")
+st.set_page_config(page_title="PSX Shariah Engine", layout="wide",
+                   page_icon="📈")
 
-# ----------------------------- palette / helpers --------------------------
-# Light backgrounds + dark text -> readable on BOTH light and dark themes.
-SIG_STYLE = {
-    "Strong Buy": ("#0a5c40", "#c2efd9"), "Buy": ("#0a5c40", "#d9f2e7"),
-    "Watch": ("#7a4e00", "#fbe8c3"), "Hold": ("#444444", "#e6e6e6"),
-    "Avoid": ("#962a2a", "#f7d2d2"), "Exit": ("#8a1f1f", "#f4bcbc"),
-    "No data": ("#555555", "#e2e2e2"),
-}
-RISK_STYLE = {"Low": ("#0a5c40", "#d9f2e7"), "Medium": ("#7a4e00", "#fbe8c3"),
-              "High": ("#962a2a", "#f7d2d2")}
+# ====================== NEON THEME ========================================
+NEON = {"cyan": "#00e5ff", "violet": "#a855f7", "green": "#00ffa3",
+        "amber": "#ffd54a", "red": "#ff4d6d", "text": "#e7f0ff",
+        "dim": "#9fb3d1"}
+
+# Signal / risk accent colours (neon, high-contrast on the dark background).
+NEON_SIG = {"Strong Buy": "#00ffa3", "Buy": "#3ae67f", "Watch": "#ffd54a",
+            "Hold": "#9fb3d1", "Avoid": "#ff5d7a", "Exit": "#ff4d6d",
+            "No data": "#8aa0c0"}
+NEON_RISK = {"Low": "#00ffa3", "Medium": "#ffd54a", "High": "#ff4d6d"}
 SIG_RANK = {"Strong Buy": 6, "Buy": 5, "Watch": 4, "Hold": 3, "Avoid": 2,
             "Exit": 1, "No data": 0}
+PLOT_LINE = ["#00e5ff", "#a855f7", "#00ffa3", "#ffd54a", "#ff4d6d"]
 
 
-def _pill(text, fg, bg):
-    return (f'<span style="background:{bg};color:{fg};padding:2px 10px;'
-            f'border-radius:8px;font-size:13px;font-weight:600;'
-            f'white-space:nowrap">{text}</span>')
+def _inject_theme():
+    st.markdown(
+        """
+        <style>
+        .stApp {
+          background:
+            radial-gradient(1100px 560px at 10% -12%, rgba(0,229,255,0.13), transparent 60%),
+            radial-gradient(1000px 520px at 102% -4%, rgba(168,85,247,0.15), transparent 55%),
+            radial-gradient(900px 520px at 50% 118%, rgba(0,255,163,0.10), transparent 55%),
+            linear-gradient(180deg,#070b16 0%, #0a1020 48%, #070b16 100%);
+          background-attachment: fixed;
+        }
+        [data-testid="stHeader"] { background: transparent; }
+        [data-testid="stToolbar"] { right: 1rem; }
+        h1, h2, h3 { color: #eaf6ff !important; letter-spacing:.3px; }
+        h1 { text-shadow: 0 0 22px rgba(0,229,255,0.35); }
+        h2 { text-shadow: 0 0 16px rgba(0,229,255,0.20); }
+        hr { border-color: rgba(0,229,255,0.15) !important; }
+        /* glassmorphic bordered containers (tiles, cards) */
+        [data-testid="stVerticalBlockBorderWrapper"] {
+          background: rgba(16,24,44,0.55);
+          border: 1px solid rgba(0,229,255,0.18) !important;
+          border-radius: 14px !important;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(0,229,255,0.03);
+          backdrop-filter: blur(7px);
+          transition: border-color .2s ease, box-shadow .2s ease;
+        }
+        [data-testid="stVerticalBlockBorderWrapper"]:hover {
+          border-color: rgba(0,229,255,0.40) !important;
+          box-shadow: 0 10px 36px rgba(0,0,0,0.5), 0 0 22px -6px rgba(0,229,255,0.5);
+        }
+        [data-testid="stMetricValue"] {
+          color: #00e5ff; text-shadow: 0 0 14px rgba(0,229,255,0.45);
+          font-weight: 800;
+        }
+        [data-testid="stMetricLabel"] { color: #9fb3d1; }
+        [data-testid="stMetricDelta"] { color: #00ffa3; }
+        /* sidebar */
+        [data-testid="stSidebar"] {
+          background: linear-gradient(180deg, rgba(11,17,34,0.92), rgba(7,11,22,0.96));
+          border-right: 1px solid rgba(0,229,255,0.14);
+        }
+        /* tabs */
+        [data-baseweb="tab-list"] { gap: 6px; border-bottom: 1px solid rgba(0,229,255,0.12); }
+        [data-baseweb="tab"] {
+          background: rgba(255,255,255,0.03); border-radius: 10px 10px 0 0;
+          padding: 7px 15px; color: #cfe0ff;
+        }
+        [aria-selected="true"][data-baseweb="tab"] {
+          background: rgba(0,229,255,0.13);
+          box-shadow: inset 0 -2px 0 #00e5ff, 0 0 18px -6px rgba(0,229,255,0.7);
+          color: #eaf6ff;
+        }
+        /* buttons */
+        .stButton > button {
+          background: linear-gradient(90deg, #00e5ff, #a855f7);
+          color: #06101f; font-weight: 700; border: none; border-radius: 10px;
+          box-shadow: 0 0 18px -4px rgba(0,229,255,0.6);
+        }
+        .stButton > button:hover { filter: brightness(1.12); color:#06101f; }
+        /* inputs */
+        [data-testid="stNumberInput"] input, [data-baseweb="select"] > div {
+          background: rgba(10,16,32,0.7) !important;
+          border-color: rgba(0,229,255,0.25) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True)
+
+
+# ----------------------------- pills / helpers ----------------------------
+def _hex_rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def _pill(text, hexc):
+    r, g, b = _hex_rgb(hexc)
+    return (f'<span style="background:rgba({r},{g},{b},0.13);color:{hexc};'
+            f'border:1px solid rgba({r},{g},{b},0.55);border-radius:9px;'
+            f'padding:2px 10px;font-size:13px;font-weight:700;white-space:nowrap;'
+            f'text-shadow:0 0 7px rgba({r},{g},{b},0.45);'
+            f'box-shadow:0 0 12px -3px rgba({r},{g},{b},0.7)">{text}</span>')
 
 
 def sig_pill(sig):
-    fg, bg = SIG_STYLE.get(sig, ("#555", "#e2e2e2"))
-    return _pill(sig or "—", fg, bg)
+    return _pill(sig or "—", NEON_SIG.get(sig, "#8aa0c0"))
 
 
 def risk_pill(level):
-    fg, bg = RISK_STYLE.get(level, ("#555", "#e2e2e2"))
-    return _pill(f"{level} risk", fg, bg)
+    return _pill(f"{level} risk", NEON_RISK.get(level, "#8aa0c0"))
 
 
 def regime_pill(regime):
     if regime == "risk-on":
-        return _pill("Risk-on", "#0a5c40", "#c2efd9")
+        return _pill("● Risk-on", NEON["green"])
     if regime == "risk-off":
-        return _pill("Risk-off", "#8a1f1f", "#f4bcbc")
-    return _pill("Unknown", "#555", "#e2e2e2")
+        return _pill("● Risk-off", NEON["red"])
+    return _pill("● Unknown", "#8aa0c0")
 
 
 def fmt(x, d=2):
     if x is None or (isinstance(x, float) and pd.isna(x)):
         return "—"
+    if isinstance(x, float) and x == float("inf"):
+        return "∞"
     return f"{x:,.{d}f}"
+
+
+def neon_fig(fig, height=None):
+    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
+                      plot_bgcolor="rgba(0,0,0,0)",
+                      font=dict(color="#cfe0ff"),
+                      margin=dict(l=10, r=10, t=34, b=10),
+                      legend=dict(bgcolor="rgba(0,0,0,0)",
+                                  bordercolor="rgba(0,229,255,0.15)"))
+    fig.update_xaxes(gridcolor="rgba(255,255,255,0.06)", zeroline=False)
+    fig.update_yaxes(gridcolor="rgba(255,255,255,0.06)", zeroline=False)
+    if height:
+        fig.update_layout(height=height)
+    return fig
 
 
 def position_size(price, stop, capital):
@@ -103,6 +204,19 @@ def changes_since_last():
     return ups, downs
 
 
+# ----------------------------- cached backtests ---------------------------
+# fetch_eod hits the network with no cache, so backtests are expensive. Cache
+# hard and only run the universe-wide one behind a button.
+@st.cache_data(ttl=3600, show_spinner=False)
+def bt_symbol(sym):
+    return backtester.backtest(sym)
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def bt_portfolio():
+    return backtester.backtest_portfolio()
+
+
 def _require_password():
     try:
         pw = st.secrets["DASHBOARD_PASSWORD"]
@@ -123,6 +237,7 @@ def _require_password():
 
 
 # ----------------------------- load ---------------------------------------
+_inject_theme()
 _require_password()
 db.init_db()
 
@@ -150,17 +265,30 @@ exits = latest[latest["signal"] == "Exit"]
 good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
-st.sidebar.header("Settings")
+st.sidebar.header("⚙ Settings")
 capital = st.sidebar.number_input("Your capital (PKR)", min_value=0,
                                   value=1_000_000, step=50_000, format="%d")
 st.sidebar.caption(
-    f"Position sizing risks {config.RISK['max_risk_per_trade_pct']}% of capital "
-    f"per trade, max {config.RISK['max_position_pct']}% in one stock.")
+    f"Per-trade risk {config.RISK['max_risk_per_trade_pct']}% · max "
+    f"{config.RISK['max_position_pct']}% per stock.")
+st.sidebar.caption(
+    f"Book caps: heat {config.PORTFOLIO_RISK['max_portfolio_heat_pct']:.0f}% · "
+    f"sector {config.PORTFOLIO_RISK['max_sector_exposure_pct']:.0f}% · "
+    f"{config.PORTFOLIO_RISK['max_open_positions']} positions.")
 st.sidebar.caption("Tip: set this to what you'd actually deploy — the Buy cards "
-                   "size each position to it.")
+                   "and Portfolio tab size to it.")
+
+# ----------------------------- portfolio risk (computed once) -------------
+buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
+              "signal": r["signal"], "price": r["price"], "stop": r["stop_loss"],
+              "sector": config.SECTORS.get(r["symbol"], "Unknown")}
+             for _, r in latest.iterrows()
+             if r["signal"] in ("Buy", "Strong Buy")]
+pf = portfolio_risk.assess(buy_cands, capital=capital)
+book = pf["book"]
 
 # ----------------------------- header + status strip ----------------------
-st.title("PSX Shariah Engine — Today")
+st.title("📈 PSX Shariah Engine — Today")
 st.caption("⚠ " + config.DISCLAIMER)
 
 
@@ -182,8 +310,10 @@ tile(t2, "Actionable now", f"{len(buys)} buys",
 top = buys.iloc[0]["symbol"] if not buys.empty else "—"
 tile(t3, "Top pick", top,
      f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
-tile(t4, "Data health", f"{good} / {len(latest)}",
-     "stocks with good data")
+tile(t4, "Portfolio heat",
+     f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
+     f'{book["heat_pct"]:.1f}%</span>',
+     f"of {book['max_heat_pct']:.0f}% cap · {book['open_positions']} positions")
 tile(t5, "Last updated", last_updated[5:], "reboot app if stale")
 
 # ----------------------------- what changed -------------------------------
@@ -257,11 +387,31 @@ if not why.empty:
             f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>',
             unsafe_allow_html=True)
 
+# ----------------------------- PORTFOLIO GLIMPSE --------------------------
+if buy_cands:
+    st.subheader("🛡 Portfolio risk — does the book fit?")
+    g1, g2, g3, g4 = st.columns(4)
+    tile(g1, "Total heat",
+         f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
+         f'{book["heat_pct"]:.2f}%</span>',
+         f"cap {book['max_heat_pct']:.0f}% · {book['heat_room_pct']:.1f}% room")
+    tile(g2, "Capital deployed", f'{book["deployed_pct"]:.0f}%',
+         f"{book['cash_pct']:.0f}% cash")
+    tile(g3, "Open positions", f'{book["open_positions"]}',
+         f"max {book['max_open_positions']}")
+    tile(g4, "Deferred by caps", f'{book["deferred"]}',
+         "see Portfolio tab")
+    if pf["deferred"]:
+        st.caption("⚠ " + " · ".join(f"**{d['symbol']}** {d['reason']}"
+                                     for d in pf["deferred"][:4]))
+
 st.divider()
 
 # ----------------------------- tabs (drill-down) --------------------------
-tab_watch, tab_stock, tab_hist, tab_news, tab_reports = st.tabs(
-    ["📋 Watchlist", "🔍 Stock detail", "📈 History", "📰 News", "📋 Reports"])
+(tab_watch, tab_port, tab_edge, tab_stock, tab_hist,
+ tab_news, tab_reports) = st.tabs(
+    ["📋 Watchlist", "🛡 Portfolio", "🧪 Edge", "🔍 Stock detail",
+     "📈 History", "📰 News", "📋 Reports"])
 
 with tab_watch:
     st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
@@ -272,12 +422,18 @@ with tab_watch:
                     "Price", "Stop", "Target", "Data", "Shariah"]
 
     def _sig_css(v):
-        fg, bg = SIG_STYLE.get(v, ("inherit", "transparent"))
-        return f"background-color:{bg};color:{fg};font-weight:600"
+        c = NEON_SIG.get(v)
+        if not c:
+            return ""
+        r, g, b = _hex_rgb(c)
+        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
 
     def _risk_css(v):
-        fg, bg = RISK_STYLE.get(v, ("inherit", "transparent"))
-        return f"background-color:{bg};color:{fg};font-weight:600"
+        c = NEON_RISK.get(v)
+        if not c:
+            return ""
+        r, g, b = _hex_rgb(c)
+        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
 
     styled = (show.style
               .map(_sig_css, subset=["Signal"])
@@ -286,6 +442,147 @@ with tab_watch:
                        "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
+
+with tab_port:
+    st.subheader("🛡 Portfolio book risk")
+    st.caption("Per-trade sizing caps one loss; this caps CORRELATED loss across "
+               "the whole book. Buys are admitted best-score-first until a cap "
+               "binds (total heat, sector exposure, or position count).")
+    if not buy_cands:
+        st.info("No Buy signals to assemble into a book right now.")
+    else:
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric("Total heat", f'{book["heat_pct"]:.2f}%',
+                  f'cap {book["max_heat_pct"]:.0f}%', delta_color="off")
+        m2.metric("Deployed", f'{book["deployed_pct"]:.0f}%',
+                  f'{book["cash_pct"]:.0f}% cash', delta_color="off")
+        m3.metric("Positions", f'{book["open_positions"]}',
+                  f'max {book["max_open_positions"]}', delta_color="off")
+        m4.metric("Deferred", f'{book["deferred"]}', "capped out",
+                  delta_color="off")
+
+        cga, cgb = st.columns([1, 1.3])
+        with cga:
+            gmax = max(book["max_heat_pct"] * 1.6, book["heat_pct"] * 1.2, 1)
+            gauge = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=book["heat_pct"],
+                number={"suffix": "%", "font": {"color": NEON["cyan"], "size": 34}},
+                title={"text": "Total portfolio heat", "font": {"color": NEON["dim"]}},
+                gauge={
+                    "axis": {"range": [0, gmax], "tickcolor": NEON["dim"]},
+                    "bar": {"color": NEON["cyan"]},
+                    "bgcolor": "rgba(0,0,0,0)",
+                    "borderwidth": 0,
+                    "steps": [
+                        {"range": [0, book["max_heat_pct"]],
+                         "color": "rgba(0,255,163,0.18)"},
+                        {"range": [book["max_heat_pct"], gmax],
+                         "color": "rgba(255,77,109,0.18)"}],
+                    "threshold": {"line": {"color": NEON["red"], "width": 3},
+                                  "thickness": 0.8, "value": book["max_heat_pct"]}}))
+            st.plotly_chart(neon_fig(gauge, height=260), width="stretch")
+        with cgb:
+            secs = book["sector_exposure"]
+            if secs:
+                names = list(secs.keys())
+                vals = [secs[s]["pct"] for s in names]
+                colors = [NEON["red"] if v > book["max_sector_pct"] else NEON["violet"]
+                          for v in vals]
+                bar = go.Figure(go.Bar(x=vals, y=names, orientation="h",
+                                       marker=dict(color=colors),
+                                       text=[f"{v:.0f}%" for v in vals],
+                                       textposition="outside"))
+                bar.add_vline(x=book["max_sector_pct"], line_dash="dash",
+                              line_color=NEON["red"],
+                              annotation_text=f"cap {book['max_sector_pct']:.0f}%",
+                              annotation_font_color=NEON["red"])
+                bar.update_layout(title="Sector exposure (% of capital)")
+                st.plotly_chart(neon_fig(bar, height=260), width="stretch")
+
+        st.markdown("##### ✅ Fits the book now")
+        adf = pd.DataFrame(pf["admitted"])
+        if len(adf):
+            adf = adf[["symbol", "signal", "sector", "shares", "value",
+                       "weight_pct", "risk", "heat_pct", "score"]]
+            adf.columns = ["Symbol", "Signal", "Sector", "Shares", "Value PKR",
+                           "Weight%", "Risk PKR", "Heat%", "Score"]
+            st.dataframe(adf.style.format(
+                {"Value PKR": "{:,.0f}", "Risk PKR": "{:,.0f}",
+                 "Weight%": "{:.1f}", "Heat%": "{:.2f}", "Score": "{:.1f}"}),
+                width="stretch", hide_index=True)
+        else:
+            st.caption("None could be admitted within the caps.")
+
+        if pf["deferred"]:
+            st.markdown("##### ⏸ Deferred — a cap would be breached")
+            for d in pf["deferred"]:
+                st.markdown(f'{sig_pill(d["signal"])} &nbsp;**{d["symbol"]}** '
+                            f'({d["sector"]}) — '
+                            f'<span style="opacity:.8">{d["reason"]}</span>',
+                            unsafe_allow_html=True)
+        if pf["unsizable"]:
+            st.caption("Un-sizable (no usable price/stop): "
+                       + ", ".join(u["symbol"] for u in pf["unsizable"]))
+
+with tab_edge:
+    st.subheader("🧪 Strategy edge — backtest")
+    st.caption("Replays EOD history with the technical module and reports the "
+               "metrics that predict profit: expectancy, profit factor, max "
+               "drawdown, plus an OUT-OF-SAMPLE verdict. Evidence, not proof.")
+
+    def _metric_cards(m, cols):
+        pf_val = m.get("profit_factor")
+        cols[0].metric("Expectancy/trade", f'{m.get("expectancy_pct", 0):.2f}%')
+        cols[1].metric("Profit factor",
+                       "∞" if pf_val == float("inf") else fmt(pf_val, 2))
+        cols[2].metric("Win rate", f'{m.get("win_rate_pct", 0):.0f}%')
+        cols[3].metric("Max drawdown", f'{m.get("max_drawdown_pct", 0):.1f}%')
+        cols[4].metric("Trades", f'{m.get("trades", 0)}')
+
+    if st.button("▶ Run universe backtest (network-heavy, ~20-40s)"):
+        st.session_state["run_bt"] = True
+    if st.session_state.get("run_bt"):
+        with st.spinner("Replaying EOD history across the universe…"):
+            res = bt_portfolio()
+        agg = res["aggregate"]
+        if not agg.get("trades"):
+            st.warning("No qualifying setups across the universe in the window.")
+        else:
+            st.markdown(f"**Aggregate across {res['symbols_traded']} symbols** "
+                        f"— total return {agg['total_return_pct']:.1f}% over "
+                        f"{agg['trades']} trades")
+            _metric_cards(agg, st.columns(5))
+            curve = agg.get("equity_curve") or []
+            if curve:
+                eq = go.Figure(go.Scatter(
+                    y=[(v - 1) * 100 for v in curve], mode="lines",
+                    line=dict(color=NEON["cyan"], width=2),
+                    fill="tozeroy", fillcolor="rgba(0,229,255,0.10)",
+                    name="Equity"))
+                eq.update_layout(title="Compounded equity curve (% return)",
+                                 xaxis_title="trade #", yaxis_title="cumulative %")
+                st.plotly_chart(neon_fig(eq, height=320), width="stretch")
+
+            per = res["per_symbol"]
+            if per:
+                pdf = pd.DataFrame(per).T.reset_index().rename(
+                    columns={"index": "Symbol"})
+                pdf = pdf.sort_values("expectancy_pct", ascending=False)
+                pdf = pdf[["Symbol", "trades", "win_rate_pct", "expectancy_pct",
+                           "profit_factor", "max_drawdown_pct",
+                           "total_return_pct", "verdict"]]
+                pdf.columns = ["Symbol", "Trades", "Win%", "Exp%", "PF",
+                               "MaxDD%", "TotRet%", "Out-of-sample verdict"]
+                st.markdown("##### Per-symbol edge (sorted by expectancy)")
+                st.dataframe(pdf.style.format(
+                    {"Win%": "{:.0f}", "Exp%": "{:.2f}", "PF": "{:.2f}",
+                     "MaxDD%": "{:.1f}", "TotRet%": "{:.1f}"}, na_rep="—"),
+                    width="stretch", hide_index=True, height=460)
+        st.caption("⚠ " + res["warning"])
+    else:
+        st.info("Click the button to run the backtest. Results are cached for an "
+                "hour. You can also backtest a single stock in the Stock detail tab.")
 
 with tab_stock:
     sym = st.selectbox("Stock", config.STOCKS)
@@ -306,21 +603,67 @@ with tab_stock:
     if eod is not None:
         st.caption(f"Source: {meta['source']} (as of {meta['as_of']})")
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"], name="Close"))
+        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"], name="Close",
+                                 line=dict(color=NEON["cyan"], width=2)))
         fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=20).mean(),
-                                 name="EMA20", line=dict(dash="dot")))
+                                 name="EMA20",
+                                 line=dict(color=NEON["amber"], dash="dot")))
         fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=50).mean(),
-                                 name="EMA50", line=dict(dash="dash")))
+                                 name="EMA50",
+                                 line=dict(color=NEON["violet"], dash="dash")))
         if r:
-            for lvl, nm in ((r["support"], "Support"), (r["resistance"], "Resistance"),
-                            (r["stop_loss"], "Stop")):
+            for lvl, nm, clr in ((r["support"], "Support", NEON["green"]),
+                                 (r["resistance"], "Resistance", NEON["red"]),
+                                 (r["stop_loss"], "Stop", NEON["red"])):
                 if lvl:
-                    fig.add_hline(y=lvl, line_dash="dot", annotation_text=nm)
-        st.plotly_chart(fig, width="stretch")
-        st.plotly_chart(go.Figure(go.Bar(x=eod["date"], y=eod["volume"],
-                                          name="Volume")), width="stretch")
+                    fig.add_hline(y=lvl, line_dash="dot", line_color=clr,
+                                  annotation_text=nm,
+                                  annotation_font_color=clr)
+        fig.update_layout(title=f"{sym} — price & moving averages")
+        st.plotly_chart(neon_fig(fig, height=420), width="stretch")
+        volf = go.Figure(go.Bar(x=eod["date"], y=eod["volume"], name="Volume",
+                                marker=dict(color="rgba(0,229,255,0.5)")))
+        volf.update_layout(title="Volume")
+        st.plotly_chart(neon_fig(volf, height=220), width="stretch")
     else:
         st.error(meta.get("warning", "No price data."))
+
+    with st.expander("🧪 Backtest this stock (expectancy / profit factor / OOS)"):
+        if st.button(f"Run backtest for {sym}", key="bt_one"):
+            with st.spinner(f"Backtesting {sym}…"):
+                res = bt_symbol(sym)
+            if res.get("error") or not res.get("trades"):
+                st.warning(res.get("note") or res.get("error")
+                           or "No qualifying setups.")
+            else:
+                w = res["window"]
+                st.caption(f"{w['bars']} bars · {w['from']} → {w['to']}")
+                cc = st.columns(5)
+                cc[0].metric("Expectancy/trade", f'{res["expectancy_pct"]:.2f}%')
+                cc[1].metric("Profit factor",
+                             "∞" if res["profit_factor"] == float("inf")
+                             else fmt(res["profit_factor"], 2))
+                cc[2].metric("Win rate", f'{res["win_rate_pct"]:.0f}%')
+                cc[3].metric("Max drawdown", f'{res["max_drawdown_pct"]:.1f}%')
+                cc[4].metric("Trades", f'{res["trades"]}')
+                verdict_clr = (NEON["green"] if "HOLDS" in res["verdict"]
+                               else NEON["red"] if "does NOT" in res["verdict"]
+                               else NEON["amber"])
+                st.markdown(
+                    f'**Out-of-sample:** <span style="color:{verdict_clr}">'
+                    f'{res["verdict"]}</span>', unsafe_allow_html=True)
+                oos, is_ = res["out_of_sample"], res["in_sample"]
+                st.caption(
+                    f"In-sample exp {is_.get('expectancy_pct', '—')}% "
+                    f"(PF {is_.get('profit_factor', '—')}) vs "
+                    f"out-of-sample exp {oos.get('expectancy_pct', '—')}% "
+                    f"(PF {oos.get('profit_factor', '—')})")
+                wf = res.get("walk_forward") or []
+                if wf:
+                    wdf = pd.DataFrame(wf)
+                    st.markdown("Walk-forward folds:")
+                    st.dataframe(wdf, width="stretch", hide_index=True)
+                st.caption("⚠ " + res["warning"])
 
 with tab_hist:
     sym = st.selectbox("Stock ", config.STOCKS, key="hist")
