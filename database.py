@@ -24,7 +24,10 @@ CREATE TABLE IF NOT EXISTS runs (
     shariah_status TEXT, data_quality TEXT,
     main_reason TEXT, main_risk TEXT,
     price_next_run REAL, price_1d REAL, price_3d REAL, price_7d REAL,
-    outcome TEXT              -- 'worked' / 'failed' / NULL (pending)
+    outcome TEXT,             -- 'worked' / 'failed' / NULL (pending)
+    tech_flags TEXT,          -- JSON: which sub-indicators were bullish (learning loop)
+    conviction_streak INTEGER, -- consecutive runs at the same signal
+    confluence INTEGER        -- 0-4: how many independent signal dimensions agree
 );
 CREATE INDEX IF NOT EXISTS idx_runs_symbol_time ON runs(symbol, run_time);
 
@@ -76,7 +79,9 @@ def init_db():
         # Lightweight migrations: add newer columns to `runs` if they're missing
         # (CREATE TABLE IF NOT EXISTS won't add columns to a pre-existing table).
         existing = {r[1] for r in c.execute("PRAGMA table_info(runs)")}
-        for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT")):
+        for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT"),
+                          ("tech_flags", "TEXT"), ("conviction_streak", "INTEGER"),
+                          ("confluence", "INTEGER")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)
@@ -218,3 +223,22 @@ def signal_accuracy(symbol=None):
     q += " GROUP BY signal, outcome"
     with conn() as c:
         return [dict(r) for r in c.execute(q, args)]
+
+
+def signal_streak(symbol):
+    """How many consecutive recent runs had the same signal as the most recent run.
+    Returns (streak_count, signal_string). streak_count=0 when no history."""
+    with conn() as c:
+        rows = [dict(r) for r in c.execute(
+            "SELECT signal FROM runs WHERE symbol=? ORDER BY run_time DESC LIMIT 20",
+            (symbol,))]
+    if not rows:
+        return 0, None
+    latest = rows[0]["signal"]
+    streak = 0
+    for r in rows:
+        if r["signal"] == latest:
+            streak += 1
+        else:
+            break
+    return streak, latest

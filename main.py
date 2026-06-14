@@ -14,6 +14,7 @@ Usage (Windows-friendly):
 
 import sys
 import io
+import json
 import logging
 from datetime import datetime
 
@@ -59,13 +60,17 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
     sentiment = sentiment_analyzer.analyze(symbol, news_items)
     macro = macro_news_analyzer.analyze(symbol, news_items)
     fundamentals = fundamentals_analyzer.analyze(symbol)
+    tech_flags = technical.get("tech_flags")
     scoring = scoring_engine.compute(symbol, macro, sentiment, technical,
-                                     fundamentals)
+                                     fundamentals, tech_flags=tech_flags)
     risk = risk_manager.assess(symbol, technical, sentiment, macro)
+    prev_streak, prev_sig = db.signal_streak(symbol)
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
                                        shariah, technical,
-                                       regime=(regime or {}).get("regime"))
+                                       regime=(regime or {}).get("regime"),
+                                       prev_signal=prev_sig,
+                                       prev_streak=prev_streak)
 
     db.save_run({
         "run_time": datetime.now().isoformat(), "symbol": symbol,
@@ -85,6 +90,9 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
         "market_regime": (regime or {}).get("regime"),
         "main_reason": "; ".join(signal["reasons"])[:400],
         "main_risk": (risk["warnings"][0] if risk["warnings"] else "")[:400],
+        "tech_flags": json.dumps(tech_flags) if tech_flags else None,
+        "conviction_streak": signal.get("streak", 1),
+        "confluence": signal.get("confluence", 0),
     })
 
     if quote.get("warning"):

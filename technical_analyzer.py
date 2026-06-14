@@ -272,6 +272,20 @@ def analyze(symbol, eod_df, quote, rs_score=None):
     target2 = round(min(price + 3 * risk, recent_hi * 1.05), 2)
     rr = round((target1 - price) / risk, 2) if risk > 0 else None
 
+    # --- which sub-indicators were bullish at this bar. Stored in the DB so
+    # the learning loop can track per-indicator accuracy per symbol over time
+    # and feed back into confidence (scoring_engine._indicator_accuracy_boost).
+    # None = indicator not computable this run (data too short etc.).
+    tech_flags = {
+        "trend":    price > float(ema50.iloc[-1]),
+        "rsi":      (last_rsi is not None and 40 <= last_rsi <= 72),
+        "macd":     float(macd_hist.iloc[-1]) > 0,
+        "obv":      bool(obv_trend_up) if obv_trend_up is not None else None,
+        "momentum": momentum_20d > 0,
+        "bb":       bb_pct_b >= 0.5,
+        "rs":       bool(rs_score >= 50) if rs_score is not None else None,
+    }
+
     out.update({
         "score": final, "classification": cls, "price": price,
         "volume": today_vol, "avg_volume": avg_vol, "volume_spike": vol_spike,
@@ -290,5 +304,6 @@ def analyze(symbol, eod_df, quote, rs_score=None):
         "stop_loss": stop_loss, "target1": target1, "target2": target2,
         "risk_reward": rr, "relative_strength": rs_score,
         "low_confidence": len(close) < 60,
+        "tech_flags": tech_flags,
     })
     return out

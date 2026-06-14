@@ -17,6 +17,39 @@ import database as db
 log = logging.getLogger("scoring")
 
 
+def _indicator_accuracy_boost(symbol, tech_flags):
+    """±confidence from per-sub-indicator track records on this specific symbol.
+
+    When a sub-indicator (RSI, MACD, trend etc.) has been bullish at signal time
+    ≥5 times and its win rate deviates from 50%, it earns a credit or debit that
+    modulates confidence. Averaged across applicable indicators; capped at ±8 pts.
+    This is SEPARATE from the overall win-rate adjustment in
+    historical_confidence_adjust — that adjusts for how the WHOLE signal did;
+    this adjusts for which INDICATORS are actually predicting outcomes here.
+    """
+    if not tech_flags:
+        return 0.0, ""
+    all_stats = {r["indicator"]: r for r in db.indicator_stats(symbol)}
+    boosts, parts = [], []
+    for ind, bullish in tech_flags.items():
+        if bullish is not True:   # only grade indicators that were bullish
+            continue
+        s = all_stats.get(f"tech_{ind}")
+        if not s:
+            continue
+        total = (s["hits"] or 0) + (s["misses"] or 0)
+        if total < 5:             # too few samples — don't overfit
+            continue
+        wr = s["hits"] / total
+        boosts.append((wr - 0.5) * 10)   # wr=100% → +5, wr=0% → -5
+        parts.append(f"{ind} {wr:.0%}")
+    if not boosts:
+        return 0.0, ""
+    avg = sum(boosts) / len(boosts)
+    capped = round(max(-8.0, min(8.0, avg)), 1)
+    return capped, "Indicator track records: " + ", ".join(parts)
+
+
 def historical_confidence_adjust(symbol):
     """Return (adjustment in percentage points, note)."""
     rows = db.signal_accuracy(symbol)
@@ -36,7 +69,7 @@ def historical_confidence_adjust(symbol):
         f"History: {wins}W/{losses}L (win rate {win_rate:.0%}) over {total} signals."
 
 
-def compute(symbol, macro, sentiment, technical, fundamentals=None):
+def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=None):
     w = config.WEIGHTS
     fund = fundamentals or {"score": 50.0, "low_confidence": True}
     final = round(w["macro_news"] * macro["score"]
@@ -72,11 +105,13 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None):
     if scores and max(scores) - min(scores) < 15:
         confidence += 8
     adj, hist_note = historical_confidence_adjust(symbol)
-    confidence = round(max(10, min(95, confidence + adj)), 1)
+    ind_boost, ind_note = _indicator_accuracy_boost(symbol, tech_flags or {})
+    confidence = round(max(10, min(95, confidence + adj + ind_boost)), 1)
+    history_note = hist_note + (f" | {ind_note}" if ind_note else "")
 
     return {"final_score": final, "confidence": confidence,
             "data_quality": data_quality, "weak_sections": weak,
-            "history_note": hist_note,
+            "history_note": history_note,
             "breakdown": {"macro_news": macro["score"],
                           "sentiment": sentiment["score"],
                           "technical": technical["score"],

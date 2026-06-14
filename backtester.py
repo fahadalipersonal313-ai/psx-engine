@@ -11,6 +11,7 @@
    explicitly labelled with overfitting warnings — it is evidence, not proof.
 """
 
+import json
 import logging
 from datetime import datetime, timedelta
 
@@ -70,12 +71,21 @@ def update_outcomes():
                 worked = chg > -3.0
             db.update_outcome(run["id"], "outcome",
                               "worked" if worked else "failed")
-            # credit/blame the dominant section
+            # credit/blame the dominant section (section-level, existing)
             b = {"technical": run["technical_score"],
                  "sentiment": run["sentiment_score"],
                  "macro_news": run["macro_news_score"]}
             dominant = max(b, key=lambda k: b[k] or 0)
             db.bump_indicator(dominant, sym, worked)
+            # sub-indicator attribution: each bullish flag earns a hit or miss
+            # so scoring_engine can later boost/penalise per-indicator confidence.
+            if run.get("tech_flags"):
+                try:
+                    for ind, bullish in json.loads(run["tech_flags"]).items():
+                        if bullish is True:
+                            db.bump_indicator(f"tech_{ind}", sym, worked)
+                except Exception:
+                    pass
     log.info("Outcome tracker updated %d fields", updated)
     return updated
 
