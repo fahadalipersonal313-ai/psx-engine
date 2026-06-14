@@ -259,7 +259,10 @@ for col in ("relative_strength", "market_regime"):
 
 regime = (latest["market_regime"].dropna().iloc[0]
           if latest["market_regime"].notna().any() else "unknown")
-last_updated = str(latest["run_time"].max())[:16]
+# run_time is stored in UTC by the cloud runs (GitHub runner clock). Display it
+# in PKT (Pakistan is a fixed UTC+5, no DST) so the time matches the wall clock.
+last_updated = ((pd.to_datetime(latest["run_time"].max()) + pd.Timedelta(hours=5))
+                .strftime("%m-%d %H:%M") + " PKT")
 buys = latest[latest["signal"].isin(["Strong Buy", "Buy"])]
 exits = latest[latest["signal"] == "Exit"]
 good = int((latest["data_quality"] == "good").sum())
@@ -314,7 +317,7 @@ tile(t4, "Portfolio heat",
      f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
      f'{book["heat_pct"]:.1f}%</span>',
      f"of {book['max_heat_pct']:.0f}% cap · {book['open_positions']} positions")
-tile(t5, "Last updated", last_updated[5:], "reboot app if stale")
+tile(t5, "Last updated", last_updated, "reboot app if stale")
 
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
