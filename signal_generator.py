@@ -19,6 +19,10 @@ Anti-chase additions (don't buy at the peak):
   * Thin-headroom (poor_rr) — REAL room-to-resistance:risk below the minimum
                          (price jammed under a ceiling) → Watch. (Via risk_manager,
                          which now reads technical.headroom_rr, not the ≈2.0 proj R:R.)
+  * Pullback entry  — an extended setup held at Watch shows its buy-zone (the
+                       20-EMA band); when price later retraces INTO that zone with
+                       the uptrend intact, a cooled Watch/Hold is upgraded to Buy
+                       (buy the dip, don't chase the peak). Stateless across runs.
 """
 
 import logging
@@ -148,34 +152,56 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # very high 20-day momentum steps the signal down one notch and tells the user
     # to wait for the pullback the profit-taking creates. (The "thin room to
     # resistance" case is handled by the poor_rr veto in the soft downgrades.)
+    _zlo, _zhi = technical.get("buy_zone_low"), technical.get("buy_zone_high")
+    _zone = f" Buy-zone PKR {_zlo}–{_zhi} (pullback to 20-EMA)." if _zlo and _zhi else ""
     if technical.get("extended"):
         if base == "Strong Buy":
             base = "Buy"; reasons.append(
                 f"Downgraded Strong Buy→Buy: extended {technical.get('ext_pct')}% "
-                "above EMA20 — chase risk, a pullback entry is safer")
+                f"above EMA20 — chase risk, a pullback entry is safer.{_zone}")
         elif base == "Buy":
             base = "Watch"; reasons.append(
                 "Downgraded Buy→Watch: price extended above EMA20 (chase risk) — "
-                "wait for a pullback toward support/EMA before acting")
+                f"wait for a pullback before acting.{_zone}")
 
     # ---- soft downgrades (regime, risk, news, confidence)
+    _vetoed = False
     if base in ("Strong Buy", "Buy"):
         if config.REGIME_GATE_ENABLED and regime == "risk-off":
-            base = "Watch"; reasons.append(
+            base = "Watch"; _vetoed = True; reasons.append(
                 f"Downgraded: market regime risk-off ({config.BENCHMARK_INDEX} below "
                 f"its {config.REGIME_EMA_SPAN}-EMA) — don't buy into a falling market")
         elif "poor_rr" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: risk/reward below minimum")
+            base = "Watch"; _vetoed = True; reasons.append("Downgraded: risk/reward below minimum")
         elif "manipulation_risk" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: hype/pump risk — verify first")
+            base = "Watch"; _vetoed = True; reasons.append("Downgraded: hype/pump risk — verify first")
         elif "bad_news" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: material negative news — "
+            base = "Watch"; _vetoed = True; reasons.append("Downgraded: material negative news — "
                                            "verify the headline before acting")
         elif risk["risk_level"] == "High":
-            base = "Watch"; reasons.append("Downgraded: overall risk level High")
+            base = "Watch"; _vetoed = True; reasons.append("Downgraded: overall risk level High")
         elif confidence < 45:
-            base = "Watch"; reasons.append("Downgraded: confidence below 45% "
+            base = "Watch"; _vetoed = True; reasons.append("Downgraded: confidence below 45% "
                                            "(weak data or poor history)")
+
+    # ---- Pullback-entry upgrade (the safer entry), applied LAST so it is the
+    # clean final word: turn a cooled-off Watch/Hold into a Buy when an established
+    # uptrend has retraced into its 20-EMA buy-zone (the dip profit-takers create)
+    # with structure intact. Stateless: once an extended name pulls back into the
+    # zone, `extended` clears and pullback_ready turns True. Skipped when any real
+    # veto fired above (regime/rr/news/manip/risk/confidence) so we never upgrade
+    # into a known problem or print a self-contradicting reason.
+    if (base in ("Watch", "Hold") and not _vetoed
+            and technical.get("pullback_ready") and confluence >= 2
+            and not (config.REGIME_GATE_ENABLED and regime == "risk-off")
+            and "poor_rr" not in risk["vetoes"]
+            and "bad_news" not in risk["vetoes"]
+            and "manipulation_risk" not in risk["vetoes"]
+            and risk["risk_level"] != "High" and confidence >= 45):
+        base = "Buy"
+        reasons.append(f"Pullback entry: retraced into the 20-EMA buy-zone "
+                       f"(PKR {_zlo}–{_zhi}) with the uptrend intact — lower-risk "
+                       "entry than chasing the breakout.")
 
     if base in ("Strong Buy", "Buy"):
         reasons.append("Manual confirmation REQUIRED before placing any order")
@@ -183,4 +209,6 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     current_streak = (prev_streak + 1) if prev_signal == base else 1
     return {"signal": base, "reasons": reasons, "confidence": confidence,
             "confluence": confluence, "confluence_dims": conf_dims,
-            "streak": current_streak}
+            "streak": current_streak,
+            "buy_zone_low": technical.get("buy_zone_low"),
+            "buy_zone_high": technical.get("buy_zone_high")}

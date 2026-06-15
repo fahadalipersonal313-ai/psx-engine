@@ -301,6 +301,25 @@ def analyze(symbol, eod_df, quote, rs_score=None):
         notes.append(f"EXTENDED: {ext_pct}% above EMA20, 20d momentum "
                      f"{momentum_20d:+.1f}% — chase risk, a pullback entry is safer")
 
+    # --- Pullback-entry setup: an established uptrend that has retraced to its
+    # rising 20-EMA with momentum cooled but structure intact — the lower-risk
+    # entry (buy the dip profit-takers create) vs chasing the breakout. buy_zone
+    # is the band around the 20-EMA, floored at support.
+    ema50_last = float(ema50.iloc[-1])
+    buy_zone_high = round(ema20_last * 1.03, 2)
+    buy_zone_low = round(max(support, ema20_last * 0.96), 2)
+    in_buy_zone = bool(buy_zone_low <= price <= buy_zone_high)
+    pullback_ready = bool(
+        in_buy_zone and not breakdown and not extended
+        and price > ema50_last
+        and (ema200 is None or price > float(ema200.iloc[-1]))
+        and (last_rsi is not None and 40 <= last_rsi <= 62)
+        and (bool(obv_trend_up) or float(macd_line.iloc[-1]) > 0))
+    if pullback_ready:
+        notes.append(f"PULLBACK setup: retraced into the 20-EMA buy-zone "
+                     f"({buy_zone_low}–{buy_zone_high}), uptrend intact, RSI cooled "
+                     f"to {last_rsi:.0f} — lower-risk entry than chasing.")
+
     # --- which sub-indicators were bullish at this bar. Stored in the DB so
     # the learning loop can track per-indicator accuracy per symbol over time
     # and feed back into confidence (scoring_engine._indicator_accuracy_boost).
@@ -333,6 +352,8 @@ def analyze(symbol, eod_df, quote, rs_score=None):
         "stop_loss": stop_loss, "target1": target1, "target2": target2,
         "risk_reward": rr, "headroom_rr": headroom_rr, "headroom_pct": headroom_pct,
         "ext_pct": ext_pct, "ext_atr": ext_atr, "extended": extended,
+        "buy_zone_low": buy_zone_low, "buy_zone_high": buy_zone_high,
+        "in_buy_zone": in_buy_zone, "pullback_ready": pullback_ready,
         "relative_strength": rs_score,
         "low_confidence": len(close) < 60,
         "tech_flags": tech_flags,
