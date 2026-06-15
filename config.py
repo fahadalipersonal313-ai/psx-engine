@@ -121,7 +121,13 @@ FUNDAMENTALS = {
 RISK = {
     "max_risk_per_trade_pct": 1.5,     # % of total capital risked per trade
     "max_position_pct": 15.0,          # never put more than this % in one stock
-    "min_risk_reward": 2.0,            # reject setups below 2:1
+    "min_risk_reward": 2.0,            # reject setups below 2:1 (projected-target R:R)
+    "min_headroom_rr": 1.5,            # real room-to-resistance : risk; below -> thin
+                                       # upside (price jammed under a ceiling) -> Watch
+    "max_extension_pct": 11.0,         # price > this % above EMA20 -> extended (chase).
+                                       # %-based, not ATR: the EOD ATR proxy understates
+                                       # true range, which inflated ATR-normalised distance.
+    "max_extension_momentum_pct": 22.0,# 20-day momentum above this% -> parabolic/extended
     "default_stop_atr_mult": 2.0,      # stop loss = entry - 2*ATR (or support)
     "min_avg_daily_volume": 100_000,   # below this -> illiquid warning
     "max_volatility_pct": 6.0,         # daily ATR% above this -> high risk

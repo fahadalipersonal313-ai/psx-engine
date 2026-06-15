@@ -15,7 +15,7 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000):
     warnings, vetoes = [], []
     price = technical.get("price")
     stop = technical.get("stop_loss")
-    rr = technical.get("risk_reward")
+    rr = technical.get("headroom_rr")   # REAL room-to-resistance:risk (not the ≈2.0 proj.)
 
     # ---- hard warnings
     if technical.get("avg_volume") is not None and \
@@ -37,9 +37,10 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000):
         warnings.append(f)
         if "PUMP" in f or "HYPE" in f:
             vetoes.append("manipulation_risk")
-    if rr is not None and rr < config.RISK["min_risk_reward"]:
-        warnings.append(f"Risk/reward {rr} below minimum "
-                        f"{config.RISK['min_risk_reward']} — setup rejected for Buy")
+    if rr is not None and rr < config.RISK["min_headroom_rr"]:
+        warnings.append(f"Thin upside: room-to-resistance:risk {rr} below "
+                        f"{config.RISK['min_headroom_rr']} — price near overhead "
+                        "resistance, little room before the next ceiling")
         vetoes.append("poor_rr")
     if technical.get("volume_spike") and sentiment.get("score", 50) > 80:
         warnings.append("Volume spike + euphoric sentiment — possible "

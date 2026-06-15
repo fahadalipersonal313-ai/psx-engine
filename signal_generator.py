@@ -12,6 +12,13 @@ Tier 2 additions:
                        momentum, volume, structure); Buy needs ≥2. Below → Watch.
   * Conviction streak — Strong Buy is capped at Buy on its FIRST appearance.
                         A second consecutive Strong Buy run confirms it.
+
+Anti-chase additions (don't buy at the peak):
+  * Overextension gate — price too far above EMA20 (or parabolic momentum) steps
+                         the signal down one notch: wait for the pullback.
+  * Thin-headroom (poor_rr) — REAL room-to-resistance:risk below the minimum
+                         (price jammed under a ceiling) → Watch. (Via risk_manager,
+                         which now reads technical.headroom_rr, not the ≈2.0 proj R:R.)
 """
 
 import logging
@@ -135,6 +142,21 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append(f"Downgraded Buy→Watch: confluence {confluence}/4 — "
                        "requires at least 2 dimensions (trend/momentum/volume/"
                        "structure) to agree before acting")
+
+    # ---- Overextension (chase) guard: don't buy a stretched, parabolic move at
+    # the peak — that's where profit-takers hand you the bag. Far above EMA20 or
+    # very high 20-day momentum steps the signal down one notch and tells the user
+    # to wait for the pullback the profit-taking creates. (The "thin room to
+    # resistance" case is handled by the poor_rr veto in the soft downgrades.)
+    if technical.get("extended"):
+        if base == "Strong Buy":
+            base = "Buy"; reasons.append(
+                f"Downgraded Strong Buy→Buy: extended {technical.get('ext_pct')}% "
+                "above EMA20 — chase risk, a pullback entry is safer")
+        elif base == "Buy":
+            base = "Watch"; reasons.append(
+                "Downgraded Buy→Watch: price extended above EMA20 (chase risk) — "
+                "wait for a pullback toward support/EMA before acting")
 
     # ---- soft downgrades (regime, risk, news, confidence)
     if base in ("Strong Buy", "Buy"):
