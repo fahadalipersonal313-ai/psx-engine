@@ -258,6 +258,9 @@ REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
 # with source URLs. The engine reads it via news_feed.py; if the file is missing
 # or older than NEWS_SIGNALS_MAX_AGE_HOURS, it falls back to RSS/VADER scoring.
 NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
+# Your real holdings + ready cash (read by portfolio_advisor for the dashboard's
+# Portfolio tab). Edit portfolio.json or the dashboard table to keep it current.
+PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
 NEWS_SIGNALS_MAX_AGE_HOURS = 36          # weekend gap tolerated; Mon refresh
 # Only these sources count as authentic for the news routine (no social/rumor).
 # Narrowed to 3 desks (2026-06-14) to keep the routine token-frugal — the first

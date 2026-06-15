@@ -27,7 +27,9 @@ CREATE TABLE IF NOT EXISTS runs (
     outcome TEXT,             -- 'worked' / 'failed' / NULL (pending)
     tech_flags TEXT,          -- JSON: which sub-indicators were bullish (learning loop)
     conviction_streak INTEGER, -- consecutive runs at the same signal
-    confluence INTEGER        -- 0-4: how many independent signal dimensions agree
+    confluence INTEGER,       -- 0-4: how many independent signal dimensions agree
+    buy_zone_low REAL,        -- pullback buy-zone (band around the 20-EMA)
+    buy_zone_high REAL
 );
 CREATE INDEX IF NOT EXISTS idx_runs_symbol_time ON runs(symbol, run_time);
 
@@ -81,7 +83,8 @@ def init_db():
         existing = {r[1] for r in c.execute("PRAGMA table_info(runs)")}
         for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT"),
                           ("tech_flags", "TEXT"), ("conviction_streak", "INTEGER"),
-                          ("confluence", "INTEGER")):
+                          ("confluence", "INTEGER"),
+                          ("buy_zone_low", "REAL"), ("buy_zone_high", "REAL")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)

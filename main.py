@@ -93,6 +93,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
         "tech_flags": json.dumps(tech_flags) if tech_flags else None,
         "conviction_streak": signal.get("streak", 1),
         "confluence": signal.get("confluence", 0),
+        "buy_zone_low": signal.get("buy_zone_low"),
+        "buy_zone_high": signal.get("buy_zone_high"),
     })
 
     if quote.get("warning"):

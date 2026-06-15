@@ -14,6 +14,7 @@ news, and reports.
 """
 
 import os
+import json
 
 import pandas as pd
 import streamlit as st
@@ -23,6 +24,7 @@ import config
 import database as db
 import data_fetcher
 import portfolio_risk
+import portfolio_advisor
 import backtester
 
 st.set_page_config(page_title="PSX Shariah Engine", layout="wide",
@@ -166,19 +168,6 @@ def neon_fig(fig, height=None):
     return fig
 
 
-def position_size(price, stop, capital):
-    """Replicates risk_manager sizing: cap loss at max_risk_per_trade_pct of
-    capital, and the position at max_position_pct."""
-    if not price or not stop or price <= stop or capital <= 0:
-        return None
-    rps = price - stop
-    max_loss = capital * config.RISK["max_risk_per_trade_pct"] / 100
-    shares = int(max_loss / rps)
-    cap_shares = int(capital * config.RISK["max_position_pct"] / 100 / price)
-    shares = max(0, min(shares, cap_shares))
-    return {"shares": shares, "value": shares * price, "max_loss": shares * rps}
-
-
 def why_not_buy(reason):
     """Pull the most relevant 'why it isn't a Buy' clause out of main_reason."""
     if not reason:
@@ -253,9 +242,13 @@ if not rows:
 
 latest = pd.DataFrame(rows).sort_values("final_score", ascending=False,
                                         na_position="last")
-for col in ("relative_strength", "market_regime"):
+for col in ("relative_strength", "market_regime", "buy_zone_low", "buy_zone_high"):
     if col not in latest.columns:
         latest[col] = None
+
+# Your saved book (holdings + ready cash) — drives the Portfolio tab + sizing.
+_portfolio = portfolio_advisor.load_portfolio()
+latest_by_symbol = {r["symbol"]: r for r in rows}
 
 regime = (latest["market_regime"].dropna().iloc[0]
           if latest["market_regime"].notna().any() else "unknown")
@@ -269,8 +262,9 @@ good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
 st.sidebar.header("⚙ Settings")
-capital = st.sidebar.number_input("Your capital (PKR)", min_value=0,
-                                  value=1_000_000, step=50_000, format="%d")
+capital = st.sidebar.number_input(
+    "Ready cash to deploy (PKR)", min_value=0,
+    value=int(_portfolio.get("cash_pkr") or 200_000), step=25_000, format="%d")
 st.sidebar.caption(
     f"Per-trade risk {config.RISK['max_risk_per_trade_pct']}% · max "
     f"{config.RISK['max_position_pct']}% per stock.")
@@ -278,8 +272,8 @@ st.sidebar.caption(
     f"Book caps: heat {config.PORTFOLIO_RISK['max_portfolio_heat_pct']:.0f}% · "
     f"sector {config.PORTFOLIO_RISK['max_sector_exposure_pct']:.0f}% · "
     f"{config.PORTFOLIO_RISK['max_open_positions']} positions.")
-st.sidebar.caption("Tip: set this to what you'd actually deploy — the Buy cards "
-                   "and Portfolio tab size to it.")
+st.sidebar.caption("Defaults to the cash in portfolio.json. The **Portfolio** tab "
+                   "builds a strategy from your actual holdings + this cash.")
 
 # ----------------------------- portfolio risk (computed once) -------------
 buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
@@ -340,8 +334,8 @@ if action.empty:
     st.info(f"No Buy or Exit signals right now — nothing to act on. "
             f"(Market regime: {regime}.)")
 else:
-    st.caption("Manual confirmation required before any order. Position sizes "
-               f"use your capital (PKR {capital:,}).")
+    st.caption("Manual confirmation required before any order. See the "
+               "**🛡 Portfolio** tab for sizing against your actual holdings + cash.")
     cards = list(action.iterrows())
     for i in range(0, len(cards), 2):
         cols = st.columns(2)
@@ -360,12 +354,15 @@ else:
                 a.metric("Entry", fmt(r["price"]))
                 b.metric("Stop", fmt(r["stop_loss"]))
                 c.metric("Target", fmt(r["target1"]))
-                ps = position_size(r["price"], r["stop_loss"], capital)
-                if ps and ps["shares"] > 0:
+                bzl, bzh = r.get("buy_zone_low"), r.get("buy_zone_high")
+                if pd.notna(bzl) and pd.notna(bzh):
                     box.markdown(
-                        f'🧮 Buy **{ps["shares"]:,} shares** · ≈PKR '
-                        f'{ps["value"]:,.0f} · max loss if stopped **PKR '
-                        f'{ps["max_loss"]:,.0f}**')
+                        f'<span style="background:rgba(0,255,163,0.14);'
+                        f'color:{NEON["green"]};padding:2px 8px;border-radius:6px;'
+                        f'font-size:13px;font-weight:700">🎯 Buy-zone '
+                        f'{bzl:.2f}–{bzh:.2f}</span> '
+                        f'<span style="opacity:.6;font-size:12px">pullback to '
+                        f'20-EMA</span>', unsafe_allow_html=True)
                 rs = r.get("relative_strength")
                 rs_txt = f"RS {rs:.0f}" if pd.notna(rs) else "RS —"
                 streak = r.get("conviction_streak") or 1
@@ -433,9 +430,13 @@ with tab_watch:
     st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
     show = latest[["symbol", "final_score", "relative_strength", "signal",
                    "risk_level", "confidence", "price", "stop_loss", "target1",
+                   "buy_zone_low", "buy_zone_high",
                    "data_quality", "shariah_status"]].copy()
+    show["buy_zone"] = [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
+                        for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
+    show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
     show.columns = ["Symbol", "Score", "RS", "Signal", "Risk", "Conf%",
-                    "Price", "Stop", "Target", "Data", "Shariah"]
+                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone"]
 
     def _sig_css(v):
         c = NEON_SIG.get(v)
@@ -460,7 +461,103 @@ with tab_watch:
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
 with tab_port:
-    st.subheader("🛡 Portfolio book risk")
+    st.subheader("💼 My portfolio — profit/loss & strategy")
+    st.caption("Enter your holdings (symbol, shares, average buy price). Ready cash "
+               f"comes from the sidebar (**PKR {capital:,}**). Your book + the "
+               "engine's latest signals → a per-position action and a cash plan.")
+
+    _seed = (pd.DataFrame(_portfolio["holdings"]) if _portfolio["holdings"]
+             else pd.DataFrame([{"symbol": "", "qty": 0, "avg_cost": 0.0}]))
+    _seed = _seed.reindex(columns=["symbol", "qty", "avg_cost"])
+    edited = st.data_editor(
+        _seed, num_rows="dynamic", hide_index=True, width="stretch", key="pf_editor",
+        column_config={
+            "symbol": st.column_config.TextColumn("Symbol", help="PSX ticker e.g. LUCK"),
+            "qty": st.column_config.NumberColumn("Shares", min_value=0, step=1),
+            "avg_cost": st.column_config.NumberColumn("Avg cost (PKR)",
+                                                      min_value=0.0, format="%.2f")})
+    _holds = []
+    for _rec in edited.to_dict("records"):
+        _sym = str(_rec.get("symbol") or "").strip().upper()
+        try:
+            _qty, _avg = float(_rec.get("qty") or 0), float(_rec.get("avg_cost") or 0)
+        except (TypeError, ValueError):
+            continue
+        if _sym and _qty > 0:
+            _holds.append({"symbol": _sym, "qty": _qty, "avg_cost": _avg})
+
+    adv = portfolio_advisor.advise({"cash_pkr": capital, "holdings": _holds},
+                                   latest_by_symbol)
+    tot = adv["totals"]
+    _plc = NEON["green"] if tot["pl"] >= 0 else NEON["red"]
+    p1, p2, p3, p4 = st.columns(4)
+    tile(p1, "Equity (holdings+cash)", f'PKR {tot["equity"]:,.0f}',
+         f'{tot["deployed_pct"]:.0f}% deployed')
+    tile(p2, "Holdings value", f'PKR {tot["market_value"]:,.0f}',
+         f'cost PKR {tot["invested_cost"]:,.0f}')
+    tile(p3, "Unrealised P/L",
+         f'<span style="color:{_plc}">PKR {tot["pl"]:,.0f}</span>',
+         (f'{tot["pl_pct"]:+.1f}%' if tot["pl_pct"] is not None else "—"))
+    tile(p4, "Ready cash", f'PKR {tot["cash"]:,.0f}',
+         f'PKR {tot["cash_after_plan"]:,.0f} left after plan')
+
+    def _act_css(v):
+        c = (NEON["green"] if v in ("AVERAGE DOWN", "ADD", "NEW POSITION")
+             else NEON["red"] if ("EXIT" in str(v) or "TRIM" in str(v))
+             else NEON["dim"])
+        return f"color:{c};font-weight:700"
+
+    def _sig_css_p(v):
+        c = NEON_SIG.get(v)
+        return f"color:{c};font-weight:700" if c else ""
+
+    def _pl_css(v):
+        if v is None or (isinstance(v, float) and pd.isna(v)):
+            return ""
+        return f"color:{NEON['green'] if v >= 0 else NEON['red']};font-weight:700"
+
+    if adv["holdings"]:
+        st.markdown("##### Your positions")
+        hd = pd.DataFrame([{
+            "Symbol": h["symbol"], "Shares": h["qty"], "Avg": h["avg_cost"],
+            "Price": h["price"], "Value": h["value"], "P/L PKR": h["pl"],
+            "P/L %": h["pl_pct"], "Signal": h["signal"], "Action": h["action"],
+            "Why": h["detail"]} for h in adv["holdings"]])
+        st.dataframe(
+            hd.style.map(_act_css, subset=["Action"])
+            .map(_sig_css_p, subset=["Signal"])
+            .map(_pl_css, subset=["P/L PKR", "P/L %"])
+            .format({"Avg": "{:.2f}", "Price": "{:.2f}", "Value": "{:,.0f}",
+                     "P/L PKR": "{:,.0f}", "P/L %": "{:+.1f}"}, na_rep="—"),
+            width="stretch", hide_index=True)
+    else:
+        st.info("Add your holdings above to see profit/loss and a per-position strategy.")
+
+    st.markdown("##### 💵 How to deploy your ready cash")
+    if adv["deploy"]:
+        st.caption("Best-conviction first; cash allocated in order, respecting the "
+                   f"{config.RISK['max_position_pct']:.0f}% per-stock cap and "
+                   f"{config.RISK['max_risk_per_trade_pct']}% per-trade risk. "
+                   "AVERAGE DOWN/ADD = your existing stocks; NEW POSITION = fresh.")
+        dd = pd.DataFrame([{
+            "Action": d["kind"], "Symbol": d["symbol"], "Signal": d["signal"],
+            "Shares": d["shares"], "≈PKR": d["value"], "Price": d["price"],
+            "Score": d["score"]} for d in adv["deploy"]])
+        st.dataframe(dd.style.map(_act_css, subset=["Action"])
+                     .map(_sig_css_p, subset=["Signal"])
+                     .format({"≈PKR": "{:,.0f}", "Price": "{:.2f}", "Score": "{:.1f}"}),
+                     width="stretch", hide_index=True)
+    else:
+        st.caption("No Buy/Strong-Buy ideas to deploy into right now (or no spare cash).")
+
+    with st.expander("💾 Save these holdings (persist to portfolio.json)"):
+        st.caption("Streamlit Cloud can't write to the repo. Copy this into "
+                   "`portfolio.json` and commit it (or send it to Claude) to persist.")
+        st.code(json.dumps({"cash_pkr": capital, "holdings": _holds}, indent=2),
+                language="json")
+
+    st.divider()
+    st.subheader("🛡 Book-level risk of current Buy signals")
     st.caption("Per-trade sizing caps one loss; this caps CORRELATED loss across "
                "the whole book. Buys are admitted best-score-first until a cap "
                "binds (total heat, sector exposure, or position count).")
