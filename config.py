@@ -262,6 +262,11 @@ NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
 # Portfolio tab). Edit portfolio.json or the dashboard table to keep it current.
 PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
 NEWS_SIGNALS_MAX_AGE_HOURS = 36          # weekend gap tolerated; Mon refresh
+# Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
+# stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with
+# VADER. Set True only to restore the old VADER fallback. False means news moves
+# a signal ONLY when there is real, sourced news.
+NEWS_FALLBACK_VADER = False
 # Only these sources count as authentic for the news routine (no social/rumor).
 # Narrowed to 3 desks (2026-06-14) to keep the routine token-frugal — the first
 # full run naturally used only Mettis + BR anyway.

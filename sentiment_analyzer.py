@@ -91,7 +91,15 @@ def analyze(symbol, news_items):
                 "low_confidence": conf == "low",
                 "sources": "Authentic news feed (" +
                            ", ".join((av.get("sources") or [])[:3]) + ")"}
-    return _analyze_vader(symbol, news_items)
+    if config.NEWS_FALLBACK_VADER:
+        return _analyze_vader(symbol, news_items)
+    # Authentic-or-neutral: no fresh authentic verdict -> neutral, not RSS noise.
+    return {"symbol": symbol, "score": 50.0, "bullish": 0, "bearish": 0,
+            "neutral": 0, "mentions": 0, "trend_vs_prev": None, "flags": [],
+            "verdict": "No authentic news", "low_confidence": True,
+            "notes": ["No fresh authentic news verdict — news treated as neutral "
+                      "(VADER keyword scoring disabled)."],
+            "sources": "Authentic news feed (none this run)"}
 
 
 def _analyze_vader(symbol, news_items):

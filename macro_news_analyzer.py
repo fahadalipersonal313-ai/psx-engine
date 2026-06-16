@@ -119,41 +119,53 @@ def analyze(symbol, news_items):
     # The anchors (rates/CPI/reserves) set the structural backdrop; macro news
     # nudges it for live developments. When anchors are set they lead (0.6),
     # news adjusts (0.4); with no anchors we fall back to news-only as before.
+    # Themes in play (for the written explanation). VADER-scored only when the
+    # legacy fallback is enabled; otherwise we don't keyword-score noisy RSS.
     macro_hits, macro_pol = [], []
     for t in all_titles:
         low = t.lower()
         for theme, kws in MACRO_KEYWORDS.items():
             if any(k in low for k in kws):
                 macro_hits.append((theme, t))
-                macro_pol.append(_polarity(t))
+                if config.NEWS_FALLBACK_VADER:
+                    macro_pol.append(_polarity(t))
                 break
-    news_macro = 50 + (sum(macro_pol) / len(macro_pol)) * 40 if macro_pol else 50
     anchor_macro, anchor_note, _ = _anchor_score()
-    if anchor_macro is not None:
+    news_macro = 50 + (sum(macro_pol) / len(macro_pol)) * 40 if macro_pol else 50
+    if anchor_macro is not None and config.NEWS_FALLBACK_VADER:
         macro_score = round(0.6 * anchor_macro + 0.4 * news_macro, 1)
         notes.append(anchor_note + f" → backdrop {anchor_macro}/100.")
-    else:
+    elif anchor_macro is not None:
+        macro_score = float(anchor_macro)          # anchors only — no RSS/VADER
+        notes.append(anchor_note + f" → backdrop {anchor_macro}/100.")
+    elif config.NEWS_FALLBACK_VADER:
         macro_score = news_macro
+    else:
+        macro_score = 50.0
     components["macro_environment"] = round(macro_score, 1)
-    if not macro_pol and anchor_macro is None:
-        notes.append("No macro headlines captured this run — macro component "
-                     "neutral with low confidence.")
 
-    # ---- 2) Sector score from sector-driver headlines
-    drivers = SECTOR_DRIVERS.get(sector, [])
-    sector_pol = [_polarity(t) for t in all_titles
-                  if any(d in t.lower() for d in drivers)]
-    sector_score = 50 + (sum(sector_pol) / len(sector_pol)) * 40 if sector_pol else 50
+    # ---- 2) Sector score — neutral unless the legacy VADER fallback is on.
+    if config.NEWS_FALLBACK_VADER:
+        drivers = SECTOR_DRIVERS.get(sector, [])
+        sector_pol = [_polarity(t) for t in all_titles
+                      if any(d in t.lower() for d in drivers)]
+        sector_score = 50 + (sum(sector_pol) / len(sector_pol)) * 40 if sector_pol else 50
+    else:
+        sector_score = 50.0
     components["sector"] = round(sector_score, 1)
 
-    # ---- 3) Company news score
+    # ---- 3) Company news — authentic verdict if present, else NEUTRAL (no VADER).
     comp_titles = [n["title"] for n in db.recent_news(96, symbol)]
-    comp_pol = [_polarity(t) for t in comp_titles]
-    comp_score = 50 + (sum(comp_pol) / len(comp_pol)) * 45 if comp_pol else 50
+    av = news_feed.get(symbol)
+    if av and av.get("score") is not None:
+        comp_score = float(av["score"])
+    elif config.NEWS_FALLBACK_VADER:
+        comp_pol = [_polarity(t) for t in comp_titles]
+        comp_score = 50 + (sum(comp_pol) / len(comp_pol)) * 45 if comp_pol else 50
+    else:
+        comp_score = 50.0
+        notes.append(f"No authentic news for {symbol} — company news neutral.")
     components["company_news"] = round(comp_score, 1)
-    if not comp_titles:
-        notes.append(f"No company-specific headlines for {symbol} in the last "
-                     "96h — company component neutral.")
 
     # ---- 4) Fundamentals placeholder honesty
     notes.append("Audited fundamentals (revenue/profit growth, margins, debt, "
@@ -170,19 +182,21 @@ def analyze(symbol, news_items):
     # distress words like default/crash/loss) OR at least two negatives that
     # clearly outweigh the positive flow. A lone mildly-negative headline amid
     # neutral/positive coverage no longer hides a strong technical setup.
-    # Prefer the authentic news feed's materiality call when available (an LLM
-    # read the article); fall back to VADER keyword polarity otherwise.
-    av = news_feed.get(symbol)
+    # Veto fires on the authentic feed's materiality call (an LLM read the
+    # article). With VADER disabled, a missing verdict means NO veto — we never
+    # block a setup on keyword noise. (`av` is fetched above for company news.)
     if av and av.get("materiality") in ("material_negative", "material_positive", "normal"):
         material_bad = av.get("materiality") == "material_negative"
         bad_news = ([av.get("summary")] if material_bad and av.get("summary")
                     else (av.get("headlines") or [])[:2] if material_bad else [])
-    else:
+    elif config.NEWS_FALLBACK_VADER:
         neg = [t for t in comp_titles if _polarity(t) < -0.4]
         strong_neg = [t for t in comp_titles if _polarity(t) < -0.6]
         pos = [t for t in comp_titles if _polarity(t) > 0.4]
         material_bad = bool(strong_neg) or (len(neg) >= 2 and len(neg) > len(pos))
         bad_news = strong_neg or neg
+    else:
+        material_bad, bad_news = False, []
     explanation = _explain(symbol, sector, components, macro_hits[:5],
                            comp_titles[:5], bad_news if material_bad else [])
 
