@@ -2,13 +2,14 @@
 
 Produces `news_signals.json` — the authentic, LLM-judged news layer the PSX
 engine reads (via `news_feed.py`) for the `sentiment` (news) component and the
-bad-news veto. Runs every morning as a Claude routine, and can be run manually
-("run the news routine").
+bad-news veto. Runs nightly (~midnight) as a local Claude routine, and can be run
+manually ("run the news routine").
 
 ## Goal
 For each of the 30 stocks in `config.STOCKS`, find genuine news from the last
 ~24–48h, judge its direction and materiality, and write a verdict **with source
-URLs**. Authenticity over coverage — a missing stock safely falls back to VADER.
+URLs**. Authenticity over coverage — a missing stock is safely treated as
+NEUTRAL by the engine (VADER keyword scoring is disabled).
 
 ## Authentic sources ONLY — exactly THREE (`config.NEWS_SOURCE_ALLOWLIST`)
 - `mettisglobal.news` (Mettis Global)
@@ -30,9 +31,9 @@ fundamentals cannot capture:
   circular-debt or subsidy decisions affecting the company
 - index changes (e.g. KMI/MII30/JSMFI inclusion or removal)
 - management/governance shocks, litigation, default/restructuring, plant outages
-If a stock's only news is "profit up X%, dividend Rs Y" → OMIT it (falls back to
-VADER). If an article mixes an event WITH results, keep ONLY the event in the
-summary and drop the financial figures.
+If a stock's only news is "profit up X%, dividend Rs Y" → OMIT it (engine treats
+it as neutral). If an article mixes an event WITH results, keep ONLY the event in
+the summary and drop the financial figures.
 
 ## Steps
 1. Read `config.STOCKS` for the current universe (30 symbols).
@@ -41,7 +42,7 @@ summary and drop the financial figures.
    "results"/"dividend" to the query). Token-frugal: rely on the search snippet;
    only `WebFetch` an article when an EVENT looks real but the snippet is too
    thin to judge. If the search shows nothing but routine results/dividends,
-   SKIP the stock immediately (no fetch) — it falls back to VADER.
+   SKIP the stock immediately (no fetch) — the engine treats it as neutral.
 3. Judge each stock:
    - `score` 0–100 (50 = neutral; weigh results/dividends/discoveries/ratings
      vs. losses/defaults/regulatory hits). Keep it sober — a normal dividend is
@@ -56,7 +57,7 @@ summary and drop the financial figures.
    - `summary`: one plain-English line.
    - `headlines`: 1–3 real headlines. `sources`: their URLs (allowlist only).
 4. Only include a symbol when there is real, sourced news. Omit the rest —
-   `news_feed.py` falls them back to VADER. Do not invent neutral filler.
+   `news_feed.py` treats them as neutral. Do not invent neutral filler.
 5. Write `news_signals.json` (schema below), set `as_of` to now (PKT, ISO-8601
    with timezone). Validate it parses.
 6. Commit + push:
