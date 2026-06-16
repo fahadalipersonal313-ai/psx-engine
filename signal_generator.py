@@ -23,6 +23,9 @@ Anti-chase additions (don't buy at the peak):
                        20-EMA band); when price later retraces INTO that zone with
                        the uptrend intact, a cooled Watch/Hold is upgraded to Buy
                        (buy the dip, don't chase the peak). Stateless across runs.
+  * Earnings blackout — within EARNINGS_BLACKOUT_DAYS of a KNOWN result date, a
+                       fresh Buy/Strong Buy is held at Watch (binary event risk).
+                       Only acts when a date is known; never invents a blackout.
 """
 
 import logging
@@ -70,7 +73,7 @@ def _confluence(technical):
 
 
 def generate(symbol, final_score, confidence, risk, shariah, technical,
-             regime=None, prev_signal=None, prev_streak=0):
+             regime=None, prev_signal=None, prev_streak=0, days_to_earnings=None):
     """Generate a trading signal.
 
     prev_signal / prev_streak: the most recent stored signal and how many
@@ -164,10 +167,16 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
                 "Downgraded Buy→Watch: price extended above EMA20 (chase risk) — "
                 f"wait for a pullback before acting.{_zone}")
 
-    # ---- soft downgrades (regime, risk, news, confidence)
+    # ---- soft downgrades (earnings, regime, risk, news, confidence)
+    _earnings_soon = (days_to_earnings is not None
+                      and 0 <= days_to_earnings <= config.EARNINGS_BLACKOUT_DAYS)
     _vetoed = False
     if base in ("Strong Buy", "Buy"):
-        if config.REGIME_GATE_ENABLED and regime == "risk-off":
+        if _earnings_soon:
+            base = "Watch"; _vetoed = True; reasons.append(
+                f"Downgraded: earnings/result due in ~{days_to_earnings}d — binary "
+                "event risk, don't open a fresh position into the announcement")
+        elif config.REGIME_GATE_ENABLED and regime == "risk-off":
             base = "Watch"; _vetoed = True; reasons.append(
                 f"Downgraded: market regime risk-off ({config.BENCHMARK_INDEX} below "
                 f"its {config.REGIME_EMA_SPAN}-EMA) — don't buy into a falling market")
@@ -191,7 +200,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # zone, `extended` clears and pullback_ready turns True. Skipped when any real
     # veto fired above (regime/rr/news/manip/risk/confidence) so we never upgrade
     # into a known problem or print a self-contradicting reason.
-    if (base in ("Watch", "Hold") and not _vetoed
+    if (base in ("Watch", "Hold") and not _vetoed and not _earnings_soon
             and technical.get("pullback_ready") and confluence >= 2
             and not (config.REGIME_GATE_ENABLED and regime == "risk-off")
             and "poor_rr" not in risk["vetoes"]

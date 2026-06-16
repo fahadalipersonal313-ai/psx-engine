@@ -56,6 +56,10 @@ the summary and drop the financial figures.
      or indirect). Use `low` rather than guessing.
    - `summary`: one plain-English line.
    - `headlines`: 1–3 real headlines. `sources`: their URLs (allowlist only).
+   - OPTIONAL `earnings_date`: if a source reports an upcoming board-meeting /
+     result-announcement date for the stock, add `"earnings_date": "YYYY-MM-DD"`.
+     The engine then holds fresh Buys at Watch within ~5 days of it (event risk).
+     Omit if unknown — never guess a date.
 4. Only include a symbol when there is real, sourced news. Omit the rest —
    `news_feed.py` treats them as neutral. Do not invent neutral filler.
 5. Write `news_signals.json` (schema below), set `as_of` to now (PKT, ISO-8601

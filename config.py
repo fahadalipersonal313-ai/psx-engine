@@ -238,6 +238,14 @@ MACRO_ANCHORS = {
 }
 MACRO_STALE_DAYS = 45
 
+# Earnings-date awareness: within this many days BEFORE a known result/board-
+# meeting date, a fresh Buy/Strong Buy is held at Watch (binary event risk). Only
+# acts when a date is KNOWN — from EARNINGS_DATES below, or an optional
+# "earnings_date" field the news routine adds to news_signals.json. Unknown =
+# no effect (never fabricates a blackout).
+EARNINGS_BLACKOUT_DAYS = 5
+EARNINGS_DATES = {}          # manual override, e.g. {"LUCK": "2026-07-28"}
+
 # ---------------------------------------------------------------------------
 # 7. SCHEDULING
 # ---------------------------------------------------------------------------

@@ -39,6 +39,7 @@ import signal_generator
 import portfolio_risk
 import reports
 import backtester
+import news_feed
 
 logging.basicConfig(
     level=logging.INFO,
@@ -46,6 +47,21 @@ logging.basicConfig(
     handlers=[logging.FileHandler(config.LOG_PATH, encoding="utf-8"),
               logging.StreamHandler()])
 log = logging.getLogger("main")
+
+
+def _days_to_earnings(symbol):
+    """Days until a KNOWN earnings/result date (config override, else the news
+    feed's optional earnings_date). None when unknown — no blackout is invented."""
+    ed = (getattr(config, "EARNINGS_DATES", {}) or {}).get(symbol)
+    if not ed:
+        av = news_feed.get(symbol)
+        ed = av.get("earnings_date") if av else None
+    if not ed:
+        return None
+    try:
+        return (datetime.fromisoformat(str(ed)).date() - datetime.now().date()).days
+    except Exception:
+        return None
 
 
 def analyze_stock(symbol, news_items, index_eod=None, regime=None):
@@ -71,7 +87,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
                                        shariah, technical,
                                        regime=(regime or {}).get("regime"),
                                        prev_signal=prev_sig,
-                                       prev_streak=prev_streak)
+                                       prev_streak=prev_streak,
+                                       days_to_earnings=_days_to_earnings(symbol))
 
     db.save_run({
         "run_time": datetime.now().isoformat(), "symbol": symbol,
