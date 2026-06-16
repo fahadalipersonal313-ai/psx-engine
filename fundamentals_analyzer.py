@@ -12,10 +12,13 @@ de (debt/equity ratio), div_yield (%).
 
 import json
 import os
+from collections import defaultdict
 
 import config
 
 log_neutral = 50.0
+_METRICS = ("pe", "eps_growth", "roe", "de", "div_yield")
+_MIN_PEERS = 3            # sector-relative needs at least this many peers w/ a metric
 
 # Auto-fetched ratios cache (written by fundamentals_fetcher.py). Manual entries
 # in config.FUNDAMENTALS override anything here.
@@ -31,6 +34,41 @@ def _load_cache():
 
 
 _CACHE = _load_cache()
+
+
+_SECTOR_VALUES = None
+
+
+def _sector_peer_values():
+    """{sector: {metric: [peer values]}} from the merged cache+config, memoized.
+    Lets each ratio be scored relative to its sector, not just absolute bands."""
+    global _SECTOR_VALUES
+    if _SECTOR_VALUES is not None:
+        return _SECTOR_VALUES
+    cache = _CACHE.get("data", {})
+    cfg = getattr(config, "FUNDAMENTALS", {}) or {}
+    sv = defaultdict(lambda: defaultdict(list))
+    for sym in set(cache) | set(cfg):
+        d = dict(cache.get(sym, {})); d.update(cfg.get(sym, {}))
+        sec = config.SECTORS.get(sym, "?")
+        for m in _METRICS:
+            v = d.get(m)
+            if v is not None:
+                sv[sec][m].append(float(v))
+    _SECTOR_VALUES = {s: dict(mv) for s, mv in sv.items()}
+    return _SECTOR_VALUES
+
+
+def _rel_pct(values, x, lower_is_better):
+    """Score x's standing among its sector peers, 20-100 (best=100). None if too
+    few peers. Percentile-rank based, so it's robust to outliers/small n."""
+    n = len(values)
+    if n < _MIN_PEERS:
+        return None
+    beats = (sum(1 for v in values if v > x) if lower_is_better
+             else sum(1 for v in values if v < x))      # peers x is better than
+    frac = beats / (n - 1) if n > 1 else 0.5            # exclude self
+    return 20 + max(0.0, min(1.0, frac)) * 80
 
 
 def _lin(x, lo, hi, lo_score, hi_score):
@@ -57,22 +95,30 @@ def analyze(symbol):
                           "`python fundamentals_fetcher.py` or add "
                           f"config.FUNDAMENTALS['{symbol}']."]}
 
+    # Each ratio: absolute band score, blended 50/50 with a sector-relative
+    # percentile when the sector has >= _MIN_PEERS peers for that ratio. So
+    # "cheap P/E" is judged vs sector norms, not one universal band.
+    sv = _sector_peer_values().get(config.SECTORS.get(symbol, "?"), {})
     parts, have, notes = [], [], []
-    pe = data.get("pe")
-    if pe is not None and pe > 0:                 # lower P/E better
-        parts.append(_lin(pe, 5, 25, 100, 20)); have.append(f"P/E {pe}")
-    g = data.get("eps_growth")
-    if g is not None:                             # higher EPS growth better
-        parts.append(_lin(g, -10, 25, 10, 100)); have.append(f"EPSg {g}%")
-    roe = data.get("roe")
-    if roe is not None:                           # higher ROE better
-        parts.append(_lin(roe, 5, 25, 20, 100)); have.append(f"ROE {roe}%")
-    de = data.get("de")
-    if de is not None:                            # lower debt/equity better
-        parts.append(_lin(de, 0.3, 2.0, 100, 20)); have.append(f"D/E {de}")
-    dy = data.get("div_yield")
-    if dy is not None:                            # higher yield better
-        parts.append(_lin(dy, 0, 8, 40, 100)); have.append(f"DY {dy}%")
+    rel_used = [False]
+
+    def metric(key, lo, hi, lo_s, hi_s, lower_better, label, suffix=""):
+        x = data.get(key)
+        if x is None or (key == "pe" and x <= 0):
+            return
+        a = _lin(x, lo, hi, lo_s, hi_s)
+        r = _rel_pct(sv.get(key, []), x, lower_better)
+        if r is not None:
+            parts.append(round(0.5 * a + 0.5 * r, 1)); rel_used[0] = True
+        else:
+            parts.append(a)
+        have.append(f"{label} {x}{suffix}")
+
+    metric("pe", 5, 25, 100, 20, True, "P/E")
+    metric("eps_growth", -10, 25, 10, 100, False, "EPSg", "%")
+    metric("roe", 5, 25, 20, 100, False, "ROE", "%")
+    metric("de", 0.3, 2.0, 100, 20, True, "D/E")
+    metric("div_yield", 0, 8, 40, 100, False, "DY", "%")
 
     parts = [p for p in parts if p is not None]
     if not parts:
@@ -84,6 +130,7 @@ def analyze(symbol):
     score = round(sum(parts) / len(parts), 1)
     thin = len(parts) < 2                         # 1 ratio = thin, low confidence
     notes.append(f"Fundamentals ({as_of}): " + ", ".join(have)
+                 + (" [sector-relative blend]" if rel_used[0] else "")
                  + ". Verify against the latest quarterly before acting.")
     return {"symbol": symbol, "score": score, "low_confidence": thin,
             "as_of": as_of, "have": have, "notes": notes}
