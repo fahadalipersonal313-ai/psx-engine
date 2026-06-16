@@ -104,6 +104,10 @@ REGIME_GATE_ENABLED = True     # in a risk-off market, soften Buy/Strong Buy -> 
 RS_LOOKBACKS = {"1m": 21, "3m": 63, "6m": 126}
 RS_WEIGHTS = {"1m": 0.25, "3m": 0.40, "6m": 0.35}
 RS_POINTS = 15                 # relative strength's contribution to the technical score
+# True ATR/ADX activate once this many REAL daily OHLC bars (banked from intraday
+# H/L) exist for a symbol; below this the engine uses the close-based proxies.
+# Banking started ~2026-06-12, so true values switch on automatically in early July.
+MIN_OHLC_BARS_FOR_TRUE = 16
 
 # Fundamentals table (manually maintained — the engine NEVER invents these).
 # Fill per symbol from the latest audited quarterly/annual report. Any symbol

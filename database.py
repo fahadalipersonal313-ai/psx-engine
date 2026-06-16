@@ -124,6 +124,18 @@ def daily_ohlc_count(symbol=None):
         return c.execute(q, args).fetchone()["n"]
 
 
+def get_daily_ohlc(symbol, limit=90):
+    """Real banked daily OHLC bars for a symbol, oldest-first (list of dicts:
+    date, open, high, low, close, volume). Used for true ATR/ADX once enough
+    bars accumulate; empty/short -> caller falls back to the EOD-close proxies."""
+    with conn() as c:
+        rows = c.execute(
+            """SELECT date, open, high, low, close, volume FROM daily_ohlc
+               WHERE symbol=? ORDER BY date DESC LIMIT ?""",
+            (symbol, limit)).fetchall()
+    return [dict(r) for r in reversed(rows)]
+
+
 def save_news(items):
     with conn() as c:
         for it in items:

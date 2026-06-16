@@ -56,7 +56,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
 
     rs = market_regime.relative_strength(eod, index_eod) if index_eod is not None else None
     rs_score = rs["rs_score"] if rs else None
-    technical = technical_analyzer.analyze(symbol, eod, quote, rs_score=rs_score)
+    ohlc = db.get_daily_ohlc(symbol)          # real H/L bars → true ATR/ADX when ready
+    technical = technical_analyzer.analyze(symbol, eod, quote, rs_score=rs_score, ohlc=ohlc)
     sentiment = sentiment_analyzer.analyze(symbol, news_items)
     macro = macro_news_analyzer.analyze(symbol, news_items)
     fundamentals = fundamentals_analyzer.analyze(symbol)

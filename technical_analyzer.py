@@ -73,6 +73,51 @@ def adx_proxy(close, period=14):
     return dx.rolling(period).mean()
 
 
+def _wilder(x, period):
+    """Wilder's moving average (used for true ATR/ADX). Returns an array the same
+    length as x, NaN until index period-1."""
+    out = np.full(len(x), np.nan)
+    if len(x) >= period:
+        out[period - 1] = np.nanmean(x[:period])
+        for i in range(period, len(x)):
+            out[i] = (out[i - 1] * (period - 1) + x[i]) / period
+    return out
+
+
+def true_atr_adx(ohlc, period=14):
+    """TRUE ATR and ADX from REAL daily OHLC bars (list of dicts oldest-first,
+    banked from the intraday H/L feed). ATR needs ~period+1 bars; ADX needs
+    ~2*period. Each is returned as None until enough bars exist, so the caller
+    keeps using the close-based proxy for whichever isn't ready yet."""
+    n = len(ohlc)
+    if n < period + 2:
+        return {"atr": None, "adx": None}
+    high = np.array([b["high"] for b in ohlc], float)
+    low = np.array([b["low"] for b in ohlc], float)
+    close = np.array([b["close"] for b in ohlc], float)
+    pc = close[:-1]
+    tr = np.maximum.reduce([high[1:] - low[1:],
+                            np.abs(high[1:] - pc), np.abs(low[1:] - pc)])
+    up = high[1:] - high[:-1]
+    dn = low[:-1] - low[1:]
+    pdm = np.where((up > dn) & (up > 0), up, 0.0)
+    mdm = np.where((dn > up) & (dn > 0), dn, 0.0)
+    atr_arr = _wilder(tr, period)
+    atr = None if np.isnan(atr_arr[-1]) else float(atr_arr[-1])
+    s_tr, s_pdm, s_mdm = _wilder(tr, period), _wilder(pdm, period), _wilder(mdm, period)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        pdi = 100 * s_pdm / s_tr
+        mdi = 100 * s_mdm / s_tr
+        dx = 100 * np.abs(pdi - mdi) / (pdi + mdi)
+    dx_valid = dx[~np.isnan(dx)]
+    adx = None
+    if len(dx_valid) >= period:
+        adx_arr = _wilder(dx_valid, period)
+        if not np.isnan(adx_arr[-1]):
+            adx = float(adx_arr[-1])
+    return {"atr": atr, "adx": adx}
+
+
 def support_resistance(close, lookback=60):
     win = close.tail(lookback)
     lo, hi, last = win.min(), win.max(), close.iloc[-1]
@@ -95,11 +140,13 @@ def candle_signal(close):
 
 
 # ----------------------------- main entry ---------------------------------
-def analyze(symbol, eod_df, quote, rs_score=None):
+def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     """eod_df: DataFrame[date, (open,) close, volume] (real fetched data) or None.
     quote: dict from data_fetcher.latest_quote.
-    rs_score: optional 0-100 relative-strength vs the benchmark index
-    (market_regime.relative_strength); folded into the score when provided.
+    rs_score: optional 0-100 relative-strength vs the benchmark index.
+    ohlc: optional list of REAL banked daily OHLC bars (oldest-first); when long
+    enough, true ATR/ADX replace the close-based proxies. Pass None (e.g. in
+    backtests) to force the proxies.
     Returns dict with score (0-100), classification, levels, and notes."""
     notes, missing = [], []
     out = {"symbol": symbol, "score": None, "classification": "No data",
@@ -140,8 +187,17 @@ def analyze(symbol, eod_df, quote, rs_score=None):
     today_vol = float(quote.get("volume") or vol.iloc[-1])
     vol_spike = today_vol > 1.8 * avg_vol if avg_vol else False
     last_atr = float(atr.iloc[-1]) if not np.isnan(atr.iloc[-1]) else None
-    atr_pct = (last_atr / price * 100) if (last_atr and price) else None
     last_adx = float(adx.iloc[-1]) if not np.isnan(adx.iloc[-1]) else None
+    adx_is_true = atr_is_true = False
+    # Upgrade to TRUE ATR/ADX once enough real OHLC bars are banked (else proxy).
+    if ohlc and len(ohlc) >= config.MIN_OHLC_BARS_FOR_TRUE:
+        t = true_atr_adx(ohlc)
+        if t["atr"] is not None:
+            last_atr = t["atr"]; atr_is_true = True
+            atr_method = "true ATR (real intraday H/L)"
+        if t["adx"] is not None:
+            last_adx = t["adx"]; adx_is_true = True
+    atr_pct = (last_atr / price * 100) if (last_atr and price) else None
     momentum_20d = (price / float(close.iloc[-21]) - 1) * 100 if len(close) > 21 else 0.0
     obv_trend_up = float(obv_series.iloc[-1]) > float(obv_series.iloc[-10]) \
         if len(obv_series) > 10 else None
@@ -203,12 +259,13 @@ def analyze(symbol, eod_df, quote, rs_score=None):
     else:
         add(5, 10, "range")
 
-    # Trend strength ADX proxy (10 pts)
+    # Trend strength ADX (10 pts) — true ADX once enough real OHLC bars exist.
     if last_adx is not None:
         add(min(10, last_adx / 5), 10, "adx",
-            f"Trend strength (ADX proxy)={last_adx:.0f} — proxy, not true ADX")
+            f"Trend strength ADX={last_adx:.0f}"
+            + (" (true, from real H/L)" if adx_is_true else " (proxy, not true ADX)"))
     else:
-        missing.append("ADX proxy")
+        missing.append("ADX")
 
     # Bollinger Bands (10 pts). These were computed but UNUSED before. The value
     # here isn't another trend vote — it's volatility regime + position:
@@ -347,7 +404,7 @@ def analyze(symbol, eod_df, quote, rs_score=None):
         "recent_high": recent_hi, "recent_low": recent_lo,
         "breakout": breakout, "breakdown": breakdown,
         "atr": last_atr, "atr_pct": atr_pct, "atr_method": atr_method,
-        "adx_proxy": last_adx,
+        "adx_proxy": last_adx, "atr_is_true": atr_is_true, "adx_is_true": adx_is_true,
         "momentum_20d": momentum_20d, "obv_up": obv_trend_up,
         "stop_loss": stop_loss, "target1": target1, "target2": target2,
         "risk_reward": rr, "headroom_rr": headroom_rr, "headroom_pct": headroom_pct,
