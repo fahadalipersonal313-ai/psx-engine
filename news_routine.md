@@ -92,7 +92,8 @@ summary and drop the financial figures.
 - The engine's 15-min loop only READS this file; it never fetches news. So this
   routine is the single source of authentic news truth.
 - Freshness: the engine ignores the file if older than 36h
-  (`NEWS_SIGNALS_MAX_AGE_HOURS`). Scheduled for 21:00 PKT weekdays (after market
-  close, capturing the full day's events); the file stays fresh through the next
-  trading day.
-- PSX market days are Mon–Fri; a weekend-stale file simply falls back to VADER.
+  (`NEWS_SIGNALS_MAX_AGE_HOURS`). Scheduled for 00:00 (midnight) PKT weekdays —
+  run on the home laptop near midnight so the day's authentic news is committed
+  and ready before the 09:15 session. Stays fresh through that trading day.
+- PSX market days are Mon–Fri. If a night is missed, the engine simply uses
+  authentic-or-NEUTRAL news that day (VADER is disabled) — never RSS noise.
