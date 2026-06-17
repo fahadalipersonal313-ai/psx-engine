@@ -57,6 +57,25 @@ def check(symbol):
             "notes": notes,
         }
 
+    if symbol in getattr(config, "KMIALLSHR_VERIFIED", set()):
+        try:
+            age = (datetime.now() - datetime.fromisoformat(
+                config.KMIALLSHR_VERIFICATION_DATE)).days
+            if age > config.SHARIAH_STALE_DAYS:
+                notes.append(
+                    f"KMI All-Share verification snapshot is {age} days old — "
+                    "re-verify at the next semi-annual recomposition.")
+        except Exception:
+            pass
+        return {
+            "symbol": symbol,
+            "status": "Compliant (KMI All-Share constituent)",
+            "eligible_for_ranking": True,
+            "source": f"{config.KMIALLSHR_SOURCE}, effective "
+                      f"{config.KMIALLSHR_VERIFICATION_DATE}",
+            "notes": notes,
+        }
+
     if symbol in config.OTHER_COMPLIANT:
         entry = config.OTHER_COMPLIANT[symbol]
         notes.append(entry["verify_note"])

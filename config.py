@@ -20,6 +20,14 @@ ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC",
     "NML", "PAEL", "SEARL", "HCAR", "PRL", "ATRL", "SNGP", "SSGC",
     "SAZEW", "FFL", "CPHL", "GHNI"]
 
+# Broader KMI All-Share (Shariah) names — added 2026-06-18, each verified IN the
+# official PSX-KMI All Share Islamic Index recomposition (screening 2025-12-31,
+# effective 2026-06-05). These are compliant via KMIALLSHR_VERIFIED below (not
+# necessarily KMI-30). User-requested batch.
+KMIALLSHR_STOCKS = ["KEL", "PIBTL", "TELE", "DCL", "GGL", "BNL", "ILP", "FCL",
+    "JVDC", "AGP", "WAVES", "TOMCL", "IMAGE", "SYM", "FCEPL", "KOHC"]
+ADDITIONAL_STOCKS += KMIALLSHR_STOCKS
+
 STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS
 
 SECTORS = {
@@ -34,7 +42,14 @@ SECTORS = {
     "SEARL": "Pharmaceuticals", "HCAR": "Auto Assembler", "PRL": "Refinery",
     "ATRL": "Refinery", "SNGP": "Gas Distribution", "SSGC": "Gas Distribution",
     "SAZEW": "Auto Assembler", "FFL": "Food", "CPHL": "Pharmaceuticals",
-    "GHNI": "Glass/Holding"}
+    "GHNI": "Glass/Holding",
+    # KMI All-Share batch (2026-06-18)
+    "KEL": "Power Generation", "PIBTL": "Logistics/Ports",
+    "TELE": "Technology/Telecom", "DCL": "Cement", "GGL": "Glass/Holding",
+    "BNL": "Food", "ILP": "Textile", "FCL": "Electrical Goods",
+    "JVDC": "Real Estate", "AGP": "Pharmaceuticals", "WAVES": "Electrical Goods",
+    "TOMCL": "Food", "IMAGE": "Textile", "SYM": "Technology/IT",
+    "FCEPL": "Food", "KOHC": "Cement"}
 
 # ---------------------------------------------------------------------------
 # 2. SHARIAH COMPLIANCE — VERIFIED SOURCE OF TRUTH
@@ -55,6 +70,19 @@ KMI30_VERIFIED = {
 KMI30_VERIFICATION_DATE = "2026-05-25"   # effective date of recomposition
 KMI30_SOURCE = "PSX KMI-30 recomposition notice (screening 2025-12-31)"
 SHARIAH_STALE_DAYS = 200  # warn if verification older than this
+
+# Broader KMI All-Share (Shariah) constituents — every symbol here was confirmed
+# present and "Compliant" in the official PSX-KMI All Share Islamic Index
+# recomposition notice (screening accounts 2025-12-31, effective 2026-06-05).
+# These are shariah-compliant and ELIGIBLE for ranking even though they are not
+# in the tighter KMI-30. Re-verify at the next recomposition (semi-annual).
+# Source: psx.com.pk KMI-ALL-Share-Recomposition-Notice.pdf (verified 2026-06-18).
+KMIALLSHR_VERIFIED = {
+    "KEL", "PIBTL", "TELE", "DCL", "GGL", "BNL", "ILP", "FCL", "JVDC", "AGP",
+    "WAVES", "TOMCL", "IMAGE", "SYM", "FCEPL", "KOHC",
+}
+KMIALLSHR_VERIFICATION_DATE = "2026-06-05"   # effective date of recomposition
+KMIALLSHR_SOURCE = "PSX-KMI All Share recomposition notice (screening 2025-12-31)"
 
 # Stocks compliant via another verified route (not in KMI-30 top-30 ranking
 # but shariah compliant per company structure). Each entry MUST carry a
@@ -222,7 +250,16 @@ COMPANY_NEWS_QUERY = {
     "HCAR": "Honda Atlas Cars", "PRL": "Pakistan Refinery",
     "ATRL": "Attock Refinery", "SNGP": "Sui Northern Gas",
     "SSGC": "Sui Southern Gas", "SAZEW": "Sazgar Engineering",
-    "FFL": "Fauji Foods", "CPHL": "Citi Pharma"
+    "FFL": "Fauji Foods", "CPHL": "Citi Pharma",
+    # KMI All-Share batch (2026-06-18)
+    "KEL": "K-Electric", "PIBTL": "Pakistan International Bulk Terminal",
+    "TELE": "Telecard Pakistan", "DCL": "Dewan Cement",
+    "GGL": "Ghani Global Holdings", "BNL": "Bunnys Limited Pakistan",
+    "ILP": "Interloop Limited", "FCL": "Fast Cables Pakistan",
+    "JVDC": "Javedan Corporation Naya Nazimabad", "AGP": "AGP Limited pharma Pakistan",
+    "WAVES": "Waves Corporation Pakistan", "TOMCL": "The Organic Meat Company Pakistan",
+    "IMAGE": "Image Pakistan Limited", "SYM": "Symmetry Group Pakistan",
+    "FCEPL": "FrieslandCampina Engro Foods", "KOHC": "Kohat Cement"
 }
 
 # ---------------------------------------------------------------------------
