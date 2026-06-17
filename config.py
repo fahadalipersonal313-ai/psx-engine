@@ -15,10 +15,12 @@ DEFAULT_STOCKS = ["PSO", "TREET", "FABL", "AIRLINK"]
 
 # 6 additional candidates — chosen ONLY from the officially verified KMI-30
 # constituent list (see SHARIAH section below). Diversified across sectors.
+# GAL added to complete the full 30 official KMI-30 names (was previously
+# missing even though it's in KMI30_VERIFIED).
 ADDITIONAL_STOCKS = ["MEBL", "SYS", "LUCK", "FFC", "NRL", "DGKC",
     "OGDC", "PPL", "MARI", "HUBC", "ENGROH", "EFERT", "FCCL", "MLCF",
     "NML", "PAEL", "SEARL", "HCAR", "PRL", "ATRL", "SNGP", "SSGC",
-    "SAZEW", "FFL", "CPHL", "GHNI"]
+    "SAZEW", "FFL", "CPHL", "GHNI", "GAL"]
 
 # Broader KMI All-Share (Shariah) names — added 2026-06-18, each verified IN the
 # official PSX-KMI All Share Islamic Index recomposition (screening 2025-12-31,
@@ -28,7 +30,11 @@ KMIALLSHR_STOCKS = ["KEL", "PIBTL", "TELE", "DCL", "GGL", "BNL", "ILP", "FCL",
     "JVDC", "AGP", "WAVES", "TOMCL", "IMAGE", "SYM", "FCEPL", "KOHC"]
 ADDITIONAL_STOCKS += KMIALLSHR_STOCKS
 
-STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS
+# Extra names beyond the strict KMI-30, compliant via the OTHER_COMPLIANT
+# route below (each entry there carries a source + verify note).
+EXTRA_STOCKS = ["SLM", "SLGL", "THCCL"]
+
+STOCKS = DEFAULT_STOCKS + ADDITIONAL_STOCKS + EXTRA_STOCKS
 
 SECTORS = {
     "PSO": "Oil Marketing", "TREET": "Diversified/Consumer", "FABL": "Islamic Banking",
@@ -42,7 +48,9 @@ SECTORS = {
     "SEARL": "Pharmaceuticals", "HCAR": "Auto Assembler", "PRL": "Refinery",
     "ATRL": "Refinery", "SNGP": "Gas Distribution", "SSGC": "Gas Distribution",
     "SAZEW": "Auto Assembler", "FFL": "Food", "CPHL": "Pharmaceuticals",
-    "GHNI": "Glass/Holding",
+    "GHNI": "Glass/Holding", "GAL": "Textile/Synthetic Fibre",
+    "SLM": "Tyre Manufacturing", "SLGL": "Logistics/Transport",
+    "THCCL": "Cement",
     # KMI All-Share batch (2026-06-18)
     "KEL": "Power Generation", "PIBTL": "Logistics/Ports",
     "TELE": "Technology/Telecom", "DCL": "Cement", "GGL": "Glass/Holding",
@@ -95,6 +103,31 @@ OTHER_COMPLIANT = {
                    "banking licence."),
         "verify_note": ("Confirm continued inclusion in PSX KMI All Share Index "
                         "and SECP shariah-compliant securities list each quarter."),
+    },
+    "SLM": {
+        "reason": ("Service Long March Tyres Ltd. — deemed Shariah compliant under "
+                   "the KMI All Share Index screening criteria and included in the "
+                   "PSX-KMI All Share Islamic Index on listing (PSX, June 2026)."),
+        "verify_note": ("Newly listed (15 Jun 2026) — confirm continued inclusion in "
+                        "the PSX-KMI All Share Islamic Index each semi-annual "
+                        "recomposition."),
+    },
+    "SLGL": {
+        "reason": ("Secure Logistics-Trax Group Ltd. — reported as Shariah "
+                   "compliant per PSX documentation (transport/logistics sector, "
+                   "no interest-based core business)."),
+        "verify_note": ("Source was a secondary aggregator, not the primary PSX "
+                        "KMI All Share notice PDF — confirm against the latest "
+                        "PSX-KMI All Share Islamic Index recomposition notice "
+                        "before relying on this."),
+    },
+    "THCCL": {
+        "reason": ("Thatta Cement Company Ltd. — cement sector, a sector where "
+                   "most PSX names pass KMI screening (cf. DGKC/FCCL/MLCF already "
+                   "in KMI30_VERIFIED)."),
+        "verify_note": ("Not independently confirmed against the primary PSX-KMI "
+                        "All Share Islamic Index notice — verify before relying on "
+                        "this for trading decisions."),
     },
 }
 

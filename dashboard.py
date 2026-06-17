@@ -225,6 +225,26 @@ def _require_password():
     st.stop()
 
 
+def _inject_compact_css():
+    st.markdown(
+        """
+        <style>
+        [data-testid="stVerticalBlockBorderWrapper"] { padding: 2px !important; }
+        [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] p {
+          margin-bottom: 2px;
+        }
+        [data-testid="stMetricValue"] { font-size: 1rem !important; }
+        [data-testid="stMetricLabel"] { font-size: 0.72rem !important; }
+        h2 { font-size: 1.05rem !important; margin-top: 0.3rem !important; }
+        h3, .stMarkdown h3 { font-size: 0.95rem !important; }
+        [data-testid="stCaptionContainer"] { font-size: 0.72rem !important; }
+        .block-container { padding-top: 1.2rem !important; padding-bottom: 1rem !important; }
+        [data-testid="column"] { gap: 0.3rem !important; }
+        </style>
+        """,
+        unsafe_allow_html=True)
+
+
 # ----------------------------- load ---------------------------------------
 _inject_theme()
 _require_password()
@@ -262,6 +282,12 @@ good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
 st.sidebar.header("⚙ Settings")
+compact = st.sidebar.toggle("📱 Compact view", value=st.session_state.get("compact", False),
+                            help="Denser layout — smaller tiles, fewer clicks, "
+                                 "collapsible secondary sections. Good for phones.")
+st.session_state["compact"] = compact
+if compact:
+    _inject_compact_css()
 capital = st.sidebar.number_input(
     "Ready cash to deploy (PKR)", min_value=0,
     value=int(_portfolio.get("cash_pkr") or 200_000), step=25_000, format="%d")
@@ -333,6 +359,18 @@ action = latest[latest["signal"].isin(["Strong Buy", "Buy", "Exit"])]
 if action.empty:
     st.info(f"No Buy or Exit signals right now — nothing to act on. "
             f"(Market regime: {regime}.)")
+elif compact:
+    st.caption("Manual confirmation required before any order. Toggle off "
+               "**Compact view** for full trade-plan cards.")
+    act_show = action[["symbol", "signal", "price", "stop_loss", "target1",
+                       "confidence", "relative_strength"]].copy()
+    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Conf%", "RS"]
+    st.dataframe(
+        act_show.style
+        .map(lambda v: f"color:{NEON_SIG.get(v, '')};font-weight:700", subset=["Signal"])
+        .format({"Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}",
+                 "Conf%": "{:.0f}", "RS": "{:.0f}"}, na_rep="—"),
+        width="stretch", hide_index=True)
 else:
     st.caption("Manual confirmation required before any order. See the "
                "**🛡 Portfolio** tab for sizing against your actual holdings + cash.")
@@ -386,11 +424,11 @@ else:
                     box.markdown(streak_html + conf_html, unsafe_allow_html=True)
                 box.caption(str(r["main_reason"])[:240])
 
-# ----------------------------- WHY NOT A BUY ------------------------------
-why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
-             (~latest["signal"].isin(["Strong Buy", "Buy"]))]
-if not why.empty:
-    st.subheader("⚠ High score, but NOT a Buy — here's why")
+def _why_not_buy_section():
+    why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
+                 (~latest["signal"].isin(["Strong Buy", "Buy"]))]
+    if why.empty:
+        return
     st.caption("These scored in Buy range but a safety rule held them back. "
                "No need to dig — the reason is shown.")
     for _, r in why.iterrows():
@@ -400,9 +438,10 @@ if not why.empty:
             f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>',
             unsafe_allow_html=True)
 
-# ----------------------------- PORTFOLIO GLIMPSE --------------------------
-if buy_cands:
-    st.subheader("🛡 Portfolio risk — does the book fit?")
+
+def _portfolio_glimpse_section():
+    if not buy_cands:
+        return
     g1, g2, g3, g4 = st.columns(4)
     tile(g1, "Total heat",
          f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
@@ -417,6 +456,27 @@ if buy_cands:
     if pf["deferred"]:
         st.caption("⚠ " + " · ".join(f"**{d['symbol']}** {d['reason']}"
                                      for d in pf["deferred"][:4]))
+
+
+# ----------------------------- WHY NOT A BUY ------------------------------
+_why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
+              (~latest["signal"].isin(["Strong Buy", "Buy"]))]
+if not _why.empty:
+    if compact:
+        with st.expander("⚠ High score, but NOT a Buy — here's why"):
+            _why_not_buy_section()
+    else:
+        st.subheader("⚠ High score, but NOT a Buy — here's why")
+        _why_not_buy_section()
+
+# ----------------------------- PORTFOLIO GLIMPSE --------------------------
+if buy_cands:
+    if compact:
+        with st.expander("🛡 Portfolio risk — does the book fit?"):
+            _portfolio_glimpse_section()
+    else:
+        st.subheader("🛡 Portfolio risk — does the book fit?")
+        _portfolio_glimpse_section()
 
 st.divider()
 
