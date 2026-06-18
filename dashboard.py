@@ -442,7 +442,7 @@ else:
                 conf_dots = (("●" * conf_val + "○" * (4 - conf_val))
                              if conf_val is not None else "")
                 streak_html = (f'<span style="color:{NEON["amber"]};font-weight:700">'
-                               f'🔥 {streak}-run streak</span> &nbsp;'
+                               f'🔥 {streak}-day streak</span> &nbsp;'
                                if streak >= 2 else "")
                 conf_html = (f'<span style="opacity:.7;font-size:12px">'
                              f'confluence {conf_dots} {conf_val}/4</span>'
@@ -457,6 +457,19 @@ else:
                 if streak_html or conf_html:
                     box.markdown(streak_html + conf_html, unsafe_allow_html=True)
                 box.caption(str(r["main_reason"])[:240])
+                with box.expander("📋 Full detail"):
+                    st.write("**Full reason:**", r["main_reason"])
+                    st.write("**Main risk:**", r["main_risk"])
+                    st.write("**Shariah:**", r["shariah_status"], " · "
+                             "**Market regime:**", r.get("market_regime") or "—")
+                    st.write("**Support / Resistance:**",
+                             f"{fmt(r.get('support'))} / {fmt(r.get('resistance'))}")
+                    bzl2, bzh2 = r.get("buy_zone_low"), r.get("buy_zone_high")
+                    if pd.notna(bzl2) and pd.notna(bzh2):
+                        st.write("**Buy-zone (20-EMA pullback):**",
+                                 f"{bzl2:.2f}–{bzh2:.2f}")
+                    st.caption("For the price/volume chart and a per-stock "
+                               "backtest, open the 📈 Stock detail tab.")
 
 def _why_not_buy_section():
     why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &

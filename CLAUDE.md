@@ -37,7 +37,7 @@ Order of operations:
    require crossing threshold by 2pts. Stops Buy↔Watch flapping when raw
    score grazes 70. Symmetric (downgrades AND upgrades).
 5. **Conviction streak gate**: a fresh Strong Buy is held at Buy until
-   confirmed on the next run.
+   confirmed on the next CALENDAR DAY (not next 15-min run — see below).
 6. **Confluence gate** (4 dims, each independent): trend (price>50-EMA),
    momentum (RSI 40-74 AND MACD hist>0), volume (OBV up), structure
    (price>support AND no breakdown). Strong Buy needs ≥3/4, Buy needs ≥2/4.
@@ -51,6 +51,18 @@ Order of operations:
    confidence<45.
 9. **Pullback-entry upgrade** (Watch/Hold → Buy): when price has retraced to
    the 20-EMA buy-zone with confluence ≥2 and no vetoes.
+
+## Conviction streak (day-based, not run-based)
+
+`conviction_streak` / `db.signal_streak()` count consecutive TRADING DAYS the
+signal has held — one vote per day (that day's last run), restricted to runs
+at/after `config.STREAK_PRODUCTION_START` (2026-06-15, when steady automated
+15-min cadence began; earlier rows are dev/testing noise and excluded).
+Raw rows are not used directly: the engine polls every 15 min, so a naive
+row-count streak could hit double digits within a single session without any
+real day-over-day confirmation. `signal_generator.generate()` only bumps the
+streak when `prev_run_date` differs from today's date — repeat runs within
+the same day hold the streak steady rather than inflating it.
 
 ## Risk vetoes (risk_manager.assess)
 
@@ -85,6 +97,13 @@ CLI `python main.py accuracy` shows this with explicit warnings.
 
 - `DATA_FRESHNESS_AMBER_HOURS=4` → tile turns amber, banner warns
 - `DATA_FRESHNESS_RED_HOURS=24` → tile turns red, error banner
+
+## Dashboard trade-plan cards
+
+Each Buy-signal card has an inline "📋 Full detail" expander (no extra data
+fetch — uses fields already on the row: full reason, main risk, shariah
+status, regime, support/resistance, buy-zone). Chart + per-stock backtest
+still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
 
 ## Key files
 

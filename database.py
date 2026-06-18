@@ -374,19 +374,34 @@ def accumulating_now(lookback=10, min_streak=1):
 
 
 def signal_streak(symbol):
-    """How many consecutive recent runs had the same signal as the most recent run.
-    Returns (streak_count, signal_string). streak_count=0 when no history."""
+    """How many consecutive recent TRADING DAYS had the same signal as the most
+    recent run, one vote per day (the day's last run), restricted to runs at or
+    after config.STREAK_PRODUCTION_START.
+
+    Raw 15-min rows are not a meaningful unit here: the engine runs every 15
+    minutes, so counting rows lets a single session (or, worse, the dev/testing
+    period before the engine had steady cadence) masquerade as many independent
+    confirmations. Counting distinct days the signal held is a far more honest
+    measure of conviction. Returns (day_streak, signal_string, last_run_date);
+    (0, None, None) when no qualifying history.
+    """
     with conn() as c:
         rows = [dict(r) for r in c.execute(
-            "SELECT signal FROM runs WHERE symbol=? ORDER BY run_time DESC LIMIT 20",
-            (symbol,))]
+            "SELECT run_time, signal FROM runs WHERE symbol=? AND run_time>=? "
+            "ORDER BY run_time DESC", (symbol, config.STREAK_PRODUCTION_START))]
     if not rows:
-        return 0, None
-    latest = rows[0]["signal"]
-    streak = 0
+        return 0, None, None
+    by_day = {}
     for r in rows:
-        if r["signal"] == latest:
+        day = r["run_time"][:10]
+        if day not in by_day:           # first row seen per day = latest run that day
+            by_day[day] = r["signal"]
+    days = sorted(by_day, reverse=True)
+    latest = by_day[days[0]]
+    streak = 0
+    for day in days:
+        if by_day[day] == latest:
             streak += 1
         else:
             break
-    return streak, latest
+    return streak, latest, rows[0]["run_time"][:10]
