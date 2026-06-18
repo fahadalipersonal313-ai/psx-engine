@@ -7,6 +7,11 @@ name: news-routine
 # news_signals.json (which the engine actually consumes).
 on:
   workflow_dispatch:
+    inputs:
+      window_hours:
+        description: "Lookback window in hours (default 24; use 96 for a 4-day backfill)"
+        required: false
+        default: "24"
 
 permissions:
   contents: write
@@ -23,7 +28,9 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install requests
-      - name: Fetch last-24h news
+      - name: Fetch news
+        env:
+          NEWS_WINDOW_HOURS: ${{ inputs.window_hours }}
         run: python news_fetcher.py
       - name: Commit raw news
         run: |

@@ -13,6 +13,7 @@ runs in the session.
 
 import json
 import logging
+import os
 import re
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -25,7 +26,9 @@ import config
 
 log = logging.getLogger("news_fetcher")
 
-WINDOW_HOURS = 24
+# Default daily window is 24h (the routine's standing spec). Override via env
+# NEWS_WINDOW_HOURS for one-off backfills (e.g. 96 for a 4-day rebuild).
+WINDOW_HOURS = int(os.environ.get("NEWS_WINDOW_HOURS", "24"))
 TIMEOUT = 15
 UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
 
