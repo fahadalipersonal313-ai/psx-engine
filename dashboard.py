@@ -510,9 +510,8 @@ def _accumulation_section():
                "volume spikes, CMF) — not yet a Buy signal, worth watching.")
     for r in rows:
         reasons = json.loads(r["reasons"] or "[]")
-        streak_txt = f"{r['streak']} session" + ("s" if r["streak"] > 1 else "")
         st.markdown(
-            f'{accum_pill()} &nbsp;**{r["symbol"]}** — {streak_txt} · '
+            f'{accum_pill()} &nbsp;**{r["symbol"]}** · '
             f'signal {sig_pill(r["signal"])} · price {fmt(r["price"])} · '
             f'score {fmt(r["final_score"], 0)}'
             + (f' · CMF {r["cmf"]:+.2f}' if r.get("cmf") is not None else '')
