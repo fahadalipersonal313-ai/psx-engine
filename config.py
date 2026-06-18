@@ -193,13 +193,21 @@ RISK = {
                                        # %-based, not ATR: the EOD ATR proxy understates
                                        # true range, which inflated ATR-normalised distance.
     "max_extension_momentum_pct": 22.0,# 20-day momentum above this% -> parabolic/extended
-    "extension_riskon_multiplier": 1.8,# In a confirmed risk-on rally, "above EMA20"
-                                       # is the market's DEFAULT state, so the chase
-                                       # guard widens by this factor (≈20% above EMA20 /
-                                       # ≈40% 20-day momentum). Broad-rally leaders keep
-                                       # their Buy/Strong Buy; only a genuinely parabolic
-                                       # move is still stepped down. Set to 1.0 to keep
-                                       # the guard regime-neutral (old behaviour).
+    "extension_riskon_multiplier": 1.8,# CEILING for the risk-on chase-guard widening.
+                                       # In a confirmed risk-on rally "above EMA20" is
+                                       # the market's DEFAULT state, so the chase guard
+                                       # widens UP TO this factor (≈20% above EMA20 /
+                                       # ≈40% 20-day momentum). The actual widening scales
+                                       # with rally strength (see _full_pct below). Set to
+                                       # 1.0 to keep the guard regime-neutral (old behaviour).
+    "extension_riskon_full_pct": 8.0,  # Rally strength (benchmark % above its 50-EMA) at
+                                       # which the chase guard reaches its full widening.
+                                       # The multiplier ramps linearly from 1.0 when the
+                                       # index just crosses above its EMA (mild rally) to
+                                       # the ceiling above when the index is this far above
+                                       # it (strong, confirmed bull) — so a shaky breakout
+                                       # loosens the guard only a little, a powerful trend
+                                       # loosens it fully.
     "default_stop_atr_mult": 2.0,      # stop loss = entry - 2*ATR (or support)
     "min_avg_daily_volume": 100_000,   # below this -> illiquid warning
     "max_volatility_pct": 6.0,         # daily ATR% above this -> high risk

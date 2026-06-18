@@ -73,7 +73,8 @@ def _confluence(technical):
 
 
 def generate(symbol, final_score, confidence, risk, shariah, technical,
-             regime=None, prev_signal=None, prev_streak=0, days_to_earnings=None):
+             regime=None, prev_signal=None, prev_streak=0, days_to_earnings=None,
+             regime_pct_above=None):
     """Generate a trading signal.
 
     prev_signal / prev_streak: the most recent stored signal and how many
@@ -166,13 +167,24 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # buy-zone/accumulation logic; only the SIGNAL action adapts here.)
     _ext_pct = technical.get("ext_pct")
     _mom = technical.get("momentum_20d")
-    _mult = (config.RISK.get("extension_riskon_multiplier", 1.0)
-             if regime == "risk-on" else 1.0)
+    # The widening scales with RALLY STRENGTH: ramp the multiplier linearly from
+    # 1.0 (index just crossed above its 50-EMA — a shaky breakout, loosen barely)
+    # up to the configured ceiling (index _full_pct above its EMA — a strong,
+    # confirmed bull, loosen fully). A mild rally relaxes the guard a little; a
+    # powerful one relaxes it a lot.
+    _mult = 1.0
+    if regime == "risk-on":
+        _ceil = config.RISK.get("extension_riskon_multiplier", 1.0)
+        _full = config.RISK.get("extension_riskon_full_pct", 8.0) or 8.0
+        _strength = 1.0 if regime_pct_above is None else \
+            max(0.0, min(1.0, regime_pct_above / _full))
+        _mult = 1.0 + (_ceil - 1.0) * _strength
     _ext_lim = config.RISK["max_extension_pct"] * _mult
     _mom_lim = config.RISK["max_extension_momentum_pct"] * _mult
     _chase = ((_ext_pct is not None and _ext_pct > _ext_lim)
               or (_mom is not None and _mom > _mom_lim))
-    _relaxed = " (relaxed for risk-on rally)" if regime == "risk-on" else ""
+    _relaxed = (f" (chase guard ×{_mult:.2f} for risk-on rally)"
+                if _mult > 1.0 else "")
     if _chase:
         if base == "Strong Buy":
             base = "Buy"; reasons.append(

@@ -86,6 +86,7 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
                                        scoring["confidence"], risk,
                                        shariah, technical,
                                        regime=(regime or {}).get("regime"),
+                                       regime_pct_above=(regime or {}).get("pct_above"),
                                        prev_signal=prev_sig,
                                        prev_streak=prev_streak,
                                        days_to_earnings=_days_to_earnings(symbol))
