@@ -408,19 +408,39 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # Deliberately NOT folded into the score (would double-count OBV/volume,
     # already 15 pts above); surfaced as its own flag so it can be spotted
     # BEFORE a stock ever reaches Buy. Heuristic, proxy-based — labelled as such.
-    accum_reasons = []
-    if obv_trend_up:
-        accum_reasons.append("OBV rising")
+    #
+    # The defining feature of ACCUMULATION (vs an ordinary uptrend) is buying
+    # pressure WHILE PRICE IS FLAT OR DOWN — quiet absorption inside a base, not
+    # a stock that is already running. So a rising OBV only counts when price has
+    # NOT advanced over the same window; otherwise it is just trend confirmation.
+    price_chg_window = ((price / float(close.iloc[-10]) - 1) * 100
+                        if len(close) > 10 else 0.0)
+    price_flat_or_down = price_chg_window <= 2.0   # ≤+2% over the OBV window
+
+    strong_reasons = []   # high-conviction signals (each can stand on its own)
+    weak_reasons = []     # supporting signals (need a second one to count)
     if obv_divergence and obv_divergence["bullish"]:
-        accum_reasons.append("bullish OBV/price divergence (price flat/down, OBV up)")
-    if vol_spike and not breakout:
-        accum_reasons.append("volume spike inside the range (no breakout yet)")
-    if cmf is not None and cmf > 0.05:
-        accum_reasons.append(f"CMF {cmf:+.2f} (buying pressure, real H/L)")
+        strong_reasons.append("bullish OBV/price divergence (price flat/down, OBV up)")
+    if cmf is not None and cmf > 0.10:
+        strong_reasons.append(f"strong CMF {cmf:+.2f} (real-H/L buying pressure)")
+    if obv_trend_up and price_flat_or_down:
+        weak_reasons.append(f"OBV rising while price flat/down ({price_chg_window:+.1f}%)")
+    if vol_spike and not breakout and price_flat_or_down:
+        weak_reasons.append("volume spike inside the range (no breakout yet)")
+    if cmf is not None and 0.05 < cmf <= 0.10:
+        weak_reasons.append(f"CMF {cmf:+.2f} (mild buying pressure, real H/L)")
+
+    accum_reasons = strong_reasons + weak_reasons
+    # Net selling pressure on REAL data overrides every proxy signal.
     if cmf is not None and cmf < -0.05:
-        accum_reasons = []  # net selling pressure on real data overrides the proxy signals
+        accum_reasons = strong_reasons = weak_reasons = []
+    # Require genuine confluence: one high-conviction signal, OR at least two
+    # independent supporting signals. A single weak signal is NOT enough — that
+    # is what previously flagged most of the market as "accumulating".
+    has_confluence = bool(strong_reasons) or len(weak_reasons) >= 2
     accumulation_candidate = bool(
-        accum_reasons and not breakout and not breakdown and not extended)
+        accum_reasons and has_confluence
+        and not breakout and not breakdown and not extended)
     if accumulation_candidate:
         notes.append("ACCUMULATION candidate: " + "; ".join(accum_reasons))
 

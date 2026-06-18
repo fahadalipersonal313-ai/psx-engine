@@ -247,9 +247,20 @@ def signal_accuracy(symbol=None):
         return [dict(r) for r in c.execute(q, args)]
 
 
+def _runs_has_accum_column():
+    """Whether the runs table has the accumulation_candidate column. Older or
+    read-only deployments (where the ALTER TABLE migration could not run) may
+    not — the accumulation views then degrade to empty instead of crashing."""
+    with conn() as c:
+        return "accumulation_candidate" in {
+            r[1] for r in c.execute("PRAGMA table_info(runs)")}
+
+
 def accumulation_streak(symbol, lookback=10):
     """How many of the most recent runs (consecutively, from now backward)
     were flagged accumulation_candidate=1. 0 if the latest run wasn't flagged."""
+    if not _runs_has_accum_column():
+        return 0
     with conn() as c:
         rows = [dict(r) for r in c.execute(
             """SELECT accumulation_candidate FROM runs WHERE symbol=?
@@ -268,6 +279,8 @@ def accumulating_now(lookback=10, min_streak=1):
     consecutive recent runs (sessions) the flag has held — the 'last few
     sessions' view. Only counts symbols flagged in their MOST RECENT run."""
     out = []
+    if not _runs_has_accum_column():
+        return out
     with conn() as c:
         latest_ids = [r["symbol"] for r in c.execute(
             """SELECT symbol FROM runs r WHERE r.id =
