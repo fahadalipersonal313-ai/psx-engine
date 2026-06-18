@@ -288,9 +288,9 @@ def main():
             print(f"\n=== Accumulation candidates ({len(rows)}) ===")
             for r in rows:
                 reasons = json.loads(r["reasons"] or "[]")
-                print(f"  {r['symbol']:<7} {r['streak']:>2} session(s)  "
-                      f"signal={r['signal']:<11} score={r['final_score']}  "
-                      f"price={r['price']}  — " + "; ".join(reasons))
+                print(f"  {r['symbol']:<7}  signal={r['signal']:<11} "
+                      f"score={r['final_score']}  price={r['price']}  — "
+                      + "; ".join(reasons))
     elif cmd == "history":
         sym = sys.argv[2].upper() if len(sys.argv) > 2 else "PSO"
         for r in db.run_history(sym, 20):

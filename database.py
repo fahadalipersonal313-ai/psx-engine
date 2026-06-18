@@ -372,6 +372,6 @@ def accumulating_now(lookback=10, min_streak=1):
                         "price": row.get("price"), "signal": row.get("signal"),
                         "final_score": row.get("final_score"),
                         "cmf": row.get("cmf")})
-    return sorted(out, key=lambda x: x["streak"], reverse=True)
+    return sorted(out, key=lambda x: x.get("final_score") or 0, reverse=True)
 
 
