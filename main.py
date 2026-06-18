@@ -80,7 +80,9 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
     tech_flags = technical.get("tech_flags")
     scoring = scoring_engine.compute(symbol, macro, sentiment, technical,
                                      fundamentals, tech_flags=tech_flags)
-    risk = risk_manager.assess(symbol, technical, sentiment, macro)
+    risk = risk_manager.assess(symbol, technical, sentiment, macro,
+                               regime=(regime or {}).get("regime"),
+                               regime_pct_above=(regime or {}).get("pct_above"))
     prev_streak, prev_sig = db.signal_streak(symbol)
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
@@ -263,8 +265,19 @@ def main():
         print(f"Fundamentals refreshed: {n}/{len(config.STOCKS)} stocks, "
               f"{fields} ratios, as_of {p['as_of']}")
     elif cmd == "accuracy":
-        print("Signal accuracy:", db.signal_accuracy())
-        print("Indicator accuracy:", db.indicator_stats())
+        rows = db.signal_accuracy_summary()
+        print("\n=== Signal accuracy (with sample-size reliability) ===")
+        for r in rows:
+            wr = "n/a" if r["win_rate_pct"] is None else f"{r['win_rate_pct']}%"
+            print(f"  {r['signal']:<11} n={r['n_total']:<4} win={wr:<7} "
+                  f"sample={r['n_confidence']}")
+        low = [r for r in rows if r["n_confidence"] == "low"]
+        if low:
+            print("\n⚠ Low-sample signals (read these win rates as NOISE, not "
+                  "edge — too few graded trades to trust):")
+            for r in low:
+                print(f"   - {r['signal']}: only {r['n_total']} graded outcome(s)")
+        print("\nIndicator accuracy:", db.indicator_stats())
     elif cmd == "regrade":
         res = backtester.regrade_all()
         print(f"Re-graded {res['regraded']} runs; {res['flipped']} outcomes changed.")

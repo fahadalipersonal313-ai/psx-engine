@@ -126,6 +126,40 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     else:
         base = "Avoid"; reasons.append(f"Score {final_score} below 50")
 
+    # ---- Hysteresis dead-band: a raw score grazing a band edge (e.g. 70.3 one
+    # run, 69.7 the next) shouldn't flip the signal — that's scoring noise, not
+    # a real change. Require crossing the threshold by HYSTERESIS_BAND points
+    # before changing direction. Only acts on one-notch transitions; multi-notch
+    # moves and hard vetoes (breakdown/shariah) bypass it. Applied BEFORE the
+    # streak/confluence/chase gates so those still operate normally on top.
+    _band = getattr(config, "HYSTERESIS_BAND", 0)
+    if _band > 0 and prev_signal in ("Strong Buy", "Buy", "Watch", "Hold", "Avoid"):
+        _RANK = {"Strong Buy": 4, "Buy": 3, "Watch": 2, "Hold": 1, "Avoid": 0}
+        _pr, _br = _RANK.get(prev_signal), _RANK.get(base)
+        _thr = {"Strong Buy": T["strong_buy"], "Buy": T["buy"],
+                "Watch": T["watch"], "Hold": T["hold"]}
+        if _pr is not None and _br is not None and abs(_pr - _br) == 1:
+            if _pr > _br:
+                # one-notch DOWNGRADE — only flip if score is decisively below
+                # the threshold the previous signal sat above
+                _t = _thr.get(prev_signal)
+                if _t is not None and final_score >= _t - _band:
+                    base = prev_signal
+                    reasons.append(
+                        f"Hysteresis: score {final_score} within {_band}-pt "
+                        f"dead-band of {prev_signal} threshold ({_t}) — held at "
+                        f"{prev_signal} until a decisive break")
+            else:
+                # one-notch UPGRADE — require clearing the new threshold by the
+                # band, not just grazing it (avoids flapping the other way)
+                _t = _thr.get(base)
+                if _t is not None and final_score < _t + _band:
+                    base = prev_signal
+                    reasons.append(
+                        f"Hysteresis: score {final_score} only just clears the "
+                        f"{base} threshold ({_t}) — held at {prev_signal} until "
+                        f"it breaks {_t + _band}+")
+
     # ---- Tier 2: streak gate (before confluence so we check intent, not result)
     # A new Strong Buy on its first appearance is held at Buy — the market has
     # to CONFIRM it on the next run. This prevents chasing a one-run spike.

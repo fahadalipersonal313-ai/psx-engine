@@ -26,6 +26,46 @@ log = logging.getLogger("backtester")
 
 
 # ---------------------------------------------------------------------------
+# Benchmark cache — real KMI30 EOD as the "market" for grading Avoid/Exit. Far
+# more honest than the cohort-median proxy (which is the engine's own filtered
+# universe), but the cohort median stays as a fallback when the index isn't
+# fetchable (offline / 403). Cached once per process; never fabricated.
+# ---------------------------------------------------------------------------
+_BENCH_CACHE = {"eod": None, "tried": False}
+
+
+def _benchmark_eod():
+    if not _BENCH_CACHE["tried"]:
+        try:
+            import market_regime
+            eod, _ = market_regime.fetch_index()
+            _BENCH_CACHE["eod"] = eod
+        except Exception as e:
+            log.warning("Benchmark index fetch failed for grading: %s", e)
+        _BENCH_CACHE["tried"] = True
+    return _BENCH_CACHE["eod"]
+
+
+def _benchmark_forward_move(start_date, days=3):
+    """Real benchmark (KMI30) % move from start_date over `days` calendar days.
+    None when the index data isn't reachable or doesn't span the window."""
+    eod = _benchmark_eod()
+    if eod is None or len(eod) == 0:
+        return None
+    eod_sorted = eod.sort_values("date")
+    start = pd.Timestamp(start_date).normalize()
+    sub0 = eod_sorted[eod_sorted["date"] >= start]
+    if sub0.empty:
+        return None
+    p0 = float(sub0["close"].iloc[0])
+    sub1 = eod_sorted[eod_sorted["date"] >= start + pd.Timedelta(days=days)]
+    if sub1.empty:
+        return None
+    p1 = float(sub1["close"].iloc[0])
+    return (p1 / p0 - 1) * 100
+
+
+# ---------------------------------------------------------------------------
 # Outcome tracking
 # ---------------------------------------------------------------------------
 def _price_on_or_after(eod, when):
@@ -69,10 +109,12 @@ def _signal_worked(run):
     """Did the signal call play out? Real, rule-based — no fabrication.
 
       * Buy/Strong Buy — price rose >1% within 3 days without breaching the stop.
-      * Avoid/Exit     — RELATIVE: the stock underperformed that day's universe
-                         (median forward move of every name scored the same day).
-                         You lost nothing by staying out. Falls back to "did not
-                         rise" only when too few peers have completed to benchmark.
+      * Avoid/Exit     — RELATIVE to the REAL benchmark (KMI30) forward move:
+                         the stock underperformed the actual market index. Falls
+                         back to the cohort median (engine's own universe) when
+                         the index isn't reachable, then to "did not rise" when
+                         even the cohort is too thin to benchmark. Three honest
+                         fallbacks — never fabricated.
       * Watch/Hold     — graded loosely: didn't lose more than 3%.
     """
     chg = (run["price_3d"] / run["price"] - 1) * 100
@@ -81,8 +123,10 @@ def _signal_worked(run):
         return chg > 1.0 and (run["stop_loss"] is None
                               or run["price_3d"] > run["stop_loss"])
     if sig in ("Avoid", "Exit"):
-        market = db.cohort_forward_move(run["run_time"][:10],
-                                        exclude_symbol=run["symbol"])
+        market = _benchmark_forward_move(run["run_time"][:10], days=3)
+        if market is None:
+            market = db.cohort_forward_move(run["run_time"][:10],
+                                            exclude_symbol=run["symbol"])
         bar = market if market is not None else 0.0
         return chg < bar
     return chg > -3.0

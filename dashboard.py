@@ -278,8 +278,24 @@ regime = (latest["market_regime"].dropna().iloc[0]
           if latest["market_regime"].notna().any() else "unknown")
 # run_time is stored in UTC by the cloud runs (GitHub runner clock). Display it
 # in PKT (Pakistan is a fixed UTC+5, no DST) so the time matches the wall clock.
-last_updated = ((pd.to_datetime(latest["run_time"].max()) + pd.Timedelta(hours=5))
+_latest_utc = pd.to_datetime(latest["run_time"].max())
+last_updated = ((_latest_utc + pd.Timedelta(hours=5))
                 .strftime("%m-%d %H:%M") + " PKT")
+# Honest staleness flag: the cloud may pause runs (off-hours, weekends, paused
+# Action) — in that case signals here describe yesterday's market, not today's.
+# Compute age in hours vs the wall clock and colour the tile / banner accordingly.
+_age_hours = (pd.Timestamp.utcnow().tz_localize(None) - _latest_utc).total_seconds() / 3600
+_amber = getattr(config, "DATA_FRESHNESS_AMBER_HOURS", 4)
+_red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
+if _age_hours >= _red:
+    _stale_level, _stale_color, _stale_label = "red", NEON["red"], "STALE"
+elif _age_hours >= _amber:
+    _stale_level, _stale_color, _stale_label = "amber", NEON["amber"], "aging"
+else:
+    _stale_level, _stale_color, _stale_label = "fresh", NEON["green"], "fresh"
+_last_updated_html = (f'<span style="color:{_stale_color}">{last_updated}</span>'
+                      f' <span style="font-size:11px;opacity:.7">'
+                      f'({_stale_label}, {_age_hours:.1f}h old)</span>')
 buys = latest[latest["signal"].isin(["Strong Buy", "Buy"])]
 exits = latest[latest["signal"] == "Exit"]
 good = int((latest["data_quality"] == "good").sum())
@@ -341,7 +357,19 @@ tile(t4, "Portfolio heat",
      f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
      f'{book["heat_pct"]:.1f}%</span>',
      f"of {book['max_heat_pct']:.0f}% cap · {book['open_positions']} positions")
-tile(t5, "Last updated", last_updated, "reboot app if stale")
+tile(t5, "Last updated", _last_updated_html,
+     "reboot app if stale" if _stale_level == "fresh"
+     else f"⚠ data {_age_hours:.0f}h old — signals may not reflect current price")
+
+# Staleness banner — louder than the tile, only shown when data is past amber.
+if _stale_level != "fresh":
+    if _stale_level == "red":
+        st.error(f"⚠ Data is **{_age_hours:.1f} hours old** (over "
+                 f"{_red}h threshold). Signals below reflect the LAST RUN, not "
+                 "current market action. Re-run the engine before acting.")
+    else:
+        st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
+                   "freshness threshold. Verify quotes manually before acting.")
 
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
