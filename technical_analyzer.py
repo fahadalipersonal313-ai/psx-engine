@@ -118,6 +118,47 @@ def true_atr_adx(ohlc, period=14):
     return {"atr": atr, "adx": adx}
 
 
+def obv_price_divergence(close, obv_series, lookback=30):
+    """Bullish OBV/price divergence: price's most recent swing low is flat or
+    lower than the prior swing low in the window, while OBV's low at that same
+    point is HIGHER than its prior low — sellers pushing price down on
+    shrinking volume pressure, the classic quiet-accumulation signature.
+    Returns None when there isn't enough history."""
+    if len(close) < lookback:
+        return None
+    c = close.tail(lookback).to_numpy()
+    o = obv_series.tail(lookback).to_numpy()
+    half = lookback // 2
+    c1, c2, o1, o2 = c[:half], c[half:], o[:half], o[half:]
+    i1, i2 = int(np.argmin(c1)), int(np.argmin(c2))
+    price_low1, price_low2 = float(c1[i1]), float(c2[i2])
+    obv_low1, obv_low2 = float(o1[i1]), float(o2[i2])
+    bullish = bool(price_low2 <= price_low1 * 1.01 and obv_low2 > obv_low1)
+    return {"bullish": bullish, "price_low1": price_low1, "price_low2": price_low2,
+            "obv_low1": obv_low1, "obv_low2": obv_low2}
+
+
+def chaikin_money_flow(ohlc, period=20):
+    """Chaikin Money Flow from REAL daily OHLC bars (needs real high/low — the
+    EOD feed alone can't compute this). Weights each day's volume by where the
+    close sits within that day's range: +1 at the high (pure buying pressure),
+    -1 at the low (pure selling). Returns None until enough real bars exist;
+    the caller must not fall back to a close-only proxy for this one — a fake
+    range would invert the whole point of the indicator."""
+    if len(ohlc) < period:
+        return None
+    bars = ohlc[-period:]
+    high = np.array([b["high"] for b in bars], float)
+    low = np.array([b["low"] for b in bars], float)
+    close = np.array([b["close"] for b in bars], float)
+    volume = np.array([b["volume"] for b in bars], float)
+    rng = high - low
+    mfm = np.where(rng != 0, ((close - low) - (high - close)) / rng, 0.0)
+    mfv = mfm * volume
+    vol_sum = volume.sum()
+    return float(mfv.sum() / vol_sum) if vol_sum else None
+
+
 def support_resistance(close, lookback=60):
     win = close.tail(lookback)
     lo, hi, last = win.min(), win.max(), close.iloc[-1]
@@ -197,10 +238,14 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
             atr_method = "true ATR (real intraday H/L)"
         if t["adx"] is not None:
             last_adx = t["adx"]; adx_is_true = True
+    # CMF needs real daily H/L, same gate as true ATR/ADX above.
+    cmf = (chaikin_money_flow(ohlc) if ohlc and len(ohlc) >= config.MIN_OHLC_BARS_FOR_TRUE
+           else None)
     atr_pct = (last_atr / price * 100) if (last_atr and price) else None
     momentum_20d = (price / float(close.iloc[-21]) - 1) * 100 if len(close) > 21 else 0.0
     obv_trend_up = float(obv_series.iloc[-1]) > float(obv_series.iloc[-10]) \
         if len(obv_series) > 10 else None
+    obv_divergence = obv_price_divergence(close, obv_series)
 
     breakout = price > resistance and vol_spike
     breakdown = price < support
@@ -358,6 +403,27 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         notes.append(f"EXTENDED: {ext_pct}% above EMA20, 20d momentum "
                      f"{momentum_20d:+.1f}% — chase risk, a pullback entry is safer")
 
+    # --- Accumulation candidate: a SEPARATE, lower-bar tag from the Buy signal —
+    # "smart money may be quietly building a position" rather than "act now".
+    # Deliberately NOT folded into the score (would double-count OBV/volume,
+    # already 15 pts above); surfaced as its own flag so it can be spotted
+    # BEFORE a stock ever reaches Buy. Heuristic, proxy-based — labelled as such.
+    accum_reasons = []
+    if obv_trend_up:
+        accum_reasons.append("OBV rising")
+    if obv_divergence and obv_divergence["bullish"]:
+        accum_reasons.append("bullish OBV/price divergence (price flat/down, OBV up)")
+    if vol_spike and not breakout:
+        accum_reasons.append("volume spike inside the range (no breakout yet)")
+    if cmf is not None and cmf > 0.05:
+        accum_reasons.append(f"CMF {cmf:+.2f} (buying pressure, real H/L)")
+    if cmf is not None and cmf < -0.05:
+        accum_reasons = []  # net selling pressure on real data overrides the proxy signals
+    accumulation_candidate = bool(
+        accum_reasons and not breakout and not breakdown and not extended)
+    if accumulation_candidate:
+        notes.append("ACCUMULATION candidate: " + "; ".join(accum_reasons))
+
     # --- Pullback-entry setup: an established uptrend that has retraced to its
     # rising 20-EMA with momentum cooled but structure intact — the lower-risk
     # entry (buy the dip profit-takers create) vs chasing the breakout. buy_zone
@@ -389,6 +455,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         "momentum": momentum_20d > 0,
         "bb":       bb_pct_b >= 0.5,
         "rs":       bool(rs_score >= 50) if rs_score is not None else None,
+        "accumulation": accumulation_candidate if accum_reasons else None,
     }
 
     out.update({
@@ -414,5 +481,9 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         "relative_strength": rs_score,
         "low_confidence": len(close) < 60,
         "tech_flags": tech_flags,
+        "cmf": cmf,
+        "obv_divergence_bullish": (obv_divergence["bullish"] if obv_divergence else None),
+        "accumulation_candidate": accumulation_candidate,
+        "accumulation_reasons": accum_reasons,
     })
     return out

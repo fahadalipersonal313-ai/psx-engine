@@ -113,6 +113,12 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
         "confluence": signal.get("confluence", 0),
         "buy_zone_low": signal.get("buy_zone_low"),
         "buy_zone_high": signal.get("buy_zone_high"),
+        "accumulation_candidate": int(bool(technical.get("accumulation_candidate"))),
+        "accumulation_reasons": json.dumps(technical.get("accumulation_reasons") or []),
+        "cmf": technical.get("cmf"),
+        "obv_divergence_bullish": (int(technical["obv_divergence_bullish"])
+                                   if technical.get("obv_divergence_bullish") is not None
+                                   else None),
     })
 
     if quote.get("warning"):
@@ -258,6 +264,17 @@ def main():
     elif cmd == "accuracy":
         print("Signal accuracy:", db.signal_accuracy())
         print("Indicator accuracy:", db.indicator_stats())
+    elif cmd == "accumulating":
+        rows = db.accumulating_now(lookback=10, min_streak=1)
+        if not rows:
+            print("No stocks currently flagged as accumulation candidates.")
+        else:
+            print(f"\n=== Accumulation candidates ({len(rows)}) ===")
+            for r in rows:
+                reasons = json.loads(r["reasons"] or "[]")
+                print(f"  {r['symbol']:<7} {r['streak']:>2} session(s)  "
+                      f"signal={r['signal']:<11} score={r['final_score']}  "
+                      f"price={r['price']}  — " + "; ".join(reasons))
     elif cmd == "history":
         sym = sys.argv[2].upper() if len(sys.argv) > 2 else "PSO"
         for r in db.run_history(sym, 20):

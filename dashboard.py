@@ -134,6 +134,10 @@ def sig_pill(sig):
     return _pill(sig or "—", NEON_SIG.get(sig, "#8aa0c0"))
 
 
+def accum_pill():
+    return _pill("🧲 Accumulating", "#37c6ff")
+
+
 def risk_pill(level):
     return _pill(f"{level} risk", NEON_RISK.get(level, "#8aa0c0"))
 
@@ -387,7 +391,9 @@ else:
                     f'<div><span style="font-size:20px;font-weight:700">'
                     f'{r["symbol"]}</span> '
                     f'<span style="opacity:.6;font-size:13px">{sec}</span></div>'
-                    f'{sig_pill(r["signal"])}</div>', unsafe_allow_html=True)
+                    f'{sig_pill(r["signal"])} '
+                    f'{accum_pill() if r.get("accumulation_candidate") else ""}</div>',
+                    unsafe_allow_html=True)
                 a, b, c = box.columns(3)
                 a.metric("Entry", fmt(r["price"]))
                 b.metric("Stop", fmt(r["stop_loss"]))
@@ -458,6 +464,25 @@ def _portfolio_glimpse_section():
                                      for d in pf["deferred"][:4]))
 
 
+def _accumulation_section():
+    rows = db.accumulating_now(lookback=10, min_streak=1)
+    if not rows:
+        st.caption("No accumulation candidates flagged right now.")
+        return
+    st.caption("Quiet-buying signature (OBV trend, OBV/price divergence, "
+               "volume spikes, CMF) — not yet a Buy signal, worth watching.")
+    for r in rows:
+        reasons = json.loads(r["reasons"] or "[]")
+        streak_txt = f"{r['streak']} session" + ("s" if r["streak"] > 1 else "")
+        st.markdown(
+            f'{accum_pill()} &nbsp;**{r["symbol"]}** — {streak_txt} · '
+            f'signal {sig_pill(r["signal"])} · price {fmt(r["price"])} · '
+            f'score {fmt(r["final_score"], 0)}'
+            + (f' · CMF {r["cmf"]:+.2f}' if r.get("cmf") is not None else '')
+            + f'<br><span style="opacity:.75;font-size:13px">{"; ".join(reasons)}</span>',
+            unsafe_allow_html=True)
+
+
 # ----------------------------- WHY NOT A BUY ------------------------------
 _why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
               (~latest["signal"].isin(["Strong Buy", "Buy"]))]
@@ -477,6 +502,14 @@ if buy_cands:
     else:
         st.subheader("🛡 Portfolio risk — does the book fit?")
         _portfolio_glimpse_section()
+
+# ----------------------------- ACCUMULATION WATCH --------------------------
+if compact:
+    with st.expander("🧲 Accumulation watch — stocks being quietly bought"):
+        _accumulation_section()
+else:
+    st.subheader("🧲 Accumulation watch — stocks being quietly bought")
+    _accumulation_section()
 
 st.divider()
 

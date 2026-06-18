@@ -29,7 +29,11 @@ CREATE TABLE IF NOT EXISTS runs (
     conviction_streak INTEGER, -- consecutive runs at the same signal
     confluence INTEGER,       -- 0-4: how many independent signal dimensions agree
     buy_zone_low REAL,        -- pullback buy-zone (band around the 20-EMA)
-    buy_zone_high REAL
+    buy_zone_high REAL,
+    accumulation_candidate INTEGER, -- 1 = OBV/CMF/volume signature of quiet buying
+    accumulation_reasons TEXT,      -- JSON list of which signals fired
+    cmf REAL,                       -- Chaikin Money Flow (needs real daily H/L)
+    obv_divergence_bullish INTEGER  -- 1 = price flat/down while OBV rising
 );
 CREATE INDEX IF NOT EXISTS idx_runs_symbol_time ON runs(symbol, run_time);
 
@@ -84,7 +88,10 @@ def init_db():
         for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT"),
                           ("tech_flags", "TEXT"), ("conviction_streak", "INTEGER"),
                           ("confluence", "INTEGER"),
-                          ("buy_zone_low", "REAL"), ("buy_zone_high", "REAL")):
+                          ("buy_zone_low", "REAL"), ("buy_zone_high", "REAL"),
+                          ("accumulation_candidate", "INTEGER"),
+                          ("accumulation_reasons", "TEXT"),
+                          ("cmf", "REAL"), ("obv_divergence_bullish", "INTEGER")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)
@@ -238,6 +245,44 @@ def signal_accuracy(symbol=None):
     q += " GROUP BY signal, outcome"
     with conn() as c:
         return [dict(r) for r in c.execute(q, args)]
+
+
+def accumulation_streak(symbol, lookback=10):
+    """How many of the most recent runs (consecutively, from now backward)
+    were flagged accumulation_candidate=1. 0 if the latest run wasn't flagged."""
+    with conn() as c:
+        rows = [dict(r) for r in c.execute(
+            """SELECT accumulation_candidate FROM runs WHERE symbol=?
+               ORDER BY run_time DESC LIMIT ?""", (symbol, lookback))]
+    streak = 0
+    for r in rows:
+        if r["accumulation_candidate"]:
+            streak += 1
+        else:
+            break
+    return streak
+
+
+def accumulating_now(lookback=10, min_streak=1):
+    """Symbols currently flagged as accumulation candidates, each with how many
+    consecutive recent runs (sessions) the flag has held — the 'last few
+    sessions' view. Only counts symbols flagged in their MOST RECENT run."""
+    out = []
+    with conn() as c:
+        latest_ids = [r["symbol"] for r in c.execute(
+            """SELECT symbol FROM runs r WHERE r.id =
+               (SELECT MAX(id) FROM runs WHERE symbol = r.symbol)
+               AND r.accumulation_candidate = 1""")]
+    for sym in latest_ids:
+        streak = accumulation_streak(sym, lookback)
+        if streak >= min_streak:
+            row = last_run(sym)
+            out.append({"symbol": sym, "streak": streak,
+                        "reasons": row.get("accumulation_reasons"),
+                        "price": row.get("price"), "signal": row.get("signal"),
+                        "final_score": row.get("final_score"),
+                        "cmf": row.get("cmf")})
+    return sorted(out, key=lambda x: x["streak"], reverse=True)
 
 
 def signal_streak(symbol):
