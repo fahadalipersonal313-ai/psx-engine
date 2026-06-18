@@ -13,6 +13,24 @@ focus, with a broader KMI All-Share universe.
 - **Manual confirmation required before any trade** — this is decision support,
   not auto-trading.
 
+## "Run the repo news" — daily authentic-news routine
+
+User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
+1. Triggers `.github/workflows/news.yml` (workflow_dispatch on `main`) via
+   `mcp__github__actions_run_trigger`. CI runs `python news_fetcher.py` which
+   fetches last-24h headlines from Google News RSS per symbol (filtered to the
+   allowlist) + Business Recorder / Dawn Business / Profit Pakistan Today /
+   Mettis macro feeds, and commits `news_raw_24h.json`.
+2. Pulls `news_raw_24h.json`, applies `news_routine.md` rules (exclude routine
+   results/dividends; score 0–100; direction/materiality/confidence; sources
+   from allowlist only), writes `news_signals.json`, commits + pushes.
+3. Triggers `engine.yml` so the dashboard reflects fresh news-weighted signals.
+
+The `sentiment` slot in `config.WEIGHTS` carries this authentic news at **20%**
+of `final_score` (technical 0.45, fundamentals 0.20, macro_news 0.15,
+sentiment/news 0.20 — sums to 1.0). `NEWS_SIGNALS_MAX_AGE_HOURS = 24`: stale
+files are ignored and news contributes neutral until the next routine run.
+
 ## Architecture (top-down)
 
 `main.py` orchestrates one run:

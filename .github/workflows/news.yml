@@ -1,0 +1,42 @@
+name: news-routine
+
+# Triggered manually ('Run the repo news' from the chat → Claude calls
+# mcp__github__actions_run_trigger for this workflow). Fetches raw 24h headlines
+# for every symbol + macro feeds and commits news_raw_24h.json. Claude then
+# reads that file, judges each stock per news_routine.md, and writes
+# news_signals.json (which the engine actually consumes).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Fetch last-24h news
+        run: python news_fetcher.py
+      - name: Commit raw news
+        run: |
+          git config user.name  "psx-news-bot"
+          git config user.email "psx-news-bot@users.noreply.github.com"
+          git add news_raw_24h.json
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "news raw fetch $(date -u +'%Y-%m-%dT%H:%MZ')"
+          git pull --rebase -X theirs --autostash origin main || git rebase --abort
+          for i in 1 2 3 4; do
+            git push origin main && break
+            sleep $((2 ** i))
+          done

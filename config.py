@@ -143,8 +143,8 @@ OTHER_COMPLIANT = {
 # news: a daily Claude routine writes news_signals.json (LLM-judged headlines
 # with source URLs); sentiment_analyzer reads it (VADER RSS is the fallback when
 # the file is stale/missing). Technical stays dominant. Zero a slot to disable it.
-WEIGHTS = {"technical": 0.55, "fundamentals": 0.20,
-           "macro_news": 0.15, "sentiment": 0.10}
+WEIGHTS = {"technical": 0.45, "fundamentals": 0.20,
+           "macro_news": 0.15, "sentiment": 0.20}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
@@ -384,7 +384,7 @@ NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
 # Your real holdings + ready cash (read by portfolio_advisor for the dashboard's
 # Portfolio tab). Edit portfolio.json or the dashboard table to keep it current.
 PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
-NEWS_SIGNALS_MAX_AGE_HOURS = 36          # weekend gap tolerated; Mon refresh
+NEWS_SIGNALS_MAX_AGE_HOURS = 24          # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
 # Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
 # stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with
 # VADER. Set True only to restore the old VADER fallback. False means news moves
@@ -397,6 +397,8 @@ NEWS_SOURCE_ALLOWLIST = [
     "brecorder.com",                     # Business Recorder
     "dawn.com",                          # Dawn Business
     "mettisglobal.news",                 # Mettis Global
+    "profit.pakistantoday.com.pk",       # Profit Pakistan Today
+    "news.google.com",                   # Google News RSS aggregator (per-symbol)
 ]
 EXCEL_DIR = REPORT_DIR
 
