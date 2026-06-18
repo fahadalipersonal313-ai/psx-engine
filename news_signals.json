@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-06-18T17:35:00+05:00",
+  "as_of": "2026-06-18T18:20:00+05:00",
   "generated_by": "claude-news-routine",
-  "window_hours": 24,
+  "window_hours": 96,
   "source_allowlist": [
     "brecorder.com",
     "dawn.com",
@@ -9,14 +9,14 @@
     "profit.pakistantoday.com.pk",
     "news.google.com"
   ],
-  "macro_summary": "PSX KSE-100 holds above 180,000 (+887 pts intraday); US-Iran memorandum electronically signed with Pakistan as mediator; Hormuz reopening expected to depress oil prices (negative read for E&P, mildly positive for OMCs and macro inflation); current account posts $459m surplus in May; rupee firm; ADB $700m loan approved for the insurance sector.",
+  "macro_summary": "Last 4 days: US-Iran memorandum electronically signed with Pakistan as mediator (Trump defending the deal ahead of Switzerland implementation talks); Hormuz reopening expected to release oil supply and depress prices (negative for E&P, positive for OMC volumes and macro inflation); KSE-100 crossed 180,000 milestone then consolidated; current account posted $459m surplus in May; rupee firm; ADB $700m insurance-sector loan approved; Finance Minister Aurangzeb sees budget upside from the deal but called it 'way too premature' to revise projections; Pakistan plans $2bn Eurobond/Sukuk raise FY26-27.",
   "signals": {
     "OGDC": {
       "score": 38,
       "direction": "negative",
       "materiality": "normal",
       "confidence": "high",
-      "summary": "Two same-day negatives: Pakistan missed FY26 oil & gas production targets as drilling fell short; Hormuz reopening expected to release oil supply and depress prices, pressuring E&P realisations.",
+      "summary": "FY26 oil & gas production missed targets (drilling shortfall); Hormuz reopening expected to depress crude prices and OGDC realisations. Two-front headwind sustained over the last 48h.",
       "headlines": [
         "Pakistan misses oil, gas production targets as drilling falls short in FY26",
         "Hormuz reopening to release wave of oil supply, depress prices"
@@ -31,7 +31,7 @@
       "direction": "negative",
       "materiality": "normal",
       "confidence": "high",
-      "summary": "Same FY26 oil & gas production shortfall hits PPL volumes; Hormuz-reopening oil supply wave adds price headwind.",
+      "summary": "Same FY26 production miss flows through to PPL volumes; Hormuz-reopening oil supply wave adds realised-price headwind.",
       "headlines": [
         "Pakistan misses oil, gas production targets as drilling falls short in FY26",
         "Hormuz reopening to release wave of oil supply, depress prices"
@@ -46,7 +46,7 @@
       "direction": "negative",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "FY26 gas production miss flows through to SNGPL throughput. No offsetting catalyst this 24h window.",
+      "summary": "FY26 gas production miss flows through to SNGPL throughput. No offsetting catalyst in the window.",
       "headlines": [
         "Pakistan misses oil, gas production targets as drilling falls short in FY26"
       ],
@@ -70,18 +70,20 @@
       ]
     },
     "PSO": {
-      "score": 56,
+      "score": 58,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "Govt signalling petrol price cut as global oil eases (Hormuz-reopening supply wave) — typically widens OMC volumes; thinner unit margins are the offset.",
+      "summary": "Lower retail petrol prices (Hormuz reopening + govt-signalled cut) widen OMC volumes; $2bn sovereign Eurobond/Sukuk plan supports FX liquidity and improves PSO's circular-debt outlook.",
       "headlines": [
         "Govt signals petroleum price cut as global oil rates ease",
-        "Hormuz reopening to release wave of oil supply, depress prices"
+        "Hormuz reopening to release wave of oil supply, depress prices",
+        "Pakistan to Raise $2b via Eurobonds, Sukuk in 2026-27"
       ],
       "sources": [
         "https://profit.pakistantoday.com.pk/2026/06/18/govt-signals-petroleum-price-cut-as-global-oil-rates-ease/",
-        "https://www.brecorder.com/news/40426179/hormuz-reopening-to-release-wave-of-oil-supply-depress-prices"
+        "https://www.brecorder.com/news/40426179/hormuz-reopening-to-release-wave-of-oil-supply-depress-prices",
+        "https://profit.pakistantoday.com.pk/2026/06/18/pakistan-to-raise-2b-via-eurobonds-sukuk-in-2026-27/"
       ]
     },
     "AIRLINK": {
@@ -108,6 +110,60 @@
       ],
       "sources": [
         "https://www.brecorder.com/news/40426177/port-qasim-authority-renews-engro-vopak-terminal-implementation-agreement"
+      ]
+    },
+    "ATRL": {
+      "score": 66,
+      "direction": "positive",
+      "materiality": "material_positive",
+      "confidence": "high",
+      "summary": "ARL received an offer for sale of 70% stake in Attock Hospital — non-core divestment crystallises cash and sharpens the refining-business focus. Group-level corporate action.",
+      "headlines": [
+        "ARL receives offer for sale of 70% stake in Attock Hospital"
+      ],
+      "sources": [
+        "https://profit.pakistantoday.com.pk/2026/06/17/arl-receives-offer-for-sale-of-70-stake-in-attock-hospital/"
+      ]
+    },
+    "NRL": {
+      "score": 56,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Attock-group hospital divestment (70% Attock Hospital stake sale) reads across to NRL as a group-level capital reallocation positive, though the direct cash impact sits at ATRL/holdco.",
+      "headlines": [
+        "ARL receives offer for sale of 70% stake in Attock Hospital"
+      ],
+      "sources": [
+        "https://profit.pakistantoday.com.pk/2026/06/17/arl-receives-offer-for-sale-of-70-stake-in-attock-hospital/"
+      ]
+    },
+    "PRL": {
+      "score": 54,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Indirect group read-through from the Attock-group hospital divestment; PRL's own balance-sheet impact is limited. Kept low-confidence — primary benefit accrues to ATRL.",
+      "headlines": [
+        "ARL receives offer for sale of 70% stake in Attock Hospital"
+      ],
+      "sources": [
+        "https://profit.pakistantoday.com.pk/2026/06/17/arl-receives-offer-for-sale-of-70-stake-in-attock-hospital/"
+      ]
+    },
+    "KEL": {
+      "score": 52,
+      "direction": "neutral",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "DISCOs seeking Rs10bn additional recovery via tariff hikes supports cashflow visibility, but Dawn editorial flags that disco privatisation alone won't resolve sector stress — mixed read.",
+      "headlines": [
+        "Power bills set to rise as DISCOs seek Rs10bn additional recovery",
+        "Privatising Discos won't be enough"
+      ],
+      "sources": [
+        "https://profit.pakistantoday.com.pk/2026/06/17/power-bills-set-to-rise-as-discos-seek-rs10bn-additional-recovery/",
+        "https://www.dawn.com/news/2008680/privatising-discos-wont-be-enough"
       ]
     }
   }
