@@ -26,7 +26,9 @@ CREATE TABLE IF NOT EXISTS runs (
     price_next_run REAL, price_1d REAL, price_3d REAL, price_7d REAL,
     outcome TEXT,             -- 'worked' / 'failed' / NULL (pending)
     tech_flags TEXT,          -- JSON: which sub-indicators were bullish (learning loop)
-    conviction_streak INTEGER, -- consecutive runs at the same signal
+    conviction_streak INTEGER, -- deprecated: was misleading (15-min run counts
+                                -- mistaken for independent confirmations), no
+                                -- longer written; old rows kept as-is
     confluence INTEGER,       -- 0-4: how many independent signal dimensions agree
     buy_zone_low REAL,        -- pullback buy-zone (band around the 20-EMA)
     buy_zone_high REAL,
@@ -373,35 +375,3 @@ def accumulating_now(lookback=10, min_streak=1):
     return sorted(out, key=lambda x: x["streak"], reverse=True)
 
 
-def signal_streak(symbol):
-    """How many consecutive recent TRADING DAYS had the same signal as the most
-    recent run, one vote per day (the day's last run), restricted to runs at or
-    after config.STREAK_PRODUCTION_START.
-
-    Raw 15-min rows are not a meaningful unit here: the engine runs every 15
-    minutes, so counting rows lets a single session (or, worse, the dev/testing
-    period before the engine had steady cadence) masquerade as many independent
-    confirmations. Counting distinct days the signal held is a far more honest
-    measure of conviction. Returns (day_streak, signal_string, last_run_date);
-    (0, None, None) when no qualifying history.
-    """
-    with conn() as c:
-        rows = [dict(r) for r in c.execute(
-            "SELECT run_time, signal FROM runs WHERE symbol=? AND run_time>=? "
-            "ORDER BY run_time DESC", (symbol, config.STREAK_PRODUCTION_START))]
-    if not rows:
-        return 0, None, None
-    by_day = {}
-    for r in rows:
-        day = r["run_time"][:10]
-        if day not in by_day:           # first row seen per day = latest run that day
-            by_day[day] = r["signal"]
-    days = sorted(by_day, reverse=True)
-    latest = by_day[days[0]]
-    streak = 0
-    for day in days:
-        if by_day[day] == latest:
-            streak += 1
-        else:
-            break
-    return streak, latest, rows[0]["run_time"][:10]

@@ -83,15 +83,13 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
     risk = risk_manager.assess(symbol, technical, sentiment, macro,
                                regime=(regime or {}).get("regime"),
                                regime_pct_above=(regime or {}).get("pct_above"))
-    prev_streak, prev_sig, prev_run_date = db.signal_streak(symbol)
+    prev_sig = (db.last_run(symbol) or {}).get("signal")
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
                                        shariah, technical,
                                        regime=(regime or {}).get("regime"),
                                        regime_pct_above=(regime or {}).get("pct_above"),
                                        prev_signal=prev_sig,
-                                       prev_streak=prev_streak,
-                                       prev_run_date=prev_run_date,
                                        days_to_earnings=_days_to_earnings(symbol))
 
     db.save_run({
@@ -113,7 +111,6 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
         "main_reason": "; ".join(signal["reasons"])[:400],
         "main_risk": (risk["warnings"][0] if risk["warnings"] else "")[:400],
         "tech_flags": json.dumps(tech_flags) if tech_flags else None,
-        "conviction_streak": signal.get("streak", 1),
         "confluence": signal.get("confluence", 0),
         "buy_zone_low": signal.get("buy_zone_low"),
         "buy_zone_high": signal.get("buy_zone_high"),

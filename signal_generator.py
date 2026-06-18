@@ -10,8 +10,9 @@ Overrides ALWAYS beat the score:
 Tier 2 additions:
   * Confluence gate  — Strong Buy needs ≥3/4 independent dimensions (trend,
                        momentum, volume, structure); Buy needs ≥2. Below → Watch.
-  * Conviction streak — Strong Buy is capped at Buy on its FIRST appearance.
-                        A second consecutive Strong Buy run confirms it.
+  * Strong Buy confirmation — capped at Buy on its FIRST appearance; the next
+                              run still scoring Strong Buy confirms it. (No
+                              numeric streak/conviction count is tracked.)
 
 Anti-chase additions (don't buy at the peak):
   * Overextension gate — price too far above EMA20 (or parabolic momentum) steps
@@ -29,7 +30,6 @@ Anti-chase additions (don't buy at the peak):
 """
 
 import logging
-from datetime import datetime
 import config
 import database as db
 
@@ -74,17 +74,15 @@ def _confluence(technical):
 
 
 def generate(symbol, final_score, confidence, risk, shariah, technical,
-             regime=None, prev_signal=None, prev_streak=0, prev_run_date=None,
-             days_to_earnings=None, regime_pct_above=None):
+             regime=None, prev_signal=None, days_to_earnings=None,
+             regime_pct_above=None):
     """Generate a trading signal.
 
-    prev_signal / prev_streak: the most recent stored signal and how many
-    consecutive TRADING DAYS it has held (see db.signal_streak — one vote per
-    day, not per 15-min run, so a streak can't be inflated just by the engine
-    polling repeatedly within a single session). prev_run_date (YYYY-MM-DD) is
-    used to only bump the streak once per calendar day."""
-    today = datetime.now().strftime("%Y-%m-%d")
-    same_day_as_prev = prev_run_date == today
+    prev_signal: the most recent stored signal — used by the Strong Buy
+    confirmation gate (a fresh Strong Buy is held at Buy until the NEXT run
+    still scores Strong Buy). No streak/conviction count is tracked or shown:
+    it proved misleading (15-min polling let raw run-counts look like many
+    independent confirmations when they were really one session)."""
     reasons, override = [], None
 
     # No usable price this run -> not analysable. Emit an explicit "No data"
@@ -95,8 +93,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         return {"signal": "No data",
                 "reasons": ["No usable price for this symbol this run — "
                             "excluded from ranking until the feed returns."],
-                "confidence": 0, "confluence": 0, "confluence_dims": [],
-                "streak": 1}
+                "confidence": 0, "confluence": 0, "confluence_dims": []}
 
     if not shariah["eligible_for_ranking"]:
         override = "Avoid"
@@ -109,13 +106,9 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append("Technical breakdown below support")
 
     if override:
-        if prev_signal != override:
-            streak = 1
-        else:
-            streak = prev_streak if same_day_as_prev else prev_streak + 1
         return {"signal": override, "reasons": reasons,
                 "confidence": min(confidence, 60),
-                "confluence": 0, "confluence_dims": [], "streak": streak}
+                "confluence": 0, "confluence_dims": []}
 
     # ---- score-based base signal
     if final_score >= T["strong_buy"]:
@@ -139,7 +132,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # a real change. Require crossing the threshold by HYSTERESIS_BAND points
     # before changing direction. Only acts on one-notch transitions; multi-notch
     # moves and hard vetoes (breakdown/shariah) bypass it. Applied BEFORE the
-    # streak/confluence/chase gates so those still operate normally on top.
+    # confirmation/confluence/chase gates so those still operate normally on top.
     _band = getattr(config, "HYSTERESIS_BAND", 0)
     if _band > 0 and prev_signal in ("Strong Buy", "Buy", "Watch", "Hold", "Avoid"):
         _RANK = {"Strong Buy": 4, "Buy": 3, "Watch": 2, "Hold": 1, "Avoid": 0}
@@ -168,7 +161,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
                         f"{base} threshold ({_t}) — held at {prev_signal} until "
                         f"it breaks {_t + _band}+")
 
-    # ---- Tier 2: streak gate (before confluence so we check intent, not result)
+    # ---- Tier 2: confirmation gate (before confluence so we check intent, not result)
     # A new Strong Buy on its first appearance is held at Buy — the market has
     # to CONFIRM it on the next run. This prevents chasing a one-run spike.
     if base == "Strong Buy" and prev_signal != "Strong Buy":
@@ -285,12 +278,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     if base in ("Strong Buy", "Buy"):
         reasons.append("Manual confirmation REQUIRED before placing any order")
 
-    if prev_signal != base:
-        current_streak = 1
-    else:
-        current_streak = prev_streak if same_day_as_prev else prev_streak + 1
     return {"signal": base, "reasons": reasons, "confidence": confidence,
             "confluence": confluence, "confluence_dims": conf_dims,
-            "streak": current_streak,
             "buy_zone_low": technical.get("buy_zone_low"),
             "buy_zone_high": technical.get("buy_zone_high")}

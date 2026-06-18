@@ -437,13 +437,9 @@ else:
                         f'20-EMA</span>', unsafe_allow_html=True)
                 rs = r.get("relative_strength")
                 rs_txt = f"RS {rs:.0f}" if pd.notna(rs) else "RS —"
-                streak = r.get("conviction_streak") or 1
                 conf_val = r.get("confluence")
                 conf_dots = (("●" * conf_val + "○" * (4 - conf_val))
                              if conf_val is not None else "")
-                streak_html = (f'<span style="color:{NEON["amber"]};font-weight:700">'
-                               f'🔥 {streak}-day streak</span> &nbsp;'
-                               if streak >= 2 else "")
                 conf_html = (f'<span style="opacity:.7;font-size:12px">'
                              f'confluence {conf_dots} {conf_val}/4</span>'
                              if conf_val is not None else "")
@@ -454,8 +450,8 @@ else:
                     f'R:R {fmt((r["target1"] - r["price"]) / (r["price"] - r["stop_loss"]), 1) if r["price"] and r["stop_loss"] and r["price"] > r["stop_loss"] else "—"}'
                     f'</span>',
                     unsafe_allow_html=True)
-                if streak_html or conf_html:
-                    box.markdown(streak_html + conf_html, unsafe_allow_html=True)
+                if conf_html:
+                    box.markdown(conf_html, unsafe_allow_html=True)
                 box.caption(str(r["main_reason"])[:240])
                 with box.expander("📋 Full detail"):
                     st.write("**Full reason:**", r["main_reason"])
