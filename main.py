@@ -264,6 +264,10 @@ def main():
     elif cmd == "accuracy":
         print("Signal accuracy:", db.signal_accuracy())
         print("Indicator accuracy:", db.indicator_stats())
+    elif cmd == "regrade":
+        res = backtester.regrade_all()
+        print(f"Re-graded {res['regraded']} runs; {res['flipped']} outcomes changed.")
+        print("Signal accuracy now:", db.signal_accuracy())
     elif cmd == "accumulating":
         rows = db.accumulating_now(lookback=10, min_streak=1)
         if not rows:

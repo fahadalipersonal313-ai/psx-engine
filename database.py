@@ -247,6 +247,45 @@ def signal_accuracy(symbol=None):
         return [dict(r) for r in c.execute(q, args)]
 
 
+def gradeable_runs():
+    """Every run that has enough forward data to grade (price + 3-day price),
+    oldest-first so cohort_forward_move sees peers already filled."""
+    with conn() as c:
+        return [dict(r) for r in c.execute(
+            """SELECT * FROM runs
+               WHERE price IS NOT NULL AND price_3d IS NOT NULL AND price > 0
+               ORDER BY run_time ASC""")]
+
+
+def reset_indicator_accuracy():
+    """Wipe the learned hit/miss tallies so they can be rebuilt from scratch
+    (used by backtester.regrade_all after a grading-rule change)."""
+    with conn() as c:
+        c.execute("DELETE FROM indicator_accuracy")
+
+
+def cohort_forward_move(date_str, exclude_symbol=None):
+    """Median forward 3-day % change across every stock scored on `date_str`
+    (the calendar date of run_time) that already has a 3-day price filled.
+    This is the engine's own universe acting as the 'market' benchmark — used
+    to grade Avoid/Exit RELATIVELY (did it underperform the market?) instead of
+    on absolute decline, which is meaningless in a trending tape. Returns None
+    when too few peers have completed to form a benchmark."""
+    with conn() as c:
+        rows = c.execute(
+            """SELECT symbol, price, price_3d FROM runs
+               WHERE date(run_time)=? AND price IS NOT NULL
+                 AND price_3d IS NOT NULL AND price > 0""",
+            (date_str,)).fetchall()
+    moves = [(r["price_3d"] / r["price"] - 1) * 100 for r in rows
+             if exclude_symbol is None or r["symbol"] != exclude_symbol]
+    if len(moves) < 5:          # need a real cross-section, not 1-2 names
+        return None
+    moves.sort()
+    mid = len(moves) // 2
+    return (moves[mid] if len(moves) % 2 else (moves[mid - 1] + moves[mid]) / 2)
+
+
 def _runs_has_accum_column():
     """Whether the runs table has the accumulation_candidate column. Older or
     read-only deployments (where the ALTER TABLE migration could not run) may

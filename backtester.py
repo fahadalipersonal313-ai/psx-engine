@@ -60,34 +60,72 @@ def update_outcomes():
                     updated += 1
         # grade once 3-day price exists
         if run["outcome"] is None and run["price_3d"] is not None and run["price"]:
-            chg = (run["price_3d"] / run["price"] - 1) * 100
-            sig = run["signal"]
-            if sig in ("Buy", "Strong Buy"):
-                worked = chg > 1.0 and (run["stop_loss"] is None
-                                        or run["price_3d"] > run["stop_loss"])
-            elif sig in ("Avoid", "Exit"):
-                worked = chg < 0
-            else:  # Watch / Hold graded loosely on not losing >3%
-                worked = chg > -3.0
-            db.update_outcome(run["id"], "outcome",
-                              "worked" if worked else "failed")
-            # credit/blame the dominant section (section-level, existing)
-            b = {"technical": run["technical_score"],
-                 "sentiment": run["sentiment_score"],
-                 "macro_news": run["macro_news_score"]}
-            dominant = max(b, key=lambda k: b[k] or 0)
-            db.bump_indicator(dominant, sym, worked)
-            # sub-indicator attribution: each bullish flag earns a hit or miss
-            # so scoring_engine can later boost/penalise per-indicator confidence.
-            if run.get("tech_flags"):
-                try:
-                    for ind, bullish in json.loads(run["tech_flags"]).items():
-                        if bullish is True:
-                            db.bump_indicator(f"tech_{ind}", sym, worked)
-                except Exception:
-                    pass
+            _grade_and_attribute(run)
     log.info("Outcome tracker updated %d fields", updated)
     return updated
+
+
+def _signal_worked(run):
+    """Did the signal call play out? Real, rule-based — no fabrication.
+
+      * Buy/Strong Buy — price rose >1% within 3 days without breaching the stop.
+      * Avoid/Exit     — RELATIVE: the stock underperformed that day's universe
+                         (median forward move of every name scored the same day).
+                         You lost nothing by staying out. Falls back to "did not
+                         rise" only when too few peers have completed to benchmark.
+      * Watch/Hold     — graded loosely: didn't lose more than 3%.
+    """
+    chg = (run["price_3d"] / run["price"] - 1) * 100
+    sig = run["signal"]
+    if sig in ("Buy", "Strong Buy"):
+        return chg > 1.0 and (run["stop_loss"] is None
+                              or run["price_3d"] > run["stop_loss"])
+    if sig in ("Avoid", "Exit"):
+        market = db.cohort_forward_move(run["run_time"][:10],
+                                        exclude_symbol=run["symbol"])
+        bar = market if market is not None else 0.0
+        return chg < bar
+    return chg > -3.0
+
+
+def _grade_and_attribute(run):
+    """Grade one run and credit/blame the sections + sub-indicators that drove it."""
+    worked = _signal_worked(run)
+    sym = run["symbol"]
+    db.update_outcome(run["id"], "outcome", "worked" if worked else "failed")
+    # credit/blame the dominant section (section-level)
+    b = {"technical": run["technical_score"],
+         "sentiment": run["sentiment_score"],
+         "macro_news": run["macro_news_score"]}
+    dominant = max(b, key=lambda k: b[k] or 0)
+    db.bump_indicator(dominant, sym, worked)
+    # sub-indicator attribution: each bullish flag earns a hit or miss
+    # so scoring_engine can later boost/penalise per-indicator confidence.
+    if run.get("tech_flags"):
+        try:
+            for ind, bullish in json.loads(run["tech_flags"]).items():
+                if bullish is True:
+                    db.bump_indicator(f"tech_{ind}", sym, worked)
+        except Exception:
+            pass
+    return worked
+
+
+def regrade_all():
+    """One-time / maintenance: re-grade EVERY completed run under the current
+    rules and rebuild indicator_accuracy from scratch. Needed whenever the
+    grading logic changes (e.g. Avoid moving from absolute to relative), since
+    update_outcomes only ever grades rows whose outcome is still NULL."""
+    db.reset_indicator_accuracy()
+    runs = db.gradeable_runs()
+    flipped = 0
+    for run in runs:
+        before = run["outcome"]
+        worked = _grade_and_attribute(run)
+        if before is not None and before != ("worked" if worked else "failed"):
+            flipped += 1
+    log.info("Re-graded %d runs (%d outcomes changed)", len(runs), flipped)
+    return {"regraded": len(runs), "flipped": flipped}
 
 
 # ---------------------------------------------------------------------------
