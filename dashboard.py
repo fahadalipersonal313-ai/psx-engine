@@ -26,6 +26,7 @@ import data_fetcher
 import portfolio_risk
 import portfolio_advisor
 import backtester
+import news_feed
 
 st.set_page_config(page_title="PSX Shariah Engine", layout="wide",
                    page_icon="📈")
@@ -140,6 +141,27 @@ def accum_pill():
 
 def risk_pill(level):
     return _pill(f"{level} risk", NEON_RISK.get(level, "#8aa0c0"))
+
+
+def news_pill(verdict):
+    """Compact news verdict chip. verdict is the dict from news_feed.get(sym)."""
+    if not verdict:
+        return _pill("📰 no fresh news", "#8aa0c0")
+    score = verdict.get("score", 50)
+    delta = score - 50  # symmetric around neutral
+    direction = verdict.get("direction", "neutral")
+    mat = verdict.get("materiality", "normal")
+    if direction == "positive":
+        clr = NEON["green"]
+        arrow = "▲"
+    elif direction == "negative":
+        clr = NEON["red"]
+        arrow = "▼"
+    else:
+        clr = "#8aa0c0"
+        arrow = "●"
+    star = " ★" if mat in ("material_positive", "material_negative") else ""
+    return _pill(f"📰 {arrow} {delta:+d}{star}", clr)
 
 
 def regime_pill(regime):
@@ -333,6 +355,8 @@ book = pf["book"]
 # ----------------------------- header + status strip ----------------------
 st.title("📈 PSX Shariah Engine — Today")
 st.caption("⚠ " + config.DISCLAIMER)
+st.caption(f"📰 {news_feed.status_line()} News carries "
+           f"{int(config.WEIGHTS['sentiment']*100)}% of the final score.")
 
 
 def tile(col, label, value_html, sub=""):
@@ -452,6 +476,11 @@ else:
                     unsafe_allow_html=True)
                 if conf_html:
                     box.markdown(conf_html, unsafe_allow_html=True)
+                nv = news_feed.get(r["symbol"])
+                box.markdown(news_pill(nv) +
+                             (f' <span style="opacity:.75;font-size:12px">'
+                              f'{nv["summary"][:120]}</span>' if nv else ''),
+                             unsafe_allow_html=True)
                 box.caption(str(r["main_reason"])[:240])
                 with box.expander("📋 Full detail"):
                     st.write("**Full reason:**", r["main_reason"])
@@ -464,6 +493,16 @@ else:
                     if pd.notna(bzl2) and pd.notna(bzh2):
                         st.write("**Buy-zone (20-EMA pullback):**",
                                  f"{bzl2:.2f}–{bzh2:.2f}")
+                    if nv:
+                        st.markdown("**📰 News (last 24h, "
+                                    f"{nv.get('confidence','?')}-confidence):** "
+                                    f"{nv['summary']}")
+                        for h, u in zip(nv.get("headlines", []),
+                                        nv.get("sources", [])):
+                            st.markdown(f"- [{h}]({u})")
+                    else:
+                        st.caption("📰 No fresh authentic news in last 24h — "
+                                   "news contributes neutral to the score.")
                     st.caption("For the price/volume chart and a per-stock "
                                "backtest, open the 📈 Stock detail tab.")
 
