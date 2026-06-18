@@ -145,6 +145,41 @@ def get_daily_ohlc(symbol, limit=90):
     return [dict(r) for r in reversed(rows)]
 
 
+def momentum_bursts(symbols, min_pct=5.0):
+    """Today's biggest 1-day price movers (e.g. upper/lower circuit hits),
+    purely informational — NOT a trading signal and NOT fed back into
+    scoring/signal_generator. The score-based pipeline deliberately ignores
+    single-day spikes (see CLAUDE.md); this surfaces them anyway so a circuit
+    move is never silently invisible on the dashboard. Read-only: uses the
+    latest stored run price + locally banked daily_ohlc, no live fetch.
+    Returns a list sorted by |pct_move| descending."""
+    out = []
+    for sym in symbols:
+        r = last_run(sym)
+        if not r or not r.get("price"):
+            continue
+        bars = get_daily_ohlc(sym, limit=22)
+        if not bars:
+            continue
+        today = datetime.now().strftime("%Y-%m-%d")
+        closed_bars = [b for b in bars if b["date"] != today]
+        if not closed_bars:
+            continue
+        prev_close = closed_bars[-1]["close"]
+        if not prev_close:
+            continue
+        pct_move = (r["price"] / prev_close - 1) * 100
+        if abs(pct_move) < min_pct:
+            continue
+        vols = [b["volume"] for b in closed_bars[-20:] if b.get("volume")]
+        avg_vol = sum(vols) / len(vols) if vols else None
+        out.append({"symbol": sym, "price": r["price"], "prev_close": prev_close,
+                    "pct_move": round(pct_move, 1), "today_vol": r.get("volume"),
+                    "avg_vol": avg_vol, "signal": r.get("signal"),
+                    "final_score": r.get("final_score")})
+    return sorted(out, key=lambda x: abs(x["pct_move"]), reverse=True)
+
+
 def save_news(items):
     with conn() as c:
         for it in items:
