@@ -364,6 +364,12 @@ DATA_FRESHNESS_RED_HOURS = 24
 MARKET_OPEN = "09:15"     # PSX regular session (Mon-Thu 09:32-15:30 approx;
 MARKET_CLOSE = "15:45"    # Fri split session). Slightly widened window.
 MARKET_DAYS = [0, 1, 2, 3, 4]          # Mon..Fri
+
+# Runs before this date are engine dev/testing (irregular cadence, manual
+# triggers while building the pipeline) — excluded from conviction-streak
+# counting so historical test noise can't inflate apparent signal confidence.
+# Steady 15-min automated cadence began 2026-06-15.
+STREAK_PRODUCTION_START = "2026-06-15"
 MORNING_REPORT_TIME = "09:00"
 EVENING_REPORT_TIME = "21:00"
 TIMEZONE = "Asia/Karachi"

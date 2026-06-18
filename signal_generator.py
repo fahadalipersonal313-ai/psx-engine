@@ -29,6 +29,7 @@ Anti-chase additions (don't buy at the peak):
 """
 
 import logging
+from datetime import datetime
 import config
 import database as db
 
@@ -73,13 +74,17 @@ def _confluence(technical):
 
 
 def generate(symbol, final_score, confidence, risk, shariah, technical,
-             regime=None, prev_signal=None, prev_streak=0, days_to_earnings=None,
-             regime_pct_above=None):
+             regime=None, prev_signal=None, prev_streak=0, prev_run_date=None,
+             days_to_earnings=None, regime_pct_above=None):
     """Generate a trading signal.
 
     prev_signal / prev_streak: the most recent stored signal and how many
-    consecutive runs it has held. Used by the conviction streak gate.
-    """
+    consecutive TRADING DAYS it has held (see db.signal_streak — one vote per
+    day, not per 15-min run, so a streak can't be inflated just by the engine
+    polling repeatedly within a single session). prev_run_date (YYYY-MM-DD) is
+    used to only bump the streak once per calendar day."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    same_day_as_prev = prev_run_date == today
     reasons, override = [], None
 
     # No usable price this run -> not analysable. Emit an explicit "No data"
@@ -104,7 +109,10 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append("Technical breakdown below support")
 
     if override:
-        streak = (prev_streak + 1) if prev_signal == override else 1
+        if prev_signal != override:
+            streak = 1
+        else:
+            streak = prev_streak if same_day_as_prev else prev_streak + 1
         return {"signal": override, "reasons": reasons,
                 "confidence": min(confidence, 60),
                 "confluence": 0, "confluence_dims": [], "streak": streak}
@@ -277,7 +285,10 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     if base in ("Strong Buy", "Buy"):
         reasons.append("Manual confirmation REQUIRED before placing any order")
 
-    current_streak = (prev_streak + 1) if prev_signal == base else 1
+    if prev_signal != base:
+        current_streak = 1
+    else:
+        current_streak = prev_streak if same_day_as_prev else prev_streak + 1
     return {"signal": base, "reasons": reasons, "confidence": confidence,
             "confluence": confluence, "confluence_dims": conf_dims,
             "streak": current_streak,

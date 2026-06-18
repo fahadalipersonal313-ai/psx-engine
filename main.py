@@ -83,7 +83,7 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
     risk = risk_manager.assess(symbol, technical, sentiment, macro,
                                regime=(regime or {}).get("regime"),
                                regime_pct_above=(regime or {}).get("pct_above"))
-    prev_streak, prev_sig = db.signal_streak(symbol)
+    prev_streak, prev_sig, prev_run_date = db.signal_streak(symbol)
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
                                        shariah, technical,
@@ -91,6 +91,7 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
                                        regime_pct_above=(regime or {}).get("pct_above"),
                                        prev_signal=prev_sig,
                                        prev_streak=prev_streak,
+                                       prev_run_date=prev_run_date,
                                        days_to_earnings=_days_to_earnings(symbol))
 
     db.save_run({
