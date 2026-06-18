@@ -150,6 +150,14 @@ SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
 }
 
+# Hysteresis dead-band around the SIGNAL_THRESHOLDS. A raw score grazing a
+# threshold (e.g. 69.5 vs 70.5) shouldn't flip Buy↔Watch run-to-run — that's
+# scoring noise, not signal. Once a stock is at level X, its final_score must
+# cross the next threshold by at least this many points BEFORE flipping. Same
+# pattern as the existing conviction-streak gate (which requires Strong Buy to
+# confirm), but applied to band edges. Set to 0 to disable.
+HYSTERESIS_BAND = 2
+
 # ---------------------------------------------------------------------------
 # 3b. MARKET REGIME & RELATIVE STRENGTH (Tier 2)
 # ---------------------------------------------------------------------------
@@ -189,6 +197,18 @@ RISK = {
     "min_risk_reward": 2.0,            # reject setups below 2:1 (projected-target R:R)
     "min_headroom_rr": 1.5,            # real room-to-resistance : risk; below -> thin
                                        # upside (price jammed under a ceiling) -> Watch
+    "min_headroom_rr_riskon_floor": 1.1,# FLOOR for the risk-on relaxation of the
+                                       # headroom-RR threshold. In a confirmed bull
+                                       # most stocks sit close to recent highs (price
+                                       # near "resistance" is the leadership default),
+                                       # so requiring 1.5x headroom would mute the
+                                       # whole leadership group. Threshold ramps DOWN
+                                       # from min_headroom_rr (neutral / flat tape) to
+                                       # this floor (strong rally). Set to 1.5 to
+                                       # disable risk-on relaxation.
+    "headroom_rr_riskon_full_pct": 8.0, # Rally strength (benchmark % above its 50-EMA)
+                                       # at which the headroom threshold reaches its
+                                       # floor. Linear ramp between the two.
     "max_extension_pct": 11.0,         # price > this % above EMA20 -> extended (chase).
                                        # %-based, not ATR: the EOD ATR proxy understates
                                        # true range, which inflated ATR-normalised distance.
@@ -335,6 +355,12 @@ EARNINGS_DATES = {}          # manual override, e.g. {"LUCK": "2026-07-28"}
 # 7. SCHEDULING
 # ---------------------------------------------------------------------------
 RUN_INTERVAL_MINUTES = 15
+# Dashboard staleness flagging — when the latest run is older than these
+# thresholds (in hours, PKT), the "Last updated" tile shifts amber then red and
+# a banner warns the user that signals may not reflect current price action.
+# Honest-by-design: better to flag stale than to let it pass as fresh.
+DATA_FRESHNESS_AMBER_HOURS = 4
+DATA_FRESHNESS_RED_HOURS = 24
 MARKET_OPEN = "09:15"     # PSX regular session (Mon-Thu 09:32-15:30 approx;
 MARKET_CLOSE = "15:45"    # Fri split session). Slightly widened window.
 MARKET_DAYS = [0, 1, 2, 3, 4]          # Mon..Fri

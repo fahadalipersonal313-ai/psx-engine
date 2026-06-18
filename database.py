@@ -247,6 +247,42 @@ def signal_accuracy(symbol=None):
         return [dict(r) for r in c.execute(q, args)]
 
 
+def signal_accuracy_summary(symbol=None, min_reliable_n=20):
+    """Per-signal win rate with sample size + reliability flag.
+    Returns one row per signal type with:
+      * n_total / n_worked / n_failed
+      * win_rate_pct
+      * n_confidence: 'high' (n>=min_reliable_n), 'medium' (n>=min_reliable_n/2),
+                      'low' (anything less) — small samples are noise, not edge.
+    This is the honest cousin of signal_accuracy(): same data, but explicitly
+    flagged when N is too small to trust. Use this for any UI that displays the
+    win rate to a human about to risk money."""
+    rows = signal_accuracy(symbol=symbol)
+    agg = {}
+    for r in rows:
+        s = r["signal"] or "?"
+        a = agg.setdefault(s, {"signal": s, "n_total": 0, "n_worked": 0,
+                                "n_failed": 0})
+        a["n_total"] += r["n"]
+        if r["outcome"] == "worked":
+            a["n_worked"] += r["n"]
+        elif r["outcome"] == "failed":
+            a["n_failed"] += r["n"]
+    out = []
+    for a in agg.values():
+        graded = a["n_worked"] + a["n_failed"]
+        a["win_rate_pct"] = (round(a["n_worked"] / graded * 100, 1)
+                              if graded else None)
+        if a["n_total"] >= min_reliable_n:
+            a["n_confidence"] = "high"
+        elif a["n_total"] >= max(5, min_reliable_n // 2):
+            a["n_confidence"] = "medium"
+        else:
+            a["n_confidence"] = "low"
+        out.append(a)
+    return sorted(out, key=lambda r: -r["n_total"])
+
+
 def gradeable_runs():
     """Every run that has enough forward data to grade (price + 3-day price),
     oldest-first so cohort_forward_move sees peers already filled."""

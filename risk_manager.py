@@ -10,12 +10,36 @@ import config
 log = logging.getLogger("risk")
 
 
-def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000):
-    """Returns dict: risk_level, warnings[], position sizing, veto flags."""
+def _effective_min_headroom_rr(regime, regime_pct_above):
+    """Regime-aware headroom-RR threshold. In a strong risk-on rally most names
+    sit near their recent highs (the leadership default), so a flat 1.5x rule
+    flags the entire leadership group as "thin upside". The minimum scales DOWN
+    linearly with rally strength, from the strict baseline (neutral / risk-off)
+    to a configured floor (powerful rally). Same pattern as the chase-guard
+    widening — symmetric, regime-aware risk policy."""
+    base = config.RISK["min_headroom_rr"]
+    floor = config.RISK.get("min_headroom_rr_riskon_floor", base)
+    full_pct = config.RISK.get("headroom_rr_riskon_full_pct", 8.0) or 8.0
+    if regime != "risk-on" or floor >= base:
+        return base
+    strength = 1.0 if regime_pct_above is None else \
+        max(0.0, min(1.0, regime_pct_above / full_pct))
+    return base - (base - floor) * strength
+
+
+def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
+           regime=None, regime_pct_above=None):
+    """Returns dict: risk_level, warnings[], position sizing, veto flags.
+
+    regime / regime_pct_above (optional): market context. When supplied, the
+    headroom-RR veto relaxes in a confirmed risk-on rally (see
+    _effective_min_headroom_rr). Backward-compatible — omit to keep the strict
+    threshold."""
     warnings, vetoes = [], []
     price = technical.get("price")
     stop = technical.get("stop_loss")
     rr = technical.get("headroom_rr")   # REAL room-to-resistance:risk (not the ≈2.0 proj.)
+    rr_min = _effective_min_headroom_rr(regime, regime_pct_above)
 
     # ---- hard warnings
     if technical.get("avg_volume") is not None and \
@@ -37,9 +61,11 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000):
         warnings.append(f)
         if "PUMP" in f or "HYPE" in f:
             vetoes.append("manipulation_risk")
-    if rr is not None and rr < config.RISK["min_headroom_rr"]:
+    if rr is not None and rr < rr_min:
+        _relax = (f" (eased from {config.RISK['min_headroom_rr']} for risk-on rally)"
+                  if rr_min < config.RISK["min_headroom_rr"] else "")
         warnings.append(f"Thin upside: room-to-resistance:risk {rr} below "
-                        f"{config.RISK['min_headroom_rr']} — price near overhead "
+                        f"{round(rr_min, 2)}{_relax} — price near overhead "
                         "resistance, little room before the next ceiling")
         vetoes.append("poor_rr")
     if technical.get("volume_spike") and sentiment.get("score", 50) > 80:
