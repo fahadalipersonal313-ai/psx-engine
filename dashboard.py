@@ -589,6 +589,32 @@ with tab_watch:
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
+    bursts = db.momentum_bursts(config.STOCKS, min_pct=5.0)
+    if bursts:
+        with st.expander(f"🚀 Momentum-burst watchlist ({len(bursts)}) — "
+                          "informational only, NOT a signal", expanded=False):
+            st.caption("Today's biggest 1-day movers (e.g. circuit hits). The "
+                       "scoring engine deliberately does NOT chase these — "
+                       "multi-day indicators won't move on one bar, and "
+                       "buying into/after a circuit is usually the worst entry. "
+                       "This list doesn't feed back into any signal; it's here "
+                       "so a big move is never invisible.")
+            for b in bursts:
+                arrow = "🔺" if b["pct_move"] > 0 else "🔻"
+                clr = NEON["green"] if b["pct_move"] > 0 else NEON["red"]
+                vol_txt = ""
+                if b.get("avg_vol"):
+                    ratio = (b["today_vol"] or 0) / b["avg_vol"]
+                    vol_txt = f" · vol {ratio:.1f}× 20d avg"
+                st.markdown(
+                    f'{arrow} **{b["symbol"]}** '
+                    f'<span style="color:{clr};font-weight:700">'
+                    f'{b["pct_move"]:+.1f}%</span> '
+                    f'(prev close {b["prev_close"]:.2f} → {b["price"]:.2f})'
+                    f'{vol_txt} · current signal {sig_pill(b["signal"])} '
+                    f'(score {fmt(b["final_score"], 0)})',
+                    unsafe_allow_html=True)
+
 with tab_port:
     st.subheader("💼 My portfolio — profit/loss & strategy")
     st.caption("Enter your holdings (symbol, shares, average buy price). Ready cash "
