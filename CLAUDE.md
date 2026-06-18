@@ -36,8 +36,9 @@ Order of operations:
 4. **Hysteresis dead-band** (`HYSTERESIS_BAND=2`): one-notch transitions
    require crossing threshold by 2pts. Stops Buy↔Watch flapping when raw
    score grazes 70. Symmetric (downgrades AND upgrades).
-5. **Conviction streak gate**: a fresh Strong Buy is held at Buy until
-   confirmed on the next CALENDAR DAY (not next 15-min run — see below).
+5. **Strong Buy confirmation gate**: a fresh Strong Buy is held at Buy until
+   the very next run still scores Strong Buy. No numeric streak/conviction
+   count is tracked or shown anywhere (removed — see below).
 6. **Confluence gate** (4 dims, each independent): trend (price>50-EMA),
    momentum (RSI 40-74 AND MACD hist>0), volume (OBV up), structure
    (price>support AND no breakdown). Strong Buy needs ≥3/4, Buy needs ≥2/4.
@@ -52,17 +53,14 @@ Order of operations:
 9. **Pullback-entry upgrade** (Watch/Hold → Buy): when price has retraced to
    the 20-EMA buy-zone with confluence ≥2 and no vetoes.
 
-## Conviction streak (day-based, not run-based)
+## Conviction streak — removed
 
-`conviction_streak` / `db.signal_streak()` count consecutive TRADING DAYS the
-signal has held — one vote per day (that day's last run), restricted to runs
-at/after `config.STREAK_PRODUCTION_START` (2026-06-15, when steady automated
-15-min cadence began; earlier rows are dev/testing noise and excluded).
-Raw rows are not used directly: the engine polls every 15 min, so a naive
-row-count streak could hit double digits within a single session without any
-real day-over-day confirmation. `signal_generator.generate()` only bumps the
-streak when `prev_run_date` differs from today's date — repeat runs within
-the same day hold the streak steady rather than inflating it.
+The dashboard used to show a "🔥 N-run/N-day streak" badge per stock. Removed
+entirely: even day-bucketed, it kept giving a false sense of independent
+confirmation. `db.signal_streak()` is gone; `conviction_streak` stays in the
+`runs` schema (old rows only) but nothing writes to it anymore. The Strong Buy
+confirmation gate (above) achieves the same "don't chase a one-run spike"
+goal without surfacing a number that looks like a track record.
 
 ## Risk vetoes (risk_manager.assess)
 
