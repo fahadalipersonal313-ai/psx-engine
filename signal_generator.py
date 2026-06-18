@@ -157,15 +157,31 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # resistance" case is handled by the poor_rr veto in the soft downgrades.)
     _zlo, _zhi = technical.get("buy_zone_low"), technical.get("buy_zone_high")
     _zone = f" Buy-zone PKR {_zlo}–{_zhi} (pullback to 20-EMA)." if _zlo and _zhi else ""
-    if technical.get("extended"):
+    # Regime-aware chase guard. In a broad rally most names sit well above their
+    # 20-EMA — treating that as "extended" would downgrade the whole leadership
+    # group to Watch and make the engine miss the move. So in a confirmed risk-on
+    # regime the chase thresholds widen (×extension_riskon_multiplier); only a
+    # genuinely parabolic move is still stepped down. In neutral/risk-off the
+    # guard stays tight. (technical['extended'] keeps its strict definition for the
+    # buy-zone/accumulation logic; only the SIGNAL action adapts here.)
+    _ext_pct = technical.get("ext_pct")
+    _mom = technical.get("momentum_20d")
+    _mult = (config.RISK.get("extension_riskon_multiplier", 1.0)
+             if regime == "risk-on" else 1.0)
+    _ext_lim = config.RISK["max_extension_pct"] * _mult
+    _mom_lim = config.RISK["max_extension_momentum_pct"] * _mult
+    _chase = ((_ext_pct is not None and _ext_pct > _ext_lim)
+              or (_mom is not None and _mom > _mom_lim))
+    _relaxed = " (relaxed for risk-on rally)" if regime == "risk-on" else ""
+    if _chase:
         if base == "Strong Buy":
             base = "Buy"; reasons.append(
-                f"Downgraded Strong Buy→Buy: extended {technical.get('ext_pct')}% "
-                f"above EMA20 — chase risk, a pullback entry is safer.{_zone}")
+                f"Downgraded Strong Buy→Buy: extended {_ext_pct}% "
+                f"above EMA20{_relaxed} — chase risk, a pullback entry is safer.{_zone}")
         elif base == "Buy":
             base = "Watch"; reasons.append(
-                "Downgraded Buy→Watch: price extended above EMA20 (chase risk) — "
-                f"wait for a pullback before acting.{_zone}")
+                f"Downgraded Buy→Watch: price extended above EMA20 (chase risk{_relaxed}) "
+                f"— wait for a pullback before acting.{_zone}")
 
     # ---- soft downgrades (earnings, regime, risk, news, confidence)
     _earnings_soon = (days_to_earnings is not None
