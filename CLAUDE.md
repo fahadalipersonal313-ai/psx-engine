@@ -26,10 +26,14 @@ User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
    from allowlist only), writes `news_signals.json`, commits + pushes.
 3. Triggers `engine.yml` so the dashboard reflects fresh news-weighted signals.
 
-The `sentiment` slot in `config.WEIGHTS` carries this authentic news at **20%**
-of `final_score` (technical 0.45, fundamentals 0.20, macro_news 0.15,
-sentiment/news 0.20 — sums to 1.0). `NEWS_SIGNALS_MAX_AGE_HOURS = 24`: stale
-files are ignored and news contributes neutral until the next routine run.
+The `sentiment` slot in `config.WEIGHTS` carries this authentic news at **25%**
+of `final_score` (technical 0.55, fundamentals 0.0, macro_news 0.20,
+sentiment/news 0.25 — sums to 1.0). Fundamentals weight was zeroed (2026-06-19):
+the user confirms fundamentals manually rather than letting an unreliable/
+missing data feed dilute the score — the fundamentals section is still
+computed and shown, just no longer scored. `NEWS_SIGNALS_MAX_AGE_HOURS = 24`:
+stale files are ignored and news contributes neutral until the next routine
+run.
 
 ## Architecture (top-down)
 

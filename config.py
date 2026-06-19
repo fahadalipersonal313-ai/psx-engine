@@ -134,17 +134,17 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-# Technical + fundamentals only. News/sentiment weight is ZERO (news judged to be
-# noise) — both sections are still COMPUTED for display and to drive the bad-news
-# SAFETY override in risk_manager, but they no longer move the score.
-# Must sum to 1.0.
+# Technical + authentic news only. Fundamentals weight is ZERO (user confirms
+# fundamentals manually instead) — the section is still COMPUTED for display
+# and to drive the bad-news SAFETY override in risk_manager, but it no longer
+# moves the score. Must sum to 1.0.
 # Tier B: macro is anchor-informed (rates/CPI/reserves — see
-# macro_news_analyzer._anchor_score). The `sentiment` slot now carries AUTHENTIC
+# macro_news_analyzer._anchor_score). The `sentiment` slot carries AUTHENTIC
 # news: a daily Claude routine writes news_signals.json (LLM-judged headlines
 # with source URLs); sentiment_analyzer reads it (VADER RSS is the fallback when
 # the file is stale/missing). Technical stays dominant. Zero a slot to disable it.
-WEIGHTS = {"technical": 0.45, "fundamentals": 0.20,
-           "macro_news": 0.15, "sentiment": 0.20}
+WEIGHTS = {"technical": 0.55, "fundamentals": 0.0,
+           "macro_news": 0.20, "sentiment": 0.25}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
