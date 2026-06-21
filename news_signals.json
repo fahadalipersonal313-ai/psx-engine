@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-19T09:30:00+05:00",
+  "as_of": "2026-06-21T09:30:00+05:00",
   "generated_by": "claude-news-routine",
   "window_hours": 24,
   "source_allowlist": [
@@ -9,125 +9,83 @@
     "profit.pakistantoday.com.pk",
     "news.google.com"
   ],
-  "macro_summary": "KSE-100 extends bull run for a fourth straight session; oil falls further as supply starts moving through Strait of Hormuz post US-Iran deal (deflationary for fuel-linked CPI, margin headwind for E&P, volume tailwind for OMCs); Select Technologies IPO registration formally opens; foreign loan inflows surge to $12.1bn; ADB $700m insurance-sector loan approved; FDI outflow-of-profit story flags persistent external-account fragility.",
+  "macro_summary": "Thin company-specific flow today; KSE-100 closed a bullish week on peace/budget optimism (Dawn). Bigger macro swing factor: top-level US-Iran peace talks opened at a Swiss resort with the Strait of Hormuz explicitly 'in the spotlight', but Trump simultaneously threatened to strike Iran over Hezbollah support and Iran warned the US to 'be careful' (Business Recorder) -- reintroducing the Hormuz/oil-supply risk that had been fading after last week's de-escalation. Talks are live, not concluded, so this is a watch item rather than a confirmed price mover yet.",
   "signals": {
     "OGDC": {
-      "score": 42,
-      "direction": "negative",
+      "score": 53,
+      "direction": "positive",
       "materiality": "normal",
-      "confidence": "high",
-      "summary": "Oil continuing to fall as Hormuz supply resumes post-deal pressures E&P realised prices; yesterday's FY26 production-target miss is still the freshest fundamental headline. Slightly less negative than yesterday since today's allowlisted flow lacks a second negative.",
+      "confidence": "low",
+      "summary": "Renewed US-Iran friction (Trump strike threat, Iran's warning) right as Hormuz-focused talks start reopens upside risk to oil prices, which would help E&P realised prices -- but talks are ongoing and outcome unconfirmed, so this is a mild, low-confidence positive tilt rather than a confirmed catalyst.",
       "headlines": [
-        "Oil falls as supply starts moving through Strait of Hormuz",
-        "Pakistan misses oil, gas production targets as drilling falls short in FY26"
+        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
+        "Trump threatens to strike Iran over support for Hezbollah",
+        "Iran warns US to 'be careful' after Trump threat"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426320/oil-falls-as-supply-starts-moving-through-strait-of-hormuz",
-        "https://news.google.com/rss/articles/CBMivgFBVV95cUxNd1V1S0JwX05EZDYyU2s2aHJKdl9HZmdCeV9FZHJuWHMzZFBrcW1CRVlETml1ZFU3dzByaDZ2cUhLa2IyLV9fcF9ReFpCU2tnaVNQbXNVMmw1eVN4MXhoc1piNWlNYXpSck5ZU2pUTHlER0V0Wmk3N0VNNWdhaWttejNYUkZnRjZRWm9ieVlIaDhJNk8xWUJabXhqUWZIVjFtcmRLT3IwLW1RRUctOXJnTDJ6X0Z5Tkl1Wms3S2Fn?oc=5"
+        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
+        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah",
+        "https://www.brecorder.com/news/40426628/iran-warns-us-to-be-careful-after-trump-threat"
       ]
     },
     "PPL": {
-      "score": 42,
-      "direction": "negative",
+      "score": 53,
+      "direction": "positive",
       "materiality": "normal",
-      "confidence": "high",
-      "summary": "Same Hormuz-driven oil-price pressure and yesterday's FY26 production miss apply to PPL's volumes and realisations.",
+      "confidence": "low",
+      "summary": "Same renewed Hormuz/US-Iran tension applies to PPL's gas/oil realisations -- mild, low-confidence positive tilt while talks remain unresolved.",
       "headlines": [
-        "Oil falls as supply starts moving through Strait of Hormuz",
-        "Pakistan misses oil, gas production targets as drilling falls short in FY26"
+        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
+        "Trump threatens to strike Iran over support for Hezbollah",
+        "Iran warns US to 'be careful' after Trump threat"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426320/oil-falls-as-supply-starts-moving-through-strait-of-hormuz",
-        "https://news.google.com/rss/articles/CBMivgFBVV95cUxNd1V1S0JwX05EZDYyU2s2aHJKdl9HZmdCeV9FZHJuWHMzZFBrcW1CRVlETml1ZFU3dzByaDZ2cUhLa2IyLV9fcF9ReFpCU2tnaVNQbXNVMmw1eVN4MXhoc1piNWlNYXpSck5ZU2pUTHlER0V0Wmk3N0VNNWdhaWttejNYUkZnRjZRWm9ieVlIaDhJNk8xWUJabXhqUWZIVjFtcmRLT3IwLW1RRUctOXJnTDJ6X0Z5Tkl1Wms3S2Fn?oc=5"
+        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
+        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah",
+        "https://www.brecorder.com/news/40426628/iran-warns-us-to-be-careful-after-trump-threat"
       ]
     },
-    "SNGP": {
+    "PSO": {
       "score": 47,
       "direction": "negative",
       "materiality": "normal",
       "confidence": "low",
-      "summary": "No fresh allowlisted news in this 24h window for SNGP specifically; carrying forward a mild negative tilt from yesterday's FY26 gas-production miss as the most recent material fact.",
+      "summary": "Renewed Hormuz/US-Iran tension cuts the other way for an OMC -- any firming in oil prices would pressure cost/margin, though nothing is confirmed while talks are still in progress, so this stays a mild, low-confidence negative tilt.",
       "headlines": [
-        "Pakistan misses oil, gas production targets as drilling falls short in FY26"
+        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
+        "Trump threatens to strike Iran over support for Hezbollah"
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMivgFBVV95cUxNd1V1S0JwX05EZDYyU2s2aHJKdl9HZmdCeV9FZHJuWHMzZFBrcW1CRVlETml1ZFU3dzByaDZ2cUhLa2IyLV9fcF9ReFpCU2tnaVNQbXNVMmw1eVN4MXhoc1piNWlNYXpSck5ZU2pUTHlER0V0Wmk3N0VNNWdhaWttejNYUkZnRjZRWm9ieVlIaDhJNk8xWUJabXhqUWZIVjFtcmRLT3IwLW1RRUctOXJnTDJ6X0Z5Tkl1Wms3S2Fn?oc=5"
-      ]
-    },
-    "SSGC": {
-      "score": 50,
-      "direction": "neutral",
-      "materiality": "normal",
-      "confidence": "low",
-      "summary": "No fresh allowlisted news today; yesterday's production-miss/steel-revival-demand offset nets out to neutral and that balance carries forward.",
-      "headlines": [],
-      "sources": []
-    },
-    "PSO": {
-      "score": 60,
-      "direction": "positive",
-      "materiality": "normal",
-      "confidence": "high",
-      "summary": "PM directing immediate fuel-price relief on falling global oil, with a possible Rs55/litre cut from June 20 — a clear OMC volume and sentiment tailwind; $2bn sovereign Eurobond/Sukuk plan continues to support FX/circular-debt backdrop.",
-      "headlines": [
-        "PM Shehbaz directs immediate fuel price relief as global oil prices fall: petroleum minister",
-        "Pakistan to Raise $2b via Eurobonds, Sukuk in 2026-27"
-      ],
-      "sources": [
-        "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0wOGd5bWV5aU53QTR6QkVtalhDS3N0cnVlUXJEb2JkVEQ1NzlkQm9teTdvV2MxZUxnQjU4azJKWFlYaG9GYlpxZw?oc=5",
-        "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQSGM0MmNobHNiN3Y2eS1KZGliczFtc2EwN2NybnpRekFDNjhOWEJTMTMxRXMyZHBVVVF0UGhEYVVjNFZZby1XRDRaTUljSE9wTTY2RkY0NFY4U2NsSXc5VUllbll6VmRpNndFRklnRTRwRTBvY1k2d2tYMUhsczNleUpJLWVRWjRneVVfSnRmZkFiel8ydm5mUURuY2d3NUk3c1A2OWFsRHo5a1BaTU5xdDB3VzRfa0pvR3AyU09vTnlLc1lPVkY0cE1xaUc2WlV3WmV4d1JKSUExdmln?oc=5"
+        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
+        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah"
       ]
     },
     "PRL": {
-      "score": 54,
-      "direction": "positive",
+      "score": 47,
+      "direction": "negative",
       "materiality": "normal",
-      "confidence": "medium",
-      "summary": "Falling fuel prices and the broader oil-price decline ease feedstock costs / support throughput economics for refiners, a mild positive carried from yesterday's Attock-group developments.",
+      "confidence": "low",
+      "summary": "Same logic as PSO -- a refiner's feedstock cost outlook turns mildly less favourable if Hormuz tension pushes oil prices back up, but it's a live, unresolved situation.",
       "headlines": [
-        "Pakistan Fuel Price Drop: How Much Will It Fall?"
+        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
+        "Trump threatens to strike Iran over support for Hezbollah"
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQS01HR3F4M19jLXZmaTZDbjhhdlRWU21BeEJQb3cyeGI4RDUycjhCeHY2bmwtMTBCek9DdUdSd3MtYm1OR1BHVTA1R2tXVjRjbXQ5OUJ0SmRjekJqMFFsSFBFOVRlTFRhLUZGSnMyVTk3bDZmeXRBUGtIY2lFNkI4S0F2WG94ajZkSWlTS3NPWTVGempnTDlSSjBzMTFWb0lTU2VLOURDWG1wcFVoZktvclJlYTMwaXRwVG1BQ2FoR2RSVEF5b2c0WjBGQTA2QQ?oc=5"
+        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
+        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah"
       ]
     },
-    "AIRLINK": {
-      "score": 68,
-      "direction": "positive",
-      "materiality": "material_positive",
-      "confidence": "high",
-      "summary": "Select Technologies IPO registration formally opened today (book building June 22-23 confirmed yesterday) — the catalyst is now live, not just scheduled.",
-      "headlines": [
-        "Select Technologies IPO registration opens"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40426318/select-technologies-ipo-registration-opens"
-      ]
-    },
-    "PIBTL": {
-      "score": 54,
+    "ENGROH": {
+      "score": 53,
       "direction": "positive",
       "materiality": "normal",
-      "confidence": "medium",
-      "summary": "No new allowlisted item today; carrying forward yesterday's Engro Vopak / Port Qasim terminal renewal as the most recent material fact for the terminal sector.",
+      "confidence": "low",
+      "summary": "No company-specific item; the only allowlisted headline naming the broader equity market notes KSE-100 closed a bullish week on peace/budget optimism -- a market-wide tailwind, not a company catalyst, so scored as a mild, low-confidence positive only.",
       "headlines": [
-        "Govt Extends Long-Term Terminal Operations Agreement for Engro Vopak"
+        "Equities turn in bullish week on peace, budget optimism"
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMirAFBVV95cUxNaHZWNnJtc2xBdmZUeC1VMjBPbWs2TWZmakNfV21rR1h4ZTBPWXkyc1RkNW0tOG5aZ05FSzB1Z2RyT2NSZERRbG9qZWlmWTVCdldkWEZGMXlZckRiYXhLMU1kOXZYUEM4M1B1Mzd3NkdFY0dHU2d3NFQ3X2hBdmNBdWZWa1o3Skl4V2IxQ2pnbl9UWXVaVVloa09ScWd0UFl5TXhhLVJESnczcUJu0gGsAUFVX3lxTE1odlY2cm1zbEF2ZlR4LVUyME9tazZNZmZqQ19XbWtHWHhlME9ZeTJzVGQ1bS04blpnTkVLMHVnZHJPY1JkRFFsb2plaWZZNUJ2V2RYRkYxeVlyRGJheEsxTWQ5dlhQQzgzUHUzN3c2R0VjR0dTZ3c0VDdfaEF2Y0F1ZlZrWjdKSXhXYjFDamduX1RZdVpVWWhrT1JxZ3RQWXlNeGEtUkRKdzNxQm4?oc=5"
-      ]
-    },
-    "SYS": {
-      "score": 56,
-      "direction": "positive",
-      "materiality": "normal",
-      "confidence": "medium",
-      "summary": "CDWP approved Rs435.7bn in development projects and sent six to ECNEC — broadens the public-sector digital/IT project pipeline SYS competes for, a mild sector tailwind rather than a company-specific catalyst.",
-      "headlines": [
-        "CDWP Approves Rs435.7bn Projects, Sends Six to ECNEC"
-      ],
-      "sources": [
-        "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOGRMQWRsOWx6TnpTRm5KQjBsQjV3Q3NXWUdTUzNZMXBMcEc1Zng1dGMzZWtHMVpBcW5xMU1EQzlEUmxGOWVNZ1Y1dTlja2ZJcWpQSUh2cVExdWJVWjVWMXBMR20zT284LTdKQ3gwcFlVQS1aMmFuNVNILVh3aFpqU3pfbnFtMnFMdDFqT3dSS1ktVUdQR3RrcUhtak1wOW9EeXRQS1hsdElYcF8yVklBSXNocGUwcHBsR1VVOFRxUnhrTDNzN0cxOHBVUTM?oc=5"
+        "https://www.dawn.com/news/2009571/equities-turn-in-bullish-week-on-peace-budget-optimism"
       ]
     }
   }
