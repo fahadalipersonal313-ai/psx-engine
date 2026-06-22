@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-21T09:30:00+05:00",
+  "as_of": "2026-06-22T09:30:00+05:00",
   "generated_by": "claude-news-routine",
   "window_hours": 24,
   "source_allowlist": [
@@ -9,83 +9,131 @@
     "profit.pakistantoday.com.pk",
     "news.google.com"
   ],
-  "macro_summary": "Thin company-specific flow today; KSE-100 closed a bullish week on peace/budget optimism (Dawn). Bigger macro swing factor: top-level US-Iran peace talks opened at a Swiss resort with the Strait of Hormuz explicitly 'in the spotlight', but Trump simultaneously threatened to strike Iran over Hezbollah support and Iran warned the US to 'be careful' (Business Recorder) -- reintroducing the Hormuz/oil-supply risk that had been fading after last week's de-escalation. Talks are live, not concluded, so this is a watch item rather than a confirmed price mover yet.",
+  "macro_summary": "Fast-moving, conflicting geopolitics overnight: Business Recorder reports oil rose after Iran shut the Strait of Hormuz again and Trump threatened new attacks, yet other wires the same morning say US-Iran talks concluded with mediators citing progress and Asian stocks rallying on that progress -- genuine uncertainty, not a settled direction. Domestically, the government's unilateral fuel-price cut has the local oil industry (OMCs/refiners) publicly objecting over margin pressure (Dawn Business). Select Technologies IPO book-building formally opened today at PSX -- a live, material catalyst for AIRLINK.",
   "signals": {
     "OGDC": {
-      "score": 53,
+      "score": 57,
       "direction": "positive",
       "materiality": "normal",
-      "confidence": "low",
-      "summary": "Renewed US-Iran friction (Trump strike threat, Iran's warning) right as Hormuz-focused talks start reopens upside risk to oil prices, which would help E&P realised prices -- but talks are ongoing and outcome unconfirmed, so this is a mild, low-confidence positive tilt rather than a confirmed catalyst.",
+      "confidence": "medium",
+      "summary": "Iran reportedly shut Hormuz again and Trump threatened new strikes, which would lift crude and help E&P realised prices -- but same-morning wires say talks concluded with progress cited and Asian markets rallying, so the situation is genuinely unresolved. Mild positive tilt on the supply-risk headline, tempered by the conflicting de-escalation signal.",
       "headlines": [
-        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
-        "Trump threatens to strike Iran over support for Hezbollah",
-        "Iran warns US to 'be careful' after Trump threat"
+        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks",
+        "US and Iran conclude high-level talks in Switzerland, mediators say"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
-        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah",
-        "https://www.brecorder.com/news/40426628/iran-warns-us-to-be-careful-after-trump-threat"
+        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks",
+        "https://www.brecorder.com/news/40426723/us-and-iran-conclude-high-level-talks-in-switzerland-mediators-say"
       ]
     },
     "PPL": {
-      "score": 53,
+      "score": 57,
       "direction": "positive",
       "materiality": "normal",
-      "confidence": "low",
-      "summary": "Same renewed Hormuz/US-Iran tension applies to PPL's gas/oil realisations -- mild, low-confidence positive tilt while talks remain unresolved.",
+      "confidence": "medium",
+      "summary": "Same Hormuz-reescalation-vs-talks-progress tension applies to PPL's gas/oil realisations as OGDC -- mild positive tilt, medium confidence given the conflicting same-day signals.",
       "headlines": [
-        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
-        "Trump threatens to strike Iran over support for Hezbollah",
-        "Iran warns US to 'be careful' after Trump threat"
+        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks",
+        "Attock Refinery to Sell Hospital Stake to Own Chairman"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
-        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah",
-        "https://www.brecorder.com/news/40426628/iran-warns-us-to-be-careful-after-trump-threat"
+        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks",
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
       ]
     },
     "PSO": {
-      "score": 47,
+      "score": 42,
       "direction": "negative",
       "materiality": "normal",
-      "confidence": "low",
-      "summary": "Renewed Hormuz/US-Iran tension cuts the other way for an OMC -- any firming in oil prices would pressure cost/margin, though nothing is confirmed while talks are still in progress, so this stays a mild, low-confidence negative tilt.",
+      "confidence": "medium",
+      "summary": "Double headwind for an OMC: the local oil industry is publicly objecting to the government's unilateral fuel-price cut squeezing margins, and a renewed Hormuz supply scare raises input-cost risk on top of that -- compounding negative, though the geopolitical leg is still fluid.",
       "headlines": [
-        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
-        "Trump threatens to strike Iran over support for Hezbollah"
+        "Oil industry cries out over unilateral cut in fuel prices",
+        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
-        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah"
+        "https://www.dawn.com/news/2009904/oil-industry-cries-out-over-unilateral-cut-in-fuel-prices",
+        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks"
       ]
     },
     "PRL": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Refiner feedstock-cost risk rises if Hormuz tension persists, and the domestic margin-squeeze complaint over the unilateral price cut applies to refiners too -- a related-party hospital-stake sale by sister company Attock Refinery is a minor governance note, not a direct driver.",
+      "headlines": [
+        "Oil industry cries out over unilateral cut in fuel prices",
+        "Attock Refinery to Sell Hospital Stake to Own Chairman"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbDhyNWVLWGN6bVlHalBoQ0lyRVhlT19vQzZhdWc0V29BWlZNM2tVeW9ZZXMzbDh3TFg5b2lZaXN4SGlidEJ5S0R2SjdDOG0xSUs3clVveHpKZUdQUXNGdGlxNzgtU25BNHBPamtNbzZaOGhQTUF6Mmk4S0EtM3JrNWVRNE9zTmJtRkZZUGhWbzk2WEFGSFE?oc=5",
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
+      ]
+    },
+    "ATRL": {
       "score": 47,
       "direction": "negative",
       "materiality": "normal",
       "confidence": "low",
-      "summary": "Same logic as PSO -- a refiner's feedstock cost outlook turns mildly less favourable if Hormuz tension pushes oil prices back up, but it's a live, unresolved situation.",
+      "summary": "Attock Refinery itself is selling a hospital stake to its own chairman -- a related-party transaction that's a minor governance optics concern rather than an operational catalyst; low-confidence mild negative.",
       "headlines": [
-        "Top-level US-Iran peace talks to begin at Swiss resort with Hormuz in spotlight",
-        "Trump threatens to strike Iran over support for Hezbollah"
+        "Attock Refinery to Sell Hospital Stake to Own Chairman"
       ],
       "sources": [
-        "https://www.brecorder.com/news/40426618/top-level-us-iran-peace-talks-to-begin-at-swiss-resort-with-",
-        "https://www.brecorder.com/news/40426625/trump-threatens-to-strike-iran-over-support-for-hezbollah"
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
       ]
     },
-    "ENGROH": {
-      "score": 53,
-      "direction": "positive",
+    "NRL": {
+      "score": 47,
+      "direction": "negative",
       "materiality": "normal",
       "confidence": "low",
-      "summary": "No company-specific item; the only allowlisted headline naming the broader equity market notes KSE-100 closed a bullish week on peace/budget optimism -- a market-wide tailwind, not a company catalyst, so scored as a mild, low-confidence positive only.",
+      "summary": "Same Attock-group related-party hospital-stake sale as ATRL -- minor governance note for the wider Attock group, low-confidence mild negative.",
       "headlines": [
-        "Equities turn in bullish week on peace, budget optimism"
+        "Attock Refinery to Sell Hospital Stake to Own Chairman"
       ],
       "sources": [
-        "https://www.dawn.com/news/2009571/equities-turn-in-bullish-week-on-peace-budget-optimism"
+        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
+      ]
+    },
+    "AIRLINK": {
+      "score": 67,
+      "direction": "positive",
+      "materiality": "material_positive",
+      "confidence": "high",
+      "summary": "Select Technologies IPO book-building formally opened today at PSX, targeting up to Rs3.7bn -- a live, confirmed catalyst (not just scheduled) directly relevant to AIRLINK's tech-IPO exposure.",
+      "headlines": [
+        "Select Technologies IPO book-building opens today, company eyes up to Rs3.7bn"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcjM2MDhsOXk0NkR1SG9HdlBya2xYSE1iMkVkOXFYaXcyV205THgtd0R6eFUzczU5QnNPS1ZvelpSSDB5YkRGYkpwdHVIbkdQdlJNM29pMldQeXB1eWx4VzluQXBnNWVRZE05bWhUSUpaakhsYkwzNFl5RUNOTjQtZ1NPY001dk1PdFc4d2htaTBrTkxxb2g2bHIwTkxheDlfdTdHQWFLYml1RzNLLXNvVzE4OXZYcjdDeXNJS1Y5TQ?oc=5"
+      ]
+    },
+    "CPHL": {
+      "score": 56,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Citi Pharma is spinning off its real estate assets into a REIT -- a value-unlocking corporate action, mild positive.",
+      "headlines": [
+        "Citi Pharma to spin off real estate assets into a REIT"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiowFBVV95cUxOSE5fTGtmSnFTeEttSG9laE5QR2ZYV2lJck5XdGtMeDh2ckFkM0owRGlYRnp3b1lOalJSVkw5LWl0VjhCc20tWkVid2VyNE1ZaXhxcFRpQXhRN1NGOUFVcGFLOFJKUWQxcTJsaGVReUMyYUVQT0FHRk81anRkT2VwbVhVUDBxWW0teUF1b0tvb1hOM1g4Z1Axb0ppNVgzcHpOLUVJ?oc=5"
+      ]
+    },
+    "WAVES": {
+      "score": 55,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Waves is resuming air-conditioner production in Pakistan after nearly four years -- a genuine operational restart, mild positive.",
+      "headlines": [
+        "After nearly four years, Waves to resume air conditioner production in Pakistan"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQQUFINzkyVi1VS1dXU3I5RmY5REI2Uko4V2ZiV2tobHVwYmJnWjY5NlhvQm1pdElTRkFjV2FOcUZHZGh2aDNMYW5EdDdWOU54dEdLLTZfN21UaDJkYm5ZMjlQbDhIOWNfVEJpbnBNZ1ZkcVBueGhPbWVXZDBBdEloa0FwbE1DNzQyWWd5cVZCQXBOT0Vwbk9xc2x3UWktNllUMlBHYVh3eHNaOGoyZ0ZkUGdUNW1zNFMydGJ6YWd4ZlY3UEE?oc=5"
       ]
     }
   }
