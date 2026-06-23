@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-22T09:30:00+05:00",
+  "as_of": "2026-06-23T09:30:00+05:00",
   "generated_by": "claude-news-routine",
   "window_hours": 24,
   "source_allowlist": [
@@ -9,66 +9,68 @@
     "profit.pakistantoday.com.pk",
     "news.google.com"
   ],
-  "macro_summary": "Fast-moving, conflicting geopolitics overnight: Business Recorder reports oil rose after Iran shut the Strait of Hormuz again and Trump threatened new attacks, yet other wires the same morning say US-Iran talks concluded with mediators citing progress and Asian stocks rallying on that progress -- genuine uncertainty, not a settled direction. Domestically, the government's unilateral fuel-price cut has the local oil industry (OMCs/refiners) publicly objecting over margin pressure (Dawn Business). Select Technologies IPO book-building formally opened today at PSX -- a live, material catalyst for AIRLINK.",
+  "macro_summary": "Clear reversal of yesterday's whiplash: the PM confirmed US-Iran talks concluded successfully, the US authorised Iranian oil sales, and global oil fell nearly 2% on the de-escalation (Business Recorder/Profit) -- though a same-morning Business Recorder piece flags oil already rebounding while markets await confirmation that Hormuz flows are actually clear. Govt formally ended fuel subsidies for farmers/transporters/motorcyclists now that pump prices have come down. Domestically, the oil industry escalated its unilateral-price-cut complaint into a quantified Rs105bn loss warning for refineries and OMCs. PSX itself gave back some of its peace-rally gains on profit-taking (Dawn/Business Recorder closing-bell coverage).",
   "signals": {
     "OGDC": {
-      "score": 57,
-      "direction": "positive",
-      "materiality": "normal",
-      "confidence": "medium",
-      "summary": "Iran reportedly shut Hormuz again and Trump threatened new strikes, which would lift crude and help E&P realised prices -- but same-morning wires say talks concluded with progress cited and Asian markets rallying, so the situation is genuinely unresolved. Mild positive tilt on the supply-risk headline, tempered by the conflicting de-escalation signal.",
-      "headlines": [
-        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks",
-        "US and Iran conclude high-level talks in Switzerland, mediators say"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks",
-        "https://www.brecorder.com/news/40426723/us-and-iran-conclude-high-level-talks-in-switzerland-mediators-say"
-      ]
-    },
-    "PPL": {
-      "score": 57,
-      "direction": "positive",
-      "materiality": "normal",
-      "confidence": "medium",
-      "summary": "Same Hormuz-reescalation-vs-talks-progress tension applies to PPL's gas/oil realisations as OGDC -- mild positive tilt, medium confidence given the conflicting same-day signals.",
-      "headlines": [
-        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks",
-        "Attock Refinery to Sell Hospital Stake to Own Chairman"
-      ],
-      "sources": [
-        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks",
-        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
-      ]
-    },
-    "PSO": {
-      "score": 42,
-      "direction": "negative",
-      "materiality": "normal",
-      "confidence": "medium",
-      "summary": "Double headwind for an OMC: the local oil industry is publicly objecting to the government's unilateral fuel-price cut squeezing margins, and a renewed Hormuz supply scare raises input-cost risk on top of that -- compounding negative, though the geopolitical leg is still fluid.",
-      "headlines": [
-        "Oil industry cries out over unilateral cut in fuel prices",
-        "Oil rises after Iran shuts Hormuz again, Trump threatens new attacks"
-      ],
-      "sources": [
-        "https://www.dawn.com/news/2009904/oil-industry-cries-out-over-unilateral-cut-in-fuel-prices",
-        "https://www.brecorder.com/news/40426727/oil-rises-after-iran-shuts-hormuz-again-trump-threatens-new-attacks"
-      ]
-    },
-    "PRL": {
       "score": 44,
       "direction": "negative",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "Refiner feedstock-cost risk rises if Hormuz tension persists, and the domestic margin-squeeze complaint over the unilateral price cut applies to refiners too -- a related-party hospital-stake sale by sister company Attock Refinery is a minor governance note, not a direct driver.",
+      "summary": "The geopolitical premium that had been propping up crude is unwinding now that talks concluded successfully and Iranian oil sales are US-authorised -- both bearish for the oil price E&P realises. A same-day rebound report (oil gains after the selloff, awaiting Hormuz-flow confirmation) tempers conviction, hence medium not high confidence.",
       "headlines": [
-        "Oil industry cries out over unilateral cut in fuel prices",
-        "Attock Refinery to Sell Hospital Stake to Own Chairman"
+        "Oil falls after US-Iran talks conclude in Switzerland",
+        "US authorises Iranian oil sales amid talks on final peace deal",
+        "Oil gains after selloff, awaits progress on Strait of Hormuz flows"
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbDhyNWVLWGN6bVlHalBoQ0lyRVhlT19vQzZhdWc0V29BWlZNM2tVeW9ZZXMzbDh3TFg5b2lZaXN4SGlidEJ5S0R2SjdDOG0xSUs3clVveHpKZUdQUXNGdGlxNzgtU25BNHBPamtNbzZaOGhQTUF6Mmk4S0EtM3JrNWVRNE9zTmJtRkZZUGhWbzk2WEFGSFE?oc=5",
-        "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
+        "https://www.dawn.com/news/2009979/oil-falls-after-us-iran-talks-conclude-in-switzerland",
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcW0wTUs1SHhxQUtyVk8yQ2JjYlhtV0NzT0NVZi1UZEFWcVBmU09HYmxWYjY2ZkRWLUYtaDA5dTlfQ0ZBWFZsMExvVzI3UVJUaHdqUGhNT3BRVFNoUFdNdURXdTBEZ3FsU3FqV295MW5HYVE5OU5PdXQ0RldrbXJzWVBNQ2V5MndJZzl5Rmd1cWVLWDNKS0NBQTl3NEZyUEpNcHdfMtIBVkFVX3lxTE4yTFFBTDBSRFhDSWY4eEhPU3hDTW1CaldSSDJUNGpMc0lzQzNURU9lRjRVYl91NmFWQUFyREU4NndTSXF6elFjbnRKcG4zZ0dvNUJXdzJ3?oc=5",
+        "https://www.brecorder.com/news/40426910/oil-gains-after-selloff-awaits-progress-on-strait-of-hormuz-flows"
+      ]
+    },
+    "PPL": {
+      "score": 44,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "medium",
+      "summary": "Same de-escalation-driven oil-price unwind hits PPL's gas/oil realisations as OGDC -- mild negative, medium confidence given the same-day partial rebound report.",
+      "headlines": [
+        "Global oil slips nearly 2% after US-Iran conclude talks in Switzerland",
+        "US authorises Iranian oil sales amid talks on final peace deal"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOdnFXTzAyODVsdFhRMkZEdkRiRzdOaV9xU3FiRE5TVlF3WXl1OVNjVzlfWFZqWmxGb2xRUk9nUWZ4VHkwZ0FYYTVEeDJhc0pQSi1kT2g3b1JJbzdKcElYTDBXc0t4NmZRTHZWVkRDSG1lczM1Z3NLVHBTcFdVZ29uRFFWRm9fc2RQd29uRXVlbGZWbmU3ZnR2V1U0dlpOa2NVNTRtN29sTnNXMGNiSEZtWjQ1TjkweUMyallYZ3Qzckc?oc=5",
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcW0wTUs1SHhxQUtyVk8yQ2JjYlhtV0NzT0NVZi1UZEFWcVBmU09HYmxWYjY2ZkRWLUYtaDA5dTlfQ0ZBWFZsMExvVzI3UVJUaHdqUGhNT3BRVFNoUFdNdURXdTBEZ3FsU3FqV295MW5HYVE5OU5PdXQ0RldrbXJzWVBNQ2V5MndJZzl5Rmd1cWVLWDNKS0NBQTl3NEZyUEpNcHdfMtIBVkFVX3lxTE4yTFFBTDBSRFhDSWY4eEhPU3hDTW1CaldSSDJUNGpMc0lzQzNURU9lRjRVYl91NmFWQUFyREU4NndTSXF6elFjbnRKcG4zZ0dvNUJXdzJ3?oc=5"
+      ]
+    },
+    "PSO": {
+      "score": 40,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "The unilateral price-cut complaint escalated into a quantified Rs105bn industry-wide loss warning for refineries and OMCs -- a concrete, material domestic margin hit that outweighs any cost relief from falling global oil. Govt also formally ending fuel subsidies removes a support mechanism.",
+      "headlines": [
+        "Oil industry protests unilateral fuel price cut, warns of Rs105 billion losses to refineries, OMCs",
+        "Govt ends fuel subsidies",
+        "Fuel subsidy for farmers, transporters and motorcyclists phased out amid lower oil prices"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOVEI5Qi1lS2o4WUIyZEpkSWZDTXBKQUtWZEFzbVVRTzZrSGlQOHFaVl9WU3BZQmdvNXRyZkVmZENhdy1DQ3Q0cEVxNWxqLU5iR0d3bFZnQVZ6b09OOU5lLU1TM1RjRUFCX081Q1FGOFlmZzZRbWxJMjlCZUtPZWtic0VQakNzMkwtQkF3cm5DWWVsS2xadXlBZkxYTGU0RFJqdlY5a1JoV3JKS1F2YlNvRG83cHo2WkVpekJTckZFdFdlY3ZCdURYeE5sYkx4SlFTYUg4WThqT1gwSXM?oc=5",
+        "https://www.brecorder.com/news/40426884/govt-ends-fuel-subsidies",
+        "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQy13a25PTENESzUwSV9US29sSDVRQW9KaHNTVDBlYTZ3V0Q2blQycmpKVjFJSFVqS3VuXzZhdjQ0eGcxTy1nMWpEakdLRG1ZNDhqV2FIOTN1UFJxVDhRaXRXeml2amZ6U3R4X2czbERnUTZGUmVRT3pxVk53LUYzb3N0VHo1Mi1tUVFYSllZemtBVG9kd21jRXNidHozVWxJdmIzM1FaN0FFZ2RGdUR6dlJsWl9xQm40WTQ3dGxwZ2ludUtTWkg2LU5faktVcE96?oc=5"
+      ]
+    },
+    "PRL": {
+      "score": 41,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Named directly in the quantified Rs105bn industry loss warning over the unilateral price cut -- a concrete, material margin hit for a refiner specifically, partially offset (but not outweighed) by falling crude feedstock costs.",
+      "headlines": [
+        "Oil industry protests unilateral fuel price cut, warns of Rs105 billion losses to refineries, OMCs"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOVEI5Qi1lS2o4WUIyZEpkSWZDTXBKQUtWZEFzbVVRTzZrSGlQOHFaVl9WU3BZQmdvNXRyZkVmZENhdy1DQ3Q0cEVxNWxqLU5iR0d3bFZnQVZ6b09OOU5lLU1TM1RjRUFCX081Q1FGOFlmZzZRbWxJMjlCZUtPZWtic0VQakNzMkwtQkF3cm5DWWVsS2xadXlBZkxYTGU0RFJqdlY5a1JoV3JKS1F2YlNvRG83cHo2WkVpekJTckZFdFdlY3ZCdURYeE5sYkx4SlFTYUg4WThqT1gwSXM?oc=5"
       ]
     },
     "ATRL": {
@@ -76,9 +78,9 @@
       "direction": "negative",
       "materiality": "normal",
       "confidence": "low",
-      "summary": "Attock Refinery itself is selling a hospital stake to its own chairman -- a related-party transaction that's a minor governance optics concern rather than an operational catalyst; low-confidence mild negative.",
+      "summary": "Recurring related-party hospital-subsidiary sale to its own chairman -- still a minor governance optics concern, not escalating; low-confidence mild negative carried forward.",
       "headlines": [
-        "Attock Refinery to Sell Hospital Stake to Own Chairman"
+        "Attock Refinery to sell its hospital subsidiary to its own chairman"
       ],
       "sources": [
         "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
@@ -89,25 +91,12 @@
       "direction": "negative",
       "materiality": "normal",
       "confidence": "low",
-      "summary": "Same Attock-group related-party hospital-stake sale as ATRL -- minor governance note for the wider Attock group, low-confidence mild negative.",
+      "summary": "Same Attock-group related-party hospital-subsidiary sale -- minor governance note for the wider group, low-confidence mild negative.",
       "headlines": [
-        "Attock Refinery to Sell Hospital Stake to Own Chairman"
+        "Attock Refinery to sell its hospital subsidiary to its own chairman"
       ],
       "sources": [
         "https://news.google.com/rss/articles/CBMitAFBVV95cUxNNVdDMkxHbjdZcmlJZTZOS1NWdUFSdmVDTjNHX2lCdEhFZ1VtakVoLWozRld3eDl3NDNYY3puQm5MalVaMGpCRmxTNksxYTZwd2ZteGZqczlPV3hfN0ZhdTFKZF9sV0VGMVFOZThGdTZnMG1rSmkwR2t2WkMta1h3blZ2U19nbG43Qzc0SzRlQXNqMGEyY0k3QzUwWng2RVd5dFN1dTVUSTdlaTg0SWE3ZXhxYUQ?oc=5"
-      ]
-    },
-    "AIRLINK": {
-      "score": 67,
-      "direction": "positive",
-      "materiality": "material_positive",
-      "confidence": "high",
-      "summary": "Select Technologies IPO book-building formally opened today at PSX, targeting up to Rs3.7bn -- a live, confirmed catalyst (not just scheduled) directly relevant to AIRLINK's tech-IPO exposure.",
-      "headlines": [
-        "Select Technologies IPO book-building opens today, company eyes up to Rs3.7bn"
-      ],
-      "sources": [
-        "https://news.google.com/rss/articles/CBMivwFBVV95cUxQcjM2MDhsOXk0NkR1SG9HdlBya2xYSE1iMkVkOXFYaXcyV205THgtd0R6eFUzczU5QnNPS1ZvelpSSDB5YkRGYkpwdHVIbkdQdlJNM29pMldQeXB1eWx4VzluQXBnNWVRZE05bWhUSUpaakhsYkwzNFl5RUNOTjQtZ1NPY001dk1PdFc4d2htaTBrTkxxb2g2bHIwTkxheDlfdTdHQWFLYml1RzNLLXNvVzE4OXZYcjdDeXNJS1Y5TQ?oc=5"
       ]
     },
     "CPHL": {
@@ -115,7 +104,7 @@
       "direction": "positive",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "Citi Pharma is spinning off its real estate assets into a REIT -- a value-unlocking corporate action, mild positive.",
+      "summary": "Recurring item: Citi Pharma's REIT spinoff of real estate assets -- still a genuine value-unlocking corporate action, carried forward as mild positive.",
       "headlines": [
         "Citi Pharma to spin off real estate assets into a REIT"
       ],
@@ -123,17 +112,69 @@
         "https://news.google.com/rss/articles/CBMiowFBVV95cUxOSE5fTGtmSnFTeEttSG9laE5QR2ZYV2lJck5XdGtMeDh2ckFkM0owRGlYRnp3b1lOalJSVkw5LWl0VjhCc20tWkVid2VyNE1ZaXhxcFRpQXhRN1NGOUFVcGFLOFJKUWQxcTJsaGVReUMyYUVQT0FHRk81anRkT2VwbVhVUDBxWW0teUF1b0tvb1hOM1g4Z1Axb0ppNVgzcHpOLUVJ?oc=5"
       ]
     },
-    "WAVES": {
+    "EFERT": {
+      "score": 58,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Engro Corp (parent) reaffirmed AA+ rating with stable outlook -- a genuine credit-quality confirmation that flows through to Engro group fertiliser exposure.",
+      "headlines": [
+        "Engro Corp maintains AA+ rating with stable outlook"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxNcDBRaS1pM2p5SjRCMWhwbm1vaFFYcDFYdUFhWnRpbGpITDhiRXVRRE85dUdieUhIOS0ycExpdXlaU0tUU0twQ0hKYXR4eEhFM2daeFItN1hQZ0hCQ1o3MG8xY25XTGM3OW5kbTVCb2MwRGFNZzdkZ0pjTGZma3QwRXozQjN3VHg2YUE?oc=5"
+      ]
+    },
+    "ENGROH": {
+      "score": 58,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "high",
+      "summary": "Engro Corp reaffirmed AA+ rating with stable outlook -- direct positive for the Engro holding entity itself.",
+      "headlines": [
+        "Engro Corp maintains AA+ rating with stable outlook"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxNcDBRaS1pM2p5SjRCMWhwbm1vaFFYcDFYdUFhWnRpbGpITDhiRXVRRE85dUdieUhIOS0ycExpdXlaU0tUU0twQ0hKYXR4eEhFM2daeFItN1hQZ0hCQ1o3MG8xY25XTGM3OW5kbTVCb2MwRGFNZzdkZ0pjTGZma3QwRXozQjN3VHg2YUE?oc=5"
+      ]
+    },
+    "IMAGE": {
       "score": 55,
       "direction": "positive",
       "materiality": "normal",
       "confidence": "medium",
-      "summary": "Waves is resuming air-conditioner production in Pakistan after nearly four years -- a genuine operational restart, mild positive.",
+      "summary": "Same Engro Corp AA+ rating reaffirmation -- relevant to the wider Engro group, lower confidence here since IMAGE's link to the rated entity is less direct than EFERT/ENGROH.",
       "headlines": [
-        "After nearly four years, Waves to resume air conditioner production in Pakistan"
+        "Engro Corp maintains AA+ rating with stable outlook"
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQQUFINzkyVi1VS1dXU3I5RmY5REI2Uko4V2ZiV2tobHVwYmJnWjY5NlhvQm1pdElTRkFjV2FOcUZHZGh2aDNMYW5EdDdWOU54dEdLLTZfN21UaDJkYm5ZMjlQbDhIOWNfVEJpbnBNZ1ZkcVBueGhPbWVXZDBBdEloa0FwbE1DNzQyWWd5cVZCQXBOT0Vwbk9xc2x3UWktNllUMlBHYVh3eHNaOGoyZ0ZkUGdUNW1zNFMydGJ6YWd4ZlY3UEE?oc=5"
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxNcDBRaS1pM2p5SjRCMWhwbm1vaFFYcDFYdUFhWnRpbGpITDhiRXVRRE85dUdieUhIOS0ycExpdXlaU0tUU0twQ0hKYXR4eEhFM2daeFItN1hQZ0hCQ1o3MG8xY25XTGM3OW5kbTVCb2MwRGFNZzdkZ0pjTGZma3QwRXozQjN3VHg2YUE?oc=5"
+      ]
+    },
+    "LUCK": {
+      "score": 52,
+      "direction": "positive",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "Lucky Group's chairman publicly urging fairer auto-policy taxes is shareholder-friendly advocacy, but it's a lobbying position, not a confirmed policy change -- mild, low-confidence positive. Broader PSX profit-taking is market-wide, not LUCK-specific.",
+      "headlines": [
+        "Lucky Group Chairman urges fair auto policy taxes"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQ0p4bkF2azZGODFNVnZUbm15cXNvRUlqY0hwOWlJcUF4Y0NJaW5KVVNHWFVXMWlXcEYxSVdaS0U3SHQwOXUyejFxOXp2UmlWdmtxMWlENzlUTldJVWNDTGhSaDE4YndtTnBPX21pR0x2Y2JETHRST0JlNE5fak4zbHRiQ2VXckVH?oc=5"
+      ]
+    },
+    "KEL": {
+      "score": 46,
+      "direction": "negative",
+      "materiality": "normal",
+      "confidence": "low",
+      "summary": "An op-ed on the cost of flawed SOE privatisations is a generic cautionary backdrop rather than a KEL-specific event -- low-confidence mild negative tilt given KEL's privatisation history.",
+      "headlines": [
+        "SOE reform: the cost of flawed privatizations"
+      ],
+      "sources": [
+        "https://news.google.com/rss/articles/CBMijAFBVV95cUxNWmJ0MTVnYmZheDVvY2lRbjVUWDdIXzZyVXlBRkp5TzRLTnpsa1dWNTNKcTlmSkpqdFFyNGp6TWl6Y3Y5Y2kyVDNSTlZSeVd3bzEzT3hQa0VmWHpQU0hmM3lMTFJqdXI1TWZpbzBDTjdmai1GWm42bGlneHdnTTEydmZRRF9menBCUlBlUdIBVkFVX3lxTE4xOXgydUxvSm9Cd0tES2d0S1NNSEllSnh1NEFUN1luRk5mTmtfYWpyWnFLZ3ZGWkNNUVpTOFFQUmpLUGd1YUZFNGhUOTBSdUswVFg4ZHpn?oc=5"
       ]
     }
   }
