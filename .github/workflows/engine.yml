@@ -1,9 +1,19 @@
 name: PSX Engine Loop
 
-# Scheduling: GitHub's own cron proved unreliable here (zero scheduled runs
-# fired) — the 15-min cadence is driven by an EXTERNAL pinger (cron-job.org)
-# calling workflow_dispatch. See DEPLOY.md "Reliable scheduling".
-# The single cron below (09:45 PKT kickoff) is kept as a dormant backup only.
+# CONTINUOUS MODE (2026-07-12): instead of one run per trigger, the job loops
+# for the whole PSX session — run → commit → sleep RUN_INTERVAL → repeat — until
+# after market close, then exits. So the dashboard keeps getting fresh signals
+# without depending on a perfectly regular external ping.
+#
+# Kickoff / self-healing: any of the triggers below starts the loop. The
+# `concurrency` group means only ONE loop runs at a time; extra triggers queue.
+# If the running loop ever dies mid-session, the next queued trigger (the
+# external cron-job.org pinger, or the backup cron) picks up and resumes it —
+# the pinger doubles as a watchdog. A trigger that lands after close just exits
+# immediately (outside-hours guard), so queued pings are harmless.
+#
+# GitHub's own cron proved unreliable here, so the 09:45 PKT cron below is a
+# backup kickoff only; the primary kickoff is the external pinger / manual run.
 on:
   schedule:
     - cron: '45 4 * * 1-5'          # 09:45 PKT — backup morning kickoff
@@ -19,11 +29,17 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    # A single job can run at most 6h on GitHub-hosted runners; the loop below
+    # exits at market close (~15:45 PKT) well inside that when kicked off in the
+    # morning. If a mid-session kickoff would otherwise run past 6h, the runner
+    # cap ends it and the next trigger resumes — no data loss beyond one cycle.
+    timeout-minutes: 350
     env:
+      TZ: Asia/Karachi            # so `date` below reads Pakistan local time
+      EMAIL_MODE: "off"           # email disabled (2026-07-12) — dashboard only
       SMTP_USER: ${{ secrets.SMTP_USER }}
       SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
-      EMAIL_MODE: always          # email after every run (dashboard-update alert)
     steps:
       - uses: actions/checkout@v5
 
@@ -35,26 +51,47 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-ci.txt
 
-      - name: Run analysis (+ email if actionable)
-        run: python main.py run
-
-      - name: Commit updated database
-        # psx_engine.db is a binary SQLite file; a plain `git pull --rebase`
-        # cannot 3-way-merge it, so overlapping runs used to hard-fail with a
-        # binary CONFLICT and stall the cadence. Instead: keep THIS run's fresh
-        # DB on conflict (-X theirs = the commit being replayed) and retry the
-        # push if remote advances mid-flight. Tradeoff: an overlapping loser's
-        # appended rows are dropped — acceptable for a 15-min self-healing loop.
+      - name: Continuous session loop (run → commit → sleep → repeat)
+        # Loops for the whole trading session. Each cycle runs the engine, then
+        # commits the fresh DB with the same conflict-tolerant push used before
+        # (binary SQLite can't 3-way-merge, so keep THIS run's DB on conflict and
+        # retry if the remote advances). Sleeps RUN_INTERVAL minutes between
+        # cycles. Exits on weekend or once the clock passes market close.
+        env:
+          RUN_INTERVAL_MINUTES: '15'
+          MARKET_OPEN: '09:15'
+          MARKET_CLOSE: '15:45'
         run: |
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add psx_engine.db
-          git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')" \
-            || { echo "No data changes to commit."; exit 0; }
-          for attempt in 1 2 3 4 5; do
-            git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
-              || git rebase --abort
-            if git push; then echo "pushed on attempt $attempt"; exit 0; fi
-            echo "push raced, retrying ($attempt)..."; sleep 5
+          while true; do
+            dow=$(date +%u)          # 1=Mon .. 7=Sun
+            now=$(date +%H:%M)
+            if [ "$dow" -gt 5 ]; then echo "Weekend — exiting loop."; exit 0; fi
+            if [[ "$now" > "$MARKET_CLOSE" ]]; then
+              echo "Past market close ($now > $MARKET_CLOSE) — exiting loop."; exit 0; fi
+            if [[ "$now" < "$MARKET_OPEN" ]]; then
+              echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 300; continue; fi
+
+            echo "=== Cycle at $now PKT ==="
+            python main.py run || echo "Run failed this cycle — continuing loop."
+
+            git add psx_engine.db
+            if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
+              for attempt in 1 2 3 4 5; do
+                git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
+                  || git rebase --abort
+                if git push; then echo "pushed on attempt $attempt"; break; fi
+                echo "push raced, retrying ($attempt)..."; sleep 5
+              done
+            else
+              echo "No data changes to commit this cycle."
+            fi
+
+            # Stop before sleeping if the next cycle would land after close.
+            now=$(date +%H:%M)
+            if [[ "$now" > "$MARKET_CLOSE" ]]; then
+              echo "Reached close after cycle — exiting."; exit 0; fi
+            echo "Sleeping ${RUN_INTERVAL_MINUTES}m before next cycle..."
+            sleep "$((RUN_INTERVAL_MINUTES * 60))"
           done
-          echo "could not push after retries"; exit 1
