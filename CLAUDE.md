@@ -163,3 +163,55 @@ KMI All-Share effective 2026-06-05).
   accuracy stats are all in-sample.
 - Earnings dates remain manual (`EARNINGS_DATES = {}` in config + optional
   `earnings_date` field in `news_signals.json`).
+
+## Cross-account handoff — "continue where other account stopped"
+
+This section is the resume point for any Claude account. It is committed to
+`main`, so a fresh session sees it via git. **When the user says "continue where
+other account stopped," read this section first, then `git pull origin main` to
+get the latest state.** Keep this section current at the end of each work
+session (edit the dates/state, commit, push).
+
+**Last updated:** 2026-07-12 (as-of engine data 2026-06-24).
+
+### Current working context
+- All recent work is committed directly to `main` (news-only + analysis + config
+  commits follow this pattern). Designated dev branch is
+  `claude/determined-ptolemy-8m2o5o` for code-change PRs if/when needed.
+- News routine is fully operational and has been run daily (latest: commit
+  `3f382f5`, "News routine 2026-06-24"). Follow the two-stage pipeline in the
+  "Run the repo news" section above, and ALWAYS run the URL-verification script
+  (below) before committing `news_signals.json`.
+- Live PSX DPS is 403 in-sandbox → all live analysis uses stored data via
+  `db.last_run()` / `db.run_history()`, and independent analysis is qualitative
+  (never fabricate live prices/valuations).
+
+### News URL-verification script (MANDATORY before every news commit)
+```python
+import json
+d = json.load(open('news_signals.json'))
+raw = json.load(open('news_raw_24h.json'))
+raw_urls = set(it['url'] for it in raw['items'])
+bad = [(s, u) for s, v in d['signals'].items() for u in v['sources'] if u not in raw_urls]
+print('Unverified URLs:', bad)   # MUST be []
+```
+Common trap: copying URLs from a truncated `[:80]`-sliced exploration print.
+Fix by patching each source from the raw fetch programmatically, never retyping.
+
+### In-flight / recent analysis threads
+- **PSO** (user's portfolio is ~83% PSO, avg ~363.8, in loss): covered backtest
+  mechanics, relative-strength calc, and a 6-month averaging strategy. Key take:
+  concentration is the real risk, not PSO itself; tranche around the 344.54 stop,
+  diversify into PRL. Engine last had PSO at "Avoid" (score 45, news-driven).
+- **KMI-30 independent top picks (2026-06-24):** MARI (top conviction — Shams-1
+  gas catalyst, cleanest E&P balance sheet), MEBL (rate-cycle Islamic bank),
+  OGDC (Sahito-1 catalyst but oil-price hedged), a fertilizer name (EFERT/FFC,
+  defensive income). Avoid pure oil-beta (PPL) and PSO into falling oil.
+- **MARI deep-dive → `analysis/MARI_verification_checklist.md`** (committed). Six
+  numbers to verify (Shams-1 volume, valuation multiple, dividend, RRR, net cash,
+  % market-linked output) with a buy/wait/pass decision rule. This is the current
+  active deliverable — next step is filling those six numbers from PSX/financials.
+
+### Parked (only resume if user asks)
+- Item #5 from an earlier "start with 2, then 3 and then 5" instruction: a PSO
+  confluence-dimension breakdown (trend/momentum/volume/structure) — never done.
