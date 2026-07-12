@@ -411,10 +411,11 @@ SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER")                  # sending Gmail address
 SMTP_APP_PASSWORD = os.environ.get("SMTP_APP_PASSWORD")  # 16-char app password
 EMAIL_TO = os.environ.get("EMAIL_TO")                    # recipient address
-# How often to email: "actionable" (default) emails only when a Buy/Strong Buy/
-# Exit appears — avoids spamming you every 10 minutes; "always" = every run;
-# "off" = never.
-EMAIL_MODE = os.environ.get("EMAIL_MODE", "actionable")
+# How often to email: "off" (default) never emails; "actionable" emails only
+# when a Buy/Strong Buy/Exit appears; "always" = every run. Disabled by default
+# (2026-07-12) — the 15-min loop was emailing every run; the dashboard is the
+# live surface, not the inbox. Re-enable per env if you want alerts back.
+EMAIL_MODE = os.environ.get("EMAIL_MODE", "off")
 ACTIONABLE_SIGNALS = {"Strong Buy", "Buy", "Exit"}
 
 # Dashboard view password (set in Streamlit Cloud secrets; falls back to env).
