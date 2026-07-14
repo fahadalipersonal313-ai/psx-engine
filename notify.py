@@ -7,20 +7,40 @@ log message instead of failing.
 Frequency is controlled by config.EMAIL_MODE:
   * "actionable" (default) — only email when a Buy / Strong Buy / Exit appears,
     so the 10-minute loop does not spam you.
+  * "hourly" — email at most once per hour (throttle state in a temp file that
+    survives across cycles of the continuous-session loop job).
   * "always" — email every run (used by the evening summary job).
   * "off" — never email.
 """
 
 import os
 import ssl
+import time
 import smtplib
 import logging
+import tempfile
 from email.message import EmailMessage
 from datetime import datetime
 
 import config
 
 log = logging.getLogger("notify")
+
+_HOURLY_STAMP = os.path.join(tempfile.gettempdir(), "psx_engine_last_email")
+_HOURLY_SECONDS = 3600
+
+
+def _hourly_due():
+    try:
+        age = time.time() - os.path.getmtime(_HOURLY_STAMP)
+    except OSError:
+        return True
+    return age >= _HOURLY_SECONDS
+
+
+def _mark_hourly_sent():
+    with open(_HOURLY_STAMP, "w") as f:
+        f.write(str(time.time()))
 
 
 def _should_send(results):
@@ -29,6 +49,10 @@ def _should_send(results):
         return False, "EMAIL_MODE=off"
     if mode == "always":
         return True, "always"
+    if mode == "hourly":
+        if _hourly_due():
+            return True, "hourly window elapsed"
+        return False, "hourly throttle — sent within the last hour"
     actionable = [r["symbol"] for r in results
                   if r["signal"]["signal"] in config.ACTIONABLE_SIGNALS]
     if actionable:
@@ -88,7 +112,10 @@ def send_report(results, report_text, attachment_path=None):
     body = (report_text[:4000]
             + "\n\n[Full ranking attached as an Excel file.]\n"
             + config.DISCLAIMER)
-    return _deliver(subject, body, attachment_path)
+    sent = _deliver(subject, body, attachment_path)
+    if sent:
+        _mark_hourly_sent()
+    return sent
 
 
 def send_text(subject, body, attachment_path=None):

@@ -36,7 +36,7 @@ jobs:
     timeout-minutes: 350
     env:
       TZ: Asia/Karachi            # so `date` below reads Pakistan local time
-      EMAIL_MODE: "off"           # email disabled (2026-07-12) — dashboard only
+      EMAIL_MODE: "hourly"        # at most one email per hour during the session
       SMTP_USER: ${{ secrets.SMTP_USER }}
       SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
