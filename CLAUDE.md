@@ -39,6 +39,24 @@ reason, so the user can cross-check whether the LLM agrees with the engine's
 Buy/Avoid. **Zero score weight** — informational only. Missing key / stale
 file → pill shows `GLM: —` and nothing else changes.
 
+**Timeout fix (2026-07-15):** `open.bigmodel.cn` is a mainland-China endpoint;
+from GitHub's US runners the batched call regularly overran the old 60s read
+timeout and `news_glm_ratings.json` never got written (the step is wrapped in
+`|| true`, so it looked "green" while silently failing — check the step LOG,
+not just its conclusion). `GLM_TIMEOUT` is now 120s (env-overridable) with ONE
+retry on `Timeout`/`ConnectionError` only — an HTTP error like a 401 from a bad
+key still fails fast, never retried. Confirmed live: run wrote 19 ratings.
+Diagnosing key issues: a bad key = instant ~1s **401**; a slow-endpoint problem
+= ~60s+ **read timeout**. Different symptoms, different fixes.
+
+**GLM ratings live in TWO places (2026-07-15):** the per-card `🤖 GLM` pill
+(actionable Buy/Exit cards only) AND a always-on **`🤖 GLM news read` panel**
+on the main page (`dashboard.py`, after the staleness banner) that lists EVERY
+rated symbol with pill + reason, sorted positive→negative, via
+`news_feed.load_glm_ratings()`. The panel exists because actionable cards are
+empty in a risk-off market, which hid the second opinion entirely — the panel
+always surfaces it. Still zero score weight.
+
 ## Dashboard: regime what-if toggle (2026-07-15)
 
 Sidebar radio `🔀 Regime what-if` — `Actual | Assume risk-on | Assume
@@ -46,6 +64,20 @@ risk-off`. On each Buy/Strong Buy card it prints a one-line note of what the
 signal WOULD be under the assumed regime (risk-off → soft-downgrade to Watch
 via the regime gate; risk-on → holds, chase guard loosens). Approximation, not
 a re-run — the stored score/vetoes drive it. Never mutates stored signals.
+
+**Risk-on surfaces regime-gated Buys (2026-07-15):** selecting `Assume risk-on`
+while the market is really risk-off now REVERSES the risk-off regime gate for
+display: a `Watch` whose stored `main_reason` contains the exact phrase
+`"market regime risk-off"` resurfaces as a `Buy` (never Strong Buy — the
+pre-gate tier is unknown, so take the conservative one). Driven by a new
+`display_signal` column that feeds the Actionable tile, Top pick, Action-today
+cards + compact table; every promoted card/section is loudly labelled
+what-if/verify-manually. The phrase match is exact, so confluence/chase/
+earnings/rr/score-band Watches are NEVER promoted (tested). **Stored `signal`
+is untouched; Portfolio heat still uses the real signals.** Caveat: the regime
+gate is first in the soft-downgrade `elif` chain, so a promoted Buy may still
+carry a secondary veto (poor_rr/RS) the engine never evaluated — hence the
+verify-manually labels. `_display_signal()` in `dashboard.py`.
 
 ## "Run the repo news" — optional LLM-judged routine (only if weights restored)
 
@@ -220,14 +252,21 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-07-15 (engine live and pushing continuously; deep
-signal-quality audit shipped — pullback quality gate, RS laggard veto,
+**Last updated:** 2026-07-15 (GLM free-tier key live + timeout fix; dashboard
+GLM-news-read panel + risk-on what-if now surfaces regime-gated Buys. Earlier
+same-day: deep signal-quality audit — pullback quality gate, RS laggard veto,
 strict-history confidence).
 
 ### Current working context
 - All recent work is committed directly to `main` (news-only + analysis + config
-  commits follow this pattern). Designated dev branch is
-  `claude/determined-ptolemy-8m2o5o` for code-change PRs if/when needed.
+  commits follow this pattern). Latest code branch used was
+  `claude/free-glm-secret-key-1k5gn0` (GLM timeout fix + dashboard changes),
+  merged to `main` directly with the user's explicit OK — commits `2ebc492`
+  (news_glm timeout/retry) and `1529226` (dashboard panel + what-if overlay).
+- **GLM free-tier second opinion is LIVE.** `GLM_API_KEY` secret is set and
+  valid; `news_glm_ratings.json` is written each news run (19 symbols last run).
+  If it goes dark again, read the `news.yml` GLM step LOG (it's `|| true`, so the
+  step conclusion lies): 401 = bad key, 60s+ timeout = slow China endpoint.
 - News routine is fully operational and has been run daily (latest: commit
   `3f382f5`, "News routine 2026-06-24"). Follow the two-stage pipeline in the
   "Run the repo news" section above, and ALWAYS run the URL-verification script
