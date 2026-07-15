@@ -15,6 +15,7 @@ news, and reports.
 
 import os
 import json
+import hashlib
 
 import pandas as pd
 import streamlit as st
@@ -298,14 +299,20 @@ def _password_configured():
     return pw
 
 
+def _auth_token(pw):
+    """Non-reversible token derived from the password, used to keep a tab logged
+    in across reloads. Not the password itself; still a bearer token, so anyone
+    with the URL gets in — acceptable for a single-user personal dashboard."""
+    return hashlib.sha256(("psx-dash:" + str(pw)).encode()).hexdigest()[:32]
+
+
 def _auto_refresh():
     """Streamlit Cloud reboots the app when a new commit lands, but a browser
     tab left open keeps rendering whatever it loaded at boot. Reload the whole
     page on a timer so the tab reconnects to the freshly-rebooted server and
-    re-reads the committed DB. Skipped when a password is set (a full reload
-    starts a new session and would force re-login)."""
-    if _password_configured():
-        return
+    re-reads the committed DB. Works WITH a password now: login stamps a hashed
+    token into the URL (see _require_password) that survives the reload and the
+    Streamlit Cloud redeploy, so the refresh no longer forces a re-login."""
     secs = int(getattr(config, "DASHBOARD_REFRESH_SECONDS", 300))
     if secs <= 0:
         return
@@ -319,12 +326,19 @@ def _require_password():
     pw = _password_configured()
     if not pw:
         return
-    if st.session_state.get("auth_ok"):
+    token = _auth_token(pw)
+    # Stay authenticated across the timed reload AND across Streamlit Cloud
+    # redeploys (which drop all server-side sessions) by carrying a hashed token
+    # in the URL query string — window.location.reload() preserves it, so the
+    # reloaded tab re-authenticates itself instead of bouncing to the login box.
+    if st.session_state.get("auth_ok") or st.query_params.get("k") == token:
+        st.session_state["auth_ok"] = True
         return
     st.title("🔒 PSX Shariah Engine")
     entered = st.text_input("Enter dashboard password", type="password")
     if entered == pw:
         st.session_state["auth_ok"] = True
+        st.query_params["k"] = token
         st.rerun()
     elif entered:
         st.error("Incorrect password.")
@@ -424,41 +438,7 @@ st.sidebar.caption(
 st.sidebar.caption("Defaults to the cash in portfolio.json. The **Portfolio** tab "
                    "builds a strategy from your actual holdings + this cash.")
 
-# What-if regime toggle. Purely informational — does NOT re-run the engine.
-# It annotates each actionable card with what the signal would become under an
-# assumed regime, so the user can validate a decision against both climates.
-_wf_choice = st.sidebar.radio(
-    "🔀 Regime what-if",
-    ["Actual", "Assume risk-on", "Assume risk-off"], index=0,
-    help="Overlay how each Buy would change under the opposite regime. "
-         "Approximation, not a re-run: risk-off soft-downgrades Buys to Watch; "
-         "risk-on relaxes the chase guard.")
-assumed_regime = {"Assume risk-on": "risk-on",
-                  "Assume risk-off": "risk-off"}.get(_wf_choice)
 st.sidebar.caption(news_feed.glm_status_line())
-
-
-# What-if overlay (DISPLAY ONLY — stored signals are never mutated). Under an
-# assumed risk-on regime we reverse ONLY the risk-off regime gate: a Watch whose
-# reason cites that specific gate was a technical Buy the engine downgraded for
-# regime alone, so it surfaces as a Buy again. The phrase match is exact to the
-# text signal_generator writes at that gate, so confluence/chase/earnings/rr
-# downgrades (different reasons) are never touched. Promotes to Buy, never Strong
-# Buy — we can't know the pre-gate tier, so we take the conservative one.
-def _display_signal(sig, reason):
-    if (assumed_regime == "risk-on" and regime == "risk-off"
-            and sig == "Watch" and "market regime risk-off" in str(reason)):
-        return "Buy"
-    return sig
-
-
-latest["display_signal"] = [
-    _display_signal(s, mr)
-    for s, mr in zip(latest["signal"], latest["main_reason"])]
-_whatif_active = bool((latest["display_signal"] != latest["signal"]).any())
-
-buys = latest[latest["display_signal"].isin(["Strong Buy", "Buy"])]
-exits = latest[latest["display_signal"] == "Exit"]
 
 # ----------------------------- portfolio risk (computed once) -------------
 buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
@@ -492,6 +472,38 @@ def tile(col, label, value_html, sub=""):
             f'<div style="font-size:12px;opacity:.6">{sub}</div>',
             unsafe_allow_html=True)
 
+
+# Regime what-if — on the MAIN page (was buried in the sidebar), sitting right
+# above the Market-regime tile it drives. Purely a DISPLAY overlay; it never
+# re-runs the engine or mutates stored signals.
+_wf_choice = st.radio(
+    "🔀 Regime what-if", ["Actual", "Assume risk-on", "Assume risk-off"],
+    index=0, horizontal=True,
+    help="Assume risk-on reverses ONLY the risk-off regime gate for display, "
+         "surfacing the technical Buys the engine downgraded to Watch. "
+         "Approximation, not a re-run — verify manually.")
+assumed_regime = {"Assume risk-on": "risk-on",
+                  "Assume risk-off": "risk-off"}.get(_wf_choice)
+
+
+# Under an assumed risk-on regime, reverse ONLY the risk-off regime gate: a Watch
+# whose reason cites that exact gate was a technical Buy the engine downgraded for
+# regime alone, so it surfaces as a Buy. The phrase match is exact, so confluence/
+# chase/earnings/rr downgrades are never touched. Buy, never Strong Buy (pre-gate
+# tier unknown — take the conservative one).
+def _display_signal(sig, reason):
+    if (assumed_regime == "risk-on" and regime == "risk-off"
+            and sig == "Watch" and "market regime risk-off" in str(reason)):
+        return "Buy"
+    return sig
+
+
+latest["display_signal"] = [
+    _display_signal(s, mr)
+    for s, mr in zip(latest["signal"], latest["main_reason"])]
+_whatif_active = bool((latest["display_signal"] != latest["signal"]).any())
+buys = latest[latest["display_signal"].isin(["Strong Buy", "Buy"])]
+exits = latest[latest["display_signal"] == "Exit"]
 
 t1, t2, t3, t4, t5 = st.columns(5)
 tile(t1, "Market regime", regime_pill(regime),
@@ -530,7 +542,7 @@ if _stale_level != "fresh":
 _glm_ratings, _glm_meta = news_feed.load_glm_ratings()
 if _glm_meta.get("status") == "ok" and _glm_ratings:
     with st.expander(f"🤖 GLM news read — {len(_glm_ratings)} symbols "
-                     "(second opinion, unweighted)", expanded=True):
+                     "(second opinion, unweighted)", expanded=False):
         st.caption("Zero score weight — informational cross-check only, never "
                    "moved into the engine's Buy/Avoid.")
         _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
