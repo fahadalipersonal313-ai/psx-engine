@@ -73,7 +73,19 @@ Order of operations:
    risk-off regime, `poor_rr` veto, `manipulation_risk`, `bad_news`, High risk,
    confidence<45.
 9. **Pullback-entry upgrade** (Watch/Hold → Buy): when price has retraced to
-   the 20-EMA buy-zone with confluence ≥2 and no vetoes.
+   the 20-EMA buy-zone with confluence ≥2 and no vetoes — AND (2026-07-15
+   audit) `final_score ≥ PULLBACK_MIN_SCORE (60)` and `RS ≥ PULLBACK_MIN_RS
+   (55)`. Ungated pullback Buys won 21%; quality-gated won 42%.
+10. **RS laggard veto** (soft downgrade, 2026-07-15): Buy/Strong Buy with
+    `relative_strength < RS_LAGGARD_VETO (45)` → Watch. Laggard Buys won 19%
+    vs 35% for the rest. RS=None never vetoes (missing data can't block).
+
+## Confidence honesty (2026-07-15)
+
+`scoring_engine.historical_confidence_adjust` counts ONLY strictly-graded
+signals (Buy/Strong Buy/Avoid/Exit). Watch/Hold outcomes use the loose
+"didn't lose >3%" rule (80-90% survival rates, not edge) and were inflating
+every symbol's confidence toward the +15 cap.
 
 ## Conviction streak — removed
 
@@ -172,7 +184,9 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-07-12 (as-of engine data 2026-06-24).
+**Last updated:** 2026-07-15 (engine live and pushing continuously; deep
+signal-quality audit shipped — pullback quality gate, RS laggard veto,
+strict-history confidence).
 
 ### Current working context
 - All recent work is committed directly to `main` (news-only + analysis + config

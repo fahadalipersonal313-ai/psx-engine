@@ -158,6 +158,15 @@ SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
 # confirm), but applied to band edges. Set to 0 to disable.
 HYSTERESIS_BAND = 2
 
+# Evidence-based Buy gates (2026-07-15 audit of day-deduped graded outcomes):
+#   * pullback upgrades won 21% overall but 42% when the name also scored ≥60
+#     with RS ≥55 — so the upgrade now requires BOTH (quality dip, not any dip);
+#   * Buys on market laggards (RS <45) won 19% vs 35% for the rest — vetoed.
+# RS=None (index unavailable) never vetoes: missing data must not block trades.
+PULLBACK_MIN_SCORE = 60
+PULLBACK_MIN_RS = 55
+RS_LAGGARD_VETO = 45
+
 # ---------------------------------------------------------------------------
 # 3b. MARKET REGIME & RELATIVE STRENGTH (Tier 2)
 # ---------------------------------------------------------------------------

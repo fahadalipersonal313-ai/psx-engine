@@ -50,14 +50,22 @@ def _indicator_accuracy_boost(symbol, tech_flags):
     return capped, "Indicator track records: " + ", ".join(parts)
 
 
+# Only signals graded under STRICT rules count toward confidence. Watch/Hold
+# are graded on the loose "didn't lose >3%" rule (their 80-90% 'win' rates are
+# survival, not edge) — counting them pushed nearly every symbol to the +15
+# confidence cap, so confidence stopped discriminating (failed Buys averaged
+# 71% confidence in the 2026-07-15 audit).
+_STRICT_SIGNALS = ("Buy", "Strong Buy", "Avoid", "Exit")
+
+
 def historical_confidence_adjust(symbol):
     """Return (adjustment in percentage points, note)."""
-    rows = db.signal_accuracy(symbol)
+    rows = [r for r in db.signal_accuracy(symbol) if r["signal"] in _STRICT_SIGNALS]
     wins = sum(r["n"] for r in rows if r["outcome"] == "worked")
     losses = sum(r["n"] for r in rows if r["outcome"] == "failed")
     total = wins + losses
     if total == 0:
-        return 0.0, "No completed signal history yet — base confidence."
+        return 0.0, "No strictly-graded (Buy/Avoid) history yet — base confidence."
     win_rate = wins / total
     if total < 10:
         # tiny sample: cap influence, warn about overfitting
@@ -66,7 +74,8 @@ def historical_confidence_adjust(symbol):
                                "OVERFITTING RISK; history given little weight.")
     adj = (win_rate - 0.5) * 30          # max ±15 points
     return round(max(-15, min(15, adj)), 1), \
-        f"History: {wins}W/{losses}L (win rate {win_rate:.0%}) over {total} signals."
+        f"History: {wins}W/{losses}L (win rate {win_rate:.0%}) over {total} " \
+        "strictly-graded Buy/Avoid signals."
 
 
 def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=None):

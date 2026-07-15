@@ -255,6 +255,12 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         elif confidence < 45:
             base = "Watch"; _vetoed = True; reasons.append("Downgraded: confidence below 45% "
                                            "(weak data or poor history)")
+        elif (technical.get("relative_strength") is not None
+              and technical["relative_strength"] < config.RS_LAGGARD_VETO):
+            base = "Watch"; _vetoed = True; reasons.append(
+                f"Downgraded: relative strength {technical['relative_strength']:.0f} "
+                f"< {config.RS_LAGGARD_VETO} — market laggard (graded history: "
+                "laggard Buys won 19% vs 35%); buy leaders, not laggards")
 
     # ---- Pullback-entry upgrade (the safer entry), applied LAST so it is the
     # clean final word: turn a cooled-off Watch/Hold into a Buy when an established
@@ -263,8 +269,15 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # zone, `extended` clears and pullback_ready turns True. Skipped when any real
     # veto fired above (regime/rr/news/manip/risk/confidence) so we never upgrade
     # into a known problem or print a self-contradicting reason.
+    # Quality gate (audit 2026-07-15): ungated pullback upgrades won 21% —
+    # requiring score ≥ PULLBACK_MIN_SCORE AND RS ≥ PULLBACK_MIN_RS lifted the
+    # historical win rate to 42%. A dip is only worth buying in a LEADER that
+    # still scores well; a cheap dip in a mediocre name is just a falling knife.
+    _rs = technical.get("relative_strength")
     if (base in ("Watch", "Hold") and not _vetoed and not _earnings_soon
             and technical.get("pullback_ready") and confluence >= 2
+            and final_score >= config.PULLBACK_MIN_SCORE
+            and _rs is not None and _rs >= config.PULLBACK_MIN_RS
             and not (config.REGIME_GATE_ENABLED and regime == "risk-off")
             and "poor_rr" not in risk["vetoes"]
             and "bad_news" not in risk["vetoes"]
@@ -272,8 +285,9 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
             and risk["risk_level"] != "High" and confidence >= 45):
         base = "Buy"
         reasons.append(f"Pullback entry: retraced into the 20-EMA buy-zone "
-                       f"(PKR {_zlo}–{_zhi}) with the uptrend intact — lower-risk "
-                       "entry than chasing the breakout.")
+                       f"(PKR {_zlo}–{_zhi}) with the uptrend intact, score "
+                       f"{final_score} and RS {_rs:.0f} — a quality leader's dip, "
+                       "lower-risk than chasing the breakout.")
 
     if base in ("Strong Buy", "Buy"):
         reasons.append("Manual confirmation REQUIRED before placing any order")
