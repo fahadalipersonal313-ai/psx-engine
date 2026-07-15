@@ -16,7 +16,16 @@ name: PSX Engine Loop
 # backup kickoff only; the primary kickoff is the external pinger / manual run.
 on:
   schedule:
-    - cron: '45 4 * * 1-5'          # 09:45 PKT — backup morning kickoff
+    # Multiple staggered morning kickoffs (UTC). GitHub cron is unreliable and
+    # often fires late or skips, so several attempts make sure the loop starts
+    # even if the external pinger is down. The concurrency group means only ONE
+    # loop ever runs — the extra crons are harmless no-ops once one is going,
+    # and any that land after close exit immediately via the outside-hours guard.
+    - cron: '10 4 * * 1-5'          # 09:10 PKT — just before open
+    - cron: '30 4 * * 1-5'          # 09:30 PKT
+    - cron: '45 4 * * 1-5'          # 09:45 PKT
+    - cron: '10 5 * * 1-5'          # 10:10 PKT — mid-morning self-heal
+    - cron: '10 6 * * 1-5'          # 11:10 PKT — later self-heal if all above skipped
   workflow_dispatch: {}   # primary trigger: cron-job.org pinger + manual runs
 
 permissions:

@@ -232,11 +232,33 @@ def bt_portfolio():
     return backtester.backtest_portfolio()
 
 
-def _require_password():
+def _password_configured():
     try:
         pw = st.secrets["DASHBOARD_PASSWORD"]
     except Exception:
         pw = os.environ.get("DASHBOARD_PASSWORD")
+    return pw
+
+
+def _auto_refresh():
+    """Streamlit Cloud reboots the app when a new commit lands, but a browser
+    tab left open keeps rendering whatever it loaded at boot. Reload the whole
+    page on a timer so the tab reconnects to the freshly-rebooted server and
+    re-reads the committed DB. Skipped when a password is set (a full reload
+    starts a new session and would force re-login)."""
+    if _password_configured():
+        return
+    secs = int(getattr(config, "DASHBOARD_REFRESH_SECONDS", 300))
+    if secs <= 0:
+        return
+    st.markdown(
+        f"<script>setTimeout(function(){{window.parent.location.reload();}},"
+        f" {secs * 1000});</script>",
+        unsafe_allow_html=True)
+
+
+def _require_password():
+    pw = _password_configured()
     if not pw:
         return
     if st.session_state.get("auth_ok"):
@@ -274,6 +296,7 @@ def _inject_compact_css():
 # ----------------------------- load ---------------------------------------
 _inject_theme()
 _require_password()
+_auto_refresh()
 db.init_db()
 
 rows = []

@@ -361,6 +361,10 @@ RUN_INTERVAL_MINUTES = 15
 # Honest-by-design: better to flag stale than to let it pass as fresh.
 DATA_FRESHNESS_AMBER_HOURS = 4
 DATA_FRESHNESS_RED_HOURS = 24
+# Dashboard tabs left open reload themselves this often (seconds) so they
+# reconnect to the freshly-rebooted Streamlit Cloud server and re-read the
+# committed DB. 0 disables. Skipped when DASHBOARD_PASSWORD is set.
+DASHBOARD_REFRESH_SECONDS = 300
 MARKET_OPEN = "09:15"     # PSX regular session (Mon-Thu 09:32-15:30 approx;
 MARKET_CLOSE = "15:45"    # Fri split session). Slightly widened window.
 MARKET_DAYS = [0, 1, 2, 3, 4]          # Mon..Fri
