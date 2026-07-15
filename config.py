@@ -134,17 +134,15 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-# Technical + authentic news only. Fundamentals weight is ZERO (user confirms
-# fundamentals manually instead) — the section is still COMPUTED for display
-# and to drive the bad-news SAFETY override in risk_manager, but it no longer
-# moves the score. Must sum to 1.0.
-# Tier B: macro is anchor-informed (rates/CPI/reserves — see
-# macro_news_analyzer._anchor_score). The `sentiment` slot carries AUTHENTIC
-# news: a daily Claude routine writes news_signals.json (LLM-judged headlines
-# with source URLs); sentiment_analyzer reads it (VADER RSS is the fallback when
-# the file is stale/missing). Technical stays dominant. Zero a slot to disable it.
-WEIGHTS = {"technical": 0.55, "fundamentals": 0.0,
-           "macro_news": 0.20, "sentiment": 0.25}
+# Technical-only scoring (2026-07-15): the user turned news OFF because the
+# headline-driven score swings were noise (e.g. PSO flipping run-to-run on a
+# single live-blog headline). macro_news and sentiment weights are now ZERO —
+# both sections are still COMPUTED for display and to drive the bad-news / pump
+# SAFETY vetoes in risk_manager, but neither moves the score. Fundamentals is
+# also 0 (confirmed manually). So final_score == technical score. Must sum to 1.0.
+# To re-enable news, restore e.g. technical 0.55 / macro_news 0.20 / sentiment 0.25.
+WEIGHTS = {"technical": 1.0, "fundamentals": 0.0,
+           "macro_news": 0.0, "sentiment": 0.0}
 
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
     "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,

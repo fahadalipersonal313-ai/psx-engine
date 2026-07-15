@@ -26,14 +26,16 @@ User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
    from allowlist only), writes `news_signals.json`, commits + pushes.
 3. Triggers `engine.yml` so the dashboard reflects fresh news-weighted signals.
 
-The `sentiment` slot in `config.WEIGHTS` carries this authentic news at **25%**
-of `final_score` (technical 0.55, fundamentals 0.0, macro_news 0.20,
-sentiment/news 0.25 — sums to 1.0). Fundamentals weight was zeroed (2026-06-19):
-the user confirms fundamentals manually rather than letting an unreliable/
-missing data feed dilute the score — the fundamentals section is still
-computed and shown, just no longer scored. `NEWS_SIGNALS_MAX_AGE_HOURS = 24`:
-stale files are ignored and news contributes neutral until the next routine
-run.
+**News weight is ZERO as of 2026-07-15** — the user turned news off because the
+headline-driven score swings were noise (a single live-blog headline could flip
+a symbol run-to-run). `config.WEIGHTS` is now **technical 1.0**, fundamentals
+0.0, macro_news 0.0, sentiment 0.0 — `final_score == technical score`. The news
+routine, `news_signals.json`, macro and sentiment sections are all STILL
+computed and shown, and still drive the `bad_news` / `manipulation_risk` SAFETY
+vetoes in `risk_manager` (those only downgrade a Buy→Watch, never fabricate),
+but news no longer MOVES the score. To re-enable, restore e.g. technical 0.55 /
+macro_news 0.20 / sentiment 0.25. Fundamentals was zeroed earlier (2026-06-19):
+confirmed manually. `NEWS_SIGNALS_MAX_AGE_HOURS = 24` still gates stale files.
 
 ## Architecture (top-down)
 
