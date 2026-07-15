@@ -401,8 +401,6 @@ else:
 _last_updated_html = (f'<span style="color:{_stale_color}">{last_updated}</span>'
                       f' <span style="font-size:11px;opacity:.7">'
                       f'({_stale_label}, {_age_hours:.1f}h old)</span>')
-buys = latest[latest["signal"].isin(["Strong Buy", "Buy"])]
-exits = latest[latest["signal"] == "Exit"]
 good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
@@ -438,6 +436,29 @@ _wf_choice = st.sidebar.radio(
 assumed_regime = {"Assume risk-on": "risk-on",
                   "Assume risk-off": "risk-off"}.get(_wf_choice)
 st.sidebar.caption(news_feed.glm_status_line())
+
+
+# What-if overlay (DISPLAY ONLY — stored signals are never mutated). Under an
+# assumed risk-on regime we reverse ONLY the risk-off regime gate: a Watch whose
+# reason cites that specific gate was a technical Buy the engine downgraded for
+# regime alone, so it surfaces as a Buy again. The phrase match is exact to the
+# text signal_generator writes at that gate, so confluence/chase/earnings/rr
+# downgrades (different reasons) are never touched. Promotes to Buy, never Strong
+# Buy — we can't know the pre-gate tier, so we take the conservative one.
+def _display_signal(sig, reason):
+    if (assumed_regime == "risk-on" and regime == "risk-off"
+            and sig == "Watch" and "market regime risk-off" in str(reason)):
+        return "Buy"
+    return sig
+
+
+latest["display_signal"] = [
+    _display_signal(s, mr)
+    for s, mr in zip(latest["signal"], latest["main_reason"])]
+_whatif_active = bool((latest["display_signal"] != latest["signal"]).any())
+
+buys = latest[latest["display_signal"].isin(["Strong Buy", "Buy"])]
+exits = latest[latest["display_signal"] == "Exit"]
 
 # ----------------------------- portfolio risk (computed once) -------------
 buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
@@ -475,8 +496,10 @@ def tile(col, label, value_html, sub=""):
 t1, t2, t3, t4, t5 = st.columns(5)
 tile(t1, "Market regime", regime_pill(regime),
      f"benchmark {config.BENCHMARK_INDEX}")
-tile(t2, "Actionable now", f"{len(buys)} buys",
-     f"{len(exits)} exits" if len(exits) else "no exits")
+_act_sub = f"{len(exits)} exits" if len(exits) else "no exits"
+if _whatif_active:
+    _act_sub += " · 🔀 assume risk-on"
+tile(t2, "Actionable now", f"{len(buys)} buys", _act_sub)
 top = buys.iloc[0]["symbol"] if not buys.empty else "—"
 tile(t3, "Top pick", top,
      f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
@@ -498,6 +521,32 @@ if _stale_level != "fresh":
         st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
                    "freshness threshold. Verify quotes manually before acting.")
 
+# ----------------------------- GLM news read ------------------------------
+# Second opinion from GLM-4.5-flash on the last-24h headlines. ZERO score
+# weight — a manual cross-check of whether the LLM's read agrees with the
+# engine. Shown here for EVERY rated symbol, independent of whether it has a
+# Buy signal (the per-card 🤖 pill only appears on actionable cards, which are
+# empty in a risk-off market — this panel is where the ratings always live).
+_glm_ratings, _glm_meta = news_feed.load_glm_ratings()
+if _glm_meta.get("status") == "ok" and _glm_ratings:
+    with st.expander(f"🤖 GLM news read — {len(_glm_ratings)} symbols "
+                     "(second opinion, unweighted)", expanded=True):
+        st.caption("Zero score weight — informational cross-check only, never "
+                   "moved into the engine's Buy/Avoid.")
+        _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
+                  "negative": 3, "highly_negative": 4}
+        for sym in sorted(_glm_ratings,
+                          key=lambda s: (_order.get(_glm_ratings[s].get("rating"), 9), s)):
+            gv = _glm_ratings[sym]
+            st.markdown(
+                f'<div style="margin:3px 0">{glm_pill(gv)} '
+                f'<b>{sym}</b> <span style="opacity:.7;font-size:12px">'
+                f'{gv.get("reason", "")}</span></div>',
+                unsafe_allow_html=True)
+        st.caption(news_feed.glm_status_line())
+elif _glm_meta.get("status") in ("absent", "stale"):
+    st.caption(f"🤖 {news_feed.glm_status_line()}")
+
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
 if ups or downs:
@@ -514,14 +563,19 @@ st.divider()
 
 # ----------------------------- ACTION TODAY -------------------------------
 st.subheader("🎯 Action today")
-action = latest[latest["signal"].isin(["Strong Buy", "Buy", "Exit"])]
+if _whatif_active:
+    st.info("🔀 **What-if: Assume risk-on** — the market is really risk-off, so "
+            "the Buys below are technical signals the engine downgraded to Watch "
+            "via the regime gate. Shown as Buys under the assumption only. "
+            "Approximation, not a re-run — verify manually before acting.")
+action = latest[latest["display_signal"].isin(["Strong Buy", "Buy", "Exit"])]
 if action.empty:
     st.info(f"No Buy or Exit signals right now — nothing to act on. "
             f"(Market regime: {regime}.)")
 elif compact:
     st.caption("Manual confirmation required before any order. Toggle off "
                "**Compact view** for full trade-plan cards.")
-    act_show = action[["symbol", "signal", "price", "stop_loss", "target1",
+    act_show = action[["symbol", "display_signal", "price", "stop_loss", "target1",
                        "confidence", "relative_strength"]].copy()
     act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Conf%", "RS"]
     st.dataframe(
@@ -539,6 +593,7 @@ else:
         for col, (_, r) in zip(cols, cards[i:i + 2]):
             with col:
                 box = st.container(border=True)
+                disp = r["display_signal"]
                 sec = config.SECTORS.get(r["symbol"], "")
                 box.markdown(
                     f'<div style="display:flex;justify-content:space-between;'
@@ -546,7 +601,7 @@ else:
                     f'<div><span style="font-size:20px;font-weight:700">'
                     f'{r["symbol"]}</span> '
                     f'<span style="opacity:.6;font-size:13px">{sec}</span></div>'
-                    f'{sig_pill(r["signal"])} '
+                    f'{sig_pill(disp)} '
                     f'{accum_pill() if r.get("accumulation_candidate") else ""}</div>',
                     unsafe_allow_html=True)
                 a, b, c = box.columns(3)
@@ -587,9 +642,14 @@ else:
                              unsafe_allow_html=True)
                 if gv and gv.get("reason"):
                     box.caption(f"🤖 GLM: {gv['reason']}")
-                _wf = whatif_regime_note(regime, assumed_regime, r["signal"])
-                if _wf:
-                    box.markdown(_wf)
+                if disp != r["signal"]:
+                    box.warning("🔀 What-if (assume risk-on): engine's REAL signal "
+                                "is **Watch** — downgraded by the risk-off regime "
+                                "gate. Verify manually before acting.")
+                else:
+                    _wf = whatif_regime_note(regime, assumed_regime, r["signal"])
+                    if _wf:
+                        box.markdown(_wf)
                 box.caption(str(r["main_reason"])[:240])
                 with box.expander("📋 Full detail"):
                     st.write("**Full reason:**", r["main_reason"])
