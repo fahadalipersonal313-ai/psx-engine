@@ -29,6 +29,12 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(messag
 
 GLM_ENDPOINT = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 GLM_MODEL = os.environ.get("GLM_MODEL", "glm-4.5-flash")
+# The bigmodel.cn endpoint is mainland-China-hosted; the hop from GitHub's US
+# runners is slow enough that a single batched rating regularly overruns a 60s
+# read timeout. Give it more headroom and retry once on a network timeout (but
+# NOT on an HTTP error like 401 — a bad key should fail fast, not retry).
+GLM_TIMEOUT = int(os.environ.get("GLM_TIMEOUT", "120"))
+GLM_ATTEMPTS = 2
 OUT_PATH = os.path.join(config.BASE_DIR, "news_glm_ratings.json")
 VALID = {"highly_positive", "positive", "neutral", "negative", "highly_negative"}
 
@@ -65,19 +71,27 @@ def _build_prompt(by_sym):
 
 
 def _call_glm(prompt, api_key):
-    r = requests.post(
-        GLM_ENDPOINT,
-        headers={"Authorization": f"Bearer {api_key}",
-                 "Content-Type": "application/json"},
-        json={"model": GLM_MODEL,
-              "messages": [{"role": "user", "content": prompt}],
-              "temperature": 0.1,
-              "response_format": {"type": "json_object"}},
-        timeout=60,
-    )
-    r.raise_for_status()
-    content = r.json()["choices"][0]["message"]["content"]
-    return json.loads(content)
+    last_err = None
+    for attempt in range(1, GLM_ATTEMPTS + 1):
+        try:
+            r = requests.post(
+                GLM_ENDPOINT,
+                headers={"Authorization": f"Bearer {api_key}",
+                         "Content-Type": "application/json"},
+                json={"model": GLM_MODEL,
+                      "messages": [{"role": "user", "content": prompt}],
+                      "temperature": 0.1,
+                      "response_format": {"type": "json_object"}},
+                timeout=GLM_TIMEOUT,
+            )
+            r.raise_for_status()
+            content = r.json()["choices"][0]["message"]["content"]
+            return json.loads(content)
+        except (requests.Timeout, requests.ConnectionError) as e:
+            last_err = e
+            log.warning("GLM attempt %d/%d network-failed: %s",
+                        attempt, GLM_ATTEMPTS, e)
+    raise last_err
 
 
 def _sanitize(raw, expected_syms):
