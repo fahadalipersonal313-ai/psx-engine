@@ -141,6 +141,10 @@ def raw_headlines(symbol, limit=5):
     for it in raw.get("items", []):
         if (it.get("symbol") or "").upper() != sym:
             continue
+        # Relevance gate: drop loosely-matched headlines that don't actually name
+        # this company (cleans raw files fetched before the fetch-time gate too).
+        if not config.headline_matches_company(sym, it.get("title"), it.get("summary")):
+            continue
         t = _clean_title(it)
         key = t.lower()
         if not t or key in seen:

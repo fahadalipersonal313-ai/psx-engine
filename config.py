@@ -6,6 +6,7 @@ Never hard-code values elsewhere; all modules read from here.
 """
 
 import os
+import re as _re
 
 # ---------------------------------------------------------------------------
 # 1. STOCK UNIVERSE
@@ -336,6 +337,89 @@ COMPANY_NEWS_QUERY = {
     "IMAGE": "Image Pakistan Limited", "SYM": "Symmetry Group Pakistan",
     "FCEPL": "FrieslandCampina Engro Foods", "KOHC": "Kohat Cement"
 }
+
+# Relevance anchors — a fetched headline is attributed to a symbol ONLY if it
+# contains one of these distinctive name phrases (word-boundary matched). Google
+# News RSS token-matches the company query loosely, so without this gate a
+# "National Foods expands in UAE" story leaks onto NRL ("National Refinery") and
+# gets rated as NRL news — a mis-attribution the engine must never make. Phrases
+# are the distinctive core of each curated COMPANY_NEWS_QUERY name; ambiguous
+# bare tickers are omitted on purpose (e.g. "NRL" is also National Rugby League).
+COMPANY_NEWS_ANCHORS = {
+    "PSO": ["pakistan state oil"],
+    "TREET": ["treet corporation", "treet"],
+    "FABL": ["faysal bank"],
+    "AIRLINK": ["air link", "airlink"],
+    "MEBL": ["meezan bank"],
+    "SYS": ["systems limited", "systems ltd"],
+    "LUCK": ["lucky cement"],
+    "FFC": ["fauji fertilizer"],
+    "NRL": ["national refinery"],
+    "DGKC": ["dg khan cement", "d.g. khan"],
+    "OGDC": ["oil and gas development", "ogdc"],
+    "PPL": ["pakistan petroleum"],
+    "MARI": ["mari petroleum", "mari energies"],
+    "HUBC": ["hub power", "hubco"],
+    "ENGROH": ["engro holdings"],
+    "EFERT": ["engro fertilizer"],
+    "FCCL": ["fauji cement"],
+    "MLCF": ["maple leaf cement"],
+    "NML": ["nishat mills"],
+    "PAEL": ["pak elektron"],
+    "SEARL": ["searle"],
+    "HCAR": ["honda atlas"],
+    "PRL": ["pakistan refinery"],
+    "ATRL": ["attock refinery"],
+    "SNGP": ["sui northern"],
+    "SSGC": ["sui southern"],
+    "SAZEW": ["sazgar"],
+    "FFL": ["fauji foods"],
+    "CPHL": ["citi pharma"],
+    "KEL": ["k-electric", "k electric"],
+    "PIBTL": ["pakistan international bulk", "pibt"],
+    "TELE": ["telecard"],
+    "DCL": ["dewan cement"],
+    "GGL": ["ghani global"],
+    "BNL": ["bunnys"],
+    "ILP": ["interloop"],
+    "FCL": ["fast cables"],
+    "JVDC": ["javedan"],
+    "AGP": ["agp limited"],
+    "WAVES": ["waves corporation"],
+    "TOMCL": ["organic meat"],
+    "IMAGE": ["image pakistan"],
+    "SYM": ["symmetry group"],
+    "FCEPL": ["frieslandcampina", "engro foods"],
+    "KOHC": ["kohat cement"],
+    # GHNI, GAL, SLM, SLGL, THCCL have no curated company name yet — they fall
+    # back to a strict word-boundary match on the ticker itself (conservative:
+    # only headlines that literally name the ticker pass). Add real name anchors
+    # here once the company names are verified.
+}
+
+
+def company_anchor_terms(symbol):
+    """Anchor phrases for a symbol; falls back to the bare ticker when no
+    curated name exists (strict word-boundary match keeps that conservative)."""
+    return COMPANY_NEWS_ANCHORS.get(symbol) or [symbol.lower()]
+
+
+def headline_matches_company(symbol, *texts):
+    """True if any anchor for `symbol` appears (word-boundary matched) in the
+    joined texts. Multi-word anchors match across flexible whitespace; each
+    token is regex-escaped so dotted names (d.g. khan) match literally."""
+    hay = " ".join(t for t in texts if t).lower()
+    if not hay:
+        return False
+    for term in company_anchor_terms(symbol):
+        term = (term or "").lower().strip()
+        if not term:
+            continue
+        pat = (r"(?<!\w)" + r"\s+".join(_re.escape(tok) for tok in term.split())
+               + r"(?!\w)")
+        if _re.search(pat, hay):
+            return True
+    return False
 
 # ---------------------------------------------------------------------------
 # 6. MACRO INPUTS — manually maintained (update from SBP/PBS releases).

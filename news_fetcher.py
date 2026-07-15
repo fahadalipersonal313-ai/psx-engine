@@ -89,6 +89,11 @@ def fetch_for_symbol(symbol, cutoff):
         log.warning("Google News RSS failed for %s: %s", symbol, e)
         return out
     for title, link, pub_iso, summary in _items_from_rss(root, cutoff):
+        if not config.headline_matches_company(symbol, title, summary):
+            # Google News token-matches the query loosely (a "National Foods"
+            # story matches the "National Refinery" query); require the headline
+            # to actually name this company before attributing it to the symbol.
+            continue
         if not _allowed(link) and not _allowed(summary):
             # Google News wraps the source URL inside the description; if neither
             # the link nor the description names an allowlisted host, skip.
