@@ -321,15 +321,17 @@ latest_by_symbol = {r["symbol"]: r for r in rows}
 
 regime = (latest["market_regime"].dropna().iloc[0]
           if latest["market_regime"].notna().any() else "unknown")
-# run_time is stored in UTC by the cloud runs (GitHub runner clock). Display it
-# in PKT (Pakistan is a fixed UTC+5, no DST) so the time matches the wall clock.
-_latest_utc = pd.to_datetime(latest["run_time"].max(), utc=True).tz_localize(None)
-last_updated = ((_latest_utc + pd.Timedelta(hours=5))
-                .strftime("%m-%d %H:%M") + " PKT")
+# run_time is written by the engine as a naive local timestamp, and the cloud
+# runs set TZ=Asia/Karachi, so it is already Pakistan wall-clock (PKT, a fixed
+# UTC+5 with no DST). Show it as-is and measure age against PKT now — do NOT
+# add another +5h (that double-shifted the time and made age go negative).
+_latest_pkt = pd.to_datetime(latest["run_time"].max())
+last_updated = _latest_pkt.strftime("%m-%d %H:%M") + " PKT"
 # Honest staleness flag: the cloud may pause runs (off-hours, weekends, paused
 # Action) — in that case signals here describe yesterday's market, not today's.
-# Compute age in hours vs the wall clock and colour the tile / banner accordingly.
-_age_hours = (pd.Timestamp.now(tz="UTC").tz_localize(None) - _latest_utc).total_seconds() / 3600
+# Compare against PKT now so the age matches the stored PKT run_time.
+_now_pkt = pd.Timestamp.now(tz="Asia/Karachi").tz_localize(None)
+_age_hours = (_now_pkt - _latest_pkt).total_seconds() / 3600
 _amber = getattr(config, "DATA_FRESHNESS_AMBER_HOURS", 4)
 _red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
 if _age_hours >= _red:
