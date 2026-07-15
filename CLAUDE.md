@@ -27,6 +27,22 @@ is `news.google.com`, so off-desk publishers leak into the raw file). The
 LLM-judged `news_signals.json` routine below is now OPTIONAL — only relevant if
 news weights are ever restored.
 
+**Relevance-anchor gate (2026-07-15):** Google News RSS token-matches the
+company query loosely, so a *"National Foods expands in UAE"* headline matched
+NRL's *"National Refinery"* query and got attributed to (and GLM-rated as) NRL
+— a cross-company mis-attribution. `config.COMPANY_NEWS_ANCHORS` now holds a
+distinctive name phrase per symbol and `config.headline_matches_company()`
+(word-boundary matched, flexible whitespace) gates every headline. Applied at
+BOTH fetch time (`news_fetcher.fetch_for_symbol`) AND read time
+(`news_feed.raw_headlines`, which GLM consumes) so already-committed raw files
+are cleaned without a re-fetch. Ambiguous bare tickers are omitted on purpose
+(NRL is also National Rugby League); symbols with no curated name (GHNI, GAL,
+SLM, SLGL, THCCL) fall back to a strict word-boundary ticker match. Trade-off:
+a few ticker-only legit headlines are missed (conservative) — correct for an
+UNWEIGHTED feed where mis-attribution is the real harm. Result: raw feed went
+from ~209 loosely-matched items to ~8 correctly-attributed ones; add real name
+anchors for the 5 unnamed symbols when their company names are verified.
+
 ## GLM second opinion (2026-07-15, unweighted)
 
 `news_glm.py` runs after the news fetch in `news.yml` (needs `GLM_API_KEY`
@@ -50,17 +66,19 @@ Diagnosing key issues: a bad key = instant ~1s **401**; a slow-endpoint problem
 = ~60s+ **read timeout**. Different symptoms, different fixes.
 
 **GLM ratings live in TWO places (2026-07-15):** the per-card `🤖 GLM` pill
-(actionable Buy/Exit cards only) AND a always-on **`🤖 GLM news read` panel**
-on the main page (`dashboard.py`, after the staleness banner) that lists EVERY
-rated symbol with pill + reason, sorted positive→negative, via
-`news_feed.load_glm_ratings()`. The panel exists because actionable cards are
-empty in a risk-off market, which hid the second opinion entirely — the panel
-always surfaces it. Still zero score weight.
+(actionable Buy/Exit cards only) AND a **`🤖 GLM news read` panel** on the main
+page (`dashboard.py`, after the staleness banner, a **collapsed-by-default**
+expander) that lists EVERY rated symbol with pill + reason, sorted
+positive→negative, via `news_feed.load_glm_ratings()`. The panel exists because
+actionable cards are empty in a risk-off market, which hid the second opinion
+entirely — the panel always surfaces it. Still zero score weight.
 
 ## Dashboard: regime what-if toggle (2026-07-15)
 
-Sidebar radio `🔀 Regime what-if` — `Actual | Assume risk-on | Assume
-risk-off`. On each Buy/Strong Buy card it prints a one-line note of what the
+**On the MAIN page (2026-07-15):** `🔀 Regime what-if` is a horizontal
+`st.radio` sitting right above the Market-regime tile (moved OUT of the sidebar,
+where it was buried on mobile) — `Actual | Assume risk-on | Assume risk-off`.
+On each Buy/Strong Buy card it prints a one-line note of what the
 signal WOULD be under the assumed regime (risk-off → soft-downgrade to Watch
 via the regime gate; risk-on → holds, chase guard loosens). Approximation, not
 a re-run — the stored score/vetoes drive it. Never mutates stored signals.
@@ -198,6 +216,19 @@ CLI `python main.py accuracy` shows this with explicit warnings.
 - `DATA_FRESHNESS_AMBER_HOURS=4` → tile turns amber, banner warns
 - `DATA_FRESHNESS_RED_HOURS=24` → tile turns red, error banner
 
+**Password-safe auto-refresh (2026-07-15):** on Streamlit Cloud the running
+server serves the git snapshot from its last deploy; an open tab needs a full
+reload to reconnect after a redeploy and re-read the committed DB. `_auto_refresh`
+reloads every `DASHBOARD_REFRESH_SECONDS` (300). It USED to be disabled whenever
+`DASHBOARD_PASSWORD` was set (a reload forced re-login) → the user had to reboot
+manually. Now login stamps a non-reversible hashed token (`_auth_token`) into the
+URL query string (`?k=…`); `window.location.reload()` preserves it, so the tab
+re-authenticates itself across both the timed reload and Streamlit Cloud
+redeploys (which drop server sessions). Trade-off: the token is a bearer
+credential in the URL — fine for a single-user personal dashboard, noted in-code.
+If the user rejects the URL-token approach, the fallback is host-independent:
+pull latest run rows from a small committed JSON via GitHub raw with a short TTL.
+
 ## Dashboard trade-plan cards
 
 Each Buy-signal card has an inline "📋 Full detail" expander (no extra data
@@ -252,17 +283,24 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-07-15 (GLM free-tier key live + timeout fix; dashboard
-GLM-news-read panel + risk-on what-if now surfaces regime-gated Buys. Earlier
-same-day: deep signal-quality audit — pullback quality gate, RS laggard veto,
-strict-history confidence).
+**Last updated:** 2026-07-15 (news relevance-anchor gate stops cross-company
+mis-attribution; regime what-if moved to main page; password-safe auto-refresh.
+Earlier same-day: GLM free-tier key live + timeout fix, GLM-news-read panel,
+risk-on what-if surfaces regime-gated Buys; deep signal-quality audit — pullback
+quality gate, RS laggard veto, strict-history confidence).
 
 ### Current working context
-- All recent work is committed directly to `main` (news-only + analysis + config
-  commits follow this pattern). Latest code branch used was
-  `claude/free-glm-secret-key-1k5gn0` (GLM timeout fix + dashboard changes),
-  merged to `main` directly with the user's explicit OK — commits `2ebc492`
-  (news_glm timeout/retry) and `1529226` (dashboard panel + what-if overlay).
+- All recent work is committed directly to `main`. Today's code commits (all on
+  `main`): `2ebc492` news_glm timeout/retry, `1529226` GLM panel + what-if
+  overlay, `b4473aa` news relevance-anchor gate, `8d07ce3` regime toggle→main
+  page + password-safe auto-refresh + GLM panel collapsed.
+- **Reviewed but NOT changed (user's call):** #4 "is it 360°?" — the technical
+  analyzer IS multi-indicator (RSI/MACD/EMA20-50-200/Bollinger/OBV/ADX/ATR/CMF/
+  S-R/momentum/volume/candles/4-dim confluence), but `config.WEIGHTS` is
+  technical 1.0 / fundamentals 0.0 / macro 0.0 / sentiment 0.0, so final_score
+  is 100% technical — NO fundamental/valuation input. User chose to KEEP it
+  100% technical (do not re-enable fundamentals without a data audit + explicit
+  OK). The 20-EMA is only the pullback/chase reference, not the signal basis.
 - **GLM free-tier second opinion is LIVE.** `GLM_API_KEY` secret is set and
   valid; `news_glm_ratings.json` is written each news run (19 symbols last run).
   If it goes dark again, read the `news.yml` GLM step LOG (it's `|| true`, so the
