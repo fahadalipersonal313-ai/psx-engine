@@ -187,6 +187,41 @@ def _news_window(symbol, nv=None):
                    "24h. News never moves the score — this window is informational.")
 
 
+_GLM_STYLE = {
+    "highly_positive": (NEON["green"], "▲▲ GLM highly +ve"),
+    "positive":        (NEON["green"], "▲ GLM +ve"),
+    "neutral":         ("#8aa0c0",     "● GLM neutral"),
+    "negative":        (NEON["red"],   "▼ GLM -ve"),
+    "highly_negative": (NEON["red"],   "▼▼ GLM highly -ve"),
+}
+
+
+def glm_pill(rating_dict):
+    """Compact GLM news-rating chip. rating_dict is news_feed.glm_rating(sym)."""
+    if not rating_dict:
+        return _pill("🤖 GLM: —", "#8aa0c0")
+    clr, label = _GLM_STYLE.get(rating_dict.get("rating"), ("#8aa0c0", "🤖 GLM: ?"))
+    return _pill(f"🤖 {label}", clr)
+
+
+def whatif_regime_note(actual_regime, assumed_regime, signal):
+    """One-line label explaining what the signal WOULD be under an assumed
+    regime. Approximation, not a re-run: risk-off soft-downgrades Buy→Watch
+    per signal_generator; risk-on relaxes the chase guard and lets some
+    regime-downgraded Watches surface as Buys. Actual regime → no note."""
+    if not assumed_regime or assumed_regime == actual_regime:
+        return ""
+    if assumed_regime == "risk-off" and signal in ("Buy", "Strong Buy"):
+        return ("🌩 Under **risk-off**: signal would soft-downgrade to Watch "
+                "(regime gate) — position size accordingly.")
+    if assumed_regime == "risk-on" and signal in ("Buy", "Strong Buy"):
+        return "☀ Under **risk-on**: signal holds; chase guard also loosens."
+    if assumed_regime == "risk-on" and signal == "Watch":
+        return ("☀ Under **risk-on**: if this Watch was regime-downgraded, "
+                "it would revert to Buy (check main_reason).")
+    return ""
+
+
 def regime_pill(regime):
     if regime == "risk-on":
         return _pill("● Risk-on", NEON["green"])
@@ -391,6 +426,19 @@ st.sidebar.caption(
 st.sidebar.caption("Defaults to the cash in portfolio.json. The **Portfolio** tab "
                    "builds a strategy from your actual holdings + this cash.")
 
+# What-if regime toggle. Purely informational — does NOT re-run the engine.
+# It annotates each actionable card with what the signal would become under an
+# assumed regime, so the user can validate a decision against both climates.
+_wf_choice = st.sidebar.radio(
+    "🔀 Regime what-if",
+    ["Actual", "Assume risk-on", "Assume risk-off"], index=0,
+    help="Overlay how each Buy would change under the opposite regime. "
+         "Approximation, not a re-run: risk-off soft-downgrades Buys to Watch; "
+         "risk-on relaxes the chase guard.")
+assumed_regime = {"Assume risk-on": "risk-on",
+                  "Assume risk-off": "risk-off"}.get(_wf_choice)
+st.sidebar.caption(news_feed.glm_status_line())
+
 # ----------------------------- portfolio risk (computed once) -------------
 buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
               "signal": r["signal"], "price": r["price"], "stop": r["stop_loss"],
@@ -532,10 +580,16 @@ else:
                 if conf_html:
                     box.markdown(conf_html, unsafe_allow_html=True)
                 nv = news_feed.get(r["symbol"])
-                box.markdown(news_pill(nv) +
+                gv = news_feed.glm_rating(r["symbol"])
+                box.markdown(news_pill(nv) + " " + glm_pill(gv) +
                              (f' <span style="opacity:.75;font-size:12px">'
                               f'{nv["summary"][:120]}</span>' if nv else ''),
                              unsafe_allow_html=True)
+                if gv and gv.get("reason"):
+                    box.caption(f"🤖 GLM: {gv['reason']}")
+                _wf = whatif_regime_note(regime, assumed_regime, r["signal"])
+                if _wf:
+                    box.markdown(_wf)
                 box.caption(str(r["main_reason"])[:240])
                 with box.expander("📋 Full detail"):
                     st.write("**Full reason:**", r["main_reason"])

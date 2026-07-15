@@ -22,6 +22,7 @@ Per-symbol verdict schema (values the engine relies on):
 
 import json
 import logging
+import os
 from datetime import datetime, timezone
 
 import config
@@ -155,6 +156,47 @@ def raw_headlines(symbol, limit=5):
         if len(out) >= limit:
             break
     return out
+
+
+# --------------------------------------------------------------------------
+# GLM ratings (news_glm_ratings.json) — a SECOND OPINION from GLM-4.5-flash
+# on the last-24h headlines. Zero score weight; shown next to the engine's
+# signal so the user can see whether the LLM agrees. Missing/stale file →
+# returns None for every symbol.
+# --------------------------------------------------------------------------
+def load_glm_ratings():
+    path = os.path.join(config.BASE_DIR, "news_glm_ratings.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}, {"status": "absent"}
+    as_of = _parse_as_of(raw.get("as_of"))
+    age_h = None
+    if as_of is not None:
+        age_h = round((datetime.now(timezone.utc) - as_of).total_seconds() / 3600, 1)
+        if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
+            return {}, {"status": "stale", "age_hours": age_h}
+    ratings = {k.upper(): v for k, v in (raw.get("ratings") or {}).items()}
+    return ratings, {"status": "ok", "as_of": raw.get("as_of"),
+                     "age_hours": age_h, "count": len(ratings),
+                     "model": raw.get("model")}
+
+
+def glm_rating(symbol):
+    """Per-symbol GLM rating dict {rating, reason} or None."""
+    ratings, _ = load_glm_ratings()
+    return ratings.get(symbol.upper())
+
+
+def glm_status_line():
+    _, meta = load_glm_ratings()
+    if meta["status"] != "ok":
+        return f"GLM news rating unavailable ({meta['status']})."
+    age = meta.get("age_hours")
+    age_s = f"{age:.1f}h old" if age is not None else "age unknown"
+    return (f"GLM news rating ({meta.get('model') or 'glm'}): "
+            f"{meta['count']} symbols, {age_s} — second opinion, unweighted.")
 
 
 def raw_status_line():

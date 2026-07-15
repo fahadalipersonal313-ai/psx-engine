@@ -40,11 +40,15 @@ jobs:
           # Empty on scheduled (cron) runs — fall back to 24 so int() never sees "".
           NEWS_WINDOW_HOURS: ${{ inputs.window_hours || '24' }}
         run: python news_fetcher.py
+      - name: GLM news rating (second opinion, unweighted)
+        env:
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
+        run: python news_glm.py || true
       - name: Commit raw news
         run: |
           git config user.name  "psx-news-bot"
           git config user.email "psx-news-bot@users.noreply.github.com"
-          git add news_raw_24h.json
+          git add news_raw_24h.json news_glm_ratings.json 2>/dev/null || git add news_raw_24h.json
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0

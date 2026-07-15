@@ -27,6 +27,26 @@ is `news.google.com`, so off-desk publishers leak into the raw file). The
 LLM-judged `news_signals.json` routine below is now OPTIONAL — only relevant if
 news weights are ever restored.
 
+## GLM second opinion (2026-07-15, unweighted)
+
+`news_glm.py` runs after the news fetch in `news.yml` (needs `GLM_API_KEY`
+secret set in the repo — ZhipuAI free tier, `glm-4.5-flash`). One batched
+request rates every symbol that has fresh credible headlines as
+`highly_positive | positive | neutral | negative | highly_negative` and writes
+`news_glm_ratings.json`. `news_feed.glm_rating(sym)` reads it. The dashboard
+shows a `🤖 GLM` pill next to `📰` on each actionable-card, plus the GLM
+reason, so the user can cross-check whether the LLM agrees with the engine's
+Buy/Avoid. **Zero score weight** — informational only. Missing key / stale
+file → pill shows `GLM: —` and nothing else changes.
+
+## Dashboard: regime what-if toggle (2026-07-15)
+
+Sidebar radio `🔀 Regime what-if` — `Actual | Assume risk-on | Assume
+risk-off`. On each Buy/Strong Buy card it prints a one-line note of what the
+signal WOULD be under the assumed regime (risk-off → soft-downgrade to Watch
+via the regime gate; risk-on → holds, chase guard loosens). Approximation, not
+a re-run — the stored score/vetoes drive it. Never mutates stored signals.
+
 ## "Run the repo news" — optional LLM-judged routine (only if weights restored)
 
 User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
