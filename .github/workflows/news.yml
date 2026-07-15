@@ -1,11 +1,18 @@
 name: news-routine
 
-# Triggered manually ('Run the repo news' from the chat → Claude calls
-# mcp__github__actions_run_trigger for this workflow). Fetches raw 24h headlines
-# for every symbol + macro feeds and commits news_raw_24h.json. Claude then
-# reads that file, judges each stock per news_routine.md, and writes
-# news_signals.json (which the engine actually consumes).
+# Fetches raw last-24h headlines for every symbol + macro feeds and commits
+# news_raw_24h.json. Runs AUTOMATICALLY every weekday morning (cron below) so no
+# manual "Run the repo news" prompt is needed — the dashboard reads the raw file
+# and shows the headlines per symbol UNSCORED, for manual cross-verification.
+# (News carries ZERO score weight as of 2026-07-15; the old LLM-judged
+# news_signals.json step is optional and only matters if weights are restored.)
 on:
+  schedule:
+    # Staggered weekday-morning fetches (UTC). GitHub cron is unreliable/late, so
+    # a few attempts ensure the raw file refreshes each trading morning.
+    - cron: '5 4 * * 1-5'           # 09:05 PKT
+    - cron: '35 4 * * 1-5'          # 09:35 PKT
+    - cron: '5 6 * * 1-5'           # 11:05 PKT — self-heal if the earlier ones skipped
   workflow_dispatch:
     inputs:
       window_hours:
@@ -30,7 +37,8 @@ jobs:
       - run: pip install requests
       - name: Fetch news
         env:
-          NEWS_WINDOW_HOURS: ${{ inputs.window_hours }}
+          # Empty on scheduled (cron) runs — fall back to 24 so int() never sees "".
+          NEWS_WINDOW_HOURS: ${{ inputs.window_hours || '24' }}
         run: python news_fetcher.py
       - name: Commit raw news
         run: |

@@ -79,3 +79,88 @@ def status_line():
     if meta["status"] == "ok":
         return f"Authentic news feed: {meta['count']} symbols, as of {meta['as_of']}."
     return f"Authentic news feed unavailable ({meta['status']}) — RSS/VADER fallback."
+
+
+# --------------------------------------------------------------------------
+# RAW headline window (UNSCORED). Reads news_raw_24h.json — the auto-fetched
+# last-24h headlines that news.yml collects on a schedule (no manual routine,
+# no LLM judgment). Used purely to SHOW real, source-linked headlines per
+# symbol so the user can cross-verify by eye. Never feeds the score.
+# --------------------------------------------------------------------------
+_RAW_CACHE = {"mtime": None, "data": None}
+
+
+def _publisher(item):
+    """Best-effort clean publisher name. Google News titles arrive as
+    'Headline - Business Recorder'; prefer the explicit macro `source`, else
+    the suffix after the last ' - '."""
+    src = (item.get("source") or "").strip()
+    if src and src != "google_news_rss":
+        return src
+    title = item.get("title") or ""
+    if " - " in title:
+        return title.rsplit(" - ", 1)[1].strip()
+    return "source"
+
+
+def _clean_title(item):
+    title = item.get("title") or ""
+    return title.rsplit(" - ", 1)[0].strip() if " - " in title else title
+
+
+def load_raw():
+    """Return (payload, meta). Empty when the raw file is missing/malformed."""
+    path = getattr(config, "NEWS_RAW_PATH", None)
+    if not path:
+        import os
+        path = os.path.join(config.BASE_DIR, "news_raw_24h.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}, {"status": "absent"}
+    fetched = _parse_as_of(raw.get("fetched_at"))
+    age_h = None
+    if fetched is not None:
+        age_h = round((datetime.now(timezone.utc) - fetched).total_seconds() / 3600, 1)
+    return raw, {"status": "ok", "fetched_at": raw.get("fetched_at"),
+                 "age_hours": age_h, "count": raw.get("count", 0)}
+
+
+def raw_headlines(symbol, limit=5):
+    """List of {title, url, publisher, published} for this symbol's last-24h
+    headlines (deduped by cleaned title). Empty list if none / file absent.
+    UNSCORED — for manual cross-verification only."""
+    raw, meta = load_raw()
+    if meta["status"] != "ok":
+        return []
+    credible = [p.lower() for p in getattr(config, "NEWS_DISPLAY_PUBLISHERS", [])]
+    sym = symbol.upper()
+    out, seen = [], set()
+    for it in raw.get("items", []):
+        if (it.get("symbol") or "").upper() != sym:
+            continue
+        t = _clean_title(it)
+        key = t.lower()
+        if not t or key in seen:
+            continue
+        pub = _publisher(it)
+        # Display filter: only credible desks (the fetch-time host allowlist is
+        # bypassed by Google News redirect links). Skip if no allowlist set.
+        if credible and not any(c in pub.lower() for c in credible):
+            continue
+        seen.add(key)
+        out.append({"title": t, "url": it.get("url", ""),
+                    "publisher": pub, "published": it.get("published")})
+        if len(out) >= limit:
+            break
+    return out
+
+
+def raw_status_line():
+    _, meta = load_raw()
+    if meta["status"] != "ok":
+        return "Raw news window unavailable (not fetched yet)."
+    age = meta.get("age_hours")
+    age_s = f"{age:.1f}h old" if age is not None else "age unknown"
+    return f"Raw news window: {meta['count']} headlines, {age_s} (unscored)."

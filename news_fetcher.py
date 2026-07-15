@@ -28,7 +28,7 @@ log = logging.getLogger("news_fetcher")
 
 # Default daily window is 24h (the routine's standing spec). Override via env
 # NEWS_WINDOW_HOURS for one-off backfills (e.g. 96 for a 4-day rebuild).
-WINDOW_HOURS = int(os.environ.get("NEWS_WINDOW_HOURS", "24"))
+WINDOW_HOURS = int(os.environ.get("NEWS_WINDOW_HOURS") or "24")  # "" (cron) → 24
 TIMEOUT = 15
 UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
 

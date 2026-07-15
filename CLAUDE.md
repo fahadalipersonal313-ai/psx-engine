@@ -13,7 +13,21 @@ focus, with a broader KMI All-Share universe.
 - **Manual confirmation required before any trade** — this is decision support,
   not auto-trading.
 
-## "Run the repo news" — daily authentic-news routine
+## News: auto-fetched, UNSCORED window (2026-07-15)
+
+News carries **0% score weight**. The `news.yml` workflow now runs on a
+**weekday-morning cron** (09:05 / 09:35 / 11:05 PKT, staggered) — no manual
+prompt needed — and commits `news_raw_24h.json`. The dashboard reads that raw
+file via `news_feed.raw_headlines(sym)` and shows the last-24h headlines per
+stock as an **unscored window for manual cross-verification** (Watchlist "Full
+detail" expander + Stock detail tab). `news_feed.raw_headlines` filters to
+credible desks by publisher NAME (`config.NEWS_DISPLAY_PUBLISHERS`) because the
+fetch-time host allowlist is bypassed by Google News redirect links (every link
+is `news.google.com`, so off-desk publishers leak into the raw file). The
+LLM-judged `news_signals.json` routine below is now OPTIONAL — only relevant if
+news weights are ever restored.
+
+## "Run the repo news" — optional LLM-judged routine (only if weights restored)
 
 User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
 1. Triggers `.github/workflows/news.yml` (workflow_dispatch on `main`) via

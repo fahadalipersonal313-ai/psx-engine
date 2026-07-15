@@ -164,6 +164,29 @@ def news_pill(verdict):
     return _pill(f"📰 {arrow} {delta:+d}{star}", clr)
 
 
+def _news_window(symbol, nv=None):
+    """UNSCORED per-symbol news window for manual cross-verification. Shows the
+    auto-fetched last-24h headlines (news_raw_24h.json, refreshed by news.yml on
+    a cron — no manual routine). News carries ZERO score weight; this is purely
+    so the user can eyeball real, source-linked headlines. Falls back to the
+    LLM-judged summary only if it happens to exist."""
+    items = news_feed.raw_headlines(symbol, limit=5)
+    st.markdown("**📰 News — last 24h (not scored; for your manual check)**")
+    if items:
+        for it in items:
+            pub = it.get("publisher") or "source"
+            url, title = it.get("url"), it["title"]
+            st.markdown(f"- [{title}]({url}) · _{pub}_" if url
+                        else f"- {title} · _{pub}_")
+    elif nv and nv.get("summary"):
+        st.markdown(f"_{nv['summary']}_")
+        for h, u in zip(nv.get("headlines", []), nv.get("sources", [])):
+            st.markdown(f"- [{h}]({u})")
+    else:
+        st.caption("No allowlisted headlines fetched for this symbol in the last "
+                   "24h. News never moves the score — this window is informational.")
+
+
 def regime_pill(regime):
     if regime == "risk-on":
         return _pill("● Risk-on", NEON["green"])
@@ -380,8 +403,15 @@ book = pf["book"]
 # ----------------------------- header + status strip ----------------------
 st.title("📈 PSX Shariah Engine — Today")
 st.caption("⚠ " + config.DISCLAIMER)
-st.caption(f"📰 {news_feed.status_line()} News carries "
-           f"{int(config.WEIGHTS['sentiment']*100)}% of the final score.")
+_news_wt = int((config.WEIGHTS.get("sentiment", 0)
+                + config.WEIGHTS.get("macro_news", 0)) * 100)
+if _news_wt == 0:
+    st.caption(f"📰 {news_feed.raw_status_line()} News carries **0% weight** — "
+               "headlines are shown per stock for manual cross-verification only, "
+               "never moved into the score.")
+else:
+    st.caption(f"📰 {news_feed.status_line()} News carries {_news_wt}% of the "
+               "final score.")
 
 
 def tile(col, label, value_html, sub=""):
@@ -518,16 +548,7 @@ else:
                     if pd.notna(bzl2) and pd.notna(bzh2):
                         st.write("**Buy-zone (20-EMA pullback):**",
                                  f"{bzl2:.2f}–{bzh2:.2f}")
-                    if nv:
-                        st.markdown("**📰 News (last 24h, "
-                                    f"{nv.get('confidence','?')}-confidence):** "
-                                    f"{nv['summary']}")
-                        for h, u in zip(nv.get("headlines", []),
-                                        nv.get("sources", [])):
-                            st.markdown(f"- [{h}]({u})")
-                    else:
-                        st.caption("📰 No fresh authentic news in last 24h — "
-                                   "news contributes neutral to the score.")
+                    _news_window(r["symbol"], nv)
                     st.caption("For the price/volume chart and a per-stock "
                                "backtest, open the 📈 Stock detail tab.")
 
@@ -930,6 +951,7 @@ with tab_stock:
         st.write("**Main risk:**", r["main_risk"])
         st.write("**Shariah:**", r["shariah_status"], " · **Market regime:**",
                  r.get("market_regime") or "—")
+        _news_window(sym, news_feed.get(sym))
 
     eod, meta = data_fetcher.fetch_eod(sym)
     if eod is not None:

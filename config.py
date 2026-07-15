@@ -392,6 +392,10 @@ REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
 # with source URLs. The engine reads it via news_feed.py; if the file is missing
 # or older than NEWS_SIGNALS_MAX_AGE_HOURS, it falls back to RSS/VADER scoring.
 NEWS_SIGNALS_PATH = os.path.join(BASE_DIR, "news_signals.json")
+# Raw auto-fetched last-24h headlines (news.yml on a cron writes this). Shown
+# UNSCORED per-symbol in the dashboard for manual cross-verification; never
+# weighted into the score.
+NEWS_RAW_PATH = os.path.join(BASE_DIR, "news_raw_24h.json")
 # Your real holdings + ready cash (read by portfolio_advisor for the dashboard's
 # Portfolio tab). Edit portfolio.json or the dashboard table to keep it current.
 PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
@@ -410,6 +414,16 @@ NEWS_SOURCE_ALLOWLIST = [
     "mettisglobal.news",                 # Mettis Global
     "profit.pakistantoday.com.pk",       # Profit Pakistan Today
     "news.google.com",                   # Google News RSS aggregator (per-symbol)
+]
+# Credible publisher NAMES (lowercase substrings) for the UNSCORED raw-news
+# window. The fetch-time host allowlist is bypassed by Google News redirect
+# links (every link is news.google.com), so the raw file contains many
+# off-desk publishers (Daily Times, MM News, etc.). The dashboard window
+# filters to these names — parsed from the "Headline - Publisher" title — so
+# the user only eyeballs credible desks. Purely a display filter; no scoring.
+NEWS_DISPLAY_PUBLISHERS = [
+    "business recorder", "brecorder", "dawn", "mettis", "profit",
+    "the news", "tribune", "bloomberg", "reuters",
 ]
 EXCEL_DIR = REPORT_DIR
 
