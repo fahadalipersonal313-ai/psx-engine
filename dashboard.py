@@ -239,6 +239,21 @@ def fmt(x, d=2):
     return f"{x:,.{d}f}"
 
 
+def price_row(pairs):
+    """Entry/Stop/Target strip as plain markdown. NOT st.metric: that widget
+    lives in a lazily-imported JS chunk, and a browser holding a cached page
+    shell from an earlier Cloud build 404s it ("Importing a module script
+    failed") — hiding the three numbers that matter most on a trade card."""
+    cells = "".join(
+        f'<div style="flex:1;min-width:72px">'
+        f'<div style="opacity:.55;font-size:11px;letter-spacing:.4px;'
+        f'text-transform:uppercase">{label}</div>'
+        f'<div style="font-size:19px;font-weight:700;color:{color}">{value}</div>'
+        f'</div>'
+        for label, value, color in pairs)
+    return (f'<div style="display:flex;gap:10px;margin:8px 0 10px">{cells}</div>')
+
+
 def neon_fig(fig, height=None):
     fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                       plot_bgcolor="rgba(0,0,0,0)",
@@ -616,10 +631,11 @@ else:
                     f'{sig_pill(disp)} '
                     f'{accum_pill() if r.get("accumulation_candidate") else ""}</div>',
                     unsafe_allow_html=True)
-                a, b, c = box.columns(3)
-                a.metric("Entry", fmt(r["price"]))
-                b.metric("Stop", fmt(r["stop_loss"]))
-                c.metric("Target", fmt(r["target1"]))
+                box.markdown(price_row([
+                    ("Entry", fmt(r["price"]), "#e8f0ff"),
+                    ("Stop", fmt(r["stop_loss"]), NEON["red"]),
+                    ("Target", fmt(r["target1"]), NEON["green"]),
+                ]), unsafe_allow_html=True)
                 bzl, bzh = r.get("buy_zone_low"), r.get("buy_zone_high")
                 if pd.notna(bzl) and pd.notna(bzh):
                     box.markdown(
