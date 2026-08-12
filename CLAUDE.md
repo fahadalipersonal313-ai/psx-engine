@@ -150,21 +150,52 @@ Order of operations:
 6. **Confluence gate** (4 dims, each independent): trend (price>50-EMA),
    momentum (RSI 40-74 AND MACD hist>0), volume (OBV up), structure
    (price>support AND no breakdown). Strong Buy needs ≥3/4, Buy needs ≥2/4.
-7. **Chase guard** (regime-aware + rally-strength-scaled): if `ext_pct >
-   max_extension_pct × multiplier` OR `momentum_20d > max_extension_momentum_pct
-   × multiplier`, step down. Multiplier ramps from 1.0 (neutral) up to
-   `extension_riskon_multiplier=1.8` as `regime_pct_above` reaches
-   `extension_riskon_full_pct=8.0`.
+7. **Chase guard — DISABLED 2026-08-12** (`CHASE_GUARD_ENABLED = False`). The
+   extension is still computed and printed on the card as a `chase guard OFF`
+   note, but it no longer steps a signal down. The regime-aware multiplier logic
+   is retained behind the flag; flip the flag to restore it.
 8. **Soft downgrades** (Buy/Strong Buy → Watch): earnings blackout (≤5d),
-   risk-off regime, `poor_rr` veto, `manipulation_risk`, `bad_news`, High risk,
-   confidence<45.
+   risk-off regime, `poor_rr` veto, High risk, confidence<45. `bad_news` /
+   `manipulation_risk` no longer fire — see PURE_TECHNICAL below.
 9. **Pullback-entry upgrade** (Watch/Hold → Buy): when price has retraced to
-   the 20-EMA buy-zone with confluence ≥2 and no vetoes — AND (2026-07-15
+   the 50-EMA buy-zone with confluence ≥2 and no vetoes — AND (2026-07-15
    audit) `final_score ≥ PULLBACK_MIN_SCORE (60)` and `RS ≥ PULLBACK_MIN_RS
    (55)`. Ungated pullback Buys won 21%; quality-gated won 42%.
 10. **RS laggard veto** (soft downgrade, 2026-07-15): Buy/Strong Buy with
     `relative_strength < RS_LAGGARD_VETO (45)` → Watch. Laggard Buys won 19%
     vs 35% for the rest. RS=None never vetoes (missing data can't block).
+
+## Pure technicals + 50-EMA reference (2026-08-12)
+
+User-directed risk-up. Three knobs in `config.py`:
+
+- **`PURE_TECHNICAL = True`** — signals now come from price/volume ONLY. The
+  score was already 100% technical (`WEIGHTS` technical 1.0), but news and
+  sentiment could still MOVE a signal through the `bad_news` /
+  `manipulation_risk` vetoes in `risk_manager`. Those are now emitted as
+  WARNINGS only (still shown in the dashboard for manual cross-check) and are
+  excluded from the `hard` count that sets `risk_level` — otherwise a bad
+  headline would have kept downgrading Buys via the "High risk" branch.
+  Structural gates are UNTOUCHED: shariah, breakdown, `poor_rr`, earnings
+  blackout, regime, RS laggard.
+- **`CHASE_GUARD_ENABLED = False`** — the engine no longer refuses to buy
+  strength (see pipeline step 7).
+- **`PULLBACK_EMA_SPAN = 50`** (was 20) — the reference EMA for BOTH the
+  extension measure (`ext_pct`) and the pullback buy-zone (`ref_ema × 0.96` to
+  `× 1.03`, floored at support). A deeper retracement = a wider, riskier zone.
+  Because price inside a 50-EMA zone can sit slightly BELOW the 50-EMA, the old
+  `price > ema50` trend test in `pullback_ready` would contradict the zone; it
+  is replaced by "reference EMA rising over the last 10 sessions" plus the
+  200-EMA test. The pullback RSI window widened 40-62 → 35-65 to match.
+
+`technical['buy_zone_ema_span']` carries the span through to the dashboard/
+signal reasons, so labels follow the config instead of being hardcoded.
+`reports.py`'s "Entry zone" column now prints the real buy-zone (it was showing
+support–EMA20, which was never the actual zone).
+
+**Not changed:** `WEIGHTS` (already technical 1.0), the confluence gate,
+hysteresis, Strong Buy confirmation, RS laggard veto, pullback quality gates
+(`PULLBACK_MIN_SCORE`/`MIN_RS`) — those are technical/statistical, not news.
 
 ## Confidence honesty (2026-07-15)
 
@@ -283,7 +314,9 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-07-15 (news relevance-anchor gate stops cross-company
+**Last updated:** 2026-08-12 (pure-technical mode: news/sentiment vetoes
+downgraded to warnings; chase guard off; pullback/extension reference EMA
+20 → 50). Previously: 2026-07-15 (news relevance-anchor gate stops cross-company
 mis-attribution; regime what-if moved to main page; password-safe auto-refresh.
 Earlier same-day: GLM free-tier key live + timeout fix, GLM-news-read panel,
 risk-on what-if surfaces regime-gated Buys; deep signal-quality audit — pullback
@@ -300,7 +333,9 @@ quality gate, RS laggard veto, strict-history confidence).
   technical 1.0 / fundamentals 0.0 / macro 0.0 / sentiment 0.0, so final_score
   is 100% technical — NO fundamental/valuation input. User chose to KEEP it
   100% technical (do not re-enable fundamentals without a data audit + explicit
-  OK). The 20-EMA is only the pullback/chase reference, not the signal basis.
+  OK). As of 2026-08-12 the engine is PURELY technical end-to-end — see the
+  "Pure technicals + 50-EMA reference" section; the reference EMA for the
+  pullback zone / extension is now the 50-EMA and the chase guard is off.
 - **GLM free-tier second opinion is LIVE.** `GLM_API_KEY` secret is set and
   valid; `news_glm_ratings.json` is written each news run (19 symbols last run).
   If it goes dark again, read the `news.yml` GLM step LOG (it's `|| true`, so the

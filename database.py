@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS runs (
                                 -- mistaken for independent confirmations), no
                                 -- longer written; old rows kept as-is
     confluence INTEGER,       -- 0-4: how many independent signal dimensions agree
-    buy_zone_low REAL,        -- pullback buy-zone (band around the 20-EMA)
+    buy_zone_low REAL,        -- pullback buy-zone (band around the reference EMA)
     buy_zone_high REAL,
     accumulation_candidate INTEGER, -- 1 = OBV/CMF/volume signature of quiet buying
     accumulation_reasons TEXT,      -- JSON list of which signals fired

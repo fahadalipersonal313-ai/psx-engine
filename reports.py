@@ -63,7 +63,7 @@ def build_run_report(results, market_notes, portfolio=None):
     lines += [hdr, "|" + "---|" * 17]
     for i, r in enumerate(ranked, 1):
         t, s = r["technical"], r["scoring"]
-        entry = (f"{_fmt(t.get('support'))}–{_fmt(t.get('ema20'))}"
+        entry = (f"{_fmt(t.get('buy_zone_low'))}–{_fmt(t.get('buy_zone_high'))}"
                  if t.get("support") else "n/a")
         lines.append(
             f"| {i} | {r['symbol']} | {r['shariah']['status'].split('(')[0].strip()} "

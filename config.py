@@ -167,6 +167,31 @@ PULLBACK_MIN_RS = 55
 RS_LAGGARD_VETO = 45
 
 # ---------------------------------------------------------------------------
+# 3a. PURE-TECHNICAL MODE (2026-08-12, user-directed risk-up)
+# ---------------------------------------------------------------------------
+# The score has been 100% technical since 2026-07-15, but news/sentiment could
+# still MOVE a signal through the risk_manager `bad_news` / `manipulation_risk`
+# vetoes. With PURE_TECHNICAL the engine's decisions come from price/volume
+# only: those two vetoes are still WARNED about (and shown in the dashboard for
+# manual cross-verification) but no longer downgrade Buy -> Watch, and they no
+# longer count toward the High risk level. Shariah, breakdown, poor_rr, earnings
+# and regime gates are unaffected — those are structural, not news-derived.
+PURE_TECHNICAL = True
+
+# Overextension ("chase") guard. It stepped a Buy down one notch whenever price
+# ran far above the reference EMA. Disabled 2026-08-12 by user request to accept
+# more risk: the engine no longer refuses to buy strength. technical['extended']
+# is still computed and displayed, and still gates the pullback/accumulation
+# tags — only the SIGNAL downgrade is off.
+CHASE_GUARD_ENABLED = False
+
+# Reference EMA for the pullback buy-zone and the extension (ext_pct) measure.
+# Was 20 (shallow dip). Now 50: a deeper retracement to the intermediate trend
+# line — a wider buy-zone that accepts more drawdown before the "uptrend intact"
+# test fails. Must be one of the EMAs technical_analyzer computes (20 or 50).
+PULLBACK_EMA_SPAN = 50
+
+# ---------------------------------------------------------------------------
 # 3b. MARKET REGIME & RELATIVE STRENGTH (Tier 2)
 # ---------------------------------------------------------------------------
 # Benchmark index for the regime gate + relative-strength ranking. PSX DPS

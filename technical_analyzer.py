@@ -390,17 +390,22 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     headroom_rr = round(reward_room / risk, 2) if risk > 0 else None
     headroom_pct = round((resistance - price) / price * 100, 1) if price else None
 
-    # --- Overextension (chase) guard: how far price is stretched above its EMA20.
-    # Uses PERCENT above EMA20 (robust) plus 20-day momentum; the ATR-normalised
-    # distance (ext_atr) is kept for info only because the EOD ATR proxy understates
-    # true range and inflated it.
+    # --- Overextension measure: how far price is stretched above the reference
+    # EMA (config.PULLBACK_EMA_SPAN — 50 since 2026-08-12, was 20). Uses PERCENT
+    # above that EMA (robust) plus 20-day momentum; the ATR-normalised distance
+    # (ext_atr) is kept for info only because the EOD ATR proxy understates true
+    # range and inflated it.
     ema20_last = float(ema20.iloc[-1])
-    ext_pct = round((price / ema20_last - 1) * 100, 1) if ema20_last else None
-    ext_atr = round((price - ema20_last) / last_atr, 2) if last_atr else None
+    ema50_last = float(ema50.iloc[-1])
+    ref_span = getattr(config, "PULLBACK_EMA_SPAN", 20)
+    ref_series = ema50 if ref_span == 50 else ema20
+    ref_ema = float(ref_series.iloc[-1])
+    ext_pct = round((price / ref_ema - 1) * 100, 1) if ref_ema else None
+    ext_atr = round((price - ref_ema) / last_atr, 2) if last_atr else None
     extended = bool((ext_pct is not None and ext_pct > config.RISK["max_extension_pct"])
                     or momentum_20d > config.RISK["max_extension_momentum_pct"])
     if extended:
-        notes.append(f"EXTENDED: {ext_pct}% above EMA20, 20d momentum "
+        notes.append(f"EXTENDED: {ext_pct}% above EMA{ref_span}, 20d momentum "
                      f"{momentum_20d:+.1f}% — chase risk, a pullback entry is safer")
 
     # --- Accumulation candidate: a SEPARATE, lower-bar tag from the Buy signal —
@@ -445,21 +450,29 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         notes.append("ACCUMULATION candidate: " + "; ".join(accum_reasons))
 
     # --- Pullback-entry setup: an established uptrend that has retraced to its
-    # rising 20-EMA with momentum cooled but structure intact — the lower-risk
-    # entry (buy the dip profit-takers create) vs chasing the breakout. buy_zone
-    # is the band around the 20-EMA, floored at support.
-    ema50_last = float(ema50.iloc[-1])
-    buy_zone_high = round(ema20_last * 1.03, 2)
-    buy_zone_low = round(max(support, ema20_last * 0.96), 2)
+    # rising reference EMA with momentum cooled but structure intact — the
+    # lower-risk entry (buy the dip profit-takers create) vs chasing the
+    # breakout. buy_zone is the band around that EMA, floored at support.
+    #
+    # The reference is the 50-EMA (config.PULLBACK_EMA_SPAN, 2026-08-12): a
+    # deeper retracement than the old 20-EMA band. Price inside a 50-EMA zone can
+    # sit slightly BELOW the 50-EMA, so the old `price > ema50` trend test would
+    # contradict the zone itself — the uptrend is instead confirmed by the
+    # reference EMA still RISING over the last 10 sessions, plus the 200-EMA when
+    # available. RSI window is widened to 35-65 to match the deeper dip.
+    ref_rising = (len(ref_series) > 10
+                  and ref_ema > float(ref_series.iloc[-11]))
+    buy_zone_high = round(ref_ema * 1.03, 2)
+    buy_zone_low = round(max(support, ref_ema * 0.96), 2)
     in_buy_zone = bool(buy_zone_low <= price <= buy_zone_high)
     pullback_ready = bool(
         in_buy_zone and not breakdown and not extended
-        and price > ema50_last
+        and ref_rising
         and (ema200 is None or price > float(ema200.iloc[-1]))
-        and (last_rsi is not None and 40 <= last_rsi <= 62)
+        and (last_rsi is not None and 35 <= last_rsi <= 65)
         and (bool(obv_trend_up) or float(macd_line.iloc[-1]) > 0))
     if pullback_ready:
-        notes.append(f"PULLBACK setup: retraced into the 20-EMA buy-zone "
+        notes.append(f"PULLBACK setup: retraced into the EMA{ref_span} buy-zone "
                      f"({buy_zone_low}–{buy_zone_high}), uptrend intact, RSI cooled "
                      f"to {last_rsi:.0f} — lower-risk entry than chasing.")
 
@@ -468,7 +481,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # and feed back into confidence (scoring_engine._indicator_accuracy_boost).
     # None = indicator not computable this run (data too short etc.).
     tech_flags = {
-        "trend":    price > float(ema50.iloc[-1]),
+        "trend":    price > ema50_last,
         "rsi":      (last_rsi is not None and 40 <= last_rsi <= 72),
         "macd":     float(macd_hist.iloc[-1]) > 0,
         "obv":      bool(obv_trend_up) if obv_trend_up is not None else None,
@@ -498,6 +511,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         "ext_pct": ext_pct, "ext_atr": ext_atr, "extended": extended,
         "buy_zone_low": buy_zone_low, "buy_zone_high": buy_zone_high,
         "in_buy_zone": in_buy_zone, "pullback_ready": pullback_ready,
+        "buy_zone_ema_span": ref_span,
         "relative_strength": rs_score,
         "low_confidence": len(close) < 60,
         "tech_flags": tech_flags,

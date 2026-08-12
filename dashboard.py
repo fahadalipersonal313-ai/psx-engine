@@ -644,7 +644,7 @@ else:
                         f'font-size:13px;font-weight:700">🎯 Buy-zone '
                         f'{bzl:.2f}–{bzh:.2f}</span> '
                         f'<span style="opacity:.6;font-size:12px">pullback to '
-                        f'20-EMA</span>', unsafe_allow_html=True)
+                        f'{config.PULLBACK_EMA_SPAN}-EMA</span>', unsafe_allow_html=True)
                 rs = r.get("relative_strength")
                 rs_txt = f"RS {rs:.0f}" if pd.notna(rs) else "RS —"
                 conf_val = r.get("confluence")
@@ -688,7 +688,7 @@ else:
                              f"{fmt(r.get('support'))} / {fmt(r.get('resistance'))}")
                     bzl2, bzh2 = r.get("buy_zone_low"), r.get("buy_zone_high")
                     if pd.notna(bzl2) and pd.notna(bzh2):
-                        st.write("**Buy-zone (20-EMA pullback):**",
+                        st.write(f"**Buy-zone ({config.PULLBACK_EMA_SPAN}-EMA pullback):**",
                                  f"{bzl2:.2f}–{bzh2:.2f}")
                     _news_window(r["symbol"], nv)
                     st.caption("For the price/volume chart and a per-stock "

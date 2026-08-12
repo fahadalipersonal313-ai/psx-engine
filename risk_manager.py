@@ -53,13 +53,18 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
     if technical.get("breakdown"):
         warnings.append("TECHNICAL BREAKDOWN below support")
         vetoes.append("breakdown")
+    # News- and sentiment-derived flags. In PURE_TECHNICAL mode they are still
+    # surfaced as warnings (the dashboard shows them for manual cross-checking)
+    # but are NOT vetoes: nothing outside price/volume moves a signal.
+    _pure = getattr(config, "PURE_TECHNICAL", False)
     if macro.get("bad_news_flag"):
         warnings.append("NEGATIVE COMPANY NEWS in last 96h: "
                         + "; ".join(t[:70] for t in macro.get("bad_news", [])[:2]))
-        vetoes.append("bad_news")
+        if not _pure:
+            vetoes.append("bad_news")
     for f in sentiment.get("flags", []):
         warnings.append(f)
-        if "PUMP" in f or "HYPE" in f:
+        if ("PUMP" in f or "HYPE" in f) and not _pure:
             vetoes.append("manipulation_risk")
     if rr is not None and rr < rr_min:
         _relax = (f" (eased from {config.RISK['min_headroom_rr']} for risk-on rally)"
@@ -79,9 +84,10 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
     warnings.append("Rule: manual confirmation required before any buy order")
 
     # ---- risk level
-    hard = sum(1 for w in warnings if any(k in w for k in
-               ("ILLIQUID", "HIGH VOLATILITY", "BREAKDOWN", "NEGATIVE",
-                "PUMP", "PANIC")))
+    _keys = ["ILLIQUID", "HIGH VOLATILITY", "BREAKDOWN"]
+    if not _pure:
+        _keys += ["NEGATIVE", "PUMP", "PANIC"]
+    hard = sum(1 for w in warnings if any(k in w for k in _keys))
     risk_level = "High" if hard >= 2 or vetoes else \
                  "Medium" if hard == 1 else "Low"
 

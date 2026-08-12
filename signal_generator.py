@@ -1,11 +1,19 @@
 """signal_generator.py — Converts final score + risk assessment into one of:
 Strong Buy / Buy / Watch / Hold / Avoid / Exit.
 
+PURE-TECHNICAL MODE (config.PURE_TECHNICAL, 2026-08-12): decisions come from
+price/volume only. News- and sentiment-derived vetoes (bad_news,
+manipulation_risk) are still WARNED about but no longer downgrade a signal —
+risk_manager stops emitting them as vetoes, so the branches below go quiet.
+The chase guard (config.CHASE_GUARD_ENABLED) is OFF and the pullback/extension
+reference EMA is config.PULLBACK_EMA_SPAN (50, was 20): both deliberate risk-up
+choices by the user.
+
 Overrides ALWAYS beat the score:
   * shariah issue            -> Exit (if held) / Avoid
   * technical breakdown      -> Exit / Avoid
-  * serious bad news         -> soft downgrade Buy -> Watch (not a hard Avoid)
-  * poor risk/reward or manipulation risk -> downgrade Buy to Watch
+  * poor risk/reward         -> downgrade Buy to Watch
+  * bad news / manipulation risk -> downgrade Buy to Watch (OFF in pure-technical)
 
 Tier 2 additions:
   * Confluence gate  — Strong Buy needs ≥3/4 independent dimensions (trend,
@@ -15,13 +23,14 @@ Tier 2 additions:
                               numeric streak/conviction count is tracked.)
 
 Anti-chase additions (don't buy at the peak):
-  * Overextension gate — price too far above EMA20 (or parabolic momentum) steps
-                         the signal down one notch: wait for the pullback.
+  * Overextension gate — price too far above the reference EMA (or parabolic
+                         momentum) steps the signal down one notch. DISABLED by
+                         config.CHASE_GUARD_ENABLED = False; still reported.
   * Thin-headroom (poor_rr) — REAL room-to-resistance:risk below the minimum
                          (price jammed under a ceiling) → Watch. (Via risk_manager,
                          which now reads technical.headroom_rr, not the ≈2.0 proj R:R.)
   * Pullback entry  — an extended setup held at Watch shows its buy-zone (the
-                       20-EMA band); when price later retraces INTO that zone with
+                       50-EMA band); when price later retraces INTO that zone with
                        the uptrend intact, a cooled Watch/Hold is upgraded to Buy
                        (buy the dip, don't chase the peak). Stateless across runs.
   * Earnings blackout — within EARNINGS_BLACKOUT_DAYS of a KNOWN result date, a
@@ -192,7 +201,9 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # to wait for the pullback the profit-taking creates. (The "thin room to
     # resistance" case is handled by the poor_rr veto in the soft downgrades.)
     _zlo, _zhi = technical.get("buy_zone_low"), technical.get("buy_zone_high")
-    _zone = f" Buy-zone PKR {_zlo}–{_zhi} (pullback to 20-EMA)." if _zlo and _zhi else ""
+    _span = technical.get("buy_zone_ema_span", config.PULLBACK_EMA_SPAN)
+    _zone = (f" Buy-zone PKR {_zlo}–{_zhi} (pullback to {_span}-EMA)."
+             if _zlo and _zhi else "")
     # Regime-aware chase guard. In a broad rally most names sit well above their
     # 20-EMA — treating that as "extended" would downgrade the whole leadership
     # group to Watch and make the engine miss the move. So in a confirmed risk-on
@@ -220,14 +231,21 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
               or (_mom is not None and _mom > _mom_lim))
     _relaxed = (f" (chase guard ×{_mult:.2f} for risk-on rally)"
                 if _mult > 1.0 else "")
-    if _chase:
+    if _chase and not config.CHASE_GUARD_ENABLED:
+        # Guard off (2026-08-12): note the stretch, don't act on it.
+        _mom_txt = f", 20d momentum {_mom:+.1f}%" if _mom is not None else ""
+        reasons.append(
+            f"Note (chase guard OFF): extended {_ext_pct}% above EMA{_span}"
+            f"{_mom_txt} — buying strength, accept the higher "
+            f"drawdown risk.{_zone}")
+    elif _chase:
         if base == "Strong Buy":
             base = "Buy"; reasons.append(
                 f"Downgraded Strong Buy→Buy: extended {_ext_pct}% "
-                f"above EMA20{_relaxed} — chase risk, a pullback entry is safer.{_zone}")
+                f"above EMA{_span}{_relaxed} — chase risk, a pullback entry is safer.{_zone}")
         elif base == "Buy":
             base = "Watch"; reasons.append(
-                f"Downgraded Buy→Watch: price extended above EMA20 (chase risk{_relaxed}) "
+                f"Downgraded Buy→Watch: price extended above EMA{_span} (chase risk{_relaxed}) "
                 f"— wait for a pullback before acting.{_zone}")
 
     # ---- soft downgrades (earnings, regime, risk, news, confidence)
@@ -284,7 +302,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
             and "manipulation_risk" not in risk["vetoes"]
             and risk["risk_level"] != "High" and confidence >= 45):
         base = "Buy"
-        reasons.append(f"Pullback entry: retraced into the 20-EMA buy-zone "
+        reasons.append(f"Pullback entry: retraced into the {_span}-EMA buy-zone "
                        f"(PKR {_zlo}–{_zhi}) with the uptrend intact, score "
                        f"{final_score} and RS {_rs:.0f} — a quality leader's dip, "
                        "lower-risk than chasing the breakout.")
