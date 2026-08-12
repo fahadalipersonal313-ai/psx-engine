@@ -178,22 +178,14 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append("Downgraded Strong Buy→Buy: first run at this level — "
                        "needs one more consecutive confirmation")
 
-    # ---- Tier 2: confluence gate
-    # Each of the 4 dimensions (trend/momentum/volume/structure) captures an
-    # independent market mechanism. Requiring agreement across dimensions cuts
-    # false positives from setups that score well on one dimension alone.
+    # ---- Confluence: MEASURED and reported, but no longer a gate (2026-08-12).
+    # The four dimensions were assumed independent; graded outcomes say they are
+    # not. Day-deduped Buy win rate by confluence: 2/4 won 17% (n=24), 3/4 won
+    # 26% (n=47), 4/4 won 25% (n=108) — flat. The gate was rejecting setups
+    # without buying accuracy (trend and structure are near-collinear: price
+    # above its 50-EMA is usually also above support). Still stored and shown
+    # as context so the dimensions remain visible per card.
     confluence, conf_dims = _confluence(technical)
-    if base == "Strong Buy" and confluence < 3:
-        base = "Buy"
-        missing = [d for d in ("trend", "momentum", "volume", "structure")
-                   if d not in conf_dims]
-        reasons.append(f"Downgraded Strong Buy→Buy: confluence {confluence}/4 "
-                       f"(missing: {', '.join(missing)})")
-    elif base == "Buy" and confluence < 2:
-        base = "Watch"
-        reasons.append(f"Downgraded Buy→Watch: confluence {confluence}/4 — "
-                       "requires at least 2 dimensions (trend/momentum/volume/"
-                       "structure) to agree before acting")
 
     # ---- Overextension (chase) guard: don't buy a stretched, parabolic move at
     # the peak — that's where profit-takers hand you the bag. Far above EMA20 or
@@ -248,64 +240,48 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
                 f"Downgraded Buy→Watch: price extended above EMA{_span} (chase risk{_relaxed}) "
                 f"— wait for a pullback before acting.{_zone}")
 
-    # ---- soft downgrades (earnings, regime, risk, news, confidence)
+    # ---- soft downgrades (earnings, regime, concentration, rr, confidence, RS)
+    # `bad_news` / `manipulation_risk` branches remain for when PURE_TECHNICAL is
+    # turned off; risk_manager stops emitting those vetoes while it is on.
+    # The old `risk_level == "High"` branch was REMOVED (2026-08-12): any veto
+    # forces risk_level High, and every veto already has its own branch above it,
+    # so the branch could never fire (confirmed: all 203 graded Buys were "Low").
     _earnings_soon = (days_to_earnings is not None
                       and 0 <= days_to_earnings <= config.EARNINGS_BLACKOUT_DAYS)
-    _vetoed = False
     if base in ("Strong Buy", "Buy"):
         if _earnings_soon:
-            base = "Watch"; _vetoed = True; reasons.append(
+            base = "Watch"; reasons.append(
                 f"Downgraded: earnings/result due in ~{days_to_earnings}d — binary "
                 "event risk, don't open a fresh position into the announcement")
         elif config.REGIME_GATE_ENABLED and regime == "risk-off":
-            base = "Watch"; _vetoed = True; reasons.append(
+            base = "Watch"; reasons.append(
                 f"Downgraded: market regime risk-off ({config.BENCHMARK_INDEX} below "
                 f"its {config.REGIME_EMA_SPAN}-EMA) — don't buy into a falling market")
+        elif "concentrated" in risk["vetoes"]:
+            base = "Watch"; reasons.append(
+                "Downgraded: this name is already over the single-name cap in your "
+                "book — adding compounds concentration risk. Trim or hold, don't add")
         elif "poor_rr" in risk["vetoes"]:
-            base = "Watch"; _vetoed = True; reasons.append("Downgraded: risk/reward below minimum")
+            base = "Watch"; reasons.append("Downgraded: risk/reward below minimum")
         elif "manipulation_risk" in risk["vetoes"]:
-            base = "Watch"; _vetoed = True; reasons.append("Downgraded: hype/pump risk — verify first")
+            base = "Watch"; reasons.append("Downgraded: hype/pump risk — verify first")
         elif "bad_news" in risk["vetoes"]:
-            base = "Watch"; _vetoed = True; reasons.append("Downgraded: material negative news — "
+            base = "Watch"; reasons.append("Downgraded: material negative news — "
                                            "verify the headline before acting")
-        elif risk["risk_level"] == "High":
-            base = "Watch"; _vetoed = True; reasons.append("Downgraded: overall risk level High")
         elif confidence < 45:
-            base = "Watch"; _vetoed = True; reasons.append("Downgraded: confidence below 45% "
+            base = "Watch"; reasons.append("Downgraded: confidence below 45% "
                                            "(weak data or poor history)")
         elif (technical.get("relative_strength") is not None
               and technical["relative_strength"] < config.RS_LAGGARD_VETO):
-            base = "Watch"; _vetoed = True; reasons.append(
+            base = "Watch"; reasons.append(
                 f"Downgraded: relative strength {technical['relative_strength']:.0f} "
                 f"< {config.RS_LAGGARD_VETO} — market laggard (graded history: "
-                "laggard Buys won 19% vs 35%); buy leaders, not laggards")
+                "RS<55 Buys won 21%, RS 70+ won 36%); buy leaders, not laggards")
 
-    # ---- Pullback-entry upgrade (the safer entry), applied LAST so it is the
-    # clean final word: turn a cooled-off Watch/Hold into a Buy when an established
-    # uptrend has retraced into its 20-EMA buy-zone (the dip profit-takers create)
-    # with structure intact. Stateless: once an extended name pulls back into the
-    # zone, `extended` clears and pullback_ready turns True. Skipped when any real
-    # veto fired above (regime/rr/news/manip/risk/confidence) so we never upgrade
-    # into a known problem or print a self-contradicting reason.
-    # Quality gate (audit 2026-07-15): ungated pullback upgrades won 21% —
-    # requiring score ≥ PULLBACK_MIN_SCORE AND RS ≥ PULLBACK_MIN_RS lifted the
-    # historical win rate to 42%. A dip is only worth buying in a LEADER that
-    # still scores well; a cheap dip in a mediocre name is just a falling knife.
-    _rs = technical.get("relative_strength")
-    if (base in ("Watch", "Hold") and not _vetoed and not _earnings_soon
-            and technical.get("pullback_ready") and confluence >= 2
-            and final_score >= config.PULLBACK_MIN_SCORE
-            and _rs is not None and _rs >= config.PULLBACK_MIN_RS
-            and not (config.REGIME_GATE_ENABLED and regime == "risk-off")
-            and "poor_rr" not in risk["vetoes"]
-            and "bad_news" not in risk["vetoes"]
-            and "manipulation_risk" not in risk["vetoes"]
-            and risk["risk_level"] != "High" and confidence >= 45):
-        base = "Buy"
-        reasons.append(f"Pullback entry: retraced into the {_span}-EMA buy-zone "
-                       f"(PKR {_zlo}–{_zhi}) with the uptrend intact, score "
-                       f"{final_score} and RS {_rs:.0f} — a quality leader's dip, "
-                       "lower-risk than chasing the breakout.")
+    # The pullback-entry UPGRADE was removed 2026-08-12: the Buys it produced
+    # (final_score below the Buy band) won 9% (n=57) against a 38% market base
+    # rate. technical['pullback_ready'] and the buy-zone are still computed and
+    # shown as manual context — the engine just no longer acts on them.
 
     if base in ("Strong Buy", "Buy"):
         reasons.append("Manual confirmation REQUIRED before placing any order")

@@ -145,8 +145,13 @@ OTHER_COMPLIANT = {
 WEIGHTS = {"technical": 1.0, "fundamentals": 0.0,
            "macro_news": 0.0, "sentiment": 0.0}
 
+# Buy threshold raised 70 -> 75 (2026-08-12 audit of day-deduped graded runs).
+# Score band vs 3-day win rate: 70-75 won 30% (n=66), 75-80 won 68% (n=28),
+# 80+ won 86% (n=7). Two-thirds of Buys were coming from the WORST band. At
+# score>=75 the candidate win rate is 75% (n=81) vs 56% at >=70 (n=198) — fewer
+# signals, materially better ones.
 SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
-    "strong_buy": 80, "buy": 70, "watch": 60, "hold": 50,
+    "strong_buy": 80, "buy": 75, "watch": 60, "hold": 50,
 }
 
 # Hysteresis dead-band around the SIGNAL_THRESHOLDS. A raw score grazing a
@@ -157,14 +162,19 @@ SIGNAL_THRESHOLDS = {   # final score -> base signal (before risk overrides)
 # confirm), but applied to band edges. Set to 0 to disable.
 HYSTERESIS_BAND = 2
 
-# Evidence-based Buy gates (2026-07-15 audit of day-deduped graded outcomes):
-#   * pullback upgrades won 21% overall but 42% when the name also scored ≥60
-#     with RS ≥55 — so the upgrade now requires BOTH (quality dip, not any dip);
-#   * Buys on market laggards (RS <45) won 19% vs 35% for the rest — vetoed.
+# Evidence-based Buy gates. Re-measured 2026-08-12 on day-deduped graded runs
+# (15-min polling inflates raw counts ~20x, so every figure here is one row per
+# symbol per day):
+#   * The pullback-entry UPGRADE is REMOVED. Buys it created (final_score <70)
+#     won 9% (n=57) against a 38% market base rate — it was subtracting edge,
+#     not adding it. The pullback SETUP is still detected and displayed
+#     (technical['pullback_ready'] + the buy-zone) as manual context.
+#   * RS laggard veto raised 45 -> 55. RS<45 won 21%, 45-55 won 21%, 55-70 won
+#     24%, 70+ won 36%. A 70 cut looks best alone, but stacked on the new
+#     score>=75 threshold it gives NO accuracy gain (75% either way) while
+#     halving trade count (n=81 -> 40); at 55 the stack wins 77% (n=53).
 # RS=None (index unavailable) never vetoes: missing data must not block trades.
-PULLBACK_MIN_SCORE = 60
-PULLBACK_MIN_RS = 55
-RS_LAGGARD_VETO = 45
+RS_LAGGARD_VETO = 55
 
 # ---------------------------------------------------------------------------
 # 3a. PURE-TECHNICAL MODE (2026-08-12, user-directed risk-up)
@@ -227,6 +237,12 @@ FUNDAMENTALS = {
 RISK = {
     "max_risk_per_trade_pct": 1.5,     # % of total capital risked per trade
     "max_position_pct": 15.0,          # never put more than this % in one stock
+    # Concentration cap measured against the REAL book (portfolio.json), not the
+    # hypothetical new trade. Per-trade sizing is blind to what you already hold,
+    # so a name that is already most of the account kept producing clean Buys.
+    # Above this weight a fresh Buy is downgraded to Watch (`concentrated` veto);
+    # trimming/holding is still fine, only ADDING is blocked.
+    "max_existing_concentration_pct": 25.0,
     "min_risk_reward": 2.0,            # reject setups below 2:1 (projected-target R:R)
     "min_headroom_rr": 1.5,            # real room-to-resistance : risk; below -> thin
                                        # upside (price jammed under a ceiling) -> Watch

@@ -139,7 +139,7 @@ Order of operations:
 1. **No-data guard**: missing price → `"No data"` signal.
 2. **Hard overrides** (always beat the score): shariah issue → `Avoid`;
    technical breakdown below support → `Exit` (if held) / `Avoid`.
-3. **Score → base band**: `≥80 Strong Buy`, `≥70 Buy`, `≥60 Watch`,
+3. **Score → base band**: `≥80 Strong Buy`, `≥75 Buy`, `≥60 Watch`,
    `≥50 Hold`, else `Avoid`. Strong Buy needs technicals confirming.
 4. **Hysteresis dead-band** (`HYSTERESIS_BAND=2`): one-notch transitions
    require crossing threshold by 2pts. Stops Buy↔Watch flapping when raw
@@ -147,23 +147,29 @@ Order of operations:
 5. **Strong Buy confirmation gate**: a fresh Strong Buy is held at Buy until
    the very next run still scores Strong Buy. No numeric streak/conviction
    count is tracked or shown anywhere (removed — see below).
-6. **Confluence gate** (4 dims, each independent): trend (price>50-EMA),
-   momentum (RSI 40-74 AND MACD hist>0), volume (OBV up), structure
-   (price>support AND no breakdown). Strong Buy needs ≥3/4, Buy needs ≥2/4.
+6. **Confluence — MEASURED, NOT A GATE (2026-08-12).** 4 dims: trend
+   (price>50-EMA), momentum (RSI 40-74 AND MACD hist>0), volume (OBV up),
+   structure (price>support AND no breakdown). The gate is REMOVED: graded
+   outcomes were flat across it (2/4 won 17%, 3/4 26%, 4/4 25%) because the
+   dims are not independent (trend and structure are near-collinear). Still
+   computed, stored and shown per card.
 7. **Chase guard — DISABLED 2026-08-12** (`CHASE_GUARD_ENABLED = False`). The
    extension is still computed and printed on the card as a `chase guard OFF`
    note, but it no longer steps a signal down. The regime-aware multiplier logic
    is retained behind the flag; flip the flag to restore it.
-8. **Soft downgrades** (Buy/Strong Buy → Watch): earnings blackout (≤5d),
-   risk-off regime, `poor_rr` veto, High risk, confidence<45. `bad_news` /
-   `manipulation_risk` no longer fire — see PURE_TECHNICAL below.
-9. **Pullback-entry upgrade** (Watch/Hold → Buy): when price has retraced to
-   the 50-EMA buy-zone with confluence ≥2 and no vetoes — AND (2026-07-15
-   audit) `final_score ≥ PULLBACK_MIN_SCORE (60)` and `RS ≥ PULLBACK_MIN_RS
-   (55)`. Ungated pullback Buys won 21%; quality-gated won 42%.
-10. **RS laggard veto** (soft downgrade, 2026-07-15): Buy/Strong Buy with
-    `relative_strength < RS_LAGGARD_VETO (45)` → Watch. Laggard Buys won 19%
-    vs 35% for the rest. RS=None never vetoes (missing data can't block).
+8. **Soft downgrades** (Buy/Strong Buy → Watch, first match wins): earnings
+   blackout (≤5d), risk-off regime, `concentrated`, `poor_rr`, confidence<45,
+   RS laggard. `bad_news` / `manipulation_risk` no longer fire (PURE_TECHNICAL).
+   The `risk_level == "High"` branch was REMOVED — any veto forces High and
+   every veto has its own branch above it, so it could never fire.
+9. **Pullback-entry upgrade — REMOVED 2026-08-12.** The Buys it created
+   (score below the Buy band) won 9% (n=57) vs a 38% market base rate. The
+   SETUP (`pullback_ready` + buy-zone) is still computed and displayed as
+   manual context; the engine no longer acts on it.
+10. **RS laggard veto**: Buy/Strong Buy with `relative_strength <
+    RS_LAGGARD_VETO (55, raised from 45 on 2026-08-12)` → Watch. RS<55 won 21%,
+    RS 70+ won 36%; a 70 cut adds no accuracy once score≥75 applies but halves
+    trade count. RS=None never vetoes (missing data can't block).
 
 ## Pure technicals + 50-EMA reference (2026-08-12)
 
@@ -197,6 +203,30 @@ support–EMA20, which was never the actual zone).
 hysteresis, Strong Buy confirmation, RS laggard veto, pullback quality gates
 (`PULLBACK_MIN_SCORE`/`MIN_RS`) — those are technical/statistical, not news.
 
+## Signal quality audit (2026-08-12) — the veto layer was inverting the edge
+
+Measured on 43,470 stored rows, **day-deduped** (15-min polling inflates raw
+counts ~20x — always dedupe to one row per symbol per day before believing any
+win rate). Graded 3-day forward, compared to the SAME-DAY cohort median so the
+market regime is controlled for (50% = no skill):
+
+| cohort | n | beat market | median excess |
+|---|---|---|---|
+| signals actually emitted as Buy (old rules) | 97 | 36% | −0.63% |
+| raw candidates score ≥70 | 198 | 56% | +0.37% |
+| raw candidates score ≥75 | 81 | 63% | +0.85% |
+| **new stack: score ≥75 AND RS ≥55** | 71 | **66%** | **+1.18%** |
+
+**The raw technical score always had edge; the veto/gate layer was selecting the
+worst subset of it.** Emitted Buys underperformed a coin flip while the
+candidate pool they came from beat the market. That is the single most important
+fact in this file — before adding any new gate, measure the emitted cohort
+against the candidate pool, not against nothing.
+
+Score band is the strongest discriminator (day-deduped, 3-day win): 70-75 → 30%
+(n=66), 75-80 → 68% (n=28), 80+ → 86% (n=7). Two-thirds of Buys were coming
+from the worst band, hence the 70 → 75 threshold move.
+
 ## Confidence honesty (2026-07-15)
 
 `scoring_engine.historical_confidence_adjust` counts ONLY strictly-graded
@@ -219,14 +249,24 @@ goal without surfacing a number that looks like a track record.
 - `poor_rr` — real headroom_rr below `min_headroom_rr` (1.5 baseline).
   **Regime-aware:** in risk-on, threshold ramps DOWN to floor 1.1 by
   `headroom_rr_riskon_full_pct=8.0` (% the benchmark sits above its EMA).
-- `bad_news`, `manipulation_risk` — content-driven
+- `bad_news`, `manipulation_risk` — content-driven (warnings only under
+  PURE_TECHNICAL)
+- `concentrated` (2026-08-12) — this symbol is already above
+  `RISK["max_existing_concentration_pct"]` (25%) of the REAL book read from
+  `portfolio.json`. Per-trade sizing is blind to existing holdings, so an
+  80%-of-account position kept producing clean Buys. Blocks ADDING only;
+  no portfolio file / no position → never fires.
 
 ## Learning loop (backtester)
 
 - `update_outcomes()` fills `price_1d/3d/7d` from real EOD; grades once 3-day
   price exists; credits/blames sub-indicators in `indicator_accuracy`.
 - `_signal_worked()` grading rules:
-  - **Buy/Strong Buy**: price rose >1% in 3 days without stop hit
+  - **Buy/Strong Buy**: BEAT the real KMI30 3-day forward move without a stop
+    hit (same benchmark → cohort-median → fallback chain as Avoid). Changed
+    2026-08-12 from an absolute ">1% in 3 days", which mostly measured the
+    market: it scored Buys at 22% against a 38% base rate for "any symbol rose
+    >1%", so Buy and Avoid were not comparable. Re-graded: Buy win 22% → 39%.
   - **Avoid/Exit**: stock underperformed the **REAL KMI30 benchmark**
     forward move (3-day). Falls back to **cohort median** (engine's own
     universe) when the index isn't reachable. Final fallback: "did not rise"
@@ -314,7 +354,10 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-12 (pure-technical mode: news/sentiment vetoes
+**Last updated:** 2026-08-12b (SIGNAL-QUALITY AUDIT — see "Signal quality audit"
+below: Buy threshold 70→75, confluence gate removed, pullback upgrade removed,
+RS veto 45→55, dead High-risk branch removed, concentration veto added, Buy
+grading made benchmark-relative). Earlier same day (pure-technical mode: news/sentiment vetoes
 downgraded to warnings; chase guard off; pullback/extension reference EMA
 20 → 50). Previously: 2026-07-15 (news relevance-anchor gate stops cross-company
 mis-attribution; regime what-if moved to main page; password-safe auto-refresh.

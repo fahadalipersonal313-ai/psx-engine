@@ -37,6 +37,7 @@ import scoring_engine
 import risk_manager
 import signal_generator
 import portfolio_risk
+import portfolio_advisor
 import reports
 import backtester
 import news_feed
@@ -64,7 +65,8 @@ def _days_to_earnings(symbol):
         return None
 
 
-def analyze_stock(symbol, news_items, index_eod=None, regime=None):
+def analyze_stock(symbol, news_items, index_eod=None, regime=None,
+                  holdings=None):
     """Full pipeline for one symbol. Returns the result dict and stores it."""
     shariah = shariah_checker.check(symbol)
     quote = data_fetcher.latest_quote(symbol)
@@ -82,7 +84,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None):
                                      fundamentals, tech_flags=tech_flags)
     risk = risk_manager.assess(symbol, technical, sentiment, macro,
                                regime=(regime or {}).get("regime"),
-                               regime_pct_above=(regime or {}).get("pct_above"))
+                               regime_pct_above=(regime or {}).get("pct_above"),
+                               holdings=holdings)
     prev_sig = (db.last_run(symbol) or {}).get("signal")
     signal = signal_generator.generate(symbol, scoring["final_score"],
                                        scoring["confidence"], risk,
@@ -148,7 +151,12 @@ def full_run():
     regime = market_regime.assess_regime(index_eod)
     log.info("Market regime: %s", regime["note"])
 
-    results = [analyze_stock(s, news_items, index_eod, regime)
+    # Real book (portfolio.json) so the concentration cap can see what is already
+    # held — per-trade sizing alone is blind to it. Missing/unreadable file = no
+    # holdings = the cap simply never fires (never a fabricated position).
+    holdings = portfolio_advisor.load_portfolio().get("holdings", [])
+
+    results = [analyze_stock(s, news_items, index_eod, regime, holdings)
                for s in config.STOCKS]
 
     # Tier 2 #9: book-level risk across every Buy this run (heat + sector caps).

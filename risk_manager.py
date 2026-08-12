@@ -27,8 +27,31 @@ def _effective_min_headroom_rr(regime, regime_pct_above):
     return base - (base - floor) * strength
 
 
+def _concentration_pct(symbol, price, holdings):
+    """This symbol's share of the CURRENT book at live prices, or None when the
+    book is unknown/unpriceable. holdings: [{symbol, qty, avg_cost}, ...] —
+    positions other than `symbol` are valued at avg_cost (no live quote for them
+    in this call), which is the honest approximation available here."""
+    if not holdings or not price:
+        return None
+    total = this = 0.0
+    for h in holdings:
+        qty = float(h.get("qty") or 0)
+        if qty <= 0:
+            continue
+        if (h.get("symbol") or "").upper() == symbol.upper():
+            val = qty * price          # live price for the symbol being assessed
+            this += val
+        else:
+            val = qty * float(h.get("avg_cost") or 0)
+        total += val
+    if total <= 0 or this <= 0:
+        return None
+    return round(this / total * 100, 1)
+
+
 def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
-           regime=None, regime_pct_above=None):
+           regime=None, regime_pct_above=None, holdings=None):
     """Returns dict: risk_level, warnings[], position sizing, veto flags.
 
     regime / regime_pct_above (optional): market context. When supplied, the
@@ -73,6 +96,13 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
                         f"{round(rr_min, 2)}{_relax} — price near overhead "
                         "resistance, little room before the next ceiling")
         vetoes.append("poor_rr")
+    conc = _concentration_pct(symbol, price, holdings)
+    conc_cap = config.RISK.get("max_existing_concentration_pct")
+    if conc is not None and conc_cap and conc > conc_cap:
+        warnings.append(f"CONCENTRATED: {symbol} is already {conc}% of the book "
+                        f"(cap {conc_cap}%) — adding here increases single-name "
+                        "risk, the exposure per-trade sizing cannot see")
+        vetoes.append("concentrated")
     if technical.get("volume_spike") and sentiment.get("score", 50) > 80:
         warnings.append("Volume spike + euphoric sentiment — possible "
                         "manipulation / pump pattern, verify before acting")

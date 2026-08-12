@@ -108,7 +108,14 @@ def update_outcomes():
 def _signal_worked(run):
     """Did the signal call play out? Real, rule-based — no fabrication.
 
-      * Buy/Strong Buy — price rose >1% within 3 days without breaching the stop.
+      * Buy/Strong Buy — BEAT the real benchmark (KMI30) 3-day forward move
+                         without breaching the stop. Was an absolute ">1% in 3
+                         days", which mostly measured the market: it scored 22%
+                         against a 38% base rate for "any symbol rose >1%", so a
+                         Buy could "fail" in a down market while still being the
+                         right relative call (and vice versa). Same benchmark →
+                         cohort-median → "did not fall" fallback chain as
+                         Avoid/Exit, so Buy and Avoid are finally comparable.
       * Avoid/Exit     — RELATIVE to the REAL benchmark (KMI30) forward move:
                          the stock underperformed the actual market index. Falls
                          back to the cohort median (engine's own universe) when
@@ -119,16 +126,19 @@ def _signal_worked(run):
     """
     chg = (run["price_3d"] / run["price"] - 1) * 100
     sig = run["signal"]
-    if sig in ("Buy", "Strong Buy"):
-        return chg > 1.0 and (run["stop_loss"] is None
-                              or run["price_3d"] > run["stop_loss"])
-    if sig in ("Avoid", "Exit"):
+    if sig in ("Buy", "Strong Buy", "Avoid", "Exit"):
         market = _benchmark_forward_move(run["run_time"][:10], days=3)
         if market is None:
             market = db.cohort_forward_move(run["run_time"][:10],
                                             exclude_symbol=run["symbol"])
         bar = market if market is not None else 0.0
-        return chg < bar
+        if sig in ("Avoid", "Exit"):
+            return chg < bar
+        # A Buy is right when it OUTPERFORMS the market and the stop held. The
+        # stop condition stays absolute: a stopped-out trade is a real loss no
+        # matter what the index did.
+        return chg > bar and (run["stop_loss"] is None
+                              or run["price_3d"] > run["stop_loss"])
     return chg > -3.0
 
 
