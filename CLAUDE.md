@@ -141,9 +141,11 @@ Order of operations:
    technical breakdown below support → `Exit` (if held) / `Avoid`.
 3. **Score → base band**: `≥80 Strong Buy`, `≥75 Buy`, `≥60 Watch`,
    `≥50 Hold`, else `Avoid`. Strong Buy needs technicals confirming.
-4. **Hysteresis dead-band** (`HYSTERESIS_BAND=2`): one-notch transitions
-   require crossing threshold by 2pts. Stops Buy↔Watch flapping when raw
-   score grazes 70. Symmetric (downgrades AND upgrades).
+4. **Hysteresis dead-band** (`HYSTERESIS_BAND=2`): the band sits ENTIRELY
+   ABOVE the threshold — enter at `threshold+2`, exit at `threshold`. It used
+   to straddle (exit at `threshold-2`), which let a stale Buy persist at 73-74
+   after the threshold moved to 75 — exactly the 30%-win band the raise was
+   meant to exclude. Anti-flap is preserved by the upgrade side.
 5. **Strong Buy confirmation gate**: a fresh Strong Buy is held at Buy until
    the very next run still scores Strong Buy. No numeric streak/conviction
    count is tracked or shown anywhere (removed — see below).

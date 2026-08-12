@@ -150,15 +150,19 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
                 "Watch": T["watch"], "Hold": T["hold"]}
         if _pr is not None and _br is not None and abs(_pr - _br) == 1:
             if _pr > _br:
-                # one-notch DOWNGRADE — only flip if score is decisively below
-                # the threshold the previous signal sat above
+                # one-notch DOWNGRADE. The dead-band sits ENTIRELY ABOVE the
+                # threshold (enter at _t+band, exit at _t) rather than straddling
+                # it (2026-08-12). Straddling let a stale Buy persist down to
+                # _t-band: with the threshold raised to 75, scores of 73-74 —
+                # exactly the 30%-win band the raise was meant to exclude — were
+                # still being emitted as Buy. Anti-flap is preserved by the
+                # upgrade side below, which still requires clearing _t+band.
                 _t = _thr.get(prev_signal)
-                if _t is not None and final_score >= _t - _band:
+                if _t is not None and final_score >= _t:
                     base = prev_signal
                     reasons.append(
-                        f"Hysteresis: score {final_score} within {_band}-pt "
-                        f"dead-band of {prev_signal} threshold ({_t}) — held at "
-                        f"{prev_signal} until a decisive break")
+                        f"Hysteresis: score {final_score} still at/above the "
+                        f"{prev_signal} threshold ({_t}) — held at {prev_signal}")
             else:
                 # one-notch UPGRADE — require clearing the new threshold by the
                 # band, not just grazing it (avoids flapping the other way)
