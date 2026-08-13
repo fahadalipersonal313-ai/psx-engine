@@ -229,6 +229,47 @@ Score band is the strongest discriminator (day-deduped, 3-day win): 70-75 → 30
 (n=66), 75-80 → 68% (n=28), 80+ → 86% (n=7). Two-thirds of Buys were coming
 from the worst band, hence the 70 → 75 threshold move.
 
+## Early warning / lead time (2026-08-13)
+
+User asked for signals "well ahead of time, not when the price has already
+hiked". Before building anything, every leading indicator the engine already
+computes was measured on graded history (7-day forward vs SAME-DAY cohort
+median, day-deduped; 50% = no skill):
+
+| candidate | 3d beat | 7d beat | verdict |
+|---|---|---|---|
+| CMF > 0.10 | 58% | **61%** (+2.07%) | the ONLY one with edge |
+| CMF > 0.10 inside score 60-75 | — | **75%** (+2.70%, n=16) | small but consistent |
+| accumulation_candidate | 47% | 53% | no edge |
+| OBV bullish divergence | 44% | 45% | NEGATIVE |
+| OBV up while price flat | 40% | 37% | NEGATIVE |
+| score velocity (3d rise >5) | — | 45% | NEGATIVE |
+
+**Score velocity does not work** — a fast-rising score predicts nothing. Neither
+do the OBV-based accumulation heuristics, which the dashboard had been showing
+as bullish tags; the Accumulation-watch caption now says so explicitly.
+
+`signal_generator.early_watch()` implements the one thing that measured: CMF >
+`EARLY_WATCH_MIN_CMF` inside `EARLY_WATCH_SCORE_BAND` (55-75, below the Buy
+band), structure intact (no breakdown, price > support), RS ≥ 45. It returns
+`(bool, reason)` and is stored per run (`early_watch`, `early_reason`) and shown
+in a `🔭 Early watch` dashboard section. **It is NOT a signal and never becomes
+a Buy** — it is a monitoring tier that buys lead time and deliberately leaves
+the validated Buy stack untouched.
+
+**7-day grading added** (`outcome_7d`, `backtester._beat_market_7d`,
+`db.cohort_forward_move(..., days=7)`): a lead signal needs room to play out, so
+3 days cannot judge it. Stored SEPARATELY from `outcome` so the Buy/Avoid stats
+keep their 3-day definition. In a few weeks this gives real evidence on whether
+the early tier works — until then it is labelled unproven in the UI.
+
+**Note the counter-evidence on "buy before the hike":** score≥75 candidates that
+had ALREADY run >8% in the prior 5 sessions beat the market 92% with +8.77%
+median excess (n=13, small), while Buys taken on 5-day dips lost (-1.30%, n=35).
+On this sample momentum PERSISTED and buying early/cheap was worse. That is the
+opposite of the intuition behind the request — worth re-testing as data grows
+before acting on it either way.
+
 ## Confidence honesty (2026-07-15)
 
 `scoring_engine.historical_confidence_adjust` counts ONLY strictly-graded
@@ -356,7 +397,8 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-12b (SIGNAL-QUALITY AUDIT — see "Signal quality audit"
+**Last updated:** 2026-08-13 (early-warning tier + 7-day grading — see
+"Early warning / lead time"). Previously 2026-08-12b (SIGNAL-QUALITY AUDIT — see "Signal quality audit"
 below: Buy threshold 70→75, confluence gate removed, pullback upgrade removed,
 RS veto 45→55, dead High-risk branch removed, concentration veto added, Buy
 grading made benchmark-relative). Earlier same day (pure-technical mode: news/sentiment vetoes

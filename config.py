@@ -177,6 +177,33 @@ HYSTERESIS_BAND = 2
 RS_LAGGARD_VETO = 55
 
 # ---------------------------------------------------------------------------
+# 3z. EARLY WATCH — lead time before a name reaches the Buy band (2026-08-13)
+# ---------------------------------------------------------------------------
+# Goal: flag a stock while it is still BUILDING, so there is time to prepare,
+# instead of only after the score confirms and the move is under way.
+#
+# What the graded history actually supports (7-day forward vs same-day cohort
+# median, day-deduped; 50% = no skill):
+#   * CMF > 0.10 .................. 61% beat, +2.07% excess (n=62)  <- the ONLY
+#     leading indicator with edge; it reads real high/low money flow.
+#   * CMF > 0.10 inside score 60-75 ... 75% beat, +2.70% (n=16, small)
+# What it does NOT support (measured, rejected — do not resurrect without new
+# evidence):
+#   * accumulation_candidate ...... 47% beat at 3d, 53% at 7d (no edge)
+#   * OBV bullish divergence ...... 44% / 45% (NEGATIVE)
+#   * OBV up while price flat ..... 40% / 37% (NEGATIVE)
+#   * score velocity (3-day rise) . 45% when rising fast (NEGATIVE)
+#
+# Early watch is NOT a Buy and never becomes one on its own: it is a separate,
+# clearly-labelled monitoring tier that leaves the validated Buy stack alone.
+# It is graded on the 7-DAY horizon (a lead signal needs room to play out), so
+# in a few weeks there will be real evidence for or against it.
+EARLY_WATCH_ENABLED = True
+EARLY_WATCH_MIN_CMF = 0.10      # real-H/L money flow; the one indicator with edge
+EARLY_WATCH_SCORE_BAND = (55, 75)   # below the Buy band — the "building" zone
+EARLY_WATCH_MIN_RS = 45         # don't flag names the whole market is beating
+
+# ---------------------------------------------------------------------------
 # 3a. PURE-TECHNICAL MODE (2026-08-12, user-directed risk-up)
 # ---------------------------------------------------------------------------
 # The score has been 100% technical since 2026-07-15, but news/sentiment could

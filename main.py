@@ -94,6 +94,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
                                        regime_pct_above=(regime or {}).get("pct_above"),
                                        prev_signal=prev_sig,
                                        days_to_earnings=_days_to_earnings(symbol))
+    is_early, early_reason = signal_generator.early_watch(
+        scoring["final_score"], technical, shariah)
 
     db.save_run({
         "run_time": datetime.now().isoformat(), "symbol": symbol,
@@ -123,6 +125,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
         "obv_divergence_bullish": (int(technical["obv_divergence_bullish"])
                                    if technical.get("obv_divergence_bullish") is not None
                                    else None),
+        "early_watch": int(is_early),
+        "early_reason": early_reason or None,
     })
 
     if quote.get("warning"):

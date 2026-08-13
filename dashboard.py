@@ -728,13 +728,40 @@ def _portfolio_glimpse_section():
                                      for d in pf["deferred"][:4]))
 
 
+def _early_watch_section():
+    ew = latest[latest.get("early_watch").fillna(0) == 1] if "early_watch" in latest.columns \
+        else latest.iloc[0:0]
+    if ew.empty:
+        st.caption("No early-watch names right now. This tier only fires on real "
+                   "money-flow build-up (CMF) below the Buy band.")
+        return
+    st.caption("Lead-time tier: money flow building BEFORE the score confirms. "
+               "NOT a buy signal — it exists so a move can be prepared for "
+               "instead of chased. Graded on the 7-day horizon; treat as "
+               "unproven until that history accumulates.")
+    for _, r in ew.sort_values("cmf", ascending=False).iterrows():
+        st.markdown(
+            f'<span style="background:rgba(122,162,255,0.16);color:#7aa2ff;'
+            f'padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700">'
+            f'🔭 EARLY</span> &nbsp;**{r["symbol"]}** · price {fmt(r["price"])} · '
+            f'score {fmt(r["final_score"], 0)} · CMF {fmt(r.get("cmf"), 2)} · '
+            f'RS {fmt(r.get("relative_strength"), 0)}'
+            f'<br><span style="opacity:.75;font-size:13px">'
+            f'{r.get("early_reason") or ""}</span>',
+            unsafe_allow_html=True)
+
+
 def _accumulation_section():
     rows = db.accumulating_now(lookback=10, min_streak=1)
     if not rows:
         st.caption("No accumulation candidates flagged right now.")
         return
     st.caption("Quiet-buying signature (OBV trend, OBV/price divergence, "
-               "volume spikes, CMF) — not yet a Buy signal, worth watching.")
+               "volume spikes, CMF) — not yet a Buy signal. ⚠ Measured on "
+               "graded history this tag showed NO forward edge (47% beat rate "
+               "at 3 days, 53% at 7); the OBV divergence component measured "
+               "NEGATIVE. Kept for context only — prefer the Early watch tier "
+               "above, which uses the one component (CMF) that did work.")
     for r in rows:
         reasons = json.loads(r["reasons"] or "[]")
         st.markdown(
@@ -767,6 +794,13 @@ if buy_cands:
         _portfolio_glimpse_section()
 
 # ----------------------------- ACCUMULATION WATCH --------------------------
+if compact:
+    with st.expander("🔭 Early watch — building before the Buy band"):
+        _early_watch_section()
+else:
+    st.subheader("🔭 Early watch — building before the Buy band")
+    _early_watch_section()
+
 if compact:
     with st.expander("🧲 Accumulation watch — stocks being quietly bought"):
         _accumulation_section()

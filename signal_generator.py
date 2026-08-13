@@ -82,6 +82,35 @@ def _confluence(technical):
     return score, dims
 
 
+def early_watch(final_score, technical, shariah):
+    """Is this name BUILDING — worth watching before it reaches the Buy band?
+
+    Returns (bool, reason). Deliberately narrow: only CMF (real high/low money
+    flow) showed forward edge in the graded history; the OBV-based accumulation
+    heuristics measured NEGATIVE and are excluded (see config.EARLY_WATCH_*).
+
+    This never returns a tradeable signal — it is a monitoring tier that buys
+    lead time. Structure must be intact (no breakdown, above support) so it
+    cannot flag a falling knife.
+    """
+    if not config.EARLY_WATCH_ENABLED or not shariah["eligible_for_ranking"]:
+        return False, ""
+    cmf = technical.get("cmf")
+    lo, hi = config.EARLY_WATCH_SCORE_BAND
+    price, support = technical.get("price"), technical.get("support")
+    rs = technical.get("relative_strength")
+    if (cmf is None or cmf <= config.EARLY_WATCH_MIN_CMF
+            or final_score is None or not (lo <= final_score < hi)
+            or technical.get("breakdown")
+            or not (price and support and price > support)
+            or (rs is not None and rs < config.EARLY_WATCH_MIN_RS)):
+        return False, ""
+    return True, (f"EARLY: money flow building (CMF {cmf:+.2f}) while the score "
+                  f"is still {final_score:.0f} — below the Buy band. Structure "
+                  "intact. Watch for the score to confirm; NOT a buy signal, and "
+                  "not yet validated out-of-sample (graded on the 7-day horizon).")
+
+
 def generate(symbol, final_score, confidence, risk, shariah, technical,
              regime=None, prev_signal=None, days_to_earnings=None,
              regime_pct_above=None):

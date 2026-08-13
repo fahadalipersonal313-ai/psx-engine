@@ -101,8 +101,36 @@ def update_outcomes():
         # grade once 3-day price exists
         if run["outcome"] is None and run["price_3d"] is not None and run["price"]:
             _grade_and_attribute(run)
+        # 7-day grade: a LEAD signal (early watch) needs room to play out, so it
+        # is judged on the longer horizon. Stored separately — it never touches
+        # `outcome`, the 3-day grade the Buy/Avoid stats are built on.
+        if run["price_7d"] is not None and run["price"] and \
+                _col(run, "outcome_7d") is None:
+            db.update_outcome(run["id"], "outcome_7d",
+                              "worked" if _beat_market_7d(run) else "failed")
     log.info("Outcome tracker updated %d fields", updated)
     return updated
+
+
+def _col(run, name):
+    """sqlite3.Row has no .get(); a column added by a later migration may be
+    absent in an older row object."""
+    try:
+        return run[name]
+    except (IndexError, KeyError):
+        return None
+
+
+def _beat_market_7d(run):
+    """Did this name beat the market over 7 days? Same honest benchmark chain as
+    the 3-day grade (real KMI30 -> cohort median -> 0). Used for the early-watch
+    tier, whose whole point is lead time: 3 days is too short to judge it."""
+    chg = (run["price_7d"] / run["price"] - 1) * 100
+    market = _benchmark_forward_move(run["run_time"][:10], days=7)
+    if market is None:
+        market = db.cohort_forward_move(run["run_time"][:10],
+                                        exclude_symbol=run["symbol"], days=7)
+    return chg > (market if market is not None else 0.0)
 
 
 def _signal_worked(run):

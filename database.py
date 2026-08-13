@@ -93,7 +93,9 @@ def init_db():
                           ("buy_zone_low", "REAL"), ("buy_zone_high", "REAL"),
                           ("accumulation_candidate", "INTEGER"),
                           ("accumulation_reasons", "TEXT"),
-                          ("cmf", "REAL"), ("obv_divergence_bullish", "INTEGER")):
+                          ("cmf", "REAL"), ("obv_divergence_bullish", "INTEGER"),
+                          ("early_watch", "INTEGER"), ("early_reason", "TEXT"),
+                          ("outcome_7d", "TEXT")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)
@@ -337,20 +339,21 @@ def reset_indicator_accuracy():
         c.execute("DELETE FROM indicator_accuracy")
 
 
-def cohort_forward_move(date_str, exclude_symbol=None):
-    """Median forward 3-day % change across every stock scored on `date_str`
-    (the calendar date of run_time) that already has a 3-day price filled.
-    This is the engine's own universe acting as the 'market' benchmark — used
-    to grade Avoid/Exit RELATIVELY (did it underperform the market?) instead of
-    on absolute decline, which is meaningless in a trending tape. Returns None
-    when too few peers have completed to form a benchmark."""
+def cohort_forward_move(date_str, exclude_symbol=None, days=3):
+    """Median forward % change over `days` (3 or 7) across every stock scored on
+    `date_str` (the calendar date of run_time) that already has that forward
+    price filled. This is the engine's own universe acting as the 'market'
+    benchmark — used to grade RELATIVELY (did it underperform the market?)
+    instead of on absolute move, which is meaningless in a trending tape.
+    Returns None when too few peers have completed to form a benchmark."""
+    col = "price_7d" if days == 7 else "price_3d"
     with conn() as c:
         rows = c.execute(
-            """SELECT symbol, price, price_3d FROM runs
-               WHERE date(run_time)=? AND price IS NOT NULL
-                 AND price_3d IS NOT NULL AND price > 0""",
+            f"""SELECT symbol, price, {col} AS fwd FROM runs
+                WHERE date(run_time)=? AND price IS NOT NULL
+                  AND {col} IS NOT NULL AND price > 0""",
             (date_str,)).fetchall()
-    moves = [(r["price_3d"] / r["price"] - 1) * 100 for r in rows
+    moves = [(r["fwd"] / r["price"] - 1) * 100 for r in rows
              if exclude_symbol is None or r["symbol"] != exclude_symbol]
     if len(moves) < 5:          # need a real cross-section, not 1-2 names
         return None
