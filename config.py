@@ -481,16 +481,17 @@ COMPANY_NEWS_ANCHORS = {
                                     # match the hyphenated form. Two words are
                                     # distinctive enough on their own.
     "THCCL": ["thatta cement"],
-    # GHNI and GAL are still UNRESOLVED — deliberately left without anchors.
-    # User-side input gives "Ghandhara Industries" / "Ghandhara Automobiles",
-    # but SECTORS in this same file maps GHNI to "Glass/Holding" and GAL to
-    # "Textile/Synthetic Fibre", which is a different industry entirely. One
-    # source is wrong. Both would also share the token "ghandhara", so a bare
-    # "Ghandhara" headline would cross-attribute between them — the exact NRL
-    # failure this gate exists to prevent. They keep the strict ticker fallback
-    # until the mismatch is resolved. If the Ghandhara names are confirmed, use
-    # the TWO-WORD anchors ("ghandhara industries" / "ghandhara automobiles")
-    # so a bare-surname headline matches neither.
+    # GHNI / GAL confirmed user-side 2026-08-13. Anchored on TWO words each, not
+    # the shared surname: both companies are "Ghandhara", so a bare "Ghandhara"
+    # headline is ambiguous and deliberately matches NEITHER — the same
+    # conservative rule that keeps NRL from swallowing National Foods.
+    # NOTE: SECTORS in this file still maps GHNI to "Glass/Holding" and GAL to
+    # "Textile/Synthetic Fibre". Both are automotive assemblers, so those labels
+    # are wrong; they are left alone here because SECTORS drives the sector
+    # exposure cap in portfolio_risk, and silently re-bucketing two names
+    # changes book-level risk limits. Fix that separately and deliberately.
+    "GHNI": ["ghandhara industries"],
+    "GAL": ["ghandhara automobiles"],
 }
 
 
