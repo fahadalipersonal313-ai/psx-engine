@@ -83,6 +83,22 @@ jobs:
               echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 300; continue; fi
 
             echo "=== Cycle at $now PKT ==="
+            # Adopt the newest committed DB BEFORE running. Without this, a run
+            # that was queued earlier (cron/pinger backlog released when another
+            # loop ends) keeps the psx_engine.db from ITS checkout — an older
+            # snapshot — and pushes it over newer work. That silently reverted a
+            # full `regrade` twice on 2026-08-13. The binary DB cannot 3-way
+            # merge, so freshest-wins-on-entry is the only safe rule; the
+            # post-run push below still keeps THIS cycle's results.
+            # Tradeoff: if every push retry of the PREVIOUS cycle failed, this
+            # discards that cycle's rows. Acceptable — the next run regenerates
+            # current signals, whereas a reverted regrade is invisible and
+            # corrupts the accuracy stats until someone re-checks the win rate.
+            # It also re-adopts the newest CODE, so a long-lived loop cannot keep
+            # running a stale engine for hours after a push.
+            git fetch origin "${{ github.ref_name }}" --quiet || true
+            git reset --hard "origin/${{ github.ref_name }}" --quiet || true
+
             python main.py run || echo "Run failed this cycle — continuing loop."
 
             git add psx_engine.db
