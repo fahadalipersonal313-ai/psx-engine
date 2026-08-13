@@ -375,6 +375,24 @@ still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
   `git checkout --theirs psx_engine.db`, then re-run any maintenance commands
   (e.g., `python main.py regrade`) and re-push.
 
+### NEVER run a DB maintenance command while the engine loop is live
+`engine.yml` loops every 15 min doing run → commit → `git pull --rebase -X
+theirs` → push. In a rebase `theirs` is the commit being replayed — the LOOP's
+own DB — so **the loop's copy wins every conflict and silently discards any DB
+you pushed**. This ate a full `regrade` on 2026-08-13: the code change was in
+`main`, but all 38,310 re-graded outcomes reverted to the old rule, and the only
+symptom was the Buy win rate reading 22% again instead of 39%.
+
+Safe procedure for `regrade` (or anything else that rewrites the DB):
+1. Cancel the in-progress `engine.yml` run and WAIT for status `completed`.
+2. `git pull origin main` to get the loop's final DB.
+3. Run the maintenance command, commit, push.
+4. Re-dispatch `engine.yml` — the fresh checkout starts from your DB.
+
+Schema migrations self-heal (the next run's `init_db` re-adds missing columns),
+but row DATA does not. After any regrade, VERIFY it stuck by re-reading the
+win rate — do not assume the push held.
+
 ## Universe (KMI-30 verified + KMI All-Share)
 
 See `KMI30_VERIFIED`, `KMIALLSHR_VERIFIED`, `OTHER_COMPLIANT` in config.py.
