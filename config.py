@@ -471,10 +471,26 @@ COMPANY_NEWS_ANCHORS = {
     "SYM": ["symmetry group"],
     "FCEPL": ["frieslandcampina", "engro foods"],
     "KOHC": ["kohat cement"],
-    # GHNI, GAL, SLM, SLGL, THCCL have no curated company name yet — they fall
-    # back to a strict word-boundary match on the ticker itself (conservative:
-    # only headlines that literally name the ticker pass). Add real name anchors
-    # here once the company names are verified.
+    # Added 2026-08-13 from user-supplied company names, each cross-checked
+    # against this file's own OTHER_COMPLIANT descriptions:
+    "SLM": ["service long march", "long march tyres"],
+    "SLGL": ["secure logistics"],   # registered name is hyphenated
+                                    # ("Secure Logistics-Trax Group Ltd."); the
+                                    # matcher joins tokens with \s+, so a
+                                    # "secure logistics trax" anchor would NOT
+                                    # match the hyphenated form. Two words are
+                                    # distinctive enough on their own.
+    "THCCL": ["thatta cement"],
+    # GHNI and GAL are still UNRESOLVED — deliberately left without anchors.
+    # User-side input gives "Ghandhara Industries" / "Ghandhara Automobiles",
+    # but SECTORS in this same file maps GHNI to "Glass/Holding" and GAL to
+    # "Textile/Synthetic Fibre", which is a different industry entirely. One
+    # source is wrong. Both would also share the token "ghandhara", so a bare
+    # "Ghandhara" headline would cross-attribute between them — the exact NRL
+    # failure this gate exists to prevent. They keep the strict ticker fallback
+    # until the mismatch is resolved. If the Ghandhara names are confirmed, use
+    # the TWO-WORD anchors ("ghandhara industries" / "ghandhara automobiles")
+    # so a bare-surname headline matches neither.
 }
 
 
