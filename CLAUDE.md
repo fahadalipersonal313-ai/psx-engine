@@ -168,7 +168,16 @@ Order of operations:
    (score below the Buy band) won 9% (n=57) vs a 38% market base rate. The
    SETUP (`pullback_ready` + buy-zone) is still computed and displayed as
    manual context; the engine no longer acts on it.
-10. **RS laggard veto**: Buy/Strong Buy with `relative_strength <
+10. **Money-flow confirmation (2026-08-13, `BUY_MIN_CMF = 0.0`)**: a Buy whose
+    CMF is ≤0 → Watch. Price rising without real buying pressure behind it.
+    On 7-day graded history this improved beat rate 70→83%, median +2.63→+4.70%
+    AND the worst case −4.3→−1.8% — filters rarely improve both. Halves the Buy
+    count by design. CMF=None never vetoes.
+    **Measured and REJECTED as safety filters** (both remove the BEST trades):
+    rejecting 20-day run-ups >25% (rejected subset beat 92%, +9.87%) and
+    rejecting stops wider than 8% (rejected subset beat 79%). Third independent
+    confirmation that on this data buying strength works.
+11. **RS laggard veto**: Buy/Strong Buy with `relative_strength <
     RS_LAGGARD_VETO (55, raised from 45 on 2026-08-12)` → Watch. RS<55 won 21%,
     RS 70+ won 36%; a 70 cut adds no accuracy once score≥75 applies but halves
     trade count. RS=None never vetoes (missing data can't block).

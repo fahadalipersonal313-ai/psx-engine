@@ -176,6 +176,18 @@ HYSTERESIS_BAND = 2
 # RS=None (index unavailable) never vetoes: missing data must not block trades.
 RS_LAGGARD_VETO = 55
 
+# Money-flow confirmation for a Buy (2026-08-13, user-approved after audit).
+# CMF reads real high/low buying pressure and is the ONLY leading indicator that
+# measured forward edge here. Requiring it to be positive on a Buy improved
+# every dimension at once on 7-day graded history (score>=75 + RS>=55 cohort):
+#   baseline .............. n=56  beat 70%  median +2.63%  worst -4.3%
+#   with CMF > 0 .......... n=23  beat 83%  median +4.70%  worst -1.8%
+#   rejected (CMF <= 0) ... n=33  beat 61%  median +1.14%  worst -4.3%
+# Improving the WORST case as well as the median is rare — most filters trade
+# one for the other. Roughly halves the number of Buys; that is the point.
+# CMF=None (not computable) never vetoes: missing data must not block a trade.
+BUY_MIN_CMF = 0.0
+
 # ---------------------------------------------------------------------------
 # 3z. EARLY WATCH — lead time before a name reaches the Buy band (2026-08-13)
 # ---------------------------------------------------------------------------

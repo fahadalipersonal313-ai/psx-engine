@@ -304,6 +304,14 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         elif confidence < 45:
             base = "Watch"; reasons.append("Downgraded: confidence below 45% "
                                            "(weak data or poor history)")
+        elif (technical.get("cmf") is not None
+              and technical["cmf"] <= config.BUY_MIN_CMF):
+            base = "Watch"; reasons.append(
+                f"Downgraded: money flow not confirming (CMF {technical['cmf']:+.2f} "
+                f"≤ {config.BUY_MIN_CMF:.2f}) — price is rising without real "
+                "buying pressure behind it (graded history: CMF-negative Buys "
+                "beat the market 61% vs 83% when flow confirms, and carried the "
+                "worse drawdowns)")
         elif (technical.get("relative_strength") is not None
               and technical["relative_strength"] < config.RS_LAGGARD_VETO):
             base = "Watch"; reasons.append(
