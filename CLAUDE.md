@@ -36,12 +36,27 @@ distinctive name phrase per symbol and `config.headline_matches_company()`
 BOTH fetch time (`news_fetcher.fetch_for_symbol`) AND read time
 (`news_feed.raw_headlines`, which GLM consumes) so already-committed raw files
 are cleaned without a re-fetch. Ambiguous bare tickers are omitted on purpose
-(NRL is also National Rugby League); symbols with no curated name (GHNI, GAL,
-SLM, SLGL, THCCL) fall back to a strict word-boundary ticker match. Trade-off:
-a few ticker-only legit headlines are missed (conservative) — correct for an
-UNWEIGHTED feed where mis-attribution is the real harm. Result: raw feed went
-from ~209 loosely-matched items to ~8 correctly-attributed ones; add real name
-anchors for the 5 unnamed symbols when their company names are verified.
+(NRL is also National Rugby League). Trade-off: a few ticker-only legit
+headlines are missed (conservative) — correct for an UNWEIGHTED feed where
+mis-attribution is the real harm. Result: raw feed went from ~209
+loosely-matched items to ~8 correctly-attributed ones.
+
+**All 5 previously-unnamed symbols now have curated anchors (2026-08-13):**
+SLM `service long march`, SLGL `secure logistics`, THCCL `thatta cement`,
+GHNI `ghandhara industries`, GAL `ghandhara automobiles`.
+- SLGL's registered name is HYPHENATED ("Secure Logistics-Trax Group Ltd.") and
+  `headline_matches_company` joins tokens with `\s+`, so a 3-word
+  "secure logistics trax" anchor would NEVER match the real name. Two words
+  match both the hyphenated and spaced forms.
+- GHNI/GAL use TWO-word anchors because both companies share the surname
+  "Ghandhara": a bare "Ghandhara" headline deliberately matches NEITHER rather
+  than both. Verified across reversed pairs and an all-caps form.
+
+**Open discrepancy — do not fix as a side effect:** `SECTORS` still maps GHNI to
+"Glass/Holding" and GAL to "Textile/Synthetic Fibre", but both are automotive
+assemblers. Those labels drive the sector-exposure cap in `portfolio_risk`, so
+re-bucketing two symbols changes book-level risk limits and needs a deliberate
+decision.
 
 ## GLM second opinion (2026-07-15, unweighted)
 
