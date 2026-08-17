@@ -253,6 +253,119 @@ Score band is the strongest discriminator (day-deduped, 3-day win): 70-75 → 30
 (n=66), 75-80 → 68% (n=28), 80+ → 86% (n=7). Two-thirds of Buys were coming
 from the worst band, hence the 70 → 75 threshold move.
 
+## Measurement independence — a win rate alone is not evidence (2026-08-17)
+
+Day-deduping and cohort-median comparison were never enough. A cohort can look
+spectacular while being **one event counted many times**. Live example from this
+session: candidates (score ≥75, RS ≥55) split by the RSI flag showed the
+*stretched* bucket beating the market **94% (3d) and 100% (7d)**, median excess
++8.71%/+10.52%. It looked like a discovery. It was 17 rows from **two symbols**
+(PRL, NRL), **one sector** (Refinery), over 13 overlapping days of the Brownfield
+refining-policy rally — the same trade, replayed, with overlapping forward
+windows so the rows were not even independent of each other.
+
+`measure.py` exists so this cannot happen again. `cohort()` NEVER returns a bare
+win rate: every result carries distinct symbols, distinct sectors, top
+symbol/sector share and date span, and prints **NOT TRUSTWORTHY** with reasons
+when the sample is too concentrated (thresholds: ≥20 rows, ≥5 symbols,
+≥3 sectors, no symbol >40%, no sector >60%). `python main.py measure` runs the
+standing candidate-pool-vs-emitted-Buys comparison.
+
+**Before believing any new finding, run it through `measure.render()`.** The
+2026-08-12 audit above is the "measure against the candidate pool" rule; this is
+the "and check the pool is more than one bet" rule. Both are needed.
+
+## poor_rr veto DISABLED (2026-08-17) — it rejected the better subset
+
+`POOR_RR_VETO_ENABLED = False` in config (mirrors `CHASE_GUARD_ENABLED`).
+Measured with independence checks, pool = score ≥75:
+
+| cohort | n | symbols | sectors | 3d beat | median excess |
+|---|---|---|---|---|---|
+| blocked by `poor_rr` | 47 | 17 | 11 | **68.1%** | +1.73% |
+| blocked by `poor_rr`, RS ≥55 | 31 | 14 | 10 | **77.4%** | +2.12% |
+| emitted Buys | 21 | 11 | 8 | **52.4%** | +0.41% |
+
+7-day agrees (blocked 65.5%, +1.60%). All cohorts pass the independence checks,
+so this is NOT the refinery rally. `poor_rr` was the most active veto in the
+system — 48 of 98 candidates — and the names it blocked beat the names it passed
+by 16 points (25 with RS ≥55).
+
+**Cause:** headroom is measured to overhead *resistance*, and a leader printing
+new highs has none by construction — the same penalise-strength flaw already
+documented for the chase guard.
+
+**Gated in `risk_manager`, not at the downgrade branch**, because
+`risk_level = "High" if hard >= 2 or vetoes` — a disabled-but-present veto would
+keep mislabelling cards the engine no longer blocks. `headroom_rr` is still
+computed and still emitted as a warning.
+
+Effect at the time of the change: PPL (78.8) and IMAGE (77.8) joined NRL and
+GHNI as Buys. **Watch PPL — its RS is 41, below `RS_LAGGARD_VETO` (55).** It
+only cleared because `poor_rr` was earlier in the soft-downgrade `elif` chain,
+so the RS branch never evaluated. If PPL persists as a Buy, that ordering needs
+fixing. Re-run `python main.py measure` in a few weeks: emitted Buys should move
+from 52% toward the pool's 71%, else flip the flag back.
+
+## The outage that froze signals for 4 days (2026-08-13 → 08-17)
+
+`backtester.update_outcomes()` wrote the 7-day grade via
+`db.update_outcome(id, "outcome_7d", ...)`, but `update_outcome`'s field
+whitelist never gained `"outcome_7d"` when the early-warning tier added the
+column (`681df04`). The assert fired on the first row whose `price_7d` filled,
+killing `full_run()` at `main.py:150` — before the regime, before any save.
+
+**Why nobody noticed:** the news fetch runs at lines 146-149, BEFORE the crash.
+Every cycle still modified the DB, so `git commit` succeeded, the push went
+through, and the workflow reported success while `runs` had not grown since
+08-13. The dashboard silently showed Thursday's signals for four days.
+
+Lessons now encoded:
+- `engine.yml` captures the traceback instead of `|| echo "Run failed"`, and
+  commits `engine_last_error.log` (force-added — `*.log` is gitignored, and a
+  plain `git add` of an ignored path exits non-zero and kills the step).
+- **A step's shell script is baked in when the job starts.** The loop's
+  `git reset --hard origin/main` updates repo FILES (so Python changes apply
+  next cycle) but NOT the already-running bash. To change loop behaviour you
+  must cancel the job and start a new one.
+- GitHub only releases a job's logs when it ENDS. A 6-hour loop hides its own
+  traceback all session — cancel it if you need to read the failure.
+- Anything added to `full_run` goes LAST and wrapped in try/except (see
+  `_save_focus_brief`), so a fault costs one feature, never the signals.
+
+## Focus brief — position-aware 360° read (2026-08-17)
+
+`focus_brief.py` + `focus_brief` table + `config.FOCUS_SYMBOL` (currently NRL).
+Resolves signal, score, regime, RS, confluence, CMF, levels, buy-zone, shariah,
+the real book position, unscored company AND sector news, GLM, and the symbol's
+graded record into **one action**. Rendered as the 🔬 panel above "Action today"
+and via `python main.py brief`.
+
+It never invents a score — it re-reads the engine's own signal. The gap it
+closes: *a Buy you already hold 52% of is a different decision from a Buy you
+hold none of*, and per-trade sizing is blind to that.
+
+`exit_plan()` builds a **scaled exit ladder** for an over-cap holding: de-risk /
+reach-the-cap / runner, with per-tranche P&L and what a stop-out costs. Tranches
+rather than one exit because already-extended score≥75 names kept beating the
+market here. **Cost-aware:** below breakeven the first tranche WAITS for
+breakeven rather than banking a loss to fix a sizing problem.
+
+`sector_crowding()` shows peer signals and warns when a large share of the
+board's Buys are one sector — per-symbol scoring cannot see that its
+"independent" Buys are one bet. **Informational, never a veto** (see the audit).
+
+## Sector news routing (2026-08-17)
+
+`config.SECTOR_NEWS_ANCHORS` + `news_feed.sector_headlines()`.
+`COMPANY_NEWS_ANCHORS` requires a distinctive company name to stop cross-company
+mis-attribution — but that also meant SECTOR news reached nobody. The Brownfield
+refining policy (approved 2026-07-28), which drove every refinery name through
+August, matched only PRL's anchor and was **invisible in NRL's own news window**
+while being the single biggest driver of NRL's price. Sector phrases now route a
+headline to every peer, returned SEPARATELY and labelled sector news, so the
+company-level guarantee is untouched.
+
 ## Early warning / lead time (2026-08-13)
 
 User asked for signals "well ahead of time, not when the price has already
@@ -313,9 +426,12 @@ goal without surfacing a number that looks like a track record.
 ## Risk vetoes (risk_manager.assess)
 
 - `breakdown` — price below support
-- `poor_rr` — real headroom_rr below `min_headroom_rr` (1.5 baseline).
-  **Regime-aware:** in risk-on, threshold ramps DOWN to floor 1.1 by
-  `headroom_rr_riskon_full_pct=8.0` (% the benchmark sits above its EMA).
+- `poor_rr` — **DISABLED 2026-08-17** (`POOR_RR_VETO_ENABLED = False`); it
+  rejected a better subset than it passed — see its section above. Still
+  computed and emitted as a warning; the veto is not appended, so it no longer
+  forces `risk_level` High either. When enabled: headroom_rr below
+  `min_headroom_rr` (1.5 baseline), **regime-aware** — in risk-on the threshold
+  ramps DOWN to floor 1.1 by `headroom_rr_riskon_full_pct=8.0`.
 - `bad_news`, `manipulation_risk` — content-driven (warnings only under
   PURE_TECHNICAL)
 - `concentrated` (2026-08-12) — this symbol is already above
@@ -386,9 +502,13 @@ still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
 - `backtester.py` — learning loop + historical replay (in-sample/OOS/walk-forward).
 - `database.py` — SQLite (tracked binary `psx_engine.db`).
 - `dashboard.py` — Streamlit UI.
+- `measure.py` — cohort stats WITH independence checks; never returns a bare
+  win rate. Run every finding through it before believing it.
+- `focus_brief.py` — position-aware 360° brief + scaled exit ladder + sector
+  crowding for `config.FOCUS_SYMBOL`.
 - `main.py` — CLI entry: `run / schedule / morning / evening / backtest SYMBOL /
   metrics / portfolio / accuracy / regrade / accumulating / history SYMBOL /
-  fundamentals`.
+  fundamentals / measure / brief`.
 
 ## Environment notes
 
@@ -429,7 +549,22 @@ KMI All-Share effective 2026-06-05).
   the in-sample/OOS split exists in `backtester.backtest()` but live signal
   accuracy stats are all in-sample.
 - Earnings dates remain manual (`EARNINGS_DATES = {}` in config + optional
-  `earnings_date` field in `news_signals.json`).
+  `earnings_date` field in `news_signals.json`). **The blackout veto has
+  therefore never fired once.** NRL's FY ends 30 June, so FY26 annual results
+  land ~Sept–Oct 2026 — with 52% of the book in NRL that is a live, avoidable
+  exposure. Ask the user for the board-meeting date and populate it.
+- **Veto ordering bug (suspected, 2026-08-17):** the soft-downgrade `elif`
+  chain is first-match-wins, so disabling `poor_rr` can expose candidates that
+  a LATER veto should have caught. PPL surfaced as a Buy at RS 41, below
+  `RS_LAGGARD_VETO` (55). Verify on the next run; if it persists, the chain
+  needs reordering or converting to collect-all-vetoes.
+- Which OTHER vetoes leak edge — `regime risk-off` blocked losers (41.2%,
+  −0.80%) which suggests it works, but n=17 fails `measure.py`'s threshold.
+  Re-run `python main.py measure` as history accumulates.
+- Fundamentals: PSX DPS publishes a P/E per company (NRL 4.91 TTM on
+  2026-08-17) and NRL posted 9MFY26 net profit PKR 9.07bn vs a 14.49bn loss.
+  `fundamentals.json` has only 3 symbols and `WEIGHTS` fundamentals is 0.0 —
+  do NOT re-enable without a data audit + explicit OK (user's standing call).
 
 ## Cross-account handoff — "continue where other account stopped"
 
@@ -439,7 +574,11 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-13 (early-warning tier + 7-day grading — see
+**Last updated:** 2026-08-17. Four-day signal outage found and fixed
+(`outcome_7d` missing from `update_outcome`'s whitelist — see "The outage that
+froze signals"); `measure.py` independence checks; `poor_rr` veto DISABLED on
+measured evidence; focus brief + exit ladder for NRL; sector news routing;
+Streamlit pinned. Previously 2026-08-13 (early-warning tier + 7-day grading — see
 "Early warning / lead time"). Previously 2026-08-12b (SIGNAL-QUALITY AUDIT — see "Signal quality audit"
 below: Buy threshold 70→75, confluence gate removed, pullback upgrade removed,
 RS veto 45→55, dead High-risk branch removed, concentration veto added, Buy
@@ -452,10 +591,30 @@ risk-on what-if surfaces regime-gated Buys; deep signal-quality audit — pullba
 quality gate, RS laggard veto, strict-history confidence).
 
 ### Current working context
-- All recent work is committed directly to `main`. Today's code commits (all on
-  `main`): `2ebc492` news_glm timeout/retry, `1529226` GLM panel + what-if
-  overlay, `b4473aa` news relevance-anchor gate, `8d07ce3` regime toggle→main
-  page + password-safe auto-refresh + GLM panel collapsed.
+- All recent work is committed directly to `main`. 2026-08-17 commits:
+  `f57d769` pin streamlit==1.61.1, `387f016` trade-card prices as markdown,
+  `96ae2ab` engine loop surfaces tracebacks + 09:35 cron, `57ee524` the
+  `outcome_7d` fix that ended the outage, `1d816f5` focus brief, `ecfdce1` exit
+  ladder + null-P&L guards, `254a926` cost-aware ladder, `10dc641` evening
+  refreshes the brief, `5380740` measure.py + sector news + crowding,
+  `8a2b65f` poor_rr veto disabled.
+- **Real book (`portfolio.json`) as of 2026-08-17:** NRL only — 3,069 shares
+  @ avg 535.26, cash PKR 1,500,000. That is ~52% of equity in one name, above
+  the 25% single-name cap, so the `concentrated` veto fires on NRL: strong
+  setup, wrong size. PSO/PRL/FABL were removed (user reported zero shares).
+  NRL closed 533.29 on 08-17 (+6.71%, new 52-wk high 547.90 on 3.4x volume),
+  i.e. the position is marginally UNDER water, not a winner.
+- **Dashboard was never rebooted on 08-17**, so the user saw a pre-deploy
+  snapshot ("08-13, 92.2h old") all day. Streamlit Cloud serves the git
+  snapshot from its last deploy — Manage app → Reboot app is required before
+  any of this is visible.
+- **`st.metric` is fragile on mobile.** It ships in a lazily-imported JS chunk;
+  a cached page shell from an earlier Cloud build 404s it and renders
+  "TypeError: Importing a module script failed" in the widget's slot. Trade
+  cards now use `price_row()` markdown instead. **18 other `st.metric` call
+  sites remain** (Portfolio heat tiles, Edge metrics, Stock detail header) —
+  convert them the same way if they break. `plotly` is still unpinned and has
+  the same failure mode.
 - **Reviewed but NOT changed (user's call):** #4 "is it 360°?" — the technical
   analyzer IS multi-indicator (RSI/MACD/EMA20-50-200/Bollinger/OBV/ADX/ATR/CMF/
   S-R/momentum/volume/candles/4-dim confluence), but `config.WEIGHTS` is
