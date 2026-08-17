@@ -229,6 +229,19 @@ def main():
     elif cmd == "morning":
         text = reports.morning_report()
         print(text); reports.save_report(text, "morning")
+    elif cmd == "measure":
+        import measure
+        rows = measure.load()
+        buy_min = config.SIGNAL_THRESHOLDS["buy"]
+        cand = [r for r in rows if (r.get("final_score") or 0) >= buy_min
+                and (r.get("relative_strength") or 0) >= config.RS_LAGGARD_VETO]
+        print(measure.render("Candidate pool (score>=%s & RS>=%s)"
+                             % (buy_min, config.RS_LAGGARD_VETO),
+                             measure.cohort(cand, rows, 3)))
+        print(measure.render("", measure.cohort(cand, rows, 7)))
+        print(measure.render("\nEmitted Buys",
+                             measure.cohort([r for r in rows if r.get("signal")
+                                             in ("Buy", "Strong Buy")], rows, 3)))
     elif cmd == "brief":
         import focus_brief
         sym = sys.argv[2] if len(sys.argv) > 2 else None

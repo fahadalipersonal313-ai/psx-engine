@@ -162,6 +162,46 @@ def raw_headlines(symbol, limit=5):
     return out
 
 
+def sector_headlines(symbol, limit=5):
+    """Last-24h headlines matching this symbol's SECTOR, from anywhere in the
+    raw feed. Company anchors require a distinctive company name, so policy and
+    industry stories — often the real price driver — reach no symbol at all.
+    Returned separately from raw_headlines() and labelled sector news, so the
+    anti-mis-attribution guarantee for company headlines is untouched.
+    UNSCORED, like everything in the news window."""
+    raw, meta = load_raw()
+    if meta["status"] != "ok":
+        return []
+    sector = config.SECTORS.get(symbol.upper())
+    phrases = [p.lower() for p in
+               (getattr(config, "SECTOR_NEWS_ANCHORS", {}).get(sector) or [])]
+    if not phrases:
+        return []
+    credible = [p.lower() for p in getattr(config, "NEWS_DISPLAY_PUBLISHERS", [])]
+    peers = {s for s, sec in config.SECTORS.items() if sec == sector}
+    out, seen = [], set()
+    for it in raw.get("items", []):
+        t = _clean_title(it)
+        key = t.lower()
+        if not t or key in seen:
+            continue
+        if not any(p in key or p in (it.get("summary") or "").lower()
+                   for p in phrases):
+            continue
+        pub = _publisher(it)
+        if credible and not any(c in pub.lower() for c in credible):
+            continue
+        seen.add(key)
+        out.append({"title": t, "url": it.get("url", ""), "publisher": pub,
+                    "published": it.get("published"), "sector": sector,
+                    # Which peer the fetcher happened to file it under — useful
+                    # context, not an attribution claim about this symbol.
+                    "filed_under": it.get("symbol") if it.get("symbol") in peers else None})
+        if len(out) >= limit:
+            break
+    return out
+
+
 # --------------------------------------------------------------------------
 # GLM ratings (news_glm_ratings.json) — a SECOND OPINION from GLM-4.5-flash
 # on the last-24h headlines. Zero score weight; shown next to the engine's

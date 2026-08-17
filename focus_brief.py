@@ -151,6 +151,33 @@ def exit_plan(qty, price, stop, target1, equity, cap_pct, avg_cost=None):
     return plan
 
 
+def sector_crowding(symbol):
+    """How much of today's actionable list is the SAME bet. Per-symbol scoring
+    treats each name independently, so a sector-wide catalyst produces several
+    'independent' Buys that are one trade — the refinery policy put NRL, PRL and
+    ATRL at the top of the board simultaneously.
+
+    Informational, never a veto: this engine's audit showed the gate layer
+    selecting the worst subset of a pool that had edge, so crowding is measured
+    and shown, not acted on."""
+    sector = config.SECTORS.get(symbol.upper())
+    if not sector:
+        return None
+    with db.conn() as c:
+        rows = [dict(r) for r in c.execute(
+            """SELECT symbol, signal FROM runs WHERE id IN
+               (SELECT MAX(id) FROM runs GROUP BY symbol)""")]
+    buys = [r for r in rows if r["signal"] in ("Buy", "Strong Buy")]
+    same = [r["symbol"] for r in buys if config.SECTORS.get(r["symbol"]) == sector]
+    peers = sorted({s for s, sec in config.SECTORS.items() if sec == sector})
+    by_sym = {r["symbol"]: r["signal"] for r in rows}
+    peer_signals = [(p, by_sym.get(p, "—")) for p in peers]
+    return {"sector": sector, "peers": peers, "peer_signals": peer_signals,
+            "n_buys": len(buys),
+            "n_same_sector": len(same), "same_sector_buys": sorted(same),
+            "share": (len(same) / len(buys)) if buys else 0}
+
+
 def build(symbol=None, advice=None):
     """Return the brief dict, or None when there is no stored run to build on."""
     symbol = (symbol or config.FOCUS_SYMBOL).upper()
@@ -258,6 +285,8 @@ def build(symbol=None, advice=None):
                                (pos or {}).get("avg_cost")) if pos else [],
         "breakeven": (pos or {}).get("avg_cost") if pos else None,
         "headlines": news_feed.raw_headlines(symbol, limit=5),
+        "sector_headlines": news_feed.sector_headlines(symbol, limit=5),
+        "crowding": sector_crowding(symbol),
         "glm": news_feed.glm_rating(symbol),
         "track_record": _track_record(symbol),
         "gaps": gaps,
@@ -307,11 +336,24 @@ def render_text(b):
     off = [k for k, v in b["flags"].items() if not v]
     out += ["Confirming    : " + (", ".join(on) or "none"),
             "Not confirming: " + (", ".join(off) or "none"), ""]
+    cw = b.get("crowding")
+    if cw and cw.get("peer_signals"):
+        peers = ", ".join(f"{s} {sig}" for s, sig in cw["peer_signals"])
+        out.append(f"SECTOR        : {cw['sector']} — {peers}")
+        if cw["n_buys"] and cw["share"] >= 0.4 and cw["n_same_sector"]:
+            out.append(f"  CROWDED: {cw['n_same_sector']} of {cw['n_buys']} Buys "
+                       f"on the board are {cw['sector']} ({cw['share']:.0%}) — "
+                       f"these are one bet, not independent signals.")
+        out.append("")
     if b["headlines"]:
         out.append("News last 24h (UNSCORED — verify manually):")
         out += [f"  - {h['title']} [{h['publisher']}]" for h in b["headlines"]]
     else:
         out.append("News last 24h: none matched this company.")
+    if b.get("sector_headlines"):
+        out.append(f"Sector news ({(cw or {}).get('sector', '')}) — applies to "
+                   f"every peer, not just this symbol:")
+        out += [f"  - {h['title']} [{h['publisher']}]" for h in b["sector_headlines"]]
     if b["glm"]:
         out.append(f"GLM second opinion: {b['glm'].get('rating')} — {b['glm'].get('reason', '')}")
     out.append("")

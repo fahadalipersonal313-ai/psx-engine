@@ -646,12 +646,24 @@ if _brief:
         st.markdown(f"**Support / Resistance:** {fmt(_L['support'])} / {fmt(_L['resistance'])}")
         st.markdown(f"**Engine reason:** {_brief['main_reason']}")
         st.markdown(f"**Shariah:** {_brief['shariah']} · **data:** {_brief['data_quality']}")
+        _cw = _brief.get("crowding")
+        if _cw and _cw.get("peer_signals"):
+            st.markdown(f"**Sector ({_cw['sector']}):** " +
+                        " · ".join(f"{s} {sig}" for s, sig in _cw["peer_signals"]))
+            if _cw["n_buys"] and _cw["share"] >= 0.4 and _cw["n_same_sector"]:
+                st.warning(f"⚠ Crowded: {_cw['n_same_sector']} of {_cw['n_buys']} "
+                           f"Buys on the board are {_cw['sector']} "
+                           f"({_cw['share']:.0%}) — one bet, not independent signals.")
         if _brief["headlines"]:
             st.markdown("**News last 24h (unscored — verify manually):**")
             for _h in _brief["headlines"]:
                 st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
         else:
             st.caption("No credible-desk headlines matched this company in 24h.")
+        if _brief.get("sector_headlines"):
+            st.markdown("**Sector news** — applies to every peer, not just this symbol:")
+            for _h in _brief["sector_headlines"]:
+                st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
         if _brief.get("glm"):
             st.caption(f"🤖 GLM: {_brief['glm'].get('rating')} — {_brief['glm'].get('reason','')}")
         for _t in _brief["track_record"]:

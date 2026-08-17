@@ -585,6 +585,27 @@ PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
 # news window and the symbol's own graded record, resolved into ONE action.
 # It re-reads the engine's signal — it never creates a competing score.
 FOCUS_SYMBOL = "NRL"
+
+# Sector-level news routing. COMPANY_NEWS_ANCHORS deliberately requires a
+# distinctive company name so a headline cannot be mis-attributed across
+# companies — but that also means SECTOR news never reaches any symbol. The
+# Brownfield refining policy (approved 2026-07-28) drove every refinery name in
+# August while matching only PRL's anchor ("Pakistan Refinery"), so the single
+# biggest driver of NRL's price was invisible in NRL's own news window.
+# These phrases route a headline to EVERY symbol in the sector, and the result
+# is labelled sector news — never presented as company-specific.
+SECTOR_NEWS_ANCHORS = {
+    "Refinery": ["refinery", "refineries", "refining policy", "brownfield",
+                 "deemed duty", "crack spread"],
+    "Oil & Gas Exploration": ["exploration and production", "gas field",
+                              "circular debt", "wellhead"],
+    "Cement": ["cement sector", "cement dispatches", "cement industry"],
+    "Fertilizer": ["fertiliser", "fertilizer", "urea"],
+    "Power Generation": ["ipp", "independent power", "circular debt",
+                         "power tariff"],
+    "Gas Distribution": ["gas tariff", "rlng", "sui gas"],
+    "Islamic Banking": ["policy rate", "monetary policy", "sbp"],
+}
 NEWS_SIGNALS_MAX_AGE_HOURS = 24          # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
 # Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
 # stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with
