@@ -248,7 +248,7 @@ def pending_outcomes():
 
 def update_outcome(run_id, field, value):
     assert field in ("price_next_run", "price_1d", "price_3d", "price_7d",
-                     "outcome")
+                     "outcome", "outcome_7d")
     with conn() as c:
         c.execute(f"UPDATE runs SET {field}=? WHERE id=?", (value, run_id))
 

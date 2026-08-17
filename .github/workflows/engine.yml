@@ -118,7 +118,10 @@ jobs:
                 echo; tail -120 /tmp/psx_run.log; } > engine_last_error.log
             fi
 
-            git add -A -- psx_engine.db engine_last_error.log
+            # -f: *.log is gitignored, and a plain `git add` of an ignored path
+            # exits non-zero, which killed the whole step under `set -e`.
+            git add -A -- psx_engine.db
+            git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
               for attempt in 1 2 3 4 5; do
                 git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
