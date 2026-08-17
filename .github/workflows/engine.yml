@@ -23,6 +23,11 @@ on:
     # and any that land after close exit immediately via the outside-hours guard.
     - cron: '10 4 * * 1-5'          # 09:10 PKT — just before open
     - cron: '30 4 * * 1-5'          # 09:30 PKT
+    - cron: '35 4 * * 1-5'          # 09:35 PKT — requested kickoff. GitHub cron
+                                    # is best-effort and routinely fires minutes
+                                    # late or skips entirely; the external
+                                    # cron-job.org pinger is what actually holds
+                                    # a precise time.
     - cron: '45 4 * * 1-5'          # 09:45 PKT
     - cron: '10 5 * * 1-5'          # 10:10 PKT — mid-morning self-heal
     - cron: '10 6 * * 1-5'          # 11:10 PKT — later self-heal if all above skipped
@@ -99,9 +104,21 @@ jobs:
             git fetch origin "${{ github.ref_name }}" --quiet || true
             git reset --hard "origin/${{ github.ref_name }}" --quiet || true
 
-            python main.py run || echo "Run failed this cycle — continuing loop."
+            # Capture the traceback. `|| echo` used to swallow it: the loop kept
+            # committing (the news table still grew, so the commit succeeded) while
+            # `runs` stayed frozen — a green-looking workflow producing no signals.
+            # On failure the traceback is committed so it is readable without
+            # waiting for the 6h job to end and release its step log.
+            if python main.py run > /tmp/psx_run.log 2>&1; then
+              cat /tmp/psx_run.log
+              rm -f engine_last_error.log
+            else
+              cat /tmp/psx_run.log
+              { echo "main.py run FAILED at $(date -u +'%Y-%m-%dT%H:%M:%SZ')";
+                echo; tail -120 /tmp/psx_run.log; } > engine_last_error.log
+            fi
 
-            git add psx_engine.db
+            git add -A -- psx_engine.db engine_last_error.log
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
               for attempt in 1 2 3 4 5; do
                 git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
