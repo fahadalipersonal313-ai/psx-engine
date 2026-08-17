@@ -253,6 +253,22 @@ CHASE_GUARD_ENABLED = False
 # restore.
 POOR_RR_VETO_ENABLED = False
 
+# Momentum burst (momentum.py) — one session breaking out of a stock's own norm.
+# Loosened 2026-08-17 from 3.0%/1.5x to catch the move earlier. Measured both
+# ways, day-deduped vs the same-day cohort median, independence-checked:
+#
+#   >=3.0% & 1.5x   3d n=42 beat 83.3% +2.54%  |  7d n=35 beat 71.4% +1.92%
+#   >=2.0% & 1.3x   3d n=66 beat 80.3% +2.14%  |  7d n=53 beat 71.7% +2.13%
+#
+# The looser setting gives up ~3 points of 3-day accuracy but is IDENTICAL at
+# 7 days (71.7% vs 71.4%) with a BETTER median excess, on 57% more signals. Both
+# pass independence on both horizons. Earlier entry costs little here.
+MOMENTUM_BURST = {
+    "min_gain_pct": 2.0,     # single-session advance
+    "min_vol_mult": 1.3,     # vs the 20-day average volume
+    "lookback": 20,          # window for the volume norm and the high tag
+}
+
 # Reference EMA for the pullback buy-zone and the extension (ext_pct) measure.
 # Was 20 (shallow dip). Now 50: a deeper retracement to the intermediate trend
 # line — a wider buy-zone that accepts more drawdown before the "uptrend intact"

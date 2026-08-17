@@ -5,12 +5,16 @@ large single-day advance carried by volume well above its 20-day norm. It is
 computed from `daily_ohlc` (real H/L/C bars), so it needs no extra fetch and
 adds no write path to `full_run`.
 
-MEASURED before it was built (2026-08-17, day-deduped, forward move vs the
-same-day cohort median, independence-checked via measure.py):
+MEASURED before it was built, and re-measured when the thresholds were loosened
+(2026-08-17, day-deduped, forward move vs the same-day cohort median,
+independence-checked via measure.py):
 
-    burst (>=3% on >=1.5x volume)   3d  n=42  beat 83.3%  excess +2.54%
-                                    7d  n=35  beat 71.4%  excess +1.92%
-      spread 26 symbols / 14 sectors (3d), 24 / 13 (7d) — independence OK
+    >=3.0% & 1.5x   3d  n=42  beat 83.3%  +2.54%  |  7d  n=35  beat 71.4%  +1.92%
+    >=2.0% & 1.3x   3d  n=66  beat 80.3%  +2.14%  |  7d  n=53  beat 71.7%  +2.13%
+
+The looser trigger (now the default, for earlier entry) gives up ~3 points of
+3-day accuracy but is identical at 7 days with a better median excess, on 57%
+more signals. All four cohorts pass independence on both horizons.
 
 Both horizons agree and neither is one sector's rally, which is more than can be
 said for most ideas tried on this data (score velocity 45%, OBV divergence
@@ -32,9 +36,12 @@ import database as db
 
 log = logging.getLogger("momentum")
 
-MIN_GAIN_PCT = 3.0      # single-session advance
-MIN_VOL_MULT = 1.5      # vs the 20-day average volume
-LOOKBACK = 20           # window for the volume norm and the high tag
+# Tunable in config.MOMENTUM_BURST so the trigger can be re-measured and moved
+# without editing code. Defaults match the config values shipped 2026-08-17.
+_CFG = getattr(config, "MOMENTUM_BURST", {}) or {}
+MIN_GAIN_PCT = _CFG.get("min_gain_pct", 2.0)
+MIN_VOL_MULT = _CFG.get("min_vol_mult", 1.3)
+LOOKBACK = int(_CFG.get("lookback", 20))
 
 
 def _series(symbol, limit=60):

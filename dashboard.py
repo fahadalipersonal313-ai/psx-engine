@@ -586,11 +586,11 @@ except Exception:
     _bursts = []
 if _bursts:
     st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} today")
-    st.caption(f"Single session ≥{momentum.MIN_GAIN_PCT:.0f}% on ≥"
-               f"{momentum.MIN_VOL_MULT:.1f}× the 20-day average volume. "
-               "Measured: beat the market 83% at 3 days (n=42), 71% at 7 days "
-               "(n=35), across 26 symbols and 14 sectors. **Not a Buy signal** — "
-               "a watch tier. Confirm manually.")
+    st.caption(f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥"
+               f"{momentum.MIN_VOL_MULT:g}× the {momentum.LOOKBACK}-day average "
+               "volume. Measured at these thresholds: beat the market 80% at "
+               "3 days (n=66), 72% at 7 days (n=53), independence-checked. "
+               "**Not a Buy signal** — a watch tier. Confirm manually.")
     _bcols = st.columns(min(len(_bursts), 4))
     for _i, _b in enumerate(_bursts):
         with _bcols[_i % len(_bcols)]:
