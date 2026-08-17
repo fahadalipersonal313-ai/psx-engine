@@ -137,10 +137,6 @@ def sig_pill(sig):
     return _pill(sig or "—", NEON_SIG.get(sig, "#8aa0c0"))
 
 
-def accum_pill():
-    return _pill("🧲 Accumulating", "#37c6ff")
-
-
 def risk_pill(level):
     return _pill(f"{level} risk", NEON_RISK.get(level, "#8aa0c0"))
 
@@ -649,9 +645,8 @@ if _brief:
         f'{sig_pill(_brief["signal"])} &nbsp;'
         f'<span style="font-size:13px;opacity:.8">score '
         f'{fmt(_brief["final_score"], 1)} · conf {fmt(_brief["confidence"], 0)}% · '
-        f'RS {fmt(_brief["relative_strength"], 0)} · confluence '
-        f'{_brief["confluence"]}/4 · CMF {fmt(_brief["cmf"])} · regime '
-        f'{_brief["regime"]}</span>', unsafe_allow_html=True)
+        f'RS {fmt(_brief["relative_strength"], 0)} · CMF '
+        f'{fmt(_brief["cmf"])} · regime {_brief["regime"]}</span>', unsafe_allow_html=True)
     if _brief.get("exit_plan"):
         _bx.markdown(
             f'<div style="margin-top:8px;font-size:13px;font-weight:700;'
@@ -764,8 +759,7 @@ else:
                     f'<div><span style="font-size:20px;font-weight:700">'
                     f'{r["symbol"]}</span> '
                     f'<span style="opacity:.6;font-size:13px">{sec}</span></div>'
-                    f'{sig_pill(disp)} '
-                    f'{accum_pill() if r.get("accumulation_candidate") else ""}</div>',
+                    f'{sig_pill(disp)}</div>',
                     unsafe_allow_html=True)
                 box.markdown(price_row([
                     ("Entry", fmt(r["price"]), "#e8f0ff"),
@@ -783,12 +777,6 @@ else:
                         f'{config.PULLBACK_EMA_SPAN}-EMA</span>', unsafe_allow_html=True)
                 rs = r.get("relative_strength")
                 rs_txt = f"RS {rs:.0f}" if pd.notna(rs) else "RS —"
-                conf_val = r.get("confluence")
-                conf_dots = (("●" * conf_val + "○" * (4 - conf_val))
-                             if conf_val is not None else "")
-                conf_html = (f'<span style="opacity:.7;font-size:12px">'
-                             f'confluence {conf_dots} {conf_val}/4</span>'
-                             if conf_val is not None else "")
                 box.markdown(
                     f'{risk_pill(r["risk_level"])} &nbsp; '
                     f'<span style="opacity:.75;font-size:13px">conf '
@@ -796,8 +784,6 @@ else:
                     f'R:R {fmt((r["target1"] - r["price"]) / (r["price"] - r["stop_loss"]), 1) if r["price"] and r["stop_loss"] and r["price"] > r["stop_loss"] else "—"}'
                     f'</span>',
                     unsafe_allow_html=True)
-                if conf_html:
-                    box.markdown(conf_html, unsafe_allow_html=True)
                 nv = news_feed.get(r["symbol"])
                 gv = news_feed.glm_rating(r["symbol"])
                 box.markdown(news_pill(nv) + " " + glm_pill(gv) +
@@ -887,28 +873,6 @@ def _early_watch_section():
             unsafe_allow_html=True)
 
 
-def _accumulation_section():
-    rows = db.accumulating_now(lookback=10, min_streak=1)
-    if not rows:
-        st.caption("No accumulation candidates flagged right now.")
-        return
-    st.caption("Quiet-buying signature (OBV trend, OBV/price divergence, "
-               "volume spikes, CMF) — not yet a Buy signal. ⚠ Measured on "
-               "graded history this tag showed NO forward edge (47% beat rate "
-               "at 3 days, 53% at 7); the OBV divergence component measured "
-               "NEGATIVE. Kept for context only — prefer the Early watch tier "
-               "above, which uses the one component (CMF) that did work.")
-    for r in rows:
-        reasons = json.loads(r["reasons"] or "[]")
-        st.markdown(
-            f'{accum_pill()} &nbsp;**{r["symbol"]}** · '
-            f'signal {sig_pill(r["signal"])} · price {fmt(r["price"])} · '
-            f'score {fmt(r["final_score"], 0)}'
-            + (f' · CMF {r["cmf"]:+.2f}' if r.get("cmf") is not None else '')
-            + f'<br><span style="opacity:.75;font-size:13px">{"; ".join(reasons)}</span>',
-            unsafe_allow_html=True)
-
-
 # ----------------------------- WHY NOT A BUY ------------------------------
 _why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
               (~latest["signal"].isin(["Strong Buy", "Buy"]))]
@@ -929,20 +893,13 @@ if buy_cands:
         st.subheader("🛡 Portfolio risk — does the book fit?")
         _portfolio_glimpse_section()
 
-# ----------------------------- ACCUMULATION WATCH --------------------------
+# ----------------------------- EARLY WATCH ---------------------------------
 if compact:
     with st.expander("🔭 Early watch — building before the Buy band"):
         _early_watch_section()
 else:
     st.subheader("🔭 Early watch — building before the Buy band")
     _early_watch_section()
-
-if compact:
-    with st.expander("🧲 Accumulation watch — stocks being quietly bought"):
-        _accumulation_section()
-else:
-    st.subheader("🧲 Accumulation watch — stocks being quietly bought")
-    _accumulation_section()
 
 st.divider()
 
@@ -986,31 +943,6 @@ with tab_watch:
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
-    bursts = db.momentum_bursts(config.STOCKS, min_pct=5.0)
-    if bursts:
-        with st.expander(f"🚀 Momentum-burst watchlist ({len(bursts)}) — "
-                          "informational only, NOT a signal", expanded=False):
-            st.caption("Today's biggest 1-day movers (e.g. circuit hits). The "
-                       "scoring engine deliberately does NOT chase these — "
-                       "multi-day indicators won't move on one bar, and "
-                       "buying into/after a circuit is usually the worst entry. "
-                       "This list doesn't feed back into any signal; it's here "
-                       "so a big move is never invisible.")
-            for b in bursts:
-                arrow = "🔺" if b["pct_move"] > 0 else "🔻"
-                clr = NEON["green"] if b["pct_move"] > 0 else NEON["red"]
-                vol_txt = ""
-                if b.get("avg_vol"):
-                    ratio = (b["today_vol"] or 0) / b["avg_vol"]
-                    vol_txt = f" · vol {ratio:.1f}× 20d avg"
-                st.markdown(
-                    f'{arrow} **{b["symbol"]}** '
-                    f'<span style="color:{clr};font-weight:700">'
-                    f'{b["pct_move"]:+.1f}%</span> '
-                    f'(prev close {b["prev_close"]:.2f} → {b["price"]:.2f})'
-                    f'{vol_txt} · current signal {sig_pill(b["signal"])} '
-                    f'(score {fmt(b["final_score"], 0)})',
-                    unsafe_allow_html=True)
 
 with tab_port:
     st.subheader("💼 My portfolio — profit/loss & strategy")
