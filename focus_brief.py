@@ -99,6 +99,47 @@ def _add_size(price, stop, cash, equity, current_value):
     return shares, shares * price
 
 
+def exit_plan(qty, price, stop, target1, equity, cap_pct):
+    """Scaled exit ladder for an oversized winner. Sells in tranches rather than
+    all at once: on this engine's own graded history, score>=75 names that had
+    already run >8% in the prior 5 sessions went ON to beat the market 92% of
+    the time (n=13, small), so a full exit into strength has been the worse
+    trade. The ladder banks the concentration risk while leaving a runner.
+
+    Returns [] when the position is not oversized — nothing to unwind."""
+    if not (qty and price and equity):
+        return []
+    cap_shares = cap_pct / 100 * equity / price
+    excess = qty - cap_shares
+    if excess <= 0:
+        return []
+    first = int(excess // 2)
+    second = int(excess) - first
+    runner = int(qty - first - second)
+    plan = []
+    if first:
+        plan.append({"tranche": "1 — de-risk now", "shares": first,
+                     "trigger": f"at market (~{price:,.2f})",
+                     "proceeds": first * price,
+                     "why": "Removes the single-name risk that no stop protects: "
+                            "a gap through your stop takes the whole book with it."})
+    if second:
+        plan.append({"tranche": "2 — reach the cap", "shares": second,
+                     "trigger": f"on strength above {price * 1.03:,.2f} "
+                                f"(+3%), or at market if momentum stalls",
+                     "proceeds": second * price * 1.03,
+                     "why": f"Brings the position to the {cap_pct:.0f}% cap while "
+                            "selling into demand rather than into a fall."})
+    if runner > 0:
+        plan.append({"tranche": "3 — runner", "shares": runner,
+                     "trigger": f"trail below {stop:,.2f}; take profit at "
+                                f"{target1:,.2f}" if stop and target1 else "trail the stop",
+                     "proceeds": runner * (target1 or price),
+                     "why": "Keeps the upside the engine's Buy signal is pointing "
+                            "at, sized so a stop-out is survivable."})
+    return plan
+
+
 def build(symbol=None, advice=None):
     """Return the brief dict, or None when there is no stored run to build on."""
     symbol = (symbol or config.FOCUS_SYMBOL).upper()
@@ -201,6 +242,8 @@ def build(symbol=None, advice=None):
         "add_shares": add_shares,
         "add_value": add_value,
         "over_cap": over_cap,
+        "exit_plan": exit_plan((pos or {}).get("qty"), lv["price"], lv["stop"],
+                               lv["target1"], equity, cap) if pos else [],
         "headlines": news_feed.raw_headlines(symbol, limit=5),
         "glm": news_feed.glm_rating(symbol),
         "track_record": _track_record(symbol),
@@ -237,6 +280,12 @@ def render_text(b):
     if b["add_shares"]:
         out += [f"Sizing        : an add of up to {b['add_shares']:,} shares "
                 f"(PKR {f(b['add_value'], 0)}) fits risk + position caps", ""]
+    if b.get("exit_plan"):
+        out.append("SCALED EXIT LADDER (position is over the single-name cap):")
+        for t in b["exit_plan"]:
+            out.append(f"  {t['tranche']}: {t['shares']:,} shares — {t['trigger']}")
+            out.append(f"      ~PKR {t['proceeds']:,.0f}. {t['why']}")
+        out.append("")
     on = [k for k, v in b["flags"].items() if v]
     off = [k for k, v in b["flags"].items() if not v]
     out += ["Confirming    : " + (", ".join(on) or "none"),

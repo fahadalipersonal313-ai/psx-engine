@@ -615,6 +615,21 @@ if _brief:
         f'RS {fmt(_brief["relative_strength"], 0)} · confluence '
         f'{_brief["confluence"]}/4 · CMF {fmt(_brief["cmf"])} · regime '
         f'{_brief["regime"]}</span>', unsafe_allow_html=True)
+    if _brief.get("exit_plan"):
+        _bx.markdown(
+            f'<div style="margin-top:8px;font-size:13px;font-weight:700;'
+            f'color:{NEON["amber"]}">🪜 Scaled exit ladder — position is over the '
+            f'single-name cap</div>', unsafe_allow_html=True)
+        for _t in _brief["exit_plan"]:
+            _bx.markdown(
+                f'<div style="margin:4px 0;font-size:13px">'
+                f'<b>{_t["tranche"]}</b>: <b>{_t["shares"]:,}</b> shares · '
+                f'{_t["trigger"]} · ~PKR {_t["proceeds"]:,.0f}<br>'
+                f'<span style="opacity:.6">{_t["why"]}</span></div>',
+                unsafe_allow_html=True)
+        _bx.caption("Tranches, not one exit: on this engine's graded history "
+                    "already-extended winners kept working. Manual confirmation "
+                    "required before any order.")
     with _bx.expander("🔬 Full 360° detail", expanded=False):
         _on = [k for k, v in _brief["flags"].items() if v]
         _off = [k for k, v in _brief["flags"].items() if not v]
@@ -971,15 +986,20 @@ with tab_port:
     adv = portfolio_advisor.advise({"cash_pkr": capital, "holdings": _holds},
                                    latest_by_symbol)
     tot = adv["totals"]
-    _plc = NEON["green"] if tot["pl"] >= 0 else NEON["red"]
+    # pl is None when any holding lacks a cost basis — measuring full market
+    # value against partial cost would print a phantom gain.
+    _plc = NEON["dim"] if tot["pl"] is None else (
+        NEON["green"] if tot["pl"] >= 0 else NEON["red"])
+    _pltxt = "unknown" if tot["pl"] is None else f'PKR {tot["pl"]:,.0f}'
     p1, p2, p3, p4 = st.columns(4)
     tile(p1, "Equity (holdings+cash)", f'PKR {tot["equity"]:,.0f}',
          f'{tot["deployed_pct"]:.0f}% deployed')
     tile(p2, "Holdings value", f'PKR {tot["market_value"]:,.0f}',
          f'cost PKR {tot["invested_cost"]:,.0f}')
     tile(p3, "Unrealised P/L",
-         f'<span style="color:{_plc}">PKR {tot["pl"]:,.0f}</span>',
-         (f'{tot["pl_pct"]:+.1f}%' if tot["pl_pct"] is not None else "—"))
+         f'<span style="color:{_plc}">{_pltxt}</span>',
+         (f'{tot["pl_pct"]:+.1f}%' if tot["pl_pct"] is not None
+          else "no avg cost on file"))
     tile(p4, "Ready cash", f'PKR {tot["cash"]:,.0f}',
          f'PKR {tot["cash_after_plan"]:,.0f} left after plan')
 
