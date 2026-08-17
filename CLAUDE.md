@@ -426,10 +426,24 @@ User wants fresh signals by **09:35 PKT**. What was wrong and what changed:
 - The pre-open poll slept **300s**, so the loop could idle until ~09:37 before
   noticing the open. Now **60s**.
 
+The FIRST cycle runs `python main.py run --fast`: no news fetch, no
+`update_outcomes()`. Measured cost of what it skips: macro feeds ~2s + company
+news 0.51s x 50 = **~27s**. Safe because news weight is 0.0 (and PURE_TECHNICAL
+already demotes its vetoes to warnings) and outcome grading judges PAST runs —
+it still runs on every later cycle and in the evening job. Everything feeding a
+signal is untouched. `engine.yml` sets `first_cycle=1` and clears it after the
+first pass.
+
 Realistic timeline: loop kicked off by the 09:10 cron waits, first cycle starts
-~09:32, a full 50-symbol run takes ~5 min, so **fresh signals commit ~09:37**.
+~09:32, a fast 50-symbol run takes ~4.5 min, so **fresh signals commit ~09:36**.
 Signals reflecting real trading CANNOT exist before 09:32 — that is the market,
 not the engine. Do not promise 09:35 exactly.
+
+**The remaining cost is 50 symbols x 2 sequential PSX DPS calls** (intraday +
+EOD), roughly 4.5 of the 5 minutes. Parallelising them (~8 at a time) would cut
+the cycle to 1-2 min and clear 09:35 comfortably — proposed 2026-08-17 and the
+user declined ("not needed"). Do not do it unasked: it raises concurrent load on
+DPS, which already 403s from some hosts.
 
 **GitHub cron is best-effort** (fires late, skips under load), which is why
 `engine.yml` carries six staggered kickoffs. The external **cron-job.org
