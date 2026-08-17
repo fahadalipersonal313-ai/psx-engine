@@ -82,6 +82,11 @@ jobs:
         run: |
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
+          # The FIRST cycle after the open runs in --fast mode: no news fetch,
+          # no outcome grading. Neither can change today's signals (news weight
+          # is 0.0; grading judges past runs), and dropping them gets the
+          # morning's signals committed ~30s sooner. Every later cycle is full.
+          first_cycle=1
           while true; do
             dow=$(date +%u)          # 1=Mon .. 7=Sun
             now=$(date +%H:%M)
@@ -116,7 +121,9 @@ jobs:
             # `runs` stayed frozen — a green-looking workflow producing no signals.
             # On failure the traceback is committed so it is readable without
             # waiting for the 6h job to end and release its step log.
-            if python main.py run > /tmp/psx_run.log 2>&1; then
+            if [ "$first_cycle" = "1" ]; then FAST="--fast"; else FAST=""; fi
+            first_cycle=0
+            if python main.py run $FAST > /tmp/psx_run.log 2>&1; then
               cat /tmp/psx_run.log
               rm -f engine_last_error.log
             else

@@ -140,14 +140,29 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
             "scoring": scoring, "risk": risk, "signal": signal}
 
 
-def full_run():
-    log.info("=== Engine run started ===")
+def full_run(fast=False):
+    """fast=True trims everything that does not affect TODAY'S signals, so the
+    first cycle after the 09:32 open commits sooner. Safe because:
+      - news carries 0% score weight (config.WEIGHTS macro_news/sentiment = 0.0)
+        and PURE_TECHNICAL already demotes its vetoes to warnings, so an empty
+        news list cannot change a signal. The dashboard's news window comes from
+        news.yml's separate raw fetch, not from here.
+      - update_outcomes() grades PAST runs; it has no bearing on today's output
+        and still runs on every later cycle and in the evening job.
+    Nothing that feeds a signal is skipped: quote, EOD, regime, RS, technicals
+    and the whole risk layer run exactly as normal."""
+    log.info("=== Engine run started%s ===", " (fast first cycle)" if fast else "")
     db.init_db()
-    news_items = data_fetcher.fetch_news()
-    # Per-company public news (Google News RSS) -> real per-stock sentiment.
-    for s in config.STOCKS:
-        news_items += data_fetcher.fetch_company_news(s)
-    backtester.update_outcomes()          # learning loop first
+    news_items = []
+    if fast:
+        log.info("Fast cycle: skipping news fetch and outcome grading "
+                 "(~30s saved; neither affects today's signals).")
+    else:
+        news_items = data_fetcher.fetch_news()
+        # Per-company public news (Google News RSS) -> real per-stock sentiment.
+        for s in config.STOCKS:
+            news_items += data_fetcher.fetch_company_news(s)
+        backtester.update_outcomes()          # learning loop first
 
     # Tier 2: fetch the benchmark index ONCE; judge the market regime. Both feed
     # relative strength (per stock) and the regime gate (market-wide).
@@ -222,7 +237,7 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "run"
     db.init_db()
     if cmd == "run":
-        full_run()
+        full_run(fast="--fast" in sys.argv)
     elif cmd == "schedule":
         import scheduler
         scheduler.start()
