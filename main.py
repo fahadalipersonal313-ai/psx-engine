@@ -193,8 +193,29 @@ def full_run():
     except Exception as e:
         log.warning("Excel/email step failed: %s", e)
 
+    # Focus brief LAST and never fatal: signals are already saved by this point,
+    # so a fault here costs one brief, not the whole run. (2026-08-17: an
+    # unguarded AssertionError early in full_run froze every signal for four
+    # days while the workflow still reported success.)
+    try:
+        _save_focus_brief()
+    except Exception as e:
+        log.warning("Focus brief skipped: %s", e)
+
     log.info("=== Engine run finished ===")
     return results
+
+
+def _save_focus_brief():
+    import focus_brief
+    with db.conn() as c:
+        latest = {r["symbol"]: dict(r) for r in c.execute(
+            "SELECT * FROM runs WHERE id IN (SELECT MAX(id) FROM runs GROUP BY symbol)")}
+    advice = portfolio_advisor.advise(portfolio_advisor.load_portfolio(), latest)
+    brief = focus_brief.build(advice=advice)
+    if brief:
+        db.save_focus_brief(brief)
+        log.info("Focus brief (%s): %s", brief["symbol"], brief["action"])
 
 
 def main():
@@ -208,6 +229,11 @@ def main():
     elif cmd == "morning":
         text = reports.morning_report()
         print(text); reports.save_report(text, "morning")
+    elif cmd == "brief":
+        import focus_brief
+        sym = sys.argv[2] if len(sys.argv) > 2 else None
+        _save_focus_brief()
+        print(focus_brief.render_text(db.last_focus_brief(sym or config.FOCUS_SYMBOL)))
     elif cmd == "evening":
         backtester.update_outcomes()
         text = reports.evening_report()

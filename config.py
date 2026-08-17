@@ -580,6 +580,11 @@ NEWS_RAW_PATH = os.path.join(BASE_DIR, "news_raw_24h.json")
 # Your real holdings + ready cash (read by portfolio_advisor for the dashboard's
 # Portfolio tab). Edit portfolio.json or the dashboard table to keep it current.
 PORTFOLIO_PATH = os.path.join(BASE_DIR, "portfolio.json")
+# Symbol that gets the deep, position-aware morning brief (focus_brief.py):
+# every indicator the engine computes, the real book position, the unscored
+# news window and the symbol's own graded record, resolved into ONE action.
+# It re-reads the engine's signal — it never creates a competing score.
+FOCUS_SYMBOL = "NRL"
 NEWS_SIGNALS_MAX_AGE_HOURS = 24          # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
 # Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
 # stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with

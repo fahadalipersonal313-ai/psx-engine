@@ -574,6 +574,72 @@ if _glm_meta.get("status") == "ok" and _glm_ratings:
 elif _glm_meta.get("status") in ("absent", "stale"):
     st.caption(f"🤖 {news_feed.glm_status_line()}")
 
+# --------------------------- focus morning brief ---------------------------
+# The deep, position-aware read on config.FOCUS_SYMBOL: engine signal + the real
+# book position resolved into ONE action. Never a competing score.
+_brief = db.last_focus_brief(config.FOCUS_SYMBOL)
+if _brief:
+    _ACT_COLOR = {"ADD": NEON["green"], "OPEN (in buy-zone)": NEON["green"],
+                  "HOLD — DO NOT ADD": NEON["amber"], "WAIT FOR ZONE": NEON["amber"],
+                  "HOLD (add only on pullback)": NEON["amber"], "HOLD": NEON["dim"],
+                  "NO ACTION": NEON["dim"], "REDUCE / EXIT": NEON["red"]}
+    _c = _ACT_COLOR.get(_brief["action"], NEON["cyan"])
+    _bx = st.container(border=True)
+    _bx.markdown(
+        f'<div style="display:flex;justify-content:space-between;align-items:center">'
+        f'<div><span style="font-size:22px;font-weight:800">🔬 {_brief["symbol"]}'
+        f'</span> <span style="opacity:.6;font-size:13px">morning brief · 360° read'
+        f'</span></div>{_pill(_brief["action"], _c)}</div>', unsafe_allow_html=True)
+    _bx.markdown(f'<div style="margin:6px 0;font-size:14px">{_brief["why"]}</div>',
+                 unsafe_allow_html=True)
+    _L = _brief["levels"]
+    _bx.markdown(price_row([
+        ("Price", fmt(_L["price"]), "#e8f0ff"),
+        ("Stop", fmt(_L["stop"]), NEON["red"]),
+        ("Target", fmt(_L["target1"]), NEON["green"]),
+        ("R:R", fmt(_L["rr"], 1), NEON["cyan"]),
+    ]), unsafe_allow_html=True)
+    _p = _brief.get("position")
+    if _p:
+        _pl = ("P&L unknown (no avg cost)" if _p.get("pl_pct") is None
+               else f'P&L {_p["pl_pct"]:+.1f}%')
+        _bx.markdown(
+            f'<span style="font-size:13px">📦 <b>{_p["qty"]:,.0f}</b> shares · '
+            f'PKR {_p["value"]:,.0f} · <b>{_p["pos_pct"]:.1f}%</b> of book · {_pl}'
+            f' &nbsp;·&nbsp; 💵 cash PKR {_brief["cash"]:,.0f}</span>',
+            unsafe_allow_html=True)
+    _bx.markdown(
+        f'{sig_pill(_brief["signal"])} &nbsp;'
+        f'<span style="font-size:13px;opacity:.8">score '
+        f'{fmt(_brief["final_score"], 1)} · conf {fmt(_brief["confidence"], 0)}% · '
+        f'RS {fmt(_brief["relative_strength"], 0)} · confluence '
+        f'{_brief["confluence"]}/4 · CMF {fmt(_brief["cmf"])} · regime '
+        f'{_brief["regime"]}</span>', unsafe_allow_html=True)
+    with _bx.expander("🔬 Full 360° detail", expanded=False):
+        _on = [k for k, v in _brief["flags"].items() if v]
+        _off = [k for k, v in _brief["flags"].items() if not v]
+        st.markdown("**Confirming:** " + (", ".join(_on) or "none"))
+        st.markdown("**Not confirming:** " + (", ".join(_off) or "none"))
+        st.markdown(f"**Buy-zone:** {fmt(_L['buy_zone_low'])}–{fmt(_L['buy_zone_high'])}"
+                    f" — price is **{'inside' if _brief['in_zone'] else 'outside'}** it")
+        st.markdown(f"**Support / Resistance:** {fmt(_L['support'])} / {fmt(_L['resistance'])}")
+        st.markdown(f"**Engine reason:** {_brief['main_reason']}")
+        st.markdown(f"**Shariah:** {_brief['shariah']} · **data:** {_brief['data_quality']}")
+        if _brief["headlines"]:
+            st.markdown("**News last 24h (unscored — verify manually):**")
+            for _h in _brief["headlines"]:
+                st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
+        else:
+            st.caption("No credible-desk headlines matched this company in 24h.")
+        if _brief.get("glm"):
+            st.caption(f"🤖 GLM: {_brief['glm'].get('rating')} — {_brief['glm'].get('reason','')}")
+        for _t in _brief["track_record"]:
+            _n = "  ⚠ small sample — noise, not edge" if _t.get("is_noise") else ""
+            st.markdown(f"- Track record **{_t.get('signal')}**: {_t.get('n_worked')}/"
+                        f"{_t.get('n_total')} ({_t.get('win_rate_pct')}%){_n}")
+        for _g in _brief["gaps"]:
+            st.warning(f"⚠ {_g}")
+
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
 if ups or downs:

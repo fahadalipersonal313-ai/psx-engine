@@ -98,7 +98,37 @@ def init_db():
                           ("outcome_7d", "TEXT")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
+        c.execute("""CREATE TABLE IF NOT EXISTS focus_brief (
+                       id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       run_time TEXT, symbol TEXT, action TEXT, payload TEXT)""")
     log.info("Database initialised at %s", config.DB_PATH)
+
+
+def save_focus_brief(brief: dict):
+    import json as _json
+    with conn() as c:
+        c.execute("INSERT INTO focus_brief (run_time, symbol, action, payload) "
+                  "VALUES (?,?,?,?)",
+                  (brief.get("run_time"), brief.get("symbol"), brief.get("action"),
+                   _json.dumps(brief, default=str)))
+
+
+def last_focus_brief(symbol=None):
+    import json as _json
+    q = "SELECT * FROM focus_brief"
+    args = []
+    if symbol:
+        q += " WHERE symbol=?"
+        args.append(symbol.upper())
+    q += " ORDER BY id DESC LIMIT 1"
+    with conn() as c:
+        r = c.execute(q, args).fetchone()
+    if not r:
+        return None
+    try:
+        return _json.loads(r["payload"])
+    except (TypeError, ValueError):
+        return None
 
 
 def save_run(row: dict) -> int:

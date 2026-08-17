@@ -36,9 +36,14 @@ def load_portfolio(path=None):
     holds = []
     for h in d.get("holdings", []):
         try:
+            # avg_cost may be null: you can hold shares without having recorded
+            # what you paid. Keep the position (it still drives sizing, the
+            # concentration cap and exposure) and let P&L stay unknown rather
+            # than dropping the holding or inventing a cost basis.
+            avg = h.get("avg_cost")
             holds.append({"symbol": str(h["symbol"]).upper(),
                           "qty": float(h["qty"]),
-                          "avg_cost": float(h["avg_cost"])})
+                          "avg_cost": None if avg is None else float(avg)})
         except (KeyError, TypeError, ValueError):
             continue
     return {"cash_pkr": float(d.get("cash_pkr") or 0), "holdings": holds}
@@ -78,8 +83,8 @@ def advise(portfolio, latest):
         r = latest.get(sym)
         price = (r or {}).get("price")
         qty, avg = h["qty"], h["avg_cost"]
-        cost = qty * avg
-        cost_value += cost
+        cost = qty * avg if avg is not None else None
+        cost_value += cost or 0.0
         if price:
             mv = qty * price
             market_value += mv
@@ -93,7 +98,7 @@ def advise(portfolio, latest):
         sym, r, price = row["symbol"], row["run"], row["price"]
         qty, avg, cost = row["qty"], row["avg_cost"], row["cost"]
         mv = qty * price if price else None
-        pl = (mv - cost) if mv is not None else None
+        pl = (mv - cost) if (mv is not None and cost is not None) else None
         pl_pct = (pl / cost * 100) if (pl is not None and cost) else None
         pos_pct = (mv / equity * 100) if (mv and equity) else 0.0
         signal = (r or {}).get("signal")
@@ -164,11 +169,16 @@ def advise(portfolio, latest):
         d2 = dict(d); d2["shares"] = shares; d2["value"] = value
         deploy_out.append(d2)
 
+    # Book P&L is only meaningful when EVERY holding has a cost basis. With one
+    # missing, market_value covers all positions while cost_value covers a
+    # subset, which reads as a huge phantom gain (+494% on a real book).
+    _full_cost = bool(cost_value) and all(h["avg_cost"] is not None for h in holds)
     totals = {
         "cash": cash, "invested_cost": round(cost_value, 0),
         "market_value": round(market_value, 0), "equity": round(equity, 0),
-        "pl": round(market_value - cost_value, 0) if cost_value else 0.0,
-        "pl_pct": round((market_value - cost_value) / cost_value * 100, 1) if cost_value else None,
+        "cost_basis_complete": _full_cost,
+        "pl": round(market_value - cost_value, 0) if _full_cost else None,
+        "pl_pct": round((market_value - cost_value) / cost_value * 100, 1) if _full_cost else None,
         "deployed_pct": round(market_value / equity * 100, 1) if equity else 0.0,
         "cash_after_plan": round(cash_left, 0), "n_holdings": len(holds)}
     return {"holdings": holdings_out, "deploy": deploy_out, "totals": totals}
