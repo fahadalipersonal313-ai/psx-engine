@@ -28,6 +28,7 @@ import portfolio_risk
 import portfolio_advisor
 import backtester
 import news_feed
+import momentum
 
 st.set_page_config(page_title="PSX Shariah Engine", layout="wide",
                    page_icon="📈")
@@ -573,6 +574,42 @@ if _glm_meta.get("status") == "ok" and _glm_ratings:
         st.caption(news_feed.glm_status_line())
 elif _glm_meta.get("status") in ("absent", "stale"):
     st.caption(f"🤖 {news_feed.glm_status_line()}")
+
+# --------------------------- momentum burst (top) --------------------------
+# Highest-placed panel by request. A burst is one session breaking out of the
+# stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
+# built — 83% beat at 3d (n=42), 71% at 7d (n=35), independence OK on both.
+# A WATCH tier, never a Buy: findings get surfaced, not wired into the score.
+try:
+    _bursts = momentum.scan()
+except Exception:
+    _bursts = []
+if _bursts:
+    st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} today")
+    st.caption(f"Single session ≥{momentum.MIN_GAIN_PCT:.0f}% on ≥"
+               f"{momentum.MIN_VOL_MULT:.1f}× the 20-day average volume. "
+               "Measured: beat the market 83% at 3 days (n=42), 71% at 7 days "
+               "(n=35), across 26 symbols and 14 sectors. **Not a Buy signal** — "
+               "a watch tier. Confirm manually.")
+    _bcols = st.columns(min(len(_bursts), 4))
+    for _i, _b in enumerate(_bursts):
+        with _bcols[_i % len(_bcols)]:
+            _bb = st.container(border=True)
+            _bb.markdown(
+                f'<div style="display:flex;justify-content:space-between;'
+                f'align-items:center"><span style="font-size:17px;font-weight:700">'
+                f'{_b["symbol"]}</span>{sig_pill(_b["signal"])}</div>'
+                f'<div style="font-size:22px;font-weight:800;color:{NEON["green"]}">'
+                f'+{_b["gain_pct"]:.2f}%</div>'
+                f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume · '
+                f'{fmt(_b["close"])}</div>'
+                f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
+                + (f'<div style="font-size:11px;color:{NEON["cyan"]};font-weight:700">'
+                   f'20-day high</div>' if _b["at_high"] else ''),
+                unsafe_allow_html=True)
+    st.caption("`20-day high` is a tag, not part of the trigger: it scored higher "
+               "at 3 days but its 7-day sample was 16 rows and 69% one sector.")
+    st.divider()
 
 # --------------------------- focus morning brief ---------------------------
 # The deep, position-aware read on config.FOCUS_SYMBOL: engine signal + the real
