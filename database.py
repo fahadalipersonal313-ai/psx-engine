@@ -121,8 +121,13 @@ def last_focus_brief(symbol=None):
         q += " WHERE symbol=?"
         args.append(symbol.upper())
     q += " ORDER BY id DESC LIMIT 1"
-    with conn() as c:
-        r = c.execute(q, args).fetchone()
+    try:
+        with conn() as c:
+            r = c.execute(q, args).fetchone()
+    except sqlite3.OperationalError:
+        # Table absent: a DB committed before this feature existed, on a host
+        # where init_db could not create it. No brief is not an error.
+        return None
     if not r:
         return None
     try:
