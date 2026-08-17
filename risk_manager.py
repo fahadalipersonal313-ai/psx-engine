@@ -103,7 +103,11 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
         warnings.append(f"Thin upside: room-to-resistance:risk {rr} below "
                         f"{round(rr_min, 2)}{_relax} — price near overhead "
                         "resistance, little room before the next ceiling")
-        vetoes.append("poor_rr")
+        # Gated at the source, not at the downgrade: any veto also forces
+        # risk_level "High", so leaving a disabled veto in the list would keep
+        # mislabelling cards the engine no longer blocks.
+        if config.POOR_RR_VETO_ENABLED:
+            vetoes.append("poor_rr")
     if technical.get("volume_spike") and sentiment.get("score", 50) > 80:
         warnings.append("Volume spike + euphoric sentiment — possible "
                         "manipulation / pump pattern, verify before acting")

@@ -234,6 +234,25 @@ PURE_TECHNICAL = True
 # tags — only the SIGNAL downgrade is off.
 CHASE_GUARD_ENABLED = False
 
+# Thin-headroom (poor_rr) downgrade. Measured 2026-08-17 on day-deduped stored
+# rows vs the same-day cohort median, with independence checks (measure.py):
+#
+#   blocked by poor_rr            n=47  beat 68.1%  median excess +1.73%  (3d)
+#   blocked by poor_rr, RS>=55    n=31  beat 77.4%  median excess +2.12%  (3d)
+#   emitted Buys                  n=21  beat 52.4%  median excess +0.41%  (3d)
+#
+# 7d agrees (blocked 65.5%, +1.60%); all three cohorts span 11-17 symbols and
+# 8-11 sectors, so this is not one sector's rally counted many times. The veto
+# was the most active in the system (48 of 98 score>=75 candidates) and was
+# rejecting a BETTER subset than it passed.
+#
+# Cause: headroom is measured to overhead resistance, and a leader making new
+# highs has none by construction — the same "penalise strength" flaw as the
+# chase guard. headroom_rr is still computed, still emitted as a warning and
+# still shown on cards; only the Buy->Watch downgrade is off. Flip to True to
+# restore.
+POOR_RR_VETO_ENABLED = False
+
 # Reference EMA for the pullback buy-zone and the extension (ext_pct) measure.
 # Was 20 (shallow dip). Now 50: a deeper retracement to the intermediate trend
 # line — a wider buy-zone that accepts more drawdown before the "uptrend intact"
