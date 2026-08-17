@@ -621,10 +621,16 @@ if _brief:
             f'color:{NEON["amber"]}">🪜 Scaled exit ladder — position is over the '
             f'single-name cap</div>', unsafe_allow_html=True)
         for _t in _brief["exit_plan"]:
+            _pl, _rk = _t.get("pl"), _t.get("risk")
+            _plh = ("" if _pl is None else
+                    f' · <span style="color:{NEON["green"] if _pl >= 0 else NEON["red"]}">'
+                    f'P&L {_pl:+,.0f}</span>')
+            _rkh = ("" if _rk is None else
+                    f' · <span style="color:{NEON["red"]}">at stop {_rk:+,.0f}</span>')
             _bx.markdown(
                 f'<div style="margin:4px 0;font-size:13px">'
                 f'<b>{_t["tranche"]}</b>: <b>{_t["shares"]:,}</b> shares · '
-                f'{_t["trigger"]} · ~PKR {_t["proceeds"]:,.0f}<br>'
+                f'{_t["trigger"]} · ~PKR {_t["proceeds"]:,.0f}{_plh}{_rkh}<br>'
                 f'<span style="opacity:.6">{_t["why"]}</span></div>',
                 unsafe_allow_html=True)
         _bx.caption("Tranches, not one exit: on this engine's graded history "

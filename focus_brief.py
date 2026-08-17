@@ -99,7 +99,7 @@ def _add_size(price, stop, cash, equity, current_value):
     return shares, shares * price
 
 
-def exit_plan(qty, price, stop, target1, equity, cap_pct):
+def exit_plan(qty, price, stop, target1, equity, cap_pct, avg_cost=None):
     """Scaled exit ladder for an oversized winner. Sells in tranches rather than
     all at once: on this engine's own graded history, score>=75 names that had
     already run >8% in the prior 5 sessions went ON to beat the market 92% of
@@ -117,10 +117,18 @@ def exit_plan(qty, price, stop, target1, equity, cap_pct):
     second = int(excess) - first
     runner = int(qty - first - second)
     plan = []
+    # Below breakeven the first tranche waits for it rather than banking a loss
+    # to fix a sizing problem; above it, de-risking at market is free.
+    under_water = avg_cost is not None and price < avg_cost
+    t1_trigger = (f"at or above breakeven {avg_cost:,.2f} "
+                  f"({(avg_cost / price - 1) * 100:+.2f}% away)" if under_water
+                  else f"at market (~{price:,.2f})")
+    t1_price = avg_cost if under_water else price
     if first:
-        plan.append({"tranche": "1 — de-risk now", "shares": first,
-                     "trigger": f"at market (~{price:,.2f})",
-                     "proceeds": first * price,
+        plan.append({"tranche": "1 — de-risk", "shares": first,
+                     "trigger": t1_trigger,
+                     "proceeds": first * t1_price,
+                     "pl": (t1_price - avg_cost) * first if avg_cost else None,
                      "why": "Removes the single-name risk that no stop protects: "
                             "a gap through your stop takes the whole book with it."})
     if second:
@@ -128,6 +136,7 @@ def exit_plan(qty, price, stop, target1, equity, cap_pct):
                      "trigger": f"on strength above {price * 1.03:,.2f} "
                                 f"(+3%), or at market if momentum stalls",
                      "proceeds": second * price * 1.03,
+                     "pl": (price * 1.03 - avg_cost) * second if avg_cost else None,
                      "why": f"Brings the position to the {cap_pct:.0f}% cap while "
                             "selling into demand rather than into a fall."})
     if runner > 0:
@@ -135,6 +144,8 @@ def exit_plan(qty, price, stop, target1, equity, cap_pct):
                      "trigger": f"trail below {stop:,.2f}; take profit at "
                                 f"{target1:,.2f}" if stop and target1 else "trail the stop",
                      "proceeds": runner * (target1 or price),
+                     "pl": ((target1 or price) - avg_cost) * runner if avg_cost else None,
+                     "risk": (stop - avg_cost) * runner if (stop and avg_cost) else None,
                      "why": "Keeps the upside the engine's Buy signal is pointing "
                             "at, sized so a stop-out is survivable."})
     return plan
@@ -243,7 +254,9 @@ def build(symbol=None, advice=None):
         "add_value": add_value,
         "over_cap": over_cap,
         "exit_plan": exit_plan((pos or {}).get("qty"), lv["price"], lv["stop"],
-                               lv["target1"], equity, cap) if pos else [],
+                               lv["target1"], equity, cap,
+                               (pos or {}).get("avg_cost")) if pos else [],
+        "breakeven": (pos or {}).get("avg_cost") if pos else None,
         "headlines": news_feed.raw_headlines(symbol, limit=5),
         "glm": news_feed.glm_rating(symbol),
         "track_record": _track_record(symbol),
@@ -283,8 +296,12 @@ def render_text(b):
     if b.get("exit_plan"):
         out.append("SCALED EXIT LADDER (position is over the single-name cap):")
         for t in b["exit_plan"]:
+            pl = t.get("pl")
+            pl_s = "" if pl is None else f" | P&L {pl:+,.0f}"
+            rk = t.get("risk")
+            rk_s = "" if rk is None else f" | at stop {rk:+,.0f}"
             out.append(f"  {t['tranche']}: {t['shares']:,} shares — {t['trigger']}")
-            out.append(f"      ~PKR {t['proceeds']:,.0f}. {t['why']}")
+            out.append(f"      ~PKR {t['proceeds']:,.0f}{pl_s}{rk_s}. {t['why']}")
         out.append("")
     on = [k for k, v in b["flags"].items() if v]
     off = [k for k, v in b["flags"].items() if not v]
