@@ -236,6 +236,12 @@ def main():
         print(focus_brief.render_text(db.last_focus_brief(sym or config.FOCUS_SYMBOL)))
     elif cmd == "evening":
         backtester.update_outcomes()
+        # Refresh the focus brief post-close so the overnight view reflects the
+        # last cycle rather than whatever the loop happened to write at 15:30.
+        try:
+            _save_focus_brief()
+        except Exception as e:
+            log.warning("Focus brief skipped: %s", e)
         text = reports.evening_report()
         print(text); reports.save_report(text, "evening")
         try:
