@@ -366,6 +366,80 @@ while being the single biggest driver of NRL's price. Sector phrases now route a
 headline to every peer, returned SEPARATELY and labelled sector news, so the
 company-level guarantee is untouched.
 
+## Momentum burst — the one new signal that measured (2026-08-17)
+
+`momentum.py` + a ⚡ panel at the TOP of the dashboard (user's placement).
+A burst is one session breaking out of a stock's own norm, computed from
+`daily_ohlc` — no fetch, and **no write path in `full_run`**, so it cannot take
+the signals down with it.
+
+Measured BEFORE building, then re-measured when the thresholds were loosened
+(day-deduped, vs same-day cohort median, independence-checked):
+
+| trigger | 3d | 7d |
+|---|---|---|
+| ≥3.0% & 1.5× vol | n=42, beat 83.3%, +2.54% | n=35, beat 71.4%, +1.92% |
+| **≥2.0% & 1.3× vol (shipped)** | n=66, beat **80.3%**, +2.14% | n=53, beat **71.7%**, +2.13% |
+
+The looser trigger (user's request, to enter earlier) costs ~3 points at 3 days
+but is IDENTICAL at 7 days with a better median excess, on 57% more signals.
+All four cohorts pass independence on both horizons — rare on this data, where
+score velocity (45%), OBV divergence (negative) and the accumulation heuristics
+all failed.
+
+Thresholds live in `config.MOMENTUM_BURST` so they can be re-measured and moved
+without editing code. **The dashboard caption quotes the measurement for the
+CURRENT thresholds** — if you change them, re-measure and update that text, or
+the panel advertises accuracy it no longer has.
+
+A stricter variant also requiring a 20-day closing high scored 91.3% at 3 days,
+but its 7-day sample is 16 rows / 69% one sector, so `at_high` ships as a TAG,
+not part of the trigger. **It is a watch tier, never a Buy** — see the audit.
+
+## Dashboard: what was deleted as measured noise (2026-08-17)
+
+Removed because this repo's own graded history condemns them, not for taste:
+
+- **Accumulation watch** (section + 🧲 pill). Its own caption admitted 47% beat
+  at 3d / 53% at 7d and a NEGATIVE OBV-divergence component, and pointed the
+  reader to Early watch instead.
+- **Confluence dots** on cards and in the brief. Outcomes were flat across it
+  (2/4 17%, 3/4 26%, 4/4 25%) — the gate was removed in August for exactly this
+  reason and the display outlived the evidence.
+- **Old "Momentum-burst watchlist"** (`db.momentum_bursts`, ≥5% movers, in the
+  Watchlist tab). Superseded by the measured ⚡ panel AND contradicting it — the
+  old caption said the engine "deliberately does NOT chase these". Two burst
+  lists disagreeing is worse than neither.
+
+**Kept on purpose** (zero score weight ≠ zero value): the unscored news window,
+the GLM panel, the regime what-if, and Early watch (CMF — the one lead
+indicator that measured; labelled unproven). Stored DB columns were NOT dropped,
+so the data keeps accruing for future measurement.
+
+## Morning timing — when signals actually land (2026-08-17)
+
+User wants fresh signals by **09:35 PKT**. What was wrong and what changed:
+
+- `MARKET_OPEN` was **09:15**, but PSX pre-open is 09:15-09:30 and REGULAR
+  trading starts **09:32**. The first cycle of every day was therefore scoring
+  yesterday's closes and presenting them as today's signals. Now `09:32`.
+- The pre-open poll slept **300s**, so the loop could idle until ~09:37 before
+  noticing the open. Now **60s**.
+
+Realistic timeline: loop kicked off by the 09:10 cron waits, first cycle starts
+~09:32, a full 50-symbol run takes ~5 min, so **fresh signals commit ~09:37**.
+Signals reflecting real trading CANNOT exist before 09:32 — that is the market,
+not the engine. Do not promise 09:35 exactly.
+
+**GitHub cron is best-effort** (fires late, skips under load), which is why
+`engine.yml` carries six staggered kickoffs. The external **cron-job.org
+pinger** (outside this repo, user-managed) is the only trigger that holds a
+precise time — point it at the `workflow_dispatch` endpoint.
+
+Also: `concurrency: cancel-in-progress: false` means every trigger arriving
+while a loop is alive shows as **cancelled** in the Actions list. That is by
+design, not a fault.
+
 ## Early warning / lead time (2026-08-13)
 
 User asked for signals "well ahead of time, not when the price has already
@@ -506,6 +580,8 @@ still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
   win rate. Run every finding through it before believing it.
 - `focus_brief.py` — position-aware 360° brief + scaled exit ladder + sector
   crowding for `config.FOCUS_SYMBOL`.
+- `momentum.py` — momentum-burst detector (config.MOMENTUM_BURST). Reads
+  `daily_ohlc` only; no write path in `full_run`.
 - `main.py` — CLI entry: `run / schedule / morning / evening / backtest SYMBOL /
   metrics / portfolio / accuracy / regrade / accumulating / history SYMBOL /
   fundamentals / measure / brief`.
@@ -574,7 +650,9 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-17. Four-day signal outage found and fixed
+**Last updated:** 2026-08-17 (end of session). Momentum-burst panel added and
+measured; dashboard stripped of measured-noise sections; morning timing fixed
+(MARKET_OPEN 09:15 → 09:32). Earlier the same day: four-day signal outage found and fixed
 (`outcome_7d` missing from `update_outcome`'s whitelist — see "The outage that
 froze signals"); `measure.py` independence checks; `poor_rr` veto DISABLED on
 measured evidence; focus brief + exit ladder for NRL; sector news routing;

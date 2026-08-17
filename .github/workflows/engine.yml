@@ -73,7 +73,11 @@ jobs:
         # cycles. Exits on weekend or once the clock passes market close.
         env:
           RUN_INTERVAL_MINUTES: '15'
-          MARKET_OPEN: '09:15'
+          # PSX pre-open is 09:15-09:30; REGULAR trading starts 09:32. Opening
+          # at 09:15 meant the first cycle of the day scored yesterday's closes
+          # and called them today's signals. 09:32 is the first moment a run can
+          # reflect real trading.
+          MARKET_OPEN: '09:32'
           MARKET_CLOSE: '15:45'
         run: |
           git config user.name "psx-bot"
@@ -85,7 +89,10 @@ jobs:
             if [[ "$now" > "$MARKET_CLOSE" ]]; then
               echo "Past market close ($now > $MARKET_CLOSE) — exiting loop."; exit 0; fi
             if [[ "$now" < "$MARKET_OPEN" ]]; then
-              echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 300; continue; fi
+              # 60s, not 300s: a 5-minute poll could idle until 09:37 before
+              # noticing the market had opened. The user wants signals by ~09:35,
+              # so the first cycle must start within a minute of the open.
+              echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 60; continue; fi
 
             echo "=== Cycle at $now PKT ==="
             # Adopt the newest committed DB BEFORE running. Without this, a run
