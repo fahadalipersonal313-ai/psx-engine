@@ -582,11 +582,18 @@ except Exception:
     _bursts = []
 if _bursts:
     st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} today")
-    st.caption(f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥"
-               f"{momentum.MIN_VOL_MULT:g}× the {momentum.LOOKBACK}-day average "
-               "volume. Measured at these thresholds: beat the market 80% at "
-               "3 days (n=66), 72% at 7 days (n=53), independence-checked. "
-               "**Not a Buy signal** — a watch tier. Confirm manually.")
+    _sess = momentum.session_fraction()
+    _live = _sess < 1.0
+    st.caption(
+        f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
+        f"the {momentum.LOOKBACK}-day average volume. Measured at these "
+        "thresholds on COMPLETED sessions: beat the market 80% at 3 days (n=66), "
+        "72% at 7 days (n=53), independence-checked. **Not a Buy signal** — a "
+        "watch tier. Confirm manually."
+        + (f" &nbsp;·&nbsp; ⏳ Market open, **{_sess * 100:.0f}% of the session's "
+           "typical volume has traded** — intraday rows are marked provisional "
+           "and can still fade; the measured beat rates describe end-of-day "
+           "bursts, not these." if _live else ""))
     _bcols = st.columns(min(len(_bursts), 4))
     for _i, _b in enumerate(_bursts):
         with _bcols[_i % len(_bcols)]:
@@ -597,9 +604,12 @@ if _bursts:
                 f'{_b["symbol"]}</span>{sig_pill(_b["signal"])}</div>'
                 f'<div style="font-size:22px;font-weight:800;color:{NEON["green"]}">'
                 f'+{_b["gain_pct"]:.2f}%</div>'
-                f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume · '
-                f'{fmt(_b["close"])}</div>'
-                f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
+                f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume'
+                f'{" pace" if _b.get("provisional") else ""} · {fmt(_b["close"])}</div>'
+                + (f'<div style="font-size:11px;color:{NEON["amber"]}">provisional · '
+                   f'{_b["session_pct"]}% of session</div>'
+                   if _b.get("provisional") else '')
+                + f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
                 + (f'<div style="font-size:11px;color:{NEON["cyan"]};font-weight:700">'
                    f'20-day high</div>' if _b["at_high"] else ''),
                 unsafe_allow_html=True)

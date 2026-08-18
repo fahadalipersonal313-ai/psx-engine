@@ -267,7 +267,33 @@ MOMENTUM_BURST = {
     "min_gain_pct": 2.0,     # single-session advance
     "min_vol_mult": 1.3,     # vs the 20-day average volume
     "lookback": 20,          # window for the volume norm and the high tag
+    # Below this share of the day's volume having traded, an intraday burst is
+    # not reported at all: a tiny denominator makes the pace ratio explode on
+    # noise. ~0.10 corresponds to roughly 09:50 PKT.
+    "min_session_fraction": 0.10,
 }
+
+# Empirical intraday volume curve, minute-of-day (PKT) -> median share of the
+# session's FINAL volume traded by then. Measured 2026-08-18 from 865 stored
+# symbol-days (runs.volume is cumulative day volume at each 15-min cycle),
+# restricted to the PKT-timestamped era — older rows were written in UTC.
+#
+# Why this exists: the burst detector compared volume-SO-FAR against a
+# full-day 20-day average, so mid-session every stock looked like 0.2-0.3x and
+# NO burst could ever fire while the market was open — the exact opposite of
+# the "chase earlier" intent. It only worked after the close.
+#
+# The curve is markedly non-linear: 16.6% of the day's volume trades in the
+# first 28 minutes. A naive elapsed-time pro-rata would understate expected
+# early volume and fire on ordinary mornings.
+INTRADAY_VOLUME_CURVE = [
+    (572, 0.00),   # 09:32 open
+    (600, 0.166),  # 10:00
+    (630, 0.268), (660, 0.359), (690, 0.417), (720, 0.487),
+    (750, 0.546), (780, 0.606), (810, 0.657), (840, 0.708),
+    (870, 0.799), (900, 0.905),
+    (930, 1.00),   # 15:30 close
+]
 
 # Reference EMA for the pullback buy-zone and the extension (ext_pct) measure.
 # Was 20 (shallow dip). Now 50: a deeper retracement to the intermediate trend

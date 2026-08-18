@@ -29,6 +29,7 @@ CLAUDE.md showed the gate layer selecting the worst subset of a pool that had
 edge, so new findings are surfaced, not wired into the score.
 """
 
+import datetime
 import logging
 
 import config
@@ -42,6 +43,41 @@ _CFG = getattr(config, "MOMENTUM_BURST", {}) or {}
 MIN_GAIN_PCT = _CFG.get("min_gain_pct", 2.0)
 MIN_VOL_MULT = _CFG.get("min_vol_mult", 1.3)
 LOOKBACK = int(_CFG.get("lookback", 20))
+MIN_SESSION_FRACTION = _CFG.get("min_session_fraction", 0.10)
+
+
+# Pakistan is UTC+5 year-round (no DST). Do NOT use datetime.now(): this code
+# runs on GitHub runners (TZ=Asia/Karachi), on Streamlit Cloud (UTC) and in
+# sandboxes (UTC), and a UTC clock puts every PSX session time before the open,
+# which silently zeroed the intraday volume curve.
+PKT = datetime.timezone(datetime.timedelta(hours=5))
+
+
+def pkt_now():
+    return datetime.datetime.now(PKT)
+
+
+def session_fraction(now=None):
+    """Median share of a session's FINAL volume that has traded by `now`,
+    from config.INTRADAY_VOLUME_CURVE. 1.0 outside the session.
+
+    Without this the detector compared volume-so-far against a whole-day
+    average, so mid-session everything read 0.2-0.3x and no burst could fire
+    while the market was open."""
+    curve = getattr(config, "INTRADAY_VOLUME_CURVE", None)
+    if not curve:
+        return 1.0
+    now = now or pkt_now()
+    m = now.hour * 60 + now.minute
+    if m <= curve[0][0]:
+        return 0.0
+    if m >= curve[-1][0]:
+        return 1.0
+    for (m0, f0), (m1, f1) in zip(curve, curve[1:]):
+        if m0 <= m <= m1:
+            span = (m1 - m0) or 1
+            return f0 + (f1 - f0) * (m - m0) / span
+    return 1.0
 
 
 def _series(symbol, limit=60):
@@ -66,12 +102,24 @@ def detect(symbol):
     if not vols:
         return None
     vavg = sum(vols) / len(vols)
-    mult = last["volume"] / vavg if vavg else 0
+    # Compare like with like: a partial session's volume against the share of an
+    # average day that would normally have traded by now.
+    today = pkt_now().date().isoformat()
+    frac = session_fraction() if last["date"] == today else 1.0
+    partial = frac < 1.0
+    if partial and frac < MIN_SESSION_FRACTION:
+        return None                      # denominator too small to be meaningful
+    expected = vavg * frac if frac else vavg
+    mult = last["volume"] / expected if expected else 0
     if gain < MIN_GAIN_PCT or mult < MIN_VOL_MULT:
         return None
     highs = [b["close"] for b in window if b["close"]]
     return {"symbol": symbol, "date": last["date"], "gain_pct": gain,
             "vol_mult": mult, "close": last["close"],
+            # True while the session is still open: the move can still fade, and
+            # the measured beat rates below describe the END-OF-DAY trigger.
+            "provisional": partial,
+            "session_pct": round(frac * 100),
             # Stronger at 3 days but unconfirmed at 7 — a tag, not a trigger.
             "at_high": bool(highs and last["close"] >= max(highs))}
 
