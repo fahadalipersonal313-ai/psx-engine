@@ -31,7 +31,17 @@ on:
     - cron: '45 4 * * 1-5'          # 09:45 PKT
     - cron: '10 5 * * 1-5'          # 10:10 PKT — mid-morning self-heal
     - cron: '10 6 * * 1-5'          # 11:10 PKT — later self-heal if all above skipped
-  workflow_dispatch: {}   # primary trigger: cron-job.org pinger + manual runs
+  workflow_dispatch: {}   # cron-job.org pinger + manual runs
+  # Dependency-free kickoff: pushing ANY change to `.engine-kick` starts the
+  # loop. Added 2026-08-18 after BOTH existing triggers failed silently on the
+  # same morning (GitHub's scheduler fired nothing for this repo across two
+  # workflows; the external pinger went quiet) and the user got no signals.
+  # A caller that can push git — but has no GitHub API token — can now start the
+  # engine. The path filter matters: the loop commits psx_engine.db every ~15
+  # minutes, and an unfiltered push trigger would spawn a run for each one.
+  push:
+    branches: [main]
+    paths: ['.engine-kick']
 
 permissions:
   contents: write          # needed to commit the updated database
