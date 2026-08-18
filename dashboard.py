@@ -5,10 +5,10 @@ Run:  streamlit run dashboard.py
 
 Top of page (no clicks needed): a status strip (market regime, actionable count,
 data health, last updated), a "what changed since last run" line, trade-plan
-cards for the actual Buys (with position sizing from your capital), a "high score
-but NOT a Buy — why" panel, and a book-level Portfolio-risk glimpse (total heat +
-sector caps, Tier 2 #9). Drill-down tabs below hold the full colour-coded
-watchlist, the Portfolio book, the strategy Edge backtest (expectancy / profit
+cards for the actual Buys, and a "high score but NOT a Buy — why" panel. The
+book/cash tracking was removed 2026-08-18 at the user's request — they manage
+position sizing themselves. Drill-down tabs below hold the full colour-coded
+watchlist, the strategy Edge backtest (expectancy / profit
 factor / max drawdown / out-of-sample, Tier 2 #8), per-stock charts, history,
 news, and reports.
 """
@@ -24,8 +24,6 @@ import plotly.graph_objects as go
 import config
 import database as db
 import data_fetcher
-import portfolio_risk
-import portfolio_advisor
 import backtester
 import news_feed
 import momentum
@@ -399,8 +397,6 @@ for col in ("relative_strength", "market_regime", "buy_zone_low", "buy_zone_high
     if col not in latest.columns:
         latest[col] = None
 
-# Your saved book (holdings + ready cash) — drives the Portfolio tab + sizing.
-_portfolio = portfolio_advisor.load_portfolio()
 latest_by_symbol = {r["symbol"]: r for r in rows}
 
 regime = (latest["market_regime"].dropna().iloc[0]
@@ -437,29 +433,10 @@ compact = st.sidebar.toggle("📱 Compact view", value=st.session_state.get("com
 st.session_state["compact"] = compact
 if compact:
     _inject_compact_css()
-capital = st.sidebar.number_input(
-    "Ready cash to deploy (PKR)", min_value=0,
-    value=int(_portfolio.get("cash_pkr") or 200_000), step=25_000, format="%d")
 st.sidebar.caption(
     f"Per-trade risk {config.RISK['max_risk_per_trade_pct']}% · max "
     f"{config.RISK['max_position_pct']}% per stock.")
-st.sidebar.caption(
-    f"Book caps: heat {config.PORTFOLIO_RISK['max_portfolio_heat_pct']:.0f}% · "
-    f"sector {config.PORTFOLIO_RISK['max_sector_exposure_pct']:.0f}% · "
-    f"{config.PORTFOLIO_RISK['max_open_positions']} positions.")
-st.sidebar.caption("Defaults to the cash in portfolio.json. The **Portfolio** tab "
-                   "builds a strategy from your actual holdings + this cash.")
-
 st.sidebar.caption(news_feed.glm_status_line())
-
-# ----------------------------- portfolio risk (computed once) -------------
-buy_cands = [{"symbol": r["symbol"], "score": r["final_score"],
-              "signal": r["signal"], "price": r["price"], "stop": r["stop_loss"],
-              "sector": config.SECTORS.get(r["symbol"], "Unknown")}
-             for _, r in latest.iterrows()
-             if r["signal"] in ("Buy", "Strong Buy")]
-pf = portfolio_risk.assess(buy_cands, capital=capital)
-book = pf["book"]
 
 # ----------------------------- header + status strip ----------------------
 st.title("📈 PSX Shariah Engine — Today")
@@ -527,10 +504,9 @@ tile(t2, "Actionable now", f"{len(buys)} buys", _act_sub)
 top = buys.iloc[0]["symbol"] if not buys.empty else "—"
 tile(t3, "Top pick", top,
      f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
-tile(t4, "Portfolio heat",
-     f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
-     f'{book["heat_pct"]:.1f}%</span>',
-     f"of {book['max_heat_pct']:.0f}% cap · {book['open_positions']} positions")
+tile(t4, "Candidates ≥75",
+     f'{int((latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]).sum())}',
+     "scoring in the Buy band")
 tile(t5, "Last updated", _last_updated_html,
      "reboot app if stale" if _stale_level == "fresh"
      else f"⚠ data {_age_hours:.0f}h old — signals may not reflect current price")
@@ -648,9 +624,7 @@ if _brief:
                else f'P&L {_p["pl_pct"]:+.1f}%')
         _bx.markdown(
             f'<span style="font-size:13px">📦 <b>{_p["qty"]:,.0f}</b> shares · '
-            f'PKR {_p["value"]:,.0f} · <b>{_p["pos_pct"]:.1f}%</b> of book · {_pl}'
-            f' &nbsp;·&nbsp; 💵 cash PKR {_brief["cash"]:,.0f}</span>',
-            unsafe_allow_html=True)
+            f'{_pl}</span>', unsafe_allow_html=True)
     _bx.markdown(
         f'{sig_pill(_brief["signal"])} &nbsp;'
         f'<span style="font-size:13px;opacity:.8">score '
@@ -753,8 +727,8 @@ elif compact:
                  "Conf%": "{:.0f}", "RS": "{:.0f}"}, na_rep="—"),
         width="stretch", hide_index=True)
 else:
-    st.caption("Manual confirmation required before any order. See the "
-               "**🛡 Portfolio** tab for sizing against your actual holdings + cash.")
+    st.caption("Manual confirmation required before any order. Position sizing "
+               "is yours to manage.")
     cards = list(action.iterrows())
     for i in range(0, len(cards), 2):
         cols = st.columns(2)
@@ -841,25 +815,6 @@ def _why_not_buy_section():
             unsafe_allow_html=True)
 
 
-def _portfolio_glimpse_section():
-    if not buy_cands:
-        return
-    g1, g2, g3, g4 = st.columns(4)
-    tile(g1, "Total heat",
-         f'<span style="color:{NEON["green"] if book["heat_pct"] <= book["max_heat_pct"] else NEON["red"]}">'
-         f'{book["heat_pct"]:.2f}%</span>',
-         f"cap {book['max_heat_pct']:.0f}% · {book['heat_room_pct']:.1f}% room")
-    tile(g2, "Capital deployed", f'{book["deployed_pct"]:.0f}%',
-         f"{book['cash_pct']:.0f}% cash")
-    tile(g3, "Open positions", f'{book["open_positions"]}',
-         f"max {book['max_open_positions']}")
-    tile(g4, "Deferred by caps", f'{book["deferred"]}',
-         "see Portfolio tab")
-    if pf["deferred"]:
-        st.caption("⚠ " + " · ".join(f"**{d['symbol']}** {d['reason']}"
-                                     for d in pf["deferred"][:4]))
-
-
 def _early_watch_section():
     ew = latest[latest.get("early_watch").fillna(0) == 1] if "early_watch" in latest.columns \
         else latest.iloc[0:0]
@@ -894,15 +849,6 @@ if not _why.empty:
         st.subheader("⚠ High score, but NOT a Buy — here's why")
         _why_not_buy_section()
 
-# ----------------------------- PORTFOLIO GLIMPSE --------------------------
-if buy_cands:
-    if compact:
-        with st.expander("🛡 Portfolio risk — does the book fit?"):
-            _portfolio_glimpse_section()
-    else:
-        st.subheader("🛡 Portfolio risk — does the book fit?")
-        _portfolio_glimpse_section()
-
 # ----------------------------- EARLY WATCH ---------------------------------
 if compact:
     with st.expander("🔭 Early watch — building before the Buy band"):
@@ -914,9 +860,9 @@ else:
 st.divider()
 
 # ----------------------------- tabs (drill-down) --------------------------
-(tab_watch, tab_port, tab_edge, tab_stock, tab_hist,
+(tab_watch, tab_edge, tab_stock, tab_hist,
  tab_news, tab_reports) = st.tabs(
-    ["📋 Watchlist", "🛡 Portfolio", "🧪 Edge", "🔍 Stock detail",
+    ["📋 Watchlist", "🧪 Edge", "🔍 Stock detail",
      "📈 History", "📰 News", "📋 Reports"])
 
 with tab_watch:
@@ -953,189 +899,6 @@ with tab_watch:
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
-
-with tab_port:
-    st.subheader("💼 My portfolio — profit/loss & strategy")
-    st.caption("Enter your holdings (symbol, shares, average buy price). Ready cash "
-               f"comes from the sidebar (**PKR {capital:,}**). Your book + the "
-               "engine's latest signals → a per-position action and a cash plan.")
-
-    _seed = (pd.DataFrame(_portfolio["holdings"]) if _portfolio["holdings"]
-             else pd.DataFrame([{"symbol": "", "qty": 0, "avg_cost": 0.0}]))
-    _seed = _seed.reindex(columns=["symbol", "qty", "avg_cost"])
-    edited = st.data_editor(
-        _seed, num_rows="dynamic", hide_index=True, width="stretch", key="pf_editor",
-        column_config={
-            "symbol": st.column_config.TextColumn("Symbol", help="PSX ticker e.g. LUCK"),
-            "qty": st.column_config.NumberColumn("Shares", min_value=0, step=1),
-            "avg_cost": st.column_config.NumberColumn("Avg cost (PKR)",
-                                                      min_value=0.0, format="%.2f")})
-    _holds = []
-    for _rec in edited.to_dict("records"):
-        _sym = str(_rec.get("symbol") or "").strip().upper()
-        try:
-            _qty, _avg = float(_rec.get("qty") or 0), float(_rec.get("avg_cost") or 0)
-        except (TypeError, ValueError):
-            continue
-        if _sym and _qty > 0:
-            _holds.append({"symbol": _sym, "qty": _qty, "avg_cost": _avg})
-
-    adv = portfolio_advisor.advise({"cash_pkr": capital, "holdings": _holds},
-                                   latest_by_symbol)
-    tot = adv["totals"]
-    # pl is None when any holding lacks a cost basis — measuring full market
-    # value against partial cost would print a phantom gain.
-    _plc = NEON["dim"] if tot["pl"] is None else (
-        NEON["green"] if tot["pl"] >= 0 else NEON["red"])
-    _pltxt = "unknown" if tot["pl"] is None else f'PKR {tot["pl"]:,.0f}'
-    p1, p2, p3, p4 = st.columns(4)
-    tile(p1, "Equity (holdings+cash)", f'PKR {tot["equity"]:,.0f}',
-         f'{tot["deployed_pct"]:.0f}% deployed')
-    tile(p2, "Holdings value", f'PKR {tot["market_value"]:,.0f}',
-         f'cost PKR {tot["invested_cost"]:,.0f}')
-    tile(p3, "Unrealised P/L",
-         f'<span style="color:{_plc}">{_pltxt}</span>',
-         (f'{tot["pl_pct"]:+.1f}%' if tot["pl_pct"] is not None
-          else "no avg cost on file"))
-    tile(p4, "Ready cash", f'PKR {tot["cash"]:,.0f}',
-         f'PKR {tot["cash_after_plan"]:,.0f} left after plan')
-
-    def _act_css(v):
-        c = (NEON["green"] if v in ("AVERAGE DOWN", "ADD", "NEW POSITION")
-             else NEON["red"] if ("EXIT" in str(v) or "TRIM" in str(v))
-             else NEON["dim"])
-        return f"color:{c};font-weight:700"
-
-    def _sig_css_p(v):
-        c = NEON_SIG.get(v)
-        return f"color:{c};font-weight:700" if c else ""
-
-    def _pl_css(v):
-        if v is None or (isinstance(v, float) and pd.isna(v)):
-            return ""
-        return f"color:{NEON['green'] if v >= 0 else NEON['red']};font-weight:700"
-
-    if adv["holdings"]:
-        st.markdown("##### Your positions")
-        hd = pd.DataFrame([{
-            "Symbol": h["symbol"], "Shares": h["qty"], "Avg": h["avg_cost"],
-            "Price": h["price"], "Value": h["value"], "P/L PKR": h["pl"],
-            "P/L %": h["pl_pct"], "Signal": h["signal"], "Action": h["action"],
-            "Why": h["detail"]} for h in adv["holdings"]])
-        st.dataframe(
-            hd.style.map(_act_css, subset=["Action"])
-            .map(_sig_css_p, subset=["Signal"])
-            .map(_pl_css, subset=["P/L PKR", "P/L %"])
-            .format({"Avg": "{:.2f}", "Price": "{:.2f}", "Value": "{:,.0f}",
-                     "P/L PKR": "{:,.0f}", "P/L %": "{:+.1f}"}, na_rep="—"),
-            width="stretch", hide_index=True)
-    else:
-        st.info("Add your holdings above to see profit/loss and a per-position strategy.")
-
-    st.markdown("##### 💵 How to deploy your ready cash")
-    if adv["deploy"]:
-        st.caption("Best-conviction first; cash allocated in order, respecting the "
-                   f"{config.RISK['max_position_pct']:.0f}% per-stock cap and "
-                   f"{config.RISK['max_risk_per_trade_pct']}% per-trade risk. "
-                   "AVERAGE DOWN/ADD = your existing stocks; NEW POSITION = fresh.")
-        dd = pd.DataFrame([{
-            "Action": d["kind"], "Symbol": d["symbol"], "Signal": d["signal"],
-            "Shares": d["shares"], "≈PKR": d["value"], "Price": d["price"],
-            "Score": d["score"]} for d in adv["deploy"]])
-        st.dataframe(dd.style.map(_act_css, subset=["Action"])
-                     .map(_sig_css_p, subset=["Signal"])
-                     .format({"≈PKR": "{:,.0f}", "Price": "{:.2f}", "Score": "{:.1f}"}),
-                     width="stretch", hide_index=True)
-    else:
-        st.caption("No Buy/Strong-Buy ideas to deploy into right now (or no spare cash).")
-
-    with st.expander("💾 Save these holdings (persist to portfolio.json)"):
-        st.caption("Streamlit Cloud can't write to the repo. Copy this into "
-                   "`portfolio.json` and commit it (or send it to Claude) to persist.")
-        st.code(json.dumps({"cash_pkr": capital, "holdings": _holds}, indent=2),
-                language="json")
-
-    st.divider()
-    st.subheader("🛡 Book-level risk of current Buy signals")
-    st.caption("Per-trade sizing caps one loss; this caps CORRELATED loss across "
-               "the whole book. Buys are admitted best-score-first until a cap "
-               "binds (total heat, sector exposure, or position count).")
-    if not buy_cands:
-        st.info("No Buy signals to assemble into a book right now.")
-    else:
-        m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Total heat", f'{book["heat_pct"]:.2f}%',
-                  f'cap {book["max_heat_pct"]:.0f}%', delta_color="off")
-        m2.metric("Deployed", f'{book["deployed_pct"]:.0f}%',
-                  f'{book["cash_pct"]:.0f}% cash', delta_color="off")
-        m3.metric("Positions", f'{book["open_positions"]}',
-                  f'max {book["max_open_positions"]}', delta_color="off")
-        m4.metric("Deferred", f'{book["deferred"]}', "capped out",
-                  delta_color="off")
-
-        cga, cgb = st.columns([1, 1.3])
-        with cga:
-            gmax = max(book["max_heat_pct"] * 1.6, book["heat_pct"] * 1.2, 1)
-            gauge = go.Figure(go.Indicator(
-                mode="gauge+number",
-                value=book["heat_pct"],
-                number={"suffix": "%", "font": {"color": NEON["cyan"], "size": 34}},
-                title={"text": "Total portfolio heat", "font": {"color": NEON["dim"]}},
-                gauge={
-                    "axis": {"range": [0, gmax], "tickcolor": NEON["dim"]},
-                    "bar": {"color": NEON["cyan"]},
-                    "bgcolor": "rgba(0,0,0,0)",
-                    "borderwidth": 0,
-                    "steps": [
-                        {"range": [0, book["max_heat_pct"]],
-                         "color": "rgba(0,255,163,0.18)"},
-                        {"range": [book["max_heat_pct"], gmax],
-                         "color": "rgba(255,77,109,0.18)"}],
-                    "threshold": {"line": {"color": NEON["red"], "width": 3},
-                                  "thickness": 0.8, "value": book["max_heat_pct"]}}))
-            st.plotly_chart(neon_fig(gauge, height=260), width="stretch")
-        with cgb:
-            secs = book["sector_exposure"]
-            if secs:
-                names = list(secs.keys())
-                vals = [secs[s]["pct"] for s in names]
-                colors = [NEON["red"] if v > book["max_sector_pct"] else NEON["violet"]
-                          for v in vals]
-                bar = go.Figure(go.Bar(x=vals, y=names, orientation="h",
-                                       marker=dict(color=colors),
-                                       text=[f"{v:.0f}%" for v in vals],
-                                       textposition="outside"))
-                bar.add_vline(x=book["max_sector_pct"], line_dash="dash",
-                              line_color=NEON["red"],
-                              annotation_text=f"cap {book['max_sector_pct']:.0f}%",
-                              annotation_font_color=NEON["red"])
-                bar.update_layout(title="Sector exposure (% of capital)")
-                st.plotly_chart(neon_fig(bar, height=260), width="stretch")
-
-        st.markdown("##### ✅ Fits the book now")
-        adf = pd.DataFrame(pf["admitted"])
-        if len(adf):
-            adf = adf[["symbol", "signal", "sector", "shares", "value",
-                       "weight_pct", "risk", "heat_pct", "score"]]
-            adf.columns = ["Symbol", "Signal", "Sector", "Shares", "Value PKR",
-                           "Weight%", "Risk PKR", "Heat%", "Score"]
-            st.dataframe(adf.style.format(
-                {"Value PKR": "{:,.0f}", "Risk PKR": "{:,.0f}",
-                 "Weight%": "{:.1f}", "Heat%": "{:.2f}", "Score": "{:.1f}"}),
-                width="stretch", hide_index=True)
-        else:
-            st.caption("None could be admitted within the caps.")
-
-        if pf["deferred"]:
-            st.markdown("##### ⏸ Deferred — a cap would be breached")
-            for d in pf["deferred"]:
-                st.markdown(f'{sig_pill(d["signal"])} &nbsp;**{d["symbol"]}** '
-                            f'({d["sector"]}) — '
-                            f'<span style="opacity:.8">{d["reason"]}</span>',
-                            unsafe_allow_html=True)
-        if pf["unsizable"]:
-            st.caption("Un-sizable (no usable price/stop): "
-                       + ", ".join(u["symbol"] for u in pf["unsizable"]))
 
 with tab_edge:
     st.subheader("🧪 Strategy edge — backtest")
