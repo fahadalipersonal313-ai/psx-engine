@@ -690,12 +690,22 @@ quality gate, RS laggard veto, strict-history confidence).
   ladder + null-P&L guards, `254a926` cost-aware ladder, `10dc641` evening
   refreshes the brief, `5380740` measure.py + sector news + crowding,
   `8a2b65f` poor_rr veto disabled.
-- **Real book (`portfolio.json`) as of 2026-08-17:** NRL only — 3,069 shares
-  @ avg 535.26, cash PKR 1,500,000. That is ~52% of equity in one name, above
-  the 25% single-name cap, so the `concentrated` veto fires on NRL: strong
-  setup, wrong size. PSO/PRL/FABL were removed (user reported zero shares).
-  NRL closed 533.29 on 08-17 (+6.71%, new 52-wk high 547.90 on 3.4x volume),
-  i.e. the position is marginally UNDER water, not a winner.
+- **Real book (`portfolio.json`) re-synced 2026-08-21 10:15 PKT** from the
+  KTrade custody screen — five positions, cash (Long Limit Avl) PKR 871,036:
+  NRL 2,139 @ 491.55, PIBTL 5,000 @ 17.17, FABL 66 @ 97.09, PSO 4 @ 381.80,
+  PRL 1 @ 36.29. Every per-line P&L reconciles exactly against the terminal's
+  own "Total gain/loss" column, so the read is verified, not inferred.
+  **The NRL cost basis moved 535.26 → 491.55** (the terminal also showed 1,192
+  bought / 1,000 sold that session, so the user has been actively averaging).
+  At 492.98 the position is **+PKR 3,059, marginally IN profit** — the previous
+  note that it was under water no longer holds, and the cost-aware exit ladder
+  now prices all three tranches as gains rather than making tranche 1 wait for
+  breakeven. Concentration is UNCHANGED as the live problem: NRL is **52.3% of
+  equity** (92.2% of holdings ex-cash), still far above the 25% single-name cap,
+  so the `concentrated` veto still fires. Averaging down cut the loss, not the
+  risk. GHNI (300) and FCEPL (1,000) are GONE from the book; PIBTL halved
+  10,000 → 5,000; PSO cut 1,041 → 4 and FCEPL's exit means the 08-18 sync is
+  stale wherever it is quoted.
 - **Dashboard was never rebooted on 08-17**, so the user saw a pre-deploy
   snapshot ("08-13, 92.2h old") all day. Streamlit Cloud serves the git
   snapshot from its last deploy — Manage app → Reboot app is required before
