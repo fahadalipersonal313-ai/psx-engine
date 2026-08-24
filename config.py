@@ -253,6 +253,14 @@ CHASE_GUARD_ENABLED = False
 # restore.
 POOR_RR_VETO_ENABLED = False
 
+# User turned this off 2026-08-24: no portfolio-based downgrades. The
+# `concentrated` veto used to downgrade a fresh Buy to Watch whenever the
+# symbol was already above `RISK["max_existing_concentration_pct"]` of the
+# real book. When False, neither the veto nor its warning line fires; the
+# dashboard's focus-brief panel is also suppressed. Flip back to True to
+# restore the guard.
+CONCENTRATION_VETO_ENABLED = False
+
 # Momentum burst (momentum.py) — one session breaking out of a stock's own norm.
 # Loosened 2026-08-17 from 3.0%/1.5x to catch the move earlier. Measured both
 # ways, day-deduped vs the same-day cohort median, independence-checked:

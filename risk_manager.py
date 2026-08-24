@@ -76,13 +76,15 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
     if technical.get("breakdown"):
         warnings.append("TECHNICAL BREAKDOWN below support")
         vetoes.append("breakdown")
-    conc = _concentration_pct(symbol, price, holdings)
-    conc_cap = config.RISK.get("max_existing_concentration_pct")
-    if conc is not None and conc_cap and conc > conc_cap:
-        warnings.append(f"CONCENTRATED: {symbol} is already {conc}% of the book "
-                        f"(cap {conc_cap}%) — adding here increases single-name "
-                        "risk, the exposure per-trade sizing cannot see")
-        vetoes.append("concentrated")
+    if config.CONCENTRATION_VETO_ENABLED:
+        conc = _concentration_pct(symbol, price, holdings)
+        conc_cap = config.RISK.get("max_existing_concentration_pct")
+        if conc is not None and conc_cap and conc > conc_cap:
+            warnings.append(f"CONCENTRATED: {symbol} is already {conc}% of the "
+                            f"book (cap {conc_cap}%) — adding here increases "
+                            "single-name risk, the exposure per-trade sizing "
+                            "cannot see")
+            vetoes.append("concentrated")
 
     # News- and sentiment-derived flags. In PURE_TECHNICAL mode they are still
     # surfaced as warnings (the dashboard shows them for manual cross-checking)

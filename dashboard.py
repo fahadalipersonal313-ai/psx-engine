@@ -549,6 +549,46 @@ if _glm_meta.get("status") == "ok" and _glm_ratings:
 elif _glm_meta.get("status") in ("absent", "stale"):
     st.caption(f"🤖 {news_feed.glm_status_line()}")
 
+# ---------------------- News across the board (always on) ------------------
+# User asked 2026-08-24: news should ALSO be visible outside the per-card
+# pills. This panel lists every credible-desk, anchor-gated headline for
+# every ticker in the universe, decorated with the AI rating pill when one
+# exists — a single scannable view of what's moving names right now.
+_all_news, _seen = [], set()
+for _sym in config.STOCKS:
+    for _h in news_feed.raw_headlines(_sym, limit=4):
+        if _h["url"] in _seen:
+            continue
+        _seen.add(_h["url"])
+        _h["_sym"] = _sym
+        _all_news.append(_h)
+# Sort rated tickers first so positive/negative surface above unrated noise.
+_R_ORDER = {"highly_positive": 0, "positive": 1, "negative": 2,
+            "highly_negative": 3, "neutral": 4}
+_all_news.sort(key=lambda h: _R_ORDER.get(
+    (_glm_ratings.get(h["_sym"]) or {}).get("rating"), 5))
+st.markdown("### 📰 News across the board — last 24h")
+if _all_news:
+    st.caption(f"{len(_all_news)} credible-desk headlines across "
+               f"{len({h['_sym'] for h in _all_news})} tickers. Company-anchored; "
+               "unscored except by the AI pill on the left.")
+    for _h in _all_news[:60]:
+        _rv = _glm_ratings.get(_h["_sym"])
+        _pillh = glm_pill(_rv) if _rv else ""
+        st.markdown(
+            f'{_pillh} <b>{_h["_sym"]}</b> · '
+            f'<a href="{_h["url"]}" target="_blank">{_h["title"]}</a> · '
+            f'<i style="opacity:.7">{_h.get("publisher") or "?"}</i>',
+            unsafe_allow_html=True,
+        )
+    if len(_all_news) > 60:
+        st.caption(f"…and {len(_all_news) - 60} more not shown.")
+else:
+    st.caption("No credible-desk company-anchored headlines in the last 24h. "
+               "The anchor gate is conservative on purpose — a few real "
+               "company items beats hundreds of loose matches.")
+st.divider()
+
 # --------------------------- momentum burst (top) --------------------------
 # Highest-placed panel by request. A burst is one session breaking out of the
 # stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
@@ -598,7 +638,9 @@ if _bursts:
 # --------------------------- focus morning brief ---------------------------
 # The deep, position-aware read on config.FOCUS_SYMBOL: engine signal + the real
 # book position resolved into ONE action. Never a competing score.
-_brief = db.last_focus_brief(config.FOCUS_SYMBOL)
+# Portfolio-aware focus brief only rendered when the concentration guard is
+# on; the user turned it off to remove portfolio analysis from the dashboard.
+_brief = db.last_focus_brief(config.FOCUS_SYMBOL) if config.CONCENTRATION_VETO_ENABLED else None
 if _brief:
     _ACT_COLOR = {"ADD": NEON["green"], "OPEN (in buy-zone)": NEON["green"],
                   "HOLD — DO NOT ADD": NEON["amber"], "WAIT FOR ZONE": NEON["amber"],
