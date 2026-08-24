@@ -184,19 +184,20 @@ def _news_window(symbol, nv=None):
 
 
 _GLM_STYLE = {
-    "highly_positive": (NEON["green"], "▲▲ GLM highly +ve"),
-    "positive":        (NEON["green"], "▲ GLM +ve"),
-    "neutral":         ("#8aa0c0",     "● GLM neutral"),
-    "negative":        (NEON["red"],   "▼ GLM -ve"),
-    "highly_negative": (NEON["red"],   "▼▼ GLM highly -ve"),
+    "highly_positive": (NEON["green"], "▲▲ highly +ve"),
+    "positive":        (NEON["green"], "▲ +ve"),
+    "neutral":         ("#8aa0c0",     "● neutral"),
+    "negative":        (NEON["red"],   "▼ -ve"),
+    "highly_negative": (NEON["red"],   "▼▼ highly -ve"),
 }
 
 
 def glm_pill(rating_dict):
-    """Compact GLM news-rating chip. rating_dict is news_feed.glm_rating(sym)."""
+    """Compact AI news-rating chip. rating_dict is news_feed.glm_rating(sym)."""
     if not rating_dict:
-        return _pill("🤖 GLM: —", "#8aa0c0")
-    clr, label = _GLM_STYLE.get(rating_dict.get("rating"), ("#8aa0c0", "🤖 GLM: ?"))
+        return _pill("🤖 AI: —", "#8aa0c0")
+    clr, label = _GLM_STYLE.get(rating_dict.get("rating"), ("#8aa0c0", "🤖 AI: ?"))
+    label = f"🤖 {label}"
     return _pill(f"🤖 {label}", clr)
 
 
@@ -521,15 +522,16 @@ if _stale_level != "fresh":
         st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
                    "freshness threshold. Verify quotes manually before acting.")
 
-# ----------------------------- GLM news read ------------------------------
-# Second opinion from GLM-4.5-flash on the last-24h headlines. ZERO score
+# ----------------------------- AI news read -------------------------------
+# Second opinion on the last-24h headlines, from Claude Haiku 4.5 (or GLM as
+# fallback when ANTHROPIC_API_KEY is unset). ZERO score
 # weight — a manual cross-check of whether the LLM's read agrees with the
 # engine. Shown here for EVERY rated symbol, independent of whether it has a
 # Buy signal (the per-card 🤖 pill only appears on actionable cards, which are
 # empty in a risk-off market — this panel is where the ratings always live).
 _glm_ratings, _glm_meta = news_feed.load_glm_ratings()
 if _glm_meta.get("status") == "ok" and _glm_ratings:
-    with st.expander(f"🤖 GLM news read — {len(_glm_ratings)} symbols "
+    with st.expander(f"🤖 AI news read — {len(_glm_ratings)} symbols "
                      "(second opinion, unweighted)", expanded=False):
         st.caption("Zero score weight — informational cross-check only, never "
                    "moved into the engine's Buy/Avoid.")
@@ -681,7 +683,7 @@ if _brief:
             for _h in _brief["sector_headlines"]:
                 st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
         if _brief.get("glm"):
-            st.caption(f"🤖 GLM: {_brief['glm'].get('rating')} — {_brief['glm'].get('reason','')}")
+            st.caption(f"🤖 AI: {_brief['glm'].get('rating')} — {_brief['glm'].get('reason','')}")
         for _t in _brief["track_record"]:
             _n = "  ⚠ small sample — noise, not edge" if _t.get("is_noise") else ""
             st.markdown(f"- Track record **{_t.get('signal')}**: {_t.get('n_worked')}/"
@@ -775,7 +777,7 @@ else:
                               f'{nv["summary"][:120]}</span>' if nv else ''),
                              unsafe_allow_html=True)
                 if gv and gv.get("reason"):
-                    box.caption(f"🤖 GLM: {gv['reason']}")
+                    box.caption(f"🤖 AI: {gv['reason']}")
                 if disp != r["signal"]:
                     box.warning("🔀 What-if (assume risk-on): engine's REAL signal "
                                 "is **Watch** — downgraded by the risk-off regime "

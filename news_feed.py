@@ -208,8 +208,27 @@ def sector_headlines(symbol, limit=5):
 # signal so the user can see whether the LLM agrees. Missing/stale file →
 # returns None for every symbol.
 # --------------------------------------------------------------------------
+# Claude first, GLM second. The Claude rater replaced GLM as primary; the GLM
+# file stays readable so an unset ANTHROPIC_API_KEY degrades to the old second
+# opinion instead of leaving the dashboard with none. A stale/absent primary
+# falls through to the fallback rather than reporting "unavailable".
+_RATING_FILES = ("news_ai_ratings.json", "news_glm_ratings.json")
+
+
 def load_glm_ratings():
-    path = os.path.join(config.BASE_DIR, "news_glm_ratings.json")
+    primary = None
+    for name in _RATING_FILES:
+        ratings, meta = _load_rating_file(name)
+        if meta["status"] == "ok":
+            return ratings, meta
+        # Report the PRIMARY's status when nothing is usable: "stale" on the
+        # Claude file is the actionable fact, not "absent" on the GLM fallback.
+        primary = primary or meta
+    return {}, primary
+
+
+def _load_rating_file(name):
+    path = os.path.join(config.BASE_DIR, name)
     try:
         with open(path, encoding="utf-8") as f:
             raw = json.load(f)
@@ -224,11 +243,12 @@ def load_glm_ratings():
     ratings = {k.upper(): v for k, v in (raw.get("ratings") or {}).items()}
     return ratings, {"status": "ok", "as_of": raw.get("as_of"),
                      "age_hours": age_h, "count": len(ratings),
-                     "model": raw.get("model")}
+                     "model": raw.get("model"),
+                     "provider": raw.get("provider", "zhipu")}
 
 
 def glm_rating(symbol):
-    """Per-symbol GLM rating dict {rating, reason} or None."""
+    """Per-symbol AI rating dict {rating, reason} or None."""
     ratings, _ = load_glm_ratings()
     return ratings.get(symbol.upper())
 
@@ -236,10 +256,10 @@ def glm_rating(symbol):
 def glm_status_line():
     _, meta = load_glm_ratings()
     if meta["status"] != "ok":
-        return f"GLM news rating unavailable ({meta['status']})."
+        return f"AI news rating unavailable ({meta['status']})."
     age = meta.get("age_hours")
     age_s = f"{age:.1f}h old" if age is not None else "age unknown"
-    return (f"GLM news rating ({meta.get('model') or 'glm'}): "
+    return (f"AI news rating ({meta.get('model') or 'unknown'}): "
             f"{meta['count']} symbols, {age_s} — second opinion, unweighted.")
 
 
