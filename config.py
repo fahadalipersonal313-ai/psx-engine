@@ -720,3 +720,26 @@ DISCLAIMER = (
     "Always confirm manually before trading and never risk money you cannot "
     "afford to lose."
 )
+
+# ---------------------------------------------------------------------------
+# Hourly news routine window (2026-08-21)
+# ---------------------------------------------------------------------------
+# The news fetch runs hourly, but ONLY inside the PSX trading session, so a
+# cron that fires at 02:00 PKT costs nothing and commits nothing. Windows are
+# PKT wall-clock; Friday runs long because PSX splits the session around Jumma
+# and closes later.
+NEWS_WINDOW = {
+    "mon_thu": ("09:00", "15:30"),
+    "fri":     ("09:00", "16:30"),
+}
+
+# PSX market holidays, "YYYY-MM-DD" in PKT. DELIBERATELY EMPTY: the authentic
+# PSX/SBP holiday calendar is not derivable from anything in this repo, and
+# guessing dates would silently skip real trading days (or fetch on closed
+# ones) with no symptom. Populate from the PSX "Trading Holidays" notice —
+# https://dps.psx.com.pk/holidays — and note that Eid dates are moon-sighting
+# dependent and get confirmed only days ahead, so this list needs a refresh
+# each quarter. An empty list means "no holidays known": the routine then runs
+# on every weekday, which is the safe failure (a fetch on a closed day just
+# finds no fresh headlines and commits nothing).
+PSX_HOLIDAYS = []

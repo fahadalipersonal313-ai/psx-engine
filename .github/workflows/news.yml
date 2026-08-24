@@ -1,18 +1,20 @@
 name: news-routine
 
 # Fetches raw last-24h headlines for every symbol + macro feeds and commits
-# news_raw_24h.json. Runs AUTOMATICALLY every weekday morning (cron below) so no
-# manual "Run the repo news" prompt is needed — the dashboard reads the raw file
+# news_raw_24h.json. Runs AUTOMATICALLY every hour through the trading session
+# (cron below, gated by news_window.py) so no manual "Run the repo news" prompt
+# is needed — the dashboard reads the raw file
 # and shows the headlines per symbol UNSCORED, for manual cross-verification.
 # (News carries ZERO score weight as of 2026-07-15; the old LLM-judged
 # news_signals.json step is optional and only matters if weights are restored.)
 on:
   schedule:
-    # Staggered weekday-morning fetches (UTC). GitHub cron is unreliable/late, so
-    # a few attempts ensure the raw file refreshes each trading morning.
-    - cron: '5 4 * * 1-5'           # 09:05 PKT
-    - cron: '35 4 * * 1-5'          # 09:35 PKT
-    - cron: '5 6 * * 1-5'           # 11:05 PKT — self-heal if the earlier ones skipped
+    # HOURLY through the trading session (2026-08-21). Cron is UTC and PKT is
+    # UTC+5, so 04:05Z = 09:05 PKT. The range runs to 11:05Z (16:05 PKT) to
+    # cover Friday's later close; `news_window.py` is what actually decides
+    # whether a firing does any work, because cron cannot express holidays or a
+    # different Friday close. Mon-Thu firings after 15:30 PKT exit immediately.
+    - cron: '5 4-11 * * 1-5'        # 09:05-16:05 PKT, hourly
   workflow_dispatch:
     inputs:
       window_hours:
@@ -35,16 +37,33 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install requests
+      - name: Session window check (weekday, holiday, PSX hours)
+        id: window
+        # Never fails the job: outside the window every later step is skipped
+        # and the run goes green having done nothing. A red X every hour
+        # overnight would train us to ignore this workflow's failures.
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "manual dispatch — window check bypassed"
+            echo "run=1" >> "$GITHUB_OUTPUT"
+          elif python news_window.py; then
+            echo "run=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=0" >> "$GITHUB_OUTPUT"
+          fi
       - name: Fetch news
+        if: steps.window.outputs.run == '1'
         env:
           # Empty on scheduled (cron) runs — fall back to 24 so int() never sees "".
           NEWS_WINDOW_HOURS: ${{ inputs.window_hours || '24' }}
         run: python news_fetcher.py
       - name: GLM news rating (second opinion, unweighted)
+        if: steps.window.outputs.run == '1'
         env:
           GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
         run: python news_glm.py || true
       - name: Commit raw news
+        if: steps.window.outputs.run == '1'
         run: |
           git config user.name  "psx-news-bot"
           git config user.email "psx-news-bot@users.noreply.github.com"
