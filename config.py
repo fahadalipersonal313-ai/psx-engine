@@ -135,15 +135,29 @@ OTHER_COMPLIANT = {
 # ---------------------------------------------------------------------------
 # 3. SCORING WEIGHTS (fixed per spec; change only deliberately)
 # ---------------------------------------------------------------------------
-# Technical-only scoring (2026-07-15): the user turned news OFF because the
-# headline-driven score swings were noise (e.g. PSO flipping run-to-run on a
-# single live-blog headline). macro_news and sentiment weights are now ZERO —
-# both sections are still COMPUTED for display and to drive the bad-news / pump
-# SAFETY vetoes in risk_manager, but neither moves the score. Fundamentals is
-# also 0 (confirmed manually). So final_score == technical score. Must sum to 1.0.
-# To re-enable news, restore e.g. technical 0.55 / macro_news 0.20 / sentiment 0.25.
+# Score stays 100% technical as the BASE. News re-enabled 2026-08-25 on the
+# user's explicit instruction, but as a bounded MODIFIER, not a blended weight.
+#
+# Why not a weight: the macro section is anchored at neutral 50 while a good
+# technical score is 74-85, so blending it in drags every score DOWN. Measured
+# at macro_news=0.30: a technical 78 with NO news scored 69.6 — under the 75
+# Buy threshold — and even perfect causal-positive news only reached 73.8. A
+# weight would have silently muted almost every Buy on the board. The modifier
+# below is what "news moves the score" has to mean here: no news = no change.
 WEIGHTS = {"technical": 1.0, "fundamentals": 0.0,
            "macro_news": 0.0, "sentiment": 0.0}
+
+# Max points news can add to or subtract from the technical score. A rating of
+# 90 (causal, highly positive, full confidence) gives +8; 10 gives -8; anything
+# damped to neutral 50 by causality/confidence gives exactly 0. 8 points is
+# deliberately enough to matter (it can lift a 74 into the Buy band or push a
+# 78 out of it) without letting a headline overwhelm price action.
+#
+# UNMEASURED as shipped. CLAUDE.md's standing rule is to measure against the
+# candidate pool first, and causality-tagged news has no graded outcomes yet.
+# Run `python main.py measure` after ~2 weeks; if news-adjusted Buys do not
+# beat pure-technical ones, set NEWS_SCORE_ADJUST_MAX = 0.0 to switch it off.
+NEWS_SCORE_ADJUST_MAX = 8.0
 
 # Buy threshold raised 70 -> 75 (2026-08-12 audit of day-deduped graded runs).
 # Score band vs 3-day win rate: 70-75 won 30% (n=66), 75-80 won 68% (n=28),

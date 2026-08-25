@@ -86,6 +86,18 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=N
                   + w["technical"] * technical["score"]
                   + w.get("fundamentals", 0) * fund["score"], 1)
 
+    # News as a bounded modifier on top of the weighted base (2026-08-25).
+    # macro["news_score"] is already damped by causality x confidence, so a
+    # noise headline arrives as exactly 50 and moves nothing. Absent rating ->
+    # None -> no adjustment: "no news" is neutral, never bearish.
+    news_adj = 0.0
+    _cap = getattr(config, "NEWS_SCORE_ADJUST_MAX", 0.0)
+    _ns = macro.get("news_score")
+    if _cap and _ns is not None:
+        # Ratings span 10-90, i.e. +-40 around neutral; scale that to +-cap.
+        news_adj = round(max(-1.0, min(1.0, (_ns - 50.0) / 40.0)) * _cap, 1)
+        final = round(min(100.0, max(0.0, final + news_adj)), 1)
+
     # ---- data quality. Only sections that ACTUALLY drive the score count here.
     # News/sentiment are 0-weight, so their (usually low) confidence must not
     # paint every stock "weak" — that was making 28/30 stocks look low-quality

@@ -200,6 +200,44 @@ def session_headlines(symbol, limit=6, now=None):
     return out
 
 
+# Rating -> 0-100 score. 50 is neutral; distance from 50 is the conviction.
+_RATING_BASE = {"highly_positive": 90.0, "positive": 70.0, "neutral": 50.0,
+                "negative": 30.0, "highly_negative": 10.0}
+# Causality is the whole point of the analysis (news policy rule 5): only news
+# with a traceable mechanism to the company's cash flows should move a score.
+# Correlated news is damped hard; noise is pinned to neutral so it CANNOT move
+# the score at all, however confident the model was about it.
+_CAUSALITY_MULT = {"causal": 1.0, "correlated": 0.35, "noise": 0.0}
+
+
+def news_score(symbol, now=None):
+    """0-100 news score for the scoring engine, or None when there is nothing
+    to say (absent/stale ratings file, or no rating for this symbol).
+
+    None matters: it means the caller must treat company news as NEUTRAL rather
+    than invent a number. A symbol with no news is not a symbol with bad news.
+
+    The score only departs from 50 in proportion to causality x confidence, so
+    a merely-correlated headline nudges and pure noise does nothing. This is
+    the guard that the 2026-07 news weighting lacked, where any headline could
+    swing a score run-to-run.
+    """
+    rating = glm_rating(symbol)
+    if not rating:
+        return None
+    base = _RATING_BASE.get(rating.get("rating"))
+    if base is None:
+        return None
+    # Ratings written before the causality schema carry neither field. Treat
+    # them as correlated with middling confidence rather than trusting them
+    # like a causal call.
+    mult = _CAUSALITY_MULT.get(rating.get("causality"), 0.35)
+    conf = rating.get("confidence")
+    conf = float(conf) if isinstance(conf, (int, float)) else 0.5
+    conf = min(max(conf, 0.0), 1.0)
+    return round(50.0 + (base - 50.0) * mult * conf, 1)
+
+
 def sector_headlines(symbol, limit=5):
     """Last-24h headlines matching this symbol's SECTOR, from anywhere in the
     raw feed. Company anchors require a distinctive company name, so policy and

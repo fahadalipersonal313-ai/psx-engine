@@ -157,7 +157,15 @@ def analyze(symbol, news_items):
     # ---- 3) Company news — authentic verdict if present, else NEUTRAL (no VADER).
     comp_titles = [n["title"] for n in db.recent_news(96, symbol)]
     av = news_feed.get(symbol)
-    if av and av.get("score") is not None:
+    # Causality-tagged rating from the Claude news routine takes precedence:
+    # it is session-windowed and damped by causality x confidence, so noise
+    # cannot move the score. Falls back to the legacy news_signals.json verdict,
+    # then to neutral. None (no rating for this symbol) is NOT zero — it means
+    # "no news", which is neutral, never bearish.
+    _ns = news_feed.news_score(symbol)
+    if _ns is not None:
+        comp_score = _ns
+    elif av and av.get("score") is not None:
         comp_score = float(av["score"])
     elif config.NEWS_FALLBACK_VADER:
         comp_pol = [_polarity(t) for t in comp_titles]
@@ -201,6 +209,9 @@ def analyze(symbol, news_items):
                            comp_titles[:5], bad_news if material_bad else [])
 
     return {"symbol": symbol, "score": score, "components": components,
+            # Causality-damped news score (None when this symbol has no rating).
+            # scoring_engine applies it as a bounded modifier, not a blend.
+            "news_score": _ns,
             "explanation": explanation, "notes": notes,
             "bad_news_flag": material_bad, "bad_news": bad_news[:3],
             # With anchors set the macro backdrop is grounded, so absent news
