@@ -26,6 +26,7 @@ import os
 from datetime import datetime, timezone
 
 import config
+import news_window
 
 log = logging.getLogger("news_feed")
 
@@ -157,6 +158,43 @@ def raw_headlines(symbol, limit=5):
         seen.add(key)
         out.append({"title": t, "url": it.get("url", ""),
                     "publisher": pub, "published": it.get("published")})
+        if len(out) >= limit:
+            break
+    return out
+
+
+def _published_at(item):
+    """Parse an item's publish time to an aware datetime, or None."""
+    raw = item.get("published")
+    if not raw:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(raw))
+    except (ValueError, TypeError):
+        return None
+    return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+
+
+def session_headlines(symbol, limit=6, now=None):
+    """Company headlines published since the current session anchor.
+
+    Same authenticity guarantees as raw_headlines (company-anchor gate +
+    credible-desk filter); the only added constraint is TIME. A headline older
+    than news_window.session_anchor() is stale for this session and excluded,
+    so yesterday's story cannot keep influencing today (news policy rule 1),
+    while news breaking after the close reaches the next open (rule 3).
+
+    An item with an unparseable/absent publish time is EXCLUDED — with no
+    timestamp we cannot prove it belongs to this session, and silently
+    treating it as fresh is exactly the kind of guess this engine avoids.
+    """
+    anchor = news_window.session_anchor(now)
+    out = []
+    for h in raw_headlines(symbol, limit=50):
+        ts = _published_at(h)
+        if ts is None or ts < anchor:
+            continue
+        out.append(h)
         if len(out) >= limit:
             break
     return out

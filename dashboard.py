@@ -192,13 +192,40 @@ _GLM_STYLE = {
 }
 
 
+# Causality is the tag that decides whether news is tradeable at all: only a
+# "causal" item has a traceable mechanism to that company's cash flows.
+_CAUSAL_STYLE = {"causal": (NEON["cyan"], "⛓ causal"),
+                 "correlated": ("#8aa0c0", "≈ correlated"),
+                 "noise": ("#8aa0c0", "· noise")}
+_HORIZON_LABEL = {"single_session": "1-session", "multi_session": "multi-day",
+                  "long_term": "long-term"}
+
+
 def glm_pill(rating_dict):
     """Compact AI news-rating chip. rating_dict is news_feed.glm_rating(sym)."""
     if not rating_dict:
         return _pill("🤖 AI: —", "#8aa0c0")
-    clr, label = _GLM_STYLE.get(rating_dict.get("rating"), ("#8aa0c0", "🤖 AI: ?"))
-    label = f"🤖 {label}"
+    clr, label = _GLM_STYLE.get(rating_dict.get("rating"), ("#8aa0c0", "AI: ?"))
     return _pill(f"🤖 {label}", clr)
+
+
+def analysis_pills(rating_dict):
+    """Causality / horizon / confidence chips. Empty string for the old
+    rating shape, so pre-Phase-3 files keep rendering unchanged."""
+    if not rating_dict:
+        return ""
+    bits = []
+    cz = rating_dict.get("causality")
+    if cz in _CAUSAL_STYLE:
+        c, lbl = _CAUSAL_STYLE[cz]
+        bits.append(_pill(lbl, c))
+    hz = rating_dict.get("horizon")
+    if hz in _HORIZON_LABEL:
+        bits.append(_pill(_HORIZON_LABEL[hz], "#8aa0c0"))
+    conf = rating_dict.get("confidence")
+    if isinstance(conf, (int, float)):
+        bits.append(_pill(f"conf {conf:.0%}", "#8aa0c0"))
+    return " ".join(bits)
 
 
 def whatif_regime_note(actual_regime, assumed_regime, signal):
@@ -542,6 +569,7 @@ if _glm_meta.get("status") == "ok" and _glm_ratings:
             gv = _glm_ratings[sym]
             st.markdown(
                 f'<div style="margin:3px 0">{glm_pill(gv)} '
+                f'{analysis_pills(gv)} '
                 f'<b>{sym}</b> <span style="opacity:.7;font-size:12px">'
                 f'{gv.get("reason", "")}</span></div>',
                 unsafe_allow_html=True)
@@ -574,7 +602,7 @@ if _all_news:
                "unscored except by the AI pill on the left.")
     for _h in _all_news[:60]:
         _rv = _glm_ratings.get(_h["_sym"])
-        _pillh = glm_pill(_rv) if _rv else ""
+        _pillh = (glm_pill(_rv) + " " + analysis_pills(_rv)) if _rv else ""
         st.markdown(
             f'{_pillh} <b>{_h["_sym"]}</b> · '
             f'<a href="{_h["url"]}" target="_blank">{_h["title"]}</a> · '
@@ -814,7 +842,8 @@ else:
                     unsafe_allow_html=True)
                 nv = news_feed.get(r["symbol"])
                 gv = news_feed.glm_rating(r["symbol"])
-                box.markdown(news_pill(nv) + " " + glm_pill(gv) +
+                box.markdown(news_pill(nv) + " " + glm_pill(gv) + " " +
+                             analysis_pills(gv) +
                              (f' <span style="opacity:.75;font-size:12px">'
                               f'{nv["summary"][:120]}</span>' if nv else ''),
                              unsafe_allow_html=True)
