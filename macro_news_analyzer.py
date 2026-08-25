@@ -163,6 +163,11 @@ def analyze(symbol, news_items):
     # then to neutral. None (no rating for this symbol) is NOT zero — it means
     # "no news", which is neutral, never bearish.
     _ns = news_feed.news_score(symbol)
+    # Sector news reaches every peer, so it is resolved per-symbol via the
+    # symbol's sector. Kept separate from the company score end to end: the
+    # anti-mis-attribution guarantee is that a sector call never masquerades
+    # as a company-specific one.
+    _sns = news_feed.sector_news_score(symbol)
     if _ns is not None:
         comp_score = _ns
     elif av and av.get("score") is not None:
@@ -209,9 +214,10 @@ def analyze(symbol, news_items):
                            comp_titles[:5], bad_news if material_bad else [])
 
     return {"symbol": symbol, "score": score, "components": components,
-            # Causality-damped news score (None when this symbol has no rating).
-            # scoring_engine applies it as a bounded modifier, not a blend.
+            # Causality-damped news scores (None when there is no rating).
+            # scoring_engine applies them as bounded modifiers, not a blend.
             "news_score": _ns,
+            "sector_news_score": _sns,
             "explanation": explanation, "notes": notes,
             "bad_news_flag": material_bad, "bad_news": bad_news[:3],
             # With anchors set the macro backdrop is grounded, so absent news

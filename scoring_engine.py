@@ -90,13 +90,21 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=N
     # macro["news_score"] is already damped by causality x confidence, so a
     # noise headline arrives as exactly 50 and moves nothing. Absent rating ->
     # None -> no adjustment: "no news" is neutral, never bearish.
-    news_adj = 0.0
-    _cap = getattr(config, "NEWS_SCORE_ADJUST_MAX", 0.0)
-    _ns = macro.get("news_score")
-    if _cap and _ns is not None:
+    def _news_adj(score, cap):
         # Ratings span 10-90, i.e. +-40 around neutral; scale that to +-cap.
-        news_adj = round(max(-1.0, min(1.0, (_ns - 50.0) / 40.0)) * _cap, 1)
-        final = round(min(100.0, max(0.0, final + news_adj)), 1)
+        if not cap or score is None:
+            return 0.0
+        return round(max(-1.0, min(1.0, (score - 50.0) / 40.0)) * cap, 1)
+
+    news_adj = _news_adj(macro.get("news_score"),
+                         getattr(config, "NEWS_SCORE_ADJUST_MAX", 0.0))
+    # Sector news is additive on top of company news: a company with good news
+    # in a sector being repriced by policy deserves both. Each is individually
+    # capped and the sum is clamped into 0-100.
+    sector_adj = _news_adj(macro.get("sector_news_score"),
+                           getattr(config, "SECTOR_NEWS_SCORE_ADJUST_MAX", 0.0))
+    if news_adj or sector_adj:
+        final = round(min(100.0, max(0.0, final + news_adj + sector_adj)), 1)
 
     # ---- data quality. Only sections that ACTUALLY drive the score count here.
     # News/sentiment are 0-weight, so their (usually low) confidence must not

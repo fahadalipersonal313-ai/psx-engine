@@ -159,6 +159,16 @@ WEIGHTS = {"technical": 1.0, "fundamentals": 0.0,
 # beat pure-technical ones, set NEWS_SCORE_ADJUST_MAX = 0.0 to switch it off.
 NEWS_SCORE_ADJUST_MAX = 8.0
 
+# Sector news gets its own, smaller cap (2026-08-25, user's request: "10% or
+# more depending whether causation or correlation"). A sector story moves every
+# peer at once, so it is a weaker per-symbol claim than company-specific news —
+# hence 4 points against company news's 8. Causality does the rest of the work:
+# news_feed.sector_news_score() already scales by causality x confidence, so a
+# CAUSAL sector call (a refining-margin policy) reaches the full 4 while a
+# merely CORRELATED one is damped to ~35% of it and sector noise contributes 0.
+# Combined ceiling is therefore 12 points, and the two are summed then clamped.
+SECTOR_NEWS_SCORE_ADJUST_MAX = 4.0
+
 # Buy threshold raised 70 -> 75 (2026-08-12 audit of day-deduped graded runs).
 # Score band vs 3-day win rate: 70-75 won 30% (n=66), 75-80 won 68% (n=28),
 # 80+ won 86% (n=7). Two-thirds of Buys were coming from the WORST band. At

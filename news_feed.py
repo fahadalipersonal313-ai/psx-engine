@@ -83,6 +83,25 @@ def status_line():
     return f"Authentic news feed unavailable ({meta['status']}) — RSS/VADER fallback."
 
 
+def sector_session_headlines(symbol, limit=6, now=None):
+    """Sector headlines published since the current session anchor.
+
+    Same session rule as session_headlines, applied to sector_headlines. A
+    policy story is only allowed to move this session's score once; after the
+    next close it is stale like anything else.
+    """
+    anchor = news_window.session_anchor(now)
+    out = []
+    for h in sector_headlines(symbol, limit=50):
+        ts = _published_at(h)
+        if ts is None or ts < anchor:
+            continue
+        out.append(h)
+        if len(out) >= limit:
+            break
+    return out
+
+
 # --------------------------------------------------------------------------
 # RAW headline window (UNSCORED). Reads news_raw_24h.json — the auto-fetched
 # last-24h headlines that news.yml collects on a schedule (no manual routine,
@@ -236,6 +255,47 @@ def news_score(symbol, now=None):
     conf = float(conf) if isinstance(conf, (int, float)) else 0.5
     conf = min(max(conf, 0.0), 1.0)
     return round(50.0 + (base - 50.0) * mult * conf, 1)
+
+
+def sector_news_score(symbol, now=None):
+    """0-100 sector news score for this symbol's sector, or None.
+
+    Read from the "sectors" block of the ratings file, keyed by SECTOR name —
+    kept separate from per-company ratings so a sector-wide call is never
+    mistaken for a company-specific one. Damped by causality x confidence the
+    same way company news is, so a merely-correlated sector story barely moves
+    and sector noise does nothing.
+    """
+    sector = config.SECTORS.get(symbol.upper())
+    if not sector:
+        return None
+    v = _raw_sectors_cache(_RATING_FILES[0]).get(sector)
+    if not isinstance(v, dict):
+        return None
+    base = _RATING_BASE.get(v.get("rating"))
+    if base is None:
+        return None
+    mult = _CAUSALITY_MULT.get(v.get("causality"), 0.35)
+    conf = v.get("confidence")
+    conf = float(conf) if isinstance(conf, (int, float)) else 0.5
+    conf = min(max(conf, 0.0), 1.0)
+    return round(50.0 + (base - 50.0) * mult * conf, 1)
+
+
+def _raw_sectors_cache(name):
+    """The `sectors` block of a ratings file, honouring the staleness gate."""
+    path = os.path.join(config.BASE_DIR, name)
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}
+    as_of = _parse_as_of(raw.get("as_of"))
+    if as_of is not None:
+        age_h = (datetime.now(timezone.utc) - as_of).total_seconds() / 3600
+        if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
+            return {}
+    return {str(k): v for k, v in (raw.get("sectors") or {}).items()}
 
 
 def sector_headlines(symbol, limit=5):
