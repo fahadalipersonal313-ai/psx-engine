@@ -175,15 +175,26 @@ def raw_headlines(symbol, limit=5):
         if credible and not any(c in pub.lower() for c in credible):
             continue
         seen.add(key)
-        out.append({"title": t, "url": it.get("url", ""),
-                    "publisher": pub, "published": it.get("published")})
+        out.append({"title": t, "url": it.get("url", ""), "publisher": pub,
+                    "published": it.get("published"),
+                    "published_precision": it.get("published_precision")})
         if len(out) >= limit:
             break
     return out
 
 
 def _published_at(item):
-    """Parse an item's publish time to an aware datetime, or None."""
+    """Parse an item's publish time to an aware datetime, or None.
+
+    A DAY-precision item returns None. Some publishers (Mettis) show only a
+    date on their listings, so the stored instant is that day's 00:00 anchor —
+    a placeholder for the day, not a fact about when the story broke. Session
+    scoring needs a real instant to decide which side of the close a story
+    falls on, and midnight is exactly the guess this engine does not make. Such
+    items still appear in the unscored 24h display window.
+    """
+    if item.get("published_precision") == "day":
+        return None
     raw = item.get("published")
     if not raw:
         return None
@@ -329,7 +340,9 @@ def sector_headlines(symbol, limit=5):
             continue
         seen.add(key)
         out.append({"title": t, "url": it.get("url", ""), "publisher": pub,
-                    "published": it.get("published"), "sector": sector,
+                    "published": it.get("published"),
+                    "published_precision": it.get("published_precision"),
+                    "sector": sector,
                     # Which peer the fetcher happened to file it under — useful
                     # context, not an attribution claim about this symbol.
                     "filed_under": it.get("symbol") if it.get("symbol") in peers else None})

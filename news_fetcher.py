@@ -150,8 +150,12 @@ def fetch_macro(cutoff, failures=None):
 
 
 def _known_mettis(path):
-    """url -> published, from the previous file. Lets the scraper skip articles
-    it has already timestamped instead of re-fetching them every cycle."""
+    """url -> published, from the previous file, MINUTE precision only.
+
+    Lets a story that was dated once keep that timestamp when it later shows up
+    in an undated list. Day-precision entries are excluded on purpose: carrying
+    one forward would launder a day placeholder into an exact instant.
+    """
     try:
         with open(path, encoding="utf-8") as f:
             items = json.load(f).get("items") or []
@@ -159,7 +163,8 @@ def _known_mettis(path):
         return {}
     return {i["url"]: i["published"] for i in items
             if i.get("source") == "Mettis Global" and i.get("url")
-            and i.get("published")}
+            and i.get("published")
+            and i.get("published_precision") != "day"}
 
 
 def _existing_count(path):
