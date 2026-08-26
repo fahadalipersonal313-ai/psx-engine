@@ -52,13 +52,17 @@ MACRO_FEEDS = [
     # an absent one: it would arm the macro-failure branch of run()'s
     # regression guard on every fetch and could block a genuinely quiet day.
     # Add it back only with a URL confirmed to return items.
-    # PROBE 2026-08-26b: user supplied https://mettisglobal.news/latest and
-    # https://www.investify.pk/ — both are HTML listing pages, not feeds, so the
-    # RSS paths they imply are tried live here. One run only; losers deleted.
-    ("Mettis latest feed", "https://mettisglobal.news/latest/feed/"),
-    ("Mettis rss2",        "https://mettisglobal.news/?feed=rss2"),
-    ("Investify",          "https://www.investify.pk/feed/"),
-    ("Investify rss2",     "https://www.investify.pk/?feed=rss2"),
+    # Mettis Global and Investify are deliberately NOT direct feeds. Eight
+    # candidate RSS paths were probed live on 2026-08-26 and every one failed:
+    #   mettisglobal.news  /feed/  /rss  www./feed/  /feed/rss/  /latest/feed/  ?feed=rss2
+    #   investify.pk       /feed/  ?feed=rss2
+    # The URLs the user supplied (mettisglobal.news/latest, www.investify.pk/)
+    # are HTML listing pages, and this parser consumes RSS XML only. Both hosts
+    # ARE in NEWS_SOURCE_ALLOWLIST, so their stories still arrive whenever
+    # Google News surfaces one under a per-symbol query — they just are not
+    # polled directly. Add either here only with a URL confirmed to return XML;
+    # a permanently-failing entry would arm the macro-failure branch of run()'s
+    # regression guard on every fetch.
     ("ProPakistani",      "https://propakistani.pk/feed/"),
 ]
 
