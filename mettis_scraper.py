@@ -66,6 +66,18 @@ HEADLINE_RE = re.compile(
     re.S | re.I)
 ANCHOR_TEXT_RE = re.compile(r">([^<>]{15,200})<", re.S)
 
+# Counted per run and logged: which date-bearing markup a listing actually
+# carries. Mettis renders most of its lists client-side, so the mix changes.
+MARKUP_PROBES = {
+    "data-time": re.compile(r'data-time="[^"]*"'),
+    "datetime": re.compile(r'datetime="[^"]*"'),
+    "time-tag": re.compile(r"<time[^>]*>"),
+    "ago": re.compile(r"\b\d{1,2}\s+(?:hours?|minutes?|days?)\s+ago\b", re.I),
+    "date-text": re.compile(
+        r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d\d\b"),
+    "iso": re.compile(r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}"),
+}
+
 UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
 TIMEOUT = 20
 MAX_ARTICLES = int(getattr(config, "METTIS_MAX_ARTICLES", 40))
@@ -144,6 +156,7 @@ def fetch(cutoff, known=None):
     """
     known = known or {}
     items, failures, no_ts = {}, [], 0
+    undated_urls, markup = set(), {}
 
     for page in LISTING_PAGES:
         url = urljoin(BASE, page)
@@ -153,11 +166,14 @@ def fetch(cutoff, known=None):
             log.warning("listing %s failed: %s", page or "/", e)
             failures.append(page or "/")
             continue
+        for pat, rx in MARKUP_PROBES.items():
+            markup[pat] = markup.get(pat, 0) + len(rx.findall(html))
         for art_url, block in _blocks(html):
             tm = TIME_RE.search(block)
             dt = _parse_time(tm.group(1) if tm else known.get(art_url))
             if dt is None:
                 no_ts += 1
+                undated_urls.add(art_url)
                 continue
             if dt < cutoff:
                 continue
@@ -174,9 +190,11 @@ def fetch(cutoff, known=None):
         time.sleep(PAUSE_SECONDS)
 
     out = list(items.values())
-    log.info("mettis: %d/%d listings ok, %d dated items, %d blocks undated",
+    log.info("mettis: %d/%d listings ok, %d dated items, %d blocks undated, "
+             "%d distinct undated urls; date markup seen: %s",
              len(LISTING_PAGES) - len(failures), len(LISTING_PAGES),
-             len(out), no_ts)
+             len(out), no_ts, len(undated_urls),
+             {k: v for k, v in markup.items() if v})
     if not out and not failures:
         failures.append("no dated items")
     return out, failures
