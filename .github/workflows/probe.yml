@@ -1,0 +1,34 @@
+name: source-probe
+
+# TEMPORARY (2026-08-26). One-off discovery of the real RSS paths and section
+# structure for mettisglobal.news and investify.pk, which are egress-blocked
+# from the dev sandbox. Delete this workflow and probe_sources.py once the
+# feed URLs are known.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -q requests
+      - name: Probe sources
+        run: python probe_sources.py || true
+      - name: Commit result
+        run: |
+          git config user.name  "psx-probe-bot"
+          git config user.email "psx-probe-bot@users.noreply.github.com"
+          git add -f probe_result.txt
+          if git diff --cached --quiet; then echo "no result file"; exit 0; fi
+          git commit -m "source probe result $(date -u +'%Y-%m-%dT%H:%MZ')"
+          git pull --rebase -X theirs --autostash origin main || git rebase --abort
+          for i in 1 2 3 4; do git push origin main && break; sleep $((2 ** i)); done
