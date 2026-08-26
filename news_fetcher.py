@@ -44,14 +44,21 @@ MACRO_FEEDS = [
     ("Business Recorder", "https://www.brecorder.com/feeds/latest-news"),
     ("Dawn Business",     "https://www.dawn.com/feeds/business"),
     ("Profit Pakistan Today", "https://profit.pakistantoday.com.pk/feed/"),
-    # PROBE 2026-08-26: the real Mettis feed path is unknown and unreachable
-    # from the dev sandbox (egress-blocked), so candidates are tried live here.
-    # Whichever returns items wins; the rest log a named warning and are then
-    # deleted. Do not leave more than one of these in place.
-    ("Mettis Global",       "https://mettisglobal.news/feed/"),
-    ("Mettis Global rss",   "https://mettisglobal.news/rss"),
-    ("Mettis Global wwwfeed", "https://www.mettisglobal.news/feed/"),
-    ("Mettis Global index",  "https://mettisglobal.news/feed/rss/"),
+    # Mettis Global is NOT here on purpose. It is in NEWS_SOURCE_ALLOWLIST, so
+    # its stories still arrive via Google News redirects, but four candidate
+    # feed paths (/feed/, /rss, www./feed/, /feed/rss/) all failed a live probe
+    # on 2026-08-26 and the host is egress-blocked from the dev sandbox, so the
+    # real path could not be found. A permanently-failing entry is worse than
+    # an absent one: it would arm the macro-failure branch of run()'s
+    # regression guard on every fetch and could block a genuinely quiet day.
+    # Add it back only with a URL confirmed to return items.
+    # PROBE 2026-08-26b: user supplied https://mettisglobal.news/latest and
+    # https://www.investify.pk/ — both are HTML listing pages, not feeds, so the
+    # RSS paths they imply are tried live here. One run only; losers deleted.
+    ("Mettis latest feed", "https://mettisglobal.news/latest/feed/"),
+    ("Mettis rss2",        "https://mettisglobal.news/?feed=rss2"),
+    ("Investify",          "https://www.investify.pk/feed/"),
+    ("Investify rss2",     "https://www.investify.pk/?feed=rss2"),
     ("ProPakistani",      "https://propakistani.pk/feed/"),
 ]
 

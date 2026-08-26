@@ -714,6 +714,7 @@ NEWS_SOURCE_ALLOWLIST = [
     "mettisglobal.news",                 # Mettis Global
     "profit.pakistantoday.com.pk",       # Profit Pakistan Today
     "propakistani.pk",                   # ProPakistani (added 2026-08-24)
+    "investify.pk",                      # Investify (added 2026-08-26, user)
     "news.google.com",                   # Google News RSS aggregator (per-symbol)
 ]
 # Credible publisher NAMES (lowercase substrings) for the UNSCORED raw-news
@@ -725,6 +726,7 @@ NEWS_SOURCE_ALLOWLIST = [
 NEWS_DISPLAY_PUBLISHERS = [
     "business recorder", "brecorder", "dawn", "mettis", "profit",
     "propakistani",  # added 2026-08-24
+    "investify",     # added 2026-08-26
     "the news", "tribune", "bloomberg", "reuters",
 ]
 EXCEL_DIR = REPORT_DIR
