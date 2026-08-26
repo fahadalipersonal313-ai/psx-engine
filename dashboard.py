@@ -228,6 +228,39 @@ def analysis_pills(rating_dict):
     return " ".join(bits)
 
 
+_RATING_TEXT = {"highly_positive": "▲▲ highly +ve", "positive": "▲ +ve",
+                "neutral": "● neutral", "negative": "▼ -ve",
+                "highly_negative": "▼▼ highly -ve"}
+_CAUSAL_TEXT = {"causal": "⛓", "correlated": "≈", "noise": "·"}
+
+
+def news_cell(symbol):
+    """Plain-text news read for a dataframe column: rating + causality mark.
+
+    Tables cannot carry HTML, so the pills are compressed to text. "—" means no
+    rating for this symbol, which is NOT the same as neutral news — it means the
+    analyser had nothing in window to judge.
+    """
+    rv = news_feed.glm_rating(symbol)
+    if not rv:
+        return "—"
+    txt = _RATING_TEXT.get(rv.get("rating"), "?")
+    mark = _CAUSAL_TEXT.get(rv.get("causality"))
+    return f"{txt} {mark}" if mark else txt
+
+
+def news_line(symbol, reason=True):
+    """Pills + one-clause reason for a symbol, as an HTML fragment. Returns the
+    'no rating' pill rather than nothing, so a card never looks as though news
+    was checked and came back clean when it was simply never rated."""
+    rv = news_feed.glm_rating(symbol)
+    out = glm_pill(rv) + (" " + analysis_pills(rv) if rv else "")
+    if reason and rv and rv.get("reason"):
+        out += (f' <span style="opacity:.75;font-size:12px">'
+                f'{str(rv["reason"])[:140]}</span>')
+    return out
+
+
 def whatif_regime_note(actual_regime, assumed_regime, signal):
     """One-line label explaining what the signal WOULD be under an assumed
     regime. Approximation, not a re-run: risk-off soft-downgrades Buy→Watch
@@ -791,7 +824,9 @@ elif compact:
                "**Compact view** for full trade-plan cards.")
     act_show = action[["symbol", "display_signal", "price", "stop_loss", "target1",
                        "confidence", "relative_strength"]].copy()
-    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Conf%", "RS"]
+    act_show["news"] = [news_cell(s) for s in action["symbol"]]
+    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Conf%",
+                        "RS", "News"]
     st.dataframe(
         act_show.style
         .map(lambda v: f"color:{NEON_SIG.get(v, '')};font-weight:700", subset=["Signal"])
@@ -884,7 +919,8 @@ def _why_not_buy_section():
         st.markdown(
             f'{sig_pill(r["signal"])} &nbsp;**{r["symbol"]}** '
             f'(score {r["final_score"]:.0f}) — '
-            f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>',
+            f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>'
+            f'<br>{news_line(r["symbol"])}',
             unsafe_allow_html=True)
 
 
@@ -907,7 +943,8 @@ def _early_watch_section():
             f'score {fmt(r["final_score"], 0)} · CMF {fmt(r.get("cmf"), 2)} · '
             f'RS {fmt(r.get("relative_strength"), 0)}'
             f'<br><span style="opacity:.75;font-size:13px">'
-            f'{r.get("early_reason") or ""}</span>',
+            f'{r.get("early_reason") or ""}</span>'
+            f'<br>{news_line(r["symbol"])}',
             unsafe_allow_html=True)
 
 
@@ -947,8 +984,10 @@ with tab_watch:
     show["buy_zone"] = [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
                         for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
     show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
+    show["news"] = [news_cell(s) for s in show["symbol"]]
     show.columns = ["Symbol", "Score", "RS", "Signal", "Risk", "Conf%",
-                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone"]
+                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
+                    "News"]
 
     def _sig_css(v):
         c = NEON_SIG.get(v)
