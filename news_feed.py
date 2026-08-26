@@ -391,6 +391,22 @@ def glm_rating(symbol):
     return ratings.get(symbol.upper())
 
 
+def sector_rating(symbol):
+    """The AI rating for this symbol's SECTOR, or None.
+
+    Same source sector_news_score reads, exposed so the UI can show WHY a score
+    moved when the symbol itself has no company news: a sector call adjusts every
+    constituent, and a card that showed nothing would present an unexplained
+    move. Callers must label it as sector news — it is not a claim about this
+    company specifically.
+    """
+    sector = config.SECTORS.get(symbol.upper())
+    if not sector:
+        return None
+    v = _raw_sectors_cache(_RATING_FILES[0]).get(sector)
+    return v if isinstance(v, dict) else None
+
+
 def glm_status_line():
     _, meta = load_glm_ratings()
     if meta["status"] != "ok":

@@ -242,11 +242,17 @@ def news_cell(symbol):
     analyser had nothing in window to judge.
     """
     rv = news_feed.glm_rating(symbol)
+    tag = ""
+    if not rv:
+        # Fall back to the SECTOR call, which moves this symbol's score just as
+        # a company call does. Without it a card shows "—" beside a score that
+        # visibly moved. Marked (sec) so it is never read as company news.
+        rv, tag = news_feed.sector_rating(symbol), " (sec)"
     if not rv:
         return "—"
     txt = _RATING_TEXT.get(rv.get("rating"), "?")
     mark = _CAUSAL_TEXT.get(rv.get("causality"))
-    return f"{txt} {mark}" if mark else txt
+    return f"{txt} {mark}{tag}" if mark else f"{txt}{tag}"
 
 
 def news_line(symbol, reason=True):
@@ -254,7 +260,13 @@ def news_line(symbol, reason=True):
     'no rating' pill rather than nothing, so a card never looks as though news
     was checked and came back clean when it was simply never rated."""
     rv = news_feed.glm_rating(symbol)
-    out = glm_pill(rv) + (" " + analysis_pills(rv) if rv else "")
+    prefix = ""
+    if not rv:
+        rv = news_feed.sector_rating(symbol)
+        if rv:
+            prefix = _pill(f"🏷 sector: {config.SECTORS.get(symbol.upper())}",
+                           "#8aa0c0") + " "
+    out = prefix + glm_pill(rv) + (" " + analysis_pills(rv) if rv else "")
     if reason and rv and rv.get("reason"):
         out += (f' <span style="opacity:.75;font-size:12px">'
                 f'{str(rv["reason"])[:140]}</span>')
