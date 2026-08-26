@@ -32,7 +32,7 @@ Accuracy rules, since these feed a score:
 import logging
 import re
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urljoin
 
 import requests
@@ -61,6 +61,18 @@ LISTING_PAGES = [
 ARTICLE_RE = re.compile(
     r"""(?:https://mettisglobal\.news)?/([A-Za-z0-9%\-]+?-(\d{4,}))(?=["'\s<>?#]|$)""")
 TIME_RE = re.compile(r'data-time="([^"]+)"')
+# Only the lead story on each listing carries data-time; every other item shows
+# its date as TEXT ("Aug 26, 2026", sometimes with a clock time). Measured
+# 2026-08-26 across the seven listings: 1 data-time vs 56 date texts, against 64
+# distinct stories — so the attribute path alone can never see this source.
+MONTHS = {m: i for i, m in enumerate(
+    ["jan", "feb", "mar", "apr", "may", "jun",
+     "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+DATE_TEXT_RE = re.compile(
+    r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+"
+    r"(\d{1,2}),?\s+(20\d\d)"
+    r"(?:[\s,|@·–-]{1,4}(\d{1,2}):(\d{2})\s*([APap][Mm])?)?")
+PKT = timezone(timedelta(hours=5))
 HEADLINE_RE = re.compile(
     r'<h[1-4][^>]*class="[^"]*HeadlineStyle[^"]*"[^>]*>(?:\s*<a[^>]*>)?(.*?)</',
     re.S | re.I)
@@ -112,6 +124,32 @@ def _parse_time(raw):
     return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
 
+def _parse_date_text(block):
+    """(datetime, precision) from a listing item's visible date, else (None, None).
+
+    Mettis renders these in PKT. When the text carries no clock time the result
+    is DAY precision: it is anchored at 00:00 PKT so the day is preserved, and
+    flagged so consumers that need a real instant (session scoring) can reject
+    it rather than treat midnight as a fact.
+    """
+    m = DATE_TEXT_RE.search(block)
+    if not m:
+        return None, None
+    mon, day, year, hh, mm, ampm = m.groups()
+    try:
+        base = datetime(int(year), MONTHS[mon.lower()[:3]], int(day), tzinfo=PKT)
+    except ValueError:
+        return None, None
+    if hh is None:
+        return base, "day"
+    hour = int(hh) % 12 if ampm else int(hh)
+    if ampm and ampm.lower() == "pm":
+        hour += 12
+    if hour > 23 or int(mm) > 59:
+        return base, "day"
+    return base.replace(hour=hour, minute=int(mm)), "minute"
+
+
 def _blocks(html):
     """Yield (url, block_html) for each article link, where the block runs to
     the next article link. Mettis puts an item's timestamp in a reading-time
@@ -156,7 +194,7 @@ def fetch(cutoff, known=None):
     """
     known = known or {}
     items, failures, no_ts = {}, [], 0
-    undated_urls, markup = set(), {}
+    undated_urls, markup, samples = set(), {}, []
 
     for page in LISTING_PAGES:
         url = urljoin(BASE, page)
@@ -171,11 +209,19 @@ def fetch(cutoff, known=None):
         for art_url, block in _blocks(html):
             tm = TIME_RE.search(block)
             dt = _parse_time(tm.group(1) if tm else known.get(art_url))
+            precision = "minute" if dt else None
+            if dt is None:
+                dt, precision = _parse_date_text(block)
+                if dt is not None and len(samples) < 3:
+                    samples.append(DATE_TEXT_RE.search(block).group(0))
             if dt is None:
                 no_ts += 1
                 undated_urls.add(art_url)
                 continue
-            if dt < cutoff:
+            # A day-precision item is kept only if its DAY can still fall inside
+            # the window; comparing its 00:00 anchor to the cutoff would drop
+            # every story published earlier today.
+            if (dt + timedelta(days=1) if precision == "day" else dt) < cutoff:
                 continue
             title = _title_from(block, art_url)
             if not title:
@@ -186,6 +232,7 @@ def fetch(cutoff, known=None):
                 continue
             items[art_url] = {"symbol": _attribute(title), "title": title,
                               "url": art_url, "published": dt.isoformat(),
+                              "published_precision": precision,
                               "summary": "", "source": "Mettis Global"}
         time.sleep(PAUSE_SECONDS)
 
@@ -195,6 +242,9 @@ def fetch(cutoff, known=None):
              len(LISTING_PAGES) - len(failures), len(LISTING_PAGES),
              len(out), no_ts, len(undated_urls),
              {k: v for k, v in markup.items() if v})
+    log.info("mettis: precision %s; date-text samples %s",
+             {p: sum(1 for i in out if i["published_precision"] == p)
+              for p in ("minute", "day")}, samples)
     if not out and not failures:
         failures.append("no dated items")
     return out, failures
