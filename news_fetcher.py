@@ -33,10 +33,19 @@ TIMEOUT = 15
 UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
 
 # Macro feeds — used to surface market-wide stories not tied to a single stock.
+# Sector and policy stories arrive here, not through the per-symbol queries:
+# COMPANY_NEWS_ANCHORS deliberately requires a distinctive company name, so a
+# "refining margin policy" story matches no symbol at all. sector_headlines()
+# scans this macro pool, so a desk missing from this list is a desk whose
+# sector news can only reach a score by luck, via a Google News redirect.
+# Mettis and ProPakistani were in NEWS_SOURCE_ALLOWLIST but not here — added
+# 2026-08-26 to close that gap.
 MACRO_FEEDS = [
     ("Business Recorder", "https://www.brecorder.com/feeds/latest-news"),
     ("Dawn Business",     "https://www.dawn.com/feeds/business"),
     ("Profit Pakistan Today", "https://profit.pakistantoday.com.pk/feed/"),
+    ("Mettis Global",     "https://mettisglobal.news/feed/"),
+    ("ProPakistani",      "https://propakistani.pk/feed/"),
 ]
 
 
