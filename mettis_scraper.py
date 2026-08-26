@@ -54,7 +54,12 @@ LISTING_PAGES = [
     "MorningBreeze",
 ]
 # An article URL is <slug>-<numeric id>; that id is what makes them matchable.
-ARTICLE_RE = re.compile(r"https://mettisglobal\.news/([A-Za-z0-9%\-]+?-(\d{4,}))(?:[/?#]|$)")
+# Terminator is a LOOKAHEAD, not `$`: in real markup the URL is followed by the
+# closing quote of href=, and `$` only matches end-of-string, so an earlier
+# version matched bare URLs in tests and nothing at all on the live page.
+# Both absolute and root-relative forms appear, so the origin is optional.
+ARTICLE_RE = re.compile(
+    r"""(?:https://mettisglobal\.news)?/([A-Za-z0-9%\-]+?-(\d{4,}))(?=["'\s<>?#]|$)""")
 TIME_RE = re.compile(r'data-time="([^"]+)"')
 TITLE_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S | re.I)
 OG_TITLE_RE = re.compile(r'<meta[^>]+property="og:title"[^>]+content="([^"]*)"', re.I)
