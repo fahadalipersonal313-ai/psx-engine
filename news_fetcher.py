@@ -104,13 +104,15 @@ def fetch_for_symbol(symbol, cutoff):
     return out
 
 
-def fetch_macro(cutoff):
+def fetch_macro(cutoff, failures=None):
     out = []
     for name, url in MACRO_FEEDS:
         try:
             root = _fetch_rss(url)
         except Exception as e:
             log.warning("macro feed %s failed: %s", name, e)
+            if failures is not None:
+                failures.append(name)
             continue
         for title, link, pub_iso, summary in _items_from_rss(root, cutoff):
             out.append({"symbol": "_macro", "title": title, "url": link,
@@ -119,13 +121,37 @@ def fetch_macro(cutoff):
     return out
 
 
+def _existing_count(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return int(json.load(f).get("count") or 0)
+    except (FileNotFoundError, json.JSONDecodeError, OSError, TypeError, ValueError):
+        return 0
+
+
 def run(output_path="news_raw_24h.json"):
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(hours=WINDOW_HOURS)
     items = []
+    macro_failures = []
     for sym in config.STOCKS:
         items.extend(fetch_for_symbol(sym, cutoff))
-    items.extend(fetch_macro(cutoff))
+    items.extend(fetch_macro(cutoff, macro_failures))
+
+    # Regression guard (2026-08-26). A blocked host makes the fetch return a
+    # SMALL result, not an empty one, so "did it write anything" is not a
+    # sufficient check: a run where every macro feed 403'd still wrote 5
+    # Google-News items and committed them over a good 46-item file, silently
+    # dropping every macro story (and with it all sector-news coverage).
+    # Refuse to overwrite when feeds failed AND the result is much thinner than
+    # what is already on disk. Exit non-zero so the caller sees it.
+    prev = _existing_count(output_path)
+    if macro_failures and prev and len(items) < prev * 0.5:
+        log.error("REFUSING to overwrite %s: %d items now vs %d before, and "
+                  "these feeds failed: %s. Likely a network allowlist problem "
+                  "— fix the host list rather than committing a degraded fetch.",
+                  output_path, len(items), prev, ", ".join(macro_failures))
+        return None
     items.sort(key=lambda x: x["published"], reverse=True)
     payload = {"fetched_at": now.isoformat(),
                "window_hours": WINDOW_HOURS,
@@ -136,10 +162,14 @@ def run(output_path="news_raw_24h.json"):
                "items": items}
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
-    log.info("Wrote %s with %d items", output_path, len(items))
+    log.info("Wrote %s with %d items (%d macro feeds failed)",
+             output_path, len(items), len(macro_failures))
+    if macro_failures:
+        log.warning("macro feeds unreachable: %s", ", ".join(macro_failures))
     return payload
 
 
 if __name__ == "__main__":
+    import sys
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
-    run()
+    sys.exit(0 if run() is not None else 1)
