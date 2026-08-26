@@ -23,6 +23,7 @@ from xml.etree import ElementTree as ET
 import requests
 
 import config
+import mettis_scraper
 
 log = logging.getLogger("news_fetcher")
 
@@ -148,6 +149,19 @@ def fetch_macro(cutoff, failures=None):
     return out
 
 
+def _known_mettis(path):
+    """url -> published, from the previous file. Lets the scraper skip articles
+    it has already timestamped instead of re-fetching them every cycle."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            items = json.load(f).get("items") or []
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}
+    return {i["url"]: i["published"] for i in items
+            if i.get("source") == "Mettis Global" and i.get("url")
+            and i.get("published")}
+
+
 def _existing_count(path):
     try:
         with open(path, encoding="utf-8") as f:
@@ -165,6 +179,19 @@ def run(output_path="news_raw_24h.json"):
         items.extend(fetch_for_symbol(sym, cutoff))
     items.extend(fetch_macro(cutoff, macro_failures))
 
+    # Mettis publishes no RSS but carries most PSX-relevant coverage, so it is
+    # read from its public pages instead (see mettis_scraper). Wrapped: a
+    # scraper is inherently more fragile than a feed, and a layout change must
+    # cost this one source, never the whole fetch.
+    try:
+        m_items, m_failures = mettis_scraper.fetch(
+            cutoff, _known_mettis(output_path))
+        items.extend(m_items)
+        macro_failures.extend(f"mettis:{f}" for f in m_failures)
+    except Exception as e:
+        log.warning("mettis scraper failed: %s", e)
+        macro_failures.append("mettis")
+
     # Regression guard (2026-08-26). A blocked host makes the fetch return a
     # SMALL result, not an empty one, so "did it write anything" is not a
     # sufficient check: a run where every macro feed 403'd still wrote 5
@@ -179,6 +206,17 @@ def run(output_path="news_raw_24h.json"):
                   "— fix the host list rather than committing a degraded fetch.",
                   output_path, len(items), prev, ", ".join(macro_failures))
         return None
+    # A story can arrive from both Google News and the Mettis scraper. Dedupe
+    # on cleaned title so it is not counted, displayed or rated twice.
+    seen_titles, deduped = set(), []
+    for it in items:
+        key = re.sub(r"\s+", " ", (it.get("title") or "")).strip().lower()
+        key = key.rsplit(" - ", 1)[0] if " - " in key else key
+        if not key or key in seen_titles:
+            continue
+        seen_titles.add(key)
+        deduped.append(it)
+    items = deduped
     items.sort(key=lambda x: x["published"], reverse=True)
     payload = {"fetched_at": now.isoformat(),
                "window_hours": WINDOW_HOURS,
