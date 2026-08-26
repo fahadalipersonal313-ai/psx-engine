@@ -21,16 +21,29 @@ on:
     # even if the external pinger is down. The concurrency group means only ONE
     # loop ever runs — the extra crons are harmless no-ops once one is going,
     # and any that land after close exit immediately via the outside-hours guard.
-    - cron: '10 4 * * 1-5'          # 09:10 PKT — just before open
-    - cron: '30 4 * * 1-5'          # 09:30 PKT
-    - cron: '35 4 * * 1-5'          # 09:35 PKT — requested kickoff. GitHub cron
-                                    # is best-effort and routinely fires minutes
-                                    # late or skips entirely; the external
-                                    # cron-job.org pinger is what actually holds
-                                    # a precise time.
-    - cron: '45 4 * * 1-5'          # 09:45 PKT
+    # PRE-OPEN kickoffs (2026-08-26). The loop WAITS for MARKET_OPEN rather
+    # than exiting, so a kickoff that lands before the open makes the first
+    # cycle fire at the open EXACTLY. Measured first-run times show that is the
+    # whole story: days a kickoff arrived pre-open started at 09:32 on the dot
+    # (08-20/21/25), days it did not started 09:49-09:58 (08-19/24/26). The old
+    # earliest cron was 09:10 — only 22 minutes of headroom, and GitHub cron
+    # routinely slips 15-40 minutes.
+    # Four attempts across 34 minutes now, on OFF-PEAK minutes: GitHub's
+    # scheduler is most congested at :00/:15/:30/:45, which is exactly where the
+    # old crons sat. All four must slip for the open to be missed.
+    # Not earlier than ~08:52: `timeout-minutes: 350` is a 5h50m budget, and
+    # every idle pre-open minute is subtracted from the afternoon.
+    - cron: '52 3 * * 1-5'          # 08:52 PKT
+    - cron: '5 4 * * 1-5'           # 09:05 PKT
+    - cron: '17 4 * * 1-5'          # 09:17 PKT
+    - cron: '26 4 * * 1-5'          # 09:26 PKT
     - cron: '10 5 * * 1-5'          # 10:10 PKT — mid-morning self-heal
     - cron: '10 6 * * 1-5'          # 11:10 PKT — later self-heal if all above skipped
+    # Afternoon hand-over: a loop kicked off at ~08:52 hits the 350-minute
+    # timeout around 14:42, before the 15:45 close. These keep a queued run
+    # ready to take over for the rest of the session.
+    - cron: '40 8 * * 1-5'          # 13:40 PKT
+    - cron: '40 9 * * 1-5'          # 14:40 PKT
   workflow_dispatch: {}   # cron-job.org pinger + manual runs
   # Dependency-free kickoff: pushing ANY change to `.engine-kick` starts the
   # loop. Added 2026-08-18 after BOTH existing triggers failed silently on the
