@@ -61,8 +61,10 @@ LISTING_PAGES = [
 ARTICLE_RE = re.compile(
     r"""(?:https://mettisglobal\.news)?/([A-Za-z0-9%\-]+?-(\d{4,}))(?=["'\s<>?#]|$)""")
 TIME_RE = re.compile(r'data-time="([^"]+)"')
-TITLE_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S | re.I)
-OG_TITLE_RE = re.compile(r'<meta[^>]+property="og:title"[^>]+content="([^"]*)"', re.I)
+HEADLINE_RE = re.compile(
+    r'<h[1-4][^>]*class="[^"]*HeadlineStyle[^"]*"[^>]*>(?:\s*<a[^>]*>)?(.*?)</',
+    re.S | re.I)
+ANCHOR_TEXT_RE = re.compile(r">([^<>]{15,200})<", re.S)
 
 UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
 TIMEOUT = 20
@@ -98,25 +100,25 @@ def _parse_time(raw):
     return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
 
-def discover_article_urls():
-    """Article URLs found across the listing pages, de-duplicated."""
-    urls, failures = [], []
-    seen = set()
-    for page in LISTING_PAGES:
-        url = urljoin(BASE, page)
-        try:
-            html = _get(url)
-        except Exception as e:
-            log.warning("listing %s failed: %s", url or "/", e)
-            failures.append(page or "/")
-            continue
-        for m in ARTICLE_RE.finditer(html):
-            full = f"https://mettisglobal.news/{m.group(1)}"
-            if full not in seen:
-                seen.add(full)
-                urls.append(full)
-        time.sleep(PAUSE_SECONDS)
-    return urls, failures
+def _blocks(html):
+    """Yield (url, block_html) for each article link, where the block runs to
+    the next article link. Mettis puts an item's timestamp in a reading-time
+    div AFTER its anchor, so the timestamp for an item lives in its block."""
+    marks = [(m.start(), f"https://mettisglobal.news/{m.group(1)}")
+             for m in ARTICLE_RE.finditer(html)]
+    for i, (pos, url) in enumerate(marks):
+        nxt = marks[i + 1][0] if i + 1 < len(marks) else min(pos + 2000, len(html))
+        yield url, html[pos:nxt]
+
+
+def _title_from(block, url):
+    """Headline text for this block, else a title recovered from the slug."""
+    m = HEADLINE_RE.search(block) or ANCHOR_TEXT_RE.search(block)
+    title = _clean(m.group(1)) if m else ""
+    if not title:
+        slug = url.rsplit("/", 1)[-1]
+        title = _clean(re.sub(r"-\d{4,}$", "", slug).replace("-", " "))
+    return title
 
 
 def _attribute(title, summary=""):
@@ -131,57 +133,53 @@ def _attribute(title, summary=""):
 def fetch(cutoff, known=None):
     """Return (items, failures).
 
-    `known` maps url -> published_iso from a previous run, so an article is
-    only fetched once. Items older than `cutoff`, or with an unreadable
-    timestamp, are dropped.
+    Reads only the listing pages — seven requests per run, no per-article
+    fetching. An earlier version fetched each article looking for its
+    timestamp; the articles do not carry one, so 40 requests produced 0 usable
+    items. The timestamp is in the listing, beside the link.
+
+    `known` (url -> published_iso) supplies a timestamp for an item whose
+    listing block has none, so a story already dated on a previous run is not
+    lost when it later appears in an undated list.
     """
     known = known or {}
-    urls, failures = discover_article_urls()
-    if not urls:
-        return [], failures or ["mettis: no article links found"]
+    items, failures, no_ts = {}, [], 0
 
-    items, fetched, no_timestamp = [], 0, 0
-    for url in urls:
-        pub_iso = known.get(url)
-        title = None
-        if pub_iso is None:
-            if fetched >= MAX_ARTICLES:
-                break
-            try:
-                html = _get(url)
-            except Exception as e:
-                log.debug("article %s failed: %s", url, e)
-                continue
-            fetched += 1
-            time.sleep(PAUSE_SECONDS)
-            tm = TIME_RE.search(html)
-            dt = _parse_time(tm.group(1) if tm else None)
+    for page in LISTING_PAGES:
+        url = urljoin(BASE, page)
+        try:
+            html = _get(url)
+        except Exception as e:
+            log.warning("listing %s failed: %s", page or "/", e)
+            failures.append(page or "/")
+            continue
+        for art_url, block in _blocks(html):
+            tm = TIME_RE.search(block)
+            dt = _parse_time(tm.group(1) if tm else known.get(art_url))
             if dt is None:
-                no_timestamp += 1
+                no_ts += 1
                 continue
-            pub_iso = dt.isoformat()
-            m = TITLE_RE.search(html) or OG_TITLE_RE.search(html)
-            title = _clean(m.group(1)) if m else None
+            if dt < cutoff:
+                continue
+            title = _title_from(block, art_url)
+            if not title:
+                continue
+            prev = items.get(art_url)
+            # Keep the richer title if the same story appears on several lists.
+            if prev and len(prev["title"]) >= len(title):
+                continue
+            items[art_url] = {"symbol": _attribute(title), "title": title,
+                              "url": art_url, "published": dt.isoformat(),
+                              "summary": "", "source": "Mettis Global"}
+        time.sleep(PAUSE_SECONDS)
 
-        dt = _parse_time(pub_iso)
-        if dt is None or dt < cutoff:
-            continue
-        if not title:
-            # Recover a readable title from the slug when reusing a cached URL.
-            slug = url.rsplit("/", 1)[-1]
-            title = _clean(re.sub(r"-\d{4,}$", "", slug).replace("-", " "))
-        if not title:
-            continue
-        items.append({"symbol": _attribute(title), "title": title, "url": url,
-                      "published": dt.isoformat(), "summary": "",
-                      "source": "Mettis Global"})
-
-    if no_timestamp:
-        log.warning("mettis: dropped %d article(s) with no readable timestamp",
-                    no_timestamp)
-    log.info("mettis: %d listing pages, %d urls, %d articles fetched, %d items",
-             len(LISTING_PAGES) - len(failures), len(urls), fetched, len(items))
-    return items, failures
+    out = list(items.values())
+    log.info("mettis: %d/%d listings ok, %d dated items, %d blocks undated",
+             len(LISTING_PAGES) - len(failures), len(LISTING_PAGES),
+             len(out), no_ts)
+    if not out and not failures:
+        failures.append("no dated items")
+    return out, failures
 
 
 if __name__ == "__main__":
