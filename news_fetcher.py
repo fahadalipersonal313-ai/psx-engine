@@ -12,6 +12,7 @@ runs in the session.
 """
 
 import json
+from collections import Counter
 import logging
 import os
 import re
@@ -167,6 +168,15 @@ def _known_mettis(path):
             and i.get("published_precision") != "day"}
 
 
+def _existing_sources(path):
+    """source -> item count in the file currently on disk. Empty if unreadable."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return Counter(i.get("source") for i in (json.load(f).get("items") or []))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return Counter()
+
+
 def _existing_count(path):
     try:
         with open(path, encoding="utf-8") as f:
@@ -204,6 +214,25 @@ def run(output_path="news_raw_24h.json"):
     # dropping every macro story (and with it all sector-news coverage).
     # Refuse to overwrite when feeds failed AND the result is much thinner than
     # what is already on disk. Exit non-zero so the caller sees it.
+    # Per-source regression (2026-08-26). The aggregate 50% rule above is too
+    # coarse to catch ONE blocked publisher: the Claude routine's environment
+    # allows fewer hosts than GitHub Actions, so its fetch lost Mettis and
+    # ProPakistani entirely — 50 items down to 40, a 20% drop that sailed past
+    # the aggregate check and committed over the good file. A desk that was
+    # contributing and now contributes NOTHING, on a run that also had fetch
+    # failures, is a network problem, not a quiet news day.
+    prev_by_source = _existing_sources(output_path)
+    now_by_source = Counter(i.get("source") for i in items)
+    vanished = [src for src, n in prev_by_source.items()
+                if n >= 3 and not now_by_source.get(src)]
+    if macro_failures and vanished:
+        log.error("REFUSING to overwrite %s: source(s) %s contributed nothing "
+                  "this run but had %s items before, and these fetches failed: "
+                  "%s. Fix the host allowlist rather than committing a "
+                  "degraded fetch.", output_path, ", ".join(vanished),
+                  [prev_by_source[v] for v in vanished], ", ".join(macro_failures))
+        return None
+
     prev = _existing_count(output_path)
     if macro_failures and prev and len(items) < prev * 0.5:
         log.error("REFUSING to overwrite %s: %d items now vs %d before, and "
