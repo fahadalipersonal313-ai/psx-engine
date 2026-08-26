@@ -44,7 +44,14 @@ MACRO_FEEDS = [
     ("Business Recorder", "https://www.brecorder.com/feeds/latest-news"),
     ("Dawn Business",     "https://www.dawn.com/feeds/business"),
     ("Profit Pakistan Today", "https://profit.pakistantoday.com.pk/feed/"),
-    ("Mettis Global",     "https://mettisglobal.news/feed/"),
+    # PROBE 2026-08-26: the real Mettis feed path is unknown and unreachable
+    # from the dev sandbox (egress-blocked), so candidates are tried live here.
+    # Whichever returns items wins; the rest log a named warning and are then
+    # deleted. Do not leave more than one of these in place.
+    ("Mettis Global",       "https://mettisglobal.news/feed/"),
+    ("Mettis Global rss",   "https://mettisglobal.news/rss"),
+    ("Mettis Global wwwfeed", "https://www.mettisglobal.news/feed/"),
+    ("Mettis Global index",  "https://mettisglobal.news/feed/rss/"),
     ("ProPakistani",      "https://propakistani.pk/feed/"),
 ]
 
