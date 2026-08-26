@@ -44,7 +44,12 @@ on:
     # ready to take over for the rest of the session.
     - cron: '40 8 * * 1-5'          # 13:40 PKT
     - cron: '40 9 * * 1-5'          # 14:40 PKT
-  workflow_dispatch: {}   # cron-job.org pinger + manual runs
+  workflow_dispatch:      # cron-job.org pinger + manual runs
+    inputs:
+      force_now:
+        description: 'Run ONE cycle immediately, ignoring the session guards (out-of-hours test).'
+        type: boolean
+        default: false
   # Dependency-free kickoff: pushing ANY change to `.engine-kick` starts the
   # loop. Added 2026-08-18 after BOTH existing triggers failed silently on the
   # same morning (GitHub's scheduler fired nothing for this repo across two
@@ -110,9 +115,22 @@ jobs:
           # is 0.0; grading judges past runs), and dropping them gets the
           # morning's signals committed ~30s sooner. Every later cycle is full.
           first_cycle=1
+          # force_now: a manually dispatched single cycle for testing the
+          # pipeline end to end outside session hours. It skips the day/open/
+          # close guards and exits after ONE cycle, so it can never turn into a
+          # loop spinning through the night. Signals it produces reflect the
+          # last available prices, not live trading — that is the point of it
+          # being opt-in per dispatch rather than a relaxed guard.
+          FORCE_NOW="${{ inputs.force_now }}"
+          # A forced cycle takes the FULL path, not --fast: the point of it is
+          # to exercise the news fetch and grading, which --fast skips.
+          [ "$FORCE_NOW" = "true" ] && first_cycle=0
           while true; do
             dow=$(date +%u)          # 1=Mon .. 7=Sun
             now=$(date +%H:%M)
+            if [ "$FORCE_NOW" = "true" ]; then
+              echo "=== FORCED single cycle at $now PKT (session guards bypassed) ==="
+            else
             if [ "$dow" -gt 5 ]; then echo "Weekend — exiting loop."; exit 0; fi
             if [[ "$now" > "$MARKET_CLOSE" ]]; then
               echo "Past market close ($now > $MARKET_CLOSE) — exiting loop."; exit 0; fi
@@ -121,6 +139,7 @@ jobs:
               # noticing the market had opened. The user wants signals by ~09:35,
               # so the first cycle must start within a minute of the open.
               echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 60; continue; fi
+            fi
 
             echo "=== Cycle at $now PKT ==="
             # Adopt the newest committed DB BEFORE running. Without this, a run
@@ -175,5 +194,7 @@ jobs:
             if [[ "$now" > "$MARKET_CLOSE" ]]; then
               echo "Reached close after cycle — exiting."; exit 0; fi
             echo "Sleeping ${RUN_INTERVAL_MINUTES}m before next cycle..."
+            if [ "$FORCE_NOW" = "true" ]; then
+              echo "Forced single cycle done — exiting."; exit 0; fi
             sleep "$((RUN_INTERVAL_MINUTES * 60))"
           done
