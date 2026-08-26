@@ -1,0 +1,32 @@
+{
+  "as_of": "2026-08-26T16:16:02Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "count": 1,
+  "window": "24h-test",
+  "ratings": {
+    "PRL": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Refinery upgrade agreements pending signing in Sept, capacity/margin positive"
+    }
+  },
+  "sectors": {
+    "Refinery": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Sector-wide refinery upgrade agreements likely to be signed in September"
+    },
+    "Power Generation": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.6,
+      "reason": "IPPs found overcharging via costly coal procurement, regulatory/tariff risk"
+    }
+  }
+}
