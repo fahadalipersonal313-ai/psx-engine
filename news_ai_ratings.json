@@ -1,1 +1,45 @@
-{"as_of":"2026-08-27T09:15:27Z","provider":"claude-routine","model":"claude-session","count":2,"ratings":{"SYS":{"rating":"positive","horizon":"single_session","causality":"causal","confidence":0.6,"reason":"H1 2026 profit rose 17% YoY to Rs6.05bn, direct earnings driver"},"ATRL":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.5,"reason":"Rs15 dividend declared, routine payout with no surprise context"}},"sectors":{"Islamic Banking":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.5,"reason":"Bank of Korea rate move and SBP note-retirement talk, no margin mechanism for local Islamic banks"},"Refinery":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.45,"reason":"Single-company ATRL dividend, not a sector-wide margin or duty repricer"},"Power Generation":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.3,"reason":"Headline is about Australian equities, no traceable link to PSX power sector"}}}
+{
+  "as_of": "2026-08-27T10:15:31Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "count": 2,
+  "ratings": {
+    "SYS": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.65,
+      "reason": "H1CY26 net profit up 17% YoY to Rs6.05bn, genuine earnings beat"
+    },
+    "ATRL": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.5,
+      "reason": "Rs15 dividend is a routine scheduled payout, no surprise magnitude given"
+    }
+  },
+  "sectors": {
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.3,
+      "reason": "Bank of Korea rate hike and SBP Rs10-note story are unrelated to PK Islamic banks"
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.4,
+      "reason": "Single peer (ATRL) dividend, not a sector-wide margin or policy driver"
+    },
+    "Power Generation": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.3,
+      "reason": "Headline is about the Australian stock market, unrelated to PK power sector"
+    }
+  }
+}
