@@ -114,6 +114,25 @@ def fetch_eod(symbol):
         return df[["date", "open", "close", "volume"]], meta
     except Exception as e:
         log.warning("EOD fetch failed for %s: %s", symbol, e)
+        # Fall back to the daily bars already banked from earlier intraday polls.
+        # These are REAL captured prices, not a reconstruction — the same data the
+        # ATR/ADX path already trusts. Without this the engine sat on 48 stored
+        # bars and a cached quote and still reported "No data" for every symbol
+        # the moment DPS went unreachable (2026-08-27, all 50 tickers blank).
+        # latest_quote has always degraded this way; fetch_eod never did.
+        bars = db.get_daily_ohlc(symbol, limit=400)
+        if len(bars) >= 30:
+            df = pd.DataFrame([{"date": pd.to_datetime(b["date"]),
+                                "open": b["open"], "close": b["close"],
+                                "volume": b["volume"]} for b in bars])
+            as_of = bars[-1]["date"]
+            log.info("EOD for %s: using %d banked bars through %s",
+                     symbol, len(bars), as_of)
+            return df[["date", "open", "close", "volume"]], {
+                "source": "banked daily OHLC (cached)", "as_of": as_of,
+                "live": False,
+                "warning": (f"EOD fetch failed ({e}); using {len(bars)} banked "
+                            f"daily bars through {as_of}.")}
         return None, {"source": "PSX DPS end-of-day", "as_of": None,
                       "live": False,
                       "warning": f"EOD fetch failed ({e})."}

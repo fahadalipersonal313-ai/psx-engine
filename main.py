@@ -72,6 +72,13 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
     quote = data_fetcher.latest_quote(symbol)
     eod, eod_meta = data_fetcher.fetch_eod(symbol)
 
+    # A cached-EOD fallback still yields a full technical read, so nothing
+    # downstream would otherwise reveal that the prices are days old — and a row
+    # stamped with today's run_time reading "good" is exactly how the 2026-08-13
+    # outage hid four stale days. Carry the price date into data_quality so the
+    # dashboard's Data column and its good-count tile both show it.
+    stale_prices = None if eod is None or eod_meta.get("live") else eod_meta.get("as_of")
+
     rs = market_regime.relative_strength(eod, index_eod) if index_eod is not None else None
     rs_score = rs["rs_score"] if rs else None
     ohlc = db.get_daily_ohlc(symbol)          # real H/L bars → true ATR/ADX when ready
@@ -110,7 +117,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
         "support": technical.get("support"),
         "resistance": technical.get("resistance"),
         "risk_level": risk["risk_level"], "shariah_status": shariah["status"],
-        "data_quality": scoring["data_quality"],
+        "data_quality": (f"STALE prices ({stale_prices})" if stale_prices
+                         else scoring["data_quality"]),
         "relative_strength": rs_score,
         "market_regime": (regime or {}).get("regime"),
         "main_reason": "; ".join(signal["reasons"])[:400],
