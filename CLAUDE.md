@@ -58,7 +58,25 @@ assemblers. Those labels drive the sector-exposure cap in `portfolio_risk`, so
 re-bucketing two symbols changes book-level risk limits and needs a deliberate
 decision.
 
-## GLM second opinion (2026-07-15, unweighted)
+## Who rates the news (updated 2026-08-26)
+
+The **Claude Routine** is now the primary rater, not GLM. A scheduled Routine
+(`trig_01JM5xvBrJjEaDYNJSZjCNqT`, cron `0 4-10 * * 1-5`) runs in the CLOUD — not
+in Actions — collects via `news_fetcher.py`, rates every symbol and sector that
+has a session-window headline, and commits `news_ai_ratings.json`.
+`news_feed._RATING_FILES` reads that file FIRST and falls back to
+`news_glm_ratings.json`. Because it runs in the cloud it survives GitHub cron
+outages: on 2026-08-27 every Actions trigger missed and the Routine still fired.
+
+Two gotchas that cost real time:
+- Its environment has its own allowed-domain list, SEPARATE from Actions.
+  `mettisglobal.news` and `propakistani.pk` are still BLOCKED there, so the
+  Routine's own fetch silently loses those desks (40 items vs 50 from Actions).
+- `as_of` must be a real current UTC timestamp. `_load_rating_file` silently
+  returns `{}` when stale, and a MISSING/malformed `as_of` bypasses the gate
+  entirely and reads as fresh.
+
+## GLM second opinion (2026-07-15, now the FALLBACK rater)
 
 `news_glm.py` runs after the news fetch in `news.yml` (needs `GLM_API_KEY`
 secret set in the repo — ZhipuAI free tier, `glm-4.5-flash`). One batched
@@ -125,7 +143,24 @@ User says **"Run the repo news"** any morning after 09:00 PKT → Claude:
    from allowlist only), writes `news_signals.json`, commits + pushes.
 3. Triggers `engine.yml` so the dashboard reflects fresh news-weighted signals.
 
-**News weight is ZERO as of 2026-07-15** — the user turned news off because the
+**SUPERSEDED 2026-08-26 — news now MOVES the score, as bounded modifiers.**
+`config.WEIGHTS` is still technical 1.0 (news is NOT blended into the weighted
+sum, which would mute every Buy — measured: macro_news 0.30 dropped a technical
+78 with no news to 69.6, below the 75 Buy band). Instead `scoring_engine`
+applies two capped adjustments on top of the technical score:
+`NEWS_SCORE_ADJUST_MAX = 8.0` (company) and `SECTOR_NEWS_SCORE_ADJUST_MAX = 4.0`
+(sector), so news can move a score at most +-12 and a symbol with NO news moves
+exactly 0.0 — never penalised for silence.
+Damping is `50 + (base-50) x causality_mult x confidence`, causality being
+causal 1.0 / correlated 0.35 / noise 0.0, so pure noise cannot move a score at
+all however confident the rater was. Verified live 2026-08-26: PRL +3.0
+(company+sector), NRL/ATRL +1.0 (sector only), HUBC -1.2, MARI 0.0.
+**Both modifiers are UNMEASURED** against the standing rule below — run
+`python main.py measure` once a few weeks of graded history exists.
+
+The historical note below is kept for context:
+
+**News weight WAS ZERO from 2026-07-15 to 2026-08-26** — the user turned news off because the
 headline-driven score swings were noise (a single live-blog headline could flip
 a symbol run-to-run). `config.WEIGHTS` is now **technical 1.0**, fundamentals
 0.0, macro_news 0.0, sentiment 0.0 — `final_score == technical score`. The news
@@ -522,11 +557,79 @@ goal without surfacing a number that looks like a track record.
   ramps DOWN to floor 1.1 by `headroom_rr_riskon_full_pct=8.0`.
 - `bad_news`, `manipulation_risk` — content-driven (warnings only under
   PURE_TECHNICAL)
-- `concentrated` (2026-08-12) — this symbol is already above
+- `concentrated` — **DISABLED 2026-08-24** (`CONCENTRATION_VETO_ENABLED = False`,
+  user-directed: they did not want portfolio-driven analysis). Gated in
+  `risk_manager` the same way `poor_rr` is, so it cannot mislabel `risk_level`.
+  When enabled it worked as follows: this symbol is already above
   `RISK["max_existing_concentration_pct"]` (25%) of the REAL book read from
   `portfolio.json`. Per-trade sizing is blind to existing holdings, so an
   80%-of-account position kept producing clean Buys. Blocks ADDING only;
   no portfolio file / no position → never fires.
+
+## Data resilience: the day every ticker read "No data" (2026-08-27)
+
+All 50 symbols returned `No data`, price `None`. The engine had not crashed — it
+simply could not price anything, while holding a cached quote AND ~48 real
+banked daily bars per symbol.
+
+**Cause:** `data_fetcher.fetch_eod` had NO fallback. It returned `None` on any
+failure, and `technical_analyzer` withholds the entire read when `eod is None`,
+so `price` came back `None` and the no-data guard fired. `latest_quote`, ten
+lines above it, had always degraded to the cached price; `fetch_eod` never did.
+
+`fetch_eod` now falls back to `db.get_daily_ohlc` (>=30 bars) — REAL prices
+captured from earlier intraday polls, the same bars the ATR/ADX path trusts.
+**The staleness is made loud**, which is the part that matters: a cached
+fallback still yields a full technical read, so a row stamped with today's
+`run_time` would otherwise show `data_quality: good` over days-old prices —
+exactly how the 2026-08-13 outage hid four stale days.
+`main.analyze_stock` writes `STALE prices (<date>)` into `data_quality`, which
+surfaces in the Watchlist Data column and the good-count tile.
+
+**Why DPS actually failed — and every wrong theory, so they are not re-run.**
+A runner probe (`dps_probe.py`, since deleted) proved PSX DPS was **healthy**:
+HTTP 200 on both endpoints, bot UA and browser UA alike, TLS fine, no WAF
+headers, and a 20-symbol rapid burst all 200. Then the engine's EXACT path —
+full `requirements-ci.txt`, `ssl_compat.enable()`, `config.REQUEST_HEADERS` —
+also returned `rows=1239 live=True` in a fresh job. So it was NOT an IP block,
+NOT the bot User-Agent, NOT the ~2,400 requests/day volume, and NOT truststore.
+**It was state local to the long-running loop job**: every cycle of the job
+started at 09:45 failed on all 50 symbols, while a fresh job succeeded in the
+same minute. Cancelling and restarting the loop restored live prices instantly.
+If it recurs, restart the job — do not go hunting in the fetch code again.
+(A job's logs are only released when it ENDS, so cancelling is also the only
+way to read a running loop's failure.)
+
+**Do not read a sandbox 403 as evidence about PSX.** This sandbox cannot reach
+`dps.psx.com.pk` at all — `$HTTPS_PROXY/__agentproxy/status` shows
+`connect_rejected`, i.e. the request never leaves the container. That is the
+environment's egress policy and says nothing about the portal.
+
+## Tracked DB size — pruned and self-maintaining (2026-08-27)
+
+The whole DB is committed every 15-minute cycle, so its size is a per-push cost.
+It reached **54 MB**, past GitHub's 50 MB warning and heading for the 100 MB
+hard limit. Almost all of it was rows nothing reads:
+
+| table | before | after | why the surplus was dead |
+|---|---|---|---|
+| `prices` | 41,938 | 50 | `latest_quote` reads only the LAST row per symbol |
+| `news` | 20,799 | 1,858 | `recent_news()` only ever queries a 48h window |
+| `runs` | 52,020 | 7,580 | 18.7x duplicated by 15-minute polling |
+
+**54 MB -> 6.9 MB.** `runs` keeps FULL fidelity for the last 7 days (the
+backtester grades 7 days forward and needs every row); older days keep one row
+per symbol per day — the same dedupe every analysis here already applies.
+`daily_ohlc` is untouched: it is now load-bearing for the EOD fallback above.
+
+**Expect the accuracy n to be ~19x smaller** — that is the day-deduped truth,
+not a regression. Buy reads n=140 at 47.1% where the inflated count implied far
+more evidence than existed.
+
+`db.prune()` runs nightly from the evening job (last, wrapped), so it cannot
+creep back; `python main.py prune` runs it by hand. **Cancel the engine loop and
+confirm it is dead before any manual prune** — the loop's DB wins every rebase
+conflict (see the regrade it ate on 2026-08-13).
 
 ## Learning loop (backtester)
 
@@ -664,7 +767,30 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-17 (end of session). Momentum-burst panel added and
+**Last updated:** 2026-08-27. Today: `fetch_eod` fallback to banked bars ended a
+total "No data" blackout, with `STALE prices (<date>)` surfacing the staleness;
+DPS diagnosed (healthy — the fault was long-running-job state, restart fixes it);
+tracked DB pruned 54 MB -> 6.9 MB with a nightly `db.prune()`; the routine's
+`FORCE_RUN_TEST_2608` overrides removed. 2026-08-26: news now MOVES the score as
+bounded +-8 / +-4 modifiers with causality damping (both UNMEASURED — run
+`python main.py measure`); the Claude Routine became the primary rater and GLM
+the fallback; the news read shows on EVERY signal card, falling back to the
+sector rating (labelled) so a score that moved never shows a blank; Mettis
+scraper added, then its date-text parser REVERTED for binding dates to the wrong
+articles (~1 item/run now — raising it needs the listing's real per-item markup).
+2026-08-24: concentration veto disabled; NRL close corrected to 526.29.
+
+**Live operational cautions for the next session:**
+- `mettisglobal.news` and `propakistani.pk` are still blocked in the ROUTINE's
+  environment (Actions is fine) — the user must add them.
+- GitHub cron missed EVERY trigger on 2026-08-27; the pre-open crons and the
+  cron-job.org pinger all failed and the loop had to be dispatched by hand.
+  Check the pinger is alive before relying on the 09:32 start.
+- Do NOT dispatch a workflow in the same breath as pushing a change to it —
+  indexing lags a push by minutes and the run is orphaned in `queued` forever.
+  Two such zombies from 2026-08-26 could not be cancelled via the API (403).
+
+Previously 2026-08-17 (end of session). Momentum-burst panel added and
 measured; dashboard stripped of measured-noise sections; morning timing fixed
 (MARKET_OPEN 09:15 → 09:32). Earlier the same day: four-day signal outage found and fixed
 (`outcome_7d` missing from `update_outcome`'s whitelist — see "The outage that
@@ -702,7 +828,8 @@ quality gate, RS laggard veto, strict-history confidence).
   now prices all three tranches as gains rather than making tranche 1 wait for
   breakeven. Concentration is UNCHANGED as the live problem: NRL is **52.3% of
   equity** (92.2% of holdings ex-cash), still far above the 25% single-name cap,
-  so the `concentrated` veto still fires. Averaging down cut the loss, not the
+  though the `concentrated` veto is DISABLED as of 2026-08-24 and no longer
+  fires at all. Averaging down cut the loss, not the
   risk. GHNI (300) and FCEPL (1,000) are GONE from the book; PIBTL halved
   10,000 → 5,000; PSO cut 1,041 → 4 and FCEPL's exit means the 08-18 sync is
   stale wherever it is quoted.
