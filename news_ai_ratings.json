@@ -1,1 +1,45 @@
-{"as_of":"2026-08-27T06:25:10Z","provider":"claude-routine","model":"claude-session","count":2,"ratings":{"SYS":{"rating":"positive","horizon":"single_session","causality":"causal","confidence":0.6,"reason":"1HCY26 profit rose 17%, direct earnings driver"},"ATRL":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.3,"reason":"Rs15 dividend declared, size not a clear surprise"}},"sectors":{"Islamic Banking":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.2,"reason":"SBP mulling Rs10 note retirement has no traceable bank-margin link"},"Refinery":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.2,"reason":"Single-company (ATRL) dividend, not a sector-wide margin or duty change"},"Power Generation":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.15,"reason":"Generic global oil/equity headlines, no traceable PK power-sector mechanism"}}}
+{
+  "as_of": "2026-08-27T07:21:28Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "count": 2,
+  "ratings": {
+    "SYS": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.6,
+      "reason": "1HCY26 profit +17% is a direct earnings beat"
+    },
+    "ATRL": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.3,
+      "reason": "Rs15 dividend declared, no surprise magnitude given"
+    }
+  },
+  "sectors": {
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.25,
+      "reason": "single company dividend, not a sector-wide repricer"
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "BOK/SBP note headlines are off-target, not PK bank margins"
+    },
+    "Power Generation": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Australian equities/Nvidia headlines are unrelated noise"
+    }
+  }
+}
