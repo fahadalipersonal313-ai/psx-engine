@@ -252,6 +252,8 @@ def main():
     elif cmd == "morning":
         text = reports.morning_report()
         print(text); reports.save_report(text, "morning")
+    elif cmd == "prune":
+        print(db.prune())
     elif cmd == "measure":
         import measure
         rows = measure.load()
@@ -280,6 +282,13 @@ def main():
             log.warning("Focus brief skipped: %s", e)
         text = reports.evening_report()
         print(text); reports.save_report(text, "evening")
+        # Keep the tracked DB from creeping back to the 54 MB it had reached.
+        # Runs once a day, after grading, so nothing it drops is still needed.
+        # Last, and wrapped: a prune fault must never cost the evening report.
+        try:
+            log.info("DB prune: %s", db.prune())
+        except Exception as e:
+            log.warning("DB prune skipped: %s", e)
         try:
             import notify
             notify.send_text(f"PSX Evening Summary {datetime.now():%Y-%m-%d}", text)

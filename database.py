@@ -2,6 +2,7 @@
 so the engine can learn from history. Nothing is ever fabricated; missing
 outcomes stay NULL until real prices arrive."""
 
+import os
 import sqlite3
 import logging
 from datetime import datetime, timedelta
@@ -448,3 +449,50 @@ def accumulating_now(lookback=10, min_streak=1):
     return sorted(out, key=lambda x: x.get("final_score") or 0, reverse=True)
 
 
+
+
+def prune(runs_full_days=7, news_days=7):
+    """Shrink the tracked DB by dropping rows nothing reads. Returns a summary.
+
+    The whole database is committed every 15-minute cycle, so its size is a
+    per-push cost, and it had reached 54 MB — past GitHub's 50 MB warning and
+    heading for the 100 MB hard limit. Three tables carried almost all of it,
+    and in every case the surplus was rows no code path ever queries:
+
+      prices  - data_fetcher.latest_quote reads only the LAST row per symbol,
+                so 41,888 rows existed to serve 50.
+      news    - recent_news() only ever queries a 48h window.
+      runs    - 18.7x duplicated: 15-minute polling stores ~19 rows per symbol
+                per day, while every analysis in this repo day-dedupes before
+                trusting a number (see CLAUDE.md, "a win rate alone is not
+                evidence"). Full fidelity is kept for the last `runs_full_days`
+                because backtester grades up to 7 days forward and needs every
+                row; older days keep the last row per symbol per day.
+
+    Consequence worth knowing: signal_accuracy_summary's n values drop ~19x to
+    their day-deduped truth. That is the honest count, not a loss.
+    """
+    with conn() as c:
+        before = {t: c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+                  for t in ("runs", "news", "prices")}
+        c.execute("""DELETE FROM prices WHERE ts < (SELECT MAX(ts) FROM prices)
+                     AND rowid NOT IN (SELECT MAX(rowid) FROM prices GROUP BY symbol)""")
+        c.execute("""DELETE FROM news WHERE fetched_at <
+                     datetime((SELECT MAX(fetched_at) FROM news), ?)""",
+                  (f"-{news_days} days",))
+        c.execute("""DELETE FROM runs WHERE run_time <
+                     (SELECT datetime(MAX(run_time), ?) FROM runs)
+                     AND id NOT IN (SELECT MAX(id) FROM runs
+                                    GROUP BY symbol, substr(run_time, 1, 10))""",
+                  (f"-{runs_full_days} days",))
+        after = {t: c.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
+                 for t in ("runs", "news", "prices")}
+    # VACUUM cannot run inside a transaction, so it needs its own connection.
+    v = sqlite3.connect(config.DB_PATH)
+    v.execute("VACUUM")
+    v.close()
+    mb = os.path.getsize(config.DB_PATH) / 1048576
+    log.info("prune: %s -> %s, file now %.1f MB",
+             {k: f"{v:,}" for k, v in before.items()},
+             {k: f"{v:,}" for k, v in after.items()}, mb)
+    return {"before": before, "after": after, "size_mb": round(mb, 1)}
