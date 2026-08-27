@@ -64,6 +64,45 @@ def probe(path, headers, label, attempts=3):
         time.sleep(3)
 
 
+def engine_path():
+    """Reproduce the ENGINE's exact call path: ssl_compat.enable() first.
+
+    The plain-requests probe got HTTP 200 for everything while the engine got
+    nothing, and this is the only difference between them — truststore replaces
+    Python's TLS stack process-wide before any request is made.
+    """
+    print("\n== ENGINE PATH: ssl_compat.enable() then fetch")
+    try:
+        import ssl_compat
+        ok = ssl_compat.enable()
+        print(f"  ssl_compat.enable() -> {ok}")
+    except Exception as e:
+        print(f"  ssl_compat import/enable FAILED: {type(e).__name__}: {e}")
+    import config
+    print(f"  REQUEST_TIMEOUT={config.REQUEST_TIMEOUT} headers={config.REQUEST_HEADERS}")
+    for path in PATHS:
+        for i in (1, 2):
+            try:
+                t = time.time()
+                r = requests.get(f"https://{HOST}{path}",
+                                 headers=config.REQUEST_HEADERS,
+                                 timeout=config.REQUEST_TIMEOUT)
+                print(f"  {path} #{i} HTTP {r.status_code} in {time.time()-t:.2f}s "
+                      f"len={len(r.content)}")
+            except Exception as e:
+                print(f"  {path} #{i} EXCEPTION {type(e).__name__}: {e}")
+    # And the real function, so nothing about the wrapper is left untested.
+    try:
+        import data_fetcher
+        q = data_fetcher.latest_quote("NRL")
+        eod, meta = data_fetcher.fetch_eod("NRL")
+        print(f"  data_fetcher.latest_quote -> price={q.get('price')} live={q.get('live')}")
+        print(f"  data_fetcher.fetch_eod    -> rows={None if eod is None else len(eod)} "
+              f"live={meta.get('live')} warning={str(meta.get('warning'))[:160]}")
+    except Exception as e:
+        print(f"  data_fetcher FAILED: {type(e).__name__}: {e}")
+
+
 if __name__ == "__main__":
     net_layer()
     for p in PATHS:
@@ -82,3 +121,4 @@ if __name__ == "__main__":
         except Exception as e:
             out.append(f"{s}:{type(e).__name__}")
     print("  " + " ".join(out))
+    engine_path()
