@@ -1,45 +1,38 @@
 {
-  "as_of": "2026-08-27T10:15:31Z",
+  "as_of": "2026-08-28T04:13Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "count": 2,
   "ratings": {
-    "SYS": {
+    "DGKC": {
       "rating": "positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.65,
-      "reason": "H1CY26 net profit up 17% YoY to Rs6.05bn, genuine earnings beat"
+      "confidence": 0.75,
+      "reason": "Record-high annual profit (Rs 11.4bn), genuine earnings surprise"
     },
-    "ATRL": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.5,
-      "reason": "Rs15 dividend is a routine scheduled payout, no surprise magnitude given"
+    "HUBC": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.7,
+      "reason": "FY26 profit hits Rs 50bn, driven by stronger BYD contribution"
     }
   },
   "sectors": {
     "Islamic Banking": {
       "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.3,
-      "reason": "Bank of Korea rate hike and SBP Rs10-note story are unrelated to PK Islamic banks"
-    },
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Single peer (ATRL) dividend, not a sector-wide margin or policy driver"
+      "confidence": 0.3,
+      "reason": "SBP's own profit fell on rate cuts; margin-pressure read-through, not direct bank earnings"
     },
     "Power Generation": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.3,
-      "reason": "Headline is about the Australian stock market, unrelated to PK power sector"
+      "confidence": 0.1,
+      "reason": "Gold/Fed-speech headline mismatched to sector, no traceable link"
     }
   }
 }
