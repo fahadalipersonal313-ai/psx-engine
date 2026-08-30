@@ -10,6 +10,28 @@ jobs:
         with: {python-version: '3.10'}
       - run: pip install -q requests
       - run: python article_text.py
+      - name: Diagnose google_news_rss failures
+        run: |
+          python - <<'PY'
+          import json, requests, article_text as at
+          raw = json.load(open('news_raw_24h.json'))['items']
+          g = [i for i in raw if i['source'] == 'google_news_rss'][:2]
+          UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                              "(KHTML, like Gecko) Chrome/128.0 Safari/537.36"}
+          for it in g:
+              print(f"\n=== {it['title'][:80]}")
+              for label, hdrs in (("engine UA", at.UA), ("browser UA", UA)):
+                  try:
+                      r = requests.get(it['url'], headers=hdrs, timeout=25, allow_redirects=True)
+                      body = at.extract(r.text)
+                      print(f"  [{label}] HTTP {r.status_code} len={len(r.content)} "
+                            f"redirects={len(r.history)} final_host={r.url.split('/')[2]}")
+                      print(f"     extract -> {('%d chars' % len(body)) if body else 'None'}")
+                      print(f"     raw text[:200]: {at._clean(r.text)[:200]!r}")
+                  except Exception as e:
+                      print(f"  [{label}] EXCEPTION {type(e).__name__}: {e}")
+          PY
+
       - name: Sample what was extracted
         run: |
           python - <<'PY'
