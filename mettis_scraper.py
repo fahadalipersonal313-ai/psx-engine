@@ -161,6 +161,14 @@ def _attribute(title, summary=""):
     return hits[0] if len(hits) == 1 else "_macro"
 
 
+def _slug_title(url):
+    """Last-resort title from the URL slug. Lossy — slugs carry no punctuation,
+    so numbers like Rs1.2tr come back as Rs12tr. Only used when the publisher's
+    own og:title cannot be read."""
+    slug = url.rsplit("/", 1)[-1]
+    return _clean(re.sub(r"-\d{4,}$", "", slug).replace("-", " "))
+
+
 def _article_meta(url):
     """(published_dt, title) read from the article's own page, or (None, None).
 
@@ -223,8 +231,12 @@ def fetch(cutoff, known=None):
     for url in urls[:MAX_ARTICLES]:
         prev = known.get(url)
         prev_dt, prev_title = prev if isinstance(prev, tuple) else (prev, "")
+        # A cached title equal to the slug is a previous run's FALLBACK, not the
+        # publisher's headline, and slugs drop punctuation — that is how
+        # "Rs1.2tr" became "Rs12tr". Re-fetch those so the corruption self-heals
+        # instead of being cached forward for ever.
         cached = _parse_time(prev_dt)
-        if cached is not None:
+        if cached is not None and prev_title and prev_title != _slug_title(url):
             dt, title = cached, prev_title
         else:
             dt, title = _article_meta(url)
@@ -236,8 +248,7 @@ def fetch(cutoff, known=None):
         if dt < cutoff:
             continue
         if not title:
-            slug = url.rsplit("/", 1)[-1]
-            title = _clean(re.sub(r"-\d{4,}$", "", slug).replace("-", " "))
+            title = _slug_title(url)
         items.append({"symbol": _attribute(title), "title": title,
                       "url": url, "published": dt.isoformat(),
                       "summary": "", "source": "Mettis Global"})
