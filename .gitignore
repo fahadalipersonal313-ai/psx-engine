@@ -15,3 +15,9 @@ reports_out/
 
 # Keep psx_engine.db tracked: the Actions runner commits it so the dashboard
 # shows fresh data. (It is intentionally NOT ignored.)
+
+# Article body text fetched for the news Routine's deep read. Deliberately NOT
+# tracked: ~50 full articles committed on every hourly run would be hundreds of
+# KB of churn per hour — the same tracked-size problem that took psx_engine.db
+# to 54 MB. The Routine regenerates it in-container each time it needs it.
+news_bodies.json

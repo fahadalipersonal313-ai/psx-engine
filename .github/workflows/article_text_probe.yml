@@ -1,0 +1,38 @@
+name: article-text-probe
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.10'}
+      - run: pip install -q requests
+      - run: python article_text.py
+      - name: Sample what was extracted
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open('news_bodies.json'))
+          raw = {i['url']: i for i in json.load(open('news_raw_24h.json'))['items']}
+          print(f"\n=== {d['with_body']}/{d['count']} with body, {d['chars']:,} chars")
+          from collections import defaultdict
+          by = defaultdict(lambda: [0,0])
+          for u, b in d['bodies'].items():
+              src = raw.get(u, {}).get('source', '?')
+              by[src][1] += 1
+              if b: by[src][0] += 1
+          for s,(g,t) in sorted(by.items()): print(f"  {s:20} {g}/{t}")
+          print("\n=== two real samples:")
+          n=0
+          for u,b in d['bodies'].items():
+              if b and n<2:
+                  print(f"\n  [{raw.get(u,{}).get('source')}] {raw.get(u,{}).get('title','')[:70]}")
+                  print(f"  summary(RSS) len={len(raw.get(u,{}).get('summary') or '')}  body len={len(b)}")
+                  print(f"  body[:400]: {b[:400]}")
+                  n+=1
+          print("\n=== failures (expected: google redirects):")
+          for u,b in d['bodies'].items():
+              if not b: print(f"  {raw.get(u,{}).get('source','?'):18} {u[:80]}")
+          PY
