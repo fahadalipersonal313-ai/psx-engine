@@ -1,0 +1,41 @@
+name: mettis-probe
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.10'}
+      - run: pip install -q requests
+      - name: Dump the REAL per-item markup of a Mettis listing
+        run: |
+          python - <<'PY'
+          import re, requests
+          UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
+          html = requests.get("https://mettisglobal.news/latest", headers=UA, timeout=25).text
+          print(f"bytes={len(html)}")
+          ART = re.compile(r'href="((?:https://mettisglobal\.news)?/[A-Za-z0-9%\-]+?-(\d{4,}))"')
+          marks = [(m.start(), m.group(1)) for m in ART.finditer(html)]
+          print(f"article hrefs found: {len(marks)}  distinct: {len({u for _,u in marks})}")
+          # Show the RAW markup around the 2nd, 3rd and 4th distinct article link.
+          seen, shown = set(), 0
+          for pos, u in marks:
+              if u in seen:
+                  continue
+              seen.add(u)
+              if len(seen) < 2 or shown >= 3:
+                  continue
+              print(f"\n{'='*30} RAW WINDOW around {u[:60]}")
+              print(html[max(0, pos-1400):pos+900])
+              shown += 1
+          # What date-ish tokens exist, and how many
+          for name, pat in (("data-time", r'data-time="[^"]*"'),
+                            ("datetime attr", r'datetime="[^"]*"'),
+                            ("<time>", r'<time[^>]*>'),
+                            ("ago", r'\b\d{1,2}\s+(?:hours?|minutes?|days?)\s+ago\b'),
+                            ("Mon D, YYYY", r'\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d\d\b')):
+              hits = re.findall(pat, html)
+              print(f"\n{name:16} count={len(hits)} sample={hits[:4]}")
+          PY
