@@ -1,50 +1,69 @@
 {
-  "as_of": "2026-08-30T10:12:33Z",
+  "as_of": "2026-08-30T10:57:07Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 15,
+  "articles_read": 19,
   "read_urls": [
+    "https://mettisglobal.news/Govt-reviews-energy-security-investment-plans-with-OICCI-PSO-63041",
+    "https://mettisglobal.news/Key-Pakistan-Market-Stats-and-Economic-Indicators-63039",
+    "https://mettisglobal.news/Minister-Kayani-briefs-trade-bodies-on-budget-relief-export-facilitation-plan-63042",
     "https://mettisglobal.news/Pakistan-pays-off-Rs12tr-debt-early-largest-tranche-yet-63043",
+    "https://mettisglobal.news/Weekly-Market-Roundup-63040",
     "https://propakistani.pk/2026/08/30/dengue-risk-emerges-at-pims-as-mosquito-larvae-found-in-stagnant-water/",
     "https://propakistani.pk/2026/08/30/gold-rate-suddenly-crashes-in-pakistan/",
     "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/",
+    "https://propakistani.pk/2026/08/30/gta-6-online-may-get-delayed/",
     "https://propakistani.pk/2026/08/30/internet-packages-may-get-expensive-soon/",
     "https://propakistani.pk/2026/08/30/javed-miandad-moin-khan-and-basit-ali-call-for-court-ordered-medical-treatment-of-imran-khan/",
-    "https://propakistani.pk/2026/08/30/kamran-akmal-claims-don-bradman-never-hit-a-6-in-tests/",
     "https://propakistani.pk/2026/08/30/murtaza-wahab-responds-to-bilawal-bhuttos-wedding-reports/",
     "https://propakistani.pk/2026/08/30/pet-dog-attacks-boy-going-to-mosque-for-fajr-prayer/",
-    "https://propakistani.pk/2026/08/30/rs-10-million-and-civil-award-announced-for-nurse-who-saved-a-baby-in-pims-fire/",
+    "https://propakistani.pk/2026/08/30/suzuki-launches-made-in-pakistan-alto-and-every-in-one-of-the-wealthiest-countries-in-the-world/",
     "https://propakistani.pk/2026/08/30/taxpayers-to-complete-nadra-biometric-verification-at-home/",
     "https://www.dawn.com/news/2026071/eoi-date-for-iesco-extended",
     "https://www.dawn.com/news/2026072/national-bank-of-pakistan-posts-rs324bn-profit",
     "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps",
     "https://www.dawn.com/news/2026076/supreme-court-urges-policies-to-cut-business-costs-prices"
   ],
-  "count": 0,
-  "ratings": {},
+  "count": 1,
+  "ratings": {
+    "PSO": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Routine minister-PSO courtesy meeting on sector reforms, no new commitment or numbers",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Govt-reviews-energy-security-investment-plans-with-OICCI-PSO-63041"]
+    }
+  },
   "sectors": {
     "Gas Distribution": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.25,
-      "reason": "temporary RLNG cargo delay caused nighttime load-shedding; no gas-distributor tariff/margin mechanism described",
+      "confidence": 0.15,
+      "reason": "One-off RLNG cargo delay forced nightly load-shedding; no gas-distribution earnings mechanism",
       "text_depth": "full",
-      "sources": [
-        "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/"
-      ]
+      "sources": ["https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/"]
     },
     "Refinery": {
-      "rating": "neutral",
+      "rating": "positive",
       "horizon": "multi_session",
-      "causality": "correlated",
+      "causality": "causal",
       "confidence": 0.35,
-      "reason": "petrol demand stays robust and a $6bn refinery-upgrade plan is only 'being considered', not decided",
+      "reason": "Govt considering $6bn refinery-upgrade plan to cut fuel imports, only a passing line in an EV-lag story",
       "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps"
-      ]
+      "sources": ["https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps"]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Weekly market roundup recaps past index moves; no new fertilizer-specific driver",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Weekly-Market-Roundup-63040"]
     }
   }
 }
