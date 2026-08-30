@@ -1,1 +1,50 @@
-{"as_of":"2026-08-28T10:15:45Z","provider":"claude-routine","model":"claude-session","count":3,"ratings":{"DGKC":{"rating":"positive","horizon":"multi_session","causality":"causal","confidence":0.75,"reason":"Highest-ever annual profit (Rs 11.4bn), genuine earnings surprise"},"HUBC":{"rating":"positive","horizon":"multi_session","causality":"causal","confidence":0.7,"reason":"FY26 profit hits Rs 50bn on stronger BYD contribution"},"CPHL":{"rating":"positive","horizon":"long_term","causality":"correlated","confidence":0.4,"reason":"Exploring cannabis/hemp market, speculative expansion not yet contracted"}},"sectors":{"Islamic Banking":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.3,"reason":"Global FX/SBP profit chatter, no direct margin mechanism for Islamic banks"},"Power Generation":{"rating":"neutral","horizon":"single_session","causality":"noise","confidence":0.3,"reason":"Philippine inflation and Hormuz shipping data, no direct PSX power link"}}}
+{
+  "as_of": "2026-08-30T10:12:33Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "depth": "full-text",
+  "articles_read": 15,
+  "read_urls": [
+    "https://mettisglobal.news/Pakistan-pays-off-Rs12tr-debt-early-largest-tranche-yet-63043",
+    "https://propakistani.pk/2026/08/30/dengue-risk-emerges-at-pims-as-mosquito-larvae-found-in-stagnant-water/",
+    "https://propakistani.pk/2026/08/30/gold-rate-suddenly-crashes-in-pakistan/",
+    "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/",
+    "https://propakistani.pk/2026/08/30/internet-packages-may-get-expensive-soon/",
+    "https://propakistani.pk/2026/08/30/javed-miandad-moin-khan-and-basit-ali-call-for-court-ordered-medical-treatment-of-imran-khan/",
+    "https://propakistani.pk/2026/08/30/kamran-akmal-claims-don-bradman-never-hit-a-6-in-tests/",
+    "https://propakistani.pk/2026/08/30/murtaza-wahab-responds-to-bilawal-bhuttos-wedding-reports/",
+    "https://propakistani.pk/2026/08/30/pet-dog-attacks-boy-going-to-mosque-for-fajr-prayer/",
+    "https://propakistani.pk/2026/08/30/rs-10-million-and-civil-award-announced-for-nurse-who-saved-a-baby-in-pims-fire/",
+    "https://propakistani.pk/2026/08/30/taxpayers-to-complete-nadra-biometric-verification-at-home/",
+    "https://www.dawn.com/news/2026071/eoi-date-for-iesco-extended",
+    "https://www.dawn.com/news/2026072/national-bank-of-pakistan-posts-rs324bn-profit",
+    "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps",
+    "https://www.dawn.com/news/2026076/supreme-court-urges-policies-to-cut-business-costs-prices"
+  ],
+  "count": 0,
+  "ratings": {},
+  "sectors": {
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.25,
+      "reason": "temporary RLNG cargo delay caused nighttime load-shedding; no gas-distributor tariff/margin mechanism described",
+      "text_depth": "full",
+      "sources": [
+        "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/"
+      ]
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "petrol demand stays robust and a $6bn refinery-upgrade plan is only 'being considered', not decided",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps"
+      ]
+    }
+  }
+}
