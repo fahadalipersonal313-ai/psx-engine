@@ -12,10 +12,8 @@ session guard permits work from 09:00–15:30 PKT Monday–Thursday and
 It fetches the previous 24 hours of approved publisher news and commits
 `news_raw_24h.json`.
 
-If GitHub has a `GLM_API_KEY` secret, the workflow also extracts article
-bodies and runs `news_glm.py`. If the secret is absent, that is intentional:
-the raw-news collection remains green and Claude Routine 2 owns the later
-article-reading and rating stages.
+GitHub performs no AI call and does not read article bodies. Claude Routine 2
+is the sole owner of article reading and ratings.
 
 ## 2. Claude Routine 2: article reader and AI rater
 
@@ -60,8 +58,5 @@ and portfolio view.
 
 ## Operational rule
 
-Use one AI-rating owner per run:
-
-- With no GitHub `GLM_API_KEY`, Claude Routine 2 owns ratings.
-- If that secret is deliberately added, disable Claude Routine 2 first; GitHub
-  can then own collection, body extraction, and ratings in one runner.
+Claude Routine 2 is the only AI-rating owner. Do not add or use API secrets in
+this workflow.

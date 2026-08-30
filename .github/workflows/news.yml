@@ -57,38 +57,12 @@ jobs:
           # Empty on scheduled (cron) runs — fall back to 24 so int() never sees "".
           NEWS_WINDOW_HOURS: ${{ inputs.window_hours || '24' }}
         run: python news_fetcher.py
-      - name: Check whether GitHub owns this rating run
-        if: steps.window.outputs.run == '1'
-        id: ai_key
-        env:
-          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
-        run: |
-          if [ -n "$GLM_API_KEY" ]; then
-            echo "run=1" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=0" >> "$GITHUB_OUTPUT"
-            echo "No GLM_API_KEY: raw news is collected here; Claude Routine 2 owns article reading and AI ratings."
-          fi
-      - name: Read article bodies
-        if: steps.window.outputs.run == '1' && steps.ai_key.outputs.run == '1'
-        id: bodies
-        continue-on-error: true
-        run: python article_text.py
-      - name: GLM news rating
-        if: steps.window.outputs.run == '1' && steps.ai_key.outputs.run == '1' && steps.bodies.outcome == 'success'
-        id: rating
-        continue-on-error: true
-        env:
-          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
-        # With a GLM key, this runner owns body extraction and rating.
-        # Without one, the external Claude Routine 2 owns those stages.
-        run: python news_glm.py
       - name: Commit raw news
         if: steps.window.outputs.run == '1'
         run: |
           git config user.name  "psx-news-bot"
           git config user.email "psx-news-bot@users.noreply.github.com"
-          git add news_raw_24h.json news_ai_ratings.json news_glm_ratings.json 2>/dev/null || git add news_raw_24h.json
+          git add news_raw_24h.json
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0
@@ -99,12 +73,3 @@ jobs:
             git push origin main && break
             sleep $((2 ** i))
           done
-      - name: Surface body/rating pipeline failure
-        if: >-
-          always() && steps.window.outputs.run == '1' &&
-          steps.ai_key.outputs.run == '1' &&
-          (steps.bodies.outcome == 'failure' || steps.rating.outcome == 'failure' ||
-           steps.rating.outcome == 'skipped')
-        run: |
-          echo "Body extraction or AI rating failed; raw news was preserved/committed."
-          exit 1
