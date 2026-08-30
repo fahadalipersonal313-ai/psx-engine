@@ -1,69 +1,84 @@
 {
-  "as_of": "2026-08-30T10:57:07Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 19,
-  "read_urls": [
-    "https://mettisglobal.news/Govt-reviews-energy-security-investment-plans-with-OICCI-PSO-63041",
-    "https://mettisglobal.news/Key-Pakistan-Market-Stats-and-Economic-Indicators-63039",
-    "https://mettisglobal.news/Minister-Kayani-briefs-trade-bodies-on-budget-relief-export-facilitation-plan-63042",
-    "https://mettisglobal.news/Pakistan-pays-off-Rs12tr-debt-early-largest-tranche-yet-63043",
-    "https://mettisglobal.news/Weekly-Market-Roundup-63040",
-    "https://propakistani.pk/2026/08/30/dengue-risk-emerges-at-pims-as-mosquito-larvae-found-in-stagnant-water/",
-    "https://propakistani.pk/2026/08/30/gold-rate-suddenly-crashes-in-pakistan/",
-    "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/",
-    "https://propakistani.pk/2026/08/30/gta-6-online-may-get-delayed/",
-    "https://propakistani.pk/2026/08/30/internet-packages-may-get-expensive-soon/",
-    "https://propakistani.pk/2026/08/30/javed-miandad-moin-khan-and-basit-ali-call-for-court-ordered-medical-treatment-of-imran-khan/",
-    "https://propakistani.pk/2026/08/30/murtaza-wahab-responds-to-bilawal-bhuttos-wedding-reports/",
-    "https://propakistani.pk/2026/08/30/pet-dog-attacks-boy-going-to-mosque-for-fajr-prayer/",
-    "https://propakistani.pk/2026/08/30/suzuki-launches-made-in-pakistan-alto-and-every-in-one-of-the-wealthiest-countries-in-the-world/",
-    "https://propakistani.pk/2026/08/30/taxpayers-to-complete-nadra-biometric-verification-at-home/",
-    "https://www.dawn.com/news/2026071/eoi-date-for-iesco-extended",
-    "https://www.dawn.com/news/2026072/national-bank-of-pakistan-posts-rs324bn-profit",
-    "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps",
-    "https://www.dawn.com/news/2026076/supreme-court-urges-policies-to-cut-business-costs-prices"
-  ],
+  "as_of": "2026-08-30T13:31:23+00:00",
+  "source_fetched_at": "2026-08-30T13:29:01.818790+00:00",
+  "provider": "zhipu",
+  "model": "glm-4.7-flash",
   "count": 1,
+  "sector_count": 4,
   "ratings": {
     "PSO": {
-      "rating": "neutral",
+      "rating": "positive",
+      "reason": "Government reviews energy security and investment plans with PSO, focusing on exploration, refining infrastructure, and reforms to attract investment.",
+      "causality": "causal",
+      "confidence": 0.8,
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Routine minister-PSO courtesy meeting on sector reforms, no new commitment or numbers",
       "text_depth": "full",
-      "sources": ["https://mettisglobal.news/Govt-reviews-energy-security-investment-plans-with-OICCI-PSO-63041"]
+      "sources": [
+        "https://mettisglobal.news/Govt-reviews-energy-security-investment-plans-with-OICCI-PSO-63041"
+      ],
+      "source_published": [
+        "2026-08-29T17:12:44+00:00"
+      ]
     }
   },
   "sectors": {
+    "Islamic Banking": {
+      "rating": "neutral",
+      "reason": "HugoBank completes licensing process, indicating progress but no direct impact on existing sector valuation or cash flow.",
+      "causality": "correlated",
+      "confidence": 0.7,
+      "horizon": "single_session",
+      "text_depth": "full",
+      "sources": [
+        "https://propakistani.pk/2026/08/30/hugobank-completes-licensing-process-after-sbp-approval/"
+      ],
+      "source_published": [
+        "2026-08-30T13:00:26+00:00"
+      ]
+    },
+    "Power Generation": {
+      "rating": "neutral",
+      "reason": "News unrelated to power generation sector in Pakistan.",
+      "causality": "noise",
+      "confidence": 1.0,
+      "horizon": "single_session",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40437087/iga-swiatek-said-encouraged-by-recent-progress-after-toughest-season-of-career",
+        "https://www.brecorder.com/news/40437080/zimbabwe-crash-involving-church-minibus-kills-27"
+      ],
+      "source_published": [
+        "2026-08-30T11:47:59+05:00",
+        "2026-08-30T02:32:22+05:00"
+      ]
+    },
     "Gas Distribution": {
       "rating": "neutral",
+      "reason": "Government apologizes for load-shedding due to RLNG shortage, indicating operational challenges but no clear mechanism for valuation impact.",
+      "causality": "correlated",
+      "confidence": 0.6,
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "One-off RLNG cargo delay forced nightly load-shedding; no gas-distribution earnings mechanism",
       "text_depth": "full",
-      "sources": ["https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/"]
+      "sources": [
+        "https://propakistani.pk/2026/08/30/govt-says-sorry-for-daily-load-shedding/"
+      ],
+      "source_published": [
+        "2026-08-30T09:40:15+00:00"
+      ]
     },
     "Refinery": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Govt considering $6bn refinery-upgrade plan to cut fuel imports, only a passing line in an EV-lag story",
-      "text_depth": "full",
-      "sources": ["https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps"]
-    },
-    "Fertilizer": {
       "rating": "neutral",
+      "reason": "Electric vehicle shift lags due to infrastructure gaps, with OMCs expanding outlets but little progress on charging facilities.",
+      "causality": "correlated",
+      "confidence": 0.7,
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Weekly market roundup recaps past index moves; no new fertilizer-specific driver",
       "text_depth": "full",
-      "sources": ["https://mettisglobal.news/Weekly-Market-Roundup-63040"]
+      "sources": [
+        "https://www.dawn.com/news/2026075/electric-vehicle-shift-lags-amid-infrastructure-gaps"
+      ],
+      "source_published": [
+        "2026-08-30T09:27:17+05:00"
+      ]
     }
   }
 }
