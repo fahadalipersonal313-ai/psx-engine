@@ -14,9 +14,11 @@ log = logging.getLogger("news_glm")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
 GLM_ENDPOINT = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-GLM_MODEL = os.environ.get("GLM_MODEL", "glm-4.5-flash")
-GLM_TIMEOUT = int(os.environ.get("GLM_TIMEOUT", "120"))
+GLM_MODEL = os.environ.get("GLM_MODEL", "glm-4.7-flash")
+GLM_TIMEOUT = int(os.environ.get("GLM_TIMEOUT", "75"))
 GLM_ATTEMPTS = 2
+GLM_TEXT_CHARS = int(os.environ.get("GLM_TEXT_CHARS", "1600"))
+GLM_MAX_ITEMS_PER_KEY = int(os.environ.get("GLM_MAX_ITEMS_PER_KEY", "4"))
 OUT_PATH = os.path.join(os.path.dirname(__file__), "news_ai_ratings.json")
 
 VALID_RATINGS = {"highly_positive", "positive", "neutral", "negative",
@@ -47,11 +49,11 @@ def _build_prompt(digest):
         lines.append(f"\n{group.upper()}:")
         for key, items in (digest.get(group) or {}).items():
             lines.append(f"\n{key}:")
-            for item in items:
+            for item in items[:GLM_MAX_ITEMS_PER_KEY]:
                 lines.append(
                     f"- [{item.get('source')}; {item.get('published')}; "
                     f"depth={item.get('depth')}] {item.get('title')}\n"
-                    f"  TEXT: {item.get('text') or '[no publisher text]'}"
+                    f"  TEXT: {(item.get('text') or '[no publisher text]')[:GLM_TEXT_CHARS]}"
                 )
     return "\n".join(lines)
 
@@ -67,6 +69,8 @@ def _call_glm(prompt, api_key):
                 json={"model": GLM_MODEL,
                       "messages": [{"role": "user", "content": prompt}],
                       "temperature": 0.1,
+                      "max_tokens": 2048,
+                      "thinking": {"type": "disabled"},
                       "response_format": {"type": "json_object"}},
                 timeout=GLM_TIMEOUT,
             )
