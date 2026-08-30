@@ -61,6 +61,17 @@ LISTING_PAGES = [
 ARTICLE_RE = re.compile(
     r"""(?:https://mettisglobal\.news)?/([A-Za-z0-9%\-]+?-(\d{4,}))(?=["'\s<>?#]|$)""")
 TIME_RE = re.compile(r'data-time="([^"]+)"')
+# The listing carries almost no dates — measured 2026-08-30 on /latest: 8 dates
+# for ~58 article links, and zero data-time / <time> / "x hours ago". Parsing
+# them by proximity bound dates to the WRONG articles (it stamped a June story
+# as today, and one story with a future date), which is why that was reverted.
+# The article pages, however, carry authoritative JSON-LD:
+#     "datePublished": "2026-08-29T17:19:58Z"
+# present on every article sampled. An earlier attempt looked only for
+# data-time on those pages and wrongly concluded they had no timestamp.
+LD_DATE_RE = re.compile(r'"datePublished"\s*:\s*"([^"]+)"')
+OG_TITLE_RE = re.compile(r'<meta[^>]*property="og:title"[^>]*>', re.I)
+CONTENT_RE = re.compile(r'content="([^"]*)"', re.I)
 # Only the lead story on each listing carries data-time; every other item shows
 # its date as TEXT. Parsing that text was tried on 2026-08-26 and REVERTED: the
 # per-article block boundaries below do not match the page's real structure, so
@@ -150,62 +161,90 @@ def _attribute(title, summary=""):
     return hits[0] if len(hits) == 1 else "_macro"
 
 
+def _article_meta(url):
+    """(published_dt, title) read from the article's own page, or (None, None).
+
+    Authoritative: the date is the publisher's own JSON-LD datePublished, and
+    the title is its og:title — so neither is inferred from a neighbouring
+    element on a listing, which is what previously mis-dated and mis-titled
+    stories.
+    """
+    try:
+        html = _get(url)
+    except Exception as e:
+        log.debug("article fetch failed %s: %s", url, e)
+        return None, None
+    m = LD_DATE_RE.search(html)
+    dt = _parse_time(m.group(1)) if m else None
+    if dt is None:
+        tm = TIME_RE.search(html)
+        dt = _parse_time(tm.group(1)) if tm else None
+    title = ""
+    om = OG_TITLE_RE.search(html)
+    if om:
+        cm = CONTENT_RE.search(om.group(0))
+        if cm:
+            title = _clean(cm.group(1))
+    return dt, title
+
+
 def fetch(cutoff, known=None):
     """Return (items, failures).
 
-    Reads only the listing pages — seven requests per run, no per-article
-    fetching. An earlier version fetched each article looking for its
-    timestamp; the articles do not carry one, so 40 requests produced 0 usable
-    items. The timestamp is in the listing, beside the link.
+    Two stages: discover article URLs from the listing pages, then read each
+    article's OWN date and title from its page. The second stage is what makes
+    this source usable — the listings do not carry per-item dates, so anything
+    derived from them is a guess.
 
-    `known` (url -> published_iso) supplies a timestamp for an item whose
-    listing block has none, so a story already dated on a previous run is not
-    lost when it later appears in an undated list.
+    `known` (url -> published_iso) skips the article fetch for stories already
+    dated on a previous run, so a steady state costs only the new ones.
     """
     known = known or {}
-    items, failures, no_ts = {}, [], 0
-    undated_urls, markup = set(), {}
+    urls, failures = [], []
+    seen = set()
 
     for page in LISTING_PAGES:
-        url = urljoin(BASE, page)
         try:
-            html = _get(url)
+            html = _get(urljoin(BASE, page))
         except Exception as e:
             log.warning("listing %s failed: %s", page or "/", e)
             failures.append(page or "/")
             continue
-        for pat, rx in MARKUP_PROBES.items():
-            markup[pat] = markup.get(pat, 0) + len(rx.findall(html))
-        for art_url, block in _blocks(html):
-            tm = TIME_RE.search(block)
-            dt = _parse_time(tm.group(1) if tm else known.get(art_url))
-            if dt is None:
-                no_ts += 1
-                undated_urls.add(art_url)
-                continue
-            if dt < cutoff:
-                continue
-            title = _title_from(block, art_url)
-            if not title:
-                continue
-            prev = items.get(art_url)
-            # Keep the richer title if the same story appears on several lists.
-            if prev and len(prev["title"]) >= len(title):
-                continue
-            items[art_url] = {"symbol": _attribute(title), "title": title,
-                              "url": art_url, "published": dt.isoformat(),
-                              "summary": "", "source": "Mettis Global"}
+        for m in ARTICLE_RE.finditer(html):
+            u = f"https://mettisglobal.news/{m.group(1)}"
+            if u not in seen:
+                seen.add(u)
+                urls.append(u)
         time.sleep(PAUSE_SECONDS)
 
-    out = list(items.values())
-    log.info("mettis: %d/%d listings ok, %d dated items, %d blocks undated, "
-             "%d distinct undated urls; date markup seen: %s",
+    items, no_ts, fetched = [], 0, 0
+    for url in urls[:MAX_ARTICLES]:
+        cached = _parse_time(known.get(url))
+        if cached is not None:
+            dt, title = cached, ""
+        else:
+            dt, title = _article_meta(url)
+            fetched += 1
+            time.sleep(PAUSE_SECONDS)
+        if dt is None:
+            no_ts += 1
+            continue
+        if dt < cutoff:
+            continue
+        if not title:
+            slug = url.rsplit("/", 1)[-1]
+            title = _clean(re.sub(r"-\d{4,}$", "", slug).replace("-", " "))
+        items.append({"symbol": _attribute(title), "title": title,
+                      "url": url, "published": dt.isoformat(),
+                      "summary": "", "source": "Mettis Global"})
+
+    log.info("mettis: %d/%d listings ok, %d urls found, %d pages fetched, "
+             "%d in window, %d undated",
              len(LISTING_PAGES) - len(failures), len(LISTING_PAGES),
-             len(out), no_ts, len(undated_urls),
-             {k: v for k, v in markup.items() if v})
-    if not out and not failures:
+             len(urls), fetched, len(items), no_ts)
+    if not items and not failures:
         failures.append("no dated items")
-    return out, failures
+    return items, failures
 
 
 if __name__ == "__main__":

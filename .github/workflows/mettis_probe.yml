@@ -9,37 +9,14 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.10'}
       - run: pip install -q requests
-      - name: Does a Mettis ARTICLE page carry a publish date?
+      - name: Real Mettis yield with the new article-date parser
         run: |
           python - <<'PY'
-          import re, requests
-          UA = {"User-Agent": "Mozilla/5.0 (psx-engine news-routine; +github)"}
-          listing = requests.get("https://mettisglobal.news/latest", headers=UA, timeout=25).text
-          ART = re.compile(r'href="((?:https://mettisglobal\.news)?/[A-Za-z0-9%\-]+?-\d{4,})"')
-          urls, seen = [], set()
-          for m in ART.finditer(listing):
-              u = m.group(1)
-              if not u.startswith("http"):
-                  u = "https://mettisglobal.news" + u
-              if u not in seen:
-                  seen.add(u); urls.append(u)
-          print(f"distinct article urls on listing: {len(urls)}")
-          for u in urls[:3]:
-              html = requests.get(u, headers=UA, timeout=25).text
-              print(f"\n===== {u[:85]}  bytes={len(html)}")
-              for name, pat in (
-                  ("article:published_time", r'<meta[^>]+article:published_time[^>]*>'),
-                  ("og:updated_time",        r'<meta[^>]+og:updated_time[^>]*>'),
-                  ("itemprop datePublished", r'<[^>]+itemprop="datePublished"[^>]*>'),
-                  ("ld+json datePublished",  r'"datePublished"\s*:\s*"[^"]+"'),
-                  ("data-time",              r'data-time="[^"]*"'),
-                  ("<time>",                 r'<time[^>]*>[^<]{0,40}'),
-                  ("Mon D, YYYY",            r'\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+20\d\d\b'),
-                  ("ISO ts",                 r'\b20\d\d-\d{2}-\d{2}[T ]\d{2}:\d{2}'),
-              ):
-                  hits = re.findall(pat, html)
-                  if hits:
-                      print(f"  {name:24} {len(hits):3}  {hits[:2]}")
-                  else:
-                      print(f"  {name:24}   0")
+          import datetime, logging, mettis_scraper
+          logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+          cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=24)
+          items, fails = mettis_scraper.fetch(cutoff)
+          print(f"\n=== {len(items)} items in the 24h window, failures={fails}")
+          for it in items[:15]:
+              print(f"  [{it['symbol']:7}] {it['published'][:16]}  {it['title'][:70]}")
           PY
