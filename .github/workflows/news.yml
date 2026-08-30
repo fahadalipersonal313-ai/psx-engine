@@ -57,20 +57,31 @@ jobs:
           # Empty on scheduled (cron) runs — fall back to 24 so int() never sees "".
           NEWS_WINDOW_HOURS: ${{ inputs.window_hours || '24' }}
         run: python news_fetcher.py
-      - name: Read article bodies
+      - name: Check whether GitHub owns this rating run
         if: steps.window.outputs.run == '1'
+        id: ai_key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "run=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=0" >> "$GITHUB_OUTPUT"
+            echo "No ANTHROPIC_API_KEY: raw news is collected here; Claude Routine 2 owns article reading and AI ratings."
+          fi
+      - name: Read article bodies
+        if: steps.window.outputs.run == '1' && steps.ai_key.outputs.run == '1'
         id: bodies
         continue-on-error: true
         run: python article_text.py
       - name: AI news rating
-        if: steps.window.outputs.run == '1' && steps.bodies.outcome == 'success'
+        if: steps.window.outputs.run == '1' && steps.ai_key.outputs.run == '1' && steps.bodies.outcome == 'success'
         id: rating
         continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        # news_claude builds news_digest internally and writes only after a
-        # complete, schema-valid response. continue-on-error lets raw news be
-        # committed, while the final health step still makes the outage visible.
+        # With a GitHub key, this runner owns body extraction and rating.
+        # Without one, the external Claude Routine 2 owns those stages.
         run: python news_claude.py
       - name: Commit raw news
         if: steps.window.outputs.run == '1'
@@ -91,6 +102,7 @@ jobs:
       - name: Surface body/rating pipeline failure
         if: >-
           always() && steps.window.outputs.run == '1' &&
+          steps.ai_key.outputs.run == '1' &&
           (steps.bodies.outcome == 'failure' || steps.rating.outcome == 'failure' ||
            steps.rating.outcome == 'skipped')
         run: |
