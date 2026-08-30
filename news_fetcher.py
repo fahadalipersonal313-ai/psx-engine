@@ -196,10 +196,16 @@ def run(output_path="news_raw_24h.json"):
     # the aggregate check and committed over the good file. A desk that was
     # contributing and now contributes NOTHING, on a run that also had fetch
     # failures, is a network problem, not a quiet news day.
+    # Only sources this build can still produce are checked. A source we
+    # deliberately stopped fetching drops to zero by design, and counting that
+    # as a regression would block every run forever: removing Google News on
+    # 2026-08-30 did exactly that, because it went 13 -> 0 on a run where Profit
+    # Pakistan Today also happened to 403.
+    expected = {name for name, _ in MACRO_FEEDS} | {"Mettis Global"}
     prev_by_source = _existing_sources(output_path)
     now_by_source = Counter(i.get("source") for i in items)
     vanished = [src for src, n in prev_by_source.items()
-                if n >= 3 and not now_by_source.get(src)]
+                if n >= 3 and src in expected and not now_by_source.get(src)]
     if macro_failures and vanished:
         log.error("REFUSING to overwrite %s: source(s) %s contributed nothing "
                   "this run but had %s items before, and these fetches failed: "
