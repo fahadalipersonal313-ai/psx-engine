@@ -159,10 +159,11 @@ def raw_headlines(symbol, limit=5):
     sym = symbol.upper()
     out, seen = [], set()
     for it in raw.get("items", []):
-        if (it.get("symbol") or "").upper() != sym:
-            continue
-        # Relevance gate: drop loosely-matched headlines that don't actually name
-        # this company (cleans raw files fetched before the fetch-time gate too).
+        # Attribution is by ANCHOR MATCH on the item's own text, not by any
+        # pre-filed symbol. The per-symbol Google queries that used to set that
+        # field were removed 2026-08-30 for mis-attributing stories; matching a
+        # company's own name in the desk's text is the guarantee that replaces
+        # it. Every item is now considered for every symbol.
         if not config.headline_matches_company(sym, it.get("title"), it.get("summary")):
             continue
         t = _clean_title(it)

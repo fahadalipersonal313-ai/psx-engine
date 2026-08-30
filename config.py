@@ -715,7 +715,6 @@ NEWS_SOURCE_ALLOWLIST = [
     "profit.pakistantoday.com.pk",       # Profit Pakistan Today
     "propakistani.pk",                   # ProPakistani (added 2026-08-24)
     "investify.pk",                      # Investify (added 2026-08-26, user)
-    "news.google.com",                   # Google News RSS aggregator (per-symbol)
 ]
 # Credible publisher NAMES (lowercase substrings) for the UNSCORED raw-news
 # window. The fetch-time host allowlist is bypassed by Google News redirect

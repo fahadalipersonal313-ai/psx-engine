@@ -107,32 +107,6 @@ def _items_from_rss(root, cutoff):
         yield title, link, pub.isoformat(), summary
 
 
-def fetch_for_symbol(symbol, cutoff):
-    """Google News RSS query, allowlist-filtered, last-24h."""
-    query = config.COMPANY_NEWS_QUERY.get(symbol, f"{symbol} PSX Pakistan")
-    url = config.GOOGLE_NEWS_RSS.format(query=quote_plus(query))
-    out = []
-    try:
-        root = _fetch_rss(url)
-    except Exception as e:
-        log.warning("Google News RSS failed for %s: %s", symbol, e)
-        return out
-    for title, link, pub_iso, summary in _items_from_rss(root, cutoff):
-        if not config.headline_matches_company(symbol, title, summary):
-            # Google News token-matches the query loosely (a "National Foods"
-            # story matches the "National Refinery" query); require the headline
-            # to actually name this company before attributing it to the symbol.
-            continue
-        if not _allowed(link) and not _allowed(summary):
-            # Google News wraps the source URL inside the description; if neither
-            # the link nor the description names an allowlisted host, skip.
-            continue
-        out.append({"symbol": symbol, "title": title, "url": link,
-                    "published": pub_iso, "summary": summary,
-                    "source": "google_news_rss"})
-    return out
-
-
 def fetch_macro(cutoff, failures=None):
     out = []
     for name, url in MACRO_FEEDS:
@@ -185,8 +159,14 @@ def run(output_path="news_raw_24h.json"):
     cutoff = now - timedelta(hours=WINDOW_HOURS)
     items = []
     macro_failures = []
-    for sym in config.STOCKS:
-        items.extend(fetch_for_symbol(sym, cutoff))
+    # Per-symbol Google News queries were REMOVED 2026-08-30 (user-directed).
+    # They were the only source of company-attributed items and the only source
+    # that got attribution wrong: the query token-matches loosely, so a story
+    # about one company is filed under another, and the link serves a JavaScript
+    # app shell rather than an article, so the body that would settle it can
+    # never be read. A headline that cannot be checked against its own article
+    # is not evidence. Companies are now surfaced by anchor-matching the
+    # authentic desks' own text (news_digest / news_feed.raw_headlines).
     items.extend(fetch_macro(cutoff, macro_failures))
 
     # Mettis publishes no RSS but carries most PSX-relevant coverage, so it is
