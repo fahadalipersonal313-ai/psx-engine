@@ -117,6 +117,14 @@ def fetch_macro(cutoff, failures=None):
             if failures is not None:
                 failures.append(name)
             continue
+        # HTTP 200 with no RSS items is not a healthy fetch. Without this,
+        # bot-block pages and empty/malformed feeds silently bypassed every
+        # regression guard because no exception was raised.
+        if not any(True for _ in root.iter("item")):
+            log.warning("macro feed %s returned no RSS items", name)
+            if failures is not None:
+                failures.append(f"{name}:empty")
+            continue
         for title, link, pub_iso, summary in _items_from_rss(root, cutoff):
             out.append({"symbol": "_macro", "title": title, "url": link,
                         "published": pub_iso, "summary": summary,
@@ -187,6 +195,19 @@ def run(output_path="news_raw_24h.json"):
         log.warning("mettis scraper failed: %s", e)
         macro_failures.append("mettis")
 
+    # Check the exact payload that will be written. Pre-deduplication counts
+    # can be inflated by repeated syndicated headlines and let a thin final
+    # payload pass the aggregate guard.
+    seen_titles, deduped = set(), []
+    for it in items:
+        key = re.sub(r"\s+", " ", (it.get("title") or "")).strip().lower()
+        key = key.rsplit(" - ", 1)[0] if " - " in key else key
+        if not key or key in seen_titles:
+            continue
+        seen_titles.add(key)
+        deduped.append(it)
+    items = deduped
+
     # Regression guard (2026-08-26). A blocked host makes the fetch return a
     # SMALL result, not an empty one, so "did it write anything" is not a
     # sufficient check: a run where every macro feed 403'd still wrote 5
@@ -210,7 +231,7 @@ def run(output_path="news_raw_24h.json"):
     prev_by_source = _existing_sources(output_path)
     now_by_source = Counter(i.get("source") for i in items)
     vanished = [src for src, n in prev_by_source.items()
-                if n >= 3 and src in expected and not now_by_source.get(src)]
+                if n >= 1 and src in expected and not now_by_source.get(src)]
     if macro_failures and vanished:
         log.error("REFUSING to overwrite %s: source(s) %s contributed nothing "
                   "this run but had %s items before, and these fetches failed: "
@@ -226,17 +247,6 @@ def run(output_path="news_raw_24h.json"):
                   "— fix the host list rather than committing a degraded fetch.",
                   output_path, len(items), prev, ", ".join(macro_failures))
         return None
-    # A story can arrive from both Google News and the Mettis scraper. Dedupe
-    # on cleaned title so it is not counted, displayed or rated twice.
-    seen_titles, deduped = set(), []
-    for it in items:
-        key = re.sub(r"\s+", " ", (it.get("title") or "")).strip().lower()
-        key = key.rsplit(" - ", 1)[0] if " - " in key else key
-        if not key or key in seen_titles:
-            continue
-        seen_titles.add(key)
-        deduped.append(it)
-    items = deduped
     items.sort(key=lambda x: x["published"], reverse=True)
     payload = {"fetched_at": now.isoformat(),
                "window_hours": WINDOW_HOURS,

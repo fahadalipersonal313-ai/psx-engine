@@ -23,7 +23,7 @@ Per-symbol verdict schema (values the engine relies on):
 import json
 import logging
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 import config
 import news_window
@@ -43,6 +43,46 @@ def _parse_as_of(s):
         return None
 
 
+def _fresh_as_of(raw, now=None):
+    """Return (datetime, age_hours) or (None, reason); timestamps fail closed."""
+    as_of = _parse_as_of(raw.get("as_of"))
+    if as_of is None:
+        return None, "malformed"
+    current = now or datetime.now(timezone.utc)
+    if as_of > current + timedelta(minutes=5):
+        return None, "future"
+    age_h = (current - as_of).total_seconds() / 3600
+    if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
+        return None, "stale"
+    return as_of, age_h
+
+
+def _valid_scoring_rating(value):
+    """Strict score-bearing contract: never synthesize causality/confidence."""
+    if not isinstance(value, dict) or value.get("rating") not in _RATING_BASE:
+        return False
+    confidence = value.get("confidence")
+    return (value.get("causality") in _CAUSALITY_MULT
+            and not isinstance(confidence, bool)
+            and isinstance(confidence, (int, float))
+            and 0.0 <= confidence <= 1.0
+            and isinstance(value.get("sources"), list)
+            and bool(value.get("sources")))
+
+
+def _rating_in_session(value, now=None):
+    """A rating can score only when at least one cited article is in-session."""
+    anchor = news_window.session_anchor(now)
+    published = list(value.get("source_published") or [])
+    if not published:
+        raw, _ = load_raw()
+        wanted = set(value.get("sources") or [])
+        published = [i.get("published") for i in raw.get("items", [])
+                     if i.get("url") in wanted]
+    stamps = [_parse_as_of(p) for p in published]
+    return any(ts is not None and ts >= anchor for ts in stamps)
+
+
 def load_signals():
     """Return (signals_dict, meta) where signals_dict maps SYMBOL -> verdict.
     Returns ({}, meta) when the file is missing, malformed, or stale."""
@@ -56,13 +96,10 @@ def load_signals():
         log.warning("news_signals.json unreadable (%s) — using RSS/VADER fallback", e)
         return {}, {"status": "malformed"}
 
-    as_of = _parse_as_of(raw.get("as_of"))
-    if as_of is not None:
-        age_h = (datetime.now(timezone.utc) - as_of).total_seconds() / 3600
-        if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
-            log.warning("news_signals.json is %.1fh old (> %dh) — RSS/VADER fallback",
-                        age_h, config.NEWS_SIGNALS_MAX_AGE_HOURS)
-            return {}, {"status": "stale", "age_hours": round(age_h, 1)}
+    as_of, age = _fresh_as_of(raw)
+    if as_of is None:
+        log.warning("news_signals.json rejected: %s as_of", age)
+        return {}, {"status": age}
 
     signals = {k.upper(): v for k, v in (raw.get("signals") or {}).items()}
     return signals, {"status": "ok", "as_of": raw.get("as_of"),
@@ -245,18 +282,15 @@ def news_score(symbol, now=None):
     swing a score run-to-run.
     """
     rating = glm_rating(symbol)
-    if not rating:
+    if not _valid_scoring_rating(rating) or not _rating_in_session(rating, now):
         return None
     base = _RATING_BASE.get(rating.get("rating"))
     if base is None:
         return None
-    # Ratings written before the causality schema carry neither field. Treat
-    # them as correlated with middling confidence rather than trusting them
-    # like a causal call.
-    mult = _CAUSALITY_MULT.get(rating.get("causality"), 0.35)
-    conf = rating.get("confidence")
-    conf = float(conf) if isinstance(conf, (int, float)) else 0.5
-    conf = min(max(conf, 0.0), 1.0)
+    # Causality and confidence were validated above; incomplete legacy records
+    # fail closed rather than acquiring synthesized defaults.
+    mult = _CAUSALITY_MULT[rating["causality"]]
+    conf = float(rating["confidence"])
     return round(50.0 + (base - 50.0) * mult * conf, 1)
 
 
@@ -272,16 +306,14 @@ def sector_news_score(symbol, now=None):
     sector = config.SECTORS.get(symbol.upper())
     if not sector:
         return None
-    v = _raw_sectors_cache(_RATING_FILES[0]).get(sector)
-    if not isinstance(v, dict):
+    v = _sector_ratings().get(sector)
+    if not _valid_scoring_rating(v) or not _rating_in_session(v, now):
         return None
     base = _RATING_BASE.get(v.get("rating"))
     if base is None:
         return None
-    mult = _CAUSALITY_MULT.get(v.get("causality"), 0.35)
-    conf = v.get("confidence")
-    conf = float(conf) if isinstance(conf, (int, float)) else 0.5
-    conf = min(max(conf, 0.0), 1.0)
+    mult = _CAUSALITY_MULT[v["causality"]]
+    conf = float(v["confidence"])
     return round(50.0 + (base - 50.0) * mult * conf, 1)
 
 
@@ -293,11 +325,9 @@ def _raw_sectors_cache(name):
             raw = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError, OSError):
         return {}
-    as_of = _parse_as_of(raw.get("as_of"))
-    if as_of is not None:
-        age_h = (datetime.now(timezone.utc) - as_of).total_seconds() / 3600
-        if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
-            return {}
+    as_of, _ = _fresh_as_of(raw)
+    if as_of is None:
+        return {}
     return {str(k): v for k, v in (raw.get("sectors") or {}).items()}
 
 
@@ -373,17 +403,25 @@ def _load_rating_file(name):
             raw = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError, OSError):
         return {}, {"status": "absent"}
-    as_of = _parse_as_of(raw.get("as_of"))
-    age_h = None
-    if as_of is not None:
-        age_h = round((datetime.now(timezone.utc) - as_of).total_seconds() / 3600, 1)
-        if age_h > config.NEWS_SIGNALS_MAX_AGE_HOURS:
-            return {}, {"status": "stale", "age_hours": age_h}
+    as_of, age = _fresh_as_of(raw)
+    if as_of is None:
+        return {}, {"status": age}
+    age_h = round(age, 1)
+    if not raw.get("provider") or not raw.get("model"):
+        return {}, {"status": "malformed"}
     ratings = {k.upper(): v for k, v in (raw.get("ratings") or {}).items()}
     return ratings, {"status": "ok", "as_of": raw.get("as_of"),
                      "age_hours": age_h, "count": len(ratings),
                      "model": raw.get("model"),
-                     "provider": raw.get("provider", "zhipu")}
+                     "provider": raw.get("provider")}
+
+
+def _sector_ratings():
+    for name in _RATING_FILES:
+        sectors = _raw_sectors_cache(name)
+        if sectors:
+            return sectors
+    return {}
 
 
 def glm_rating(symbol):
@@ -404,7 +442,7 @@ def sector_rating(symbol):
     sector = config.SECTORS.get(symbol.upper())
     if not sector:
         return None
-    v = _raw_sectors_cache(_RATING_FILES[0]).get(sector)
+    v = _sector_ratings().get(sector)
     return v if isinstance(v, dict) else None
 
 

@@ -248,7 +248,11 @@ def fetch(cutoff, known=None):
         if dt < cutoff:
             continue
         if not title:
-            title = _slug_title(url)
+            # A URL slug is lossy (notably punctuation inside numbers). A
+            # missing publisher title is missing evidence, not permission to
+            # manufacture rateable text.
+            log.warning("dropping untitled Mettis article %s", url)
+            continue
         items.append({"symbol": _attribute(title), "title": title,
                       "url": url, "published": dt.isoformat(),
                       "summary": "", "source": "Mettis Global"})

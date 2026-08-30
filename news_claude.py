@@ -1,144 +1,139 @@
-"""news_claude.py — Rate each symbol's last-24h headlines with Claude Haiku 4.5
-into one of: highly_positive / positive / neutral / negative / highly_negative.
-Writes news_ai_ratings.json.
-
-Replaces news_glm.py as the primary rater. The GLM path still works and is the
-fallback when ANTHROPIC_API_KEY is unset, so a missing key degrades to the old
-behaviour rather than leaving the dashboard with no second opinion at all.
-
-Zero score weight — the rating is a SECOND OPINION shown next to the engine's
-Buy/Avoid so the user can eyeball whether the model's read agrees. Never fed
-into the score, exactly like GLM.
-
-Token-frugal by construction:
-  - ONE batched request for every symbol that has fresh headlines, not one per
-    symbol. 50 symbols would otherwise be 50 round trips.
-  - Haiku 4.5 ($1/$5 per 1M) — the cheapest current model, and news
-    classification is the kind of shallow task it is built for.
-  - Headlines only, never article bodies; capped per symbol.
-  - Structured output via a strict JSON schema, so the reply is a small object
-    with no prose preamble to pay for.
-  - No extended thinking: Haiku 4.5 predates adaptive thinking, and
-    output_config.effort errors on it. Neither is wanted for classification.
-
-Reuses news_glm's headline collection and sanitiser so the credibility filter,
-the anchor gate and the rating vocabulary cannot drift between the two raters.
-"""
-
+"""Rate the body-backed news digest and write provenance-rich AI ratings."""
 import json
 import logging
 import os
 import sys
 from datetime import datetime, timezone
-
-import anthropic
-
-import config
-import news_glm
+import news_digest
 
 log = logging.getLogger("news_claude")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
-
 MODEL = os.environ.get("NEWS_AI_MODEL", "claude-haiku-4-5")
-# Classification only: the reply is one short object per symbol. 50 symbols at
-# ~30 tokens each still fits well inside this, and a low cap is the cheapest
-# guard against a runaway response.
-MAX_TOKENS = int(os.environ.get("NEWS_AI_MAX_TOKENS", "2048"))
+MAX_TOKENS = int(os.environ.get("NEWS_AI_MAX_TOKENS", "4096"))
 TIMEOUT = float(os.environ.get("NEWS_AI_TIMEOUT", "120"))
-OUT_PATH = os.path.join(config.BASE_DIR, "news_ai_ratings.json")
-
+OUT_PATH = os.path.join(os.path.dirname(__file__), "news_ai_ratings.json")
+CAUSALITY = {"causal", "correlated", "noise"}
+HORIZONS = {"single_session", "multi_session"}
+VALID_RATINGS = {"highly_positive", "positive", "neutral", "negative",
+                 "highly_negative"}
 SYSTEM = (
-    "You are a Pakistan-equities news classifier for PSX-listed companies. "
-    "Judge ONLY the direct impact on the named company's share price at the "
-    "next PSX session. Ignore generic macro chatter unless it clearly hits "
-    "that specific stock. Routine results announcements and scheduled "
-    "dividends are neutral unless the number itself is a surprise. If the "
-    "headlines do not support a directional call, say neutral — do not "
-    "manufacture a signal."
+    "You classify verified Pakistan-equities news for real-money decision support. "
+    "Use only the supplied title and publisher text. Never infer missing facts. "
+    "Causal means a stated mechanism to cash flow or valuation; correlated means "
+    "related but not causal; noise means no defensible mechanism. Confidence is a "
+    "number from 0 to 1. Prefer neutral/noise when evidence is ambiguous."
 )
-
-# Structured output: forces exactly the shape we parse, so no prose to pay for
-# and no JSON-repair guesswork on the way back.
+VERDICT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "rating": {"type": "string", "enum": sorted(VALID_RATINGS)},
+        "reason": {"type": "string", "maxLength": 200},
+        "causality": {"type": "string", "enum": sorted(CAUSALITY)},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "horizon": {"type": "string", "enum": sorted(HORIZONS)},
+    },
+    "required": ["rating", "reason", "causality", "confidence", "horizon"],
+    "additionalProperties": False,
+}
 SCHEMA = {
     "type": "object",
-    "additionalProperties": {
-        "type": "object",
-        "properties": {
-            "rating": {"type": "string", "enum": sorted(news_glm.VALID)},
-            "reason": {"type": "string", "maxLength": 200},
-        },
-        "required": ["rating", "reason"],
-        "additionalProperties": False,
+    "properties": {
+        "company": {"type": "object", "additionalProperties": VERDICT_SCHEMA},
+        "sector": {"type": "object", "additionalProperties": VERDICT_SCHEMA},
     },
+    "required": ["company", "sector"],
+    "additionalProperties": False,
 }
 
-
-def _build_prompt(by_sym):
-    lines = ["Rate each symbol below. Return one entry per symbol, keyed by "
-             "the exact ticker, with a rating and a reason of at most one "
-             "short clause.", ""]
-    for sym, titles in by_sym.items():
-        lines.append(f"{sym}:")
-        lines.extend(f"- {t}" for t in titles)
-        lines.append("")
+def _build_prompt(digest):
+    lines = ["Rate every company and sector key below. Return each exact key under "
+             "the matching company or sector object. depth=headline means only an "
+             "RSS lede was available."]
+    for group in ("company", "sector"):
+        lines.append(f"\n{group.upper()}:")
+        for key, items in digest.get(group, {}).items():
+            lines.append(f"\n{key}:")
+            for item in items:
+                lines.append(f"- [{item.get('source')}; {item.get('published')}; "
+                             f"depth={item.get('depth')}] {item.get('title')}\n"
+                             f"  TEXT: {item.get('text') or '[no publisher text]'}")
     return "\n".join(lines)
-
 
 def _call_claude(prompt, client):
     resp = client.messages.create(
-        model=MODEL,
-        max_tokens=MAX_TOKENS,
-        system=SYSTEM,
+        model=MODEL, max_tokens=MAX_TOKENS, system=SYSTEM,
         output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
         messages=[{"role": "user", "content": prompt}],
     )
-    # A refusal returns HTTP 200 with no usable content — treat it as no
-    # ratings rather than letting a KeyError look like a network fault.
     if resp.stop_reason == "refusal":
         raise RuntimeError("model declined to classify this batch")
     text = "".join(b.text for b in resp.content if b.type == "text")
-    usage = resp.usage
-    log.info("in=%d out=%d tokens", usage.input_tokens, usage.output_tokens)
+    log.info("in=%d out=%d tokens", resp.usage.input_tokens, resp.usage.output_tokens)
     return json.loads(text)
 
+def _sanitize_group(raw, evidence):
+    out = {}
+    for key, verdict in (raw or {}).items():
+        if key not in evidence or not isinstance(verdict, dict):
+            continue
+        rating = str(verdict.get("rating", "")).lower().replace("-", "_")
+        causality, confidence = verdict.get("causality"), verdict.get("confidence")
+        horizon = verdict.get("horizon")
+        if (rating not in VALID_RATINGS or causality not in CAUSALITY
+                or horizon not in HORIZONS or isinstance(confidence, bool)
+                or not isinstance(confidence, (int, float)) or not 0 <= confidence <= 1):
+            continue
+        items = evidence[key]
+        sources = [i.get("url") for i in items if i.get("url")]
+        published = [i.get("published") for i in items if i.get("published")]
+        out[key] = {
+            "rating": rating, "reason": str(verdict.get("reason") or "")[:200],
+            "causality": causality, "confidence": float(confidence), "horizon": horizon,
+            "text_depth": "full" if any(i.get("depth") == "full" for i in items) else "headline",
+            "sources": list(dict.fromkeys(sources)),
+            "source_published": list(dict.fromkeys(published)),
+        }
+    return out
 
 def main():
+    try:
+        import anthropic
+    except ImportError:
+        log.error("anthropic package is not installed")
+        return 1
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
-        log.warning("ANTHROPIC_API_KEY not set — skipping Claude news ratings")
-        return 0
-
-    by_sym = news_glm._collect_headlines()
-    if not by_sym:
-        log.info("No credible headlines to rate — skipping call")
-        return 0
-
-    log.info("Rating %d symbols with %s", len(by_sym), MODEL)
+        log.error("ANTHROPIC_API_KEY not set")
+        return 1
+    digest = news_digest.build()
+    if not digest.get("company") and not digest.get("sector"):
+        log.error("digest contains no rateable company or sector evidence")
+        return 1
     client = anthropic.Anthropic(api_key=api_key, timeout=TIMEOUT)
     try:
-        raw = _call_claude(_build_prompt(by_sym), client)
+        raw = _call_claude(_build_prompt(digest), client)
     except anthropic.AuthenticationError:
-        log.error("ANTHROPIC_API_KEY rejected (401) — fix the repo secret")
+        log.error("ANTHROPIC_API_KEY rejected (401)")
         return 1
-    except anthropic.RateLimitError as e:
-        log.error("rate limited: %s", e)
+    except Exception as exc:
+        log.error("Claude call failed: %s", exc)
         return 1
-    except Exception as e:
-        log.error("Claude call failed: %s", e)
+    ratings = _sanitize_group(raw.get("company"), digest["company"])
+    sectors = _sanitize_group(raw.get("sector"), digest["sector"])
+    if not ratings and not sectors:
+        log.error("model returned no valid ratings")
         return 1
-
-    ratings = news_glm._sanitize(raw, set(by_sym.keys()))
-    if not ratings:
-        log.warning("no valid ratings returned — writing empty file")
-
-    payload = {"as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-               "provider": "anthropic", "model": MODEL,
-               "count": len(ratings), "ratings": ratings}
-    with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
-    log.info("Wrote %d ratings -> %s", len(ratings), OUT_PATH)
+    payload = {
+        "as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "source_fetched_at": digest.get("fetched_at"),
+        "provider": "anthropic", "model": MODEL,
+        "count": len(ratings), "sector_count": len(sectors),
+        "ratings": ratings, "sectors": sectors,
+    }
+    with open(OUT_PATH, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+    log.info("Wrote %d company and %d sector ratings", len(ratings), len(sectors))
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -106,7 +106,7 @@ def fetch_body(url):
         r = requests.get(url, headers=UA, timeout=TIMEOUT)
         r.raise_for_status()
     except Exception as e:
-        log.debug("fetch failed %s: %s", url, e)
+        log.warning("fetch failed %s: %s", url, e)
         return None
     return extract(r.text)
 

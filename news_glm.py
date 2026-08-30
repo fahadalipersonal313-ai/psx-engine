@@ -132,7 +132,8 @@ def main():
         log.warning("GLM returned no valid ratings — writing empty file")
 
     payload = {"as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-               "model": GLM_MODEL, "count": len(ratings), "ratings": ratings}
+               "provider": "zhipu", "model": GLM_MODEL,
+               "count": len(ratings), "ratings": ratings}
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
     log.info("Wrote %d ratings -> %s", len(ratings), OUT_PATH)
