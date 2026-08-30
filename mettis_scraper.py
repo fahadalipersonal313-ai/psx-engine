@@ -196,8 +196,10 @@ def fetch(cutoff, known=None):
     this source usable — the listings do not carry per-item dates, so anything
     derived from them is a guess.
 
-    `known` (url -> published_iso) skips the article fetch for stories already
-    dated on a previous run, so a steady state costs only the new ones.
+    `known` (url -> (published_iso, title)) skips the article fetch for stories
+    already seen, so a steady state costs only the day's new ones. The cached
+    TITLE matters as much as the date: without it the slug fallback would turn
+    "Rs1.2tr" into "Rs12tr".
     """
     known = known or {}
     urls, failures = [], []
@@ -219,9 +221,11 @@ def fetch(cutoff, known=None):
 
     items, no_ts, fetched = [], 0, 0
     for url in urls[:MAX_ARTICLES]:
-        cached = _parse_time(known.get(url))
+        prev = known.get(url)
+        prev_dt, prev_title = prev if isinstance(prev, tuple) else (prev, "")
+        cached = _parse_time(prev_dt)
         if cached is not None:
-            dt, title = cached, ""
+            dt, title = cached, prev_title
         else:
             dt, title = _article_meta(url)
             fetched += 1

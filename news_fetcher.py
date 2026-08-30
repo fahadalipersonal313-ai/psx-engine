@@ -125,14 +125,19 @@ def fetch_macro(cutoff, failures=None):
 
 
 def _known_mettis(path):
-    """url -> published, from the previous file. Lets a story that was dated once
-    keep that timestamp when it later shows up in an undated list."""
+    """url -> (published, title) from the previous file.
+
+    The TITLE is cached alongside the date because skipping the article fetch
+    also skips its og:title, and the slug fallback silently corrupts numbers:
+    "Rs1.2tr" in the real headline becomes "Rs12tr" from the slug, a 10x error
+    in text that feeds a rating.
+    """
     try:
         with open(path, encoding="utf-8") as f:
             items = json.load(f).get("items") or []
     except (FileNotFoundError, json.JSONDecodeError, OSError):
         return {}
-    return {i["url"]: i["published"] for i in items
+    return {i["url"]: (i["published"], i.get("title") or "") for i in items
             if i.get("source") == "Mettis Global" and i.get("url")
             and i.get("published")}
 
