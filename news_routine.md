@@ -12,8 +12,8 @@ session guard permits work from 09:00–15:30 PKT Monday–Thursday and
 It fetches the previous 24 hours of approved publisher news and commits
 `news_raw_24h.json`.
 
-If GitHub has an `ANTHROPIC_API_KEY` secret, the workflow also extracts article
-bodies and runs `news_claude.py`. If the secret is absent, that is intentional:
+If GitHub has a `GLM_API_KEY` secret, the workflow also extracts article
+bodies and runs `news_glm.py`. If the secret is absent, that is intentional:
 the raw-news collection remains green and Claude Routine 2 owns the later
 article-reading and rating stages.
 
@@ -62,6 +62,6 @@ and portfolio view.
 
 Use one AI-rating owner per run:
 
-- With no GitHub `ANTHROPIC_API_KEY`, Claude Routine 2 owns ratings.
+- With no GitHub `GLM_API_KEY`, Claude Routine 2 owns ratings.
 - If that secret is deliberately added, disable Claude Routine 2 first; GitHub
   can then own collection, body extraction, and ratings in one runner.

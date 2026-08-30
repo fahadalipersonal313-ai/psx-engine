@@ -1,17 +1,4 @@
-"""news_glm.py — Rate each symbol's last-24h headlines with GLM-4.5-flash
-(ZhipuAI free tier) into one of: highly_positive / positive / neutral /
-negative / highly_negative. Writes news_glm_ratings.json.
-
-Zero score weight: the rating is a SECOND OPINION shown on the dashboard next
-to the engine's Buy/Avoid so the user can eyeball whether the LLM's read of
-the news agrees. Never fed into the score.
-
-Token-frugal: ONE batched request for every symbol that actually has fresh
-headlines. Prompt is compact; response is small JSON. Skips silently when
-GLM_API_KEY is unset, when news_raw_24h.json is absent, or when no symbol has
-any credible headlines. Never fabricates a rating — a symbol with no fresh
-news is simply absent from the output file.
-"""
+"""Rate verified article-backed news with GLM and write production AI ratings."""
 
 import json
 import logging
@@ -21,60 +8,59 @@ from datetime import datetime, timezone
 
 import requests
 
-import config
-import news_feed
+import news_digest
 
 log = logging.getLogger("news_glm")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
 GLM_ENDPOINT = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 GLM_MODEL = os.environ.get("GLM_MODEL", "glm-4.5-flash")
-# The bigmodel.cn endpoint is mainland-China-hosted; the hop from GitHub's US
-# runners is slow enough that a single batched rating regularly overruns a 60s
-# read timeout. Give it more headroom and retry once on a network timeout (but
-# NOT on an HTTP error like 401 — a bad key should fail fast, not retry).
 GLM_TIMEOUT = int(os.environ.get("GLM_TIMEOUT", "120"))
 GLM_ATTEMPTS = 2
-OUT_PATH = os.path.join(config.BASE_DIR, "news_glm_ratings.json")
-VALID = {"highly_positive", "positive", "neutral", "negative", "highly_negative"}
+OUT_PATH = os.path.join(os.path.dirname(__file__), "news_ai_ratings.json")
+
+VALID_RATINGS = {"highly_positive", "positive", "neutral", "negative",
+                 "highly_negative"}
+CAUSALITY = {"causal", "correlated", "noise"}
+HORIZONS = {"single_session", "multi_session"}
+
+SYSTEM = (
+    "You classify verified Pakistan-equities news for decision support. Use only "
+    "the supplied publisher text. Never infer missing facts. Causal requires a "
+    "stated mechanism to cash flow or valuation; correlated is related but lacks "
+    "that mechanism; noise has no defensible mechanism. Prefer neutral/noise "
+    "when evidence is ambiguous. Return JSON only."
+)
 
 
-def _collect_headlines(limit_per_sym=4):
-    """Return {SYM: [title, ...]} for every symbol with credible fresh headlines.
-    Reuses news_feed.raw_headlines so the credibility filter matches the UI."""
-    out = {}
-    for sym in config.STOCKS:
-        items = news_feed.raw_headlines(sym, limit=limit_per_sym)
-        titles = [it["title"] for it in items if it.get("title")]
-        if titles:
-            out[sym] = titles
-    return out
-
-
-def _build_prompt(by_sym):
+def _build_prompt(digest):
     lines = [
-        "You are a Pakistan-equities news classifier. For EACH symbol below, "
-        "read the headlines and return ONE rating from this exact set: "
-        "highly_positive, positive, neutral, negative, highly_negative. "
-        "Judge only the DIRECT impact on the listed company's share price on "
-        "the next PSX session. Ignore generic macro chatter unless it clearly "
-        "hits this stock. Return ONLY valid JSON, no prose, exactly this shape:",
-        '{"SYMBOL": {"rating": "positive", "reason": "one short clause"}, ...}',
-        "",
-        "SYMBOLS AND HEADLINES:",
+        SYSTEM, "",
+        "Return exactly this JSON object: "
+        '{"company":{"SYMBOL":{"rating":"positive","reason":"short evidence-bound reason",'
+        '"causality":"causal","confidence":0.0,"horizon":"single_session"}},'
+        '"sector":{"SECTOR":{"rating":"neutral","reason":"short evidence-bound reason",'
+        '"causality":"noise","confidence":0.0,"horizon":"single_session"}}}.',
+        "Rate every supplied key and no other key.",
     ]
-    for sym, titles in by_sym.items():
-        lines.append(f"\n{sym}:")
-        for t in titles:
-            lines.append(f"- {t}")
+    for group in ("company", "sector"):
+        lines.append(f"\n{group.upper()}:")
+        for key, items in (digest.get(group) or {}).items():
+            lines.append(f"\n{key}:")
+            for item in items:
+                lines.append(
+                    f"- [{item.get('source')}; {item.get('published')}; "
+                    f"depth={item.get('depth')}] {item.get('title')}\n"
+                    f"  TEXT: {item.get('text') or '[no publisher text]'}"
+                )
     return "\n".join(lines)
 
 
 def _call_glm(prompt, api_key):
-    last_err = None
+    last_error = None
     for attempt in range(1, GLM_ATTEMPTS + 1):
         try:
-            r = requests.post(
+            response = requests.post(
                 GLM_ENDPOINT,
                 headers={"Authorization": f"Bearer {api_key}",
                          "Content-Type": "application/json"},
@@ -84,59 +70,80 @@ def _call_glm(prompt, api_key):
                       "response_format": {"type": "json_object"}},
                 timeout=GLM_TIMEOUT,
             )
-            r.raise_for_status()
-            content = r.json()["choices"][0]["message"]["content"]
-            return json.loads(content)
-        except (requests.Timeout, requests.ConnectionError) as e:
-            last_err = e
-            log.warning("GLM attempt %d/%d network-failed: %s",
-                        attempt, GLM_ATTEMPTS, e)
-    raise last_err
+            response.raise_for_status()
+            return json.loads(response.json()["choices"][0]["message"]["content"])
+        except (requests.Timeout, requests.ConnectionError) as exc:
+            last_error = exc
+            log.warning("GLM attempt %d/%d network failure: %s",
+                        attempt, GLM_ATTEMPTS, exc)
+        except (KeyError, TypeError, ValueError, requests.HTTPError) as exc:
+            raise RuntimeError(f"GLM request failed: {exc}") from exc
+    raise RuntimeError(f"GLM request timed out: {last_error}")
 
 
-def _sanitize(raw, expected_syms):
-    """Keep only entries with a known symbol and a valid rating."""
-    out = {}
-    for sym, verdict in (raw or {}).items():
-        s = str(sym).upper()
-        if s not in expected_syms or not isinstance(verdict, dict):
+def _sanitize_group(raw, evidence):
+    clean = {}
+    for key, verdict in (raw or {}).items():
+        if key not in evidence or not isinstance(verdict, dict):
             continue
-        rating = str(verdict.get("rating", "")).lower().strip().replace("-", "_")
-        if rating not in VALID:
+        rating = str(verdict.get("rating") or "").lower().replace("-", "_")
+        causality = verdict.get("causality")
+        confidence = verdict.get("confidence")
+        horizon = verdict.get("horizon")
+        if (rating not in VALID_RATINGS or causality not in CAUSALITY
+                or horizon not in HORIZONS or isinstance(confidence, bool)
+                or not isinstance(confidence, (int, float))
+                or not 0.0 <= confidence <= 1.0):
             continue
-        reason = str(verdict.get("reason", ""))[:200]
-        out[s] = {"rating": rating, "reason": reason}
-    return out
+        items = evidence[key]
+        sources = list(dict.fromkeys(i.get("url") for i in items if i.get("url")))
+        published = list(dict.fromkeys(
+            i.get("published") for i in items if i.get("published")))
+        if not sources or not published:
+            continue
+        clean[key] = {
+            "rating": rating,
+            "reason": str(verdict.get("reason") or "")[:200],
+            "causality": causality,
+            "confidence": float(confidence),
+            "horizon": horizon,
+            "text_depth": "full" if any(i.get("depth") == "full" for i in items)
+                          else "headline",
+            "sources": sources,
+            "source_published": published,
+        }
+    return clean
 
 
 def main():
     api_key = os.environ.get("GLM_API_KEY") or os.environ.get("ZHIPU_API_KEY")
     if not api_key:
-        log.warning("GLM_API_KEY not set — skipping GLM news ratings")
-        return 0
-
-    by_sym = _collect_headlines()
-    if not by_sym:
-        log.info("No credible headlines to rate — skipping GLM call")
-        return 0
-
-    log.info("Rating %d symbols with %s", len(by_sym), GLM_MODEL)
-    try:
-        raw = _call_glm(_build_prompt(by_sym), api_key)
-    except Exception as e:
-        log.error("GLM call failed: %s", e)
+        log.error("GLM_API_KEY not set")
         return 1
-
-    ratings = _sanitize(raw, set(by_sym.keys()))
-    if not ratings:
-        log.warning("GLM returned no valid ratings — writing empty file")
-
-    payload = {"as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-               "provider": "zhipu", "model": GLM_MODEL,
-               "count": len(ratings), "ratings": ratings}
-    with open(OUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
-    log.info("Wrote %d ratings -> %s", len(ratings), OUT_PATH)
+    digest = news_digest.build()
+    if not digest.get("company") and not digest.get("sector"):
+        log.error("digest contains no rateable company or sector evidence")
+        return 1
+    try:
+        raw = _call_glm(_build_prompt(digest), api_key)
+    except Exception as exc:
+        log.error("GLM call failed: %s", exc)
+        return 1
+    ratings = _sanitize_group(raw.get("company"), digest["company"])
+    sectors = _sanitize_group(raw.get("sector"), digest["sector"])
+    if not ratings and not sectors:
+        log.error("GLM returned no valid ratings")
+        return 1
+    payload = {
+        "as_of": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "source_fetched_at": digest.get("fetched_at"),
+        "provider": "zhipu", "model": GLM_MODEL,
+        "count": len(ratings), "sector_count": len(sectors),
+        "ratings": ratings, "sectors": sectors,
+    }
+    with open(OUT_PATH, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False)
+    log.info("Wrote %d company and %d sector ratings", len(ratings), len(sectors))
     return 0
 
 
