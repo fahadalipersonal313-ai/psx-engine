@@ -40,6 +40,16 @@ log = logging.getLogger("news_digest")
 RAW_PATH = os.path.join(config.BASE_DIR, "news_raw_24h.json")
 BODIES_PATH = os.path.join(config.BASE_DIR, "news_bodies.json")
 
+# Sources whose items may be RATED. Google News is excluded on purpose: it is an
+# aggregator whose per-symbol queries attribute stories to the wrong ticker
+# (measured — it is the only source of company items today, and all 13 were
+# headline-only), and its links serve a JavaScript app shell rather than an
+# article, so the body that would settle the attribution can never be read.
+# Only the named desks are analysed. Everything else is collected and displayed
+# but never rated.
+RATEABLE_SOURCES = {"Business Recorder", "Dawn Business", "ProPakistani",
+                    "Mettis Global", "Profit Pakistan Today"}
+
 LEDE_CHARS = 600         # body window used for ATTRIBUTION (not for rating)
 TEXT_CHARS = 3000        # body text handed to the rater per item
 MAX_PER_KEY = 6          # items per company / per sector
@@ -61,7 +71,13 @@ def build(raw_path=RAW_PATH, bodies_path=BODIES_PATH):
     companies, sectors = {}, {}
     read_urls, with_text = [], 0
 
+    skipped = 0
     for it in items:
+        # Only authentic desks are rated. An aggregator headline cannot be
+        # verified against its own article, so it is not evidence.
+        if (it.get("source") or "") not in RATEABLE_SOURCES:
+            skipped += 1
+            continue
         url = it.get("url") or ""
         title = it.get("title") or ""
         body = bodies.get(url)
@@ -80,12 +96,10 @@ def build(raw_path=RAW_PATH, bodies_path=BODIES_PATH):
                  "published": it.get("published"), "depth": depth, "text": text}
 
         # --- company attribution
-        # 1. what the fetcher already decided (per-symbol RSS query)
-        sym = (it.get("symbol") or "").upper()
+        # Every rateable item is attributed by ANCHOR MATCH on its own title and
+        # lede — never by the aggregator's claim about which symbol a story
+        # belongs to. That claim is exactly what was mis-attributing tickers.
         hits = set()
-        if sym and sym != "_MACRO":
-            hits.add(sym)
-        # 2. NEW: a company named in the title or the lede of a macro article.
         for s in config.STOCKS:
             if config.headline_matches_company(s, title, lede):
                 hits.add(s)
@@ -104,6 +118,8 @@ def build(raw_path=RAW_PATH, bodies_path=BODIES_PATH):
 
     return {"fetched_at": raw.get("fetched_at"),
             "items_total": len(items),
+            "items_rateable": len(items) - skipped,
+            "items_skipped_unrateable": skipped,
             "articles_with_text": with_text,
             "read_urls": sorted(set(read_urls)),
             "company": companies,
@@ -114,7 +130,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.WARNING)
     d = build()
     if "--summary" in sys.argv:
-        print(f"items {d['items_total']}, with full text {d['articles_with_text']}, "
+        print(f"items {d['items_total']} ({d['items_rateable']} rateable, "
+              f"{d['items_skipped_unrateable']} skipped as unrateable), "
+              f"with full text {d['articles_with_text']}, "
               f"companies {len(d['company'])}, sectors {len(d['sector'])}")
         for s, v in sorted(d["company"].items()):
             deep = sum(1 for e in v if e["depth"] == "full")

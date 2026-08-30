@@ -1,0 +1,27 @@
+name: digest-probe
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.10'}
+      - run: pip install -q -r requirements-ci.txt
+      - name: Fresh news + bodies + digest
+        run: |
+          python news_fetcher.py || echo "fetch guard tripped, using file on disk"
+          python article_text.py || true
+          echo "======== DIGEST WITH BODIES ========"
+          python news_digest.py --summary
+          echo "======== company evidence ========"
+          python - <<'PY'
+          import json, news_digest
+          d = news_digest.build()
+          for sym, items in sorted(d['company'].items()):
+              print(f"\n### {sym}")
+              for e in items[:2]:
+                  print(f"  depth={e['depth']:8} [{e['source']}] {e['title'][:70]}")
+                  print(f"  text[:220]: {(e['text'] or '')[:220]}")
+          PY
