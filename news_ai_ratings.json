@@ -1,14 +1,16 @@
 {
-  "as_of": "2026-08-31T08:39:08Z",
+  "as_of": "2026-08-31T09:39:19Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 29,
+  "articles_read": 31,
   "read_urls": [
+    "https://mettisglobal.news/CDNS-hits-Rs313bn-savings-target-in-just-7-weeks-63063",
     "https://mettisglobal.news/CDWP-approves-Rs60bn-projects-across-key-sectors-63058",
     "https://mettisglobal.news/FBRs-RTOII-Karachi-busts-illegal-cigarette-factory-seizes-Rs200m-machinery-63057",
     "https://mettisglobal.news/FIA-registers-case-over-alleged-Unity-Foods-fund-misuse-63054",
     "https://mettisglobal.news/FM-hails-Saifee-Cardiac-wing-as-investment-in-Pakistans-future-63044",
+    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs1800-per-tola-63064",
     "https://mettisglobal.news/Guddu-ST16-revival-set-to-unlock-297MW-additional-power-63060",
     "https://mettisglobal.news/Indus-Motor-profit-rises-11-to-Rs255bn-in-FY26-63052",
     "https://mettisglobal.news/Irbanah-Ventures-International-builds-stake-in-Clover-Pakistan-63056",
@@ -22,27 +24,38 @@
     "https://mettisglobal.news/Power-Cement-FY26-profit-surges-to-Rs38bn-63050",
     "https://mettisglobal.news/Spot-gold-slips-to-4434-on-Fed-ratehike-signal-63053",
     "https://mettisglobal.news/Telecom-sector-urges-govt-to-scrap-direct-G2G-contracting-rule-63062",
-    "https://propakistani.pk/2026/08/31/3-famous-buildings-in-islamabad-sealed/",
-    "https://propakistani.pk/2026/08/31/62-out-of-1000-babies-in-punjab-die-before-their-first-birthday/",
-    "https://propakistani.pk/2026/08/31/cda-restores-nocs-for-wasa-tube-wells/",
+    "https://propakistani.pk/2026/08/31/crackdown-launched-against-kite-flying-and-aerial-firing/",
     "https://propakistani.pk/2026/08/31/historic-delhi-government-school-sealed-in-karachi/",
+    "https://propakistani.pk/2026/08/31/islamabad-police-officer-wins-outstanding-graduate-honor-in-china/",
+    "https://propakistani.pk/2026/08/31/karachi-to-get-a-new-flyover/",
     "https://propakistani.pk/2026/08/31/kp-announces-rs-103-million-plan-to-restore-5-major-highways/",
-    "https://propakistani.pk/2026/08/31/kp-reports-nearly-500-dengue-cases/",
-    "https://propakistani.pk/2026/08/31/lotte-chemical-plans-to-double-authorized-capital-to-rs-40-billion/",
-    "https://propakistani.pk/2026/08/31/rescue-1122-to-be-deployed-at-hospitals/",
+    "https://propakistani.pk/2026/08/31/pakistani-students-bag-multiple-awards-at-harvard-mun-china/",
+    "https://propakistani.pk/2026/08/31/punjab-to-introduce-ai-scanner-for-early-cancer-detection/",
     "https://propakistani.pk/2026/08/31/samsungs-more-expensive-z-fold-8-ultra-fails-durability-test-while-cheaper-model-survives/",
-    "https://propakistani.pk/2026/08/31/sindh-introduces-new-rules-for-health-department-employees/",
+    "https://propakistani.pk/2026/08/31/secp-probe-leads-to-fia-case-over-alleged-multi-billion-rupee-financial-irregularities-at-unity-foods/",
+    "https://propakistani.pk/2026/08/31/toyota-indus-motor-profit-climbs-11-to-rs-25-5-billion-in-fy26/",
     "https://www.dawn.com/news/2026165/islamabad-riyadh-agree-to-boost-pakistani-agri-and-food-exports-to-3bn",
     "https://www.dawn.com/news/2026262/central-development-working-party-clears-five-projects-worth-over-rs60-billion"
   ],
   "count": 3,
   "ratings": {
+    "KOHC": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Consortium EOI to acquire 51-100% of FESCO (DISCO privatization), due diligence phase",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
+      ]
+    },
     "HUBC": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Joined consortium bidding for FESCO (51-100% stake+control); pre-qualified, DD pending",
+      "confidence": 0.35,
+      "reason": "Consortium EOI to acquire 51-100% of FESCO (DISCO privatization), due diligence phase",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
@@ -52,19 +65,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Joined consortium bidding for FESCO (51-100% stake+control); pre-qualified, DD pending",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
-      ]
-    },
-    "KOHC": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Led consortium's EOI for FESCO stake (51-100%)+control acquisition; DD pending",
+      "confidence": 0.35,
+      "reason": "Consortium EOI to acquire 51-100% of FESCO (DISCO privatization), due diligence phase",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
