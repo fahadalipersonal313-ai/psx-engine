@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-08-31T07:38:59Z",
+  "as_of": "2026-08-31T08:39:08Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 27,
+  "articles_read": 29,
   "read_urls": [
     "https://mettisglobal.news/CDWP-approves-Rs60bn-projects-across-key-sectors-63058",
     "https://mettisglobal.news/FBRs-RTOII-Karachi-busts-illegal-cigarette-factory-seizes-Rs200m-machinery-63057",
@@ -17,19 +17,21 @@
     "https://mettisglobal.news/LSE-Capital-secures-IPO-advisory-mandate-for-Cordoba-Financial-Services-listing-63051",
     "https://mettisglobal.news/Lotte-Chemical-Pakistan-eyes-Rs40bn-capital-Noventra-name-63048",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63045",
+    "https://mettisglobal.news/Mughal-Energys-hybrid-power-plant-achieves-Commercial-Operation-Date-63061",
     "https://mettisglobal.news/Oil-rises-above-90-as-supply-disruption-fears-intensify-63055",
     "https://mettisglobal.news/Power-Cement-FY26-profit-surges-to-Rs38bn-63050",
     "https://mettisglobal.news/Spot-gold-slips-to-4434-on-Fed-ratehike-signal-63053",
-    "https://propakistani.pk/2026/08/31/20-chinese-nationals-deported-from-pakistan-in-scam-call-center-case/",
-    "https://propakistani.pk/2026/08/31/british-era-railway-track-in-rawalpindi-comes-back-to-life/",
-    "https://propakistani.pk/2026/08/31/cda-plans-mock-fire-drill-at-parliament-house/",
-    "https://propakistani.pk/2026/08/31/cda-seals-8-buildings-over-fire-safety-violations/",
-    "https://propakistani.pk/2026/08/31/georgia-changes-residence-permit-rules-for-foreign-nationals/",
-    "https://propakistani.pk/2026/08/31/govt-confirms-up-to-22-increase-in-mobile-package-prices/",
-    "https://propakistani.pk/2026/08/31/malaysia-introduces-new-rules-for-foreign-workers/",
-    "https://propakistani.pk/2026/08/31/privatization-program-falls-behind-as-govt-misses-key-targets/",
-    "https://propakistani.pk/2026/08/31/rain-and-glof-alert-issued-for-upper-parts-of-pakistan/",
-    "https://propakistani.pk/2026/08/31/us-plans-online-passport-renewal-for-citizens-living-abroad/",
+    "https://mettisglobal.news/Telecom-sector-urges-govt-to-scrap-direct-G2G-contracting-rule-63062",
+    "https://propakistani.pk/2026/08/31/3-famous-buildings-in-islamabad-sealed/",
+    "https://propakistani.pk/2026/08/31/62-out-of-1000-babies-in-punjab-die-before-their-first-birthday/",
+    "https://propakistani.pk/2026/08/31/cda-restores-nocs-for-wasa-tube-wells/",
+    "https://propakistani.pk/2026/08/31/historic-delhi-government-school-sealed-in-karachi/",
+    "https://propakistani.pk/2026/08/31/kp-announces-rs-103-million-plan-to-restore-5-major-highways/",
+    "https://propakistani.pk/2026/08/31/kp-reports-nearly-500-dengue-cases/",
+    "https://propakistani.pk/2026/08/31/lotte-chemical-plans-to-double-authorized-capital-to-rs-40-billion/",
+    "https://propakistani.pk/2026/08/31/rescue-1122-to-be-deployed-at-hospitals/",
+    "https://propakistani.pk/2026/08/31/samsungs-more-expensive-z-fold-8-ultra-fails-durability-test-while-cheaper-model-survives/",
+    "https://propakistani.pk/2026/08/31/sindh-introduces-new-rules-for-health-department-employees/",
     "https://www.dawn.com/news/2026165/islamabad-riyadh-agree-to-boost-pakistani-agri-and-food-exports-to-3bn",
     "https://www.dawn.com/news/2026262/central-development-working-party-clears-five-projects-worth-over-rs60-billion"
   ],
@@ -39,28 +41,34 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Joined consortium w/ Kohat Cement, Lucky Cement bidding for 51-100% of FESCO; pre-qualified for due diligence",
+      "confidence": 0.5,
+      "reason": "Joined consortium bidding for FESCO (51-100% stake+control); pre-qualified, DD pending",
       "text_depth": "full",
-      "sources": ["https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"]
-    },
-    "KOHC": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Filed PSX disclosure leading consortium (w/ Hub Power, Lucky Cement) to acquire 51-100% FESCO stake",
-      "text_depth": "full",
-      "sources": ["https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"]
+      "sources": [
+        "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
+      ]
     },
     "LUCK": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Joined consortium w/ Hub Power, Kohat Cement bidding for 51-100% FESCO stake; EOI stage, pre-qualified",
+      "confidence": 0.5,
+      "reason": "Joined consortium bidding for FESCO (51-100% stake+control); pre-qualified, DD pending",
       "text_depth": "full",
-      "sources": ["https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"]
+      "sources": [
+        "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
+      ]
+    },
+    "KOHC": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Led consortium's EOI for FESCO stake (51-100%)+control acquisition; DD pending",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Kohat-Cement-joins-FESCO-privatization-63047"
+      ]
     }
   },
   "sectors": {}
