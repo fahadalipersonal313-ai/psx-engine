@@ -1,11 +1,12 @@
 {
-  "as_of": "2026-09-01T08:39:42Z",
+  "as_of": "2026-09-01T09:39:44Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 39,
+  "articles_read": 40,
   "read_urls": [
     "https://mettisglobal.news/Askari-Life-Assurance-completes-51-share-transfer-from-AWT-to-Fauji-Foundation-63098",
+    "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100",
     "https://mettisglobal.news/Cordoba-Logistics-subsidiary-CFSL-picks-advisors-for-IPO-63083",
     "https://mettisglobal.news/Engro-Corp-agrees-to-sell-over-56-EPCL-stake-63082",
     "https://mettisglobal.news/FBR-beats-2month-tax-target-by-Rs12bn-63092",
@@ -13,7 +14,6 @@
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs1800-per-tola-63064",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs800-per-tola-63097",
     "https://mettisglobal.news/Govt-borrows-Rs212bn-debt-in-a-week-63096",
-    "https://mettisglobal.news/Irbanah-Ventures-International-builds-stake-in-Clover-Pakistan-63056",
     "https://mettisglobal.news/M2-falls-by-Rs99bn-in-a-week-63095",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63080",
     "https://mettisglobal.news/Mughal-Energys-hybrid-power-plant-achieves-Commercial-Operation-Date-63061",
@@ -30,15 +30,16 @@
     "https://mettisglobal.news/Turning-tax-data-into-taxpayers-63094",
     "https://mettisglobal.news/Unity-Foods-FIR-relates-to-individual-conduct-not-Company-63093",
     "https://mettisglobal.news/VIS-maintains-JK-Spinning-Mills-longterm-rating-at-A-63089",
-    "https://propakistani.pk/2026/09/01/asus-vivobook-pro-14-series-gets-new-amd-variant-with-27-hour-battery/",
-    "https://propakistani.pk/2026/09/01/fire-breaks-out-at-lahore-general-hospital/",
-    "https://propakistani.pk/2026/09/01/govt-tightens-blue-passport-rules/",
-    "https://propakistani.pk/2026/09/01/honda-launches-new-cg125-in-pakistan/",
-    "https://propakistani.pk/2026/09/01/lhc-declares-underage-marriage-illegal/",
-    "https://propakistani.pk/2026/09/01/pakistan-hosts-best-of-asco-2026-bringing-the-latest-global-cancer-advances-to-local-practice/",
-    "https://propakistani.pk/2026/09/01/pakistans-domestic-gas-production-to-halve-by-2034/",
+    "https://propakistani.pk/2026/09/01/body-of-pakistani-mountaineer-finally-recovered-from-spantik-peak/",
+    "https://propakistani.pk/2026/09/01/hec-to-replace-24-year-old-guidelines-for-setting-up-new-universities/",
+    "https://propakistani.pk/2026/09/01/honor-magic-9-pro-could-be-first-android-phone-with-a-square-selfie-camera/",
+    "https://propakistani.pk/2026/09/01/pentagon-now-has-custom-military-versions-of-chatgpt-and-grok/",
     "https://propakistani.pk/2026/09/01/punjab-orders-strict-checking-of-commercial-vehicle-driving-licenses/",
-    "https://propakistani.pk/2026/09/01/punjab-university-announces-results-of-multiple-exams/",
+    "https://propakistani.pk/2026/09/01/rare-indus-blind-dolphin-found-dead-in-dera-ghazi-khan/",
+    "https://propakistani.pk/2026/09/01/sbp-designates-nift-as-payment-system-operator/",
+    "https://propakistani.pk/2026/09/01/secp-wins-global-award-for-womens-inclusive-insurance-policy/",
+    "https://propakistani.pk/2026/09/01/sindh-police-bans-constables-from-being-appointed-as-shos/",
+    "https://propakistani.pk/2026/09/01/vivo-v80-lite-goes-on-sale-in-pakistan-pairing-easy-grip-curved-display-with-smooth-everyday-performance/",
     "https://www.dawn.com/news/2026440/govt-increases-petrol-price-by-rs077-cuts-high-speed-diesel-price-by-rs103",
     "https://www.dawn.com/news/2026514/equities-lose-721-points-on-oil-inflation-spike",
     "https://www.dawn.com/news/2026515/aurangzeb-eyes-sustainable-export-driven-growth",
@@ -51,8 +52,8 @@
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Signed SPA to sell 56.19% EPCL stake to Lotte Chemical for Rs19.7bn (Rs38.6/sh), pending approvals",
+      "confidence": 0.65,
+      "reason": "Signed SPA: Engro Corp sells 56.19% EPCL stake to Lotte for Rs19.7bn, pending approvals",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Engro-Corp-agrees-to-sell-over-56-EPCL-stake-63082"
@@ -60,16 +61,58 @@
     }
   },
   "sectors": {
-    "Refinery": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Sector rallied on reports of imminent refinery-upgradation agreement signings; NRL/PRL hit upper circuit",
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Generic SBP/macro roundup (unclaimed deposits, M2, gold, NIFT) with no bank-specific driver",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/PSX-Closing-Bell-Not-Quite-Green-63070",
+        "https://mettisglobal.news/SBP-receives-unclaimed-deposits-surrendered-by-Banks-DFIs-63099",
+        "https://mettisglobal.news/M2-falls-by-Rs99bn-in-a-week-63095",
+        "https://www.brecorder.com/news/40437373/japans-benchmark-10-year-bond-yield-reaches-3-level-for-first-time-in-30-years",
+        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084",
+        "https://propakistani.pk/2026/09/01/sbp-designates-nift-as-payment-system-operator/",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63080"
+      ]
+    },
+    "Power Generation": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Mostly unrelated sports/global-markets items; index recap has no power-sector mechanism",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437393/raphinha-and-lamine-doubles-lift-barcelona-past-rayo-vallecano",
+        "https://www.brecorder.com/news/40437391/european-stocks-muted-as-bond-selloff-continues-reckitt-jumps",
+        "https://www.brecorder.com/news/40437377/naomi-osaka-brings-style-and-steel-for-wining-start-to-us-open",
+        "https://www.brecorder.com/news/40437375/chicago-wheat-falls-as-turkey-prepares-black-sea-grain-passage-plan",
         "https://www.dawn.com/news/2026514/equities-lose-721-points-on-oil-inflation-spike"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Indonesia coal/palm-oil export data, no mechanism tied to Pakistan fertilizer names",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437374/indonesia-january-july-coal-export-volume-down-617-yy-stats-bureau-data-shows",
+        "https://www.brecorder.com/news/40437369/indonesia-january-july-palm-oil-export-volume-down-1-yy-data-shows"
+      ]
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Closing-bell recap of Monday's already-priced refinery rally, no new catalyst in text",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-Closing-Bell-Not-Quite-Green-63070"
       ]
     }
   }
