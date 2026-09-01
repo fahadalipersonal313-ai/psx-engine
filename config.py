@@ -601,7 +601,11 @@ def headline_matches_company(symbol, *texts):
     hay = " ".join(t for t in texts if t).lower()
     if not hay:
         return False
-    for term in company_anchor_terms(symbol):
+    return _anchors_match(company_anchor_terms(symbol), hay)
+
+
+def _anchors_match(terms, hay):
+    for term in terms:
         term = (term or "").lower().strip()
         if not term:
             continue
@@ -610,6 +614,21 @@ def headline_matches_company(symbol, *texts):
         if _re.search(pat, hay):
             return True
     return False
+
+
+def headline_matches_sector(sector, *texts):
+    """Word-boundary sector match. Plain substring matching routed 'shipping'
+    and 'Philippines' to Power Generation via the 'ipp' anchor — the same class
+    of mis-attribution the company gate was built to stop.
+
+    SECTOR_NEWS_EXCLUDE vetoes a match outright: 'palm oil prices ease' hits the
+    'oil prices' anchor but is a Food story, not a Refinery one."""
+    hay = " ".join(t for t in texts if t).lower()
+    if not hay:
+        return False
+    if _anchors_match(SECTOR_NEWS_EXCLUDE.get(sector) or [], hay):
+        return False
+    return _anchors_match(SECTOR_NEWS_ANCHORS.get(sector) or [], hay)
 
 # ---------------------------------------------------------------------------
 # 6. MACRO INPUTS — manually maintained (update from SBP/PBS releases).
@@ -687,19 +706,81 @@ FOCUS_SYMBOL = "NRL"
 # biggest driver of NRL's price was invisible in NRL's own news window.
 # These phrases route a headline to EVERY symbol in the sector, and the result
 # is labelled sector news — never presented as company-specific.
+# Matched word-boundary via headline_matches_sector(). Coverage matters: 19 of
+# the 26 sectors in SECTORS had NO anchors at all, so the biggest drivers on the
+# board — crude, the fortnightly petrol/diesel notification — reached nobody, and
+# the rater was handed only the sectors with no story and correctly called them
+# noise. Broader anchors mean more sectors get rated; a rating of neutral/noise
+# still moves a score by exactly 0.0, so the cost of a false route is bounded.
+_FUEL_PRICE = ["petrol price", "diesel price", "fuel price", "ogra",
+               "petroleum levy", "high speed diesel", "hsd", "furnace oil"]
+# Verb forms are enumerated rather than anchoring on a bare "oil": word-boundary
+# "oil" also matches "edible oil" and "palm oil", which are Food stories.
+_CRUDE = ["crude", "crude oil", "oil price", "oil prices", "brent", "opec",
+          "oil market", "oil markets", "oil supply", "oil demand", "oil futures",
+          "oil climbs", "oil rises", "oil falls", "oil slips", "oil jumps",
+          "oil drops", "oil gains", "oil eases", "oil steady", "oil surges"]
 SECTOR_NEWS_ANCHORS = {
-    "Refinery": ["refinery", "refineries", "refining policy", "brownfield",
-                 "deemed duty", "crack spread"],
-    "Oil & Gas Exploration": ["exploration and production", "gas field",
-                              "circular debt", "wellhead"],
-    "Cement": ["cement sector", "cement dispatches", "cement industry"],
-    "Fertilizer": ["fertiliser", "fertilizer", "urea"],
-    "Power Generation": ["ipp", "independent power", "circular debt",
-                         "power tariff"],
-    "Gas Distribution": ["gas tariff", "rlng", "sui gas"],
-    "Islamic Banking": ["policy rate", "monetary policy", "sbp"],
+    "Refinery": ["refinery", "refineries", "refining", "refining policy",
+                 "brownfield", "deemed duty", "crack spread"] + _CRUDE + _FUEL_PRICE,
+    "Oil Marketing": ["oil marketing", "omc", "omcs", "fuel demand",
+                      "petroleum products"] + _CRUDE + _FUEL_PRICE,
+    "Oil & Gas Exploration": ["exploration and production", "e&p", "gas field",
+                              "circular debt", "wellhead", "gas discovery",
+                              "petroleum policy", "drilling"] + _CRUDE,
+    "Cement": ["cement", "cement sector", "cement dispatches",
+               "cement industry", "clinker", "construction"],
+    "Cement/Conglomerate": ["cement", "cement dispatches", "cement industry",
+                            "clinker", "construction"],
+    "Fertilizer": ["fertiliser", "fertilizer", "urea", "dap", "farm",
+                   "agriculture", "crop", "crops", "corn", "kharif", "rabi"],
+    "Power Generation": ["ipp", "ipps", "independent power", "circular debt",
+                         "power tariff", "electricity tariff", "nepra",
+                         "power sector", "power purchase"],
+    "Gas Distribution": ["gas tariff", "gas price", "rlng", "sui gas", "sngpl",
+                         "ssgc", "ogra", "gas supply"],
+    "Islamic Banking": ["policy rate", "monetary policy", "state bank", "kibor",
+                        "banking sector", "deposit rate", "cash reserve",
+                        "islamic banking", "advances to deposit"],
+    # Listed peers are included deliberately: an assembler's results are the
+    # main read-across the auto sector gets, and none of these are in STOCKS.
+    "Auto Assembler": ["auto sector", "automobile", "auto assembler",
+                       "car sales", "car prices", "vehicle sales", "auto policy",
+                       "indus motor", "pak suzuki", "honda atlas", "sazgar"],
+    "Textile": ["textile", "textiles", "cotton", "yarn", "apparel",
+                "textile exports"],
+    "Textile/Synthetic Fibre": ["textile", "polyester", "synthetic fibre",
+                                "cotton", "yarn"],
+    "Pharmaceuticals": ["pharmaceutical", "pharmaceuticals", "pharma", "drap",
+                        "drug prices", "medicine prices"],
+    "Technology/IT": ["it exports", "technology exports", "software exports",
+                      "pseb", "it sector", "freelancers"],
+    "Technology/IT Exports": ["it exports", "technology exports",
+                              "software exports", "pseb", "it sector"],
+    "Technology/Telecom": ["telecom", "pta", "spectrum auction", "broadband",
+                           "internet", "starlink"],
+    "Technology/Telecom Devices": ["telecom", "pta", "spectrum auction",
+                                   "broadband", "mobile phones", "handsets"],
+    "Food": ["food sector", "packaged food", "fmcg", "dairy", "food inflation",
+             "sugar", "edible oil"],
+    "Logistics/Ports": ["port", "ports", "port qasim", "terminal", "shipping",
+                        "cargo", "container", "trade volumes"],
+    "Logistics/Transport": ["logistics", "freight", "trucking", "supply chain"],
+    "Tyre Manufacturing": ["tyre", "tyres", "tire", "rubber"],
+    "Glass/Holding": ["glass", "float glass"],
+    "Electrical Goods": ["appliances", "electrical goods", "cables",
+                         "home appliances"],
+    "Real Estate": ["real estate", "property", "housing", "construction"],
 }
-NEWS_SIGNALS_MAX_AGE_HOURS = 24          # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
+# Checked BEFORE the anchors: an edible-oil story must never reach the refiners.
+_COOKING_OIL = ["edible oil", "palm oil", "cooking oil", "soybean oil",
+                "sunflower oil", "olive oil", "ghee"]
+SECTOR_NEWS_EXCLUDE = {
+    "Refinery": _COOKING_OIL,
+    "Oil Marketing": _COOKING_OIL,
+    "Oil & Gas Exploration": _COOKING_OIL,
+}
+NEWS_SIGNALS_MAX_AGE_HOURS = 24         # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
 # Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
 # stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with
 # VADER. Set True only to restore the old VADER fallback. False means news moves

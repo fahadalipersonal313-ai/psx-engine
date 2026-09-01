@@ -68,6 +68,17 @@ CREATE TABLE IF NOT EXISTS daily_ohlc (
     close REAL, volume REAL, source TEXT,
     PRIMARY KEY (symbol, date)
 );
+
+-- Full PSX DPS end-of-day history (~1,200 bars/symbol). fetch_eod already
+-- downloaded this every cycle and discarded it; persisting it gives years of
+-- indicator history instead of the ~50 days daily_ohlc had accrued.
+-- DELIBERATELY a separate table: DPS EOD carries NO High/Low, and writing
+-- null-H/L rows into daily_ohlc would clobber the real intraday-derived highs
+-- and lows that the ATR/ADX/momentum paths read. Never merge the two.
+CREATE TABLE IF NOT EXISTS daily_eod (
+    symbol TEXT, date TEXT, open REAL, close REAL, volume REAL, source TEXT,
+    PRIMARY KEY (symbol, date)
+);
 """
 
 
@@ -160,6 +171,42 @@ def save_daily_ohlc(symbol, date, o, h, l, c, volume, source):
             (symbol, date, open, high, low, close, volume, source)
             VALUES (?,?,?,?,?,?,?,?)""",
                    (symbol, date, o, h, l, c, volume, source))
+
+
+def eod_history_state(symbol):
+    """(rows, latest_date) already stored for a symbol — the cheap guard that
+    keeps a 24-cycle day from rewriting 1,200 identical rows 24 times."""
+    with conn() as c:
+        r = c.execute("SELECT COUNT(*) n, MAX(date) d FROM daily_eod WHERE symbol=?",
+                      (symbol,)).fetchone()
+    return r["n"], r["d"]
+
+
+def save_eod_history(symbol, rows, source="PSX DPS end-of-day"):
+    """Bank the full EOD series. rows: iterable of (date, open, close, volume).
+
+    REPLACE is safe here (unlike daily_ohlc) because this table holds no
+    High/Low to lose — a later fetch only ever refines the same four fields.
+    """
+    payload = [(symbol, d, o, c_, v, source) for d, o, c_, v in rows]
+    if not payload:
+        return 0
+    with conn() as cx:
+        cx.executemany("""INSERT OR REPLACE INTO daily_eod
+            (symbol, date, open, close, volume, source)
+            VALUES (?,?,?,?,?,?)""", payload)
+    return len(payload)
+
+
+def get_eod_history(symbol, limit=1500):
+    """Banked EOD bars, oldest-first. No High/Low by construction — callers
+    needing true ranges must use get_daily_ohlc instead."""
+    with conn() as c:
+        rows = c.execute(
+            """SELECT date, open, close, volume FROM daily_eod
+               WHERE symbol=? ORDER BY date DESC LIMIT ?""",
+            (symbol, limit)).fetchall()
+    return [dict(r) for r in reversed(rows)]
 
 
 def daily_ohlc_count(symbol=None):
