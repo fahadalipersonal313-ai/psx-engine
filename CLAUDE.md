@@ -893,7 +893,28 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-08-27. Today: `fetch_eod` fallback to banked bars ended a
+**Last updated:** 2026-09-01. Today, all merged to `main`: sector-news routing
+fixed (7 -> 24 anchored sectors; the substring `ipp`/`sbp` mis-routes killed;
+`SECTOR_NEWS_EXCLUDE` added) — this was why news never moved a score, NOT the
+rater; soft downgrades now COLLECT instead of first-match-wins (signal
+unchanged, every reason surfaced, and the risk-on what-if now needs the regime
+gate to be the SOLE veto); `daily_eod` banks the EOD history `fetch_eod` was
+discarding 24x a day; `confluence_axes.py` added, UNMEASURED and wired into
+nothing; and **5 years of real daily High/Low backfilled** from PSX's historical
+view.
+
+Backfill result (run 33558311387, ~86 min, 0 request errors): **56,140 official
+bars, 2021-09-01 .. 2026-07-31, all 50 symbols**, median 1,239 bars each. DB
+6.9 -> 15.9 MB. Verified rather than assumed: `low > high` is **0** (High/Low
+are not swapped), and the official close matched the engine's own recorded price
+**10/10 exactly** for 2026-06-11 — two independent PSX endpoints agreeing to the
+paisa. 10 bars where PSX reports O=H=L=0.00 (a session with no trades, JVDC and
+BNL) were deleted and the parser now rejects them: a zero is not a price and
+would collapse every ATR touching it. 29 bars (0.05%) keep a close outside the
+traded range — a genuine PSX quirk on illiquid no-trade sessions, which true
+range handles by design. SLM has only 53 bars because it listed 2026-06-15.
+
+Previously 2026-08-27: `fetch_eod` fallback to banked bars ended a
 total "No data" blackout, with `STALE prices (<date>)` surfacing the staleness;
 DPS diagnosed (healthy — the fault was long-running-job state, restart fixes it);
 tracked DB pruned 54 MB -> 6.9 MB with a nightly `db.prune()`; the routine's
@@ -915,6 +936,15 @@ articles (~1 item/run now — raising it needs the listing's real per-item marku
 - Do NOT dispatch a workflow in the same breath as pushing a change to it —
   indexing lags a push by minutes and the run is orphaned in `queued` forever.
   Two such zombies from 2026-08-26 could not be cancelled via the API (403).
+  ~45s is enough; three dispatches on 2026-09-01 all started cleanly after that.
+- **A running job's logs are unreadable via the API** (`get_job_logs` -> 404)
+  but the WEB UI streams them live. The CLAUDE.md rule about cancelling a job to
+  read its logs applies to the API path only — ask the user to read the browser.
+- `confluence_axes` reports `trustworthy: False` until ~70 bars are available.
+  Before the backfill every symbol failed that and `trend_quality` was None;
+  with 1,239 bars banked both now resolve.
+- **Streamlit Cloud serves the git snapshot from its last deploy.** After a
+  session with code changes, the dashboard may need Manage app -> Reboot app.
 
 Previously 2026-08-17 (end of session). Momentum-burst panel added and
 measured; dashboard stripped of measured-noise sections; morning timing fixed

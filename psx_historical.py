@@ -117,6 +117,12 @@ def parse(html):
         # A bar with no high or low is useless here and is never invented.
         if row["high"] is None or row["low"] is None:
             continue
+        # PSX reports O=H=L=0.00 for a session in which a name did not trade,
+        # carrying only a stale close (seen on JVDC and BNL, 10 bars in 5 years).
+        # A zero is not a price: it would collapse every ATR and range that
+        # touches it. Drop the bar rather than store a fabricated-looking one.
+        if row["high"] <= 0 or row["low"] <= 0:
+            continue
         out.append(row)
     return out
 
