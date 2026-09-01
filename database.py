@@ -107,7 +107,12 @@ def init_db():
                           ("accumulation_reasons", "TEXT"),
                           ("cmf", "REAL"), ("obv_divergence_bullish", "INTEGER"),
                           ("early_watch", "INTEGER"), ("early_reason", "TEXT"),
-                          ("outcome_7d", "TEXT")):
+                          ("outcome_7d", "TEXT"),
+                          # Continuous confluence axes (JSON) + their mean.
+                          # Stored for measurement only — nothing reads them
+                          # into a signal until each axis earns it.
+                          ("confluence_axes", "TEXT"),
+                          ("confluence_composite", "REAL")):
             if col not in existing:
                 c.execute(f"ALTER TABLE runs ADD COLUMN {col} {decl}")
         c.execute("""CREATE TABLE IF NOT EXISTS focus_brief (

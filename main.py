@@ -36,6 +36,7 @@ import market_regime
 import scoring_engine
 import risk_manager
 import signal_generator
+import confluence_axes
 import portfolio_risk
 import portfolio_advisor
 import reports
@@ -104,7 +105,7 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
     is_early, early_reason = signal_generator.early_watch(
         scoring["final_score"], technical, shariah)
 
-    db.save_run({
+    row = {
         "run_time": datetime.now().isoformat(), "symbol": symbol,
         "price": technical.get("price"), "volume": technical.get("volume"),
         "technical_score": technical.get("score"),
@@ -135,7 +136,19 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
                                    else None),
         "early_watch": int(is_early),
         "early_reason": early_reason or None,
-    })
+    }
+
+    # Computed LAST and wrapped, per the 2026-08-13 outage rule: a fault here
+    # costs the axes, never the signal. Measurement-only — nothing reads these
+    # back into a decision until each axis has been graded on its own.
+    try:
+        ca = confluence_axes.for_symbol(symbol, technical, db)
+        row["confluence_axes"] = json.dumps(ca)
+        row["confluence_composite"] = ca["composite"]
+    except Exception as e:
+        log.warning("confluence axes failed for %s: %s", symbol, e)
+
+    db.save_run(row)
 
     if quote.get("warning"):
         log.warning("%s: %s", symbol, quote["warning"])
@@ -254,6 +267,32 @@ def main():
         print(text); reports.save_report(text, "morning")
     elif cmd == "prune":
         print(db.prune())
+    elif cmd == "axes":
+        # Read-only: no fetch, no write. Reports each axis so a weak one is
+        # visible before anyone proposes wiring the composite into a decision.
+        names = ["trend_quality", "relative_strength", "stability",
+                 "participation", "structure", "persistence"]
+        print(f"{'sym':8s}{'sig':11s}{'score':>6s}{'comp':>7s}{'bars':>6s}  " +
+              "".join(f"{n[:9]:>10s}" for n in names))
+        for sym in config.STOCKS:
+            r = db.last_run(sym)
+            if not r:
+                continue
+            ca = confluence_axes.for_symbol(sym, {
+                "price": r["price"], "support": r["support"],
+                "relative_strength": r["relative_strength"]}, db)
+            def _cell(v):
+                return "—" if v is None else f"{v:.2f}"
+            cells = "".join(f"{_cell(ca['axes'][n]):>10s}" for n in names)
+            comp = "—" if ca["composite"] is None else f"{ca['composite']:.3f}"
+            flag = "" if ca["trustworthy"] else "  (thin history)"
+            print(f"{sym:8s}{str(r['signal'])[:10]:11s}"
+                  f"{(r['final_score'] or 0):6.1f}{comp:>7s}{ca['bars']:6d}  "
+                  f"{cells}{flag}")
+        print("\nAll axes are UNMEASURED and feed no signal. Grade each one "
+              "with measure.render() before proposing it as a ranker or sizer; "
+              "this repo's history says a new gate is the change most likely "
+              "to destroy edge.")
     elif cmd == "backfill":
         # One-shot EOD history backfill. Needs a host that can reach PSX DPS —
         # from a sandbox every symbol fails and nothing is written (never
