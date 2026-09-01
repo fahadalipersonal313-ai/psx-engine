@@ -554,8 +554,14 @@ assumed_regime = {"Assume risk-on": "risk-on",
 # chase/earnings/rr downgrades are never touched. Buy, never Strong Buy (pre-gate
 # tier unknown — take the conservative one).
 def _display_signal(sig, reason):
+    # Promote ONLY when the regime gate is the SOLE veto. Downgrade reasons are
+    # collected (not first-match-wins) since 2026-09-01, so "; also " marks a
+    # Watch that carries a second, non-regime veto — assuming risk-on does not
+    # clear that one, and promoting it would invent a Buy the engine never had.
+    r = str(reason)
     if (assumed_regime == "risk-on" and regime == "risk-off"
-            and sig == "Watch" and "market regime risk-off" in str(reason)):
+            and sig == "Watch" and "market regime risk-off" in r
+            and "; also " not in r):
         return "Buy"
     return sig
 

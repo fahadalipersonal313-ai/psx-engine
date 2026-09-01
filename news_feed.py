@@ -342,9 +342,7 @@ def sector_headlines(symbol, limit=5):
     if meta["status"] != "ok":
         return []
     sector = config.SECTORS.get(symbol.upper())
-    phrases = [p.lower() for p in
-               (getattr(config, "SECTOR_NEWS_ANCHORS", {}).get(sector) or [])]
-    if not phrases:
+    if not (getattr(config, "SECTOR_NEWS_ANCHORS", {}).get(sector) or []):
         return []
     credible = [p.lower() for p in getattr(config, "NEWS_DISPLAY_PUBLISHERS", [])]
     peers = {s for s, sec in config.SECTORS.items() if sec == sector}
@@ -354,8 +352,7 @@ def sector_headlines(symbol, limit=5):
         key = t.lower()
         if not t or key in seen:
             continue
-        if not any(p in key or p in (it.get("summary") or "").lower()
-                   for p in phrases):
+        if not config.headline_matches_sector(sector, t, it.get("summary")):
             continue
         pub = _publisher(it)
         if credible and not any(c in pub.lower() for c in credible):

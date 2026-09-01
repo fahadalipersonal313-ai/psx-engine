@@ -110,8 +110,8 @@ def build(raw_path=RAW_PATH, bodies_path=BODIES_PATH):
 
         # --- sector attribution (same phrases the engine already uses)
         hay = f"{title} {lede}".lower()
-        for sector, phrases in config.SECTOR_NEWS_ANCHORS.items():
-            if any(p.lower() in hay for p in phrases):
+        for sector in config.SECTOR_NEWS_ANCHORS:
+            if config.headline_matches_sector(sector, hay):
                 sectors.setdefault(sector, [])
                 if len(sectors[sector]) < MAX_PER_KEY:
                     sectors[sector].append(entry)

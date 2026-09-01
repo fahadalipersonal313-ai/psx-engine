@@ -281,43 +281,55 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # so the branch could never fire (confirmed: all 203 graded Buys were "Low").
     _earnings_soon = (days_to_earnings is not None
                       and 0 <= days_to_earnings <= config.EARNINGS_BLACKOUT_DAYS)
+    # COLLECT-ALL, not first-match-wins (2026-09-01). As an `elif` chain an
+    # earlier veto masked every later one, so a Buy blocked by `poor_rr` was
+    # never RS-tested — and disabling `poor_rr` silently exposed candidates a
+    # later veto should have caught (PPL, RS 41). The resulting signal is
+    # unchanged (any match still means Watch); what changes is that the card now
+    # names EVERY reason it failed, so a disabled veto cannot hide an active one.
     if base in ("Strong Buy", "Buy"):
+        downgrades = []
         if _earnings_soon:
-            base = "Watch"; reasons.append(
-                f"Downgraded: earnings/result due in ~{days_to_earnings}d — binary "
+            downgrades.append(
+                f"earnings/result due in ~{days_to_earnings}d — binary "
                 "event risk, don't open a fresh position into the announcement")
-        elif config.REGIME_GATE_ENABLED and regime == "risk-off":
-            base = "Watch"; reasons.append(
-                f"Downgraded: market regime risk-off ({config.BENCHMARK_INDEX} below "
+        if config.REGIME_GATE_ENABLED and regime == "risk-off":
+            downgrades.append(
+                f"market regime risk-off ({config.BENCHMARK_INDEX} below "
                 f"its {config.REGIME_EMA_SPAN}-EMA) — don't buy into a falling market")
-        elif "concentrated" in risk["vetoes"]:
-            base = "Watch"; reasons.append(
-                "Downgraded: this name is already over the single-name cap in your "
+        if "concentrated" in risk["vetoes"]:
+            downgrades.append(
+                "this name is already over the single-name cap in your "
                 "book — adding compounds concentration risk. Trim or hold, don't add")
-        elif "poor_rr" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: risk/reward below minimum")
-        elif "manipulation_risk" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: hype/pump risk — verify first")
-        elif "bad_news" in risk["vetoes"]:
-            base = "Watch"; reasons.append("Downgraded: material negative news — "
-                                           "verify the headline before acting")
-        elif confidence < 45:
-            base = "Watch"; reasons.append("Downgraded: confidence below 45% "
-                                           "(weak data or poor history)")
-        elif (technical.get("cmf") is not None
-              and technical["cmf"] <= config.BUY_MIN_CMF):
-            base = "Watch"; reasons.append(
-                f"Downgraded: money flow not confirming (CMF {technical['cmf']:+.2f} "
+        if "poor_rr" in risk["vetoes"]:
+            downgrades.append("risk/reward below minimum")
+        if "manipulation_risk" in risk["vetoes"]:
+            downgrades.append("hype/pump risk — verify first")
+        if "bad_news" in risk["vetoes"]:
+            downgrades.append("material negative news — "
+                              "verify the headline before acting")
+        if confidence < 45:
+            downgrades.append("confidence below 45% (weak data or poor history)")
+        if (technical.get("cmf") is not None
+                and technical["cmf"] <= config.BUY_MIN_CMF):
+            downgrades.append(
+                f"money flow not confirming (CMF {technical['cmf']:+.2f} "
                 f"≤ {config.BUY_MIN_CMF:.2f}) — price is rising without real "
                 "buying pressure behind it (graded history: CMF-negative Buys "
                 "beat the market 61% vs 83% when flow confirms, and carried the "
                 "worse drawdowns)")
-        elif (technical.get("relative_strength") is not None
-              and technical["relative_strength"] < config.RS_LAGGARD_VETO):
-            base = "Watch"; reasons.append(
-                f"Downgraded: relative strength {technical['relative_strength']:.0f} "
+        if (technical.get("relative_strength") is not None
+                and technical["relative_strength"] < config.RS_LAGGARD_VETO):
+            downgrades.append(
+                f"relative strength {technical['relative_strength']:.0f} "
                 f"< {config.RS_LAGGARD_VETO} — market laggard (graded history: "
                 "RS<55 Buys won 21%, RS 70+ won 36%); buy leaders, not laggards")
+        if downgrades:
+            base = "Watch"
+            reasons.append("Downgraded: " + "; also ".join(downgrades))
+            if len(downgrades) > 1:
+                reasons.append(f"({len(downgrades)} independent vetoes fired — "
+                               "each alone is enough to hold this at Watch)")
 
     # The pullback-entry UPGRADE was removed 2026-08-12: the Buys it produced
     # (final_score below the Buy band) won 9% (n=57) against a 38% market base
