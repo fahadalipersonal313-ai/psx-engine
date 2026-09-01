@@ -214,6 +214,24 @@ def get_eod_history(symbol, limit=1500):
     return [dict(r) for r in reversed(rows)]
 
 
+def save_hl_bar(symbol, date, o, h, l, c, volume, source, overwrite=False):
+    """Bank one historical OHLC bar. Returns 1 if a row was written, else 0.
+
+    IGNORE by default so bars already banked from the intraday feed are kept.
+    `overwrite` prefers the exchange's official figure, which is the more
+    accurate of the two: an intraday-derived high/low is reconstructed from
+    15-minute polls and understates the true range whenever an extreme printed
+    between them.
+    """
+    verb = "REPLACE" if overwrite else "IGNORE"
+    with conn() as cx:
+        cur = cx.execute(f"""INSERT OR {verb} INTO daily_ohlc
+            (symbol, date, open, high, low, close, volume, source)
+            VALUES (?,?,?,?,?,?,?,?)""",
+                         (symbol, date, o, h, l, c, volume, source))
+        return cur.rowcount or 0
+
+
 def daily_ohlc_count(symbol=None):
     q = "SELECT COUNT(*) n FROM daily_ohlc"
     args = []

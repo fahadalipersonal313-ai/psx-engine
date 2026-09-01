@@ -1,0 +1,96 @@
+name: hl-backfill
+
+# Manual-only. Backfills REAL daily High/Low for the universe from PSX's own
+# historical view (one request per trading session returns every listed
+# company), so ATR, ADX and a true CMF stop being limited to the ~50 bars the
+# intraday poller had banked.
+#
+# Runs long by design: ~1,300 weekday sessions for 5 years at 1s pacing is
+# ~25 minutes. The pacing is deliberate — DPS load was the leading suspect in
+# the 2026-08-27 blackout, so this stays sequential, single-session, one request
+# per second, and is NOT scheduled.
+on:
+  workflow_dispatch:
+    inputs:
+      years:
+        description: "Years of history to walk back"
+        required: false
+        default: "5"
+      pause:
+        description: "Seconds between requests (do not lower without reason)"
+        required: false
+        default: "1.0"
+      prefer_official:
+        description: "Replace intraday-derived H/L with the exchange's official figure"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+# Never let two backfills write the DB at once.
+concurrency:
+  group: hl-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      # HARD GUARD. engine.yml loops every 15 min doing run -> commit -> pull
+      # --rebase -X theirs -> push. In that rebase `theirs` is the LOOP's own
+      # DB, so the loop wins every conflict and silently discards whatever this
+      # job pushed. That is not hypothetical: it ate a full regrade on
+      # 2026-08-13 and the only symptom was a win rate quietly reverting.
+      # Fail fast rather than spend 25 minutes on work that will be thrown away.
+      - name: Refuse to run while the engine loop is alive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          active=$(curl -sS -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/actions/workflows/engine.yml/runs?status=in_progress&per_page=1" \
+            | python3 -c "import sys,json; print(json.load(sys.stdin).get('total_count',0))")
+          echo "engine.yml runs in progress: $active"
+          if [ "$active" != "0" ]; then
+            echo "::error::engine.yml is running. Its DB wins every rebase and would discard this backfill. Cancel the engine run, wait for status=completed, then re-dispatch."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-ci.txt
+
+      - name: Backfill High/Low
+        run: |
+          python psx_historical.py \
+            "${{ inputs.years || '5' }}" \
+            "${{ inputs.pause || '1.0' }}" \
+            ${{ inputs.prefer_official && '--prefer-official' || '' }}
+
+      - name: Commit banked bars
+        run: |
+          git config user.name "psx-engine-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add psx_engine.db
+          if git diff --cached --quiet; then
+            echo "no new bars — nothing to commit"
+            exit 0
+          fi
+          git commit -m "Backfill daily High/Low from PSX historical view"
+          # Plain rebase, NOT -X theirs: if the loop started mid-job this must
+          # fail loudly rather than quietly drop the backfill.
+          for i in 1 2 3 4; do
+            git pull --rebase origin main && git push origin main && exit 0
+            echo "push attempt $i failed; retrying"
+            sleep $((2 ** i))
+          done
+          echo "::error::could not push the backfill — resolve by hand"
+          exit 1
