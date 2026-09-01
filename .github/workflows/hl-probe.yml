@@ -18,6 +18,10 @@ on:
         description: "Symbol to probe with (default NRL)"
         required: false
         default: "NRL"
+      date:
+        description: "Trading day to probe, YYYY-MM-DD (must NOT be a weekend)"
+        required: false
+        default: "2026-08-28"
 
 permissions:
   contents: read
@@ -34,4 +38,4 @@ jobs:
           python-version: "3.11"
       - run: pip install -r requirements-ci.txt
       - name: Probe High/Low sources
-        run: python hl_probe.py "${{ inputs.symbol || 'NRL' }}"
+        run: python hl_probe.py "${{ inputs.symbol || 'NRL' }}" "${{ inputs.date || '2026-08-28' }}"

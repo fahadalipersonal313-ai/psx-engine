@@ -76,6 +76,10 @@ def main():
     ssl_compat.enable()
     logging.basicConfig(level=logging.WARNING)
     sym = (sys.argv[1] if len(sys.argv) > 1 else "NRL").upper()
+    # MUST be a trading day. The first probe used a Saturday and the historical
+    # view returned 903 bytes — the table header with no rows — which reads like
+    # a broken endpoint but is simply an empty session.
+    date = sys.argv[2] if len(sys.argv) > 2 else "2026-08-28"
     hdrs = dict(config.REQUEST_HEADERS)
     browser = dict(hdrs, **{
         "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -94,11 +98,16 @@ def main():
     #    versus 50 requests per symbol. Same public portal the engine already
     #    uses, so it introduces no new source and no protection bypass.
     #    The request shape below is a GUESS and is exactly what needs confirming.
-    _probe("DPS historical (POST date)", "POST",
-           "https://dps.psx.com.pk/historical",
-           data={"date": "2026-08-29"}, headers=browser)
-    _probe("DPS historical (GET)", "GET",
-           "https://dps.psx.com.pk/historical", headers=browser)
+    r = _probe(f"DPS historical (POST date={date})", "POST",
+               "https://dps.psx.com.pk/historical",
+               data={"date": date}, headers=browser)
+    if r is not None and r.status_code == 200:
+        # Print the first real data row: column ORDER is what a parser depends
+        # on, and it cannot be inferred from the header names alone.
+        body = re.split(r"</thead>", r.text, flags=re.I)
+        if len(body) > 1:
+            cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", body[1], re.S | re.I)
+            print(f"  first data row cells: {[c.strip() for c in cells[:9]]}")
 
     # 2. Baseline: the endpoint the engine already relies on. Confirms the host
     #    is reachable at all, so a failure above is about the path, not the site.
