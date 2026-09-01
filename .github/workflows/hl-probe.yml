@@ -1,0 +1,37 @@
+name: hl-probe
+
+# Manual-only reconnaissance for a daily High/Low source. PSX DPS end-of-day
+# carries no High or Low, so ATR, ADX and a true CMF cannot be computed from the
+# backfilled history — only from the ~50 intraday-derived bars in daily_ohlc.
+#
+# This exists because the sandbox where the code is written cannot reach PSX at
+# all (every request is refused at the egress proxy), and a scraper written from
+# assumed markup is exactly what produced the reverted Mettis date bug. A runner
+# CAN reach the portal, so the markup gets observed here before anything parses
+# it.
+#
+# Read-only by construction: the probe writes nothing and commits nothing.
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Symbol to probe with (default NRL)"
+        required: false
+        default: "NRL"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-ci.txt
+      - name: Probe High/Low sources
+        run: python hl_probe.py "${{ inputs.symbol || 'NRL' }}"
