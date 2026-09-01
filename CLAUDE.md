@@ -681,6 +681,128 @@ fetch — uses fields already on the row: full reason, main risk, shariah
 status, regime, support/resistance, buy-zone). Chart + per-stock backtest
 still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
 
+## Sector news reached almost nobody (fixed 2026-09-01)
+
+The reason news never moved a score was NOT the rater. Only **7 of 26 sectors
+had anchors at all**, and the anchored ones lacked the two drivers that actually
+move this board: there was no crude anchor and no petrol/diesel anchor. On
+2026-09-01 the digest offered the rater Fertilizer, Power Generation and Islamic
+Banking — which genuinely had no story, so it correctly rated them
+`neutral`/`noise`, i.e. exactly 0.0 movement — while *"Oil climbs above $91.5 as
+US-Iran conflict raises supply fears"* sat in the same file routed to nothing.
+NRL/PRL/ATRL are refiners and never saw it.
+
+24 sectors now have anchors. Measured on that day's file: **3 sectors -> 12**,
+**~6 -> 25 of 50 symbols** covered, and `sector_headlines('NRL')` returns the
+oil story as its top item.
+
+Two matching bugs fixed with it:
+- Sector matching was **plain substring**, so `"ipp"` routed *"Shipping volumes
+  rise at Port Qasim"* and *"Philippines trade deal"* to Power Generation, and a
+  bare `"sbp"` sent every FX release to Islamic Banking. Sectors now use the same
+  word-boundary matcher as companies (`config.headline_matches_sector`).
+- `SECTOR_NEWS_EXCLUDE` is checked FIRST, so *"Palm oil prices ease"* cannot
+  reach the refiners through the `oil prices` anchor.
+
+Broader anchors mean some routes will be wrong. The cost is bounded on purpose:
+`neutral`/`noise` moves a score by exactly 0.0 and the sector cap is +-4.
+
+## Vetoes are COLLECTED, not first-match-wins (2026-09-01)
+
+The soft-downgrade chain was `elif`, so the first veto masked every later one —
+a Buy blocked by `poor_rr` was never RS-tested, and disabling `poor_rr` silently
+exposed candidates a later veto should have caught (PPL at RS 41). Downgrades
+are now collected into one reason string joined by `"; also "`.
+
+**The emitted signal is unchanged** — any match still means Watch. What changes
+is that a card names EVERY reason it failed, so a disabled veto can no longer
+hide an active one. Consequence to remember: `dashboard._display_signal` now
+promotes a regime-gated Watch under "Assume risk-on" ONLY when `"; also "` is
+absent, i.e. the regime gate is the sole veto. Without that guard the collected
+string would have made the what-if invent Buys carrying a second live veto.
+
+## Real daily High/Low — PSX's historical view (2026-09-01)
+
+DPS end-of-day returns `[ts, close, volume, open]` and **no High or Low**, so ATR,
+ADX and a true CMF were limited to the ~50 bars the intraday poller had banked —
+and CMF is the one lead indicator that measured here.
+
+`POST https://dps.psx.com.pk/historical` with `date=YYYY-MM-DD` returns EVERY
+listed company's OHLCV for that session. **Keyed by date, not symbol**, so one
+request covers the whole universe: ~1,305 weekday sessions for 5 years instead
+of 12,500 per-symbol calls. Confirmed on a runner (`hl_probe`), markup observed
+not assumed:
+
+    <table id="historicalTable"><thead><tr><th data-name="symbol">…
+    row: ['<strong>786</strong>','23.27','23.30','23.30','23.00','23.05',
+          '<i …></i> -0.22','<i …></i> -0.95%','47,039']
+    => SYMBOL | LDCP | OPEN | HIGH | LOW | CLOSE | CHANGE | CHANGE% | VOLUME
+
+Gotchas that cost real time, so they are not re-learned:
+- **A non-trading day returns the SAME HTTP 200 with an empty tbody.** The first
+  probe used 2026-08-29, a Saturday, got 903 bytes, and read as a dead endpoint.
+  Empty means "no session", and is a free holiday guard — no calendar needed.
+- Cells carry markup (`<strong>`, direction `<i>`) and volume is comma-grouped.
+- `psx_historical.parse` keys columns off the header's `data-name` attributes and
+  **raises** if one is missing, rather than mis-mapping High into Low. A wrong
+  High/Low corrupts every derived ATR and looks perfectly normal on a chart.
+- **~2.8s per request** (the response is the whole market, ~500 rows), so with
+  1s pacing a 5-year run takes ~80 minutes, not the ~22 the pacing alone implies.
+- Older sessions return ~44 of our 50 symbols, not 50 — names that had not listed
+  yet. A flat 50 every session would be the suspicious result.
+
+`save_hl_bar` defaults to **INSERT OR IGNORE**, keeping intraday-banked bars.
+Note the trade-off: the portal's figure is the exchange's OFFICIAL one, while an
+intraday-derived high/low is reconstructed from 15-minute polls and must
+UNDERSTATE the true range whenever an extreme printed between polls. So for the
+~50 overlapping days the LESS accurate value wins by default;
+`--prefer-official` replaces them.
+
+`hl-backfill.yml` is manual-only and **refuses to start while `engine.yml` is
+running** — the loop rebases with `-X theirs`, so its DB wins every conflict and
+would silently discard the whole backfill (that is what ate the 2026-08-13
+regrade). It pushes with a PLAIN rebase so a mid-job collision fails loudly.
+
+## daily_eod — the EOD history that was being thrown away (2026-09-01)
+
+`fetch_eod` downloaded ~1,200 daily bars per symbol on every one of the ~24
+cycles a day and discarded all of them; `daily_ohlc` only ever held what the
+INTRADAY path banked (~50 days). `_bank_eod_history` now persists them, guarded
+on `(rows, latest_date)` so a symbol writes once per day rather than 24 times,
+and wrapped so banking can never fail a price fetch. Only the LIVE path banks —
+the banked-bars fallback cannot feed itself.
+
+**`daily_eod` is a SEPARATE table on purpose.** DPS EOD has no High/Low, and
+`save_daily_ohlc` uses `INSERT OR REPLACE`, so writing null-H/L rows into
+`daily_ohlc` would have destroyed the real intraday-derived highs and lows the
+ATR/ADX/momentum paths read. Never merge the two.
+
+## Confluence axes — continuous, and wired into NOTHING (2026-09-01)
+
+The old 4-dim `_confluence` is binary and near-collinear (trend is
+`price>EMA50`, structure is `price>support`; in an uptrend the second is implied
+by the first), which is why outcomes were flat across it (2/4 17%, 3/4 26%,
+4/4 25%). `confluence_axes.py` keeps the idea and fixes the shape: six
+CONTINUOUS 0..1 axes chosen for different mechanisms — EMA50 slope, relative
+strength (the only cross-sectional one), inverted realised-vol percentile,
+volume vs the symbol's own median, headroom above support in SIGMA not percent,
+and consecutive sessions above the 50-EMA (the only temporal one).
+
+All six are computable from close/open/volume, so the banked history scores them
+over years. Money flow is deliberately absent — a true CMF needs High/Low.
+
+A missing input yields `None` and is EXCLUDED from the composite rather than
+defaulted to 0.5, which would invent agreement. Results carry `coverage`, `bars`
+and `trustworthy`. Computed LAST and wrapped in `analyze_stock`.
+
+**EVERY AXIS IS UNMEASURED and none touches signal generation.** The 2026-08-12
+audit is the reason: emitted Buys beat the market 36% while the candidate pool
+they came from beat it 63%, so a new gate on unmeasured inputs is the single
+change most likely to destroy edge. Grade each axis with `measure.render()`
+first, and prefer RANKING or POSITION SIZING over a veto — every veto measured
+here (`poor_rr`, chase guard, the confluence gate, the pullback upgrade)
+rejected a better subset than it passed. `python main.py axes` prints them.
+
 ## Key files
 
 - `config.py` — all knobs (thresholds, weights, risk caps, stocks).
@@ -699,9 +821,13 @@ still live only in the 📈 Stock detail tab to avoid an EOD fetch per card.
   crowding for `config.FOCUS_SYMBOL`.
 - `momentum.py` — momentum-burst detector (config.MOMENTUM_BURST). Reads
   `daily_ohlc` only; no write path in `full_run`.
+- `confluence_axes.py` — six CONTINUOUS setup dimensions (2026-09-01). Stored
+  per run (`confluence_axes` JSON + `confluence_composite`), wired into NOTHING.
+- `psx_historical.py` — daily High/Low backfill from PSX's historical view.
+- `hl_probe.py` — read-only source reconnaissance (must run on a runner).
 - `main.py` — CLI entry: `run / schedule / morning / evening / backtest SYMBOL /
   metrics / portfolio / accuracy / regrade / accumulating / history SYMBOL /
-  fundamentals / measure / brief`.
+  fundamentals / measure / brief / prune / backfill / axes`.
 
 ## Environment notes
 

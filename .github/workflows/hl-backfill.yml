@@ -75,7 +75,12 @@ jobs:
             "${{ inputs.pause || '1.0' }}" \
             ${{ inputs.prefer_official && '--prefer-official' || '' }}
 
+      # always(): the fetch writes bars to SQLite as it goes, but this step is
+      # last, so a cancelled or timed-out run would discard everything collected
+      # (the first 5-year run was ~30 minutes and 20k bars deep before anyone
+      # could have known that). Bank what we got, whatever ended the fetch.
       - name: Commit banked bars
+        if: always()
         run: |
           git config user.name "psx-engine-bot"
           git config user.email "bot@users.noreply.github.com"
