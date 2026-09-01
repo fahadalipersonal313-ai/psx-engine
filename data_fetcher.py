@@ -92,6 +92,26 @@ def fetch_intraday(symbol):
                       "warning": f"Live fetch failed ({e}); using latest stored data."}
 
 
+def _bank_eod_history(symbol, df):
+    """Persist the full EOD series we just downloaded. It was fetched and thrown
+    away on every one of the ~24 cycles a day, leaving the engine with only the
+    ~50 daily_ohlc bars the intraday path had banked.
+
+    Wrapped: banking history must never be able to fail a price fetch.
+    """
+    try:
+        stored, latest = db.eod_history_state(symbol)
+        as_of = str(df["date"].iloc[-1].date())
+        if stored >= len(df) and latest == as_of:
+            return          # already banked today; don't rewrite 1,200 rows
+        rows = [(str(r.date.date()), r.open, r.close, r.volume)
+                for r in df.itertuples()]
+        n = db.save_eod_history(symbol, rows)
+        log.info("Banked %d EOD bars for %s through %s", n, symbol, as_of)
+    except Exception as e:
+        log.warning("EOD history banking failed for %s: %s", symbol, e)
+
+
 def fetch_eod(symbol):
     """PSX DPS end-of-day history -> DataFrame[date, close, volume]."""
     url = config.PSX_EOD_URL.format(symbol=symbol)
@@ -111,7 +131,9 @@ def fetch_eod(symbol):
         df = df.sort_values("date").reset_index(drop=True)
         meta = {"source": "PSX DPS end-of-day", "as_of": str(df["date"].iloc[-1].date()),
                 "live": True, "warning": None}
-        return df[["date", "open", "close", "volume"]], meta
+        out = df[["date", "open", "close", "volume"]]
+        _bank_eod_history(symbol, out)
+        return out, meta
     except Exception as e:
         log.warning("EOD fetch failed for %s: %s", symbol, e)
         # Fall back to the daily bars already banked from earlier intraday polls.

@@ -254,6 +254,23 @@ def main():
         print(text); reports.save_report(text, "morning")
     elif cmd == "prune":
         print(db.prune())
+    elif cmd == "backfill":
+        # One-shot EOD history backfill. Needs a host that can reach PSX DPS —
+        # from a sandbox every symbol fails and nothing is written (never
+        # fabricated). fetch_eod banks as a side effect; this just drives it.
+        ok = failed = 0
+        for sym in config.STOCKS:
+            _, meta = data_fetcher.fetch_eod(sym)
+            n, latest = db.eod_history_state(sym)
+            if meta.get("live"):
+                ok += 1
+                print(f"  {sym:8s} {n:5d} bars through {latest}")
+            else:
+                failed += 1
+                print(f"  {sym:8s} SKIPPED — no live EOD ({meta.get('warning')})")
+        total = sum(db.eod_history_state(s)[0] for s in config.STOCKS)
+        print(f"\n{ok} symbols banked, {failed} unavailable — "
+              f"{total} EOD bars stored in total")
     elif cmd == "measure":
         import measure
         rows = measure.load()
