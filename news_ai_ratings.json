@@ -1,217 +1,216 @@
 {
- "as_of": "2026-09-02T04:39:31Z",
- "provider": "claude-routine",
- "model": "claude-session",
- "depth": "full-text",
- "articles_read": 7,
- "read_urls": [
-  "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118",
-  "https://mettisglobal.news/Askari-Life-Assurance-completes-51-share-transfer-from-AWT-to-Fauji-Foundation-63098",
-  "https://mettisglobal.news/August-inflation-rises-111-YoY-63106",
-  "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
-  "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100",
-  "https://mettisglobal.news/CCP-approves-LSE-SPACI-merger-with-Ningbo-Greenlight-Energy-63102",
-  "https://mettisglobal.news/CPEC-phaseII-puts-private-sector-at-the-heart-of-Pakistans-growth-push-63114",
-  "https://mettisglobal.news/Faran-Rizvi-steps-into-CEO-role-at-Foundation-Securities-63101",
-  "https://mettisglobal.news/Fitch-rates-Pakistans-proposed-Eurobond-at-B-63115",
-  "https://mettisglobal.news/GCIL-signs-binding-agreement-for-Jandran-Field-gas-processing-project-63108",
-  "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs800-per-tola-63097",
-  "https://mettisglobal.news/Govt-working-to-build-structured-digital-assets-ecosystem-63113",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63119",
-  "https://mettisglobal.news/Naya-Nazimabad-REIT-fully-subscribed-within-first-hour-63103",
-  "https://mettisglobal.news/PM-Shehbaz-pitches-water-security-AI-agenda-for-SCO-chairmanship-63112",
-  "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
-  "https://mettisglobal.news/Pakistan-assumes-SCO-Chairmanship-for-coming-year-63111",
-  "https://mettisglobal.news/Pakistan-economy-set-to-sustain-recovery-momentum-in-FY27-63110",
-  "https://mettisglobal.news/Pakistan-launches-process-for-dualtranche-dollar-Eurobond-63105",
-  "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116",
-  "https://mettisglobal.news/SOYASUP-IPO-draws-Rs256bn-bids-strike-price-set-at-Rs33-63090",
-  "https://mettisglobal.news/Unity-Foods-FIR-relates-to-individual-conduct-not-Company-63093",
-  "https://mettisglobal.news/VIS-maintains-JK-Spinning-Mills-longterm-rating-at-A-63089",
-  "https://propakistani.pk/2026/09/02/bise-bahawalpur-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-dg-khan-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-faisalabad-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-gujranwala-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-lahore-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-multan-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-rawalpindi-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-sahiwal-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/bise-sargodha-board-9th-class-result-2026-announced/",
-  "https://propakistani.pk/2026/09/02/has-rawalpindi-announced-another-holiday-for-schools-and-colleges/",
-  "https://www.dawn.com/news/2026624/us-secures-100-year-concessions-in-venezuela-oil-deal-white-house",
-  "https://www.dawn.com/news/2026662/pakistani-installment-financing-platform-raises-rs500m-through-privately-placed-sukuk",
-  "https://www.dawn.com/news/2026676/govt-raises-petrol-price-by-rs108-high-speed-diesel-by-rs051",
-  "https://www.dawn.com/news/2026746/nestle-sells-supplements-business-for-1bn",
-  "https://www.dawn.com/news/2026747/inflation-rebounds-to-11pc-in-august",
-  "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears",
-  "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs",
-  "https://www.dawn.com/news/2026825/senate-panel-directs-govt-to-renegotiate-imf-terms-for-special-economic-zones"
- ],
- "count": 4,
- "ratings": {
-  "FCEPL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Citi supplier-financing tie-up; operational, no quantified cash-flow impact",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40437530/fcepl-citi-pakistan-partner-to-strengthen-supplier-financing"
-   ]
-  },
-  "KEL": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Rs15bn infra capex pledge amid tariff complaints; no revenue/tariff change disclosed",
-   "text_depth": "full",
-   "sources": [
+  "as_of": "2026-09-02T05:40:08Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "depth": "full-text",
+  "articles_read": 44,
+  "read_urls": [
+    "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118",
+    "https://mettisglobal.news/August-inflation-rises-111-YoY-63106",
+    "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
+    "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100",
+    "https://mettisglobal.news/CCP-approves-LSE-SPACI-merger-with-Ningbo-Greenlight-Energy-63102",
+    "https://mettisglobal.news/CPEC-phaseII-puts-private-sector-at-the-heart-of-Pakistans-growth-push-63114",
+    "https://mettisglobal.news/Faran-Rizvi-steps-into-CEO-role-at-Foundation-Securities-63101",
+    "https://mettisglobal.news/Fitch-rates-Pakistans-proposed-Eurobond-at-B-63115",
+    "https://mettisglobal.news/GCIL-signs-binding-agreement-for-Jandran-Field-gas-processing-project-63108",
+    "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084",
+    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs800-per-tola-63097",
+    "https://mettisglobal.news/Govt-working-to-build-structured-digital-assets-ecosystem-63113",
+    "https://mettisglobal.news/Japan-bets-big-on-AI-revival-but-rural-gains-stay-uneven-63125",
+    "https://mettisglobal.news/LSEFSL-amends-business-scope-after-NBFC-license-surrender-63123",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117",
+    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63119",
+    "https://mettisglobal.news/NCCPL-launches-Minor-Trading-Account-63122",
+    "https://mettisglobal.news/Naya-Nazimabad-REIT-fully-subscribed-within-first-hour-63103",
+    "https://mettisglobal.news/PM-Shehbaz-pitches-water-security-AI-agenda-for-SCO-chairmanship-63112",
+    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
+    "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
+    "https://mettisglobal.news/Pakistan-assumes-SCO-Chairmanship-for-coming-year-63111",
+    "https://mettisglobal.news/Pakistan-economy-set-to-sustain-recovery-momentum-in-FY27-63110",
+    "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116",
+    "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124",
+    "https://mettisglobal.news/SECP-issues-final-notices-in-alleged-insider-trading-of-Unity-Foods-share-63126",
+    "https://propakistani.pk/2026/09/02/bise-bahawalpur-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-dg-khan-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-faisalabad-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-gujranwala-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-rawalpindi-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-sahiwal-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bise-sargodha-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/fbr-extends-anti-smuggling-powers-of-rangers-fc-coast-guard/",
+    "https://propakistani.pk/2026/09/02/pakistan-uzbekistan-target-2-billion-in-annual-bilateral-trade/",
+    "https://propakistani.pk/2026/09/02/senate-panel-tells-govt-to-halt-imf-backed-phaseout-of-economic-zones/",
+    "https://www.dawn.com/news/2026624/us-secures-100-year-concessions-in-venezuela-oil-deal-white-house",
+    "https://www.dawn.com/news/2026662/pakistani-installment-financing-platform-raises-rs500m-through-privately-placed-sukuk",
+    "https://www.dawn.com/news/2026676/govt-raises-petrol-price-by-rs108-high-speed-diesel-by-rs051",
+    "https://www.dawn.com/news/2026746/nestle-sells-supplements-business-for-1bn",
+    "https://www.dawn.com/news/2026747/inflation-rebounds-to-11pc-in-august",
+    "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears",
     "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs",
-    "https://www.brecorder.com/news/40437454/ke-investing-rs15bn-to-improve-power-infrastructure-chishti"
-   ]
+    "https://www.dawn.com/news/2026825/senate-panel-directs-govt-to-renegotiate-imf-terms-for-special-economic-zones"
+  ],
+  "count": 4,
+  "ratings": {
+    "FCEPL": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Citi supplier-financing tie-up eases working capital, minor/non-quantified",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437530/fcepl-citi-pakistan-partner-to-strengthen-supplier-financing"
+      ]
+    },
+    "KEL": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Reiterated Rs15bn infra capex reassurance to industry, no new tariff decision",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs",
+        "https://www.brecorder.com/news/40437454/ke-investing-rs15bn-to-improve-power-infrastructure-chishti"
+      ]
+    },
+    "PSO": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Dealer-awards PR event, no cash-flow mechanism",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437451/pso-hosts-excellence-awards-2026-for-dealer-partners"
+      ]
+    },
+    "SSGC": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Parliamentary panel flags delay in SSGC LPG board/MD completion, governance friction",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437464/ssgc-lpg-board-md-appointment-panel-says-concerned-at-delay-in-completion"
+      ]
+    }
   },
-  "PSO": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Dealer-awards PR event, no cash-flow mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40437451/pso-hosts-excellence-awards-2026-for-dealer-partners"
-   ]
-  },
-  "SSGC": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Parliamentary panel flags delay in LPG board/MD appointment; governance friction, no earnings link",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40437464/ssgc-lpg-board-md-appointment-panel-says-concerned-at-delay-in-completion"
-   ]
+  "sectors": {
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "OMC industry volumes -16% MoM / -3% YoY in August per OCAC data",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124"
+      ]
+    },
+    "Refinery": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Crude above $90/bbl on Iran conflict lifts refiner margins/inventory value",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.55,
+      "reason": "Crude above $90/bbl on Iran conflict directly lifts E&P realized revenue per barrel",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "No fertilizer-specific catalyst; only a same-day close recap noting the sector was up",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Routine OGRA fuel-price revision and an SSGC board-delay item, neither a gas-utility margin driver",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40437464/ssgc-lpg-board-md-appointment-panel-says-concerned-at-delay-in-completion",
+        "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116"
+      ]
+    },
+    "Cement": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Cement was a broad-selloff index-dragger already in yesterday's close; Bestway subsidiary rights-issue rejection is company-specific",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
+        "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Cement was a broad-selloff index-dragger already in yesterday's close; Bestway subsidiary rights-issue rejection is company-specific",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
+        "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Story is global gold/Fed rate-hike odds, no Pakistani Islamic-banking mechanism; likely anchor mismatch",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
+      ]
+    },
+    "Logistics/Transport": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Item is FCEPL's own supplier-financing deal, no logistics-sector mechanism; anchor mismatch",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.brecorder.com/news/40437530/fcepl-citi-pakistan-partner-to-strengthen-supplier-financing"
+      ]
+    },
+    "Electrical Goods": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "K-Electric utility capex/tariff story doesn't drive Electrical Goods manufacturers; anchor mismatch",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
+      ]
+    }
   }
- },
- "sectors": {
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Crude above $90, highest since late July, on escalating US-Iran strikes; boosts refiner GRM/inventory gains",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Sustained oil-price spike from Iran conflict supports OMC inventory gains",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Crude above $90 on Iran conflict directly lifts E&P realized revenue",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Asian-markets-slide-on-surging-oil-rising-yields-Iran-tensions-63118",
-    "https://www.brecorder.com/news/40437537/dollar-holds-firm-as-middle-east-hostilities-lift-oil"
-   ]
-  },
-  "Logistics/Transport": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.1,
-   "reason": "Only story routed here is FCEPL's own supplier-financing deal, not sector-wide",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40437530/fcepl-citi-pakistan-partner-to-strengthen-supplier-financing"
-   ]
-  },
-  "Electrical Goods": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Story is K-Electric utility infra capex, not electrical-goods manufacturers",
-   "text_depth": "full",
-   "sources": [
-    "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Petrol/diesel ex-depot price move is OGRA/OMC pricing, not a gas-utility margin driver",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116"
-   ]
-  },
-  "Cement": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Cement -130.62pts is yesterday's already-priced close recap; Bestway item is a subsidiary rights-share matter, not core cement",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
-    "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100"
-   ]
-  },
-  "Cement/Conglomerate": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Same already-priced close recap and subsidiary rights-share matter as Cement",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
-    "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100"
-   ]
-  },
-  "Fertilizer": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Fertilizer +71.08pts is yesterday's already-priced close recap, no new forward driver",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.1,
-   "reason": "Story is gold/Fed-rate commentary; no Islamic-banking mechanism in the text",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
-   ]
-  }
- }
 }
