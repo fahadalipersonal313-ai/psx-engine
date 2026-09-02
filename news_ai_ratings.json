@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-09-02T07:41:21Z",
+  "as_of": "2026-09-02T08:41:11Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 46,
+  "articles_read": 47,
   "read_urls": [
     "https://mettisglobal.news/August-inflation-rises-111-YoY-63106",
     "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
@@ -33,16 +33,16 @@
     "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116",
     "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124",
     "https://mettisglobal.news/SECP-issues-final-notices-in-alleged-insider-trading-of-Unity-Foods-share-63126",
-    "https://propakistani.pk/2026/09/02/bank-makramah-completes-rs-12-billion-sale-of-cullinan-tower/",
-    "https://propakistani.pk/2026/09/02/bise-faisalabad-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/bise-sargodha-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/fbr-extends-anti-smuggling-powers-of-rangers-fc-coast-guard/",
-    "https://propakistani.pk/2026/09/02/murree-administration-issues-advisory-for-tourists/",
-    "https://propakistani.pk/2026/09/02/pakistan-lng-seeks-new-cargo-after-rejecting-costly-bid/",
-    "https://propakistani.pk/2026/09/02/pakistan-refineries-profit-margins-jump-more-than-fivefold-in-a-year/",
-    "https://propakistani.pk/2026/09/02/pakistan-uzbekistan-target-2-billion-in-annual-bilateral-trade/",
-    "https://propakistani.pk/2026/09/02/poco-x8-launches-globally-with-huge-8340mah-battery-and-67w-charging/",
-    "https://propakistani.pk/2026/09/02/senate-panel-tells-govt-to-halt-imf-backed-phaseout-of-economic-zones/",
+    "https://propakistani.pk/2026/09/02/airlift-co-founders-ai-startup-metal-raises-4-5-million/",
+    "https://propakistani.pk/2026/09/02/balochistan-completes-rs-3-billion-railway-project-in-120-days/",
+    "https://propakistani.pk/2026/09/02/bise-dg-khan-9th-class-result-gazette-released/",
+    "https://propakistani.pk/2026/09/02/bise-lahore-9th-class-result-gazette-released/",
+    "https://propakistani.pk/2026/09/02/bise-sargodha-9th-class-result-gazette-released/",
+    "https://propakistani.pk/2026/09/02/lahore-named-sco-tourism-and-cultural-capital-for-2026-27/",
+    "https://propakistani.pk/2026/09/02/pakistan-secure-first-win-in-t20-asia-cup-2026/",
+    "https://propakistani.pk/2026/09/02/punjab-approves-2-new-pension-schemes-for-psic-employees/",
+    "https://propakistani.pk/2026/09/02/punjab-intensifies-crackdown-on-unlicensed-driving/",
+    "https://propakistani.pk/2026/09/02/sbp-dollar-purchases-hits-lowest-level-in-16-months/",
     "https://www.dawn.com/news/2026624/us-secures-100-year-concessions-in-venezuela-oil-deal-white-house",
     "https://www.dawn.com/news/2026662/pakistani-installment-financing-platform-raises-rs500m-through-privately-placed-sukuk",
     "https://www.dawn.com/news/2026676/govt-raises-petrol-price-by-rs108-high-speed-diesel-by-rs051",
@@ -50,16 +50,17 @@
     "https://www.dawn.com/news/2026747/inflation-rebounds-to-11pc-in-august",
     "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears",
     "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs",
-    "https://www.dawn.com/news/2026825/senate-panel-directs-govt-to-renegotiate-imf-terms-for-special-economic-zones"
+    "https://www.dawn.com/news/2026825/senate-panel-directs-govt-to-renegotiate-imf-terms-for-special-economic-zones",
+    "https://www.dawn.com/news/2026839/pm-shehbaz-says-pakistan-kyrgyzstan-will-work-towards-expanding-bilateral-trade-to-200m"
   ],
   "count": 2,
   "ratings": {
     "MEBL": {
       "rating": "positive",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Rs31.5bn Ghar Ho Tu Apna housing-finance pipeline, Aug disbursements accelerating",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Meezan approved Rs31.5bn+ govt housing finance, Aug disbursements accelerating sharply",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127"
@@ -69,8 +70,8 @@
       "rating": "neutral",
       "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Industry lobbies to cut power tariffs; KE's own Rs15bn capex plan, no tariff decision yet",
+      "confidence": 0.25,
+      "reason": "KATI presses K-Electric on tariffs; KE says tariffs not its call, investing Rs15bn in grid",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
@@ -78,100 +79,97 @@
     }
   },
   "sectors": {
+    "Refinery": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Iran-US escalation drove oil to a 1-week high, record diesel crack spread; refiner tailwind",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "OMC industry volumes fell 16% MoM in Aug (OCAC data) as high fuel prices curbed demand",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124",
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130"
+      ]
+    },
     "Oil & Gas Exploration": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "US-Iran conflict/Hormuz tension lifts crude, directly boosts E&P realizations",
+      "confidence": 0.65,
+      "reason": "Brent +4% to $93.93 on Iran-US strikes/Strait of Hormuz fears; direct E&P revenue tailwind",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
-        "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
-        "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
-        "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
-        "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
+        "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears",
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130"
       ]
     },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Oil-price spike on Mideast tensions is a likely inventory-gain tailwind for OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
-        "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
-        "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
-        "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
-        "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
-      ]
-    },
-    "Refinery": {
+    "Real Estate": {
       "rating": "positive",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Crude spike on Mideast/Hormuz tension typically widens refiner crack margins",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
-        "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
-        "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
-        "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
-        "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Below-average Hormuz vessel transits + PLL cargo re-tender signal supply risk, not port-specific",
+      "confidence": 0.3,
+      "reason": "Meezan's Rs31.5bn approved home financing pipeline supports housing transaction demand",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
-        "https://propakistani.pk/2026/09/02/pakistan-lng-seeks-new-cargo-after-rejecting-costly-bid/"
-      ]
-    },
-    "Electrical Goods": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Industry lobbies to cut power tariffs; no decision, thin link to goods makers",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
+        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127"
       ]
     },
     "Fertilizer": {
       "rating": "neutral",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.15,
-      "reason": "Only generic trade-MoU mentions and a stale session recap, no sector mechanism",
+      "reason": "Only tangential bilateral-trade/wheat-futures mentions; no fertilizer-specific driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132",
-        "https://www.brecorder.com/news/40437568/chicago-wheat-falls-after-scaling-3-12-year-high-on-black-sea-supply-concerns",
-        "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109"
       ]
     },
     "Pharmaceuticals": {
       "rating": "neutral",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Single generic mention in a diplomatic MoU list, no specifics",
+      "confidence": 0.15,
+      "reason": "Pharma named only as one item in a broad Pakistan-Kyrgyzstan MoU list; no specific driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "SBP dollar-purchase data and gold macro items; nothing Islamic-banking specific",
+      "text_depth": "full",
+      "sources": [
+        "https://propakistani.pk/2026/09/02/sbp-dollar-purchases-hits-lowest-level-in-16-months/",
+        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
+      ]
+    },
+    "Electrical Goods": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "K-Electric tariff story is about the power utility, not electrical-goods manufacturers",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
       ]
     },
     "Gas Distribution": {
@@ -179,53 +177,18 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.15,
-      "reason": "Routine OGRA petrol/diesel pricing, not a gas-utility tariff mechanism",
+      "reason": "Routine petrol/diesel ex-depot price revision; unrelated to natural-gas distribution",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Mis-routed gold-price story, no Islamic-banking mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Generic MoU mention only, no transport-specific detail",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132"
-      ]
-    },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Bank housing-finance news and one company's own asset sale, no broad sector catalyst",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127",
-        "https://www.brecorder.com/news/40437546/meezan-bank-approves-over-rs31bn-under-ghar-ho-tu-apna-programme",
-        "https://propakistani.pk/2026/09/02/bank-makramah-completes-rs-12-billion-sale-of-cullinan-tower/"
       ]
     },
     "Cement": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Stale session recap plus one company's rights-offer rejection, no sector-wide driver",
+      "confidence": 0.2,
+      "reason": "Recap of Sept-1 selling in cement/LUCK and a subsidiary rights-share vote; no forward driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
@@ -236,8 +199,8 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Stale session recap plus one company's rights-offer rejection, no sector-wide driver",
+      "confidence": 0.2,
+      "reason": "Recap of Sept-1 selling in cement/LUCK and a subsidiary rights-share vote; no forward driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
