@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-09-02T06:41:06Z",
+  "as_of": "2026-09-02T07:41:21Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 45,
+  "articles_read": 46,
   "read_urls": [
     "https://mettisglobal.news/August-inflation-rises-111-YoY-63106",
     "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
@@ -14,6 +14,7 @@
     "https://mettisglobal.news/Faran-Rizvi-steps-into-CEO-role-at-Foundation-Securities-63101",
     "https://mettisglobal.news/Fitch-rates-Pakistans-proposed-Eurobond-at-B-63115",
     "https://mettisglobal.news/GCIL-signs-binding-agreement-for-Jandran-Field-gas-processing-project-63108",
+    "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
     "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs800-per-tola-63097",
     "https://mettisglobal.news/Govt-working-to-build-structured-digital-assets-ecosystem-63113",
@@ -26,21 +27,21 @@
     "https://mettisglobal.news/PM-Shehbaz-pitches-water-security-AI-agenda-for-SCO-chairmanship-63112",
     "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
     "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
-    "https://mettisglobal.news/Pakistan-assumes-SCO-Chairmanship-for-coming-year-63111",
-    "https://mettisglobal.news/Pakistan-economy-set-to-sustain-recovery-momentum-in-FY27-63110",
+    "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132",
     "https://mettisglobal.news/Pakistan-eyes-1bn-fruit-vegetable-export-industry-within-3-years-63128",
+    "https://mettisglobal.news/Pakistan-looks-to-Belgium-for-maritime-training-opportunities-63131",
     "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116",
     "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124",
     "https://mettisglobal.news/SECP-issues-final-notices-in-alleged-insider-trading-of-Unity-Foods-share-63126",
-    "https://propakistani.pk/2026/09/02/bise-bahawalpur-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/bise-dg-khan-board-9th-class-result-2026-announced/",
+    "https://propakistani.pk/2026/09/02/bank-makramah-completes-rs-12-billion-sale-of-cullinan-tower/",
     "https://propakistani.pk/2026/09/02/bise-faisalabad-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/bise-gujranwala-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/bise-rawalpindi-board-9th-class-result-2026-announced/",
-    "https://propakistani.pk/2026/09/02/bise-sahiwal-board-9th-class-result-2026-announced/",
     "https://propakistani.pk/2026/09/02/bise-sargodha-board-9th-class-result-2026-announced/",
     "https://propakistani.pk/2026/09/02/fbr-extends-anti-smuggling-powers-of-rangers-fc-coast-guard/",
+    "https://propakistani.pk/2026/09/02/murree-administration-issues-advisory-for-tourists/",
+    "https://propakistani.pk/2026/09/02/pakistan-lng-seeks-new-cargo-after-rejecting-costly-bid/",
+    "https://propakistani.pk/2026/09/02/pakistan-refineries-profit-margins-jump-more-than-fivefold-in-a-year/",
     "https://propakistani.pk/2026/09/02/pakistan-uzbekistan-target-2-billion-in-annual-bilateral-trade/",
+    "https://propakistani.pk/2026/09/02/poco-x8-launches-globally-with-huge-8340mah-battery-and-67w-charging/",
     "https://propakistani.pk/2026/09/02/senate-panel-tells-govt-to-halt-imf-backed-phaseout-of-economic-zones/",
     "https://www.dawn.com/news/2026624/us-secures-100-year-concessions-in-venezuela-oil-deal-white-house",
     "https://www.dawn.com/news/2026662/pakistani-installment-financing-platform-raises-rs500m-through-privately-placed-sukuk",
@@ -57,20 +58,19 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Rs31.5bn Ghar Ho Tu Apna housing finance approved, disbursements accelerating (Rs2.2bn in Aug alone)",
+      "confidence": 0.5,
+      "reason": "Rs31.5bn Ghar Ho Tu Apna housing-finance pipeline, Aug disbursements accelerating",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127",
-        "https://www.brecorder.com/news/40437546/meezan-bank-approves-over-rs31bn-under-ghar-ho-tu-apna-programme"
+        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127"
       ]
     },
     "KEL": {
       "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
+      "horizon": "multi_session",
+      "causality": "correlated",
       "confidence": 0.2,
-      "reason": "PR interview on Rs15bn capex plan; chairman says tariffs outside KE's authority, no decision disclosed",
+      "reason": "Industry lobbies to cut power tariffs; KE's own Rs15bn capex plan, no tariff decision yet",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
@@ -80,96 +80,98 @@
   "sectors": {
     "Oil & Gas Exploration": {
       "rating": "positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.5,
-      "reason": "Escalating US-Iran strikes push crude higher, direct read-through to E&P realized prices (OGDC led index gainers)",
-      "text_depth": "headline",
+      "reason": "US-Iran conflict/Hormuz tension lifts crude, directly boosts E&P realizations",
+      "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
         "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
         "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
         "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
         "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
-        "https://www.brecorder.com/news/40437550/chinas-yuan-eases-as-rising-oil-prices-higher-us-yields-weigh"
+        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
       ]
     },
     "Oil Marketing": {
       "rating": "positive",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Global oil spike from Iran conflict raises landed cost; plausible OMC inventory-gain tailwind, not explicit in text",
-      "text_depth": "headline",
+      "confidence": 0.35,
+      "reason": "Oil-price spike on Mideast tensions is a likely inventory-gain tailwind for OMCs",
+      "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
         "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
         "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
         "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
         "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
-        "https://www.brecorder.com/news/40437550/chinas-yuan-eases-as-rising-oil-prices-higher-us-yields-weigh"
-      ]
-    },
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Oil spiked on Iran conflict but PSX Refinery sector fell -33pts same session; net tailwind unclear",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
-        "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
-        "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
-        "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
-        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
-        "https://www.brecorder.com/news/40437550/chinas-yuan-eases-as-rising-oil-prices-higher-us-yields-weigh"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Global Hormuz tanker-traffic data point, no Pakistani port/logistics mechanism stated",
-      "text_depth": "headline",
-      "sources": [
         "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
       ]
     },
-    "Real Estate": {
+    "Refinery": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Rs31.5bn Ghar Ho Tu Apna housing finance approvals broaden property-transaction demand pipeline",
+      "reason": "Crude spike on Mideast/Hormuz tension typically widens refiner crack margins",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127",
-        "https://www.brecorder.com/news/40437546/meezan-bank-approves-over-rs31bn-under-ghar-ho-tu-apna-programme"
+        "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
+        "https://www.brecorder.com/news/40437561/china-hk-stocks-decline-as-sentiment-hit-by-global-bond-selloff",
+        "https://www.brecorder.com/news/40437560/indian-bonds-battered-by-global-debt-rout-oil-rally",
+        "https://www.brecorder.com/news/40437559/philippine-peso-hits-record-low-as-rising-oil-prices-pressure-asian-assets",
+        "https://www.brecorder.com/news/40437553/south-korean-shares-fall-more-than-3-as-iran-war-escalates",
+        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows"
       ]
     },
-    "Fertilizer": {
+    "Logistics/Ports": {
       "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
+      "horizon": "multi_session",
+      "causality": "correlated",
       "confidence": 0.2,
-      "reason": "Only a recap of yesterday's close (sector +71pts, already priced) plus an unrelated Belarus diplomatic item",
+      "reason": "Below-average Hormuz vessel transits + PLL cargo re-tender signal supply risk, not port-specific",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
-        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109"
+        "https://www.brecorder.com/news/40437551/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
+        "https://propakistani.pk/2026/09/02/pakistan-lng-seeks-new-cargo-after-rejecting-costly-bid/"
       ]
     },
     "Electrical Goods": {
       "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Generic industrial power-tariff grievance piece, no electrical-goods-specific mechanism",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Industry lobbies to cut power tariffs; no decision, thin link to goods makers",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Only generic trade-MoU mentions and a stale session recap, no sector mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132",
+        "https://www.brecorder.com/news/40437568/chicago-wheat-falls-after-scaling-3-12-year-high-on-black-sea-supply-concerns",
+        "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109"
+      ]
+    },
+    "Pharmaceuticals": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Single generic mention in a diplomatic MoU list, no specifics",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132"
       ]
     },
     "Gas Distribution": {
@@ -177,18 +179,53 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.15,
-      "reason": "Petrol/diesel ex-depot price revision is a fuel-price story, not a piped-gas-distribution tariff mechanism",
+      "reason": "Routine OGRA petrol/diesel pricing, not a gas-utility tariff mechanism",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Mis-routed gold-price story, no Islamic-banking mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
+      ]
+    },
+    "Logistics/Transport": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "noise",
+      "confidence": 0.1,
+      "reason": "Generic MoU mention only, no transport-specific detail",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132"
+      ]
+    },
+    "Real Estate": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Bank housing-finance news and one company's own asset sale, no broad sector catalyst",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127",
+        "https://www.brecorder.com/news/40437546/meezan-bank-approves-over-rs31bn-under-ghar-ho-tu-apna-programme",
+        "https://propakistani.pk/2026/09/02/bank-makramah-completes-rs-12-billion-sale-of-cullinan-tower/"
       ]
     },
     "Cement": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Yesterday's decline already priced; Bestway rights-share rejection is a subsidiary governance vote, no earnings impact",
+      "confidence": 0.15,
+      "reason": "Stale session recap plus one company's rights-offer rejection, no sector-wide driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
@@ -199,23 +236,12 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Yesterday's decline already priced; Bestway rights-share rejection is a subsidiary governance vote, no earnings impact",
+      "confidence": 0.15,
+      "reason": "Stale session recap plus one company's rights-offer rejection, no sector-wide driver",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
         "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Gold/Fed-rate-path story carries no direct Islamic-banking mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084"
       ]
     }
   }
