@@ -1,0 +1,29 @@
+name: depth-probe
+
+# Manual-only, read-only reconnaissance: does PSX publish market depth (the
+# order book) without a login? A public feed could be polled by the engine
+# legitimately; a broker terminal could not. Writes and commits nothing.
+on:
+  workflow_dispatch:
+    inputs:
+      symbol:
+        description: "Symbol to probe with (default NRL)"
+        required: false
+        default: "NRL"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-ci.txt
+      - name: Probe for public market depth
+        run: python depth_probe.py "${{ inputs.symbol || 'NRL' }}"
