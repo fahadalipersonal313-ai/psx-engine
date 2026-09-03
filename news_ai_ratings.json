@@ -1,118 +1,267 @@
 {
-  "as_of": "2026-09-02T09:40:39Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 47,
-  "read_urls": [
-    "https://mettisglobal.news/August-inflation-rises-111-YoY-63106",
-    "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
-    "https://mettisglobal.news/Bestway-Cement-shareholders-reject-BALs-right-shares-offer-63100",
-    "https://mettisglobal.news/CCP-approves-LSE-SPACI-merger-with-Ningbo-Greenlight-Energy-63102",
-    "https://mettisglobal.news/Climate-minister-calls-for-scaling-up-groundwater-recharge-initiatives-in-Islamabad-63129",
-    "https://mettisglobal.news/Faran-Rizvi-steps-into-CEO-role-at-Foundation-Securities-63101",
-    "https://mettisglobal.news/Fitch-rates-Pakistans-proposed-Eurobond-at-B-63115",
-    "https://mettisglobal.news/GCIL-signs-binding-agreement-for-Jandran-Field-gas-processing-project-63108",
-    "https://mettisglobal.news/Global-bond-yields-hit-18year-high-as-oil-surge-fuels-rate-hike-bets-63130",
-    "https://mettisglobal.news/Gold-eases-to-4430-amid-Middle-East-tensions-US-labour-data-in-focus-63084",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs800-per-tola-63097",
-    "https://mettisglobal.news/LSEFSL-amends-business-scope-after-NBFC-license-surrender-63123",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63117",
-    "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127",
-    "https://mettisglobal.news/NCCPL-launches-Minor-Trading-Account-63122",
-    "https://mettisglobal.news/Naya-Nazimabad-REIT-fully-subscribed-within-first-hour-63103",
-    "https://mettisglobal.news/Oil-climbs-above-94-as-Hormuz-tensions-threaten-supplies-63135",
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Miss-by-a-Whisker-63109",
-    "https://mettisglobal.news/Pakistan-Belarus-to-expand-cooperation-in-trade-IT-vocational-training-63121",
-    "https://mettisglobal.news/Pakistan-China-sign-5-MoUs-at-Guangzhou-investment-forum-63136",
-    "https://mettisglobal.news/Pakistan-Kyrgyzstan-sign-bilateral-deals-to-boost-trade-investment-63132",
-    "https://mettisglobal.news/Pakistan-Saudi-Arabia-to-collaborate-on-emerging-technologies-63134",
-    "https://mettisglobal.news/Pakistan-eyes-1bn-fruit-vegetable-export-industry-within-3-years-63128",
-    "https://mettisglobal.news/Pakistan-looks-to-Belgium-for-maritime-training-opportunities-63131",
-    "https://mettisglobal.news/Petrol-climbs-Rs108-diesel-price-up-Rs051-63116",
-    "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124",
-    "https://mettisglobal.news/Rs1bn-road-upgrade-approved-for-Sargodha-by-Punjab-govt-63133",
-    "https://mettisglobal.news/SECP-issues-final-notices-in-alleged-insider-trading-of-Unity-Foods-share-63126",
-    "https://propakistani.pk/2026/09/02/bise-bahawalpur-9th-class-result-gazette-released/",
-    "https://propakistani.pk/2026/09/02/bise-rawalpindi-9th-class-result-gazette-released/",
-    "https://propakistani.pk/2026/09/02/islamabad-launches-emergency-drainage-operation/",
-    "https://propakistani.pk/2026/09/02/karachi-is-getting-new-smart-parking-system/",
-    "https://propakistani.pk/2026/09/02/missing-irish-mountaineer-found-dead/",
-    "https://propakistani.pk/2026/09/02/nayatel-announces-internet-speed-upgrade-for-home-customers/",
-    "https://propakistani.pk/2026/09/02/punjab-issues-alert-over-harmful-medicines-and-steroid-injections/",
-    "https://propakistani.pk/2026/09/02/punjab-orders-strict-action-against-smoking-emitting-vehicles-ahead-of-smog-season/",
-    "https://propakistani.pk/2026/09/02/senate-panel-recommends-extending-business-hours/",
-    "https://propakistani.pk/2026/09/02/us-sri-lanka-seize-21-million-crystal-meth-shipment-linked-to-pakistan-based-network/",
-    "https://www.dawn.com/news/2026624/us-secures-100-year-concessions-in-venezuela-oil-deal-white-house",
-    "https://www.dawn.com/news/2026662/pakistani-installment-financing-platform-raises-rs500m-through-privately-placed-sukuk",
-    "https://www.dawn.com/news/2026676/govt-raises-petrol-price-by-rs108-high-speed-diesel-by-rs051",
-    "https://www.dawn.com/news/2026746/nestle-sells-supplements-business-for-1bn",
-    "https://www.dawn.com/news/2026747/inflation-rebounds-to-11pc-in-august",
-    "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears",
-    "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs",
-    "https://www.dawn.com/news/2026825/senate-panel-directs-govt-to-renegotiate-imf-terms-for-special-economic-zones",
-    "https://www.dawn.com/news/2026839/pm-shehbaz-says-pakistan-kyrgyzstan-will-work-towards-expanding-bilateral-trade-to-200m"
-  ],
-  "count": 2,
-  "ratings": {
-    "MEBL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Housing-finance book scaling fast: Rs31.5bn approved, Aug alone >50% of cumulative disbursed",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Meezan-Bank-approves-over-Rs315bn-in-Ghar-Ho-Tu-Apna-Financing-63127"
-      ]
-    },
-    "KEL": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Rs15bn grid capex to cut losses/loadshedding, but tariff dispute outside KE's control",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2026749/karachi-industry-cries-out-over-power-tariffs"
-      ]
-    }
-  },
-  "sectors": {
-    "Refinery": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Brent ~$94-95 on US-Iran/Hormuz conflict; diesel crack spread hit record ~$106/bbl, aids margins",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-above-94-as-Hormuz-tensions-threaten-supplies-63135",
-        "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Crude near $94-95 on US-Iran/Hormuz tension directly lifts E&P realized oil/gas prices",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-above-94-as-Hormuz-tensions-threaten-supplies-63135",
-        "https://www.dawn.com/news/2026748/oil-prices-jump-4pc-on-supply-fears"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "OMC industry volumes -16% MoM in Aug on high pump prices; petrol/diesel hiked again Sept 2",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petroleum-sales-drop-16-MoM-to-126m-tons-in-August-63124"
-      ]
-    }
+ "as_of": "2026-09-03T04:41:28Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 71,
+ "read_urls": [
+  "https://mettisglobal.news/Altern-Energy-loses-NEPRA-license-board-eyes-plant-disposal-63144",
+  "https://mettisglobal.news/Asian-markets-set-for-muted-open-amid-bond-selloff-63160",
+  "https://mettisglobal.news/BML-receives-full-Rs12bn-consideration-for-Cullinan-Tower-63120",
+  "https://mettisglobal.news/Cabinet-seals-NBPs-new-Chief-63159",
+  "https://mettisglobal.news/Cement-despatches-decline-nearing-1-in-August-63153",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs11300-per-tola-63137",
+  "https://mettisglobal.news/Govt-courts-Deutsche-Bank-for-investment-financing-opportunities-63142",
+  "https://mettisglobal.news/Govt-raises-Rs108bn-in-Hybrid-Sukuk-auction-63161",
+  "https://mettisglobal.news/LSEFSL-amends-business-scope-after-NBFC-license-surrender-63123",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63157",
+  "https://mettisglobal.news/Maple-Leaf-Cement-board-clears-full-amalgamation-of-Pioneer-Cement-63143",
+  "https://mettisglobal.news/NAB-recoveries-strengthen-national-exchequer-63152",
+  "https://mettisglobal.news/NCCPL-launches-Minor-Trading-Account-63122",
+  "https://mettisglobal.news/Naya-Nazimabad-Apartments-REIT-book-building-oversubscribed-8x-63154",
+  "https://mettisglobal.news/Otsuka-Pakistan-profit-jumps-17fold-to-Rs472m-in-FY26-63139",
+  "https://mettisglobal.news/PM-Shehbaz-Sharif-departs-Kyrgyzstan-after-key-bilateral-talks-63151",
+  "https://mettisglobal.news/PSX-Closing-Bell-Red-Caps-the-Session-63145",
+  "https://mettisglobal.news/Pakistan-ADB-deepen-reform-partnership-with-focus-on-private-sector-63149",
+  "https://mettisglobal.news/Pakistan-raises-record-3bn-through-dualtranche-eurobond-63158",
+  "https://mettisglobal.news/Pakistan-urges-India-to-honour-Indus-Waters-Treaty-after-PCA-ruling-63146",
+  "https://mettisglobal.news/Petrol-price-jumps-Rs229-diesel-up-Rs111-63156",
+  "https://mettisglobal.news/Power-minister-highlights-energy-cooperation-potential-with-Uzbekistan-63138",
+  "https://mettisglobal.news/SBP-raises-Rs680bn-through-MTB-Auction-63155",
+  "https://mettisglobal.news/SECP-issues-final-notices-in-alleged-insider-trading-of-Unity-Foods-share-63126",
+  "https://propakistani.pk/2026/09/02/dutch-french-agri-business-giant-opens-40000-ton-grain-facility-in-multan/",
+  "https://propakistani.pk/2026/09/02/islamabad-govt-buildings-to-get-new-fire-safety-systems/",
+  "https://propakistani.pk/2026/09/02/it-ministry-reveals-easy-way-to-earn-rs-150000-monthly-salary-in-pakistan/",
+  "https://propakistani.pk/2026/09/02/openai-says-astra-can-find-and-exploit-unknown-security-flaws/",
+  "https://propakistani.pk/2026/09/02/petrol-nears-rs-350-litre-after-another-increase/",
+  "https://propakistani.pk/2026/09/02/tomorrowland-dj-axwell-to-perform-in-dha-karachi-this-month/",
+  "https://propakistani.pk/2026/09/03/govt-plans-oil-city-at-hub-with-offshore-facility-and-large-storage-complex/",
+  "https://propakistani.pk/2026/09/03/govt-to-build-centralized-merchant-database-to-boost-cashless-economy/",
+  "https://propakistani.pk/2026/09/03/pakistan-raises-record-3-billion-through-largest-ever-eurobond-issuance/",
+  "https://propakistani.pk/2026/09/03/uae-jordan-restrict-reporting-on-damages-after-iran-strikes/",
+  "https://www.brecorder.com/news/40437619/weaponising-a-lifeline",
+  "https://www.brecorder.com/news/40437620/inflation-soaring",
+  "https://www.brecorder.com/news/40437626/kp-cta-approves-tourism-boating-safety-regulations-2026",
+  "https://www.brecorder.com/news/40437627/shc-orders-swift-impartial-probe-into-mir-raza-case",
+  "https://www.brecorder.com/news/40437628/eighteen-introduces-eden",
+  "https://www.brecorder.com/news/40437629/annual-publication-iba-launches-the-state-of-pakistans-economy-2026-27",
+  "https://www.brecorder.com/news/40437630/ruda-allots-20-kanal-hospital-plot-in-chaharbagh",
+  "https://www.brecorder.com/news/40437631/smoke-emitting-heavy-vehicles-epa-punjab-intensifies-crackdown",
+  "https://www.brecorder.com/news/40437632/multan-office-opens-louis-dreyfus-expands-logistics-footprint",
+  "https://www.brecorder.com/news/40437633/exim-bank-president-highlights-approach-to-export-sector",
+  "https://www.brecorder.com/news/40437636/punjab-will-also-bear-interest-and-insurance-costs-over-125000-e-bikes-to-be-provided-to-students",
+  "https://www.brecorder.com/news/40437709/adb-lauds-macroeconomic-progress-sovereign-rating-upgrades",
+  "https://www.brecorder.com/news/40437710/petrol-price-hiked-by-rs229-hsds-by-rs111",
+  "https://www.brecorder.com/news/40437711/wapda-security-force-bill-na-body-again-defers-approval-after-lawmakers-objections",
+  "https://www.brecorder.com/news/40437712/real-time-transaction-visibility-centralised-merchant-database-proposed",
+  "https://www.brecorder.com/news/40437713/chevron-eni-commit-to-expand-oil-projects-in-venezuela-under-us-eye",
+  "https://www.brecorder.com/news/40437714/world-bank-plans-package-to-support-transition-to-investment-led-growth",
+  "https://www.brecorder.com/news/40437715/aurangzeb-deutsche-bank-official-discuss-economic-outlook",
+  "https://www.brecorder.com/news/40437716/creation-of-new-provinces-any-decision-without-consensus-would-fail-to-yield-positive-results",
+  "https://www.brecorder.com/news/40437717/e-bike-scheme-cm-rejects-proposals-for-down-payment-charges-other-than-monthly-instalments-from-students",
+  "https://www.brecorder.com/news/40437718/ji-vows-to-step-up-campaign-after-todays-strike",
+  "https://www.brecorder.com/news/40437719/mayor-karachi-inspects-road-projects-criticises-political-rivals",
+  "https://www.brecorder.com/news/40437720/pa-approves-skills-development-amp-entrepreneurship-authority-bill-2026",
+  "https://www.brecorder.com/news/40437721/pcjcci-seeks-replication-of-gwadar-friendship-hospital-model-across-country",
+  "https://www.brecorder.com/news/40437722/oil-edges-down-as-investors-weigh-uncertainty-over-us-iran-strikes",
+  "https://www.brecorder.com/news/40437723/yen-in-the-spotlight-after-sudden-jump",
+  "https://www.brecorder.com/news/40437724/gold-rises-as-dollar-and-yields-ease-with-us-nonfarm-payrolls-report-in-spotlight",
+  "https://www.brecorder.com/news/40437725/shares-bonds-rally-as-markets-await-signals-for-fed-rates",
+  "https://www.brecorder.com/news/40437726/indian-shares-likely-to-rebound-after-recent-slide-higher-oil-prices-to-cap-upside",
+  "https://www.brecorder.com/news/40437727/iran-war-escalation-raises-concern-over-civilian-death-toll",
+  "https://www.dawn.com/news/2026839/pakistan-kyrgyzstan-sign-agreement-to-boost-bilateral-trade-to-200m-in-two-years",
+  "https://www.dawn.com/news/2026975/govt-increases-petrol-price-by-rs229-high-speed-diesel-by-rs111",
+  "https://www.dawn.com/news/2027082/pakistan-raises-3bn-through-dual-tranche-eurobond-sale",
+  "https://www.dawn.com/news/2027087/stocks-fall-below-175000-on-geopolitical-tensions",
+  "https://www.dawn.com/news/2027090/punjabs-budgetary-borrowing-jumps-145pc",
+  "https://www.dawn.com/news/2027091/wheat-quality-row-erupts-in-punjab",
+  "https://www.dawn.com/news/2027092/policy-gaps-deter-nutrition-investment"
+ ],
+ "count": 1,
+ "ratings": {
+  "MLCF": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.55,
+   "reason": "Board approved PIOC merger, swap ratio set 2.65:1, pending LHC approval",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Maple-Leaf-Cement-board-clears-full-amalgamation-of-Pioneer-Cement-63143"
+   ]
   }
+ },
+ "sectors": {
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Iran conflict keeps Brent elevated (~$95), lifting refiner margins/inventory gains",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437722/oil-edges-down-as-investors-weigh-uncertainty-over-us-iran-strikes",
+    "https://www.brecorder.com/news/40437710/petrol-price-hiked-by-rs229-hsds-by-rs111",
+    "https://www.dawn.com/news/2027087/stocks-fall-below-175000-on-geopolitical-tensions"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Aug fuel sales volumes down 16% MoM (petrol -9%, HSD -32%) as high prices curb demand",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437710/petrol-price-hiked-by-rs229-hsds-by-rs111"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Elevated Brent (~$95) on Iran conflict lifts E&P realized oil prices",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437722/oil-edges-down-as-investors-weigh-uncertainty-over-us-iran-strikes",
+    "https://www.dawn.com/news/2027087/stocks-fall-below-175000-on-geopolitical-tensions"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Routine T-bill auction, mixed yields; rising provincial bank borrowing is indirect",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-raises-Rs680bn-through-MTB-Auction-63155",
+    "https://www.dawn.com/news/2027090/punjabs-budgetary-borrowing-jumps-145pc"
+   ]
+  },
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Altern Energy lost its NEPRA license; single small IPP, no sector read-through",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Altern-Energy-loses-NEPRA-license-board-eyes-plant-disposal-63144"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Aug despatches -0.7% YoY but FY-to-date +2.8%; mixed, no clear trend break",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Cement-despatches-decline-nearing-1-in-August-63153"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Aug despatches -0.7% YoY but FY-to-date +2.8%; mixed, no clear trend break",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Cement-despatches-decline-nearing-1-in-August-63153"
+   ]
+  },
+  "Real Estate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Routine municipal road-inspection story; no mechanism for listed developers",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437719/mayor-karachi-inspects-road-projects-criticises-political-rivals"
+   ]
+  },
+  "Textile": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Foreign trader's own grain-storage facility opening; no mechanism for listed textiles",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/02/dutch-french-agri-business-giant-opens-40000-ton-grain-facility-in-multan/"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Foreign trader's own grain-storage facility opening; no mechanism for listed textiles",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/02/dutch-french-agri-business-giant-opens-40000-ton-grain-facility-in-multan/"
+   ]
+  },
+  "Logistics/Transport": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "Govt feasibility study for Hub oil city/port capacity; early-stage, no funding decision",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/03/govt-plans-oil-city-at-hub-with-offshore-facility-and-large-storage-complex/",
+    "https://propakistani.pk/2026/09/02/dutch-french-agri-business-giant-opens-40000-ton-grain-facility-in-multan/"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "Govt studying Hub oil city with offshore SPM to expand port capacity",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/03/govt-plans-oil-city-at-hub-with-offshore-facility-and-large-storage-complex/"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Petrol/diesel price move; no direct mechanism for regulated gas utilities",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-jumps-Rs229-diesel-up-Rs111-63156"
+   ]
+  },
+  "Technology/Telecom": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Foreign reporting curbs abroad / small state training scheme; no earnings mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/03/uae-jordan-restrict-reporting-on-damages-after-iran-strikes/",
+    "https://propakistani.pk/2026/09/02/it-ministry-reveals-easy-way-to-earn-rs-150000-monthly-salary-in-pakistan/"
+   ]
+  },
+  "Technology/Telecom Devices": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Small state IC-design training scheme; no earnings mechanism for listed firms",
+   "text_depth": "full",
+   "sources": [
+    "https://propakistani.pk/2026/09/02/it-ministry-reveals-easy-way-to-earn-rs-150000-monthly-salary-in-pakistan/"
+   ]
+  }
+ }
 }
