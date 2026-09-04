@@ -86,6 +86,15 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
     rs_score = rs["rs_score"] if rs else None
     ohlc = db.get_daily_ohlc(symbol)          # real H/L bars → true ATR/ADX when ready
     technical = technical_analyzer.analyze(symbol, eod, quote, rs_score=rs_score, ohlc=ohlc)
+    # Measured shock-up entry deferral. Wrapped: it may only cost the deferral,
+    # never the signal.
+    try:
+        import event_library
+        _hit, _pct, _sig = event_library.shock_up_today(ohlc)
+        technical["shock_up_today"] = _hit
+        technical["shock_up_pct"], technical["shock_up_sigma"] = _pct, _sig
+    except Exception as e:
+        log.warning("shock-up check failed for %s: %s", symbol, e)
     sentiment = sentiment_analyzer.analyze(symbol, news_items)
     macro = macro_news_analyzer.analyze(symbol, news_items)
     fundamentals = fundamentals_analyzer.analyze(symbol)
