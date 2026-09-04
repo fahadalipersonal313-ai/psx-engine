@@ -69,6 +69,19 @@ CREATE TABLE IF NOT EXISTS daily_ohlc (
     PRIMARY KEY (symbol, date)
 );
 
+-- L1 order-book snapshots captured by hand from a broker terminal and dropped
+-- into orderbook/ as CSV. A MEASUREMENT DATASET, not a live input: it is one
+-- symbol at a time, in bursts, and goes stale within minutes, so nothing reads
+-- it into a signal. It accumulates so imbalance can be graded with measure.py
+-- before anyone proposes wiring it in.
+CREATE TABLE IF NOT EXISTS order_book (
+    symbol TEXT, captured_at TEXT,
+    bid_price REAL, ask_price REAL, bid_volume REAL, ask_volume REAL,
+    spread REAL, last_price REAL, day_volume REAL, day_low REAL, day_high REAL,
+    imbalance REAL, spread_pct REAL, source TEXT,
+    PRIMARY KEY (symbol, captured_at)
+);
+
 -- Full PSX DPS end-of-day history (~1,200 bars/symbol). fetch_eod already
 -- downloaded this every cycle and discarded it; persisting it gives years of
 -- indicator history instead of the ~50 days daily_ohlc had accrued.
@@ -230,6 +243,62 @@ def save_hl_bar(symbol, date, o, h, l, c, volume, source, overwrite=False):
             VALUES (?,?,?,?,?,?,?,?)""",
                          (symbol, date, o, h, l, c, volume, source))
         return cur.rowcount or 0
+
+
+def save_order_book(rows):
+    """Insert L1 snapshots. IGNORE on (symbol, captured_at) so re-ingesting the
+    same CSV is a no-op — the folder is re-scanned every run."""
+    if not rows:
+        return 0
+    cols = ("symbol", "captured_at", "bid_price", "ask_price", "bid_volume",
+            "ask_volume", "spread", "last_price", "day_volume", "day_low",
+            "day_high", "imbalance", "spread_pct", "source")
+    with conn() as c:
+        before = c.execute("SELECT COUNT(*) n FROM order_book").fetchone()["n"]
+        c.executemany(
+            f"INSERT OR IGNORE INTO order_book ({','.join(cols)}) "
+            f"VALUES ({','.join('?' * len(cols))})",
+            [tuple(r.get(k) for k in cols) for r in rows])
+        after = c.execute("SELECT COUNT(*) n FROM order_book").fetchone()["n"]
+    return after - before
+
+
+def order_book_latest(symbol, max_age_minutes=30):
+    """Most recent snapshot for a symbol, or None when there is nothing fresh.
+
+    L1 goes stale in minutes — an 11:15 imbalance says nothing at 14:00 — so a
+    freshness gate is mandatory rather than optional.
+    """
+    with conn() as c:
+        r = c.execute("""SELECT * FROM order_book WHERE symbol=?
+                         ORDER BY captured_at DESC LIMIT 1""", (symbol,)).fetchone()
+    if not r:
+        return None
+    try:
+        ts = datetime.fromisoformat(r["captured_at"])
+        now = datetime.now(ts.tzinfo) if ts.tzinfo else datetime.now()
+        age = (now - ts).total_seconds() / 60
+    except Exception:
+        return None
+    # A NEGATIVE age means the snapshot is stamped in the future — a timezone or
+    # clock mismatch, not fresh data. Treating it as fresh is how a bad timestamp
+    # silently bypasses a staleness gate (see the as_of bypass in CLAUDE.md), so
+    # reject it rather than trust it.
+    if age < 0:
+        log.warning("order_book snapshot for %s is future-dated (%.0f min) — "
+                    "treating as unusable", symbol, -age)
+        return None
+    return dict(r, age_minutes=round(age, 1)) if age <= max_age_minutes else None
+
+
+def order_book_coverage():
+    """(symbols, snapshots, sessions, first, last) — how much evidence exists yet."""
+    with conn() as c:
+        r = c.execute("""SELECT COUNT(DISTINCT symbol) syms, COUNT(*) n,
+                                COUNT(DISTINCT substr(captured_at,1,10)) days,
+                                MIN(captured_at) lo, MAX(captured_at) hi
+                         FROM order_book""").fetchone()
+    return dict(r)
 
 
 def daily_ohlc_count(symbol=None):

@@ -38,6 +38,7 @@ import risk_manager
 import signal_generator
 import confluence_axes
 import psx_market_watch
+import orderbook
 import portfolio_risk
 import portfolio_advisor
 import reports
@@ -230,6 +231,14 @@ def full_run(fast=False):
     except Exception as e:
         log.warning("market-watch step failed: %s", e)
 
+    # Hand-captured L1 snapshots dropped into orderbook/. Stored only — nothing
+    # reads them into a signal (see orderbook.py). Wrapped: an unreadable CSV
+    # must never cost a run.
+    try:
+        orderbook.ingest(db)
+    except Exception as e:
+        log.warning("order-book ingest failed: %s", e)
+
     # Real book (portfolio.json) so the concentration cap can see what is already
     # held — per-trade sizing alone is blind to it. Missing/unreadable file = no
     # holdings = the cap simply never fires (never a fabricated position).
@@ -306,6 +315,13 @@ def main():
         print(text); reports.save_report(text, "morning")
     elif cmd == "prune":
         print(db.prune())
+    elif cmd == "orderbook":
+        files, rows, new = orderbook.ingest(db)
+        cov = db.order_book_coverage()
+        print(f"files {files} | distinct states {rows} | newly stored {new}")
+        print(f"coverage: {cov['syms']} symbols, {cov['n']} snapshots, "
+              f"{cov['days']} sessions, {cov['lo']} .. {cov['hi']}")
+        print("UNMEASURED and wired into nothing — grade it with measure.render() first.")
     elif cmd == "axes":
         # Read-only: no fetch, no write. Reports each axis so a weak one is
         # visible before anyone proposes wiring the composite into a decision.
