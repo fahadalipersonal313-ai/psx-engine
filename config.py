@@ -780,6 +780,15 @@ SECTOR_NEWS_EXCLUDE = {
     "Oil Marketing": _COOKING_OIL,
     "Oil & Gas Exploration": _COOKING_OIL,
 }
+# PSX runs a +-10% circuit breaker (verified live: NRL prev close 517.58 ->
+# limits 465.82 / 569.34). A move beyond it cannot happen in ordinary trading,
+# which is what makes corporate-action detection reliable rather than a guess.
+CIRCUIT_LIMIT_PCT = 10.0
+# Minimum 20-day median turnover for a name to count as tradeable. Every current
+# symbol clears this comfortably; it binds on thin historical periods and will
+# bind again as the universe expands beyond KMI-30.
+MIN_TURNOVER_PKR = 5_000_000
+
 NEWS_SIGNALS_MAX_AGE_HOURS = 24         # strict 24h window per user spec; weekend gap means Mon's run starts neutral until refresh
 # Authentic-or-neutral policy: when there is NO fresh authentic verdict for a
 # stock, treat its news as NEUTRAL rather than keyword-scoring noisy RSS with

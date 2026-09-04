@@ -98,8 +98,19 @@ CREATE TABLE IF NOT EXISTS events (
     range_52w_pos REAL,
     fwd_1d_excess REAL, fwd_3d_excess REAL, fwd_5d_excess REAL,
     fwd_10d_excess REAL, fwd_20d_excess REAL,
+    at_limit INTEGER, turnover_pkr REAL, tradeable INTEGER,
     cause_label TEXT, cause_source TEXT,
     PRIMARY KEY (symbol, date)
+);
+
+-- Splits, bonuses and rights detected as beyond-circuit price cuts. PSX serves
+-- UNADJUSTED prices, so a 1:6 bonus arrives as a -14.3% "loss". Raw bars are
+-- never rewritten: the adjustment is applied on read, so the exchange's record
+-- stays intact and a mistaken detection is reversible.
+CREATE TABLE IF NOT EXISTS corporate_actions (
+    symbol TEXT, ex_date TEXT, ratio REAL, factor REAL, implied REAL,
+    kind TEXT, pct REAL,
+    PRIMARY KEY (symbol, ex_date)
 );
 
 -- Full PSX DPS end-of-day history (~1,200 bars/symbol). fetch_eod already
@@ -326,7 +337,8 @@ EVENT_COLS = ("symbol", "date", "sector", "ret_pct", "sigma_move", "direction",
               "has_sector_peers", "gap_pct", "close_position", "range_atr",
               "vol_ratio", "trend_50_pct", "mom_20_pct", "rs_60_pct", "rsi_14",
               "range_52w_pos", "fwd_1d_excess", "fwd_3d_excess", "fwd_5d_excess",
-              "fwd_10d_excess", "fwd_20d_excess", "cause_label", "cause_source")
+              "fwd_10d_excess", "fwd_20d_excess", "at_limit", "turnover_pkr",
+              "tradeable", "cause_label", "cause_source")
 
 
 def save_events(events):
@@ -375,6 +387,28 @@ def unlabelled_events(limit=40, min_abs_ret=0.0):
                WHERE cause_label IS NULL AND cause_class='idiosyncratic'
                  AND ABS(ret_pct) >= ?
                ORDER BY ABS(idio_pct) DESC LIMIT ?""", (min_abs_ret, limit))]
+
+
+def save_corporate_actions(actions):
+    if not actions:
+        return 0
+    cols = ("symbol", "ex_date", "ratio", "factor", "implied", "kind", "pct")
+    with conn() as c:
+        before = c.execute("SELECT COUNT(*) n FROM corporate_actions").fetchone()["n"]
+        c.executemany(
+            f"INSERT OR REPLACE INTO corporate_actions ({','.join(cols)}) "
+            f"VALUES ({','.join('?' * len(cols))})",
+            [tuple(a.get(k) for k in cols) for a in actions])
+        after = c.execute("SELECT COUNT(*) n FROM corporate_actions").fetchone()["n"]
+    return after - before
+
+
+def get_corporate_actions(symbol=None):
+    q, args = "SELECT * FROM corporate_actions", []
+    if symbol:
+        q += " WHERE symbol=?"; args.append(symbol)
+    with conn() as c:
+        return [dict(r) for r in c.execute(q + " ORDER BY ex_date", args)]
 
 
 def daily_ohlc_count(symbol=None):
