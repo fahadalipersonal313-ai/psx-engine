@@ -37,6 +37,7 @@ import scoring_engine
 import risk_manager
 import signal_generator
 import confluence_axes
+import psx_market_watch
 import portfolio_risk
 import portfolio_advisor
 import reports
@@ -161,6 +162,30 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
             "scoring": scoring, "risk": risk, "signal": signal}
 
 
+def _bank_official_hl(bars):
+    """Write the exchange's own intraday High/Low into daily_ohlc for today.
+
+    overwrite=True on purpose: this REPLACES a bar reconstructed from 15-minute
+    polls with the official figure. That is the trade-off recorded during the
+    2026-09-01 backfill, where INSERT OR IGNORE deliberately kept the poll-derived
+    value and the official one had to be preferred by hand. Here the official
+    value is available live, so it wins.
+    """
+    if not bars:
+        return
+    today = datetime.now().strftime("%Y-%m-%d")
+    n = 0
+    for sym, b in bars.items():
+        try:
+            n += db.save_hl_bar(sym, today, b.get("open"), b["high"], b["low"],
+                                b.get("current"), b.get("volume"),
+                                "PSX market-watch (official intraday)",
+                                overwrite=True)
+        except Exception as e:
+            log.warning("banking official H/L failed for %s: %s", sym, e)
+    log.info("Banked official intraday High/Low for %d symbols", n)
+
+
 def full_run(fast=False):
     """fast=True trims everything that does not affect TODAY'S signals, so the
     first cycle after the 09:32 open commits sooner. Safe because:
@@ -190,6 +215,20 @@ def full_run(fast=False):
     index_eod, index_meta = market_regime.fetch_index()
     regime = market_regime.assess_regime(index_eod)
     log.info("Market regime: %s", regime["note"])
+
+    # ONE request returns the whole market's live session row. Used only to bank
+    # the exchange's OFFICIAL intraday High/Low: the engine otherwise derives the
+    # day's range from 15-minute polls, which must UNDERSTATE it whenever an
+    # extreme prints between polls. Wrapped and non-fatal — a market-watch
+    # failure must never touch the price path.
+    try:
+        mw_bars, mw_meta = psx_market_watch.fetch()
+        log.info("market-watch: %d rows, %d of our symbols matched%s",
+                 mw_meta["rows"], mw_meta["matched"],
+                 "" if mw_meta["ok"] else f" (FAILED: {mw_meta['error']})")
+        _bank_official_hl(mw_bars)
+    except Exception as e:
+        log.warning("market-watch step failed: %s", e)
 
     # Real book (portfolio.json) so the concentration cap can see what is already
     # held — per-trade sizing alone is blind to it. Missing/unreadable file = no
