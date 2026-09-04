@@ -82,6 +82,26 @@ CREATE TABLE IF NOT EXISTS order_book (
     PRIMARY KEY (symbol, captured_at)
 );
 
+-- Every large move in the banked history, split into market / sector /
+-- stock-specific (see market_factors.py) with the setup that preceded it and
+-- the forward EXCESS return that followed. Built from price data, so it is a
+-- far larger and wholly independent sample than the engine's graded signals.
+-- cause_label stays NULL until real research fills it: a cause is never
+-- inferred from price alone.
+CREATE TABLE IF NOT EXISTS events (
+    symbol TEXT, date TEXT, sector TEXT,
+    ret_pct REAL, sigma_move REAL, direction TEXT,
+    market_pct REAL, sector_pct REAL, idio_pct REAL,
+    cause_class TEXT, has_sector_peers INTEGER,
+    gap_pct REAL, close_position REAL, range_atr REAL, vol_ratio REAL,
+    trend_50_pct REAL, mom_20_pct REAL, rs_60_pct REAL, rsi_14 REAL,
+    range_52w_pos REAL,
+    fwd_1d_excess REAL, fwd_3d_excess REAL, fwd_5d_excess REAL,
+    fwd_10d_excess REAL, fwd_20d_excess REAL,
+    cause_label TEXT, cause_source TEXT,
+    PRIMARY KEY (symbol, date)
+);
+
 -- Full PSX DPS end-of-day history (~1,200 bars/symbol). fetch_eod already
 -- downloaded this every cycle and discarded it; persisting it gives years of
 -- indicator history instead of the ~50 days daily_ohlc had accrued.
@@ -299,6 +319,62 @@ def order_book_coverage():
                                 MIN(captured_at) lo, MAX(captured_at) hi
                          FROM order_book""").fetchone()
     return dict(r)
+
+
+EVENT_COLS = ("symbol", "date", "sector", "ret_pct", "sigma_move", "direction",
+              "market_pct", "sector_pct", "idio_pct", "cause_class",
+              "has_sector_peers", "gap_pct", "close_position", "range_atr",
+              "vol_ratio", "trend_50_pct", "mom_20_pct", "rs_60_pct", "rsi_14",
+              "range_52w_pos", "fwd_1d_excess", "fwd_3d_excess", "fwd_5d_excess",
+              "fwd_10d_excess", "fwd_20d_excess", "cause_label", "cause_source")
+
+
+def save_events(events):
+    """Store detected events. REPLACE so a rebuild refreshes forward returns as
+    later prices arrive, but cause_label is preserved: researched labels must
+    survive a rebuild, or the expensive half of the work is lost every time."""
+    if not events:
+        return 0
+    with conn() as c:
+        before = c.execute("SELECT COUNT(*) n FROM events").fetchone()["n"]
+        labels = {(r["symbol"], r["date"]): (r["cause_label"], r["cause_source"])
+                  for r in c.execute("SELECT symbol, date, cause_label, cause_source "
+                                     "FROM events WHERE cause_label IS NOT NULL")}
+        rows = []
+        for e in events:
+            keep = labels.get((e["symbol"], e["date"]))
+            if keep:
+                e = dict(e, cause_label=keep[0], cause_source=keep[1])
+            rows.append(tuple(e.get(k) for k in EVENT_COLS))
+        c.executemany(
+            f"INSERT OR REPLACE INTO events ({','.join(EVENT_COLS)}) "
+            f"VALUES ({','.join('?' * len(EVENT_COLS))})", rows)
+        after = c.execute("SELECT COUNT(*) n FROM events").fetchone()["n"]
+    return after - before
+
+
+def get_events(symbol=None, cause_class=None, direction=None, since=None, limit=5000):
+    q, args = "SELECT * FROM events WHERE 1=1", []
+    for col, val in (("symbol", symbol), ("cause_class", cause_class),
+                     ("direction", direction)):
+        if val:
+            q += f" AND {col}=?"; args.append(val)
+    if since:
+        q += " AND date>=?"; args.append(since)
+    q += " ORDER BY date DESC LIMIT ?"; args.append(limit)
+    with conn() as c:
+        return [dict(r) for r in c.execute(q, args)]
+
+
+def unlabelled_events(limit=40, min_abs_ret=0.0):
+    """Biggest idiosyncratic moves with no researched cause yet — the queue for
+    news research, ordered so the ones that actually matter come first."""
+    with conn() as c:
+        return [dict(r) for r in c.execute(
+            """SELECT * FROM events
+               WHERE cause_label IS NULL AND cause_class='idiosyncratic'
+                 AND ABS(ret_pct) >= ?
+               ORDER BY ABS(idio_pct) DESC LIMIT ?""", (min_abs_ret, limit))]
 
 
 def daily_ohlc_count(symbol=None):
