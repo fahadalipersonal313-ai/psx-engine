@@ -318,6 +318,15 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
                 "buying pressure behind it (graded history: CMF-negative Buys "
                 "beat the market 61% vs 83% when flow confirms, and carried the "
                 "worse drawdowns)")
+        if technical.get("shock_up_today"):
+            _p = technical.get("shock_up_pct")
+            _s = technical.get("shock_up_sigma")
+            downgrades.append(
+                f"entry deferred one day: today is a shock up-move "
+                f"({_p:+.1f}%, {_s:.1f} sigma). Inside this engine's own candidate "
+                f"pool such days returned -0.41% median excess at 5 days against "
+                f"0.00% for the rest (n=1,169, 49 symbols, negative at 3/5/10/20d). "
+                f"The stock is NOT rejected — it can be a Buy tomorrow")
         if (technical.get("relative_strength") is not None
                 and technical["relative_strength"] < config.RS_LAGGARD_VETO):
             downgrades.append(

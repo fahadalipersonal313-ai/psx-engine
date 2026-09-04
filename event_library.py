@@ -164,6 +164,28 @@ def build(db, symbols=None):
     return events
 
 
+def shock_up_today(bars):
+    """Did this symbol just print a shock up-move? -> (bool, pct, sigma).
+
+    `bars` are oldest-first daily OHLC dicts. Uses the same trigger as the
+    library, and the same one-day shift: the sigma is measured on history
+    ENDING YESTERDAY, so today's move never sets its own threshold.
+    """
+    if not config.SHOCK_UP_DEFER_ENABLED or len(bars) < 32:
+        return False, None, None
+    closes = pd.Series([b["close"] for b in bars if b.get("close")], dtype=float)
+    if len(closes) < 32:
+        return False, None, None
+    r = closes.pct_change()
+    sigma = r.iloc[-(SIGMA_WINDOW + 1):-1].std()
+    today = r.iloc[-1]
+    if not np.isfinite(sigma) or sigma <= 0 or not np.isfinite(today):
+        return False, None, None
+    hit = (today >= config.SHOCK_UP_SIGMA * sigma
+           and today * 100 >= config.SHOCK_UP_MIN_PCT)
+    return bool(hit), round(float(today) * 100, 2), round(float(today / sigma), 2)
+
+
 def summarise(events):
     """Independence-aware summary. A win rate with no symbol/sector spread is
     the failure measure.py exists to catch, so it is never printed alone."""

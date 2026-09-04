@@ -784,6 +784,18 @@ SECTOR_NEWS_EXCLUDE = {
 # limits 465.82 / 569.34). A move beyond it cannot happen in ordinary trading,
 # which is what makes corporate-action detection reliable rather than a guess.
 CIRCUIT_LIMIT_PCT = 10.0
+# Shock-up entry deferral (2026-09-04). Measured on 5 years of adjusted,
+# tradeable history: INSIDE the engine's own candidate pool (uptrend + positive
+# RS), days carrying a >=2.5 sigma, >=3% up-move went on to return -0.41% median
+# excess at 5 days against 0.00% for the rest, 45% positive against 49%, on
+# n=1,169 across 49 symbols, consistently negative at 3/5/10/20 days.
+# It DEFERS rather than vetoes: the name is held at Watch for that one run and
+# is free to become a Buy the next day. The effect is real but small (-0.4pp),
+# and every outright veto measured in this repo rejected a better subset than it
+# passed, so rejecting the TIMING rather than the stock is the proportionate act.
+SHOCK_UP_DEFER_ENABLED = True
+SHOCK_UP_SIGMA = 2.5
+SHOCK_UP_MIN_PCT = 3.0
 # Minimum 20-day median turnover for a name to count as tradeable. Every current
 # symbol clears this comfortably; it binds on thin historical periods and will
 # bind again as the universe expands beyond KMI-30.
