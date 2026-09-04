@@ -803,6 +803,90 @@ first, and prefer RANKING or POSITION SIZING over a veto — every veto measured
 here (`poor_rr`, chase guard, the confluence gate, the pullback upgrade)
 rejected a better subset than it passed. `python main.py axes` prints them.
 
+## market-watch — the whole market's live OHLC in one request (2026-09-04)
+
+`dps.psx.com.pk/market-watch` returns every listed company's current session row.
+`psx_market_watch.fetch()` is called ONCE per cycle in `full_run`, before the
+per-symbol loop, and banks the exchange's **official intraday High/Low** into
+`daily_ohlc` with `overwrite=True`.
+
+That overwrite is deliberate and reverses the backfill's default: an
+intraday-derived high/low is reconstructed from 15-minute polls and MUST
+understate the true range whenever an extreme prints between them, so where the
+official figure is available it wins. ATR, ADX and CMF all read that table.
+
+Verified on a runner before wiring (`mw-probe.yml`): **49 of 50 symbols**, real
+OHLC, ~2s. The `current` column was confirmed to be the LIVE price and not a
+silent fallback to `ldcp` — from the data, not the header: all eight sampled
+symbols had `current` strictly inside their own day's low-high, and FFC's band
+was only 0.5% wide, so eight for eight is not chance. `to_bars()` RAISES on a
+missing column rather than mis-mapping High into Low, and drops O=H=L=0.00 bars
+(the JVDC/BNL no-trade case). `fetch()` never raises.
+
+**NOT done yet, and it is the real prize:** replacing `fetch_eod` +
+`latest_quote` with this feed would cut **100 requests per cycle to 1** — the
+load reduction that parallelising was declined for. That changes the price path
+itself, so it needs its own pass and its own verification.
+
+## PSX does NOT publish an order book (settled 2026-09-04)
+
+`depth_probe.py` tried `/orderbook/`, `/depth/`, `/market-depth/`,
+`/timeseries/depth/`, `/quote/`, `/marketwatch/` — all **404**. The company page
+mentions bid/ask but its only table is the board of directors.
+
+The telling find is in `market-watch`, whose HTML carries **commented-out**
+headers: `<!-- th TOTAL BUY ORDERS -->` and `<!-- th TOTAL SELL ORDERS -->`.
+The exchange built those columns and disabled them. This is not an endpoint that
+was missed; depth is off by design. Do not go looking again.
+
+## Order book — a measurement dataset, fed by hand (2026-09-04)
+
+Investify's quote page shows **L1 only** (best bid/ask + their volumes), not full
+depth. `tools/investify_l1.js` pasted into Chrome's DevTools console reads it off
+the rendered page — nothing to install, transmits nothing, never touches request
+headers. CSVs dropped into `orderbook/` are ingested by `orderbook.ingest()` on
+every run into the `order_book` table.
+
+**Nothing reads it into a signal, and that is the design.** One symbol at a time,
+captured by hand in bursts, stale within minutes against a 15-minute cycle, and
+UNMEASURED — and every unmeasured input this repo trusted on appearance alone
+(OBV divergence, score velocity, the confluence gate) went on to measure flat or
+negative. It accumulates so `imbalance` can be graded with `measure.py`; if it
+earns a place it is a ranker or sizer, never a veto.
+
+Three things learned the hard way, all worth keeping:
+- **Consecutive identical states are collapsed.** The first live capture was 37
+  rows containing **5 distinct states** (7.4x): the broker page repaints when
+  something CHANGES, not on the sampler's clock. Storing every sample would
+  inflate any future n ~7x and defeat the independence checks outright. Sample
+  at 45-60s, not 5s.
+- **The browser writes the CAPTURER'S clock (PKT); the engine runs in UTC.**
+  Stored naive, an 11:15 snapshot read as 90 minutes in the FUTURE, and a future
+  timestamp trivially passes "younger than N minutes". Timestamps normalise to
+  UTC on ingest (`ORDERBOOK_TZ_OFFSET`, default +5) and `order_book_latest`
+  REJECTS a negative age — the same silent-bypass shape as a missing `as_of`.
+- The CSV carries only a clock time, so the DATE is recovered from an ISO date
+  or epoch-ms in the filename, else mtime. Name files `NRL_YYYY-MM-DD.csv`.
+
+Measured nothing yet: L1 imbalance swung 0.17 -> 10.71 -> 0.17 within four
+minutes on the only session captured, median 1.01. That is noise until proven
+otherwise, and it is the most spoofable number in the market.
+
+## This sandbox has NO general egress and NO display (2026-09-04)
+
+Established by direct test, so it is not re-litigated. Chromium 141 is installed
+and runs, but **every** outbound connection is `connect_rejected` at the proxy —
+`example.com` and `google.com` included, not just PSX — and `DISPLAY` is unset
+with no X11 socket, so it is headless-only with no window anyone could see or
+type into. There is therefore no way to open a browser for the user to log into,
+and no route from this container to any browser on their device.
+
+What DOES work: headless Chromium against **localhost** (the Streamlit dashboard
+was rendered and screenshotted this way, after `pip install streamlit` — pypi
+bypasses the proxy), and the `WebSearch`/`WebFetch` tools, which route through
+Anthropic's service rather than this container. Those are **anonymous, one-shot
+and cookie-less**, so they can never act as a logged-in session.
+
 ## Key files
 
 - `config.py` — all knobs (thresholds, weights, risk caps, stocks).
@@ -824,7 +908,10 @@ rejected a better subset than it passed. `python main.py axes` prints them.
 - `confluence_axes.py` — six CONTINUOUS setup dimensions (2026-09-01). Stored
   per run (`confluence_axes` JSON + `confluence_composite`), wired into NOTHING.
 - `psx_historical.py` — daily High/Low backfill from PSX's historical view.
-- `hl_probe.py` — read-only source reconnaissance (must run on a runner).
+- `psx_market_watch.py` — whole-market live OHLC in ONE request (2026-09-04).
+- `orderbook.py` — ingests hand-captured L1 CSVs from `orderbook/`. Stored only.
+- `tools/investify_l1.js` — DevTools console snippet that captures the L1 book.
+- `hl_probe.py` / `depth_probe.py` — read-only source reconnaissance (runner only).
 - `main.py` — CLI entry: `run / schedule / morning / evening / backtest SYMBOL /
   metrics / portfolio / accuracy / regrade / accumulating / history SYMBOL /
   fundamentals / measure / brief / prune / backfill / axes`.
@@ -893,7 +980,18 @@ other account stopped," read this section first, then `git pull origin main` to
 get the latest state.** Keep this section current at the end of each work
 session (edit the dates/state, commit, push).
 
-**Last updated:** 2026-09-01. Today, all merged to `main`: sector-news routing
+**Last updated:** 2026-09-04. Today, all merged to `main`: `market-watch` banks
+the exchange's OFFICIAL intraday High/Low every cycle (49/50 symbols, one ~2s
+request, verified on a runner first); order-book ingestion added as a
+measurement dataset with the timezone and dedupe traps documented above; PSX
+confirmed NOT to publish depth (the columns exist but are commented out); and
+the sandbox's lack of egress and display established by test. `main.py` gained
+`orderbook`. Engine ran clean at 07:56 PKT (50 symbols, 49 `good`); by 14:56 the
+regime had flipped risk-off and all Buys were gated — NRL fell 3.5% the day
+after the $6bn refinery signing was due, which is the sell-the-news risk flagged
+in that morning's independent read.
+
+Previously 2026-09-01: sector-news routing
 fixed (7 -> 24 anchored sectors; the substring `ipp`/`sbp` mis-routes killed;
 `SECTOR_NEWS_EXCLUDE` added) — this was why news never moved a score, NOT the
 rater; soft downgrades now COLLECT instead of first-match-wins (signal
