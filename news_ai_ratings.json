@@ -1,307 +1,314 @@
 {
-  "as_of": "2026-09-04T07:42:17Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 75,
-  "read_urls": [
-    "https://mettisglobal.news/Bestway-Cements-AA-longterm-entity-rating-maintained-by-PACRA-63170",
-    "https://mettisglobal.news/DPM-orders-immediate-wheat-release-reaffirms-1m-tonne-import-plan-63202",
-    "https://mettisglobal.news/EFERTs-market-share-recovery-underway-as-supply-glut-eases-63209",
-    "https://mettisglobal.news/Gold-climbs-to-4437-as-dollar-yields-retreat-ahead-of-US-jobs-data-63163",
-    "https://mettisglobal.news/Gold-holds-near-highs-ahead-of-key-US-jobs-report-63200",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs11200-per-tola-63185",
-    "https://mettisglobal.news/High-Net-Worth-Individuals-lead-as-NNAR-allocates-33mn-shares-post-book-building-63172",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63189",
-    "https://mettisglobal.news/NexGen-Auto-dismisses-fake-OMODA-JAECOO-price-revision-reports-63194",
-    "https://mettisglobal.news/OGDC-FY26-profit-surges-43-63210",
-    "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203",
-    "https://mettisglobal.news/PM-reviews-major-hospital-projects-directs-swift-completion-63204",
-    "https://mettisglobal.news/PSX-Closing-Bell-A-Soft-Step-Up-63183",
-    "https://mettisglobal.news/PSX-UKs-MOBILIST-partner-to-boost-sustainable-investment-63192",
-    "https://mettisglobal.news/PSX-inducts-3-Meezan-funds-for-GoP-Sukuk-proprietary-trading-63207",
-    "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196",
-    "https://mettisglobal.news/Pakistan-Australia-to-strengthen-agriresearch-biosecurity-ties-63206",
-    "https://mettisglobal.news/Pakistan-Cables-approves-Rs350m-CECL-share-buyback-63197",
-    "https://mettisglobal.news/Pakistan-Cables-swings-to-Rs166m-profit-in-FY26-63201",
-    "https://mettisglobal.news/Pakistan-expressway-to-slash-KarachiQuetta-travel-time-boost-trade-63205",
-    "https://mettisglobal.news/Pakistans-shortterm-FX-liabilities-stands-at-24bn-in-July-2026-63184",
-    "https://mettisglobal.news/Pakistans-trade-deficit-narrows-20-MoM-in-August-2026-63178",
-    "https://mettisglobal.news/SBP-reserves-rise-19m-to-17bn-63193",
-    "https://mettisglobal.news/SCRA-ends-week-above-Rs27bn-63190",
-    "https://mettisglobal.news/Waves-appliances-directors-shareholder-subscribe-Rs516m-rights-shares-63186",
-    "https://mettisglobal.news/Weekly-SPI-increased-by-065-63208",
-    "https://propakistani.pk/2026/09/04/adb-announces-200-million-more-loan-to-modernize-pakistans-revenue-administration/",
-    "https://propakistani.pk/2026/09/04/bengal-tiger-spotted-in-islamabads-famous-housing-society/",
-    "https://propakistani.pk/2026/09/04/hec-law-gat-result-2026-announced/",
-    "https://propakistani.pk/2026/09/04/international-airline-launches-flights-to-another-pakistani-city-2/",
-    "https://propakistani.pk/2026/09/04/pakistan-pharma-industry-opposes-changes-to-drug-pricing-policy/",
-    "https://propakistani.pk/2026/09/04/pakistani-man-in-uae-becomes-overnight-billionaire-after-winning-lottery/",
-    "https://propakistani.pk/2026/09/04/premature-babies-in-pakistan-face-risk-of-blindness/",
-    "https://propakistani.pk/2026/09/04/punjab-announces-new-opportunity-for-doctors-under-mnhc-program/",
-    "https://propakistani.pk/2026/09/04/sindh-police-announces-new-jobs/",
-    "https://propakistani.pk/2026/09/04/supreme-court-rules-banks-cannot-claim-unclaimed-markup/",
-    "https://www.brecorder.com/news/40437898/gold-holds-ground-with-us-payrolls-data-on-radar",
-    "https://www.brecorder.com/news/40437899/oil-set-for-steepest-weekly-gain-since-mid-july-fuelled-by-us-iran-clashes",
-    "https://www.brecorder.com/news/40437900/yen-headed-for-strongest-week-in-a-month-dollar-flat-ahead-of-payroll-data",
-    "https://www.brecorder.com/news/40437901/asian-shares-climb-ahead-of-us-jobs-data-feds-waller-soothes-bonds",
-    "https://www.brecorder.com/news/40437902/indian-rupee-inflow-linked-rbi-backed-optimism-faces-oil-test",
-    "https://www.brecorder.com/news/40437903/indian-shares-may-open-higher-as-traders-trim-fed-hike-bets",
-    "https://www.brecorder.com/news/40437904/nepal-flood-losses-estimated-at-256-billion-official-says",
-    "https://www.brecorder.com/news/40437905/pakistan-cables-approves-cecls-buy-back-on-entire-stake-for-rs350mn",
-    "https://www.brecorder.com/news/40437906/psx-volatility-at-bourse-kse-100-up-nearly-300-points",
-    "https://www.brecorder.com/news/40437907/thai-bahtus-dollar-steady-on-friday",
-    "https://www.brecorder.com/news/40437908/fresh-debt-supply-to-provide-directional-cue-for-india-bonds",
-    "https://www.brecorder.com/news/40437909/soybeans-set-for-fourth-weekly-gain-on-china-demand-us-weather-concerns",
-    "https://www.brecorder.com/news/40437910/palm-rises-on-firmer-rival-dalian-crude-set-for-weekly-gain",
-    "https://www.brecorder.com/news/40437911/clinical-rybakina-marches-into-us-open-third-round",
-    "https://www.brecorder.com/news/40437912/japans-nikkei-rises-on-softbank-rally-but-set-for-weekly-fall",
-    "https://www.brecorder.com/news/40437913/gulf-shipping-traffic-via-hormuz-stays-below-10-day-average-data-shows",
-    "https://www.brecorder.com/news/40437914/china-stocks-head-for-weekly-loss-as-ai-rally-loses-steam",
-    "https://www.brecorder.com/news/40437915/eus-von-der-leyen-to-unveil-funding-of-eur200-million-for-greenland-ft-says",
-    "https://www.brecorder.com/news/40437916/indias-mandhana-becomes-womens-crickets-leading-run-scorer",
-    "https://www.brecorder.com/news/40437917/copper-gains-as-soft-dollar-set-to-save-10-week-streak",
-    "https://www.brecorder.com/news/40437918/yuan-firms-to-3-12-year-high-on-soft-dollar-despite-weak-fix",
-    "https://www.brecorder.com/news/40437919/hindu-temple-in-narowal-damaged-by-torrential-rains-not-demolished-fo",
-    "https://www.brecorder.com/news/40437920/two-people-pulled-alive-from-nepal-hydropower-tunnel",
-    "https://www.brecorder.com/news/40437921/typhoon-saudel-brings-torrential-rain-flooding-to-chinas-coastal-areas",
-    "https://www.brecorder.com/news/40437922/uk-car-sales-log-strongest-august-since-2018-preliminary-data-shows",
-    "https://www.brecorder.com/news/40437923/hsbc-prices-3483-million-samurai-bond-sale-term-sheet-shows",
-    "https://www.brecorder.com/news/40437924/japan-pm-to-keep-finance-minister-katayama-in-cabinet-reshuffle-sources-say",
-    "https://www.brecorder.com/news/40437925/pakistan-plans-rupee-denominated-dollar-settled-bond-says-aurangzeb",
-    "https://www.brecorder.com/news/40437926/south-korean-shares-rise-on-chip-gains-set-for-weekly-fall",
-    "https://www.brecorder.com/news/40437927/south-african-rand-treads-water-before-us-jobs-data-as-markets-assess-fed-rate-path",
-    "https://www.dawn.com/news/2027182/pm-shehbaz-approves-establishment-of-trade-facilitation-board-will-head-the-body-himself",
-    "https://www.dawn.com/news/2027228/hawala-networks-increasingly-use-virtual-assets-fintech-to-conceal-illicit-wealth-fatf-oecd",
-    "https://www.dawn.com/news/2027257/govt-raises-petrol-price-by-rs284-hsd-by-rs228-per-litre",
-    "https://www.dawn.com/news/2027324/psx-snaps-losing-streak-with-marginal-gain",
-    "https://www.dawn.com/news/2027328/trade-gap-swells-18pc-to-71bn",
-    "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc",
-    "https://www.dawn.com/news/2027331/banking-court-cant-award-unclaimed-markup-sc",
-    "https://www.dawn.com/news/2027341/lawmakers-voice-concern-over-wapdas-proposed-powers-of-arrest",
-    "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year"
-  ],
-  "count": 1,
-  "ratings": {
-    "OGDC": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.75,
-      "reason": "FY26 net profit +43% to Rs242.37bn, EPS Rs56.35, Rs6/share final dividend declared",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/OGDC-FY26-profit-surges-43-63210"
-      ]
-    }
-  },
-  "sectors": {
-    "Refinery": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Crude at 6-week highs (Brent ~$96, WTI ~$92) on US-Iran clashes lifts refiner margins/inventory gains",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437899/oil-set-for-steepest-weekly-gain-since-mid-july-fuelled-by-us-iran-clashes",
-        "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Steepest weekly crude rally since mid-July raises OMC inventory-gain prospects on costlier imports",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437899/oil-set-for-steepest-weekly-gain-since-mid-july-fuelled-by-us-iran-clashes",
-        "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Brent/WTI up 7-10% this week on US-Iran hostilities lifts E&P realized wellhead prices",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437899/oil-set-for-steepest-weekly-gain-since-mid-july-fuelled-by-us-iran-clashes",
-        "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Brokerage note: EFERT Aug urea offtake recovering to 327k tons as inventory glut unwinds, EPS guide raised",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/EFERTs-market-share-recovery-underway-as-supply-glut-eases-63209"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "UK car-sales data and a rumor denial carry no mechanism for PSX auto assemblers",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437922/uk-car-sales-log-strongest-august-since-2018-preliminary-data-shows",
-        "https://mettisglobal.news/NexGen-Auto-dismisses-fake-OMODA-JAECOO-price-revision-reports-63194"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "China equity-market commentary has no mechanism for local logistics/transport names",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437914/china-stocks-head-for-weekly-loss-as-ai-rally-loses-steam"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Below-average Hormuz shipping traffic reflects Gulf tension but no direct PSX-ports mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40437913/gulf-shipping-traffic-via-hormuz-stays-below-10-day-average-data-shows"
-      ]
-    },
-    "Cement": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Mis-routed items (hospital-project review, cable buyback, rating affirmation) carry no cement-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Bestway-Cements-AA-longterm-entity-rating-maintained-by-PACRA-63170",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Soft-Step-Up-63183"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Mis-routed items (hospital-project review, cable buyback, rating affirmation) carry no cement-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Bestway-Cements-AA-longterm-entity-rating-maintained-by-PACRA-63170",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Soft-Step-Up-63183"
-      ]
-    },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Mis-routed items (wildlife story, cable buyback, Nepal floods) carry no genuine real-estate mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://propakistani.pk/2026/09/04/bengal-tiger-spotted-in-islamabads-famous-housing-society/",
-        "https://www.brecorder.com/news/40437904/nepal-flood-losses-estimated-at-256-billion-official-says"
-      ]
-    },
-    "Electrical Goods": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.65,
-      "reason": "Pakistan Cables swung to Rs166m FY26 profit from a loss, plus Rs350m CECL-stake buyback approved",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-Cables-swings-to-Rs166m-profit-in-FY26-63201",
-        "https://mettisglobal.news/Pakistan-Cables-approves-Rs350m-CECL-share-buyback-63197"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "PTA scam-call public alert carries no telecom earnings/policy mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "PTA scam-call public alert carries no telecom-devices earnings/policy mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "SBP reserves +$19m WoW and FX-liability report are macro-stability signals, not bank-specific",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/SBP-reserves-rise-19m-to-17bn-63193",
-        "https://mettisglobal.news/Pakistans-shortterm-FX-liabilities-stands-at-24bn-in-July-2026-63184"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Petrol/diesel pricing-mechanism reform is oil-product policy, not gas-utility tariff mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year"
-      ]
-    },
-    "Textile": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Cotton arrivals +27% to 1.7m bales cuts import reliance and improves crop quality for spinners",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc"
-      ]
-    },
-    "Textile/Synthetic Fibre": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Cotton supply surge is a substitute-fibre dynamic, not a direct PSF input driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc"
-      ]
-    },
-    "Pharmaceuticals": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Govt directs DRAP to revise drug pricing framework; industry warns of margin/uncertainty risk",
-      "text_depth": "full",
-      "sources": [
-        "https://propakistani.pk/2026/09/04/pakistan-pharma-industry-opposes-changes-to-drug-pricing-policy/"
-      ]
-    }
+ "as_of": "2026-09-04T08:40:32Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 74,
+ "read_urls": [
+  "https://mettisglobal.news/Bestway-Cements-AA-longterm-entity-rating-maintained-by-PACRA-63170",
+  "https://mettisglobal.news/DPM-orders-immediate-wheat-release-reaffirms-1m-tonne-import-plan-63202",
+  "https://mettisglobal.news/EFERTs-market-share-recovery-underway-as-supply-glut-eases-63209",
+  "https://mettisglobal.news/Finance-Minister-calls-privatization-PPPs-central-to-growth-transition-63212",
+  "https://mettisglobal.news/Gold-climbs-to-4437-as-dollar-yields-retreat-ahead-of-US-jobs-data-63163",
+  "https://mettisglobal.news/Gold-holds-near-highs-ahead-of-key-US-jobs-report-63200",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs11200-per-tola-63185",
+  "https://mettisglobal.news/High-Net-Worth-Individuals-lead-as-NNAR-allocates-33mn-shares-post-book-building-63172",
+  "https://mettisglobal.news/NexGen-Auto-dismisses-fake-OMODA-JAECOO-price-revision-reports-63194",
+  "https://mettisglobal.news/OGDC-FY26-profit-surges-43-63210",
+  "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203",
+  "https://mettisglobal.news/PM-reviews-major-hospital-projects-directs-swift-completion-63204",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Soft-Step-Up-63183",
+  "https://mettisglobal.news/PSX-UKs-MOBILIST-partner-to-boost-sustainable-investment-63192",
+  "https://mettisglobal.news/PSX-inducts-3-Meezan-funds-for-GoP-Sukuk-proprietary-trading-63207",
+  "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196",
+  "https://mettisglobal.news/Pakistan-Australia-to-strengthen-agriresearch-biosecurity-ties-63206",
+  "https://mettisglobal.news/Pakistan-Cables-approves-Rs350m-CECL-share-buyback-63197",
+  "https://mettisglobal.news/Pakistan-Cables-swings-to-Rs166m-profit-in-FY26-63201",
+  "https://mettisglobal.news/Pakistan-expressway-to-slash-KarachiQuetta-travel-time-boost-trade-63205",
+  "https://mettisglobal.news/Pakistans-shortterm-FX-liabilities-stands-at-24bn-in-July-2026-63184",
+  "https://mettisglobal.news/Pakistans-trade-deficit-narrows-20-MoM-in-August-2026-63178",
+  "https://mettisglobal.news/SBP-reserves-rise-19m-to-17bn-63193",
+  "https://mettisglobal.news/Waves-appliances-directors-shareholder-subscribe-Rs516m-rights-shares-63186",
+  "https://mettisglobal.news/Weekly-SPI-increased-by-065-63208",
+  "https://propakistani.pk/2026/09/04/cda-seals-federal-employees-housing-offices-over-rs-57-million-dues/",
+  "https://propakistani.pk/2026/09/04/decision-taken-on-proposal-to-change-css-age-limit-and-attempt/",
+  "https://propakistani.pk/2026/09/04/lahore-traffic-police-ordered-to-meet-challan-target/",
+  "https://propakistani.pk/2026/09/04/mock-fire-drill-exposes-fire-safety-system-flaws-in-pm-office/",
+  "https://propakistani.pk/2026/09/04/opening-date-announced-for-new-major-govt-hospital-in-islamabad/",
+  "https://propakistani.pk/2026/09/04/pakistan-cables-board-approves-sale-of-17-chinoy-engineering-stake/",
+  "https://propakistani.pk/2026/09/04/pakistan-red-crescent-announces-nationwide-volunteer-program/",
+  "https://propakistani.pk/2026/09/04/punjab-makes-fire-safety-training-mandatory-for-wasa-staff/",
+  "https://propakistani.pk/2026/09/04/tcl-p80-ultra-launches-with-worlds-first-amoled-nxtpaper-display/",
+  "https://propakistani.pk/2026/09/04/uwc-pakistan-opens-applications-for-2027-intake/",
+  "https://www.brecorder.com/news/40437901/asian-shares-climb-ahead-of-us-jobs-data-feds-waller-soothes-bonds",
+  "https://www.brecorder.com/news/40437902/indian-rupee-inflow-linked-rbi-backed-optimism-faces-oil-test",
+  "https://www.brecorder.com/news/40437903/indian-shares-may-open-higher-as-traders-trim-fed-hike-bets",
+  "https://www.brecorder.com/news/40437904/nepal-flood-losses-estimated-at-256-billion-official-says",
+  "https://www.brecorder.com/news/40437905/pakistan-cables-approves-cecls-buy-back-on-entire-stake-for-rs350mn",
+  "https://www.brecorder.com/news/40437906/psx-volatility-at-bourse-kse-100-up-nearly-300-points",
+  "https://www.brecorder.com/news/40437907/thai-bahtus-dollar-steady-on-friday",
+  "https://www.brecorder.com/news/40437908/fresh-debt-supply-to-provide-directional-cue-for-india-bonds",
+  "https://www.brecorder.com/news/40437909/soybeans-set-for-fourth-weekly-gain-on-china-demand-us-weather-concerns",
+  "https://www.brecorder.com/news/40437910/palm-rises-on-firmer-rival-dalian-crude-set-for-weekly-gain",
+  "https://www.brecorder.com/news/40437911/clinical-rybakina-marches-into-us-open-third-round",
+  "https://www.brecorder.com/news/40437912/japans-nikkei-rises-on-softbank-rally-but-set-for-weekly-fall",
+  "https://www.brecorder.com/news/40437913/gulf-shipping-traffic-via-hormuz-stays-below-10-day-average-data-shows",
+  "https://www.brecorder.com/news/40437914/china-stocks-head-for-weekly-loss-as-ai-rally-loses-steam",
+  "https://www.brecorder.com/news/40437915/eus-von-der-leyen-to-unveil-funding-of-eur200-million-for-greenland-ft-says",
+  "https://www.brecorder.com/news/40437916/indias-mandhana-becomes-womens-crickets-leading-run-scorer",
+  "https://www.brecorder.com/news/40437917/copper-gains-as-soft-dollar-set-to-save-10-week-streak",
+  "https://www.brecorder.com/news/40437918/yuan-firms-to-3-12-year-high-on-soft-dollar-despite-weak-fix",
+  "https://www.brecorder.com/news/40437919/hindu-temple-in-narowal-damaged-by-torrential-rains-not-demolished-fo",
+  "https://www.brecorder.com/news/40437920/two-people-pulled-alive-from-nepal-hydropower-tunnel",
+  "https://www.brecorder.com/news/40437921/typhoon-saudel-brings-torrential-rain-flooding-to-chinas-coastal-areas",
+  "https://www.brecorder.com/news/40437922/uk-car-sales-log-strongest-august-since-2018-preliminary-data-shows",
+  "https://www.brecorder.com/news/40437923/hsbc-prices-3483-million-samurai-bond-sale-term-sheet-shows",
+  "https://www.brecorder.com/news/40437924/japan-pm-to-keep-finance-minister-katayama-in-cabinet-reshuffle-sources-say",
+  "https://www.brecorder.com/news/40437925/pakistan-plans-rupee-denominated-dollar-settled-bond-says-aurangzeb",
+  "https://www.brecorder.com/news/40437926/south-korean-shares-rise-on-chip-gains-set-for-weekly-fall",
+  "https://www.brecorder.com/news/40437927/south-african-rand-treads-water-before-us-jobs-data-as-markets-assess-fed-rate-path",
+  "https://www.brecorder.com/news/40437928/karsaz-accident-case-natasha-cleared-of-drug-use-charges",
+  "https://www.brecorder.com/news/40437929/secp-registers-4761-new-companies-in-august",
+  "https://www.brecorder.com/news/40437931/mara-sisters-speak-as-one-in-herzogs-venice-contender",
+  "https://www.dawn.com/news/2027182/pm-shehbaz-approves-establishment-of-trade-facilitation-board-will-head-the-body-himself",
+  "https://www.dawn.com/news/2027228/hawala-networks-increasingly-use-virtual-assets-fintech-to-conceal-illicit-wealth-fatf-oecd",
+  "https://www.dawn.com/news/2027257/govt-raises-petrol-price-by-rs284-hsd-by-rs228-per-litre",
+  "https://www.dawn.com/news/2027324/psx-snaps-losing-streak-with-marginal-gain",
+  "https://www.dawn.com/news/2027328/trade-gap-swells-18pc-to-71bn",
+  "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc",
+  "https://www.dawn.com/news/2027331/banking-court-cant-award-unclaimed-markup-sc",
+  "https://www.dawn.com/news/2027341/lawmakers-voice-concern-over-wapdas-proposed-powers-of-arrest",
+  "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year"
+ ],
+ "count": 1,
+ "ratings": {
+  "OGDC": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "FY26 net profit +43% & Rs6 final div, but beat driven by 85% lower tax, not core growth",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/OGDC-FY26-profit-surges-43-63210"
+   ]
   }
+ },
+ "sectors": {
+  "Refinery": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.45,
+   "reason": "Crude near $95 on US-Iran war while Ogra formalises a crack-spread cap, squeezing refiner margins",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year",
+    "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203",
+    "https://www.brecorder.com/news/40437906/psx-volatility-at-bourse-kse-100-up-nearly-300-points"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Cabinet committee plans full petrol deregulation by June 2027, giving OMCs pricing/margin autonomy",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Brent near $95 on US-Iran conflict lifts E&P realised prices, though sector saw profit-taking today",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-tops-95-as-renewed-USIran-hostilities-fuel-supply-fears-63203",
+    "https://www.brecorder.com/news/40437906/psx-volatility-at-bourse-kse-100-up-nearly-300-points"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Brokerage note: EFERT urea offtake/market share recovering as inventory glut unwinds",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/EFERTs-market-share-recovery-underway-as-supply-glut-eases-63209"
+   ]
+  },
+  "Electrical Goods": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.45,
+   "reason": "Pakistan Cables swung to FY26 profit + CECL stake sale; Waves directors subscribed rights shares",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-Cables-swings-to-Rs166m-profit-in-FY26-63201",
+    "https://mettisglobal.news/Pakistan-Cables-approves-Rs350m-CECL-share-buyback-63197",
+    "https://mettisglobal.news/Waves-appliances-directors-shareholder-subscribe-Rs516m-rights-shares-63186"
+   ]
+  },
+  "Textile": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Cotton arrivals +27% to 1.7m bales, record mill purchases, cuts input cost/import reliance",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Hormuz transits below 10-day average on Gulf tensions, a risk to regional shipping/supply chains",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437913/gulf-shipping-traffic-via-hormuz-stays-below-10-day-average-data-shows"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "NexGen Auto denies fake price-revision rumours; no genuine sector driver",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/NexGen-Auto-dismisses-fake-OMODA-JAECOO-price-revision-reports-63194"
+   ]
+  },
+  "Logistics/Transport": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "Only matched item is China equities/AI-rally coverage, not a PK logistics driver",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437914/china-stocks-head-for-weekly-loss-as-ai-rally-loses-steam"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "No genuine cement driver; matched items are an Electrical Goods company and a hospital-project update",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-reviews-major-hospital-projects-directs-swift-completion-63204"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "No genuine cement driver; matched items are an Electrical Goods company and a hospital-project update",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-reviews-major-hospital-projects-directs-swift-completion-63204"
+   ]
+  },
+  "Real Estate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Matched items (hospital projects, Nepal floods, Pakistan Cables) carry no real-estate mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-reviews-major-hospital-projects-directs-swift-completion-63204"
+   ]
+  },
+  "Technology/Telecom": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "PTA fraud-alert notice; no commercial/telecom mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196"
+   ]
+  },
+  "Technology/Telecom Devices": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "PTA fraud-alert notice; no commercial/telecom mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PTA-warns-public-against-fake-alert-on-0517080507-calls-63196"
+   ]
+  },
+  "Technology/IT": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "SECP new-company registrations show IT leading formations, but too diffuse to move listed IT names",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437929/secp-registers-4761-new-companies-in-august"
+   ]
+  },
+  "Technology/IT Exports": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "SECP new-company registrations show IT leading formations, but too diffuse to move listed IT names",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40437929/secp-registers-4761-new-companies-in-august"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "SBP reserves +$19m, FX liabilities data are general macro, no bank-specific mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-reserves-rise-19m-to-17bn-63193",
+    "https://mettisglobal.news/Pakistans-shortterm-FX-liabilities-stands-at-24bn-in-July-2026-63184"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Article covers petrol/diesel deregulation only, no gas-distribution-specific mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2027363/govt-eyes-petrol-deregulation-by-june-next-year"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Cotton-arrivals story concerns natural fibre, not a direct synthetic-fibre mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2027329/cotton-arrivals-surge-27pc"
+   ]
+  }
+ }
 }
