@@ -28,6 +28,7 @@ import pandas as pd
 
 import config
 import market_factors as mf
+import corporate_actions as ca
 
 log = logging.getLogger("event_library")
 
@@ -53,6 +54,11 @@ def build(db, symbols=None):
         return []
     close, high, low = panel["close"], panel["high"], panel["low"]
     openp, volume = panel["open"], panel["volume"]
+    # A bar that closed at the circuit is frequently unfillable — no counterparty
+    # at that price — so it is recorded and excluded from tradeable, never
+    # silently treated as an entry you could have taken.
+    at_limit = ca.at_limit_mask(panel)
+    turn = ca.turnover(panel).shift(1)
     d = mf.decompose(panel)
     ret, market = d["ret"], d["market"]
 
@@ -138,6 +144,13 @@ def build(db, symbols=None):
                 "rsi_14": round(g(rsi), 1) if g(rsi) else None,
                 "range_52w_pos": (round((c - ll) / (hh - ll), 3)
                                   if hh is not None and ll is not None and hh > ll else None),
+                # tradeability — the difference between a backtest and a trade
+                "at_limit": bool(at_limit.at[dt, sym]),
+                "turnover_pkr": (round(float(turn.at[dt, sym]))
+                                 if pd.notna(turn.at[dt, sym]) else None),
+                "tradeable": bool(not at_limit.at[dt, sym]
+                                  and pd.notna(turn.at[dt, sym])
+                                  and float(turn.at[dt, sym]) >= config.MIN_TURNOVER_PKR),
                 # cause label — filled later by research, never invented here
                 "cause_label": None, "cause_source": None,
             }
@@ -157,8 +170,15 @@ def summarise(events):
     if not events:
         return "no events"
     df = pd.DataFrame(events)
+    n_lim = int(df.at_limit.sum()) if "at_limit" in df else 0
+    n_ill = int((~df.tradeable.astype(bool)).sum()) - n_lim if "tradeable" in df else 0
     out = [f"{len(df)} events, {df.symbol.nunique()} symbols, "
-           f"{df.sector.nunique()} sectors, {df.date.min()} .. {df.date.max()}", ""]
+           f"{df.sector.nunique()} sectors, {df.date.min()} .. {df.date.max()}",
+           f"excluded from tradeable: {n_lim} at the circuit limit, "
+           f"{max(n_ill, 0)} below PKR {config.MIN_TURNOVER_PKR:,} turnover", ""]
+    if "tradeable" in df:
+        df = df[df.tradeable.astype(bool)]
+        out.append(f"TRADEABLE ONLY: {len(df)} events")
     out.append(f"{'cause':16s}{'dir':6s}{'n':>6s}{'syms':>6s}{'sects':>6s}"
                f"{'med 5d excess':>15s}{'positive':>10s}{'top sym share':>15s}")
     for (cls, dirn), g in df.groupby(["cause_class", "direction"]):

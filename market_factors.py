@@ -34,8 +34,12 @@ BETA_MIN_PERIODS = 120
 MIN_SECTOR_PEERS = 2       # below this a sector return is not meaningful
 
 
-def load_panel(db, symbols=None):
-    """-> dict of DataFrames (close/open/high/low/volume), dates x symbols."""
+def load_panel(db, symbols=None, adjust=True):
+    """-> dict of DataFrames (close/open/high/low/volume), dates x symbols.
+
+    adjust=True back-adjusts for detected splits/bonuses. Leaving it off is only
+    correct when DETECTING those actions, which needs the raw series.
+    """
     syms = list(symbols or config.STOCKS)
     frames = {}
     for s in syms:
@@ -50,6 +54,10 @@ def load_panel(db, symbols=None):
     out = {}
     for field in ("open", "high", "low", "close", "volume"):
         out[field] = pd.DataFrame({s: f[field] for s, f in frames.items()}).sort_index()
+    if adjust:
+        import corporate_actions as ca
+        stored = db.get_corporate_actions()
+        out = ca.adjust(out, stored or ca.detect(out))
     return out
 
 

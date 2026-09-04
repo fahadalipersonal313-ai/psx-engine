@@ -315,6 +315,14 @@ def main():
         print(text); reports.save_report(text, "morning")
     elif cmd == "prune":
         print(db.prune())
+    elif cmd == "actions":
+        import corporate_actions, market_factors
+        raw = market_factors.load_panel(db, adjust=False)
+        acts = corporate_actions.detect(raw)
+        print(f"detected {len(acts)}, newly stored {db.save_corporate_actions(acts)}")
+        cuts = [a for a in acts if a["factor"]]
+        print(f"adjustable price cuts {len(cuts)} | unexplained gap-ups "
+              f"{len(acts) - len(cuts)} (flagged, never adjusted)")
     elif cmd == "events":
         import event_library
         if len(sys.argv) > 2:
