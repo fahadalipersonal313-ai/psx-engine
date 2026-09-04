@@ -1,0 +1,24 @@
+name: mw-probe
+
+# Manual-only, read-only: confirm what dps.psx.com.pk/market-watch actually
+# returns before the engine relies on it. Writes and commits nothing.
+# Must run here — the sandbox where this was written has no egress to DPS.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-ci.txt
+      - name: Probe market-watch
+        run: python psx_market_watch.py
