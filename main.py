@@ -315,6 +315,15 @@ def main():
         print(text); reports.save_report(text, "morning")
     elif cmd == "prune":
         print(db.prune())
+    elif cmd == "events":
+        import event_library
+        if len(sys.argv) > 2:
+            print(event_library.for_symbol(db, sys.argv[2].upper()))
+        else:
+            evs = event_library.build(db)
+            print(f"detected {len(evs)}, newly stored {db.save_events(evs)}\n")
+            print(event_library.summarise(evs))
+            print("\nUNMEASURED and wired into nothing.")
     elif cmd == "orderbook":
         files, rows, new = orderbook.ingest(db)
         cov = db.order_book_coverage()
