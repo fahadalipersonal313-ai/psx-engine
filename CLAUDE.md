@@ -971,6 +971,47 @@ median MAE of -3.95%**. Real but thin — risking ~4% of drawdown for ~0.75%. Si
 it small if used at all, and note that TIGHTER stops made it WORSE (4% stop ->
 +0.39%): these trades need room.
 
+## Regime gate audited and KEPT (2026-09-04) — and the trap that nearly reversed it
+
+`REGIME_GATE_ENABLED` stays True. The audit is recorded mainly for its
+METHOD, because the first result pointed the other way and was wrong.
+
+Two things make a market-wide rule different from a per-stock one, and getting
+either wrong inverts the answer:
+- **The benchmark must be ABSOLUTE, not cross-sectional excess.** Every other
+  audit here measures excess against the same-day universe median. A rule that
+  fires on the whole market at once is differenced away exactly by that
+  benchmark and will always measure zero.
+- **The independent unit is the SESSION, not the stock-day.** 25,000 stock-days
+  across 1,240 sessions is ~1,240 observations.
+
+Day-clustered on absolute returns, risk-off looked BETTER at every horizon
+(5d +0.64pp, 10d +0.75pp, and 2026 +1.62pp), with a sound-sounding mechanism:
+in risk-off, a name still clearing trend + RS + CMF is genuinely exceptional,
+while in risk-on nearly everything clears it.
+
+**That was an artifact.** Collapsing each session to one median gives a quiet
+risk-off day with 3 candidates the same weight as a busy risk-on day with 40.
+On the full stock-day sample the MEAN — which is what compounds — says the
+opposite:
+
+| over 10d | risk-on | risk-off |
+|---|---|---|
+| median MAE | -4.91% | -4.24% |
+| **mean return** | **+1.45%** | **+0.64%** |
+| p90 | +14.14% | +10.15% |
+| candidate-days | 18,166 | 2,968 |
+
+Risk-off is marginally safer; risk-on is more than twice as profitable and
+offers 6x the opportunities. Unlike the CMF threshold — better on both axes at
+once — this is a real trade-off, and it favours the gate.
+
+**A regime proxy was used, not KMI30**: the equal-weight index of our own 50
+names (mean of daily returns, compounded) against its 50-EMA, giving risk-off on
+38% of sessions. Note the construction: compounding the MEDIAN daily return
+instead drifts persistently downward and reported risk-off on 84% of sessions,
+which is what exposed the bug. An index is a portfolio, so it takes the mean.
+
 ## Key files
 
 - `config.py` — all knobs (thresholds, weights, risk caps, stocks).
