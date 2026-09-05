@@ -200,17 +200,36 @@ HYSTERESIS_BAND = 2
 # RS=None (index unavailable) never vetoes: missing data must not block trades.
 RS_LAGGARD_VETO = 55
 
-# Money-flow confirmation for a Buy (2026-08-13, user-approved after audit).
-# CMF reads real high/low buying pressure and is the ONLY leading indicator that
-# measured forward edge here. Requiring it to be positive on a Buy improved
-# every dimension at once on 7-day graded history (score>=75 + RS>=55 cohort):
-#   baseline .............. n=56  beat 70%  median +2.63%  worst -4.3%
-#   with CMF > 0 .......... n=23  beat 83%  median +4.70%  worst -1.8%
-#   rejected (CMF <= 0) ... n=33  beat 61%  median +1.14%  worst -4.3%
-# Improving the WORST case as well as the median is rare — most filters trade
-# one for the other. Roughly halves the number of Buys; that is the point.
+# Money-flow confirmation for a Buy. Threshold moved 0.0 -> -0.15 on 2026-09-04
+# after auditing it against the CANDIDATE POOL over 5 years of adjusted,
+# tradeable history — the test that catches this repo's recurring failure, where
+# a veto rejects a better subset than it passes.
+#
+# At 0.0 the veto rejected HALF the pool to capture almost nothing. The sweep is
+# monotonic: a tighter cut rejects far fewer candidates AND captures more.
+#   threshold   rejects   % of pool   5d diff   10d diff
+#     0.00      12,824      50.1%     -0.07pp   -0.16pp
+#    -0.10       6,655      26.0%     -0.17pp   -0.32pp
+#    -0.15       4,276      16.7%     -0.30pp   -0.46pp
+#    -0.20       2,704      10.6%     -0.37pp   -0.57pp
+# -0.15 rejects a THIRD as many candidates while capturing FOUR TIMES the
+# effect. All the information sits below -0.15; everything between -0.15 and
+# +0.15 measured as noise (5d medians of 0.00% across four buckets).
+#
+# Independence at -0.15: n=4,276, 49 symbols, 25 sectors, top symbol 4%.
+# Year split: 2024 -0.29pp, 2025 -0.56pp, 2026 -0.32pp — the three most recent
+# years agree and the LIVE regime points the right way, which is exactly what
+# the 15-40% extension zone failed (it flipped positive in 2026 and was
+# rejected). Caveat kept: 2022 (+0.06pp) and 2023 (-0.01pp) show nothing, so the
+# effect may be regime-dependent rather than permanent — re-run the year split
+# before tightening it further.
+#
+# SUPERSEDES the 2026-08-13 note that credited CMF>0 with lifting the beat rate
+# 70% -> 83% on n=56. That measurement compared the filtered subset against a
+# baseline rather than asking whether the REJECTED days were worse than the KEPT
+# ones, and on the larger, cleaner sample the cut at zero does not survive.
 # CMF=None (not computable) never vetoes: missing data must not block a trade.
-BUY_MIN_CMF = 0.0
+BUY_MIN_CMF = -0.15
 
 # ---------------------------------------------------------------------------
 # 3z. EARLY WATCH — lead time before a name reaches the Buy band (2026-08-13)
