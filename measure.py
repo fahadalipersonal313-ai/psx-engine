@@ -37,7 +37,7 @@ def load(day_dedupe=True):
         rows = [dict(r) for r in c.execute(
             """SELECT run_time, symbol, final_score, relative_strength, cmf,
                       confluence, tech_flags, signal, price, price_3d, price_7d
-               FROM runs WHERE price IS NOT NULL""")]
+               FROM runs WHERE strategy_version IS NULL AND price IS NOT NULL ORDER BY run_time DESC, id DESC""")]
     if not day_dedupe:
         return rows
     seen = {}

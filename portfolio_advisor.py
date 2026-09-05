@@ -43,28 +43,16 @@ def load_portfolio(path=None):
             avg = h.get("avg_cost")
             holds.append({"symbol": str(h["symbol"]).upper(),
                           "qty": float(h["qty"]),
-                          "avg_cost": None if avg is None else float(avg)})
+                          "stop": h.get("stop"), "avg_cost": None if avg is None else float(avg)})
         except (KeyError, TypeError, ValueError):
             continue
-    return {"cash_pkr": float(d.get("cash_pkr") or 0), "holdings": holds}
+    return {"cash_pkr": float(d.get("cash_pkr") or 0), "holdings": holds, "pending": d.get("pending", [])}
 
 
 def _size(price, stop, cash_left, equity, current_value):
-    """Risk-based share count, bounded by per-trade risk, remaining position-cap
-    room, and the cash still available. Returns (shares, value)."""
-    if not price or price <= 0 or cash_left <= 0:
-        return 0, 0.0
-    cap_value = equity * config.RISK["max_position_pct"] / 100
-    room_value = max(0.0, cap_value - current_value)
-    by_cap = room_value / price
-    by_cash = cash_left / price
-    if stop and price > stop:
-        max_loss = equity * config.RISK["max_risk_per_trade_pct"] / 100
-        by_risk = max_loss / (price - stop)
-    else:
-        by_risk = by_cash            # no valid stop -> let cash/cap bind
-    shares = int(max(0, min(by_risk, by_cap, by_cash)))
-    return shares, round(shares * price, 0)
+    from position_sizing import size
+    result = size(price, stop, equity, cash_left, current_value)
+    return (result['shares'], result['value']) if result else (0, 0.0)
 
 
 def advise(portfolio, latest):
@@ -102,10 +90,12 @@ def advise(portfolio, latest):
         pl_pct = (pl / cost * 100) if (pl is not None and cost) else None
         pos_pct = (mv / equity * 100) if (mv and equity) else 0.0
         signal = (r or {}).get("signal")
-        stop = (r or {}).get("stop_loss")
+        stop = next((h.get("stop") for h in holds if h["symbol"] == sym), None)
         under_cap = pos_pct < config.RISK["max_position_pct"]
 
-        if r is None:
+        if (r or {}).get("strategy_version"):
+            action, detail = "REVIEW", "Versioned opportunity only; use account admission and the actual position stop."
+        elif r is None:
             action, detail = "NO COVERAGE", "Not in the engine universe — tracked for P/L only."
         elif signal == "Exit":
             action, detail = "EXIT", "Engine flags Exit — close the position."
@@ -152,7 +142,7 @@ def advise(portfolio, latest):
     for sym, r in latest.items():
         if sym in held_syms:
             continue
-        if r.get("signal") in ("Buy", "Strong Buy") and r.get("price"):
+        if not r.get("strategy_version") and r.get("signal") in ("Buy", "Strong Buy") and r.get("price"):
             deploy_ideas.append({"symbol": sym, "signal": r["signal"],
                                  "price": r["price"], "stop": r.get("stop_loss"),
                                  "score": r.get("final_score") or 0,

@@ -1,38 +1,23 @@
-"""market_regime.py — Tier 2 market context, driven by the benchmark index
-(config.BENCHMARK_INDEX) fetched from the same public PSX DPS endpoint as stocks.
-
-Two jobs:
-  1. REGIME GATE — is the market risk-on? The index must be above its own EMA
-     (config.REGIME_EMA_SPAN). Buying individual stocks while the index is below
-     its 50-EMA is a top way to lose money, so signal_generator softens Buys to
-     Watch when the regime is risk-off.
-  2. RELATIVE STRENGTH — is a stock OUTPERFORMING the index over 1/3/6 months?
-     Profit comes from owning leaders, not laggards, so RS feeds the technical
-     score and the ranking.
-
-Honest by design: if the index can't be fetched, regime is "unknown" (the gate
-fails OPEN — we never block trades on missing data) and RS is skipped (no
-fabricated number).
-"""
+"""Pure benchmark regime and synchronized relative-strength calculations. Missing inputs return unavailable results. Fetching is an explicit separate adapter."""
 
 import logging
 
 import config
-import data_fetcher
+import pandas as pd
+import numpy as np
 
 log = logging.getLogger("market_regime")
 
 
 def fetch_index():
     """Return (DataFrame[date, open, close, volume], meta) for the benchmark."""
+    import data_fetcher
     return data_fetcher.fetch_eod(config.BENCHMARK_INDEX)
 
 
 def assess_regime(index_eod=None):
     """Risk-on / risk-off from the index vs its EMA. Returns a dict; regime is
     'unknown' (gate disabled) when the index is missing or too short."""
-    if index_eod is None:
-        index_eod, _ = fetch_index()
     if index_eod is None or len(index_eod) < config.REGIME_EMA_SPAN:
         return {"regime": "unknown", "index": config.BENCHMARK_INDEX,
                 "level": None, "ema": None, "pct_above": None,
@@ -59,11 +44,18 @@ def relative_strength(stock_eod, index_eod=None):
     """Stock return minus index return over the configured windows, blended to a
     0-100 RS score (50 = tracks the index; >50 = outperforming). None if data is
     insufficient — never fabricated."""
-    if index_eod is None:
-        index_eod, _ = fetch_index()
     if stock_eod is None or index_eod is None:
         return None
-    sc, ic = stock_eod["close"].astype(float), index_eod["close"].astype(float)
+    if any("date" not in frame or frame["date"].duplicated().any() for frame in (stock_eod, index_eod)):
+        return None
+    aligned = pd.merge(stock_eod[["date", "close"]], index_eod[["date", "close"]], on="date", suffixes=("_stock", "_index")).sort_values("date")
+    if len(aligned) <= max(config.RS_LOOKBACKS.values()):
+        return None
+    if aligned["date"].iloc[-1] != stock_eod["date"].max() or aligned["date"].iloc[-1] != index_eod["date"].max():
+        return None
+    sc, ic = aligned["close_stock"].astype(float), aligned["close_index"].astype(float)
+    if not np.isfinite(sc).all() or not np.isfinite(ic).all() or (sc <= 0).any() or (ic <= 0).any():
+        return None
     rels, num, used_w = {}, 0.0, 0.0
     for name, w in config.RS_LOOKBACKS.items():
         sr, ir = _ret(sc, w), _ret(ic, w)

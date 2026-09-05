@@ -83,20 +83,9 @@ def _levels(row):
 
 
 def _add_size(price, stop, cash, equity, current_value):
-    """Shares an ADD could take, bounded by per-trade risk, the position cap and
-    cash. Mirrors risk_manager's rules so the brief cannot suggest a size the
-    engine would refuse."""
-    if not price or price <= 0 or not cash or cash <= 0:
-        return 0, 0.0
-    risk_budget = (equity or 0) * config.RISK["max_risk_per_trade_pct"] / 100
-    per_share_risk = (price - stop) if (stop and price > stop) else None
-    by_risk = (risk_budget / per_share_risk) if per_share_risk else 0
-    cap_value = (equity or 0) * config.RISK["max_position_pct"] / 100
-    room = max(cap_value - (current_value or 0), 0)
-    by_cap = room / price
-    by_cash = cash / price
-    shares = int(max(min(by_risk, by_cap, by_cash), 0))
-    return shares, shares * price
+    from position_sizing import size
+    result = size(price, stop, equity, cash, current_value)
+    return (result['shares'], result['value']) if result else (0, 0.0)
 
 
 def exit_plan(qty, price, stop, target1, equity, cap_pct, avg_cost=None):

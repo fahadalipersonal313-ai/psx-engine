@@ -36,7 +36,8 @@ def _row(rank, r):
         "Target2": t.get("target2"),
         "Risk": risk["risk_level"],
         "Signal": sig["signal"],
-        "Confidence%": sig["confidence"],
+        "Account admission": r.get("account_admission", {}).get("status", "unavailable"),
+        "Heuristic quality /100": sig["confidence"],
         "Why": "; ".join(sig.get("reasons", []))[:300],
         "Main risk": (risk["warnings"][0] if risk.get("warnings") else "")[:300],
     }
@@ -45,7 +46,7 @@ def _row(rank, r):
 def export(results, path=None):
     """Write the ranked results to an .xlsx and return its path."""
     ranked = sorted([r for r in results if r["shariah"]["eligible_for_ranking"]],
-                    key=lambda r: r["scoring"]["final_score"], reverse=True)
+                    key=lambda r: r["scoring"]["final_score"] if r["scoring"]["final_score"] is not None else -1, reverse=True)
     df = pd.DataFrame([_row(i, r) for i, r in enumerate(ranked, 1)])
     os.makedirs(config.EXCEL_DIR, exist_ok=True)
     path = path or os.path.join(

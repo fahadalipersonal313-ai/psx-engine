@@ -18,11 +18,8 @@ log = logging.getLogger("scheduler")
 
 
 def _in_market_hours(now=None):
-    now = now or datetime.now()
-    if now.weekday() not in config.MARKET_DAYS:
-        return False
-    hm = now.strftime("%H:%M")
-    return config.MARKET_OPEN <= hm <= config.MARKET_CLOSE
+    from session_calendar import is_live
+    return is_live(now)
 
 
 def _tick():
@@ -40,6 +37,8 @@ def _morning():
 
 
 def _evening():
+    import main
+    main.full_run()
     backtester.update_outcomes()
     text = reports.evening_report()
     print(text)

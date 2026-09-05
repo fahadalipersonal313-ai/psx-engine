@@ -3,6 +3,10 @@ so the engine can learn from history. Nothing is ever fabricated; missing
 outcomes stay NULL until real prices arrive."""
 
 import os
+import json
+import uuid
+from contextvars import ContextVar
+from data_quality import bar_error, source_priority
 import sqlite3
 import logging
 from datetime import datetime, timedelta
@@ -11,6 +15,96 @@ from contextlib import contextmanager
 import config
 
 log = logging.getLogger("database")
+
+RELIABILITY_SCHEMA = """
+CREATE TABLE IF NOT EXISTS quarantined_bars (
+ id INTEGER PRIMARY KEY, symbol TEXT, date TEXT, payload TEXT, reason TEXT);
+CREATE TABLE IF NOT EXISTS run_batches (
+ id TEXT PRIMARY KEY, started_at TEXT, status TEXT, expected INTEGER, error TEXT);
+CREATE TABLE IF NOT EXISTS decision_snapshots (
+ hash TEXT PRIMARY KEY, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS decisions (
+ symbol TEXT, session TEXT, version TEXT, config_hash TEXT, snapshot_hash TEXT,
+ state TEXT, payload TEXT, PRIMARY KEY(symbol,session,version,config_hash));
+CREATE TABLE IF NOT EXISTS opportunities (
+ id TEXT PRIMARY KEY, symbol TEXT, session TEXT, version TEXT, config_hash TEXT,
+ snapshot_hash TEXT, payload TEXT NOT NULL,
+ UNIQUE(symbol,session,version,config_hash));
+CREATE TABLE IF NOT EXISTS opportunity_outcomes (
+ opportunity_id TEXT PRIMARY KEY, status TEXT NOT NULL, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS opportunity_outcome_events (
+ hash TEXT PRIMARY KEY, opportunity_id TEXT NOT NULL, payload TEXT NOT NULL);
+"""
+
+
+@contextmanager
+def analysis_batch(expected):
+    batch_id = uuid.uuid4().hex
+    with conn() as c:
+        c.execute("INSERT INTO run_batches VALUES (?,?,?,?,NULL)",
+                  (batch_id, datetime.now().isoformat(), 'running', expected))
+    try:
+        with conn() as c:
+            c.execute('BEGIN IMMEDIATE')
+            token = _transaction.set(c)
+            try:
+                yield batch_id
+                rows = c.execute('SELECT symbol,signal FROM runs WHERE batch_id=?', (batch_id,)).fetchall()
+                if len(rows) != expected or len({r['symbol'] for r in rows}) != expected or all(r['signal'] == 'No data' for r in rows):
+                    raise ValueError('Incomplete or entirely unavailable analysis batch')
+                c.execute("UPDATE run_batches SET status='complete' WHERE id=?", (batch_id,))
+            finally:
+                _transaction.reset(token)
+    except Exception as exc:
+        with conn() as c:
+            c.execute("UPDATE run_batches SET status='failed',error=? WHERE id=?", (str(exc), batch_id))
+        raise
+
+
+def previous_decision(symbol, session, version, config_hash):
+    with conn() as c:
+        row = c.execute('SELECT state FROM decisions WHERE symbol=? AND session<? AND version=? AND config_hash=? ORDER BY session DESC LIMIT 1',
+                        (symbol, session, version, config_hash)).fetchone()
+    return json.loads(row['state']) if row else None
+
+
+def save_decision(decision):
+    from decision_engine import canonical, digest, state
+    from swing_evaluation import opportunity
+    with conn() as c:
+        snapshot_hash = decision.get('snapshot_hash')
+        if snapshot_hash:
+            c.execute('INSERT OR IGNORE INTO decision_snapshots VALUES (?,?)',
+                      (snapshot_hash, canonical(decision['snapshot'])))
+        c.execute('INSERT OR IGNORE INTO decisions VALUES (?,?,?,?,?,?,?)',
+                  (decision['symbol'], decision['decision_session'], decision['strategy_version'],
+                   decision['config_hash'], snapshot_hash, canonical(state(decision)), canonical(decision)))
+        if decision['signal']['signal'] not in ('Buy', 'Strong Buy'):
+            return None
+        active = c.execute("""SELECT o.id FROM opportunities o LEFT JOIN opportunity_outcomes x ON x.opportunity_id=o.id
+          WHERE o.symbol=? AND (x.status IS NULL OR x.status IN ('pending','unavailable')) LIMIT 1""", (decision['symbol'],)).fetchone()
+        if active:
+            return active['id']
+        item = opportunity(decision)
+        oid = digest([decision['symbol'], decision['decision_session'], decision['strategy_version'], decision['config_hash']])
+        c.execute('INSERT OR IGNORE INTO opportunities VALUES (?,?,?,?,?,?,?)',
+                  (oid, decision['symbol'], decision['decision_session'], decision['strategy_version'], decision['config_hash'], snapshot_hash, canonical(item)))
+        return oid
+
+
+def open_opportunities():
+    with conn() as c:
+        return [dict(r) for r in c.execute("""SELECT o.* FROM opportunities o LEFT JOIN opportunity_outcomes x ON x.opportunity_id=o.id
+             WHERE x.status IS NULL OR x.status IN ('pending','unavailable')""")]
+
+
+def save_opportunity_outcome(oid, outcome):
+    from decision_engine import canonical, digest
+    with conn() as c:
+        c.execute('INSERT OR IGNORE INTO opportunity_outcome_events VALUES (?,?,?)',
+                  (digest([oid,outcome]), oid, canonical(outcome)))
+        c.execute('INSERT INTO opportunity_outcomes VALUES (?,?,?) ON CONFLICT(opportunity_id) DO UPDATE SET status=excluded.status,payload=excluded.payload WHERE opportunity_outcomes.status IN (\'pending\',\'unavailable\')',
+                  (oid, outcome['status'], json.dumps(outcome, allow_nan=False)))
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS runs (
@@ -126,9 +220,16 @@ CREATE TABLE IF NOT EXISTS daily_eod (
 """
 
 
+_transaction = ContextVar("transaction", default=None)
+
+
 @contextmanager
 def conn():
-    c = sqlite3.connect(config.DB_PATH)
+    active = _transaction.get()
+    if active is not None:
+        yield active
+        return
+    c = sqlite3.connect(config.DB_PATH, timeout=30)
     c.row_factory = sqlite3.Row
     try:
         yield c
@@ -143,7 +244,11 @@ def init_db():
         # Lightweight migrations: add newer columns to `runs` if they're missing
         # (CREATE TABLE IF NOT EXISTS won't add columns to a pre-existing table).
         existing = {r[1] for r in c.execute("PRAGMA table_info(runs)")}
-        for col, decl in (("relative_strength", "REAL"), ("market_regime", "TEXT"),
+        for col, decl in (("account_admission", "TEXT"), ("account_reason", "TEXT"),
+                          ("strategy_version", "TEXT"), ("decision_session", "TEXT"),
+                          ("config_hash", "TEXT"), ("snapshot_hash", "TEXT"),
+                          ("raw_qualified", "INTEGER"), ("batch_id", "TEXT"),
+                          ("relative_strength", "REAL"), ("market_regime", "TEXT"),
                           ("tech_flags", "TEXT"), ("conviction_streak", "INTEGER"),
                           ("confluence", "INTEGER"),
                           ("buy_zone_low", "REAL"), ("buy_zone_high", "REAL"),
@@ -162,6 +267,12 @@ def init_db():
         c.execute("""CREATE TABLE IF NOT EXISTS focus_brief (
                        id INTEGER PRIMARY KEY AUTOINCREMENT,
                        run_time TEXT, symbol TEXT, action TEXT, payload TEXT)""")
+    with conn() as c:
+        c.executescript(RELIABILITY_SCHEMA)
+        existing = {r[1] for r in c.execute("PRAGMA table_info(corporate_actions)")}
+        for col, decl in (("verified", "INTEGER DEFAULT 0"), ("source", "TEXT"), ("known_at", "TEXT"), ("volume_factor", "REAL")):
+            if col not in existing:
+                c.execute(f"ALTER TABLE corporate_actions ADD COLUMN {col} {decl}")
     log.info("Database initialised at %s", config.DB_PATH)
 
 
@@ -213,13 +324,7 @@ def save_price(symbol, ts, price, volume, source):
 
 
 def save_daily_ohlc(symbol, date, o, h, l, c, volume, source):
-    """Bank one real daily OHLC bar (from intraday). REPLACE so re-runs on the
-    same day refine the high/low as more ticks arrive."""
-    with conn() as cx:
-        cx.execute("""INSERT OR REPLACE INTO daily_ohlc
-            (symbol, date, open, high, low, close, volume, source)
-            VALUES (?,?,?,?,?,?,?,?)""",
-                   (symbol, date, o, h, l, c, volume, source))
+    return save_hl_bar(symbol, date, o, h, l, c, volume, source, overwrite=True)
 
 
 def eod_history_state(symbol):
@@ -259,21 +364,21 @@ def get_eod_history(symbol, limit=1500):
 
 
 def save_hl_bar(symbol, date, o, h, l, c, volume, source, overwrite=False):
-    """Bank one historical OHLC bar. Returns 1 if a row was written, else 0.
-
-    IGNORE by default so bars already banked from the intraday feed are kept.
-    `overwrite` prefers the exchange's official figure, which is the more
-    accurate of the two: an intraday-derived high/low is reconstructed from
-    15-minute polls and understates the true range whenever an extreme printed
-    between them.
-    """
-    verb = "REPLACE" if overwrite else "IGNORE"
+    bar = dict(date=date, open=o, high=h, low=l, close=c, volume=volume, source=source)
+    error = bar_error(bar)
     with conn() as cx:
-        cur = cx.execute(f"""INSERT OR {verb} INTO daily_ohlc
-            (symbol, date, open, high, low, close, volume, source)
-            VALUES (?,?,?,?,?,?,?,?)""",
-                         (symbol, date, o, h, l, c, volume, source))
-        return cur.rowcount or 0
+        if error:
+            cx.execute("INSERT INTO quarantined_bars(symbol,date,payload,reason) VALUES (?,?,?,?)",
+                       (symbol, str(date), json.dumps(bar, default=str), error))
+            return 0
+        old = cx.execute("SELECT source FROM daily_ohlc WHERE symbol=? AND date=?", (symbol,date)).fetchone()
+        if old:
+            old_priority, new_priority = source_priority(old['source']), source_priority(source)
+            if new_priority < old_priority or (new_priority == old_priority and not overwrite):
+                return 0
+        cx.execute("INSERT OR REPLACE INTO daily_ohlc VALUES (?,?,?,?,?,?,?,?)",
+                   (symbol,date,float(o),float(h),float(l),float(c),float(volume),source))
+        return 1
 
 
 def save_order_book(rows):
@@ -392,11 +497,11 @@ def unlabelled_events(limit=40, min_abs_ret=0.0):
 def save_corporate_actions(actions):
     if not actions:
         return 0
-    cols = ("symbol", "ex_date", "ratio", "factor", "implied", "kind", "pct")
+    cols = ("symbol", "ex_date", "ratio", "factor", "implied", "kind", "pct", "verified", "source", "known_at", "volume_factor")
     with conn() as c:
         before = c.execute("SELECT COUNT(*) n FROM corporate_actions").fetchone()["n"]
         c.executemany(
-            f"INSERT OR REPLACE INTO corporate_actions ({','.join(cols)}) "
+            f"INSERT OR IGNORE INTO corporate_actions ({','.join(cols)}) "
             f"VALUES ({','.join('?' * len(cols))})",
             [tuple(a.get(k) for k in cols) for a in actions])
         after = c.execute("SELECT COUNT(*) n FROM corporate_actions").fetchone()["n"]
@@ -426,7 +531,7 @@ def get_daily_ohlc(symbol, limit=90):
     bars accumulate; empty/short -> caller falls back to the EOD-close proxies."""
     with conn() as c:
         rows = c.execute(
-            """SELECT date, open, high, low, close, volume FROM daily_ohlc
+            """SELECT date, open, high, low, close, volume, source FROM daily_ohlc
                WHERE symbol=? ORDER BY date DESC LIMIT ?""",
             (symbol, limit)).fetchall()
     return [dict(r) for r in reversed(rows)]
@@ -561,7 +666,7 @@ def indicator_stats(symbol=None):
 def signal_accuracy(symbol=None):
     """Win rate per signal type from completed runs."""
     q = """SELECT signal, outcome, COUNT(*) n FROM runs
-           WHERE outcome IS NOT NULL"""
+           WHERE strategy_version IS NULL AND outcome IS NOT NULL"""
     args = []
     if symbol:
         q += " AND symbol=?"
@@ -613,7 +718,7 @@ def gradeable_runs():
     with conn() as c:
         return [dict(r) for r in c.execute(
             """SELECT * FROM runs
-               WHERE price IS NOT NULL AND price_3d IS NOT NULL AND price > 0
+               WHERE strategy_version IS NULL AND price IS NOT NULL AND price_3d IS NOT NULL AND price > 0
                ORDER BY run_time ASC""")]
 
 

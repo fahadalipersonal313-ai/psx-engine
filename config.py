@@ -157,7 +157,7 @@ WEIGHTS = {"technical": 1.0, "fundamentals": 0.0,
 # candidate pool first, and causality-tagged news has no graded outcomes yet.
 # Run `python main.py measure` after ~2 weeks; if news-adjusted Buys do not
 # beat pure-technical ones, set NEWS_SCORE_ADJUST_MAX = 0.0 to switch it off.
-NEWS_SCORE_ADJUST_MAX = 8.0
+NEWS_SCORE_ADJUST_MAX = 0.0
 
 # Sector news gets its own, smaller cap (2026-08-25, user's request: "10% or
 # more depending whether causation or correlation"). A sector story moves every
@@ -167,7 +167,7 @@ NEWS_SCORE_ADJUST_MAX = 8.0
 # CAUSAL sector call (a refining-margin policy) reaches the full 4 while a
 # merely CORRELATED one is damped to ~35% of it and sector noise contributes 0.
 # Combined ceiling is therefore 12 points, and the two are summed then clamped.
-SECTOR_NEWS_SCORE_ADJUST_MAX = 4.0
+SECTOR_NEWS_SCORE_ADJUST_MAX = 0.0
 
 # Buy threshold raised 70 -> 75 (2026-08-12 audit of day-deduped graded runs).
 # Score band vs 3-day win rate: 70-75 won 30% (n=66), 75-80 won 68% (n=28),
@@ -695,7 +695,7 @@ TIMEZONE = "Asia/Karachi"
 # 8. STORAGE / LOGGING
 # ---------------------------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "psx_engine.db")
+DB_PATH = os.environ.get("PSX_DB_PATH", os.path.join(BASE_DIR, "psx_engine.db"))
 LOG_PATH = os.path.join(BASE_DIR, "engine.log")
 REPORT_DIR = os.path.join(BASE_DIR, "reports_out")
 
@@ -899,3 +899,13 @@ NEWS_WINDOW = {
 # on every weekday, which is the safe failure (a fetch on a closed day just
 # finds no fresh headlines and commits nothing).
 PSX_HOLIDAYS = []
+
+# Versioned technical research contract. No calibrated probability is available.
+STRATEGY_VERSION = "technical_swing_v2"
+FEATURE_HISTORY_LIMIT = 1500
+EXCHANGE_HOLIDAYS = []  # Populate from verified dated exchange notices.
+SESSION_OVERRIDES = {}  # date -> [(open, close)]; [] explicitly closes a day.
+PUBLICATION_DELAY_MINUTES = 30
+EXECUTION = {"holding_sessions": 10, "entry_gap_limit": 0.03,
+             "slippage_bps": 20, "fee_bps_per_side": 15,
+             "max_volume_participation": 0.01}

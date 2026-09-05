@@ -1,13 +1,4 @@
-"""scoring_engine.py — Blends the section scores into a final 0-100 score and
-a confidence percentage.
-
-Weights are configurable in config.WEIGHTS (currently technical 0.70 /
-fundamentals 0.30; news + sentiment are 0-weight). Learning adjusts
-CONFIDENCE, not weights: if a stock's past signals keep failing, confidence
-drops; if they keep working, it rises modestly. Small samples are flagged as
-overfitting risk and barely move confidence. The weak-section confidence
-penalty is weight-aware, so a minor section can't dominate confidence.
-"""
+"""Configured section scoring and explicitly uncalibrated heuristic quality. Pure technical mode ignores news modifiers and legacy outcome counters."""
 
 import logging
 
@@ -79,7 +70,8 @@ def historical_confidence_adjust(symbol):
 
 
 def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=None):
-    w = config.WEIGHTS
+    w = ({"technical": 1.0, "macro_news": 0.0, "sentiment": 0.0, "fundamentals": 0.0}
+         if config.PURE_TECHNICAL else config.WEIGHTS)
     fund = fundamentals or {"score": 50.0, "low_confidence": True}
     final = round(w["macro_news"] * macro["score"]
                   + w["sentiment"] * sentiment["score"]
@@ -92,7 +84,7 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=N
     # None -> no adjustment: "no news" is neutral, never bearish.
     def _news_adj(score, cap):
         # Ratings span 10-90, i.e. +-40 around neutral; scale that to +-cap.
-        if not cap or score is None:
+        if config.PURE_TECHNICAL or not cap or score is None:
             return 0.0
         return round(max(-1.0, min(1.0, (score - 50.0) / 40.0)) * cap, 1)
 
@@ -131,14 +123,15 @@ def compute(symbol, macro, sentiment, technical, fundamentals=None, tech_flags=N
     _sec = {"technical": technical["score"], "fundamentals": fund["score"],
             "macro_news": macro["score"], "sentiment": sentiment["score"]}
     scores = [v for k, v in _sec.items() if w.get(k, 0) > 0]
-    if scores and max(scores) - min(scores) < 15:
+    if len(scores) > 1 and max(scores) - min(scores) < 15:
         confidence += 8
-    adj, hist_note = historical_confidence_adjust(symbol)
-    ind_boost, ind_note = _indicator_accuracy_boost(symbol, tech_flags or {})
+    adj, ind_boost, ind_note = 0, 0, ""
+    hist_note = "Heuristic quality only; uncalibrated. Legacy labels do not estimate target success."
     confidence = round(max(10, min(95, confidence + adj + ind_boost)), 1)
     history_note = hist_note + (f" | {ind_note}" if ind_note else "")
 
     return {"final_score": final, "confidence": confidence,
+            "confidence_kind": "heuristic quality", "target_probability": None,
             "data_quality": data_quality, "weak_sections": weak,
             "history_note": history_note,
             "breakdown": {"macro_news": macro["score"],

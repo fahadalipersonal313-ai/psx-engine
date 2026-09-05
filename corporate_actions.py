@@ -1,28 +1,4 @@
-"""corporate_actions.py — find the splits and bonus issues hiding as crashes.
-
-PSX serves UNADJUSTED prices, so a 1:6 bonus arrives in the data as a -14.3%
-"loss" and a 1:10 split as -88%. Left alone these become the largest
-"idiosyncratic shocks" in the event library, and they poison every long-horizon
-return, drawdown and volatility computed across them.
-
-Detection rests on an exchange rule rather than a guess: **PSX runs a +-10%
-circuit breaker** (confirmed live — NRL prev close 517.58, limits 465.82 /
-569.34, exactly +-10%). A single-session move beyond that is mechanically
-impossible in ordinary trading, so it is a corporate action, a data error, or a
-resumption after suspension.
-
-The two directions are NOT symmetric, and treating them alike would be wrong:
-  * DOWN beyond the limit -> a bonus, split or rights issue. All of them cut the
-    price. Adjust.
-  * UP beyond the limit -> ambiguous. Newly listed scrips trade without a circuit
-    for their first sessions, some scrips carry narrower limits, and a
-    resumption after suspension can gap up. Never adjusted; only flagged, so a
-    real event is not silently rewritten.
-
-Raw prices are never modified. Actions are stored and the adjustment is applied
-ON READ, so the exchange's own record stays intact and any mistake here is
-reversible.
-"""
+"""Flag unexplained price discontinuities without guessing action factors. Only verified sourced action terms with explicit price and volume factors may adjust raw views. Historical raw bars remain unchanged."""
 
 import logging
 
@@ -45,7 +21,7 @@ def detect(panel):
     must be MULTIPLIED by to sit on the post-action scale.
     """
     close = panel["close"]
-    r = close.pct_change() * 100
+    r = close.pct_change(fill_method=None) * 100
     out = []
     for sym in close.columns:
         s = r[sym].dropna()
@@ -54,7 +30,7 @@ def detect(panel):
             out.append({
                 "symbol": sym, "ex_date": dt.strftime("%Y-%m-%d"),
                 "ratio": round(float(ratio), 6),
-                "factor": round(float(ratio), 6) if pct < 0 else None,
+                "factor": None,
                 # An implied 7/6 or 10/9 is the fingerprint of a 1:6 or 10%
                 # bonus; it is recorded for eyeballing, never used to decide.
                 "implied": round(1 / float(ratio), 4),
@@ -79,18 +55,20 @@ def adjust(panel, actions):
         return panel
     close = panel["close"]
     factors = pd.DataFrame(1.0, index=close.index, columns=close.columns)
+    volume_factors = factors.copy()
     applied = 0
     for a in actions:
-        if not a["factor"] or a["symbol"] not in close.columns:
+        if not valid_action(a) or a["symbol"] not in close.columns:
             continue
         ex = pd.Timestamp(a["ex_date"])
         # everything strictly BEFORE the ex-date moves onto the new scale
         factors.loc[factors.index < ex, a["symbol"]] *= a["factor"]
+        volume_factors.loc[volume_factors.index < ex, a["symbol"]] *= a["volume_factor"]
         applied += 1
     out = {}
     for field in ("open", "high", "low", "close"):
         out[field] = panel[field] * factors
-    out["volume"] = panel["volume"] / factors
+    out["volume"] = panel["volume"] * volume_factors
     log.info("Applied %d price-cut adjustments", applied)
     return out
 
@@ -99,7 +77,7 @@ def at_limit_mask(panel):
     """True where the session closed at the circuit limit. Those bars are often
     unfillable — there is frequently no counterparty — so a signal generated on
     one is not a trade you could have taken."""
-    r = panel["close"].pct_change() * 100
+    r = panel["close"].pct_change(fill_method=None) * 100
     return (r.abs() >= LIMIT_PCT - LIMIT_TOL) & (r.abs() <= LIMIT_PCT + LIMIT_TOL)
 
 
@@ -132,3 +110,25 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def valid_action(action):
+    from data_quality import finite
+    try:
+        return (action.get("verified") is True or action.get("verified") == 1) and bool(action.get("source")) and action.get("kind") in ("split", "bonus", "rights", "dividend") and finite(action.get("factor"), True) and finite(action.get("volume_factor"), True) and pd.Timestamp(action["known_at"]) <= pd.Timestamp(action["ex_date"])
+    except (KeyError, ValueError, TypeError):
+        return False
+
+
+def verified_bars(bars, actions, cutoff):
+    from copy import deepcopy
+    out = deepcopy(bars)
+    for action in actions:
+        if not valid_action(action) or action["ex_date"] > cutoff or action["known_at"] > cutoff:
+            continue
+        for bar in out:
+            if bar["date"] < action["ex_date"]:
+                for key in ("open", "high", "low", "close"):
+                    bar[key] = float(bar[key]) * float(action["factor"])
+                bar["volume"] = float(bar["volume"]) * float(action["volume_factor"])
+    return out

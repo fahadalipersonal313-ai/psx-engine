@@ -67,7 +67,7 @@ def fetch_intraday(symbol):
                 "live": True, "warning": None}
         last = df.iloc[-1]
         db.save_price(symbol, str(last["ts"]), float(last["price"]),
-                      float(last["volume"]), meta["source"])
+                      float(df["volume"].sum()), meta["source"])
         # Option B: bank today's REAL high/low from the ticks. PSX EOD has no
         # H/L, so over time this builds genuine daily OHLC history -> true
         # ATR/ADX become possible once enough days accumulate.

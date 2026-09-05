@@ -1,46 +1,8 @@
-"""signal_generator.py — Converts final score + risk assessment into one of:
-Strong Buy / Buy / Watch / Hold / Avoid / Exit.
-
-PURE-TECHNICAL MODE (config.PURE_TECHNICAL, 2026-08-12): decisions come from
-price/volume only. News- and sentiment-derived vetoes (bad_news,
-manipulation_risk) are still WARNED about but no longer downgrade a signal —
-risk_manager stops emitting them as vetoes, so the branches below go quiet.
-The chase guard (config.CHASE_GUARD_ENABLED) is OFF and the pullback/extension
-reference EMA is config.PULLBACK_EMA_SPAN (50, was 20): both deliberate risk-up
-choices by the user.
-
-Overrides ALWAYS beat the score:
-  * shariah issue            -> Exit (if held) / Avoid
-  * technical breakdown      -> Exit / Avoid
-  * poor risk/reward         -> downgrade Buy to Watch
-  * bad news / manipulation risk -> downgrade Buy to Watch (OFF in pure-technical)
-
-Tier 2 additions:
-  * Confluence gate  — Strong Buy needs ≥3/4 independent dimensions (trend,
-                       momentum, volume, structure); Buy needs ≥2. Below → Watch.
-  * Strong Buy confirmation — capped at Buy on its FIRST appearance; the next
-                              run still scoring Strong Buy confirms it. (No
-                              numeric streak/conviction count is tracked.)
-
-Anti-chase additions (don't buy at the peak):
-  * Overextension gate — price too far above the reference EMA (or parabolic
-                         momentum) steps the signal down one notch. DISABLED by
-                         config.CHASE_GUARD_ENABLED = False; still reported.
-  * Thin-headroom (poor_rr) — REAL room-to-resistance:risk below the minimum
-                         (price jammed under a ceiling) → Watch. (Via risk_manager,
-                         which now reads technical.headroom_rr, not the ≈2.0 proj R:R.)
-  * Pullback entry  — an extended setup held at Watch shows its buy-zone (the
-                       50-EMA band); when price later retraces INTO that zone with
-                       the uptrend intact, a cooled Watch/Hold is upgraded to Buy
-                       (buy the dip, don't chase the peak). Stateless across runs.
-  * Earnings blackout — within EARNINGS_BLACKOUT_DAYS of a KNOWN result date, a
-                       fresh Buy/Strong Buy is held at Watch (binary event risk).
-                       Only acts when a date is known; never invents a blackout.
-"""
+"""Convert technical scores and required data/risk gates into research signals. Strong Buy uses previous qualifying completed-session state supplied by the caller. Confluence is descriptive, not evidence of independent confirmations."""
 
 import logging
 import config
-import database as db
+from data_quality import finite, valid_levels
 
 log = logging.getLogger("signal")
 
@@ -113,7 +75,7 @@ def early_watch(final_score, technical, shariah):
 
 def generate(symbol, final_score, confidence, risk, shariah, technical,
              regime=None, prev_signal=None, days_to_earnings=None,
-             regime_pct_above=None):
+             regime_pct_above=None, previous_qualified=False, held=False):
     """Generate a trading signal.
 
     prev_signal: the most recent stored signal — used by the Strong Buy
@@ -127,7 +89,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # signal so a fetch failure can never masquerade as a Hold/Watch with a
     # bogus 0.00 price/stop/target sitting in the ranking.
     price = technical.get("price")
-    if not price or price <= 0:
+    if not finite(price, True) or not finite(final_score):
         return {"signal": "No data",
                 "reasons": ["No usable price for this symbol this run — "
                             "excluded from ranking until the feed returns."],
@@ -138,9 +100,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append("Shariah status unverified — excluded by policy")
 
     if "breakdown" in risk["vetoes"]:
-        prev = db.last_run(symbol)
-        override = "Exit" if prev and prev.get("signal") in \
-            ("Buy", "Strong Buy", "Hold") else "Avoid"
+        override = "Exit" if held else "Avoid"
         reasons.append("Technical breakdown below support")
 
     if override:
@@ -206,9 +166,10 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # ---- Tier 2: confirmation gate (before confluence so we check intent, not result)
     # A new Strong Buy on its first appearance is held at Buy — the market has
     # to CONFIRM it on the next run. This prevents chasing a one-run spike.
-    if base == "Strong Buy" and prev_signal != "Strong Buy":
+    raw_qualified = base == "Strong Buy"
+    if base == "Strong Buy" and not previous_qualified:
         base = "Buy"
-        reasons.append("Downgraded Strong Buy→Buy: first run at this level — "
+        reasons.append("Downgraded Strong Buy→Buy: first completed session at this level — "
                        "needs one more consecutive confirmation")
 
     # ---- Confluence: MEASURED and reported, but no longer a gate (2026-08-12).
@@ -289,7 +250,13 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # names EVERY reason it failed, so a disabled veto cannot hide an active one.
     if base in ("Strong Buy", "Buy"):
         downgrades = []
-        if _earnings_soon:
+        if not valid_levels(price, technical.get("stop_loss"), technical.get("target1"), technical.get("target2")):
+            base = "Watch"; reasons.append("Invalid stop or target ordering")
+        elif technical.get("cmf") is None or technical.get("relative_strength") is None or regime in (None, "unknown"):
+            base = "Watch"; reasons.append("Required market or money-flow data unavailable")
+        elif "illiquid" in risk["vetoes"]:
+            base = "Watch"; reasons.append("Insufficient liquidity for entry")
+        elif _earnings_soon:
             downgrades.append(
                 f"earnings/result due in ~{days_to_earnings}d — binary "
                 "event risk, don't open a fresh position into the announcement")
@@ -309,7 +276,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
             downgrades.append("material negative news — "
                               "verify the headline before acting")
         if confidence < 45:
-            downgrades.append("confidence below 45% (weak data or poor history)")
+            downgrades.append("heuristic quality below 45 (weak data or poor history)")
         if (technical.get("cmf") is not None
                 and technical["cmf"] <= config.BUY_MIN_CMF):
             downgrades.append(
@@ -349,6 +316,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         reasons.append("Manual confirmation REQUIRED before placing any order")
 
     return {"signal": base, "reasons": reasons, "confidence": confidence,
+            "raw_qualified": raw_qualified and base in ("Buy", "Strong Buy"),
             "confluence": confluence, "confluence_dims": conf_dims,
             "buy_zone_low": technical.get("buy_zone_low"),
             "buy_zone_high": technical.get("buy_zone_high")}

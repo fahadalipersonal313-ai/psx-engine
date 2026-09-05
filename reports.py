@@ -51,15 +51,15 @@ def build_run_report(results, market_notes, portfolio=None):
     """results: list of per-stock result dicts from main.analyze_stock.
     portfolio: optional output of portfolio_risk.assess (book-level risk)."""
     ranked = sorted([r for r in results if r["shariah"]["eligible_for_ranking"]],
-                    key=lambda r: r["scoring"]["final_score"], reverse=True)
+                    key=lambda r: r["scoring"]["final_score"] if r["scoring"]["final_score"] is not None else -1, reverse=True)
     excluded = [r for r in results if not r["shariah"]["eligible_for_ranking"]]
 
     lines = [f"# PSX Shariah Engine Report — {datetime.now():%Y-%m-%d %H:%M}",
-             "", "## Market summary",
+             "", "Experimental technical opportunities. Quality is heuristic, not a probability. Targets expire after ten exchange sessions.", "", "## Market summary",
              market_notes or "No macro headlines captured this run.",
              "", "## Ranking (shariah-verified only)", ""]
     hdr = ("| # | Stock | Shariah | Final | Tech | Fund | Macro | Sent | Price | "
-           "Support | Resist | Entry zone | Stop | Target | Risk | Signal | Conf |")
+           "Support | Resist | Entry zone | Stop | Target | Risk | Signal | Quality |")
     lines += [hdr, "|" + "---|" * 17]
     for i, r in enumerate(ranked, 1):
         t, s = r["technical"], r["scoring"]
@@ -73,13 +73,14 @@ def build_run_report(results, market_notes, portfolio=None):
             f"| {_fmt(t.get('price'))} | {_fmt(t.get('support'))} "
             f"| {_fmt(t.get('resistance'))} | {entry} | {_fmt(t.get('stop_loss'))} "
             f"| {_fmt(t.get('target1'))} | {r['risk']['risk_level']} "
-            f"| {r['signal']['signal']} | {s['confidence']}% |")
+            f"| {r['signal']['signal']} | {s['confidence']}/100 |")
 
     lines += ["", "## Per-stock detail", ""]
     for r in ranked:
         lines += [f"### {r['symbol']} — {r['signal']['signal']} "
-                  f"({r['scoring']['confidence']}% confidence, "
+                  f"({r['scoring']['confidence']}/100 heuristic quality, "
                   f"{r['risk']['risk_level']} risk)",
+                  f"- Account admission: {r.get('account_admission', {}).get('status', 'unavailable')} (technical opportunity only)",
                   f"- Why: {'; '.join(r['signal']['reasons'])}",
                   f"- Main risk: {r['risk']['warnings'][0] if r['risk']['warnings'] else 'n/a'}",
                   f"- Macro view: {r['macro']['explanation']}",
@@ -123,7 +124,7 @@ def morning_report():
             lines.append(f"- {sym}: no data yet")
             continue
         lines.append(f"- {sym}: last signal **{r['signal']}** "
-                      f"(score {r['final_score']}, conf {r['confidence']}%), "
+                      f"(score {r['final_score']}, quality {r['confidence']}/100), "
                       f"price {r['price']}, stop {r['stop_loss']}, "
                       f"target {r['target1']}, risk {r['risk_level']}")
     lines += ["", "Plan: act only on signals re-confirmed after the open; "

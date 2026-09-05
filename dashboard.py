@@ -15,7 +15,8 @@ news, and reports.
 
 import os
 import json
-import hashlib
+import hmac
+import time
 
 import pandas as pd
 import streamlit as st
@@ -382,20 +383,8 @@ def _password_configured():
     return pw
 
 
-def _auth_token(pw):
-    """Non-reversible token derived from the password, used to keep a tab logged
-    in across reloads. Not the password itself; still a bearer token, so anyone
-    with the URL gets in — acceptable for a single-user personal dashboard."""
-    return hashlib.sha256(("psx-dash:" + str(pw)).encode()).hexdigest()[:32]
-
-
 def _auto_refresh():
-    """Streamlit Cloud reboots the app when a new commit lands, but a browser
-    tab left open keeps rendering whatever it loaded at boot. Reload the whole
-    page on a timer so the tab reconnects to the freshly-rebooted server and
-    re-reads the committed DB. Works WITH a password now: login stamps a hashed
-    token into the URL (see _require_password) that survives the reload and the
-    Streamlit Cloud redeploy, so the refresh no longer forces a re-login."""
+    """Refresh the page; authentication remains in the server session only."""
     secs = int(getattr(config, "DASHBOARD_REFRESH_SECONDS", 300))
     if secs <= 0:
         return
@@ -408,20 +397,16 @@ def _auto_refresh():
 def _require_password():
     pw = _password_configured()
     if not pw:
-        return
-    token = _auth_token(pw)
-    # Stay authenticated across the timed reload AND across Streamlit Cloud
-    # redeploys (which drop all server-side sessions) by carrying a hashed token
-    # in the URL query string — window.location.reload() preserves it, so the
-    # reloaded tab re-authenticates itself instead of bouncing to the login box.
-    if st.session_state.get("auth_ok") or st.query_params.get("k") == token:
-        st.session_state["auth_ok"] = True
+        st.error("Configure DASHBOARD_PASSWORD to access this dashboard.")
+        st.stop()
+    if 'k' in st.query_params:
+        del st.query_params['k']
+    if st.session_state.get('auth_until', 0) > time.time():
         return
     st.title("🔒 PSX Shariah Engine")
     entered = st.text_input("Enter dashboard password", type="password")
-    if entered == pw:
-        st.session_state["auth_ok"] = True
-        st.query_params["k"] = token
+    if entered and hmac.compare_digest(str(entered), str(pw)):
+        st.session_state["auth_until"] = time.time() + 3600
         st.rerun()
     elif entered:
         st.error("Incorrect password.")
@@ -479,11 +464,12 @@ regime = (latest["market_regime"].dropna().iloc[0]
 # UTC+5 with no DST). Show it as-is and measure age against PKT now — do NOT
 # add another +5h (that double-shifted the time and made age go negative).
 _latest_pkt = pd.to_datetime(latest["run_time"].max())
+_latest_pkt = _latest_pkt.tz_localize("Asia/Karachi") if _latest_pkt.tzinfo is None else _latest_pkt.tz_convert("Asia/Karachi")
 last_updated = _latest_pkt.strftime("%m-%d %H:%M") + " PKT"
 # Honest staleness flag: the cloud may pause runs (off-hours, weekends, paused
 # Action) — in that case signals here describe yesterday's market, not today's.
 # Compare against PKT now so the age matches the stored PKT run_time.
-_now_pkt = pd.Timestamp.now(tz="Asia/Karachi").tz_localize(None)
+_now_pkt = pd.Timestamp.now(tz="Asia/Karachi")
 _age_hours = (_now_pkt - _latest_pkt).total_seconds() / 3600
 _amber = getattr(config, "DATA_FRESHNESS_AMBER_HOURS", 4)
 _red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
@@ -554,15 +540,6 @@ assumed_regime = {"Assume risk-on": "risk-on",
 # chase/earnings/rr downgrades are never touched. Buy, never Strong Buy (pre-gate
 # tier unknown — take the conservative one).
 def _display_signal(sig, reason):
-    # Promote ONLY when the regime gate is the SOLE veto. Downgrade reasons are
-    # collected (not first-match-wins) since 2026-09-01, so "; also " marks a
-    # Watch that carries a second, non-regime veto — assuming risk-on does not
-    # clear that one, and promoting it would invent a Buy the engine never had.
-    r = str(reason)
-    if (assumed_regime == "risk-on" and regime == "risk-off"
-            and sig == "Watch" and "market regime risk-off" in r
-            and "; also " not in r):
-        return "Buy"
     return sig
 
 
@@ -579,7 +556,7 @@ tile(t1, "Market regime", regime_pill(regime),
 _act_sub = f"{len(exits)} exits" if len(exits) else "no exits"
 if _whatif_active:
     _act_sub += " · 🔀 assume risk-on"
-tile(t2, "Actionable now", f"{len(buys)} buys", _act_sub)
+tile(t2, "Technical opportunities", f"{len(buys)} buys", _act_sub)
 top = buys.iloc[0]["symbol"] if not buys.empty else "—"
 tile(t3, "Top pick", top,
      f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
@@ -646,7 +623,7 @@ _R_ORDER = {"highly_positive": 0, "positive": 1, "negative": 2,
             "highly_negative": 3, "neutral": 4}
 _all_news.sort(key=lambda h: _R_ORDER.get(
     (_glm_ratings.get(h["_sym"]) or {}).get("rating"), 5))
-st.markdown("### 📰 News across the board — last 24h")
+st.markdown("### 📰 Optional news context — last 24h")
 if _all_news:
     st.caption(f"{len(_all_news)} credible-desk headlines across "
                f"{len({h['_sym'] for h in _all_news})} tickers. Company-anchored; "
@@ -719,7 +696,7 @@ if _bursts:
 # book position resolved into ONE action. Never a competing score.
 # Portfolio-aware focus brief only rendered when the concentration guard is
 # on; the user turned it off to remove portfolio analysis from the dashboard.
-_brief = db.last_focus_brief(config.FOCUS_SYMBOL) if config.CONCENTRATION_VETO_ENABLED else None
+_brief = None  # Legacy focus advice is not part of the versioned opportunity contract.
 if _brief:
     _ACT_COLOR = {"ADD": NEON["green"], "OPEN (in buy-zone)": NEON["green"],
                   "HOLD — DO NOT ADD": NEON["amber"], "WAIT FOR ZONE": NEON["amber"],
@@ -751,7 +728,7 @@ if _brief:
     _bx.markdown(
         f'{sig_pill(_brief["signal"])} &nbsp;'
         f'<span style="font-size:13px;opacity:.8">score '
-        f'{fmt(_brief["final_score"], 1)} · conf {fmt(_brief["confidence"], 0)}% · '
+        f'{fmt(_brief["final_score"], 1)} · quality {fmt(_brief["confidence"], 0)}/100 · '
         f'RS {fmt(_brief["relative_strength"], 0)} · CMF '
         f'{fmt(_brief["cmf"])} · regime {_brief["regime"]}</span>', unsafe_allow_html=True)
     if _brief.get("exit_plan"):
@@ -843,13 +820,13 @@ elif compact:
     act_show = action[["symbol", "display_signal", "price", "stop_loss", "target1",
                        "confidence", "relative_strength"]].copy()
     act_show["news"] = [news_cell(s) for s in action["symbol"]]
-    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Conf%",
+    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Quality",
                         "RS", "News"]
     st.dataframe(
         act_show.style
         .map(lambda v: f"color:{NEON_SIG.get(v, '')};font-weight:700", subset=["Signal"])
         .format({"Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}",
-                 "Conf%": "{:.0f}", "RS": "{:.0f}"}, na_rep="—"),
+                 "Quality": "{:.0f}", "RS": "{:.0f}"}, na_rep="—"),
         width="stretch", hide_index=True)
 else:
     st.caption("Manual confirmation required before any order. Position sizing "
@@ -889,7 +866,7 @@ else:
                 box.markdown(
                     f'{risk_pill(r["risk_level"])} &nbsp; '
                     f'<span style="opacity:.75;font-size:13px">conf '
-                    f'{fmt(r["confidence"], 0)}% · {rs_txt} · '
+                    f'{fmt(r["confidence"], 0)}/100 quality · {rs_txt} · '
                     f'R:R {fmt((r["target1"] - r["price"]) / (r["price"] - r["stop_loss"]), 1) if r["price"] and r["stop_loss"] and r["price"] > r["stop_loss"] else "—"}'
                     f'</span>',
                     unsafe_allow_html=True)
@@ -1003,7 +980,7 @@ with tab_watch:
                         for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
     show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
     show["news"] = [news_cell(s) for s in show["symbol"]]
-    show.columns = ["Symbol", "Score", "RS", "Signal", "Risk", "Conf%",
+    show.columns = ["Symbol", "Score", "RS", "Signal", "Risk", "Quality",
                     "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
                     "News"]
 
@@ -1024,77 +1001,28 @@ with tab_watch:
     styled = (show.style
               .map(_sig_css, subset=["Signal"])
               .map(_risk_css, subset=["Risk"])
-              .format({"Score": "{:.1f}", "RS": "{:.0f}", "Conf%": "{:.0f}",
+              .format({"Score": "{:.1f}", "RS": "{:.0f}", "Quality": "{:.0f}",
                        "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
 
 with tab_edge:
-    st.subheader("🧪 Strategy edge — backtest")
-    st.caption("Replays EOD history with the technical module and reports the "
-               "metrics that predict profit: expectancy, profit factor, max "
-               "drawdown, plus an OUT-OF-SAMPLE verdict. Evidence, not proof.")
-
-    def _metric_cards(m, cols):
-        pf_val = m.get("profit_factor")
-        cols[0].metric("Expectancy/trade", f'{m.get("expectancy_pct", 0):.2f}%')
-        cols[1].metric("Profit factor",
-                       "∞" if pf_val == float("inf") else fmt(pf_val, 2))
-        cols[2].metric("Win rate", f'{m.get("win_rate_pct", 0):.0f}%')
-        cols[3].metric("Max drawdown", f'{m.get("max_drawdown_pct", 0):.1f}%')
-        cols[4].metric("Trades", f'{m.get("trades", 0)}')
-
-    if st.button("▶ Run universe backtest (network-heavy, ~20-40s)"):
-        st.session_state["run_bt"] = True
-    if st.session_state.get("run_bt"):
-        with st.spinner("Replaying EOD history across the universe…"):
+    st.subheader("Target-before-stop research")
+    st.caption("Versioned completed-session decisions, next-session opening entry, costs and ten-session expiry. Uncalibrated; current-universe survivorship bias remains.")
+    if st.button("Run historical opportunity study"):
+        with st.spinner("Replaying finalized historical bars..."):
             res = bt_portfolio()
-        agg = res["aggregate"]
-        if not agg.get("trades"):
-            st.warning("No qualifying setups across the universe in the window.")
-        else:
-            st.markdown(f"**Aggregate across {res['symbols_traded']} symbols** "
-                        f"— total return {agg['total_return_pct']:.1f}% over "
-                        f"{agg['trades']} trades")
-            _metric_cards(agg, st.columns(5))
-            curve = agg.get("equity_curve") or []
-            if curve:
-                eq = go.Figure(go.Scatter(
-                    y=[(v - 1) * 100 for v in curve], mode="lines",
-                    line=dict(color=NEON["cyan"], width=2),
-                    fill="tozeroy", fillcolor="rgba(0,229,255,0.10)",
-                    name="Equity"))
-                eq.update_layout(title="Compounded equity curve (% return)",
-                                 xaxis_title="trade #", yaxis_title="cumulative %")
-                st.plotly_chart(neon_fig(eq, height=320), width="stretch")
-
-            per = res["per_symbol"]
-            if per:
-                pdf = pd.DataFrame(per).T.reset_index().rename(
-                    columns={"index": "Symbol"})
-                pdf = pdf.sort_values("expectancy_pct", ascending=False)
-                pdf = pdf[["Symbol", "trades", "win_rate_pct", "expectancy_pct",
-                           "profit_factor", "max_drawdown_pct",
-                           "total_return_pct", "verdict"]]
-                pdf.columns = ["Symbol", "Trades", "Win%", "Exp%", "PF",
-                               "MaxDD%", "TotRet%", "Out-of-sample verdict"]
-                st.markdown("##### Per-symbol edge (sorted by expectancy)")
-                st.dataframe(pdf.style.format(
-                    {"Win%": "{:.0f}", "Exp%": "{:.2f}", "PF": "{:.2f}",
-                     "MaxDD%": "{:.1f}", "TotRet%": "{:.1f}"}, na_rep="—"),
-                    width="stretch", hide_index=True, height=460)
-        st.caption("⚠ " + res["warning"])
-    else:
-        st.info("Click the button to run the backtest. Results are cached for an "
-                "hour. You can also backtest a single stock in the Stock detail tab.")
+        st.json(res['metrics'])
+        st.dataframe(pd.DataFrame([dict(symbol=r['symbol'], **r['metrics']) for r in res['results']]))
+        st.caption(res['note'])
 
 with tab_stock:
     sym = st.selectbox("Stock", config.STOCKS)
     r = db.last_run(sym)
     if r:
         c1, c2, c3, c4, c5 = st.columns(5)
-        c1.metric("Signal", r["signal"], f"{fmt(r['confidence'], 0)}% conf")
+        c1.metric("Signal", r["signal"], f"{fmt(r['confidence'], 0)}/100 quality")
         c2.metric("Final score", fmt(r["final_score"], 1))
         c3.metric("Rel. strength", fmt(r.get("relative_strength"), 0))
         c4.metric("Price", fmt(r["price"]))
@@ -1134,51 +1062,22 @@ with tab_stock:
     else:
         st.error(meta.get("warning", "No price data."))
 
-    with st.expander("🧪 Backtest this stock (expectancy / profit factor / OOS)"):
-        if st.button(f"Run backtest for {sym}", key="bt_one"):
-            with st.spinner(f"Backtesting {sym}…"):
-                res = bt_symbol(sym)
-            if res.get("error") or not res.get("trades"):
-                st.warning(res.get("note") or res.get("error")
-                           or "No qualifying setups.")
-            else:
-                w = res["window"]
-                st.caption(f"{w['bars']} bars · {w['from']} → {w['to']}")
-                cc = st.columns(5)
-                cc[0].metric("Expectancy/trade", f'{res["expectancy_pct"]:.2f}%')
-                cc[1].metric("Profit factor",
-                             "∞" if res["profit_factor"] == float("inf")
-                             else fmt(res["profit_factor"], 2))
-                cc[2].metric("Win rate", f'{res["win_rate_pct"]:.0f}%')
-                cc[3].metric("Max drawdown", f'{res["max_drawdown_pct"]:.1f}%')
-                cc[4].metric("Trades", f'{res["trades"]}')
-                verdict_clr = (NEON["green"] if "HOLDS" in res["verdict"]
-                               else NEON["red"] if "does NOT" in res["verdict"]
-                               else NEON["amber"])
-                st.markdown(
-                    f'**Out-of-sample:** <span style="color:{verdict_clr}">'
-                    f'{res["verdict"]}</span>', unsafe_allow_html=True)
-                oos, is_ = res["out_of_sample"], res["in_sample"]
-                st.caption(
-                    f"In-sample exp {is_.get('expectancy_pct', '—')}% "
-                    f"(PF {is_.get('profit_factor', '—')}) vs "
-                    f"out-of-sample exp {oos.get('expectancy_pct', '—')}% "
-                    f"(PF {oos.get('profit_factor', '—')})")
-                wf = res.get("walk_forward") or []
-                if wf:
-                    wdf = pd.DataFrame(wf)
-                    st.markdown("Walk-forward folds:")
-                    st.dataframe(wdf, width="stretch", hide_index=True)
-                st.caption("⚠ " + res["warning"])
+    with st.expander("Historical opportunity evaluation"):
+        if st.button(f"Evaluate {sym}", key="bt_one"):
+            res = bt_symbol(sym)
+            st.json(res['metrics'])
+            st.json(res['vetoes'])
+            st.caption(res['validation'])
 
 with tab_hist:
     sym = st.selectbox("Stock ", config.STOCKS, key="hist")
     hist = pd.DataFrame(db.run_history(sym, 300))
     if len(hist):
-        hist["run_time"] = pd.to_datetime(hist["run_time"])
+        hist["run_time"] = pd.to_datetime(hist["run_time"], utc=True, format="mixed")
         cols = [c for c in ["final_score", "technical_score", "relative_strength"]
                 if c in hist.columns]
         st.line_chart(hist.set_index("run_time")[cols])
+        st.caption("Quality is heuristic. Legacy outcome labels measure benchmark-relative moves, not target success.")
         st.subheader("Signal history")
         st.dataframe(hist[["run_time", "signal", "confidence", "price", "outcome"]],
                      width="stretch", hide_index=True)

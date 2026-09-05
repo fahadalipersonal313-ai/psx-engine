@@ -67,6 +67,7 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
     # ---- hard warnings
     if technical.get("avg_volume") is not None and \
        technical["avg_volume"] < config.RISK["min_avg_daily_volume"]:
+        vetoes.append("illiquid")
         warnings.append(f"ILLIQUID: 20-day avg volume "
                         f"{technical['avg_volume']:,.0f} below "
                         f"{config.RISK['min_avg_daily_volume']:,} — exits may slip badly")
@@ -129,18 +130,11 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
                  "Medium" if hard == 1 else "Low"
 
     # ---- position sizing (risk-based)
-    sizing = None
-    if price and stop and price > stop:
-        risk_per_share = price - stop
-        max_loss = capital_pkr * config.RISK["max_risk_per_trade_pct"] / 100
-        shares = int(max_loss / risk_per_share)
-        cap_shares = int(capital_pkr * config.RISK["max_position_pct"] / 100 / price)
-        shares = max(0, min(shares, cap_shares))
-        sizing = {"capital_assumed_pkr": capital_pkr,
-                  "max_loss_if_stopped_pkr": round(shares * risk_per_share, 0),
-                  "suggested_shares": shares,
-                  "position_value_pkr": round(shares * price, 0),
-                  "risk_per_share": round(risk_per_share, 2)}
+    from position_sizing import size
+    raw = size(price, stop, capital_pkr, avg_volume=technical.get('avg_volume'))
+    sizing = None if raw is None else {'capital_assumed_pkr': capital_pkr,
+                'max_loss_if_stopped_pkr': raw['risk'], 'suggested_shares': raw['shares'],
+                'position_value_pkr': raw['value'], 'risk_per_share': raw['rps']}
 
     return {"risk_level": risk_level, "warnings": warnings, "vetoes": vetoes,
             "position_sizing": sizing}

@@ -24,26 +24,22 @@ log = logging.getLogger("portfolio_risk")
 
 
 def _size(price, stop, capital):
-    """Risk-based share count — identical rule to risk_manager.assess: cap the
-    loss-if-stopped at max_risk_per_trade_pct, and the position at
-    max_position_pct. Returns None if the inputs can't be sized."""
-    if not price or not stop or price <= stop or capital <= 0:
-        return None
-    rps = price - stop
-    max_loss = capital * config.RISK["max_risk_per_trade_pct"] / 100
-    shares = int(max_loss / rps)
-    cap_shares = int(capital * config.RISK["max_position_pct"] / 100 / price)
-    shares = max(0, min(shares, cap_shares))
-    if shares <= 0:
-        return None
-    return {"shares": shares, "value": shares * price,
-            "risk": shares * rps, "rps": rps}
+    from position_sizing import size
+    return size(price, stop, capital)
 
 
-def assess(candidates, capital=1_000_000):
+def assess(candidates, capital=1_000_000, holdings=None, cash=None, pending=None):
     """candidates: list of dicts with keys symbol, score, signal, price, stop,
     and (optional) sector. Returns admitted / deferred / unsizable lists plus a
     `book` summary of heat, deployment and sector exposure vs the caps."""
+    from data_quality import finite
+    from position_sizing import size as shared_size
+    if not finite(capital, True):
+        raise ValueError('Positive marked account equity required')
+    cash = capital if cash is None else cash
+    if not finite(cash) or cash < 0:
+        raise ValueError('Valid available cash required')
+    holdings, pending = holdings or [], pending or []
     P = config.PORTFOLIO_RISK
     max_heat = capital * P["max_portfolio_heat_pct"] / 100
     max_sector_val = capital * P["max_sector_exposure_pct"] / 100
@@ -53,15 +49,31 @@ def assess(candidates, capital=1_000_000):
     admitted, deferred, unsizable = [], [], []
     heat_used, value_used, sector_val = 0.0, 0.0, {}
 
+    names = set()
+    for h in holdings + pending:
+        sym = h.get('symbol')
+        price, stop, qty = h.get('price'), h.get('stop'), h.get('qty')
+        if not sym or not all(finite(v, True) for v in (price, stop, qty)) or stop >= price:
+            raise ValueError('Existing/pending position lacks valid quantity, current mark or actual stop')
+        sec = h.get('sector') or config.SECTORS.get(sym, 'Unknown')
+        val = qty * price
+        names.add(sym)
+        value_used += val
+        heat_used += qty * (price - stop)
+        sector_val[sec] = sector_val.get(sec, 0) + val
+    cash -= sum(h['qty'] * h['price'] * (1 + config.EXECUTION['fee_bps_per_side'] / 10000) for h in pending)
     for c in ranked:
+        if c.get('symbol') in names:
+            deferred.append({**c, 'reason': 'Existing, pending or duplicate symbol; additions require separate account review'})
+            continue
         sec = c.get("sector") or config.SECTORS.get(c.get("symbol"), "Unknown")
-        size = _size(c.get("price"), c.get("stop"), capital)
-        if not size:
+        size = shared_size(c.get("price"), c.get("stop"), capital, max(0, cash), avg_volume=c.get("avg_volume"))
+        if not size or size["shares"] <= 0:
             unsizable.append({**c, "sector": sec,
                               "reason": "no usable price/stop to size a position"})
             continue
         reasons = []
-        if len(admitted) >= P["max_open_positions"]:
+        if len(names) >= P["max_open_positions"]:
             reasons.append(f"max {P['max_open_positions']} open positions reached")
         if heat_used + size["risk"] > max_heat + EPS:
             reasons.append(f"would breach {P['max_portfolio_heat_pct']:.0f}% total "
@@ -81,6 +93,8 @@ def assess(candidates, capital=1_000_000):
             deferred.append(entry)
         else:
             admitted.append(entry)
+            names.add(c.get("symbol"))
+            cash -= size["cash_required"]
             heat_used += size["risk"]
             value_used += size["value"]
             sector_val[sec] = sector_val.get(sec, 0.0) + size["value"]
@@ -95,8 +109,8 @@ def assess(candidates, capital=1_000_000):
         "heat_room_pct": round(P["max_portfolio_heat_pct"] - heat_used / capital * 100, 2),
         "deployed_pkr": round(value_used, 0),
         "deployed_pct": round(value_used / capital * 100, 2),
-        "cash_pct": round(100 - value_used / capital * 100, 2),
-        "open_positions": len(admitted),
+        "cash_pct": round(cash / capital * 100, 2),
+        "open_positions": len(names),
         "max_open_positions": P["max_open_positions"],
         "sector_exposure": sectors,
         "max_sector_pct": P["max_sector_exposure_pct"],

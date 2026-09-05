@@ -1,157 +1,46 @@
-# PSX Shariah-Compliant Stock Analysis Engine
+# PSX technical swing research engine
 
-A Python decision-support engine for Pakistan Stock Exchange stocks that are
-verified shariah compliant. It scores stocks out of 100, generates disciplined
-signals, stores every run, learns from outcomes, and enforces strict risk
-management.
+The audit branch implements an experimental technical strategy evaluated by target 1 before stop within ten exchange sessions. Signals are opportunities for review. Heuristic quality is not a probability, and the code does not establish a profitable edge.
 
-**It is NOT financial advice and it cannot guarantee profit or zero loss.**
-No system can. It labels every setup low / medium / high risk and requires
-manual confirmation before any buy.
+## Decision and execution contract
 
----
+`decision_engine.decide` is the pure function used by the live orchestrator and historical replay. It consumes finalized official OHLC, a synchronized benchmark, an explicit completed-session cutoff, eligibility and previous-session state. It requires 200 sessions, retains up to 1,500 sessions consistently, and rejects missing, malformed, duplicate, stale or unresolved action-affected inputs. News cannot change the technical result.
 
-## 1. What it does
+Price structure excludes the decision bar. RSI uses Wilder smoothing. True OHLC ATR/ADX and CMF are required. Stops and targets must satisfy `stop < entry < target1 < target2` when target 2 exists. Strong Buy needs raw qualification on distinct consecutive sessions. Settings, source bars, benchmark, actions and previous state are archived with each usable decision.
 
-Every run (manual or every 10 minutes during market hours) it:
+Orders are simulated at the next benchmark session opening with the saved entry-gap bound, costs and volume-participation assumption. Same-bar ambiguity is stop-first; opening gaps through stops fill at the worse open. The initial stop and target remain fixed. Outcomes include target, stop, ten-session expiry, unfilled, pending, invalid and unavailable. Unavailable positions retain unresolved exposure. Corporate actions during a holding period require reconciliation rather than fabricated P/L. No compounded portfolio return or drawdown is manufactured from overlapping trades.
 
-1. Verifies shariah status against the official KMI-30 constituent list
-   (screening date 2025-12-31, effective 2026-05-25) plus documented
-   exceptions (FABL as a converted full Islamic bank). Anything unverified is
-   marked **Needs manual verification** and excluded from the ranking.
-2. Fetches latest price/volume from the **PSX official public data portal**
-   (dps.psx.com.pk) and public RSS news (Business Recorder, Dawn, Profit,
-   Mettis). No logins, no scraping bypass, every value source-tagged.
-3. Scores each stock out of 100:
-   - **40%** Macro + industry + fundamentals context + news
-   - **30%** Public sentiment (with hype / pump-and-dump / panic flags)
-   - **30%** Technical analysis (RSI, MACD, EMA 20/50/200, Bollinger, OBV,
-     ADX-proxy, support/resistance, breakout/breakdown, volume spikes,
-     stop-loss and target zones, risk/reward)
-4. Applies risk filters and produces: **Strong Buy / Buy / Watch / Hold /
-   Avoid / Exit**, with confidence %, position sizing, and warnings.
-5. Stores everything in SQLite, then later fills in real prices after 1/3/7
-   days and grades whether each signal worked — adjusting future
-   **confidence** (never the 40/30/30 weights) and warning about overfitting
-   on small samples.
-6. Prints and saves a clean markdown report; 9 AM and 9 PM summary reports.
+## Run and test
 
-Default universe: PSO, TREET, FABL, AIRLINK + verified KMI-30 picks
-MEBL, SYS, LUCK, FFC, OGDC, MARI.
+Python 3.10 and 3.12 are the CI targets. Install `requirements-ci.txt` for the engine, or `requirements.txt` for the dashboard. Dependencies are not yet fully locked.
 
-## 2. Install (Windows-friendly)
-
-```bat
-:: 1. Install Python 3.10+ from python.org (tick "Add to PATH")
-:: 2. Open Command Prompt in the project folder, then:
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+```sh
+python -m unittest discover -v
+python -m compileall -q .
+python main.py run
+python main.py backtest PSO
+python main.py metrics
+python tools/health.py
 ```
 
-## 3. Run
+`PSX_DB_PATH` selects runtime storage. Before running against real data, create a separate verified database copy:
 
-```bat
-python main.py run            :: one full analysis + report
-python main.py schedule       :: auto every 10 min + 9AM/9PM reports
-python main.py morning        :: morning report
-python main.py evening        :: evening report + outcome grading
-python main.py backtest PSO   :: technical backtest for a symbol
-python main.py accuracy       :: signal & indicator accuracy stats
-python main.py history PSO    :: stored run history
-streamlit run dashboard.py    :: interactive dashboard
+```sh
+python tools/migrate_runtime.py psx_engine.db /durable/runtime.db
+python tools/reconcile_data.py --database /durable/runtime.db
+python tools/reconcile_data.py --database /durable/runtime.db --apply --max-dates 10
 ```
 
-Reports are saved in `reports_out/`, the database is `psx_engine.db`, and
-logs go to `engine.log`.
+The reconciliation tool preserves replaced observations and accepts only valid dated official replacements. It does not guess missing bars. Use `tools/import_actions.py` for sourced, verified actions with explicit price and volume factors and a known-at date.
 
-## 4. Configure
+## Operations and data limits
 
-Everything lives in `config.py`:
+Regular PSX times use Asia/Karachi, including Friday breaks. The regular schedule was verified against https://www.psx.com.pk/psx/exchange/general/trading-hours on 2026-09-05. Holidays and special/Ramadan overrides must still be populated from dated official notices. The 30-minute publication allowance is an operational assumption, not an exchange SLA. Historical benchmark dates provide the evaluator's session sequence; completeness of that dataset remains a requirement.
 
-- **Stocks**: edit `DEFAULT_STOCKS` / `ADDITIONAL_STOCKS` and `SECTORS`.
-- **Shariah list**: `KMI30_VERIFIED` + `KMI30_VERIFICATION_DATE`. KMI-30 is
-  recomposed semi-annually — update this from the PSX notification and the
-  engine warns automatically when the snapshot is stale.
-- **Macro anchors**: fill `MACRO_ANCHORS` (SBP policy rate, CPI, USD/PKR,
-  reserves) with values and as-of dates from official releases.
-- **Data sources**: `NEWS_FEEDS`, PSX endpoint URLs.
-- **Risk rules**: `RISK` (max risk per trade, min RR, liquidity floor, etc.).
-- **Schedule**: interval, market hours, report times.
+Atomic batches prevent partial core results from publishing. The health command reports latest-batch failure or stale session coverage. Account admission includes available cash, pending reservations, existing marked holdings and actual stops. Technical opportunities remain distinct from account eligibility; legacy advisor promotion is disabled for versioned results.
 
-Optional extra sentiment input: create `public_comments/SYMBOL.txt` and paste
-public, legally accessible comments (one per line) from open polls/forums you
-are permitted to use. The engine never scrapes login-protected content.
+Dashboard login uses an expiring server session and requires `DASHBOARD_PASSWORD`; credentials are not carried in query parameters. Existing public Git history cannot be protected by dashboard login.
 
-## 5. How scoring works
+The tracked database remains a baseline and the current hosting dependency. Mutable production state has NOT migrated out of Git. Workflow publication now fails on a race rather than resolving a binary database conflict by discarding a writer. Provision durable single-writer storage and migrate worker plus dashboard together before retiring the Git transport.
 
-Final = 0.40 × MacroNews + 0.30 × Sentiment + 0.30 × Technical.
-
-- Macro/news blends macro-headline polarity (35%), sector-driver headlines
-  (30%) and company headlines (35%).
-- Sentiment maps polarity of public mentions to 0–100, shrunk toward neutral
-  when mention volume is low (silence is never treated as bullish).
-- Technical awards points for trend (EMAs), RSI zone, MACD, momentum,
-  volume/OBV, breakout status and trend strength, normalised to 0–100.
-
-Confidence starts at 70%, drops 12 pts per weak data section, rises when all
-three sections agree, and shifts up to ±15 pts based on the stock's real
-historical signal win rate (capped hard when fewer than 10 graded signals
-exist — overfitting protection).
-
-## 6. How signals work
-
-| Final score | Base signal |
-|---|---|
-| ≥ 80 + technical confirmation + acceptable risk | Strong Buy |
-| 70–80 | Buy |
-| 60–70 | Watch |
-| 50–60 | Hold |
-| < 50 | Avoid |
-
-Overrides beat scores: technical breakdown → Exit/Avoid; material bad news →
-Avoid; shariah unverified → Avoid; poor risk/reward, hype/pump risk, High
-risk level, or confidence < 45% downgrade Buys to Watch. Every Buy requires
-manual confirmation.
-
-## 7. Risk management
-
-Position size = (capital × max-risk-per-trade) ÷ (entry − stop), capped at
-the max-position percentage. No leverage, never all-in, diversify across
-sectors. Warnings cover illiquidity, volatility/gap risk, breakdowns, news
-shocks, manipulation/hype, panic selling, and over-excitement.
-
-## 8. Limitations (read this)
-
-- PSX has no free official streaming API; the public portal data can lag or
-  fail. The engine then uses the last stored value **with a visible warning**
-  — it never invents numbers.
-- Audited fundamentals (margins, debt, cash flow, dividends) are not
-  auto-ingested; the macro module says so and tells you to check the latest
-  quarterly report before buying.
-- Sentiment is limited to legally accessible public text; coverage of small
-  caps may be thin, and the engine reduces confidence accordingly.
-- Shariah status is a snapshot of official screenings; ratios change every
-  quarter. Re-verify before acting — the engine warns when stale.
-- Backtests are in-sample, technical-only, and labelled as such.
-- ADX and candle patterns are close-price proxies (the public EOD feed lacks
-  high/low data) and are labelled proxies in the output.
-
-## 9. Risk warning
-
-Equity investing can lose some or all of your capital. This tool exists to
-impose discipline — stop losses, sizing, diversification, and honest
-uncertainty — not to predict the future. Treat every output as a hypothesis
-to verify, consult a licensed advisor for personal decisions, and never trade
-money you cannot afford to lose.
-
-## 10. Interpreting the output
-
-- **Final score / section scores**: where strength or weakness comes from.
-- **Confidence %**: how much to trust the score given data quality and the
-  engine's own track record on that stock. Below ~50%, treat as research only.
-- **Data quality**: "weak: ..." means a section had thin inputs this run.
-- **Entry zone**: between support and EMA-20 — never chase above resistance.
-- **Stop / targets / RR**: pre-commit to the stop; skip setups under 2:1.
-- **Risk level**: High means stand aside unless you have independent reasons.
-- **Watch next**: the specific levels and events that would change the call.
+See docs/AUDIT_IMPLEMENTATION.md for acceptance evidence, outstanding work and deployment blockers. Historical notes are in docs/history. Research utilities do not constitute a completed experiment, calibrated probability model or prospective paper evaluation.

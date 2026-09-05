@@ -5,7 +5,7 @@ from unittest import mock
 
 # The production workflow installs requests; unit tests exercise pure parsing
 # and guard logic and therefore do not need the network package itself.
-sys.modules.setdefault("requests", mock.MagicMock())
+
 
 import news_claude
 import news_feed

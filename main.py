@@ -19,7 +19,7 @@ import logging
 from datetime import datetime
 
 # Force UTF-8 output on Windows consoles that default to cp1252
-if hasattr(sys.stdout, "buffer"):
+if __name__ == "__main__" and hasattr(sys.stdout, "buffer"):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 import config
@@ -28,14 +28,7 @@ ssl_compat.enable()   # OS trust store for HTTPS (must precede any network call)
 import database as db
 import data_fetcher
 import shariah_checker
-import macro_news_analyzer
-import sentiment_analyzer
-import technical_analyzer
-import fundamentals_analyzer
 import market_regime
-import scoring_engine
-import risk_manager
-import signal_generator
 import confluence_axes
 import psx_market_watch
 import orderbook
@@ -44,12 +37,16 @@ import portfolio_advisor
 import reports
 import backtester
 import news_feed
+import decision_engine
+import session_calendar
+import swing_evaluation
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    handlers=[logging.FileHandler(config.LOG_PATH, encoding="utf-8"),
-              logging.StreamHandler()])
+if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+        handlers=[logging.FileHandler(config.LOG_PATH, encoding="utf-8"),
+                  logging.StreamHandler()])
 log = logging.getLogger("main")
 
 
@@ -69,55 +66,32 @@ def _days_to_earnings(symbol):
 
 
 def analyze_stock(symbol, news_items, index_eod=None, regime=None,
-                  holdings=None):
+                  holdings=None, cutoff=None, batch_id=None):
     """Full pipeline for one symbol. Returns the result dict and stores it."""
     shariah = shariah_checker.check(symbol)
-    quote = data_fetcher.latest_quote(symbol)
-    eod, eod_meta = data_fetcher.fetch_eod(symbol)
-
-    # A cached-EOD fallback still yields a full technical read, so nothing
-    # downstream would otherwise reveal that the prices are days old — and a row
-    # stamped with today's run_time reading "good" is exactly how the 2026-08-13
-    # outage hid four stale days. Carry the price date into data_quality so the
-    # dashboard's Data column and its good-count tile both show it.
-    stale_prices = None if eod is None or eod_meta.get("live") else eod_meta.get("as_of")
-
-    rs = market_regime.relative_strength(eod, index_eod) if index_eod is not None else None
-    rs_score = rs["rs_score"] if rs else None
-    ohlc = db.get_daily_ohlc(symbol)          # real H/L bars → true ATR/ADX when ready
-    technical = technical_analyzer.analyze(symbol, eod, quote, rs_score=rs_score, ohlc=ohlc)
-    # Measured shock-up entry deferral. Wrapped: it may only cost the deferral,
-    # never the signal.
-    try:
-        import event_library
-        _hit, _pct, _sig = event_library.shock_up_today(ohlc)
-        technical["shock_up_today"] = _hit
-        technical["shock_up_pct"], technical["shock_up_sigma"] = _pct, _sig
-    except Exception as e:
-        log.warning("shock-up check failed for %s: %s", symbol, e)
-    sentiment = sentiment_analyzer.analyze(symbol, news_items)
-    macro = macro_news_analyzer.analyze(symbol, news_items)
-    fundamentals = fundamentals_analyzer.analyze(symbol)
-    tech_flags = technical.get("tech_flags")
-    scoring = scoring_engine.compute(symbol, macro, sentiment, technical,
-                                     fundamentals, tech_flags=tech_flags)
-    risk = risk_manager.assess(symbol, technical, sentiment, macro,
-                               regime=(regime or {}).get("regime"),
-                               regime_pct_above=(regime or {}).get("pct_above"),
-                               holdings=holdings)
-    prev_sig = (db.last_run(symbol) or {}).get("signal")
-    signal = signal_generator.generate(symbol, scoring["final_score"],
-                                       scoring["confidence"], risk,
-                                       shariah, technical,
-                                       regime=(regime or {}).get("regime"),
-                                       regime_pct_above=(regime or {}).get("pct_above"),
-                                       prev_signal=prev_sig,
-                                       days_to_earnings=_days_to_earnings(symbol))
-    is_early, early_reason = signal_generator.early_watch(
-        scoring["final_score"], technical, shariah)
+    cutoff = cutoff or session_calendar.last_completed()
+    # Ingestion runs outside the pure decision function. Decisions use finalized
+    # historical bars, not a quote collected during the signal session.
+    params_hash = decision_engine.digest(decision_engine.contract())
+    previous = db.previous_decision(symbol, cutoff, config.STRATEGY_VERSION, params_hash)
+    decision = decision_engine.decide(symbol, db.get_daily_ohlc(symbol, config.FEATURE_HISTORY_LIMIT),
+                index_eod, cutoff, shariah['eligible_for_ranking'], previous, db.get_corporate_actions(symbol))
+    technical, scoring, risk, signal = (decision[k] for k in ('technical','scoring','risk','signal'))
+    macro, sentiment, fundamentals = (decision[k] for k in ('macro','sentiment','fundamentals'))
+    rs = decision['relative_strength']
+    rs_score = rs['rs_score'] if rs else None
+    regime = decision['regime']
+    quote = {'price': technical.get('price'), 'volume': technical.get('volume'),
+             'source': 'finalized historical OHLC', 'as_of': cutoff}
+    stale_prices = None
+    tech_flags = technical.get('tech_flags')
+    is_early, early_reason = False, ''
 
     row = {
-        "run_time": datetime.now().isoformat(), "symbol": symbol,
+        "run_time": session_calendar.local_now().isoformat(), "symbol": symbol,
+        "strategy_version": decision["strategy_version"], "decision_session": cutoff,
+        "config_hash": decision["config_hash"], "snapshot_hash": decision.get("snapshot_hash"),
+        "raw_qualified": int(bool(signal.get("raw_qualified"))), "batch_id": batch_id,
         "price": technical.get("price"), "volume": technical.get("volume"),
         "technical_score": technical.get("score"),
         "sentiment_score": sentiment.get("score"),
@@ -149,22 +123,8 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
         "early_reason": early_reason or None,
     }
 
-    # Computed LAST and wrapped, per the 2026-08-13 outage rule: a fault here
-    # costs the axes, never the signal. Measurement-only — nothing reads these
-    # back into a decision until each axis has been graded on its own.
-    try:
-        ca = confluence_axes.for_symbol(symbol, technical, db)
-        row["confluence_axes"] = json.dumps(ca)
-        row["confluence_composite"] = ca["composite"]
-    except Exception as e:
-        log.warning("confluence axes failed for %s: %s", symbol, e)
-
     db.save_run(row)
-
-    if quote.get("warning"):
-        log.warning("%s: %s", symbol, quote["warning"])
-    if eod_meta.get("warning"):
-        log.warning("%s: %s", symbol, eod_meta["warning"])
+    db.save_decision(decision)
 
     return {"symbol": symbol, "shariah": shariah, "quote": quote,
             "technical": technical, "sentiment": sentiment, "macro": macro,
@@ -173,22 +133,7 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
 
 
 def _is_live_session(now=None):
-    """True only while PSX is actually trading, so a closed-market snapshot is
-    never banked as a session of its own.
-
-    market-watch has no session date in its payload — it simply serves the LAST
-    session's row once the market shuts. Banking that under `datetime.now()`
-    invented a Saturday bar for 49 symbols on 2026-09-05, byte-identical to
-    Thursday's for 45 of them. A duplicated bar is worse than a missing one:
-    every window that counts sessions (ATR, true range, momentum, the range
-    features, forward returns) silently treats it as a real flat day.
-
-    The workflow sets TZ=Asia/Karachi, so `now` is already Pakistan local time.
-    """
-    now = now or datetime.now()
-    if now.weekday() >= 5:                       # Sat/Sun — never a session
-        return False
-    return config.MARKET_OPEN <= now.strftime("%H:%M") <= config.MARKET_CLOSE
+    return session_calendar.is_live(now)
 
 
 def _bank_official_hl(bars, now=None):
@@ -254,63 +199,23 @@ def full_run(fast=False):
     log.info("=== Engine run started%s ===", " (fast first cycle)" if fast else "")
     db.init_db()
     news_items = []
-    if fast:
-        log.info("Fast cycle: skipping news fetch and outcome grading "
-                 "(~30s saved; neither affects today's signals).")
-    else:
-        news_items = data_fetcher.fetch_news()
-        # Per-company public news (Google News RSS) -> real per-stock sentiment.
-        for s in config.STOCKS:
-            news_items += data_fetcher.fetch_company_news(s)
-        backtester.update_outcomes()          # learning loop first
-
-    # Tier 2: fetch the benchmark index ONCE; judge the market regime. Both feed
-    # relative strength (per stock) and the regime gate (market-wide).
+    # Technical strategy never fetches or waits on optional news adapters.
     index_eod, index_meta = market_regime.fetch_index()
+    cutoff = session_calendar.last_completed()
     regime = market_regime.assess_regime(index_eod)
-    log.info("Market regime: %s", regime["note"])
-
-    # ONE request returns the whole market's live session row. Used only to bank
-    # the exchange's OFFICIAL intraday High/Low: the engine otherwise derives the
-    # day's range from 15-minute polls, which must UNDERSTATE it whenever an
-    # extreme prints between polls. Wrapped and non-fatal — a market-watch
-    # failure must never touch the price path.
-    try:
-        mw_bars, mw_meta = psx_market_watch.fetch()
-        log.info("market-watch: %d rows, %d of our symbols matched%s",
-                 mw_meta["rows"], mw_meta["matched"],
-                 "" if mw_meta["ok"] else f" (FAILED: {mw_meta['error']})")
-        _bank_official_hl(mw_bars)
-    except Exception as e:
-        log.warning("market-watch step failed: %s", e)
-
-    # Hand-captured L1 snapshots dropped into orderbook/. Stored only — nothing
-    # reads them into a signal (see orderbook.py). Wrapped: an unreadable CSV
-    # must never cost a run.
-    try:
-        orderbook.ingest(db)
-    except Exception as e:
-        log.warning("order-book ingest failed: %s", e)
-
-    # Real book (portfolio.json) so the concentration cap can see what is already
-    # held — per-trade sizing alone is blind to it. Missing/unreadable file = no
-    # holdings = the cap simply never fires (never a fabricated position).
-    holdings = portfolio_advisor.load_portfolio().get("holdings", [])
-
-    results = [analyze_stock(s, news_items, index_eod, regime, holdings)
-               for s in config.STOCKS]
-
-    # Tier 2 #9: book-level risk across every Buy this run (heat + sector caps).
-    candidates = [{"symbol": r["symbol"],
-                   "score": r["scoring"]["final_score"],
-                   "signal": r["signal"]["signal"],
-                   "price": r["technical"].get("price"),
-                   "stop": r["technical"].get("stop_loss"),
-                   "sector": config.SECTORS.get(r["symbol"], "Unknown")}
-                  for r in results
-                  if r["signal"]["signal"] in ("Buy", "Strong Buy")]
-    portfolio = portfolio_risk.assess(candidates)
-    log.info("Portfolio risk: %s", portfolio_risk.summary_line(portfolio))
+    import psx_historical
+    bars = psx_historical.fetch_day(cutoff)
+    for bar in bars:
+        if bar['symbol'] in config.STOCKS:
+            db.save_hl_bar(bar['symbol'], cutoff, bar['open'], bar['high'], bar['low'],
+                           bar['close'], bar['volume'], psx_historical.SOURCE, overwrite=True)
+    account = portfolio_advisor.load_portfolio()
+    holdings = account.get('holdings', [])
+    with db.analysis_batch(len(config.STOCKS)) as batch_id:
+        results = [analyze_stock(symbol, [], index_eod, regime, holdings, cutoff, batch_id)
+                   for symbol in config.STOCKS]
+        portfolio = _assess_account(results, account, batch_id)
+    swing_evaluation.update_outcomes()
 
     macro_titles = [n["title"] for n in news_items][:6]
     market_notes = "Market regime: " + regime["note"]
@@ -330,17 +235,48 @@ def full_run(fast=False):
     except Exception as e:
         log.warning("Excel/email step failed: %s", e)
 
-    # Focus brief LAST and never fatal: signals are already saved by this point,
-    # so a fault here costs one brief, not the whole run. (2026-08-17: an
-    # unguarded AssertionError early in full_run froze every signal for four
-    # days while the workflow still reported success.)
-    try:
-        _save_focus_brief()
-    except Exception as e:
-        log.warning("Focus brief skipped: %s", e)
-
     log.info("=== Engine run finished ===")
     return results
+
+
+def _assess_account(results, account, batch_id):
+    candidates = [{"symbol": r["symbol"],
+                   "score": r["scoring"]["final_score"],
+                   "signal": r["signal"]["signal"],
+                   "price": r["technical"].get("price"),
+                   "stop": r["technical"].get("stop_loss"),
+                   "avg_volume": r["technical"].get("avg_volume"),
+                   "sector": config.SECTORS.get(r["symbol"], "Unknown")}
+                  for r in results
+                  if r["signal"]["signal"] in ("Buy", "Strong Buy")]
+    holdings = account.get('holdings', [])
+    marks = {r['symbol']: r['technical'].get('price') for r in results}
+    marked = [{**h, 'price': marks.get(h['symbol'])} for h in holdings]
+    from data_quality import finite
+    equity = account['cash_pkr'] + sum(h['qty'] * h['price'] for h in marked if finite(h.get('price'), True))
+    try:
+        portfolio = portfolio_risk.assess(candidates, capital=equity, holdings=marked,
+                    cash=account['cash_pkr'], pending=account.get('pending', []))
+    except ValueError as exc:
+        portfolio = None
+        log.warning('Account admission unavailable: %s', exc)
+    if portfolio:
+        log.info("Portfolio risk: %s", portfolio_risk.summary_line(portfolio))
+
+    admitted = {r['symbol']: r for r in (portfolio or {}).get('admitted', [])}
+    deferred = {r['symbol']: r['reason'] for r in (portfolio or {}).get('deferred', []) + (portfolio or {}).get('unsizable', [])}
+    for result in results:
+        symbol = result['symbol']
+        admission = 'admitted' if symbol in admitted else 'deferred' if symbol in deferred else 'unavailable' if portfolio is None else 'not_candidate'
+        reason = deferred.get(symbol, 'Account marks, cash and actual stops required' if portfolio is None else '')
+        result['account_admission'] = {'status': admission, 'reason': reason}
+        result['risk']['position_sizing'] = None
+        if symbol in admitted:
+            item = admitted[symbol]
+            result['risk']['position_sizing'] = {'capital_assumed_pkr': equity, 'suggested_shares': item['shares'], 'position_value_pkr': item['value'], 'max_loss_if_stopped_pkr': item['risk']}
+        with db.conn() as c:
+            c.execute('UPDATE runs SET account_admission=?, account_reason=? WHERE batch_id=? AND symbol=?', (admission, reason, batch_id, symbol))
+    return portfolio
 
 
 def _save_focus_brief():
@@ -454,13 +390,10 @@ def main():
         _save_focus_brief()
         print(focus_brief.render_text(db.last_focus_brief(sym or config.FOCUS_SYMBOL)))
     elif cmd == "evening":
+        full_run()
         backtester.update_outcomes()
         # Refresh the focus brief post-close so the overnight view reflects the
         # last cycle rather than whatever the loop happened to write at 15:30.
-        try:
-            _save_focus_brief()
-        except Exception as e:
-            log.warning("Focus brief skipped: %s", e)
         text = reports.evening_report()
         print(text); reports.save_report(text, "evening")
         # Keep the tracked DB from creeping back to the 54 MB it had reached.
@@ -482,27 +415,9 @@ def main():
         for v in ("in_sample", "out_of_sample"):
             res.get(v, {}).pop("equity_curve", None)
         res.pop("equity_curve", None)
-        import json; print(json.dumps(res, indent=2, default=str))
+        print(json.dumps(res, indent=2, default=str))
     elif cmd == "metrics":
-        # Whole-universe backtest with profit metrics (expectancy / profit
-        # factor / max drawdown) + out-of-sample verdict per symbol.
-        res = backtester.backtest_portfolio()
-        agg = res["aggregate"]
-        print(f"\n=== Strategy edge across {res['symbols_traded']} symbols "
-              f"({agg.get('trades', 0)} trades) ===")
-        print(f"Expectancy/trade: {agg.get('expectancy_pct')}%  |  "
-              f"Profit factor: {agg.get('profit_factor')}  |  "
-              f"Win rate: {agg.get('win_rate_pct')}%  |  "
-              f"Max drawdown: {agg.get('max_drawdown_pct')}%  |  "
-              f"Total return: {agg.get('total_return_pct')}%")
-        print("\nPer symbol:")
-        for s, m in sorted(res["per_symbol"].items(),
-                           key=lambda kv: (kv[1].get("expectancy_pct") or 0),
-                           reverse=True):
-            print(f"  {s:<7} trades={m['trades']:<3} "
-                  f"exp={m['expectancy_pct']}%  pf={m['profit_factor']}  "
-                  f"win={m['win_rate_pct']}%  maxDD={m['max_drawdown_pct']}%")
-        print("\n" + res["warning"])
+        print(json.dumps(backtester.backtest_portfolio(), indent=2, default=str))
     elif cmd == "portfolio":
         # Book-level risk from the latest stored Buys: heat + sector caps.
         cap = int(sys.argv[2]) if len(sys.argv) > 2 else 1_000_000
@@ -534,7 +449,7 @@ def main():
               f"{fields} ratios, as_of {p['as_of']}")
     elif cmd == "accuracy":
         rows = db.signal_accuracy_summary()
-        print("\n=== Signal accuracy (with sample-size reliability) ===")
+        print("\n=== Legacy benchmark-relative labels (not target success) ===")
         for r in rows:
             wr = "n/a" if r["win_rate_pct"] is None else f"{r['win_rate_pct']}%"
             print(f"  {r['signal']:<11} n={r['n_total']:<4} win={wr:<7} "

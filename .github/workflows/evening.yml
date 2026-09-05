@@ -18,14 +18,15 @@ jobs:
   evening:
     runs-on: ubuntu-latest
     env:
+      TZ: Asia/Karachi
       SMTP_USER: ${{ secrets.SMTP_USER }}
       SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
       EMAIL_MODE: "off"           # email disabled (2026-07-12) — dashboard only
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.10'
           cache: pip
@@ -46,10 +47,4 @@ jobs:
           git add psx_engine.db
           git commit -m "Evening grading $(date -u +'%Y-%m-%dT%H:%MZ')" \
             || { echo "No data changes to commit."; exit 0; }
-          for attempt in 1 2 3 4 5; do
-            git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
-              || git rebase --abort
-            if git push; then echo "pushed on attempt $attempt"; exit 0; fi
-            echo "push raced, retrying ($attempt)..."; sleep 5
-          done
-          echo "could not push after retries"; exit 1
+          git push || { echo "Runtime publication failed; reconcile concurrent writer."; exit 1; }

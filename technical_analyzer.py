@@ -1,9 +1,4 @@
-"""technical_analyzer.py — Computes the 30% technical score.
-
-All indicators are calculated from real fetched OHLC/volume data (pandas/
-NumPy only — no fabricated values). When history is too short for an
-indicator (e.g. EMA-200), the indicator is skipped and noted, never faked.
-"""
+"""Technical features from supplied history. Wilder RSI, prior-bar structure and true OHLC indicators. The score is experimental, not a probability."""
 
 import logging
 import numpy as np
@@ -16,11 +11,20 @@ log = logging.getLogger("technical")
 
 # ----------------------------- indicators ---------------------------------
 def rsi(series, period=14):
-    delta = series.diff()
-    gain = delta.clip(lower=0).rolling(period).mean()
-    loss = (-delta.clip(upper=0)).rolling(period).mean()
-    rs = gain / loss.replace(0, np.nan)
-    return 100 - (100 / (1 + rs))
+    if period < 1:
+        raise ValueError("period must be positive")
+    values = series.astype(float)
+    delta = values.diff().iloc[1:].to_numpy()
+    gain = _wilder(np.maximum(delta, 0), period)
+    loss = _wilder(np.maximum(-delta, 0), period)
+    result = np.full(len(values), np.nan)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        ratio = 100 - 100 / (1 + gain / loss)
+    ratio[(loss == 0) & (gain > 0)] = 100
+    ratio[(gain == 0) & (loss > 0)] = 0
+    ratio[(gain == 0) & (loss == 0)] = 50
+    result[1:] = ratio
+    return pd.Series(result, index=series.index)
 
 
 def macd(series, fast=12, slow=26, signal=9):
@@ -78,7 +82,7 @@ def _wilder(x, period):
     length as x, NaN until index period-1."""
     out = np.full(len(x), np.nan)
     if len(x) >= period:
-        out[period - 1] = np.nanmean(x[:period])
+        out[period - 1] = np.mean(x[:period])
         for i in range(period, len(x)):
             out[i] = (out[i - 1] * (period - 1) + x[i]) / period
     return out
@@ -153,19 +157,17 @@ def chaikin_money_flow(ohlc, period=20):
     close = np.array([b["close"] for b in bars], float)
     volume = np.array([b["volume"] for b in bars], float)
     rng = high - low
-    mfm = np.where(rng != 0, ((close - low) - (high - close)) / rng, 0.0)
+    mfm = np.divide((close - low) - (high - close), rng, out=np.zeros_like(rng), where=rng != 0)
     mfv = mfm * volume
     vol_sum = volume.sum()
     return float(mfv.sum() / vol_sum) if vol_sum else None
 
 
 def support_resistance(close, lookback=60):
-    win = close.tail(lookback)
-    lo, hi, last = win.min(), win.max(), close.iloc[-1]
-    # nearest swing levels via quantiles for robustness
-    support = float(win[win <= last].quantile(0.10)) if (win <= last).any() else float(lo)
-    resistance = float(win[win >= last].quantile(0.90)) if (win >= last).any() else float(hi)
-    return support, resistance, float(lo), float(hi)
+    win = close.iloc[:-1].tail(lookback)
+    if win.empty:
+        raise ValueError("Prior session history required for structure")
+    return float(win.quantile(.10)), float(win.quantile(.90)), float(win.min()), float(win.max())
 
 
 def candle_signal(close):
@@ -224,7 +226,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     support, resistance, recent_lo, recent_hi = support_resistance(close)
 
     last_rsi = float(df["rsi"].iloc[-1]) if not np.isnan(df["rsi"].iloc[-1]) else None
-    avg_vol = float(vol.tail(20).mean())
+    avg_vol = float(vol.iloc[:-1].tail(20).mean())
     today_vol = float(quote.get("volume") or vol.iloc[-1])
     vol_spike = today_vol > 1.8 * avg_vol if avg_vol else False
     last_atr = float(atr.iloc[-1]) if not np.isnan(atr.iloc[-1]) else None
@@ -283,8 +285,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # MACD (15 pts)
     m_pts = 0
     if float(macd_hist.iloc[-1]) > 0: m_pts += 8
-    if float(macd_line.iloc[-1]) > float(macd_sig.iloc[-1]): m_pts += 7
-    add(m_pts, 15, "macd", f"MACD hist={macd_hist.iloc[-1]:.3f}")
+    add(m_pts, 8, "macd", f"MACD hist={macd_hist.iloc[-1]:.3f}")
 
     # Momentum (10 pts)
     mo_pts = 10 if momentum_20d > 5 else 7 if momentum_20d > 0 else 3 if momentum_20d > -5 else 0
@@ -372,6 +373,8 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     risk = price - stop_loss
     target1 = round(price + 2 * risk, 2)
     target2 = round(min(price + 3 * risk, recent_hi * 1.05), 2)
+    if target2 <= target1:
+        target2 = None
     rr = round((target1 - price) / risk, 2) if risk > 0 else None
 
     # --- REAL reward:risk to the nearest OVERHEAD ceiling. `rr` above is the

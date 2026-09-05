@@ -83,9 +83,9 @@ jobs:
       SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.10'
           cache: pip
@@ -106,7 +106,7 @@ jobs:
           # and called them today's signals. 09:32 is the first moment a run can
           # reflect real trading.
           MARKET_OPEN: '09:32'
-          MARKET_CLOSE: '15:45'
+          MARKET_CLOSE: '16:30'
         run: |
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -126,37 +126,16 @@ jobs:
           # to exercise the news fetch and grading, which --fast skips.
           [ "$FORCE_NOW" = "true" ] && first_cycle=0
           while true; do
-            dow=$(date +%u)          # 1=Mon .. 7=Sun
             now=$(date +%H:%M)
-            if [ "$FORCE_NOW" = "true" ]; then
-              echo "=== FORCED single cycle at $now PKT (session guards bypassed) ==="
-            else
-            if [ "$dow" -gt 5 ]; then echo "Weekend — exiting loop."; exit 0; fi
-            if [[ "$now" > "$MARKET_CLOSE" ]]; then
-              echo "Past market close ($now > $MARKET_CLOSE) — exiting loop."; exit 0; fi
-            if [[ "$now" < "$MARKET_OPEN" ]]; then
-              # 60s, not 300s: a 5-minute poll could idle until 09:37 before
-              # noticing the market had opened. The user wants signals by ~09:35,
-              # so the first cycle must start within a minute of the open.
-              echo "Before open ($now < $MARKET_OPEN) — waiting."; sleep 60; continue; fi
+            if [ "$FORCE_NOW" != "true" ]; then
+              state=$(python session_calendar.py)
+              if [ "$state" = "closed" ]; then exit 0; fi
+              if [ "$state" = "wait" ]; then sleep 60; continue; fi
             fi
 
             echo "=== Cycle at $now PKT ==="
-            # Adopt the newest committed DB BEFORE running. Without this, a run
-            # that was queued earlier (cron/pinger backlog released when another
-            # loop ends) keeps the psx_engine.db from ITS checkout — an older
-            # snapshot — and pushes it over newer work. That silently reverted a
-            # full `regrade` twice on 2026-08-13. The binary DB cannot 3-way
-            # merge, so freshest-wins-on-entry is the only safe rule; the
-            # post-run push below still keeps THIS cycle's results.
-            # Tradeoff: if every push retry of the PREVIOUS cycle failed, this
-            # discards that cycle's rows. Acceptable — the next run regenerates
-            # current signals, whereas a reverted regrade is invisible and
-            # corrupts the accuracy stats until someone re-checks the win rate.
-            # It also re-adopts the newest CODE, so a long-lived loop cannot keep
-            # running a stale engine for hours after a push.
-            git fetch origin "${{ github.ref_name }}" --quiet || true
-            git reset --hard "origin/${{ github.ref_name }}" --quiet || true
+            # The checkout and installed dependencies stay pinned for this worker.
+            # A concurrent writer causes a visible push failure, never a binary merge.
 
             # Capture the traceback. `|| echo` used to swallow it: the loop kept
             # committing (the news table still grew, so the commit succeeded) while
@@ -172,6 +151,7 @@ jobs:
               cat /tmp/psx_run.log
               { echo "main.py run FAILED at $(date -u +'%Y-%m-%dT%H:%M:%SZ')";
                 echo; tail -120 /tmp/psx_run.log; } > engine_last_error.log
+              exit 1
             fi
 
             # -f: *.log is gitignored, and a plain `git add` of an ignored path
@@ -179,12 +159,7 @@ jobs:
             git add -A -- psx_engine.db
             git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
-              for attempt in 1 2 3 4 5; do
-                git pull --rebase -X theirs --autostash origin "${{ github.ref_name }}" \
-                  || git rebase --abort
-                if git push; then echo "pushed on attempt $attempt"; break; fi
-                echo "push raced, retrying ($attempt)..."; sleep 5
-              done
+              git push || { echo "Runtime publication failed; database conflict requires reconciliation."; exit 1; }
             else
               echo "No data changes to commit this cycle."
             fi

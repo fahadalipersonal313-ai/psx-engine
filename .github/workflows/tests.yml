@@ -1,0 +1,22 @@
+name: Trading core regression tests
+on:
+  pull_request:
+  push:
+    branches: [main, 'audit/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -r requirements-ci.txt
+      - run: python -m unittest discover -v
+      - run: python -m compileall -q .
+      - run: git diff --exit-code -- psx_engine.db portfolio.json
