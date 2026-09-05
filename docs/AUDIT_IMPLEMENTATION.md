@@ -1,6 +1,6 @@
 # Audit implementation status
 
-This branch is a correctness and evidence repair for the audit of commit
+This implementation is a correctness and evidence repair for the audit of commit
 `3007b29fe83f672578d7cd7a957b4b832f78c24b`. It does not claim profitable or
 accurate future signals.
 
@@ -94,8 +94,8 @@ accurate future signals.
 
 ## Deployment position
 
-This branch is reviewable but must remain a draft. It should not be merged into
-the current production workflow until data reconciliation and runtime storage
-migration are complete. Deploying it now would correctly publish unavailable
-decisions for the existing mixed-provenance history rather than silently issuing
-signals from unverified inputs.
+The user authorized merging this implementation to `main` on 2026-09-05. It is
+still operationally blocked from producing signals until data reconciliation and
+runtime storage migration are complete. Running it against the existing
+mixed-provenance history correctly publishes unavailable decisions rather than
+silently issuing signals from unverified inputs.
