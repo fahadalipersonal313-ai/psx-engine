@@ -168,7 +168,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # ---- Hysteresis dead-band: a raw score grazing a band edge (e.g. 70.3 one
     # run, 69.7 the next) shouldn't flip the signal — that's scoring noise, not
     # a real change. Require crossing the threshold by HYSTERESIS_BAND points
-    # before changing direction. Only acts on one-notch transitions; multi-notch
+    # before UPGRADING. Only acts on one-notch upgrades; downgrades, multi-notch
     # moves and hard vetoes (breakdown/shariah) bypass it. Applied BEFORE the
     # confirmation/confluence/chase gates so those still operate normally on top.
     _band = getattr(config, "HYSTERESIS_BAND", 0)
@@ -177,31 +177,31 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
         _pr, _br = _RANK.get(prev_signal), _RANK.get(base)
         _thr = {"Strong Buy": T["strong_buy"], "Buy": T["buy"],
                 "Watch": T["watch"], "Hold": T["hold"]}
-        if _pr is not None and _br is not None and abs(_pr - _br) == 1:
-            if _pr > _br:
-                # one-notch DOWNGRADE. The dead-band sits ENTIRELY ABOVE the
-                # threshold (enter at _t+band, exit at _t) rather than straddling
-                # it (2026-08-12). Straddling let a stale Buy persist down to
-                # _t-band: with the threshold raised to 75, scores of 73-74 —
-                # exactly the 30%-win band the raise was meant to exclude — were
-                # still being emitted as Buy. Anti-flap is preserved by the
-                # upgrade side below, which still requires clearing _t+band.
-                _t = _thr.get(prev_signal)
-                if _t is not None and final_score >= _t:
-                    base = prev_signal
-                    reasons.append(
-                        f"Hysteresis: score {final_score} still at/above the "
-                        f"{prev_signal} threshold ({_t}) — held at {prev_signal}")
-            else:
-                # one-notch UPGRADE — require clearing the new threshold by the
-                # band, not just grazing it (avoids flapping the other way)
-                _t = _thr.get(base)
-                if _t is not None and final_score < _t + _band:
-                    base = prev_signal
-                    reasons.append(
-                        f"Hysteresis: score {final_score} only just clears the "
-                        f"{base} threshold ({_t}) — held at {prev_signal} until "
-                        f"it breaks {_t + _band}+")
+        if _pr is not None and _br is not None and _br == _pr + 1:
+            # Only the UPGRADE side survives (2026-09-05 audit). The old
+            # one-notch DOWNGRADE branch held a signal when `final_score >= the
+            # previous tier's threshold` — but clearing that threshold is
+            # exactly what puts the score back IN that tier, so the condition
+            # contradicted the band assignment that produced the downgrade. It
+            # was unreachable in all four notches and had fired 0 times in the
+            # stored history (against 437 firings of the upgrade side).
+            #
+            # The upgrade delay is MEASURED NEUTRAL, which is why it stays:
+            # deferring a fresh candidate entry by one session over 5 years of
+            # banked bars (18,113 candidate-days, 49 symbols) moved the 5-day
+            # median 0.00% -> 0.00% and the mean +0.88% -> +0.87%, and was flat
+            # at 10 and 20 days too. It costs nothing and it damps flapping.
+            _t = _thr.get(base)
+            if _t is not None and final_score < _t + _band:
+                # Name the tier being withheld, not the one being held at: the
+                # old message read `base` AFTER reassigning it, so all 437
+                # stored firings named the previous tier twice.
+                _new = base
+                base = prev_signal
+                reasons.append(
+                    f"Hysteresis: score {final_score} only just clears the "
+                    f"{_new} threshold ({_t}) — held at {prev_signal} until "
+                    f"it breaks {_t + _band}+")
 
     # ---- Tier 2: confirmation gate (before confluence so we check intent, not result)
     # A new Strong Buy on its first appearance is held at Buy — the market has

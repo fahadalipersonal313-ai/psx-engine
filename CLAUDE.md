@@ -958,6 +958,45 @@ Caveat kept on purpose: the engine's own graded Buys disagree (n=7, 57% vs 50%).
 That is far too small to mean anything, but it is the only LIVE evidence and it
 points the other way. Re-run `python main.py measure` once more Buys have graded.
 
+## Hysteresis and the confidence floor audited (2026-09-05)
+
+The last two gates between the candidate pool and emitted Buys. Neither is
+removed; both were misunderstood.
+
+**Hysteresis: the downgrade half was UNREACHABLE, and is now deleted.** The
+branch held a one-notch downgrade when `final_score >= the previous tier's
+threshold` — but clearing that threshold is precisely what keeps the score IN
+that tier, so it contradicted the band assignment that produced the downgrade.
+Dead in all four notches. Confirmed against stored history: the downgrade
+message appears in **0** rows, the upgrade message in **437**.
+
+**The upgrade delay MEASURED NEUTRAL, so it stays.** Deferring a fresh candidate
+entry by one session over 5 years of banked bars (18,113 candidate-days, 49
+symbols): 5-day median 0.00% -> 0.00%, mean +0.88% -> +0.87%, positive 49.7% ->
+49.9%; flat at 10 and 20 days. It buys anti-flap for nothing. Live rows point
+the same way but cannot carry the verdict — fresh pool entries scoring 75-77
+(the band the gate defers) beat those scoring 77+ at every horizon (5d +5.86%
+vs +2.33%), and the edge survives dropping Refinery and matching the date
+window, but only on n=11-16. **Under-powered, not evidence.** Re-run once more
+history exists; if it holds, the gate is costing entries rather than saving them.
+
+Also fixed: the retained message read `base` AFTER reassigning it, so all 437
+firings named the previous tier twice instead of the one being withheld.
+
+**The confidence floor (`confidence < 45` -> Watch) has never fired and cannot.**
+Across 3,130 day-deduped rows, 157 score below 45 confidence and **every one has
+`final_score <= 70`** — below the Buy band, so the downgrade has nothing to
+downgrade. It is not independent: low confidence is driven by `data_quality`
+(136 of 157 are `weak: technical`), and a weak technical read depresses the
+score itself. Harmless, so it stays as a backstop, but do not count it as an
+active filter — it explains none of the pool-vs-emitted gap.
+
+**Gate audit closed.** poor_rr, chase guard, concentration, confluence and the
+pullback upgrade were removed or disabled on evidence; CMF was loosened; the
+regime gate and shock-up deferral were kept on evidence; hysteresis and the
+confidence floor are inert. No remaining gate accounts for emitted Buys trailing
+the candidate pool — the next place to look is the score itself, not the vetoes.
+
 ## Buying up-shocks loses in EVERY category (2026-09-04)
 
 On adjusted, tradeable events (1,020 up-shocks): sector-driven **-1.93%, 39%
