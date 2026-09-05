@@ -887,6 +887,69 @@ bypasses the proxy), and the `WebSearch`/`WebFetch` tools, which route through
 Anthropic's service rather than this container. Those are **anonymous, one-shot
 and cookie-less**, so they can never act as a logged-in session.
 
+## Chase guard re-measured and REJECTED again (2026-09-04)
+
+Re-tested against the candidate pool on 5 years of adjusted, tradeable history
+after the event library made a proper test possible. **Keep `CHASE_GUARD_ENABLED
+= False`.**
+
+As configured (`ext > 11%` or `mom20 > 22%`) it would reject **28.7% of
+candidate-days** for **-0.16pp at 5 days**, decaying to -0.01pp at 10 and
+**exactly 0.00pp at 20**. Nearly a third of the opportunity set for nothing.
+
+Extension is NOT the enemy, and the relationship is not monotonic:
+
+| ext above 50-EMA | n | 5d med | 20d med |
+|---|---|---|---|
+| 0-5% | 10,873 | -0.01% | +0.00% |
+| 5-10% | 6,659 | +0.13% | +0.27% |
+| 10-15% | 3,711 | +0.00% | **+0.39%** |
+| 15-25% | 2,779 | **-0.50%** | -0.30% |
+| 25-40% | 1,081 | -0.38% | -0.36% |
+| 40%+ | 370 | +1.16% | +0.14% |
+
+The 11% trigger rejects the 10-15% band, which is one of the BEST.
+
+**A targeted 15-40% veto was tested and also rejected**, and the reason is worth
+keeping: it looks strong (-0.48%, 46% positive, n=3,860, 49 symbols, 25 sectors,
+top symbol 5% — passes every independence check) but the sign **FLIPPED POSITIVE
+in 2026** (+0.62%, 54%, n=314) after four negative years. Deploying a rule whose
+sign inverted in the live regime is the classic backtest-to-blowup path. Do not
+resurrect it without re-running the year split.
+
+## Shock-up entry deferral — the one rule that earned deployment (2026-09-04)
+
+`SHOCK_UP_DEFER_ENABLED`. A day carrying a >=2.5 sigma, >=3% up-move DEFERS a
+fresh Buy to Watch for that single run; the stock is free to become a Buy the
+next day. It rejects the TIMING, not the name.
+
+Measured the only way that catches this repo's recurring failure — inside the
+candidate pool (uptrend + positive RS), asking whether the rejected days are
+worse than the kept ones. They are: **-0.41% median excess at 5d vs 0.00%, 45%
+positive vs 49%, n=1,169 across 49 symbols**, negative at every horizon
+(3d -0.47, 5d -0.41, 10d -0.60, 20d -0.13pp). Fires on only 4.3% of
+candidate-days.
+
+The contrast with the chase guard is the lesson: **a one-day event with a stable
+effect is deployable; a persistent state with a regime-dependent effect is not.**
+
+Caveat kept on purpose: the engine's own graded Buys disagree (n=7, 57% vs 50%).
+That is far too small to mean anything, but it is the only LIVE evidence and it
+points the other way. Re-run `python main.py measure` once more Buys have graded.
+
+## Buying up-shocks loses in EVERY category (2026-09-04)
+
+On adjusted, tradeable events (1,020 up-shocks): sector-driven **-1.93%, 39%
+positive**; market-driven **-0.31%, 47%**; company-specific **-0.08%, 48%**.
+Not one category is profitable. The only positive cohort in the library is the
+company-specific SELLOFF: +1.02%, 58%, n=204 across 45 symbols and 22 sectors.
+
+Realistic testing of that selloff trade (enter next OPEN, hold 10d, target +5%,
+stop 6%) gives median +1.14%, 59% win, **+0.74% net of 0.4% costs, against a
+median MAE of -3.95%**. Real but thin — risking ~4% of drawdown for ~0.75%. Size
+it small if used at all, and note that TIGHTER stops made it WORSE (4% stop ->
++0.39%): these trades need room.
+
 ## Key files
 
 - `config.py` — all knobs (thresholds, weights, risk caps, stocks).
