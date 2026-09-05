@@ -1,12 +1,12 @@
 # PSX technical swing research engine
 
-The audit branch implements an experimental technical strategy evaluated by target 1 before stop within ten exchange sessions. Signals are opportunities for review. Heuristic quality is not a probability, and the code does not establish a profitable edge.
+The engine implements an experimental short-window technical strategy evaluated by target 1 before stop within ten exchange sessions. Signals are opportunities for review. Heuristic quality is not a probability, and the code does not establish a profitable edge.
 
 ## Decision and execution contract
 
-`decision_engine.decide` is the pure function used by the live orchestrator and historical replay. It consumes finalized official OHLC, a synchronized benchmark, an explicit completed-session cutoff, eligibility and previous-session state. It requires 200 sessions, retains up to 1,500 sessions consistently, and rejects missing, malformed, duplicate, stale or unresolved action-affected inputs. News cannot change the technical result.
+`decision_engine.decide` is the pure function used by the live orchestrator and historical replay. It consumes exactly the latest 42 finalized official sessions (about two trading months), a synchronized benchmark, an explicit completed-session cutoff, eligibility and previous-session state. Older bars cannot influence `technical_swing_short_v3`. It rejects missing, malformed, duplicate, stale or unresolved action-affected inputs. News cannot change the technical result.
 
-Price structure excludes the decision bar. RSI uses Wilder smoothing. True OHLC ATR/ADX and CMF are required. Stops and targets must satisfy `stop < entry < target1 < target2` when target 2 exists. Strong Buy needs raw qualification on distinct consecutive sessions. Settings, source bars, benchmark, actions and previous state are archived with each usable decision.
+Price structure excludes the decision bar. RSI uses Wilder smoothing. Trend uses 10-, 20-, and 40-session EMAs; relative strength uses 10-, 21-, and 41-session returns. True OHLC ATR/ADX and CMF are required. Stops and targets must satisfy `stop < entry < target1 < target2` when target 2 exists. Strong Buy needs raw qualification on distinct consecutive sessions. Settings, source bars, benchmark, actions and previous state are archived with each usable decision.
 
 Orders are simulated at the next benchmark session opening with the saved entry-gap bound, costs and volume-participation assumption. Same-bar ambiguity is stop-first; opening gaps through stops fill at the worse open. The initial stop and target remain fixed. Outcomes include target, stop, ten-session expiry, unfilled, pending, invalid and unavailable. Unavailable positions retain unresolved exposure. Corporate actions during a holding period require reconciliation rather than fabricated P/L. No compounded portfolio return or drawdown is manufactured from overlapping trades.
 
@@ -31,7 +31,7 @@ python tools/reconcile_data.py --database /durable/runtime.db
 python tools/reconcile_data.py --database /durable/runtime.db --apply --max-dates 10
 ```
 
-The reconciliation tool preserves replaced observations and accepts only valid dated official replacements. It does not guess missing bars. Use `tools/import_actions.py` for sourced, verified actions with explicit price and volume factors and a known-at date.
+The reconciliation tool preserves replaced observations and accepts only valid dated official replacements. Reconcile at least the latest 42 common sessions before publishing v3 analysis; it does not guess missing bars. Use `tools/import_actions.py` for sourced, verified actions with explicit price and volume factors and a known-at date.
 
 ## Operations and data limits
 

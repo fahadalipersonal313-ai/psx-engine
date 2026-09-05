@@ -209,11 +209,9 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # --- core indicators
     df["rsi"] = rsi(close)
     macd_line, macd_sig, macd_hist = macd(close)
+    ema10 = close.ewm(span=10, adjust=False).mean()
     ema20 = close.ewm(span=20, adjust=False).mean()
-    ema50 = close.ewm(span=50, adjust=False).mean()
-    ema200 = close.ewm(span=200, adjust=False).mean() if len(close) >= 200 else None
-    if ema200 is None:
-        missing.append("EMA-200 (needs 200 sessions)")
+    ema40 = close.ewm(span=40, adjust=False).mean()
     bb_up, bb_mid, bb_lo = bollinger(close)
     obv_series = obv(close, vol)
     if "open" in df.columns and df["open"].notna().sum() >= 20:
@@ -262,14 +260,15 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         if hit_note:
             notes.append(hit_note)
 
-    # Trend via EMAs (25 pts)
+    # Short-history trend via 10/20/40 session EMAs (25 pts). The strategy
+    # deliberately avoids EMA-200 because its input contract is 42 sessions.
     pts = 0
-    if price > float(ema20.iloc[-1]): pts += 8
-    if price > float(ema50.iloc[-1]): pts += 9
-    if ema200 is not None and price > float(ema200.iloc[-1]): pts += 8
-    add(pts, 25 if ema200 is not None else 17, "trend",
-        f"Price vs EMAs: 20={ema20.iloc[-1]:.2f}, 50={ema50.iloc[-1]:.2f}"
-        + (f", 200={ema200.iloc[-1]:.2f}" if ema200 is not None else " (no EMA-200)"))
+    if price > float(ema10.iloc[-1]): pts += 8
+    if price > float(ema20.iloc[-1]): pts += 9
+    if price > float(ema40.iloc[-1]): pts += 8
+    add(pts, 25, "trend",
+        f"Price vs EMAs: 10={ema10.iloc[-1]:.2f}, 20={ema20.iloc[-1]:.2f}, "
+        f"40={ema40.iloc[-1]:.2f}")
 
     # RSI (15 pts) — reward healthy zone, penalise extremes
     if last_rsi is not None:
@@ -399,9 +398,9 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # (ext_atr) is kept for info only because the EOD ATR proxy understates true
     # range and inflated it.
     ema20_last = float(ema20.iloc[-1])
-    ema50_last = float(ema50.iloc[-1])
+    ema40_last = float(ema40.iloc[-1])
     ref_span = getattr(config, "PULLBACK_EMA_SPAN", 20)
-    ref_series = ema50 if ref_span == 50 else ema20
+    ref_series = ema40 if ref_span == 40 else ema20
     ref_ema = float(ref_series.iloc[-1])
     ext_pct = round((price / ref_ema - 1) * 100, 1) if ref_ema else None
     ext_atr = round((price - ref_ema) / last_atr, 2) if last_atr else None
@@ -457,12 +456,11 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # lower-risk entry (buy the dip profit-takers create) vs chasing the
     # breakout. buy_zone is the band around that EMA, floored at support.
     #
-    # The reference is the 50-EMA (config.PULLBACK_EMA_SPAN, 2026-08-12): a
-    # deeper retracement than the old 20-EMA band. Price inside a 50-EMA zone can
-    # sit slightly BELOW the 50-EMA, so the old `price > ema50` trend test would
-    # contradict the zone itself — the uptrend is instead confirmed by the
-    # reference EMA still RISING over the last 10 sessions, plus the 200-EMA when
-    # available. RSI window is widened to 35-65 to match the deeper dip.
+    # The reference is configured for the short-window contract. Price inside
+    # its pullback zone can sit slightly below the reference EMA, so a strict
+    # `price > reference EMA` test would contradict the zone itself. The setup
+    # instead requires a rising reference EMA and price above the 40-session
+    # trend EMA. RSI uses 35-65 so momentum may cool during the retracement.
     ref_rising = (len(ref_series) > 10
                   and ref_ema > float(ref_series.iloc[-11]))
     buy_zone_high = round(ref_ema * 1.03, 2)
@@ -471,7 +469,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     pullback_ready = bool(
         in_buy_zone and not breakdown and not extended
         and ref_rising
-        and (ema200 is None or price > float(ema200.iloc[-1]))
+        and price > ema40_last
         and (last_rsi is not None and 35 <= last_rsi <= 65)
         and (bool(obv_trend_up) or float(macd_line.iloc[-1]) > 0))
     if pullback_ready:
@@ -484,7 +482,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
     # and feed back into confidence (scoring_engine._indicator_accuracy_boost).
     # None = indicator not computable this run (data too short etc.).
     tech_flags = {
-        "trend":    price > ema50_last,
+        "trend":    price > ema40_last,
         "rsi":      (last_rsi is not None and 40 <= last_rsi <= 72),
         "macd":     float(macd_hist.iloc[-1]) > 0,
         "obv":      bool(obv_trend_up) if obv_trend_up is not None else None,
@@ -498,8 +496,8 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         "score": final, "classification": cls, "price": price,
         "volume": today_vol, "avg_volume": avg_vol, "volume_spike": vol_spike,
         "rsi": last_rsi, "macd_hist": float(macd_hist.iloc[-1]),
-        "ema20": float(ema20.iloc[-1]), "ema50": float(ema50.iloc[-1]),
-        "ema200": float(ema200.iloc[-1]) if ema200 is not None else None,
+        "ema10": float(ema10.iloc[-1]), "ema20": float(ema20.iloc[-1]),
+        "ema40": ema40_last, "ema50": ema40_last, "ema200": None,
         "bb_upper": bb_u, "bb_lower": bb_l, "bb_pct_b": round(bb_pct_b, 3),
         "bb_bandwidth": (round(bb_bandwidth, 4) if bb_bandwidth is not None else None),
         "bb_squeeze": bb_squeeze,

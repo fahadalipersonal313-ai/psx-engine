@@ -61,6 +61,27 @@ class IndicatorTests(unittest.TestCase):
 
 
 class DecisionTests(unittest.TestCase):
+    def test_short_contract_uses_exactly_42_sessions(self):
+        bars, ix = fixture(43)
+        result = de.decide('PSO', bars, ix, bars[-1]['date'])
+        self.assertNotEqual(result['signal']['signal'], 'No data', result['signal'])
+        self.assertEqual(len(result['snapshot']['bars']), 42)
+        self.assertEqual(len(result['snapshot']['benchmark']), 42)
+
+    def test_older_bars_cannot_change_short_decision(self):
+        bars, ix = fixture(84)
+        baseline = de.decide('PSO', bars, ix, bars[-1]['date'])
+        changed = copy.deepcopy(bars)
+        for row in changed[:-42]:
+            row.update(open=1., high=1.1, low=.9, close=1., volume=1.)
+        self.assertEqual(de.canonical(baseline), de.canonical(
+            de.decide('PSO', changed, ix, bars[-1]['date'])))
+
+    def test_relative_strength_uses_short_windows(self):
+        bars, ix = fixture(42)
+        result = de.decide('PSO', bars, ix, bars[-1]['date'])
+        self.assertEqual(set(result['relative_strength']['rel']), {'2w', '1m', '2m'})
+
     def test_future_invariance_and_pure_dependencies(self):
         bars,ix = fixture()
         with patch('database.conn',side_effect=AssertionError('DB in pure path')), patch('market_regime.fetch_index',side_effect=AssertionError('network')):
@@ -92,11 +113,14 @@ class DecisionTests(unittest.TestCase):
 
     def test_confirmation_distinct_sessions(self):
         bars,ix = fixture()
-        with patch.object(config,'SIGNAL_THRESHOLDS',{'strong_buy':0,'buy':0,'watch':0,'hold':0}), patch('signal_generator.T',{'strong_buy':0,'buy':0,'watch':0,'hold':0}), patch.object(config,'BUY_MIN_CMF',-1), patch.object(config,'RS_LAGGARD_VETO',0), patch.object(config,'HYSTERESIS_BAND',0), patch('technical_analyzer.analyze',wraps=ta.analyze) as analyze:
+        with patch.object(config,'SIGNAL_THRESHOLDS',{'strong_buy':0,'buy':0,'watch':0,'hold':0}), patch('signal_generator.T',{'strong_buy':0,'buy':0,'watch':0,'hold':0}), patch.object(config,'BUY_MIN_CMF',-1), patch.object(config,'RS_LAGGARD_VETO',0), patch.object(config,'HYSTERESIS_BAND',0), patch.object(config,'REGIME_GATE_ENABLED',False), patch('technical_analyzer.analyze',wraps=ta.analyze) as analyze:
             # Actual classification also qualifies; use a controlled technical
             # snapshot to isolate confirmation rather than fitting a price path.
             real=ta.analyze('PSO',pd.DataFrame(bars),{'price':bars[-1]['close']},70,bars)
-            real.update(classification='Bullish',breakdown=False,cmf=.2,relative_strength=70)
+            p=real['price']
+            real.update(classification='Bullish',breakdown=False,cmf=.2,
+                        relative_strength=70,stop_loss=p*.95,target1=p*1.1,
+                        target2=p*1.2,extended=False,ext_pct=0,momentum_20d=0)
             analyze.side_effect=None; analyze.return_value=real
             a=de.decide('PSO',bars,ix,bars[-2]['date'])
             same=de.decide('PSO',bars,ix,bars[-2]['date'],previous=de.state(a))

@@ -95,12 +95,13 @@ def decide(symbol, bars, benchmark, cutoff, eligible=True, previous=None, action
         pd.Timestamp(cutoff)  # reject malformed dates
         stock = _history(bars, cutoff, True)
         index = _history(benchmark, cutoff, False)
-        if len(stock) < 200 or len(index) < max(200, max(config.RS_LOOKBACKS.values()) + 1):
-            raise ValueError('At least 200 stock and benchmark sessions required')
+        minimum = config.MIN_STRATEGY_HISTORY
+        if len(stock) < minimum or len(index) < max(minimum, max(config.RS_LOOKBACKS.values()) + 1):
+            raise ValueError(f'At least {minimum} stock and benchmark sessions required')
         if stock[-1]['date'] != cutoff or index[-1]['date'] != cutoff:
             raise ValueError('Required completed session unavailable')
-        recent_index = [r['date'] for r in index][-127:]
-        if [r['date'] for r in stock][-127:] != recent_index:
+        recent_index = [r['date'] for r in index][-minimum:]
+        if [r['date'] for r in stock][-minimum:] != recent_index:
             raise ValueError('Stock and benchmark session coverage differs')
         import corporate_actions
         adjusted = corporate_actions.verified_bars(stock, actions or [], cutoff)

@@ -13,7 +13,7 @@ def _confluence(technical):
     """0-4: how many independent signal dimensions agree with a bullish trade.
 
     Four INDEPENDENT dimensions (each captures a different market mechanism):
-      1. Trend    — price above its 50-EMA (intermediate trend is up)
+      1. Trend    — price above its 40-session EMA (short-window trend is up)
       2. Momentum — RSI in healthy zone AND MACD histogram positive (both agree)
       3. Volume   — OBV trending up (smart money accumulating, not distributing)
       4. Structure— price above nearest support AND no breakdown in progress
@@ -24,8 +24,8 @@ def _confluence(technical):
     price = technical.get("price") or 0
     score, dims = 0, []
 
-    ema50 = technical.get("ema50")
-    if ema50 and price > ema50:
+    trend_ema = technical.get("ema40")
+    if trend_ema and price > trend_ema:
         score += 1; dims.append("trend")
 
     rsi = technical.get("rsi")
@@ -177,7 +177,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     # not. Day-deduped Buy win rate by confluence: 2/4 won 17% (n=24), 3/4 won
     # 26% (n=47), 4/4 won 25% (n=108) — flat. The gate was rejecting setups
     # without buying accuracy (trend and structure are near-collinear: price
-    # above its 50-EMA is usually also above support). Still stored and shown
+    # above its slow trend EMA is usually also above support). Still stored and shown
     # as context so the dimensions remain visible per card.
     confluence, conf_dims = _confluence(technical)
 
@@ -200,7 +200,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     _ext_pct = technical.get("ext_pct")
     _mom = technical.get("momentum_20d")
     # The widening scales with RALLY STRENGTH: ramp the multiplier linearly from
-    # 1.0 (index just crossed above its 50-EMA — a shaky breakout, loosen barely)
+    # 1.0 (index just crossed above its regime EMA — a shaky breakout, loosen barely)
     # up to the configured ceiling (index _full_pct above its EMA — a strong,
     # confirmed bull, loosen fully). A mild rally relaxes the guard a little; a
     # powerful one relaxes it a lot.

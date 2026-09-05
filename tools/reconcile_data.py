@@ -12,6 +12,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import config
 import database as db
 from data_quality import bar_error, source_priority
+import ssl_compat
+
+ssl_compat.enable()
 
 
 def candidates(path):
@@ -31,6 +34,7 @@ def reconcile(path, max_dates=10):
     config.DB_PATH = str(path)
     db.init_db()
     dates = sorted({b['date'] for b in suspect}, reverse=True)[:max_dates]
+    selected = set(dates)
     written = 0
     for day in dates:
         fetched = psx_historical.fetch_day(day)
@@ -49,7 +53,10 @@ def reconcile(path, max_dates=10):
             new = source_rows.get(old['symbol'])
             if new:
                 written += db.save_hl_bar(old['symbol'], day, new['open'], new['high'], new['low'], new['close'], new['volume'], psx_historical.SOURCE, True)
-    return {'dates_requested': len(dates), 'bars_written': written, 'remaining_suspect': len(candidates(path))}
+    remaining = [b for b in candidates(path) if b['date'] in selected]
+    return {'dates_requested': len(dates), 'bars_written': written,
+            'remaining_suspect_in_window': len(remaining),
+            'window': [min(dates), max(dates)] if dates else None}
 
 
 if __name__ == '__main__':

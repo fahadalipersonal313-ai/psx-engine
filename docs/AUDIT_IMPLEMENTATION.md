@@ -6,8 +6,8 @@ accurate future signals.
 
 ## Implemented
 
-- A pure, versioned completed-session decision function is shared by live runs
-  and historical replay. It archives the configuration and complete source
+- A pure, versioned 42-session decision function is shared by live runs and
+  historical replay. It archives the configuration and complete source
   snapshot needed to reproduce each decision.
 - Technical mode is invariant to news and sentiment. Missing benchmark, CMF,
   true OHLC indicators, synchronized sessions, eligibility, or final official
@@ -47,7 +47,7 @@ accurate future signals.
 
 ## Verification evidence
 
-- 38 unit and integration tests pass under Python 3.12 with dependencies from
+- 41 unit and integration tests pass under Python 3.12 with dependencies from
   `requirements-ci.txt`.
 - Root modules compile and parse. `git diff --check` passes.
 - A mocked two-symbol full run writes one complete atomic batch, renders a report,
@@ -58,17 +58,16 @@ accurate future signals.
 - The committed database passes SQLite `integrity_check`. A read-only scan
   reproduces 42 invalid OHLC rows: 19 inconsistent OHLC rows and 23 rows with
   missing or invalid OHLC fields under the strict validator.
-- A verified runtime backup was created without changing the tracked database.
-  The read-only reconciliation inventory found 2,732 non-final or invalid bars
-  across 93 dates. The PSX historical endpoint timed out during the attempted
-  repair, so no replacements were fabricated or applied.
+- A verified database copy was reconciled from the dated PSX historical endpoint.
+  The latest 42 common sessions, 2026-07-07 through 2026-09-04, now contain
+  2,100 valid final official bars for all 50 symbols and no suspect bars.
+- A v3 smoke analysis produced complete decisions for all 50 symbols: 29 Avoid,
+  18 Watch, and 3 Hold. No Buy threshold was weakened to manufacture candidates.
 
 ## Remaining gates
 
-- Reconcile the runtime database from the dated official historical endpoint.
-  Strict decisions currently fail closed for all 50 symbols because their
-  required history contains invalid or intraday-derived rows. This is expected
-  until the official replacement workflow succeeds.
+- Continue rolling official reconciliation so each new completed session replaces
+  any intraday-derived observation before analysis publication.
 - Populate holidays, Ramadan hours, and other dated session overrides from PSX
   notices. The regular schedule is verified; special schedules are not.
 - Provision durable, private, single-writer runtime storage and point the worker
@@ -94,8 +93,7 @@ accurate future signals.
 
 ## Deployment position
 
-The user authorized merging this implementation to `main` on 2026-09-05. It is
-still operationally blocked from producing signals until data reconciliation and
-runtime storage migration are complete. Running it against the existing
-mixed-provenance history correctly publishes unavailable decisions rather than
-silently issuing signals from unverified inputs.
+The user authorized the short-window strategy and merging it to `main` on
+2026-09-05. Its latest 42-session input window is officially reconciled and can
+produce complete technical decisions. Profitability remains unvalidated, and
+durable private single-writer runtime storage is still required for production.

@@ -347,10 +347,9 @@ INTRADAY_VOLUME_CURVE = [
 ]
 
 # Reference EMA for the pullback buy-zone and the extension (ext_pct) measure.
-# Was 20 (shallow dip). Now 50: a deeper retracement to the intermediate trend
-# line — a wider buy-zone that accepts more drawdown before the "uptrend intact"
-# test fails. Must be one of the EMAs technical_analyzer computes (20 or 50).
-PULLBACK_EMA_SPAN = 50
+# The short-window contract uses the 20-session trend line for pullback entries.
+# Must be one of the EMAs technical_analyzer computes (20 or 40).
+PULLBACK_EMA_SPAN = 20
 
 # ---------------------------------------------------------------------------
 # 3b. MARKET REGIME & RELATIVE STRENGTH (Tier 2)
@@ -360,12 +359,12 @@ PULLBACK_EMA_SPAN = 50
 # KMI30 = the Shariah index matching this engine's universe (KSE100 = broad
 # market). Confirmed live 2026-06-14: KSE100, KMI30, KSE30, ALLSHR, KMIALLSHR.
 BENCHMARK_INDEX = "KMI30"
-REGIME_EMA_SPAN = 50           # index must be above this EMA for a "risk-on" market
+REGIME_EMA_SPAN = 40           # fits the 42-session contract while retaining a slow trend filter
 REGIME_GATE_ENABLED = True     # in a risk-off market, soften Buy/Strong Buy -> Watch
 # Relative strength: stock return minus index return over these trading-day
-# windows, blended (recent weighted a touch less than the 3-/6-month trend).
-RS_LOOKBACKS = {"1m": 21, "3m": 63, "6m": 126}
-RS_WEIGHTS = {"1m": 0.25, "3m": 0.40, "6m": 0.35}
+# windows, blended across roughly two weeks, one month, and two months.
+RS_LOOKBACKS = {"2w": 10, "1m": 21, "2m": 41}
+RS_WEIGHTS = {"2w": 0.25, "1m": 0.40, "2m": 0.35}
 RS_POINTS = 15                 # relative strength's contribution to the technical score
 # True ATR/ADX activate once this many REAL daily OHLC bars (banked from intraday
 # H/L) exist for a symbol; below this the engine uses the close-based proxies.
@@ -406,7 +405,7 @@ RISK = {
                                        # from min_headroom_rr (neutral / flat tape) to
                                        # this floor (strong rally). Set to 1.5 to
                                        # disable risk-on relaxation.
-    "headroom_rr_riskon_full_pct": 8.0, # Rally strength (benchmark % above its 50-EMA)
+    "headroom_rr_riskon_full_pct": 8.0, # Rally strength (benchmark % above its regime EMA)
                                        # at which the headroom threshold reaches its
                                        # floor. Linear ramp between the two.
     "max_extension_pct": 11.0,         # price > this % above EMA20 -> extended (chase).
@@ -420,7 +419,7 @@ RISK = {
                                        # ≈40% 20-day momentum). The actual widening scales
                                        # with rally strength (see _full_pct below). Set to
                                        # 1.0 to keep the guard regime-neutral (old behaviour).
-    "extension_riskon_full_pct": 8.0,  # Rally strength (benchmark % above its 50-EMA) at
+    "extension_riskon_full_pct": 8.0,  # Rally strength (benchmark % above its regime EMA) at
                                        # which the chase guard reaches its full widening.
                                        # The multiplier ramps linearly from 1.0 when the
                                        # index just crosses above its EMA (mild rally) to
@@ -901,8 +900,9 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_v2"
-FEATURE_HISTORY_LIMIT = 1500
+STRATEGY_VERSION = "technical_swing_short_v3"
+FEATURE_HISTORY_LIMIT = 42
+MIN_STRATEGY_HISTORY = 42
 EXCHANGE_HOLIDAYS = []  # Populate from verified dated exchange notices.
 SESSION_OVERRIDES = {}  # date -> [(open, close)]; [] explicitly closes a day.
 PUBLICATION_DELAY_MINUTES = 30
