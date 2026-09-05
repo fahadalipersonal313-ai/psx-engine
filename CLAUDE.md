@@ -997,6 +997,44 @@ regime gate and shock-up deferral were kept on evidence; hysteresis and the
 confidence floor are inert. No remaining gate accounts for emitted Buys trailing
 the candidate pool — the next place to look is the score itself, not the vetoes.
 
+## Chart features measured — standalone only, NOT wired to signals (2026-09-05)
+
+`chart_analysis.py` reproduces the discretionary read (swing pivots, HH/HL
+structure, anchored trendlines, tested zones, EMA stack, candle patterns,
+volume). Before connecting any of it, every feature was graded on the candidate
+pool over 5 years of adjusted history (pool = uptrend + positive RS; benchmark =
+same-day cross-sectional median; pool baseline 5d 0.00%/49.7%):
+
+| feature | n | 5d med | 10d med | 10d pos |
+|---|---|---|---|---|
+| MA stack 20>50>200 | 13,688 | +0.08% | +0.29% | 51.9% |
+| close > 55-day high | 1,649 | +0.14% | +0.32% | 51.4% |
+| breakout + volume expansion | 1,810 | +0.09% | +0.13% | 50.7% |
+| bullish engulfing | 709 | +0.02% | -0.02% | 48.5% |
+| doji | 1,974 | 0.00% | 0.00% | 49.7% |
+| long lower wick | 467 | +0.06% | +0.09% | 50.3% |
+| volume > 1.5x 20d median | 6,301 | **-0.08%** | -0.01% | 48.9% |
+| pullback within 2% of EMA50 | 2,038 | **-0.10%** | **-0.19%** | 47.0% |
+
+**Candle patterns are noise here** — engulfing, doji and long-wick bars all sit
+inside the pool baseline. So is volume confirmation, which is mildly NEGATIVE:
+buying the volume-expansion day underperforms the pool. Buying the pullback to
+the 50-EMA is the worst of the set, agreeing with the pullback upgrade that was
+removed in August.
+
+**The one promising feature failed the live regime.** A 10-day range under 5%
+(volatility contraction / coiling) measured 10d +0.89%, 56.9% positive, n=504
+across 29 symbols and 16 sectors — it passes every independence check. But the
+year split inverts: 2022 +1.79%, 2024 +1.90%, then **2026 -0.40% with only 30%
+positive**, and the inversion holds at every threshold tested (<5%, <7%, <9%).
+That is the same shape that killed the 15-40% extension veto — a rule whose sign
+flipped in the live regime. Re-run the year split before reconsidering.
+
+**Conclusion: chart_analysis stays read-only.** Nothing in it earns a place in
+signal generation on this evidence. When something eventually does, it enters as
+a RANKER or POSITION SIZER, never a veto — every veto measured in this repo
+rejected a better subset than it passed.
+
 ## Buying up-shocks loses in EVERY category (2026-09-04)
 
 On adjusted, tradeable events (1,020 up-shocks): sector-driven **-1.93%, 39%
