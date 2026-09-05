@@ -1,5 +1,6 @@
 """Daily-bar target-before-stop evaluation; no invented portfolio equity curve."""
 from collections import Counter
+from bisect import bisect_right
 from copy import deepcopy
 import json
 import config
@@ -101,24 +102,31 @@ def metrics(outcomes):
             'note': 'Resolved-opportunity statistics, not calibrated forecasts. Unavailable exposure remains unresolved. No portfolio return or drawdown is inferred.'}
 
 
-def replay(symbol, bars, benchmark, lookback=250, eligible=True, actions=None):
+def replay(symbol, bars, benchmark, lookback=21, eligible=True, actions=None):
+    if lookback < 1:
+        raise ValueError('Choose at least one trading day')
     bars = sorted(bars, key=lambda b: str(b['date']))
     benchmark = sorted(benchmark, key=lambda b: str(b['date']))
     sessions = [str(b['date'])[:10] for b in benchmark]
     start = sessions[max(0, len(sessions) - lookback)] if sessions else ''
     previous, active, outcomes, decisions = None, None, [], []
     vetoes = Counter()
+    bar_dates = [str(b['date'])[:10] for b in bars]
     # Warm up the same previous-session state before the evaluation boundary.
     # Each decision trims only at its own cutoff using the same live limit.
-    for day in sessions:
-        decision = decision_engine.decide(symbol, bars, benchmark, day, eligible, previous, actions)
+    for pos in range(max(0, len(sessions) - lookback - 1), len(sessions)):
+        day = sessions[pos]
+        end = bisect_right(bar_dates, day)
+        window = config.FEATURE_HISTORY_LIMIT
+        decision = decision_engine.decide(symbol, bars[max(0, end-window):end],
+                    benchmark[max(0, pos+1-window):pos+1], day, eligible, previous, actions)
         previous = decision_engine.state(decision)
         if day < start:
             continue
         if active:
             outcome = resolve(active, bars, sessions, as_of=day, actions=actions)
             if outcome['status'] not in ('pending', 'unavailable'):
-                outcomes.append(outcome)
+                outcomes.append(dict(outcome, symbol=symbol, signal_date=active['session']))
                 active = None
         decisions.append(previous)
         if decision['signal']['signal'] == 'No data':
@@ -126,24 +134,31 @@ def replay(symbol, bars, benchmark, lookback=250, eligible=True, actions=None):
         if not active and decision['signal']['signal'] in ('Buy', 'Strong Buy'):
             active = opportunity(decision)
     if active:
-        outcomes.append(resolve(active, bars, sessions, actions=actions))
+        outcomes.append(dict(resolve(active, bars, sessions, actions=actions),
+                             symbol=symbol, signal_date=active['session']))
+    usable = sum(d['signal'] != 'No data' for d in decisions)
     return {'symbol': symbol, 'metrics': metrics(outcomes), 'outcomes': outcomes,
             'decisions': decisions, 'vetoes': dict(vetoes),
-            'validation': 'Historical descriptive replay with current universe eligibility; not untouched out-of-sample validation.'}
+            'coverage': {'tested_days': len(decisions), 'usable_days': usable,
+                         'missing_days': len(decisions)-usable, 'start': start,
+                         'end': sessions[-1] if sessions else None},
+            'validation': 'Uses today’s stock list and rules on past prices. Past results do not guarantee future results.'}
 
 
 def backtest(symbol, lookback=None, hold_days=None, **kwargs):
     import database as db
+    import shariah_checker
     if hold_days is not None and hold_days != config.EXECUTION['holding_sessions']:
         raise ValueError('Change and register the execution contract before using a different horizon')
     return replay(symbol, db.get_daily_ohlc(symbol, 100000), db.get_eod_history(config.BENCHMARK_INDEX, 100000),
-                  lookback or config.BACKTEST['lookback'], symbol in config.STOCKS, db.get_corporate_actions(symbol))
+                  lookback if lookback is not None else 21,
+                  shariah_checker.check(symbol)['eligible_for_ranking'], db.get_corporate_actions(symbol))
 
 
 def backtest_portfolio(symbols=None, **kwargs):
     results = [backtest(symbol, **kwargs) for symbol in (symbols or config.STOCKS)]
     return {'metrics': metrics([o for r in results for o in r['outcomes']]), 'results': results,
-            'note': 'Aggregated single-opportunity study; no capital-constrained equity curve.'}
+            'note': 'Results combine separate stock trades. They do not represent the return on your whole account.'}
 
 
 def update_outcomes():

@@ -111,6 +111,7 @@ def parse(html):
         sym = cells[idx["symbol"]].upper()
         if not sym:
             continue
+        sym = sym.split()[0]  # PSX status markers (XD/NC/etc.) are not ticker text.
         row = {"symbol": sym}
         for f in ("open", "high", "low", "close", "volume"):
             row[f] = _num(cells[idx[f]])

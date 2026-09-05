@@ -514,7 +514,7 @@ def analyze(symbol, eod_df, quote, rs_score=None, ohlc=None):
         "in_buy_zone": in_buy_zone, "pullback_ready": pullback_ready,
         "buy_zone_ema_span": ref_span,
         "relative_strength": rs_score,
-        "low_confidence": len(close) < 60,
+        "low_confidence": len(close) < config.MIN_STRATEGY_HISTORY,
         "tech_flags": tech_flags,
         "cmf": cmf,
         "obv_divergence_bullish": (obv_divergence["bullish"] if obv_divergence else None),

@@ -294,9 +294,9 @@ def whatif_regime_note(actual_regime, assumed_regime, signal):
 
 def regime_pill(regime):
     if regime == "risk-on":
-        return _pill("● Risk-on", NEON["green"])
+        return _pill("● Rising", NEON["green"])
     if regime == "risk-off":
-        return _pill("● Risk-off", NEON["red"])
+        return _pill("● Falling", NEON["red"])
     return _pill("● Unknown", "#8aa0c0")
 
 
@@ -366,12 +366,12 @@ def changes_since_last():
 # fetch_eod hits the network with no cache, so backtests are expensive. Cache
 # hard and only run the universe-wide one behind a button.
 @st.cache_data(ttl=3600, show_spinner=False)
-def bt_symbol(sym):
+def bt_symbol(sym, data_version=None):
     return backtester.backtest(sym)
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def bt_portfolio():
+def bt_portfolio(data_version=None):
     return backtester.backtest_portfolio()
 
 
@@ -443,6 +443,9 @@ rows = []
 for sym in config.STOCKS:
     r = db.last_run(sym)
     if r:
+        from history_view import explain_run
+        r = dict(r)
+        r['main_reason'], r['main_risk'] = explain_run(r)
         rows.append(r)
 if not rows:
     st.title("PSX Shariah Engine")
@@ -525,7 +528,7 @@ def tile(col, label, value_html, sub=""):
 # above the Market-regime tile it drives. Purely a DISPLAY overlay; it never
 # re-runs the engine or mutates stored signals.
 _wf_choice = st.radio(
-    "🔀 Regime what-if", ["Actual", "Assume risk-on", "Assume risk-off"],
+    "Market direction", ["Actual"],
     index=0, horizontal=True,
     help="Assume risk-on reverses ONLY the risk-off regime gate for display, "
          "surfacing the technical Buys the engine downgraded to Watch. "
@@ -551,12 +554,12 @@ buys = latest[latest["display_signal"].isin(["Strong Buy", "Buy"])]
 exits = latest[latest["display_signal"] == "Exit"]
 
 t1, t2, t3, t4, t5 = st.columns(5)
-tile(t1, "Market regime", regime_pill(regime),
-     f"benchmark {config.BENCHMARK_INDEX}")
+tile(t1, "Market direction", regime_pill(regime),
+     f"Compared with {config.BENCHMARK_INDEX}")
 _act_sub = f"{len(exits)} exits" if len(exits) else "no exits"
 if _whatif_active:
     _act_sub += " · 🔀 assume risk-on"
-tile(t2, "Technical opportunities", f"{len(buys)} buys", _act_sub)
+tile(t2, "Buy signals", f"{len(buys)} buys", _act_sub)
 top = buys.iloc[0]["symbol"] if not buys.empty else "—"
 tile(t3, "Top pick", top,
      f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
@@ -805,6 +808,14 @@ st.divider()
 
 # ----------------------------- ACTION TODAY -------------------------------
 st.subheader("🎯 Action today")
+import upward_candidates
+st.subheader("Up to 10 stocks with a rising trend")
+_upward = upward_candidates.current()
+if _upward:
+    st.dataframe(pd.DataFrame(_upward), hide_index=True)
+else:
+    st.info("No stocks currently meet all the upward-trend and momentum checks.")
+st.caption("Only stocks with a rising price trend, positive momentum and buying activity qualify. Watch means wait for the Buy rules to pass. Fewer than 10 may qualify.")
 if _whatif_active:
     st.info("🔀 **What-if: Assume risk-on** — the market is really risk-off, so "
             "the Buys below are technical signals the engine downgraded to Watch "
@@ -967,7 +978,7 @@ st.divider()
 # ----------------------------- tabs (drill-down) --------------------------
 (tab_watch, tab_edge, tab_stock, tab_hist,
  tab_news, tab_reports) = st.tabs(
-    ["📋 Watchlist", "🧪 Edge", "🔍 Stock detail",
+    ["📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
      "📈 History", "📰 News", "📋 Reports"])
 
 with tab_watch:
@@ -980,7 +991,7 @@ with tab_watch:
                         for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
     show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
     show["news"] = [news_cell(s) for s in show["symbol"]]
-    show.columns = ["Symbol", "Score", "RS", "Signal", "Risk", "Quality",
+    show.columns = ["Symbol", "Score", "Market strength", "Signal", "Risk", "Quality",
                     "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
                     "News"]
 
@@ -1001,49 +1012,52 @@ with tab_watch:
     styled = (show.style
               .map(_sig_css, subset=["Signal"])
               .map(_risk_css, subset=["Risk"])
-              .format({"Score": "{:.1f}", "RS": "{:.0f}", "Quality": "{:.0f}",
+              .format({"Score": "{:.1f}", "Market strength": "{:.0f}", "Quality": "{:.0f}",
                        "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
 
 with tab_edge:
-    st.subheader("Target-before-stop research")
-    st.caption("Versioned completed-session decisions, next-session opening entry, costs and ten-session expiry. Uncalibrated; current-universe survivorship bias remains.")
-    if st.button("Run historical opportunity study"):
-        with st.spinner("Replaying finalized historical bars..."):
-            res = bt_portfolio()
-        st.json(res['metrics'])
-        st.dataframe(pd.DataFrame([dict(symbol=r['symbol'], **r['metrics']) for r in res['results']]))
-        st.caption(res['note'])
+    st.subheader("How past Buy signals performed")
+    st.caption("Check all tracked stocks using verified daily prices.")
+    if st.button("Check past signals for all stocks"):
+        with st.spinner("Checking past prices for all stocks..."):
+            res = bt_portfolio(os.stat(config.DB_PATH).st_mtime_ns)
+        import history_view
+        history_view.show(st, res)
 
 with tab_stock:
     sym = st.selectbox("Stock", config.STOCKS)
     r = db.last_run(sym)
     if r:
+        from history_view import explain_run
+        r = dict(r)
+        r['main_reason'], r['main_risk'] = explain_run(r)
         c1, c2, c3, c4, c5 = st.columns(5)
         c1.metric("Signal", r["signal"], f"{fmt(r['confidence'], 0)}/100 quality")
         c2.metric("Final score", fmt(r["final_score"], 1))
-        c3.metric("Rel. strength", fmt(r.get("relative_strength"), 0))
+        c3.metric("Strength versus market", fmt(r.get("relative_strength"), 0))
         c4.metric("Price", fmt(r["price"]))
         c5.metric("Risk", r["risk_level"])
         st.write("**Why:**", r["main_reason"])
         st.write("**Main risk:**", r["main_risk"])
-        st.write("**Shariah:**", r["shariah_status"], " · **Market regime:**",
-                 r.get("market_regime") or "—")
+        st.write("**Shariah:**", r["shariah_status"], " · **Market direction:**",
+                 {'risk-on': 'Rising', 'risk-off': 'Falling'}.get(r.get("market_regime"), 'Unknown'))
         _news_window(sym, news_feed.get(sym))
 
     eod, meta = data_fetcher.fetch_eod(sym)
     if eod is not None:
+        eod = eod.sort_values('date').tail(config.FEATURE_HISTORY_LIMIT)
         st.caption(f"Source: {meta['source']} (as of {meta['as_of']})")
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"], name="Close",
                                  line=dict(color=NEON["cyan"], width=2)))
         fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=20).mean(),
-                                 name="EMA20",
+                                 name="Short price trend (20 days)",
                                  line=dict(color=NEON["amber"], dash="dot")))
-        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=50).mean(),
-                                 name="EMA50",
+        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=40).mean(),
+                                 name="Slower price trend (40 days)",
                                  line=dict(color=NEON["violet"], dash="dash")))
         if r:
             for lvl, nm, clr in ((r["support"], "Support", NEON["green"]),
@@ -1062,12 +1076,11 @@ with tab_stock:
     else:
         st.error(meta.get("warning", "No price data."))
 
-    with st.expander("Historical opportunity evaluation"):
-        if st.button(f"Evaluate {sym}", key="bt_one"):
-            res = bt_symbol(sym)
-            st.json(res['metrics'])
-            st.json(res['vetoes'])
-            st.caption(res['validation'])
+    with st.expander("How past Buy signals performed"):
+        if st.button(f"Check past signals for {sym}", key="bt_one"):
+            res = bt_symbol(sym, os.stat(config.DB_PATH).st_mtime_ns)
+            import history_view
+            history_view.show(st, res)
 
 with tab_hist:
     sym = st.selectbox("Stock ", config.STOCKS, key="hist")
@@ -1077,7 +1090,7 @@ with tab_hist:
         cols = [c for c in ["final_score", "technical_score", "relative_strength"]
                 if c in hist.columns]
         st.line_chart(hist.set_index("run_time")[cols])
-        st.caption("Quality is heuristic. Legacy outcome labels measure benchmark-relative moves, not target success.")
+        st.caption("The score is a guide, not a chance of profit. Older results compare the stock with the market.")
         st.subheader("Signal history")
         st.dataframe(hist[["run_time", "signal", "confidence", "price", "outcome"]],
                      width="stretch", hide_index=True)

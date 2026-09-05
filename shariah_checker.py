@@ -48,6 +48,12 @@ def check(symbol):
     if stale:
         notes.append(stale)
 
+    if symbol in config.LOWER_PRICE_VERIFIED:
+        return {'symbol': symbol, 'status': 'Compliant (KMI All Share)',
+                'eligible_for_ranking': True,
+                'source': f'{config.LOWER_PRICE_SOURCE}, checked {config.LOWER_PRICE_VERIFIED_ON}',
+                'notes': notes}
+
     if symbol in config.KMI30_VERIFIED:
         return {
             "symbol": symbol, "status": "Compliant (KMI-30 constituent)",

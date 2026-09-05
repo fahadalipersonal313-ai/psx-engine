@@ -15,6 +15,11 @@ Dated historical research, preferences and rationales are preserved verbatim in 
 
 ## Current implementation state
 
+- User requests: use plain language throughout the dashboard; test past signals for all tracked stocks; include verified KMI All Share stocks below PKR 50. Do not confuse the user's Codex usage reset with a change to that price limit.
+- v4 fixes the obsolete 60-session weak-data flag: the complete 42-session contract must not automatically block all Buys. Each historical decision still uses only its preceding 42 sessions. Default evaluation is the latest 21 sessions, backed by 64 official sessions where available.
+- The universe now includes 168 distinct symbols. The dated PSX membership and price evidence is in data_lower_price_stocks.json. PSX label suffixes such as XD and NC are not part of the trading symbol.
+- Top-ten candidates must have rising 10/20/40-session trends, positive momentum and buying flow, adequate volume, valid trade levels, and verified eligibility. Show fewer than ten when fewer qualify; never fill the list with weak names.
+
 - Commit `678edd9` introduced versioned completed-session decisions, immutable opportunity outcomes, target-before-stop evaluation, atomic batches, source-quality gates, shared sizing, exchange-session handling, and regression CI.
 - `technical_swing_short_v3` uses exactly 42 sessions, 10/20/40-session EMAs, and 10/21/41-session relative strength. Older bars cannot affect its decision.
 - The latest 42-session decision window, 2026-07-07 through 2026-09-04, is reconciled to 2,100 official bars for all 50 symbols. Its initial smoke result was 29 Avoid, 18 Watch, 3 Hold, and zero Buy; do not weaken thresholds to manufacture candidates.

@@ -7,6 +7,8 @@ Never hard-code values elsewhere; all modules read from here.
 
 import os
 import re as _re
+import json as _json
+from pathlib import Path as _Path
 
 # ---------------------------------------------------------------------------
 # 1. STOCK UNIVERSE
@@ -92,6 +94,18 @@ KMIALLSHR_VERIFIED = {
 }
 KMIALLSHR_VERIFICATION_DATE = "2026-06-05"   # effective date of recomposition
 KMIALLSHR_SOURCE = "PSX-KMI All Share recomposition notice (screening 2025-12-31)"
+
+# Dated official membership and closing-price evidence for the user's additions.
+_lower_price = _json.loads((_Path(__file__).parent / 'data_lower_price_stocks.json').read_text(encoding='utf-8'))
+LOWER_PRICE_VERIFIED = {r['symbol'].split()[0] for r in _lower_price['stocks']}
+LOWER_PRICE_VERIFIED_ON = _lower_price['verified_on']
+LOWER_PRICE_SOURCE = _lower_price['source']
+STOCKS = list(dict.fromkeys(STOCKS + sorted(LOWER_PRICE_VERIFIED)))
+for _row in _lower_price['stocks']:
+    SECTORS.setdefault(_row['symbol'].split()[0], 'PSX sector ' + _row['sector'])
+# Official PSX /symbols directory, retrieved 2026-09-05; same sector grouping
+# for both the original names and additions so exposure limits stay consistent.
+SECTORS.update(_json.loads((_Path(__file__).parent / 'data_stock_sectors.json').read_text(encoding='utf-8')))
 
 # Stocks compliant via another verified route (not in KMI-30 top-30 ranking
 # but shariah compliant per company structure). Each entry MUST carry a
@@ -900,7 +914,7 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_short_v3"
+STRATEGY_VERSION = "technical_swing_short_v4"
 FEATURE_HISTORY_LIMIT = 42
 MIN_STRATEGY_HISTORY = 42
 EXCHANGE_HOLIDAYS = []  # Populate from verified dated exchange notices.

@@ -47,6 +47,15 @@ accurate future signals.
 
 ## Verification evidence
 
+### Recent-history repair (2026-09-05)
+
+- v4 removes the incompatible 60-session weak-data test while preserving the 42-session signal window. Tests cover this failure directly.
+- Official history was refreshed for 64 benchmark dates, June 3 through September 4. A dated KMI All Share price/membership snapshot adds 118 stocks to the original 50 (168 total).
+- Latest-month replay checks August 5 through September 4. PSO has all 21 dates usable and one Buy that reached its stop. Across all symbols there are 43 opportunities: 32 completed, nine unfilled and two needing more price verification. Mean completed-trade return after costs is -1.07%.
+- 139 stocks have complete coverage for the full month. SLM has only 15 usable evaluation dates because its stored daily history begins June 15; other gaps and unexplained price jumps remain visible. No missing daily prices were invented.
+- Current analysis has 144 usable stocks and 24 unavailable. FEM and DCR pass the upward-trend shortlist, both as Watch. Account admission remains unavailable where the actual portfolio lacks a valid current price or stop.
+- See RECENT_ANALYSIS_CHECK.json for exact coverage and results. The new dashboard presents readable summaries instead of raw JSON.
+
 - 41 unit and integration tests pass under Python 3.12 with dependencies from
   `requirements-ci.txt`.
 - Root modules compile and parse. `git diff --check` passes.

@@ -4,6 +4,10 @@ The engine implements an experimental short-window technical strategy evaluated 
 
 ## Decision and execution contract
 
+Current version: `technical_swing_short_v4`. Past-results checks cover the latest 21 trading days and run for one stock or the whole 168-stock list. Each past signal uses only the preceding 42 sessions. Older prices supply the starting history for those past dates; they do not enter today's signal. v4 corrects an obsolete 60-session data-quality penalty that blocked Buys despite complete 42-session inputs.
+
+The dashboard uses plain-language results and distinguishes a successful check with no Buy signals from a check that lacks prices. Lower-price additions are verified KMI All Share members priced below PKR 50 in the dated PSX snapshot. The top-ten trend list can contain fewer than ten stocks.
+
 `decision_engine.decide` is the pure function used by the live orchestrator and historical replay. It consumes exactly the latest 42 finalized official sessions (about two trading months), a synchronized benchmark, an explicit completed-session cutoff, eligibility and previous-session state. Older bars cannot influence `technical_swing_short_v3`. It rejects missing, malformed, duplicate, stale or unresolved action-affected inputs. News cannot change the technical result.
 
 Price structure excludes the decision bar. RSI uses Wilder smoothing. Trend uses 10-, 20-, and 40-session EMAs; relative strength uses 10-, 21-, and 41-session returns. True OHLC ATR/ADX and CMF are required. Stops and targets must satisfy `stop < entry < target1 < target2` when target 2 exists. Strong Buy needs raw qualification on distinct consecutive sessions. Settings, source bars, benchmark, actions and previous state are archived with each usable decision.
