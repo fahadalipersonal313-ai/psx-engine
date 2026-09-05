@@ -849,6 +849,30 @@ missing column rather than mis-mapping High into Low, and drops O=H=L=0.00 bars
 load reduction that parallelising was declined for. That changes the price path
 itself, so it needs its own pass and its own verification.
 
+## market-watch invented a Saturday session (fixed 2026-09-05)
+
+`psx_market_watch.fetch()` has NO session date in its payload — once the market
+shuts it simply keeps serving the LAST session's row. `_bank_official_hl` stamped
+that with `datetime.now()`, so an out-of-hours dispatch on Saturday 2026-09-05
+banked **49 bars dated 2026-09-05**, byte-identical to Thursday's for 45 of them.
+
+A duplicated bar is worse than a missing one: every window that counts SESSIONS
+rather than reading the latest price — ATR, true range, momentum, the range
+features, forward returns — treats it as a real flat day. The signals in that run
+were unaffected (they read the latest bar, which was the right price).
+
+Two guards now, because the clock alone cannot see a public holiday:
+- `_is_live_session()` — weekday AND inside `MARKET_OPEN..MARKET_CLOSE`. The
+  workflow sets `TZ=Asia/Karachi`, so `datetime.now()` is already Pakistan time.
+- a bar identical to the symbol's PREVIOUS stored bar (on an earlier date) is
+  skipped as the feed repeating itself. This is the holiday case. It does NOT
+  fire when the latest stored bar is today's — intraday overwrite still works,
+  which is the whole point of `overwrite=True`.
+
+The 49 phantom rows were deleted, scoped to that exact `source`. Verified after:
+**zero weekend bars anywhere in `daily_ohlc`**, so this was the first and only
+occurrence.
+
 ## PSX does NOT publish an order book (settled 2026-09-04)
 
 `depth_probe.py` tried `/orderbook/`, `/depth/`, `/market-depth/`,

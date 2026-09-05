@@ -172,7 +172,26 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
             "scoring": scoring, "risk": risk, "signal": signal}
 
 
-def _bank_official_hl(bars):
+def _is_live_session(now=None):
+    """True only while PSX is actually trading, so a closed-market snapshot is
+    never banked as a session of its own.
+
+    market-watch has no session date in its payload — it simply serves the LAST
+    session's row once the market shuts. Banking that under `datetime.now()`
+    invented a Saturday bar for 49 symbols on 2026-09-05, byte-identical to
+    Thursday's for 45 of them. A duplicated bar is worse than a missing one:
+    every window that counts sessions (ATR, true range, momentum, the range
+    features, forward returns) silently treats it as a real flat day.
+
+    The workflow sets TZ=Asia/Karachi, so `now` is already Pakistan local time.
+    """
+    now = now or datetime.now()
+    if now.weekday() >= 5:                       # Sat/Sun — never a session
+        return False
+    return config.MARKET_OPEN <= now.strftime("%H:%M") <= config.MARKET_CLOSE
+
+
+def _bank_official_hl(bars, now=None):
     """Write the exchange's own intraday High/Low into daily_ohlc for today.
 
     overwrite=True on purpose: this REPLACES a bar reconstructed from 15-minute
@@ -180,20 +199,45 @@ def _bank_official_hl(bars):
     2026-09-01 backfill, where INSERT OR IGNORE deliberately kept the poll-derived
     value and the official one had to be preferred by hand. Here the official
     value is available live, so it wins.
+
+    Banking is skipped entirely outside a live session (see _is_live_session),
+    and a bar identical to the symbol's previous stored bar is skipped too — that
+    is the market-watch feed repeating the last session, which is what a public
+    holiday looks like when the clock check alone cannot see it.
     """
     if not bars:
         return
-    today = datetime.now().strftime("%Y-%m-%d")
-    n = 0
+    now = now or datetime.now()
+    if not _is_live_session(now):
+        log.info("market-watch: outside a live session — not banking %d bars "
+                 "(the feed serves the previous session once the market shuts)",
+                 len(bars))
+        return
+    today = now.strftime("%Y-%m-%d")
+    n = repeats = 0
     for sym, b in bars.items():
         try:
+            prev = db.get_daily_ohlc(sym, limit=1)
+            if prev and prev[-1]["date"] != today and _same_bar(prev[-1], b):
+                repeats += 1
+                continue
             n += db.save_hl_bar(sym, today, b.get("open"), b["high"], b["low"],
                                 b.get("current"), b.get("volume"),
                                 "PSX market-watch (official intraday)",
                                 overwrite=True)
         except Exception as e:
             log.warning("banking official H/L failed for %s: %s", sym, e)
-    log.info("Banked official intraday High/Low for %d symbols", n)
+    log.info("Banked official intraday High/Low for %d symbols%s", n,
+             f" ({repeats} skipped as repeats of the previous session)" if repeats else "")
+
+
+def _same_bar(stored, live):
+    """Whether a market-watch bar just repeats the stored one (holiday case)."""
+    def eq(a, b):
+        return a is not None and b is not None and abs(float(a) - float(b)) < 1e-9
+    return (eq(stored.get("high"), live.get("high"))
+            and eq(stored.get("low"), live.get("low"))
+            and eq(stored.get("close"), live.get("current")))
 
 
 def full_run(fast=False):
