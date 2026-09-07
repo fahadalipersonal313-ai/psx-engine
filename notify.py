@@ -103,8 +103,14 @@ def send_report(results, report_text, attachment_path=None):
         log.info("Email skipped — %s.", reason)
         return False
 
+    # final_score is None for a symbol with no usable data, and the expanded
+    # universe produces plenty of those (456 of 3,192 rows on 2026-09-07), so a
+    # bare sort raises "'<' not supported between NoneType and float" and costs
+    # the whole email. excel_export already guards this the same way.
     ranked = sorted([r for r in results if r["shariah"]["eligible_for_ranking"]],
-                    key=lambda r: r["scoring"]["final_score"], reverse=True)
+                    key=lambda r: (r["scoring"]["final_score"]
+                                   if r["scoring"]["final_score"] is not None else -1),
+                    reverse=True)
     top = ranked[0] if ranked else None
     subject = f"PSX Engine {datetime.now():%Y-%m-%d %H:%M} — "
     subject += (f"{top['symbol']} {top['signal']['signal']} "

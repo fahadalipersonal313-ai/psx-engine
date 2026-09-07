@@ -159,7 +159,33 @@ jobs:
             git add -A -- psx_engine.db
             git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
-              git push || { echo "Runtime publication failed; database conflict requires reconciliation."; exit 1; }
+              # A push race is NOT the same thing as a database conflict, and
+              # treating it as one killed the loop on 2026-09-07: news.yml had
+              # pushed news_raw_24h.json four minutes earlier, so the remote had
+              # moved and a bare push was rejected — on a commit that touches a
+              # different file entirely and rebases without conflict.
+              #
+              # Deliberately a PLAIN rebase, never `-X theirs`: that strategy
+              # makes this loop's DB win every conflict and is what silently
+              # discarded a full regrade on 2026-08-13. A benign race (a
+              # different file) replays cleanly and we push; a genuine
+              # DB-vs-DB conflict still aborts and fails loudly, which is the
+              # visibility the bare push was reaching for.
+              pushed=0
+              for attempt in 1 2 3; do
+                if git push; then pushed=1; break; fi
+                echo "push rejected (attempt $attempt) — reconciling with remote..."
+                if ! git pull --rebase --autostash origin "${{ github.ref_name }}"; then
+                  git rebase --abort || true
+                  echo "Genuine conflict on rebase — another writer changed the same file."
+                  break
+                fi
+                sleep 3
+              done
+              if [ "$pushed" != "1" ]; then
+                echo "Runtime publication failed; database conflict requires reconciliation."
+                exit 1
+              fi
             else
               echo "No data changes to commit this cycle."
             fi
