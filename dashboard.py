@@ -661,12 +661,22 @@ if _bursts:
     st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} today")
     _sess = momentum.session_fraction()
     _live = _sess < 1.0
+    _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
     st.caption(
         f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
-        f"the {momentum.LOOKBACK}-day average volume. Measured at these "
-        "thresholds on COMPLETED sessions: beat the market 80% at 3 days (n=66), "
-        "72% at 7 days (n=53), independence-checked. **Not a Buy signal** — a "
-        "watch tier. Confirm manually."
+        f"the {momentum.LOOKBACK}-day average volume, and at least "
+        f"PKR {momentum.MIN_TURNOVER:,.0f} median daily turnover so a big move in "
+        "a name that barely trades cannot appear. **Not a Buy signal** — a watch "
+        "tier. Confirm manually."
+        # The beat rates were measured on the ORIGINAL 50-symbol universe. Naming
+        # the names it does NOT cover is the whole point: the old caption printed
+        # "beat the market 80%" beside stocks that statistic never described.
+        + (" &nbsp;·&nbsp; Measured on completed sessions across the original "
+           "50-stock universe: beat the market 80% at 3 days (n=66), 72% at "
+           "7 days (n=53), independence-checked."
+           + (f" **That measurement does not cover {', '.join(_outside)}** — "
+              "added in the 168-symbol expansion and not yet independently "
+              "graded." if _outside else ""))
         + (f" &nbsp;·&nbsp; ⏳ Market open, **{_sess * 100:.0f}% of the session's "
            "typical volume has traded** — intraday rows are marked provisional "
            "and can still fade; the measured beat rates describe end-of-day "
