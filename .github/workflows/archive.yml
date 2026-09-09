@@ -1,0 +1,109 @@
+name: Archive decision history
+
+# decisions + decision_snapshots grow ~0.67 MB per session with no bound, and the
+# whole database is committed on every 15-minute cycle, so that growth is a
+# per-push cost against GitHub's 100 MB hard limit. This moves settled history to
+# a RELEASE ASSET: durable, outside git history, restorable with
+# `python main.py restore <file>`.
+#
+# Deliberately never scheduled during a session — it rewrites the same database
+# the engine loop commits, and two writers on one binary file is how work is lost.
+on:
+  workflow_dispatch:
+    inputs:
+      keep_sessions:
+        description: "Sessions to keep live (older are archived)"
+        required: false
+        default: "30"
+      dry_run:
+        description: "Export and verify only, never purge"
+        type: boolean
+        required: false
+        default: false
+  schedule:
+    - cron: '0 20 * * 6'          # Sat 01:00 PKT — market shut all weekend
+
+permissions:
+  contents: write
+
+concurrency:
+  group: psx-db-write
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Refuse to run while the engine loop is alive
+        run: |
+          live=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/engine.yml/runs?status=in_progress" \
+            | grep -c '"workflow_id"' || true)
+          if [ "$live" -gt 0 ]; then
+            echo "::error::engine.yml is running — refusing to touch the database"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install -r requirements-ci.txt
+
+      - name: Export, verify, purge
+        id: arch
+        run: |
+          set -euo pipefail
+          python tools/archive_cycle.py \
+            --keep "${{ inputs.keep_sessions || '30' }}" \
+            ${{ inputs.dry_run && '--dry-run' || '' }} | tee /tmp/arch.log
+          grep -E '^(DID|NAME|CUTOFF)=' /tmp/arch.log >> "$GITHUB_OUTPUT" || true
+
+      - name: Publish as a release asset
+        if: steps.arch.outputs.DID == '1'
+        run: |
+          set -euo pipefail
+          TAG="archive-${{ steps.arch.outputs.CUTOFF }}"
+          NAME="${{ steps.arch.outputs.NAME }}"
+          AUTH="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+          API="https://api.github.com/repos/${{ github.repository }}"
+          curl -s -X POST -H "$AUTH" "$API/releases" \
+            -d "{\"tag_name\":\"$TAG\",\"name\":\"$TAG\",\"body\":\"Decision history before ${{ steps.arch.outputs.CUTOFF }}. Restore: python main.py restore $NAME\"}" \
+            -o /tmp/rel.json
+          if ! grep -q '"upload_url"' /tmp/rel.json; then
+            curl -sf -H "$AUTH" "$API/releases/tags/$TAG" -o /tmp/rel.json
+          fi
+          UP=$(python -c "import json;print(json.load(open('/tmp/rel.json'))['upload_url'].split('{')[0])")
+          curl -sf -X POST -H "$AUTH" -H "Content-Type: application/octet-stream" \
+            --data-binary @"$NAME" "$UP?name=$NAME" -o /dev/null
+          echo "uploaded $NAME to release $TAG"
+
+      - name: Download the PUBLISHED asset and prove it restores
+        if: steps.arch.outputs.DID == '1'
+        run: |
+          set -euo pipefail
+          TAG="archive-${{ steps.arch.outputs.CUTOFF }}"
+          NAME="${{ steps.arch.outputs.NAME }}"
+          AUTH="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+          API="https://api.github.com/repos/${{ github.repository }}"
+          ASSET=$(curl -sf -H "$AUTH" "$API/releases/tags/$TAG" \
+            | python -c "import json,sys;print([a['url'] for a in json.load(sys.stdin)['assets'] if a['name']=='$NAME'][0])")
+          curl -sfL -H "$AUTH" -H "Accept: application/octet-stream" "$ASSET" -o /tmp/roundtrip.db
+          cp psx_engine.db /tmp/restore_check.db
+          python tools/verify_restore.py /tmp/roundtrip.db /tmp/restore_check.db
+
+      - name: Commit the smaller database
+        if: steps.arch.outputs.DID == '1' && !inputs.dry_run
+        run: |
+          set -euo pipefail
+          rm -f "${{ steps.arch.outputs.NAME }}"
+          git config user.name  "psx-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add psx_engine.db
+          git commit -m "Archive decisions before ${{ steps.arch.outputs.CUTOFF }} to release archive-${{ steps.arch.outputs.CUTOFF }}" || exit 0
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase --autostash origin "${{ github.ref_name }}" || git rebase --abort
+          done
+          echo "::error::could not publish the smaller database"; exit 1
