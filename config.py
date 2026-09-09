@@ -100,7 +100,23 @@ _lower_price = _json.loads((_Path(__file__).parent / 'data_lower_price_stocks.js
 LOWER_PRICE_VERIFIED = {r['symbol'].split()[0] for r in _lower_price['stocks']}
 LOWER_PRICE_VERIFIED_ON = _lower_price['verified_on']
 LOWER_PRICE_SOURCE = _lower_price['source']
-STOCKS = list(dict.fromkeys(STOCKS + sorted(LOWER_PRICE_VERIFIED)))
+# Curated universe (2026-09-09, user instruction "cut to 60"): the 50 names above
+# plus 10 screened additions, instead of every verified lower-price symbol.
+#
+# The 10 were selected AFTER the 2026-09-08 five-year backfill, so each was
+# ranked on real history rather than the ~65 bars the expansion names had: at
+# least 220 bars (so EMA200 is genuine), median 20-day turnover above
+# MIN_TURNOVER_PKR, a scored signal rather than "No data", then ordered by
+# trend quality (above the 20/40/200 EMAs with a rising 40) and score, capped at
+# two per sector so the set does not pile into one theme.
+#
+# LOWER_PRICE_VERIFIED is left intact — it is the dated PSX membership and price
+# evidence, not a switch — and dropping a symbol here does NOT delete its banked
+# bars in daily_ohlc, so re-adding any name is immediate and lossless.
+CURATED_ADDITIONS = ["IPAK", "ASL", "DCR", "GHGL", "POWER",
+                     "CNERGY", "FTSM", "LOADS", "FIBLM", "EPCL"]
+STOCKS = list(dict.fromkeys(
+    STOCKS + [s for s in CURATED_ADDITIONS if s in LOWER_PRICE_VERIFIED]))
 for _row in _lower_price['stocks']:
     SECTORS.setdefault(_row['symbol'].split()[0], 'PSX sector ' + _row['sector'])
 # Official PSX /symbols directory, retrieved 2026-09-05; same sector grouping
