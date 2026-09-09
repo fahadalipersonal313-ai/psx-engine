@@ -32,8 +32,11 @@ def resolve(item, bars, sessions, as_of=None, actions=None):
     if any(not finite(policy.get(k)) or policy[k] < 0 for k in ('holding_sessions','slippage_bps','fee_bps_per_side','entry_gap_limit','max_volume_participation')) or policy['max_volume_participation'] > 1 or policy['slippage_bps'] >= 10000 or policy['fee_bps_per_side'] >= 10000:
         return {'status':'invalid', 'reason':'Invalid frozen execution assumptions'}
     horizon = int(policy['holding_sessions'])
-    if horizon < 1 or horizon > 10:
-        return {'status': 'invalid', 'reason': 'Holding horizon must be 1..10 sessions'}
+    # Cap raised 10 -> 60 with the v5 contract. It exists to reject a nonsense
+    # horizon, not to pin the strategy: at 10 the exit rule was the binding
+    # constraint and 51.2% of trades expired undecided (see config.EXECUTION).
+    if horizon < 1 or horizon > 60:
+        return {'status': 'invalid', 'reason': 'Holding horizon must be 1..60 sessions'}
     if not valid_levels(item['reference_entry'], item['stop'], item['target'], item.get('target2')):
         return {'status': 'invalid', 'reason': 'Invalid frozen trade levels'}
     dates = sorted(set(str(d)[:10] for d in sessions if str(d)[:10] > item['session'] and (as_of is None or str(d)[:10] <= as_of)))[:horizon]

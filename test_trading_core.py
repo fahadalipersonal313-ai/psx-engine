@@ -150,9 +150,25 @@ class ExecutionTests(unittest.TestCase):
     def test_unfilled_and_missing(self):
         self.assertEqual(self.resolve(open=109)['status'],'unfilled')
         self.assertEqual(ev.resolve(self.item,[],['2026-09-02'])['status'],'unavailable')
-    def test_expiry_ten_sessions(self):
-        bars=[dict(self.bar,date=d.strftime('%Y-%m-%d'),high=105,close=102) for d in pd.bdate_range('2026-09-02',periods=10)]
-        r=ev.resolve(self.item,bars,[b['date'] for b in bars]); self.assertEqual(r['status'],'expired'); self.assertEqual(r['holding_sessions'],10)
+    def test_expiry_at_the_contract_horizon(self):
+        """Expires after exactly holding_sessions, whatever the contract says.
+
+        Derived from the contract rather than hardcoded: this asserted 10 until
+        the v5 change moved the horizon to 30, and a test pinned to the old
+        number fails for the wrong reason -- it was never checking 'ten', it was
+        checking 'the horizon is honoured'."""
+        horizon = int(self.item['execution']['holding_sessions'])
+        bars=[dict(self.bar,date=d.strftime('%Y-%m-%d'),high=105,close=102)
+              for d in pd.bdate_range('2026-09-02',periods=horizon)]
+        r=ev.resolve(self.item,bars,[b['date'] for b in bars])
+        self.assertEqual(r['status'],'expired')
+        self.assertEqual(r['holding_sessions'],horizon)
+
+    def test_horizon_outside_the_allowed_band_is_invalid(self):
+        item=copy.deepcopy(self.item); item['execution']['holding_sessions']=61
+        self.assertEqual(ev.resolve(item,[self.bar],[self.bar['date']])['status'],'invalid')
+        item['execution']['holding_sessions']=0
+        self.assertEqual(ev.resolve(item,[self.bar],[self.bar['date']])['status'],'invalid')
     def test_unavailable_visible(self):
         result=ev.metrics([{'status':'unavailable'},{'status':'unfilled'},{'status':'pending'}])
         self.assertEqual(result['unresolved_risk'],2); self.assertEqual(result['opportunities'],3)

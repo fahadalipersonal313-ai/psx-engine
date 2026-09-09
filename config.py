@@ -930,12 +930,29 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_short_v4"
+STRATEGY_VERSION = "technical_swing_short_v5"   # v5 = v4 with a 30-session holding horizon
 FEATURE_HISTORY_LIMIT = 42
 MIN_STRATEGY_HISTORY = 42
 EXCHANGE_HOLIDAYS = []  # Populate from verified dated exchange notices.
 SESSION_OVERRIDES = {}  # date -> [(open, close)]; [] explicitly closes a day.
 PUBLICATION_DELAY_MINUTES = 30
-EXECUTION = {"holding_sessions": 10, "entry_gap_limit": 0.03,
+# holding_sessions 10 -> 30 (2026-09-10, measured). At 10 sessions the exit rule
+# was the binding constraint on the whole strategy: targets sit ~4 ATR away and
+# each name's own history says a 4-ATR move takes a median 12-20 sessions, so
+# 51.2% of trades expired undecided at +0.22% while the much nearer stop had the
+# full window to trigger. Stops got 10 sessions to reach a near level; targets got
+# 10 to reach a far one.
+#
+# Measured on 1,165 real historical entries (58 symbols, 2022-2026), holding the
+# signals and stops fixed and varying ONLY the exit: expectancy rises monotonically
+# with the horizon at a 4-ATR target -- 5s -0.19%, 10s +0.34%, 15s +0.83%,
+# 20s +1.02%, 30s +1.28% -- while expiries collapse 51.6% -> 13.0%. It wins in
+# 4 of 5 years (2022 is 34 trades), and through the Feb-2026 shock (-16.5% at 3x
+# normal volatility) it held +0.08% where 10 sessions lost -0.50%.
+#
+# Nearer targets are the opposite of the fix: 1.0 ATR lifts the win rate to a
+# flattering 69% and LOSES money (-0.41%, PF 0.85) because the wins stop paying
+# for the stops. Do not optimise the win rate here.
+EXECUTION = {"holding_sessions": 30, "entry_gap_limit": 0.03,
              "slippage_bps": 20, "fee_bps_per_side": 15,
              "max_volume_participation": 0.01}
