@@ -251,6 +251,24 @@ CREATE TABLE IF NOT EXISTS news (
     published TEXT, sentiment REAL, symbols TEXT
 );
 
+-- Every news rating the Claude routine has ever produced, kept immutably so a
+-- story can be followed across months. news_ai_ratings.json is OVERWRITTEN each
+-- run; without this the previous stage of a running story is destroyed and the
+-- rater meets development three with no knowledge of one and two.
+-- thread_key is written by the rater when IT judges two reads to be the same
+-- story; nothing infers a link from text. outcome_* are excess returns over the
+-- same-day cross-sectional median, descriptive only -- news carries 0.0 weight.
+CREATE TABLE IF NOT EXISTS news_memory (
+    id TEXT PRIMARY KEY,
+    symbol TEXT, as_of TEXT, provider TEXT,
+    rating TEXT, causality TEXT, horizon TEXT, confidence REAL,
+    reason TEXT, sources TEXT, thread_key TEXT,
+    outcome_1d REAL, outcome_3d REAL, outcome_5d REAL,
+    outcome_10d REAL, outcome_20d REAL,
+    UNIQUE (symbol, as_of, sources)
+);
+CREATE INDEX IF NOT EXISTS idx_news_memory_symbol ON news_memory(symbol, as_of);
+
 CREATE TABLE IF NOT EXISTS sentiment_history (
     run_time TEXT, symbol TEXT, score REAL, bullish INTEGER,
     bearish INTEGER, neutral INTEGER, mentions INTEGER, flags TEXT

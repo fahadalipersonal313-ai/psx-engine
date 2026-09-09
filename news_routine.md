@@ -46,8 +46,41 @@ Every rating must include a permitted rating, `causality`, numeric confidence
 from 0.0–1.0, a permitted horizon, concise evidence-bound reason, source URLs,
 and source publication timestamps. The engine accepts ratings only when they
 are fresh, valid, sourced, and published in the current session. Noise is
-neutral. Company news can adjust the technical base by up to 8 points; sector
-news by up to 4 points.
+neutral.
+
+**News carries 0% score weight.** `config.WEIGHTS` sets `macro_news` and
+`sentiment` to 0.0, so no rating moves a signal. Ratings are displayed for
+manual cross-verification and are graded after the fact; they are not an input.
+
+## 2b. News memory — reading a story, not a headline
+
+A story is rarely one event: a merger clears one regulator, then another, then
+completes or collapses. `news_ai_ratings.json` is **overwritten every run**, so
+`news_memory.py` banks each read permanently in the `news_memory` table before
+the next one lands. `main.py full_run` calls `remember()` then `grade()` on
+every cycle; both are wrapped, because a record must never cost a run.
+
+Routine 2 must, between steps 4 and 5:
+
+  4b. Run `python main.py newsmem` (or `newsmem <SYMBOL>`) and read the prior
+      reads for every symbol it is about to rate. Analyse the fresh item **in
+      line with that history**: is this a new story, the next stage of a running
+      one, or a restatement of something already rated and already priced?
+  4c. Say so in `reason` when a read continues an earlier one, and set
+      `thread_key` to a short stable slug (e.g. `ftmm-treet-merger`) shared with
+      the earlier reads on that story.
+
+Nothing infers threading from text. Clustering headlines on shared words invents
+links that are not there, and a wrong link is worse than none — so `thread_key`
+is written **only** by the rater, which can actually judge relatedness, and an
+empty history is reported as empty rather than padded.
+
+Grading is descriptive: `outcome_1d/3d/5d/10d/20d` are excess returns over the
+same-day cross-sectional median of `config.STOCKS`, so a positive call during a
+market-wide rally is not counted as a correct one. `python main.py newsmem grade`
+prints the current accuracy buckets. These figures are evidence for later
+calibration, not a score input, and stay uncalibrated until a frozen prospective
+cohort has enough independently resolved reads.
 
 ## 3. PSX engine loop
 

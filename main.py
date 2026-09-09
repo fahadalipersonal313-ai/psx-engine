@@ -228,6 +228,15 @@ def full_run(fast=False):
     except Exception as exc:
         log.warning("cohort grading failed: %s", exc)
 
+    # Bank the routine's news read before the next routine run overwrites the
+    # file, then grade the reads that now have enough forward bars. Wrapped:
+    # this is a record, not an input -- it must never cost a run.
+    try:
+        import news_memory
+        log.info("news memory: %s | %s", news_memory.remember(), news_memory.grade())
+    except Exception as exc:
+        log.warning("news memory failed: %s", exc)
+
     macro_titles = [n["title"] for n in news_items][:6]
     market_notes = "Market regime: " + regime["note"]
     if macro_titles:
@@ -543,6 +552,23 @@ def main():
                 print(f"  {r['symbol']:<7}  signal={r['signal']:<11} "
                       f"score={r['final_score']}  price={r['price']}  — "
                       + "; ".join(reasons))
+    elif cmd == "newsmem":
+        # What the Claude routine reads BEFORE rating fresh news, so a new
+        # development is judged against the story so far rather than alone.
+        import news_memory
+        if len(sys.argv) > 2 and sys.argv[2] == "grade":
+            print(news_memory.grade()); print(news_memory.accuracy())
+        elif len(sys.argv) > 2 and sys.argv[2] == "remember":
+            print(news_memory.remember())
+        else:
+            syms = ([sys.argv[2].upper()] if len(sys.argv) > 2
+                    else news_memory.remembered_symbols())
+            if not syms:
+                print("No prior news reads banked yet.")
+            for s in syms:
+                text = news_memory.thread_summary(s)
+                if text:
+                    print(text + "\n")
     elif cmd == "history":
         sym = sys.argv[2].upper() if len(sys.argv) > 2 else "PSO"
         for r in db.run_history(sym, 20):

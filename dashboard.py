@@ -586,10 +586,30 @@ if _nr and _nmeta.get("status") == "ok":
     for _sym in sorted(_nr, key=lambda x: (_order.get(_nr[x].get("rating"), 9), x)):
         _rv = _nr[_sym]
         _why = (_rv.get("reason") or "")[:150]
+        # A running story, not a fresh one: some news develops over months, so
+        # say how many EARLIER reads this symbol has and what followed the last
+        # graded one. Silent when there is no prior read -- a first sighting
+        # must never be dressed up as a continuing story.
+        _run = ""
+        try:
+            import news_memory
+            _prior = [h for h in news_memory.history_for(_sym, limit=24)
+                      if str(h["as_of"]) != str(_nmeta.get("as_of"))]
+            if _prior:
+                _since = str(_prior[-1]["as_of"])[:10]
+                _run = (f' <span style="opacity:.65">· running story: '
+                        f'{len(_prior)} earlier read(s) since {_since}')
+                _g = next((h for h in _prior if h["outcome_5d"] is not None), None)
+                if _g:
+                    _run += (f", last graded {str(_g['as_of'])[:10]} "
+                             f"{_g['outcome_5d']:+.1f}% vs market at 5d")
+                _run += "</span>"
+        except Exception:
+            _run = ""
         st.markdown(
             f'<div style="margin:2px 0;font-size:13px">'
             f'<b>{_sym}</b> {glm_pill(_rv)} {analysis_pills(_rv)} '
-            f'<span style="opacity:.7">{_why}</span></div>',
+            f'<span style="opacity:.7">{_why}</span>{_run}</div>',
             unsafe_allow_html=True)
     st.divider()
 elif _nmeta.get("status") != "ok":
