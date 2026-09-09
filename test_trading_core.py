@@ -303,3 +303,37 @@ class SessionCutoffResolution(unittest.TestCase):
         cutoff, bars = main._resolve_cutoff("2026-09-09", lambda day: [])
         self.assertEqual(cutoff, "2026-09-09")
         self.assertEqual(bars, [])
+
+
+class PayloadCompression(unittest.TestCase):
+    """decisions + decision_snapshots were 59.4 MB of a 104.7 MB database across
+    1,492 rows: each decision embeds a copy of the snapshot that
+    decision_snapshots already holds, and the ~16.5 KB config is written to every
+    row although only three distinct configs exist. Compression is used rather
+    than dropping the duplication because snapshot_hash and config_hash are
+    digests OF that content -- it must round-trip byte-identically."""
+
+    def test_round_trips_exactly(self):
+        import database as db
+        for text in ('{"a":1}', '', 'x' * 100000, '{"unicode":"روپے"}'):
+            self.assertEqual(db.unpack_payload(db.pack_payload(text)), text)
+
+    def test_reads_legacy_uncompressed_rows(self):
+        """Rows written before compression are plain TEXT and must still read."""
+        import database as db
+        self.assertEqual(db.unpack_payload('{"legacy":true}'), '{"legacy":true}')
+
+    def test_compression_actually_shrinks_a_decision_payload(self):
+        import database as db
+        payload = json.dumps({"config": {f"K{i}": [1, 2, 3] for i in range(400)}})
+        self.assertLess(len(db.pack_payload(payload)), len(payload) / 2)
+
+
+class TopTenSessionFallback(unittest.TestCase):
+    def test_falls_back_to_the_newest_session_holding_decisions(self):
+        """last_completed() names holidays as sessions while EXCHANGE_HOLIDAYS is
+        empty, which left the panel empty on a day the market was merely shut."""
+        import upward_candidates
+        src = Path('upward_candidates.py').read_text(encoding='utf-8')
+        self.assertIn('SELECT MAX(session) FROM decisions', src)
+        self.assertIsInstance(upward_candidates.current(), list)

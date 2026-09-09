@@ -24,11 +24,23 @@ def current():
     import database as db
     import decision_engine
     from session_calendar import last_completed
+    version = config.STRATEGY_VERSION
+    contract = decision_engine.digest(decision_engine.contract())
     with db.conn() as c:
+        session = last_completed()
+        # last_completed() reads the configured calendar, and EXCHANGE_HOLIDAYS is
+        # empty, so on a closure it names a day that never traded and no decision
+        # exists for it -- the panel then renders empty on a day the market was
+        # simply shut. Fall back to the newest session that actually HAS decisions
+        # for this contract. Never invents a session: if none exist, still nothing.
+        if not c.execute('SELECT 1 FROM decisions WHERE session=? AND version=? AND config_hash=? LIMIT 1',
+                         (session, version, contract)).fetchone():
+            row = c.execute('SELECT MAX(session) FROM decisions WHERE session<=? AND version=? AND config_hash=?',
+                            (session, version, contract)).fetchone()
+            session = row[0] if row and row[0] else session
         rows = c.execute('SELECT payload FROM decisions WHERE session=? AND version=? AND config_hash=?',
-                         (last_completed(), config.STRATEGY_VERSION,
-                          decision_engine.digest(decision_engine.contract()))).fetchall()
-    decisions = [json.loads(r['payload']) for r in rows]
+                         (session, version, contract)).fetchall()
+    decisions = [json.loads(db.unpack_payload(r['payload'])) for r in rows]
     selected = sorted((d for d in decisions if qualifies(d)),
                       key=lambda d: d['scoring']['final_score'], reverse=True)[:10]
     return [{'Stock': d['symbol'], 'Price': d['technical']['price'],
