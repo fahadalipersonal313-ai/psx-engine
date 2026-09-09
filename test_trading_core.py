@@ -256,3 +256,50 @@ class IntegrationTests(StorageTests):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class SessionCutoffResolution(unittest.TestCase):
+    """The configured calendar cannot know PSX holidays (EXCHANGE_HOLIDAYS is
+    empty), so the cutoff must be confirmed against the exchange's own record.
+    On 2026-09-09 it was not, and the loop ran 24 cycles against the previous
+    session's prices with every row stamped `good`."""
+
+    def test_trading_day_costs_no_extra_request(self):
+        import main
+        calls = []
+
+        def answers(day):
+            calls.append(day)
+            return [{"symbol": "X"}]
+
+        cutoff, bars = main._resolve_cutoff("2026-09-08", answers)
+        self.assertEqual(cutoff, "2026-09-08")
+        self.assertEqual(calls, ["2026-09-08"])
+        self.assertTrue(bars)
+
+    def test_holiday_walks_back_to_the_real_session(self):
+        import main
+
+        def holiday(day):
+            return [] if day == "2026-09-09" else [{"symbol": "X"}]
+
+        cutoff, bars = main._resolve_cutoff("2026-09-09", holiday)
+        self.assertEqual(cutoff, "2026-09-08")
+        self.assertTrue(bars)
+
+    def test_multi_day_closure_skips_the_weekend(self):
+        import main
+
+        def closed_from_monday(day):
+            return [] if day >= "2026-09-07" else [{"symbol": "X"}]
+
+        cutoff, _ = main._resolve_cutoff("2026-09-09", closed_from_monday)
+        self.assertEqual(cutoff, "2026-09-04")      # Friday, not Sunday
+
+    def test_feed_outage_does_not_rewind_the_cutoff(self):
+        """A dead feed must degrade to standing still, never to silently moving
+        the decision window back two weeks."""
+        import main
+        cutoff, bars = main._resolve_cutoff("2026-09-09", lambda day: [])
+        self.assertEqual(cutoff, "2026-09-09")
+        self.assertEqual(bars, [])

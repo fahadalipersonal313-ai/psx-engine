@@ -16,7 +16,7 @@ import sys
 import io
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Force UTF-8 output on Windows consoles that default to cp1252
 if __name__ == "__main__" and hasattr(sys.stdout, "buffer"):
@@ -185,6 +185,61 @@ def _same_bar(stored, live):
             and eq(stored.get("close"), live.get("current")))
 
 
+def _previous_calendar_session(day):
+    """The prior day the configured calendar would trade (weekends/known
+    holidays skipped). Not authoritative on its own — the caller confirms it
+    against PSX."""
+    d = datetime.fromisoformat(str(day)).date() - timedelta(days=1)
+    for _ in range(30):
+        if session_calendar.intervals(d):
+            return d.isoformat()
+        d -= timedelta(days=1)
+    return None
+
+
+def _resolve_cutoff(cutoff, fetch_day, max_walk=10):
+    """-> (real_cutoff, bars). Walk back until PSX actually returns a session.
+
+    `session_calendar.last_completed()` only knows weekends and whatever is
+    listed in config.EXCHANGE_HOLIDAYS, which is EMPTY — so on a public holiday
+    it names a day that never traded. PSX's own historical view answers with an
+    empty table for such a day, and that answer was already being fetched here
+    and then silently discarded.
+
+    That cost a whole session on 2026-09-09: the loop ran 24 cycles against
+    2026-09-08 prices, wrote 4,032 rows stamped `good`, and banked no bar --
+    zero of 168 symbols changed price all day. The exchange's own record is the
+    authority; the calendar cannot be, until someone enters the notices.
+
+    Costs one extra request only on a day that did not trade.
+    """
+    original = cutoff
+    bars = fetch_day(cutoff)
+    walked = []
+    while not bars and len(walked) < max_walk:
+        prior = _previous_calendar_session(cutoff)
+        if not prior:
+            break
+        walked.append(cutoff)
+        cutoff = prior
+        bars = fetch_day(cutoff)
+    if not bars:
+        # Nothing answered anywhere in the window. That is a FEED OUTAGE, not a
+        # run of holidays, and rewinding the decision cutoff by two weeks on the
+        # strength of it would be far worse than standing still. Degrade to the
+        # calendar's answer and let the existing stale-price labelling show it.
+        log.error("PSX returned no session for %s or the %d prior calendar days "
+                  "-- treating this as a feed outage and keeping cutoff %s.",
+                  original, len(walked), original)
+        return original, []
+    if walked:
+        log.warning("No PSX session on %s -- using %s as the completed session. "
+                    "Add the closure to config.EXCHANGE_HOLIDAYS from the exchange "
+                    "notice so the calendar stops naming it.",
+                    ", ".join(walked), cutoff)
+    return cutoff, bars
+
+
 def full_run(fast=False):
     """fast=True trims everything that does not affect TODAY'S signals, so the
     first cycle after the 09:32 open commits sooner. Safe because:
@@ -204,7 +259,7 @@ def full_run(fast=False):
     cutoff = session_calendar.last_completed()
     regime = market_regime.assess_regime(index_eod)
     import psx_historical
-    bars = psx_historical.fetch_day(cutoff)
+    cutoff, bars = _resolve_cutoff(cutoff, psx_historical.fetch_day)
     for bar in bars:
         if bar['symbol'] in config.STOCKS:
             db.save_hl_bar(bar['symbol'], cutoff, bar['open'], bar['high'], bar['low'],
