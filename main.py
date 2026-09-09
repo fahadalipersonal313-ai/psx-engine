@@ -382,6 +382,41 @@ def main():
         total = sum(db.eod_history_state(s)[0] for s in config.STOCKS)
         print(f"\n{ok} symbols banked, {failed} unavailable — "
               f"{total} EOD bars stored in total")
+    elif cmd == "archive":
+        # Move settled decision history to a durable file. Order is export ->
+        # verify -> purge, and purge refuses anything the archive cannot
+        # reproduce byte-for-byte.
+        import archive as _ar
+        cutoff = sys.argv[2] if len(sys.argv) > 2 else None
+        if not cutoff:
+            print("usage: python main.py archive <cutoff-session> [out.db]"); return
+        out = sys.argv[3] if len(sys.argv) > 3 else f"archive_before_{cutoff}.db"
+        db.init_db()
+        man = _ar.export(cutoff, out)
+        print(f"exported {man['decisions']} decisions + {man['snapshots']} snapshots "
+              f"-> {out} ({man['bytes']/1e6:.1f} MB)")
+        chk = _ar.verify(out, man)
+        print(f"verify: {'OK' if chk['ok'] else 'FAILED'} ({chk['recomputed'][:16]})")
+        if not chk["ok"]:
+            print("refusing to purge — archive did not verify"); return
+        print("purge:", _ar.purge(out, cutoff))
+        print("run VACUUM to reclaim: python main.py vacuum")
+
+    elif cmd == "restore":
+        import archive as _ar
+        path = sys.argv[2] if len(sys.argv) > 2 else None
+        if not path:
+            print("usage: python main.py restore <archive.db>"); return
+        db.init_db()
+        print("verify:", _ar.verify(path))
+        print("restored:", _ar.restore(path))
+
+    elif cmd == "vacuum":
+        import sqlite3 as _s, os as _o
+        before = _o.path.getsize(config.DB_PATH)
+        _c = _s.connect(config.DB_PATH); _c.execute("VACUUM"); _c.close()
+        print(f"{before/1e6:.1f} MB -> {_o.path.getsize(config.DB_PATH)/1e6:.1f} MB")
+
     elif cmd == "cohort":
         # Seed the prospective cohort from decisions ALREADY stored, then grade.
         # Those decisions carry full payloads, so the cohort starts with real

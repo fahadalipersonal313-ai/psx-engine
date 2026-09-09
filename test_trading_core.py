@@ -426,3 +426,83 @@ class ProspectiveCohort(unittest.TestCase):
                 db.init_db()
                 with db.conn() as c:
                     self.assertIsNone(db._record_cohort_candidate(c, {'symbol': 'X'}, None))
+
+
+class ArchiveDurability(unittest.TestCase):
+    """decisions + decision_snapshots grow 0.67 MB per session, unbounded,
+    against a 100 MB hard limit. They are immutable audit records, so they are
+    archived rather than dropped -- and the restore is verified BEFORE the live
+    rows go away."""
+
+    def _seed(self):
+        import database as db
+        with db.conn() as c:
+            for i, session in enumerate(('2026-09-01', '2026-09-02', '2026-09-03')):
+                c.execute('INSERT OR IGNORE INTO decision_snapshots VALUES (?,?)',
+                          (f'snap{i}', f'{{"bars":{i}}}'))
+                c.execute('INSERT OR IGNORE INTO decisions VALUES (?,?,?,?,?,?,?)',
+                          (f'SYM{i}', session, 'v', 'cfg', f'snap{i}', '{}', '{"a":1}'))
+
+    def test_export_verify_purge_restore_round_trip(self):
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db(); self._seed()
+                out = str(Path(tmp) / 'a.db')
+                man = archive.export('2026-09-03', out)
+                self.assertEqual(man['decisions'], 2)
+                self.assertTrue(archive.verify(out, man)['ok'])
+                self.assertEqual(archive.purge(out, '2026-09-03')['purged'], 2)
+                with db.conn() as c:
+                    self.assertEqual(c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 1)
+                archive.restore(out)
+                with db.conn() as c:
+                    self.assertEqual(c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
+                archive.restore(out)          # idempotent
+                with db.conn() as c:
+                    self.assertEqual(c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
+
+    def test_purge_refuses_a_corrupted_archive(self):
+        """The guarantee worth having: nothing is deleted that cannot be restored."""
+        import database as db, archive, sqlite3
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db(); self._seed()
+                out = str(Path(tmp) / 'a.db')
+                archive.export('2026-09-03', out)
+                bad = sqlite3.connect(out)
+                bad.execute('DELETE FROM decisions WHERE rowid=1'); bad.commit(); bad.close()
+                res = archive.purge(out, '2026-09-03')
+                self.assertEqual(res['purged'], 0)
+                self.assertIn('verification', res['refused'])
+                with db.conn() as c:      # live rows untouched
+                    self.assertEqual(c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
+
+    def test_purge_refuses_a_cutoff_mismatch(self):
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db(); self._seed()
+                out = str(Path(tmp) / 'a.db')
+                archive.export('2026-09-03', out)
+                res = archive.purge(out, '2026-09-02')
+                self.assertEqual(res['purged'], 0)
+                self.assertIn('cutoff', res['refused'])
+
+    def test_a_snapshot_still_referenced_is_never_purged(self):
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db()
+                with db.conn() as c:
+                    c.execute('INSERT INTO decision_snapshots VALUES (?,?)', ('shared', '{}'))
+                    c.execute('INSERT INTO decisions VALUES (?,?,?,?,?,?,?)',
+                              ('OLD', '2026-09-01', 'v', 'cfg', 'shared', '{}', '{}'))
+                    c.execute('INSERT INTO decisions VALUES (?,?,?,?,?,?,?)',
+                              ('NEW', '2026-09-05', 'v', 'cfg', 'shared', '{}', '{}'))
+                out = str(Path(tmp) / 'a.db')
+                archive.export('2026-09-05', out)
+                archive.purge(out, '2026-09-05')
+                with db.conn() as c:
+                    kept = c.execute("SELECT COUNT(*) FROM decision_snapshots WHERE hash='shared'").fetchone()[0]
+                self.assertEqual(kept, 1, 'a snapshot a live decision still points at was purged')
