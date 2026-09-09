@@ -37,7 +37,16 @@ def load(day_dedupe=True):
         rows = [dict(r) for r in c.execute(
             """SELECT run_time, symbol, final_score, relative_strength, cmf,
                       confluence, tech_flags, signal, price, price_3d, price_7d
-               FROM runs WHERE strategy_version IS NULL AND price IS NOT NULL ORDER BY run_time DESC, id DESC""")]
+               FROM runs
+               WHERE strategy_version IS NULL AND price IS NOT NULL
+                 -- Rows a run produced on a day the exchange never opened. They
+                 -- carry the PREVIOUS session's prices, so day-deduping would
+                 -- enter them as a second, identical observation of that session
+                 -- -- inflating n and double-counting the same forward move.
+                 -- 2026-09-09 was the first: 24 cycles, 4,032 rows, zero of 168
+                 -- symbols moved. See _resolve_cutoff in main.py.
+                 AND COALESCE(data_quality, '') NOT LIKE 'QUARANTINED%'
+               ORDER BY run_time DESC, id DESC""")]
     if not day_dedupe:
         return rows
     seen = {}
