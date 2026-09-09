@@ -180,3 +180,44 @@ def update_outcomes():
         result['execution_bars'] = [b for b in bars.values() if b['date'] <= end and not bar_error(b) and source_priority(b.get('source')) >= 3]
         result['observed_at_session'] = cutoff
         db.save_opportunity_outcome(row['id'], result)
+
+def update_cohort_outcomes():
+    """Grade the prospective cohort with the SAME resolver the emitted
+    opportunities use, so the two are directly comparable.
+
+    The cohort is every candidate that reached the Watch band with valid levels,
+    including the ones vetoes downgraded. Grading the rejected side is the whole
+    point: without it, "does this gate reject a worse subset than it passes?" can
+    only ever be answered from a backtest, and every gate this engine has
+    measured that way behaved differently live.
+    """
+    import database as db
+    from session_calendar import last_completed
+    cutoff = last_completed()
+    sessions = [b['date'] for b in db.get_eod_history(config.BENCHMARK_INDEX, 100000)]
+    graded = 0
+    for row in db.open_cohort_candidates():
+        item = json.loads(row['payload'])
+        with db.conn() as c:
+            old = c.execute('SELECT payload FROM cohort_outcomes WHERE candidate_id=?',
+                            (row['id'],)).fetchone()
+        old = json.loads(old['payload']) if old else {}
+        bars = {b['date']: b for b in db.get_daily_ohlc(row['symbol'], 100000)
+                if item['session'] < b['date'] <= cutoff}
+        # Same immutability rule as the opportunity path: a finalised execution
+        # observation cannot be silently rewritten by a later feed revision.
+        bars.update({b['date']: b for b in old.get('execution_bars', [])})
+        result = resolve(item, list(bars.values()), sessions, cutoff,
+                         db.get_corporate_actions(row['symbol']))
+        end = result.get('exit_date') or result.get('unresolved_session') or cutoff
+        result['execution_bars'] = [b for b in bars.values() if b['date'] <= end
+                                    and not bar_error(b) and source_priority(b.get('source')) >= 3]
+        result['observed_at_session'] = cutoff
+        # Carry the attribution forward so the cohort can be sliced by what the
+        # engine actually did with the candidate.
+        result['emitted_signal'] = item.get('emitted_signal')
+        result['pre_veto'] = row['pre_veto']
+        result['final_score'] = item.get('final_score')
+        db.save_cohort_outcome(row['id'], result)
+        graded += 1
+    return graded

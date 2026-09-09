@@ -18,6 +18,12 @@ import config
 log = logging.getLogger("database")
 
 RELIABILITY_SCHEMA = """
+CREATE TABLE IF NOT EXISTS cohort_candidates (
+ id TEXT PRIMARY KEY, symbol TEXT, session TEXT, version TEXT, config_hash TEXT,
+ emitted TEXT, pre_veto TEXT, payload TEXT NOT NULL,
+ UNIQUE(symbol,session,version,config_hash));
+CREATE TABLE IF NOT EXISTS cohort_outcomes (
+ candidate_id TEXT PRIMARY KEY, status TEXT, payload TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS quarantined_bars (
  id INTEGER PRIMARY KEY, symbol TEXT, date TEXT, payload TEXT, reason TEXT);
 CREATE TABLE IF NOT EXISTS run_batches (
@@ -108,6 +114,7 @@ def save_decision(decision):
                   (decision['symbol'], decision['decision_session'], decision['strategy_version'],
                    decision['config_hash'], snapshot_hash,
                    pack_payload(canonical(state(decision))), pack_payload(canonical(decision))))
+        _record_cohort_candidate(c, decision, snapshot_hash)
         if decision['signal']['signal'] not in ('Buy', 'Strong Buy'):
             return None
         active = c.execute("""SELECT o.id FROM opportunities o LEFT JOIN opportunity_outcomes x ON x.opportunity_id=o.id
@@ -119,6 +126,76 @@ def save_decision(decision):
         c.execute('INSERT OR IGNORE INTO opportunities VALUES (?,?,?,?,?,?,?)',
                   (oid, decision['symbol'], decision['decision_session'], decision['strategy_version'], decision['config_hash'], snapshot_hash, canonical(item)))
         return oid
+
+
+
+def _record_cohort_candidate(c, decision, snapshot_hash):
+    """Bank every plausible candidate, whatever the vetoes then did to it.
+
+    `opportunities` is created only for an EMITTED Buy, so with the regime gate
+    holding every candidate at Watch the engine has produced 782 decisions, zero
+    Buys and zero opportunities -- it cannot accumulate evidence about itself,
+    and the gates cannot be measured because the rejected side is never graded.
+
+    This is the rejected side. It records the candidate, what tier the score
+    reached BEFORE vetoes, what was actually emitted, and which downgrades fired,
+    so the standing question -- is the subset a gate rejects worse than the
+    subset it passes? -- becomes answerable from real forward bars instead of a
+    backtest.
+
+    Measurement only. Nothing reads these rows into a score or a signal, per the
+    rule that new findings are surfaced, not wired in.
+    """
+    from decision_engine import canonical, digest
+    from swing_evaluation import opportunity
+    from data_quality import valid_levels
+    try:
+        tech = decision.get('technical') or {}
+        sig = decision.get('signal') or {}
+        score = (decision.get('scoring') or {}).get('final_score')
+        floor = config.SIGNAL_THRESHOLDS.get('watch')
+        if score is None or floor is None or score < floor:
+            return None
+        if not valid_levels(tech.get('price'), tech.get('stop_loss'),
+                            tech.get('target1'), tech.get('target2')):
+            return None
+        item = opportunity(decision)
+        item['emitted_signal'] = sig.get('signal')
+        item['final_score'] = score
+        item['raw_qualified'] = bool(sig.get('raw_qualified'))
+        # The reasons carry the downgrade text, which is how a specific gate is
+        # attributed later without re-deriving it.
+        item['reasons'] = list(sig.get('reasons') or [])
+        item['relative_strength'] = tech.get('relative_strength')
+        item['cmf'] = tech.get('cmf')
+        pre = 'Strong Buy' if sig.get('raw_qualified') else (
+            'Buy' if score >= config.SIGNAL_THRESHOLDS.get('buy', 75) else 'Watch')
+        cid = digest(['cohort', decision['symbol'], decision['decision_session'],
+                      decision['strategy_version'], decision['config_hash']])
+        c.execute('INSERT OR IGNORE INTO cohort_candidates VALUES (?,?,?,?,?,?,?,?)',
+                  (cid, decision['symbol'], decision['decision_session'],
+                   decision['strategy_version'], decision['config_hash'],
+                   sig.get('signal'), pre, canonical(item)))
+        return cid
+    except Exception as exc:                     # never cost a decision
+        log.warning('cohort candidate not recorded for %s: %s',
+                    decision.get('symbol'), exc)
+        return None
+
+
+def open_cohort_candidates():
+    with conn() as c:
+        return [dict(r) for r in c.execute("""SELECT k.* FROM cohort_candidates k
+             LEFT JOIN cohort_outcomes x ON x.candidate_id=k.id
+             WHERE x.status IS NULL OR x.status IN ('pending','unavailable')""")]
+
+
+def save_cohort_outcome(cid, outcome):
+    with conn() as c:
+        c.execute("INSERT INTO cohort_outcomes VALUES (?,?,?) ON CONFLICT(candidate_id) "
+                  "DO UPDATE SET status=excluded.status,payload=excluded.payload "
+                  "WHERE cohort_outcomes.status IN ('pending','unavailable')",
+                  (cid, outcome['status'], json.dumps(outcome, allow_nan=False)))
 
 
 def open_opportunities():

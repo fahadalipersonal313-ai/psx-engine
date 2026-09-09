@@ -363,3 +363,66 @@ class TargetTiming(unittest.TestCase):
         # The measured median must exceed the naive distance/ATR figure, which is
         # the whole reason this module exists.
         self.assertGreater(got['typical_sessions'], got['k_atr'])
+
+
+class ProspectiveCohort(unittest.TestCase):
+    """`opportunities` is only created for an EMITTED Buy. With every candidate
+    currently held at Watch by the regime gate, the engine had produced 782
+    decisions, zero Buys and zero opportunities -- it could not accumulate
+    evidence about itself, and no gate could be measured because the side it
+    rejects was never graded. The cohort grades that side."""
+
+    def _decision(self, signal='Watch', score=78.0, raw=False, price=100.0):
+        return {
+            'symbol': 'TESTCO', 'decision_session': '2026-09-08',
+            'strategy_version': 'test_v1', 'config_hash': 'cfg', 'snapshot_hash': 'snap',
+            'technical': {'price': price, 'stop_loss': price * 0.95,
+                          'target1': price * 1.10, 'target2': price * 1.20,
+                          'relative_strength': 70, 'cmf': 0.1},
+            'signal': {'signal': signal, 'raw_qualified': raw,
+                       'reasons': ['Downgraded: market regime risk-off']},
+            'scoring': {'final_score': score},
+            'config': {'EXECUTION': dict(config.EXECUTION)},
+        }
+
+    def _record(self, decision, path):
+        import database as db
+        with db.conn() as c:
+            return db._record_cohort_candidate(c, decision, 'snap')
+
+    def test_records_a_vetoed_candidate(self):
+        import database as db
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'c.db')):
+                db.init_db()
+                cid = self._record(self._decision(), tmp)
+                self.assertIsNotNone(cid)
+                with db.conn() as c:
+                    row = c.execute('SELECT emitted, pre_veto FROM cohort_candidates').fetchone()
+                self.assertEqual(row['emitted'], 'Watch')      # what was emitted
+                self.assertEqual(row['pre_veto'], 'Buy')       # what the score reached
+
+    def test_skips_below_the_watch_band(self):
+        import database as db
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'c.db')):
+                db.init_db()
+                self.assertIsNone(self._record(self._decision(score=20.0), tmp))
+
+    def test_skips_invalid_levels_rather_than_grading_nonsense(self):
+        import database as db
+        d = self._decision()
+        d['technical']['stop_loss'] = d['technical']['target1'] * 2   # stop above target
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'c.db')):
+                db.init_db()
+                self.assertIsNone(self._record(d, tmp))
+
+    def test_recording_never_raises_into_the_decision_path(self):
+        """Measurement must never cost a signal."""
+        import database as db
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'c.db')):
+                db.init_db()
+                with db.conn() as c:
+                    self.assertIsNone(db._record_cohort_candidate(c, {'symbol': 'X'}, None))

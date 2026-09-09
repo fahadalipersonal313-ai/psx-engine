@@ -220,6 +220,13 @@ def full_run(fast=False):
                    for symbol in config.STOCKS]
         portfolio = _assess_account(results, account, batch_id)
     swing_evaluation.update_outcomes()
+    # Grade the prospective cohort too: the emitted-Buy path has produced zero
+    # opportunities because every candidate is currently vetoed, so this is the
+    # only side banking evidence. Wrapped -- measurement must never cost a run.
+    try:
+        swing_evaluation.update_cohort_outcomes()
+    except Exception as exc:
+        log.warning("cohort grading failed: %s", exc)
 
     macro_titles = [n["title"] for n in news_items][:6]
     market_notes = "Market regime: " + regime["note"]
@@ -375,6 +382,27 @@ def main():
         total = sum(db.eod_history_state(s)[0] for s in config.STOCKS)
         print(f"\n{ok} symbols banked, {failed} unavailable — "
               f"{total} EOD bars stored in total")
+    elif cmd == "cohort":
+        # Seed the prospective cohort from decisions ALREADY stored, then grade.
+        # Those decisions carry full payloads, so the cohort starts with real
+        # history instead of waiting weeks for the first emitted Buy that the
+        # veto layer may never produce.
+        import swing_evaluation, json as _j
+        db.init_db()
+        seeded = 0
+        with db.conn() as _c:
+            rows = _c.execute("SELECT payload FROM decisions").fetchall()
+            for _r in rows:
+                _d = _j.loads(db.unpack_payload(_r["payload"]))
+                if db._record_cohort_candidate(_c, _d, _d.get("snapshot_hash")):
+                    seeded += 1
+        graded = swing_evaluation.update_cohort_outcomes()
+        print(f"cohort candidates seeded/present: {seeded}")
+        print(f"graded this pass               : {graded}")
+        with db.conn() as _c:
+            for _row in _c.execute("SELECT status, COUNT(*) n FROM cohort_outcomes GROUP BY status"):
+                print(f"   {_row[0]:12s} {_row[1]}")
+
     elif cmd == "measure":
         import measure
         rows = measure.load()
