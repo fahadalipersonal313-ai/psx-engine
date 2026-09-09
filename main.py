@@ -152,10 +152,13 @@ def _resolve_cutoff(cutoff, fetch_day, max_walk=10):
     empty table for such a day, and that answer was already being fetched here
     and then silently discarded.
 
-    That cost a whole session on 2026-09-09: the loop ran 24 cycles against
-    2026-09-08 prices, wrote 4,032 rows stamped `good`, and banked no bar --
-    zero of 168 symbols changed price all day. The exchange's own record is the
-    authority; the calendar cannot be, until someone enters the notices.
+    NOTE: 2026-09-09 is not an example of this. It looked like one -- 24 cycles
+    against 2026-09-08 prices, no bar banked, zero of 168 symbols moving -- but
+    that is simply what a COMPLETED-SESSION contract looks like from inside a
+    live session, and 09-09 turned out to have traded normally. The guard below
+    is still needed because EXCHANGE_HOLIDAYS is empty and a real closure would
+    otherwise be named a completed session; it just costs one request and no
+    walk on a normal day.
 
     Costs one extra request only on a day that did not trade.
     """
