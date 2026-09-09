@@ -658,9 +658,18 @@ try:
 except Exception:
     _bursts = []
 if _bursts:
-    st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} today")
+    # Date the panel by the DATA, not the clock. daily_ohlc only ever holds
+    # COMPLETED sessions (the v3 rewrite left psx_market_watch imported but
+    # never called, so today's live bar is not banked), and momentum.detect
+    # therefore reads the last completed session all day. Labelling this "today"
+    # made a two-day-old burst read as live.
+    _bdate = max((b.get("date") or "") for b in _bursts)
+    st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} on {_bdate}")
     _sess = momentum.session_fraction()
-    _live = _sess < 1.0
+    # Provisional is a property of the BARS, not of the wall clock: session_fraction
+    # is <1.0 before the open as well as during the session, so keying the "market
+    # open" banner off the clock printed "Market open, 0% traded" at 01:00.
+    _live = any(b.get("provisional") for b in _bursts)
     _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
     st.caption(
         f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
@@ -677,7 +686,7 @@ if _bursts:
            + (f" **That measurement does not cover {', '.join(_outside)}** — "
               "added in the 168-symbol expansion and not yet independently "
               "graded." if _outside else ""))
-        + (f" &nbsp;·&nbsp; ⏳ Market open, **{_sess * 100:.0f}% of the session's "
+        + (f" &nbsp;·&nbsp; ⏳ Live session, **{_sess * 100:.0f}% of the session's "
            "typical volume has traded** — intraday rows are marked provisional "
            "and can still fade; the measured beat rates describe end-of-day "
            "bursts, not these." if _live else ""))
