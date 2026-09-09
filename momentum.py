@@ -87,14 +87,20 @@ def session_fraction(now=None):
     return 1.0
 
 
-def _bar_count(symbol):
-    """Total banked bars. Deliberately NOT len(_series(...)): that is capped at
-    `limit` (60), so a length test against it can never exceed the cap and
-    silently reported every symbol as outside the measured cohort."""
-    with db.conn() as c:
-        row = c.execute("SELECT COUNT(*) FROM daily_ohlc WHERE symbol=?",
-                        (symbol,)).fetchone()
-    return row[0] if row else 0
+def _measured_cohort():
+    """The symbols the 2026-08-17 beat rates were actually measured on: the
+    original curated universe, before the lower-price expansion.
+
+    This was a bar-count test (>=250 bars) until 2026-09-10. That was a proxy for
+    "banked long enough to have been in the old universe", and the five-year
+    backfill destroyed it -- 153 symbols cleared 250 bars overnight, so the
+    caption silently started claiming the measurement covered names it had never
+    seen. Read the curated list itself instead; it cannot drift.
+    """
+    names = (list(getattr(config, "DEFAULT_STOCKS", []))
+             + list(getattr(config, "ADDITIONAL_STOCKS", []))
+             + list(getattr(config, "EXTRA_STOCKS", [])))
+    return set(names)
 
 
 def _series(symbol, limit=60):
@@ -144,7 +150,7 @@ def detect(symbol):
             # universe. A name added in the 168-symbol expansion was never in
             # that cohort, so the statistic does not describe it; the dashboard
             # scopes its claim on this flag rather than implying it does.
-            "in_measured_cohort": _bar_count(symbol) >= 250,
+            "in_measured_cohort": symbol in _measured_cohort(),
             # True while the session is still open: the move can still fade, and
             # the measured beat rates below describe the END-OF-DAY trigger.
             "provisional": partial,

@@ -528,14 +528,7 @@ def tile(col, label, value_html, sub=""):
 # Regime what-if — on the MAIN page (was buried in the sidebar), sitting right
 # above the Market-regime tile it drives. Purely a DISPLAY overlay; it never
 # re-runs the engine or mutates stored signals.
-_wf_choice = st.radio(
-    "Market direction", ["Actual"],
-    index=0, horizontal=True,
-    help="Assume risk-on reverses ONLY the risk-off regime gate for display, "
-         "surfacing the technical Buys the engine downgraded to Watch. "
-         "Approximation, not a re-run — verify manually.")
-assumed_regime = {"Assume risk-on": "risk-on",
-                  "Assume risk-off": "risk-off"}.get(_wf_choice)
+assumed_regime = None   # what-if control removed; overlay logic below unchanged
 
 
 # Under an assumed risk-on regime, reverse ONLY the risk-off regime gate: a Watch
@@ -554,22 +547,12 @@ _whatif_active = bool((latest["display_signal"] != latest["signal"]).any())
 buys = latest[latest["display_signal"].isin(["Strong Buy", "Buy"])]
 exits = latest[latest["display_signal"] == "Exit"]
 
-t1, t2, t3, t4, t5 = st.columns(5)
-tile(t1, "Market direction", regime_pill(regime),
-     f"Compared with {config.BENCHMARK_INDEX}")
-_act_sub = f"{len(exits)} exits" if len(exits) else "no exits"
-if _whatif_active:
-    _act_sub += " · 🔀 assume risk-on"
-tile(t2, "Buy signals", f"{len(buys)} buys", _act_sub)
-top = buys.iloc[0]["symbol"] if not buys.empty else "—"
-tile(t3, "Top pick", top,
-     f"score {buys.iloc[0]['final_score']:.0f}" if not buys.empty else "no buys")
-tile(t4, "Candidates ≥75",
-     f'{int((latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]).sum())}',
-     "scoring in the Buy band")
-tile(t5, "Last updated", _last_updated_html,
-     "reboot app if stale" if _stale_level == "fresh"
-     else f"⚠ data {_age_hours:.0f}h old — signals may not reflect current price")
+st.markdown(
+    f'<div style="display:flex;gap:20px;align-items:center;font-size:13px;'
+    f'opacity:.8;margin:2px 0 10px">{regime_pill(regime)}'
+    f'<span><b>{len(buys)}</b> buys · <b>{len(exits)}</b> exits</span>'
+    f'<span>updated {_last_updated_html}</span></div>',
+    unsafe_allow_html=True)
 
 # Staleness banner — louder than the tile, only shown when data is past amber.
 if _stale_level != "fresh":
@@ -580,74 +563,6 @@ if _stale_level != "fresh":
     else:
         st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
                    "freshness threshold. Verify quotes manually before acting.")
-
-# ----------------------------- AI news read -------------------------------
-# Second opinion on the last-24h headlines, from Claude Haiku 4.5 (or GLM as
-# fallback when ANTHROPIC_API_KEY is unset). ZERO score
-# weight — a manual cross-check of whether the LLM's read agrees with the
-# engine. Shown here for EVERY rated symbol, independent of whether it has a
-# Buy signal (the per-card 🤖 pill only appears on actionable cards, which are
-# empty in a risk-off market — this panel is where the ratings always live).
-_glm_ratings, _glm_meta = news_feed.load_glm_ratings()
-if _glm_meta.get("status") == "ok" and _glm_ratings:
-    with st.expander(f"🤖 AI news read — {len(_glm_ratings)} symbols "
-                     "(second opinion, unweighted)", expanded=False):
-        st.caption("Zero score weight — informational cross-check only, never "
-                   "moved into the engine's Buy/Avoid.")
-        _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
-                  "negative": 3, "highly_negative": 4}
-        for sym in sorted(_glm_ratings,
-                          key=lambda s: (_order.get(_glm_ratings[s].get("rating"), 9), s)):
-            gv = _glm_ratings[sym]
-            st.markdown(
-                f'<div style="margin:3px 0">{glm_pill(gv)} '
-                f'{analysis_pills(gv)} '
-                f'<b>{sym}</b> <span style="opacity:.7;font-size:12px">'
-                f'{gv.get("reason", "")}</span></div>',
-                unsafe_allow_html=True)
-        st.caption(news_feed.glm_status_line())
-elif _glm_meta.get("status") in ("absent", "stale"):
-    st.caption(f"🤖 {news_feed.glm_status_line()}")
-
-# ---------------------- News across the board (always on) ------------------
-# User asked 2026-08-24: news should ALSO be visible outside the per-card
-# pills. This panel lists every credible-desk, anchor-gated headline for
-# every ticker in the universe, decorated with the AI rating pill when one
-# exists — a single scannable view of what's moving names right now.
-_all_news, _seen = [], set()
-for _sym in config.STOCKS:
-    for _h in news_feed.raw_headlines(_sym, limit=4):
-        if _h["url"] in _seen:
-            continue
-        _seen.add(_h["url"])
-        _h["_sym"] = _sym
-        _all_news.append(_h)
-# Sort rated tickers first so positive/negative surface above unrated noise.
-_R_ORDER = {"highly_positive": 0, "positive": 1, "negative": 2,
-            "highly_negative": 3, "neutral": 4}
-_all_news.sort(key=lambda h: _R_ORDER.get(
-    (_glm_ratings.get(h["_sym"]) or {}).get("rating"), 5))
-st.markdown("### 📰 Optional news context — last 24h")
-if _all_news:
-    st.caption(f"{len(_all_news)} credible-desk headlines across "
-               f"{len({h['_sym'] for h in _all_news})} tickers. Company-anchored; "
-               "unscored except by the AI pill on the left.")
-    for _h in _all_news[:60]:
-        _rv = _glm_ratings.get(_h["_sym"])
-        _pillh = (glm_pill(_rv) + " " + analysis_pills(_rv)) if _rv else ""
-        st.markdown(
-            f'{_pillh} <b>{_h["_sym"]}</b> · '
-            f'<a href="{_h["url"]}" target="_blank">{_h["title"]}</a> · '
-            f'<i style="opacity:.7">{_h.get("publisher") or "?"}</i>',
-            unsafe_allow_html=True,
-        )
-    if len(_all_news) > 60:
-        st.caption(f"…and {len(_all_news) - 60} more not shown.")
-else:
-    st.caption("No credible-desk company-anchored headlines in the last 24h. "
-               "The anchor gate is conservative on purpose — a few real "
-               "company items beats hundreds of loose matches.")
-st.divider()
 
 # --------------------------- momentum burst (top) --------------------------
 # Highest-placed panel by request. A burst is one session breaking out of the
@@ -671,25 +586,21 @@ if _bursts:
     # open" banner off the clock printed "Market open, 0% traded" at 01:00.
     _live = any(b.get("provisional") for b in _bursts)
     _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
-    st.caption(
-        f"Single session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
-        f"the {momentum.LOOKBACK}-day average volume, and at least "
-        f"PKR {momentum.MIN_TURNOVER:,.0f} median daily turnover so a big move in "
-        "a name that barely trades cannot appear. **Not a Buy signal** — a watch "
-        "tier. Confirm manually."
-        # The beat rates were measured on the ORIGINAL 50-symbol universe. Naming
-        # the names it does NOT cover is the whole point: the old caption printed
-        # "beat the market 80%" beside stocks that statistic never described.
-        + (" &nbsp;·&nbsp; Measured on completed sessions across the original "
-           "50-stock universe: beat the market 80% at 3 days (n=66), 72% at "
-           "7 days (n=53), independence-checked."
-           + (f" **That measurement does not cover {', '.join(_outside)}** — "
-              "added in the 168-symbol expansion and not yet independently "
-              "graded." if _outside else ""))
-        + (f" &nbsp;·&nbsp; ⏳ Live session, **{_sess * 100:.0f}% of the session's "
-           "typical volume has traded** — intraday rows are marked provisional "
-           "and can still fade; the measured beat rates describe end-of-day "
-           "bursts, not these." if _live else ""))
+    _cap = (f"One session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
+            f"its {momentum.LOOKBACK}-day average volume, min PKR "
+            f"{momentum.MIN_TURNOVER/1e6:.0f}M daily turnover. **Watch tier, not a Buy.**")
+    if _outside:
+        # Never print the beat rates beside a name the measurement never saw.
+        _cap += (f" &nbsp;·&nbsp; ⚠ {', '.join(_outside)} "
+                 f"{'is' if len(_outside) == 1 else 'are'} outside the measured "
+                 "cohort — no track record for these yet.")
+    else:
+        _cap += (" &nbsp;·&nbsp; Measured on the original 50 stocks: beat the market "
+                 "80% at 3d (n=66), 72% at 7d (n=53).")
+    if _live:
+        _cap += (f" &nbsp;·&nbsp; ⏳ Live session, {_sess * 100:.0f}% of typical "
+                 "volume traded — can still fade.")
+    st.caption(_cap)
     _bcols = st.columns(min(len(_bursts), 4))
     for _i, _b in enumerate(_bursts):
         with _bcols[_i % len(_bcols)]:
@@ -712,104 +623,6 @@ if _bursts:
     st.caption("`20-day high` is a tag, not part of the trigger: it scored higher "
                "at 3 days but its 7-day sample was 16 rows and 69% one sector.")
     st.divider()
-
-# --------------------------- focus morning brief ---------------------------
-# The deep, position-aware read on config.FOCUS_SYMBOL: engine signal + the real
-# book position resolved into ONE action. Never a competing score.
-# Portfolio-aware focus brief only rendered when the concentration guard is
-# on; the user turned it off to remove portfolio analysis from the dashboard.
-_brief = None  # Legacy focus advice is not part of the versioned opportunity contract.
-if _brief:
-    _ACT_COLOR = {"ADD": NEON["green"], "OPEN (in buy-zone)": NEON["green"],
-                  "HOLD — DO NOT ADD": NEON["amber"], "WAIT FOR ZONE": NEON["amber"],
-                  "HOLD (add only on pullback)": NEON["amber"], "HOLD": NEON["dim"],
-                  "NO ACTION": NEON["dim"], "REDUCE / EXIT": NEON["red"]}
-    _c = _ACT_COLOR.get(_brief["action"], NEON["cyan"])
-    _bx = st.container(border=True)
-    _bx.markdown(
-        f'<div style="display:flex;justify-content:space-between;align-items:center">'
-        f'<div><span style="font-size:22px;font-weight:800">🔬 {_brief["symbol"]}'
-        f'</span> <span style="opacity:.6;font-size:13px">morning brief · 360° read'
-        f'</span></div>{_pill(_brief["action"], _c)}</div>', unsafe_allow_html=True)
-    _bx.markdown(f'<div style="margin:6px 0;font-size:14px">{_brief["why"]}</div>',
-                 unsafe_allow_html=True)
-    _L = _brief["levels"]
-    _bx.markdown(price_row([
-        ("Price", fmt(_L["price"]), "#e8f0ff"),
-        ("Stop", fmt(_L["stop"]), NEON["red"]),
-        ("Target", fmt(_L["target1"]), NEON["green"]),
-        ("R:R", fmt(_L["rr"], 1), NEON["cyan"]),
-    ]), unsafe_allow_html=True)
-    _p = _brief.get("position")
-    if _p:
-        _pl = ("P&L unknown (no avg cost)" if _p.get("pl_pct") is None
-               else f'P&L {_p["pl_pct"]:+.1f}%')
-        _bx.markdown(
-            f'<span style="font-size:13px">📦 <b>{_p["qty"]:,.0f}</b> shares · '
-            f'{_pl}</span>', unsafe_allow_html=True)
-    _bx.markdown(
-        f'{sig_pill(_brief["signal"])} &nbsp;'
-        f'<span style="font-size:13px;opacity:.8">score '
-        f'{fmt(_brief["final_score"], 1)} · quality {fmt(_brief["confidence"], 0)}/100 · '
-        f'RS {fmt(_brief["relative_strength"], 0)} · CMF '
-        f'{fmt(_brief["cmf"])} · regime {_brief["regime"]}</span>', unsafe_allow_html=True)
-    if _brief.get("exit_plan"):
-        _bx.markdown(
-            f'<div style="margin-top:8px;font-size:13px;font-weight:700;'
-            f'color:{NEON["amber"]}">🪜 Scaled exit ladder — position is over the '
-            f'single-name cap</div>', unsafe_allow_html=True)
-        for _t in _brief["exit_plan"]:
-            _pl, _rk = _t.get("pl"), _t.get("risk")
-            _plh = ("" if _pl is None else
-                    f' · <span style="color:{NEON["green"] if _pl >= 0 else NEON["red"]}">'
-                    f'P&L {_pl:+,.0f}</span>')
-            _rkh = ("" if _rk is None else
-                    f' · <span style="color:{NEON["red"]}">at stop {_rk:+,.0f}</span>')
-            _bx.markdown(
-                f'<div style="margin:4px 0;font-size:13px">'
-                f'<b>{_t["tranche"]}</b>: <b>{_t["shares"]:,}</b> shares · '
-                f'{_t["trigger"]} · ~PKR {_t["proceeds"]:,.0f}{_plh}{_rkh}<br>'
-                f'<span style="opacity:.6">{_t["why"]}</span></div>',
-                unsafe_allow_html=True)
-        _bx.caption("Tranches, not one exit: on this engine's graded history "
-                    "already-extended winners kept working. Manual confirmation "
-                    "required before any order.")
-    with _bx.expander("🔬 Full 360° detail", expanded=False):
-        _on = [k for k, v in _brief["flags"].items() if v]
-        _off = [k for k, v in _brief["flags"].items() if not v]
-        st.markdown("**Confirming:** " + (", ".join(_on) or "none"))
-        st.markdown("**Not confirming:** " + (", ".join(_off) or "none"))
-        st.markdown(f"**Buy-zone:** {fmt(_L['buy_zone_low'])}–{fmt(_L['buy_zone_high'])}"
-                    f" — price is **{'inside' if _brief['in_zone'] else 'outside'}** it")
-        st.markdown(f"**Support / Resistance:** {fmt(_L['support'])} / {fmt(_L['resistance'])}")
-        st.markdown(f"**Engine reason:** {_brief['main_reason']}")
-        st.markdown(f"**Shariah:** {_brief['shariah']} · **data:** {_brief['data_quality']}")
-        _cw = _brief.get("crowding")
-        if _cw and _cw.get("peer_signals"):
-            st.markdown(f"**Sector ({_cw['sector']}):** " +
-                        " · ".join(f"{s} {sig}" for s, sig in _cw["peer_signals"]))
-            if _cw["n_buys"] and _cw["share"] >= 0.4 and _cw["n_same_sector"]:
-                st.warning(f"⚠ Crowded: {_cw['n_same_sector']} of {_cw['n_buys']} "
-                           f"Buys on the board are {_cw['sector']} "
-                           f"({_cw['share']:.0%}) — one bet, not independent signals.")
-        if _brief["headlines"]:
-            st.markdown("**News last 24h (unscored — verify manually):**")
-            for _h in _brief["headlines"]:
-                st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
-        else:
-            st.caption("No credible-desk headlines matched this company in 24h.")
-        if _brief.get("sector_headlines"):
-            st.markdown("**Sector news** — applies to every peer, not just this symbol:")
-            for _h in _brief["sector_headlines"]:
-                st.markdown(f"- [{_h['title']}]({_h['url']}) · _{_h['publisher']}_")
-        if _brief.get("glm"):
-            st.caption(f"🤖 AI: {_brief['glm'].get('rating')} — {_brief['glm'].get('reason','')}")
-        for _t in _brief["track_record"]:
-            _n = "  ⚠ small sample — noise, not edge" if _t.get("is_noise") else ""
-            st.markdown(f"- Track record **{_t.get('signal')}**: {_t.get('n_worked')}/"
-                        f"{_t.get('n_total')} ({_t.get('win_rate_pct')}%){_n}")
-        for _g in _brief["gaps"]:
-            st.warning(f"⚠ {_g}")
 
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
@@ -1006,158 +819,3 @@ def _early_watch_section():
             unsafe_allow_html=True)
 
 
-# ----------------------------- WHY NOT A BUY ------------------------------
-_why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
-              (~latest["signal"].isin(["Strong Buy", "Buy"]))]
-if not _why.empty:
-    if compact:
-        with st.expander("⚠ High score, but NOT a Buy — here's why"):
-            _why_not_buy_section()
-    else:
-        st.subheader("⚠ High score, but NOT a Buy — here's why")
-        _why_not_buy_section()
-
-# ----------------------------- EARLY WATCH ---------------------------------
-if compact:
-    with st.expander("🔭 Early watch — building before the Buy band"):
-        _early_watch_section()
-else:
-    st.subheader("🔭 Early watch — building before the Buy band")
-    _early_watch_section()
-
-st.divider()
-
-# ----------------------------- tabs (drill-down) --------------------------
-(tab_watch, tab_edge, tab_stock, tab_hist,
- tab_news, tab_reports) = st.tabs(
-    ["📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
-     "📈 History", "📰 News", "📋 Reports"])
-
-with tab_watch:
-    st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
-    show = latest[["symbol", "final_score", "relative_strength", "signal",
-                   "risk_level", "confidence", "price", "stop_loss", "target1",
-                   "buy_zone_low", "buy_zone_high",
-                   "data_quality", "shariah_status"]].copy()
-    show["buy_zone"] = [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
-                        for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
-    show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
-    show["news"] = [news_cell(s) for s in show["symbol"]]
-    show.columns = ["Symbol", "Score", "Market strength", "Signal", "Risk", "Quality",
-                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
-                    "News"]
-
-    def _sig_css(v):
-        c = NEON_SIG.get(v)
-        if not c:
-            return ""
-        r, g, b = _hex_rgb(c)
-        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
-
-    def _risk_css(v):
-        c = NEON_RISK.get(v)
-        if not c:
-            return ""
-        r, g, b = _hex_rgb(c)
-        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
-
-    styled = (show.style
-              .map(_sig_css, subset=["Signal"])
-              .map(_risk_css, subset=["Risk"])
-              .format({"Score": "{:.1f}", "Market strength": "{:.0f}", "Quality": "{:.0f}",
-                       "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
-                      na_rep="—"))
-    st.dataframe(styled, width="stretch", hide_index=True, height=560)
-
-
-with tab_edge:
-    st.subheader("How past Buy signals performed")
-    st.caption("Check all tracked stocks using verified daily prices.")
-    if st.button("Check past signals for all stocks"):
-        with st.spinner("Checking past prices for all stocks..."):
-            res = bt_portfolio(os.stat(config.DB_PATH).st_mtime_ns)
-        import history_view
-        history_view.show(st, res)
-
-with tab_stock:
-    sym = st.selectbox("Stock", config.STOCKS)
-    r = db.last_run(sym)
-    if r:
-        from history_view import explain_run
-        r = dict(r)
-        r['main_reason'], r['main_risk'] = explain_run(r)
-        c1, c2, c3, c4, c5 = st.columns(5)
-        c1.metric("Signal", r["signal"], f"{fmt(r['confidence'], 0)}/100 quality")
-        c2.metric("Final score", fmt(r["final_score"], 1))
-        c3.metric("Strength versus market", fmt(r.get("relative_strength"), 0))
-        c4.metric("Price", fmt(r["price"]))
-        c5.metric("Risk", r["risk_level"])
-        st.write("**Why:**", r["main_reason"])
-        st.write("**Main risk:**", r["main_risk"])
-        st.write("**Shariah:**", r["shariah_status"], " · **Market direction:**",
-                 {'risk-on': 'Rising', 'risk-off': 'Falling'}.get(r.get("market_regime"), 'Unknown'))
-        _news_window(sym, news_feed.get(sym))
-
-    eod, meta = data_fetcher.fetch_eod(sym)
-    if eod is not None:
-        eod = eod.sort_values('date').tail(config.FEATURE_HISTORY_LIMIT)
-        st.caption(f"Source: {meta['source']} (as of {meta['as_of']})")
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"], name="Close",
-                                 line=dict(color=NEON["cyan"], width=2)))
-        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=20).mean(),
-                                 name="Short price trend (20 days)",
-                                 line=dict(color=NEON["amber"], dash="dot")))
-        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=40).mean(),
-                                 name="Slower price trend (40 days)",
-                                 line=dict(color=NEON["violet"], dash="dash")))
-        if r:
-            for lvl, nm, clr in ((r["support"], "Support", NEON["green"]),
-                                 (r["resistance"], "Resistance", NEON["red"]),
-                                 (r["stop_loss"], "Stop", NEON["red"])):
-                if lvl:
-                    fig.add_hline(y=lvl, line_dash="dot", line_color=clr,
-                                  annotation_text=nm,
-                                  annotation_font_color=clr)
-        fig.update_layout(title=f"{sym} — price & moving averages")
-        st.plotly_chart(neon_fig(fig, height=420), width="stretch")
-        volf = go.Figure(go.Bar(x=eod["date"], y=eod["volume"], name="Volume",
-                                marker=dict(color="rgba(0,229,255,0.5)")))
-        volf.update_layout(title="Volume")
-        st.plotly_chart(neon_fig(volf, height=220), width="stretch")
-    else:
-        st.error(meta.get("warning", "No price data."))
-
-    with st.expander("How past Buy signals performed"):
-        if st.button(f"Check past signals for {sym}", key="bt_one"):
-            res = bt_symbol(sym, os.stat(config.DB_PATH).st_mtime_ns)
-            import history_view
-            history_view.show(st, res)
-
-with tab_hist:
-    sym = st.selectbox("Stock ", config.STOCKS, key="hist")
-    hist = pd.DataFrame(db.run_history(sym, 300))
-    if len(hist):
-        hist["run_time"] = pd.to_datetime(hist["run_time"], utc=True, format="mixed")
-        cols = [c for c in ["final_score", "technical_score", "relative_strength"]
-                if c in hist.columns]
-        st.line_chart(hist.set_index("run_time")[cols])
-        st.caption("The score is a guide, not a chance of profit. Older results compare the stock with the market.")
-        st.subheader("Signal history")
-        st.dataframe(hist[["run_time", "signal", "confidence", "price", "outcome"]],
-                     width="stretch", hide_index=True)
-
-with tab_news:
-    for n in db.recent_news(72)[:40]:
-        tag = f" `[{n['symbols']}]`" if n["symbols"] else ""
-        st.markdown(f"- **{n['source']}** — {n['title']}{tag}")
-
-with tab_reports:
-    if os.path.isdir(config.REPORT_DIR):
-        files = sorted(os.listdir(config.REPORT_DIR), reverse=True)[:10]
-        pick = st.selectbox("Saved reports", files) if files else None
-        if pick:
-            with open(os.path.join(config.REPORT_DIR, pick), encoding="utf-8") as f:
-                st.markdown(f.read())
-    else:
-        st.info("No reports saved yet.")
