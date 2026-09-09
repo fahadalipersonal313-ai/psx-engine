@@ -28,6 +28,7 @@ import data_fetcher
 import backtester
 import news_feed
 import momentum
+import target_timing
 
 st.set_page_config(page_title="PSX Shariah Engine", layout="wide",
                    page_icon="📈")
@@ -881,6 +882,39 @@ else:
                     ("Stop", fmt(r["stop_loss"]), NEON["red"]),
                     ("Target", fmt(r["target1"]), NEON["green"]),
                 ]), unsafe_allow_html=True)
+                # Structure the trade sits inside. Stop and target alone do not
+                # say whether the level beneath is one price has actually
+                # defended, which is what decides where the stop belongs.
+                _lv = [("Support", r.get("support")), ("Resistance", r.get("resistance")),
+                       ("Target 2", r.get("target2"))]
+                _lv = [(k, v) for k, v in _lv if pd.notna(v)]
+                if _lv:
+                    box.markdown(
+                        '<div style="display:flex;gap:18px;margin:2px 0 4px;'
+                        'font-size:12px;opacity:.72">'
+                        + "".join(f'<span>{k} <b style="opacity:.95">{fmt(v)}</b></span>'
+                                  for k, v in _lv)
+                        + '</div>', unsafe_allow_html=True)
+                # Measured, not projected. distance/ATR would read ~4 sessions
+                # for a target this name historically took 12 to reach, and
+                # would hide that it arrived under half the time.
+                try:
+                    _eta = target_timing.estimate(r["symbol"], r["price"], r["target1"])
+                except Exception:
+                    _eta = None
+                if _eta and _eta["typical_sessions"]:
+                    _hr = _eta["hit_rate"] * 100
+                    _col = NEON["green"] if _hr >= 55 else (
+                        NEON["amber"] if _hr >= 40 else NEON["red"])
+                    box.markdown(
+                        f'<div style="font-size:12px;opacity:.8;margin-bottom:2px">'
+                        f'🕒 <b>~{_eta["typical_sessions"]} sessions</b> to target '
+                        f'<span style="opacity:.6">({_eta["distance_pct"]:+.1f}%,'
+                        f' {_eta["k_atr"]:.1f}×ATR)</span> · reached '
+                        f'<b style="color:{_col}">{_hr:.0f}%</b> of the time '
+                        f'<span style="opacity:.6">in {_eta["attempts"]:,} past '
+                        f'attempts, {_eta["horizon"]}-session limit</span></div>',
+                        unsafe_allow_html=True)
                 bzl, bzh = r.get("buy_zone_low"), r.get("buy_zone_high")
                 if pd.notna(bzl) and pd.notna(bzh):
                     box.markdown(

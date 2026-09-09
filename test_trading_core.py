@@ -337,3 +337,29 @@ class TopTenSessionFallback(unittest.TestCase):
         src = Path('upward_candidates.py').read_text(encoding='utf-8')
         self.assertIn('SELECT MAX(session) FROM decisions', src)
         self.assertIsInstance(upward_candidates.current(), list)
+
+
+class TargetTiming(unittest.TestCase):
+    """A target without a timeframe invites holding a dead position forever, but
+    the obvious arithmetic lies: distance/ATR read ~4 sessions for an NRL target
+    the name historically took 12 to reach, and said nothing about the 52% of
+    attempts that never got there."""
+
+    def test_returns_none_rather_than_guessing(self):
+        import target_timing as tt
+        self.assertIsNone(tt.estimate('NOSUCHSYMBOL', 100, 110))
+        self.assertIsNone(tt.estimate('NRL', 508, 400))      # target below price
+        self.assertIsNone(tt.estimate('NRL', 508, 508))      # zero distance
+        self.assertIsNone(tt.estimate('NRL', 0, 100))
+
+    def test_reports_a_hit_rate_alongside_the_median(self):
+        import target_timing as tt
+        got = tt.estimate('NRL', 508.14, 631.02)
+        if got is None:
+            self.skipTest('NRL history unavailable in this database')
+        self.assertIn('hit_rate', got)
+        self.assertGreater(got['attempts'], tt.MIN_ATTEMPTS)
+        self.assertTrue(0.0 <= got['hit_rate'] <= 1.0)
+        # The measured median must exceed the naive distance/ATR figure, which is
+        # the whole reason this module exists.
+        self.assertGreater(got['typical_sessions'], got['k_atr'])
