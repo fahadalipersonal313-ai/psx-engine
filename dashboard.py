@@ -658,11 +658,10 @@ try:
 except Exception:
     _bursts = []
 if _bursts:
-    # Date the panel by the DATA, not the clock. daily_ohlc only ever holds
-    # COMPLETED sessions (the v3 rewrite left psx_market_watch imported but
-    # never called, so today's live bar is not banked), and momentum.detect
-    # therefore reads the last completed session all day. Labelling this "today"
-    # made a two-day-old burst read as live.
+    # Date the panel by the DATA, not the clock. daily_ohlc holds only COMPLETED
+    # sessions — the engine banks the cutoff session's bars and nothing intraday
+    # — so momentum.detect reads the last completed session all day. Labelling
+    # that "today" made a two-day-old burst read as live.
     _bdate = max((b.get("date") or "") for b in _bursts)
     st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} on {_bdate}")
     _sess = momentum.session_fraction()

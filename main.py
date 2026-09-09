@@ -30,7 +30,6 @@ import data_fetcher
 import shariah_checker
 import market_regime
 import confluence_axes
-import psx_market_watch
 import orderbook
 import portfolio_risk
 import portfolio_advisor
@@ -130,59 +129,6 @@ def analyze_stock(symbol, news_items, index_eod=None, regime=None,
             "technical": technical, "sentiment": sentiment, "macro": macro,
             "fundamentals": fundamentals, "relative_strength": rs,
             "scoring": scoring, "risk": risk, "signal": signal}
-
-
-def _is_live_session(now=None):
-    return session_calendar.is_live(now)
-
-
-def _bank_official_hl(bars, now=None):
-    """Write the exchange's own intraday High/Low into daily_ohlc for today.
-
-    overwrite=True on purpose: this REPLACES a bar reconstructed from 15-minute
-    polls with the official figure. That is the trade-off recorded during the
-    2026-09-01 backfill, where INSERT OR IGNORE deliberately kept the poll-derived
-    value and the official one had to be preferred by hand. Here the official
-    value is available live, so it wins.
-
-    Banking is skipped entirely outside a live session (see _is_live_session),
-    and a bar identical to the symbol's previous stored bar is skipped too — that
-    is the market-watch feed repeating the last session, which is what a public
-    holiday looks like when the clock check alone cannot see it.
-    """
-    if not bars:
-        return
-    now = now or datetime.now()
-    if not _is_live_session(now):
-        log.info("market-watch: outside a live session — not banking %d bars "
-                 "(the feed serves the previous session once the market shuts)",
-                 len(bars))
-        return
-    today = now.strftime("%Y-%m-%d")
-    n = repeats = 0
-    for sym, b in bars.items():
-        try:
-            prev = db.get_daily_ohlc(sym, limit=1)
-            if prev and prev[-1]["date"] != today and _same_bar(prev[-1], b):
-                repeats += 1
-                continue
-            n += db.save_hl_bar(sym, today, b.get("open"), b["high"], b["low"],
-                                b.get("current"), b.get("volume"),
-                                "PSX market-watch (official intraday)",
-                                overwrite=True)
-        except Exception as e:
-            log.warning("banking official H/L failed for %s: %s", sym, e)
-    log.info("Banked official intraday High/Low for %d symbols%s", n,
-             f" ({repeats} skipped as repeats of the previous session)" if repeats else "")
-
-
-def _same_bar(stored, live):
-    """Whether a market-watch bar just repeats the stored one (holiday case)."""
-    def eq(a, b):
-        return a is not None and b is not None and abs(float(a) - float(b)) < 1e-9
-    return (eq(stored.get("high"), live.get("high"))
-            and eq(stored.get("low"), live.get("low"))
-            and eq(stored.get("close"), live.get("current")))
 
 
 def _previous_calendar_session(day):
