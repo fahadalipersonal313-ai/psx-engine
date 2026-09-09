@@ -478,6 +478,41 @@ class ArchiveDurability(unittest.TestCase):
                 with db.conn() as c:
                     self.assertEqual(c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
 
+    def test_unreferenced_snapshots_are_archived_not_stranded(self):
+        """A regenerated decision set leaves snapshots nothing names again.
+        They were previously stranded in the live DB forever: purge only ever
+        considered snapshots belonging to the decisions it was moving."""
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db(); self._seed()
+                with db.conn() as c:
+                    c.execute('INSERT INTO decision_snapshots VALUES (?,?)',
+                              ('stranded', '{"bars":9}'))
+                out = str(Path(tmp) / 'a.db')
+                # A cutoff older than every decision: nothing is graded away,
+                # only the snapshot no decision references is moved.
+                man = archive.export('2026-09-01', out)
+                self.assertEqual(man['decisions'], 0)
+                self.assertEqual(man['snapshots'], 1)
+                self.assertTrue(archive.verify(out, man)['ok'])
+                res = archive.purge(out, '2026-09-01')
+                self.assertEqual(res['purged'], 0)
+                self.assertEqual(res['snapshots_purged'], 1)
+                with db.conn() as c:
+                    # Every decision, and every snapshot a decision names, stays.
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
+                    self.assertEqual(c.execute(
+                        'SELECT COUNT(*) FROM decisions d WHERE NOT EXISTS ('
+                        ' SELECT 1 FROM decision_snapshots s WHERE s.hash=d.snapshot_hash)'
+                    ).fetchone()[0], 0)
+                archive.restore(out)
+                with db.conn() as c:
+                    self.assertEqual(c.execute(
+                        "SELECT COUNT(*) FROM decision_snapshots WHERE hash='stranded'"
+                    ).fetchone()[0], 1)
+
     def test_purge_refuses_a_corrupted_archive(self):
         """The guarantee worth having: nothing is deleted that cannot be restored."""
         import database as db, archive, sqlite3

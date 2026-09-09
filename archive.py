@@ -54,7 +54,16 @@ def export(cutoff_session, out_path):
             c, "SELECT DISTINCT snapshot_hash FROM decisions WHERE session >= ?",
             (cutoff_session,)) if r[0]}
         moving = {r[4] for r in decisions if r[4]}
-        orphans = sorted(moving - keep_hashes)
+        # Snapshots referenced by NO decision at all. They accumulate when a
+        # decision set is regenerated under a new contract hash: the old rows
+        # go, their snapshots stay, and nothing afterwards ever names them. They
+        # are still immutable audit records, so they are archived with the rest
+        # rather than dropped.
+        unref = {r[0] for r in _rows(c, "SELECT hash FROM decision_snapshots")} - {
+            r[0] for r in _rows(
+                c, "SELECT DISTINCT snapshot_hash FROM decisions "
+                   "WHERE snapshot_hash IS NOT NULL")}
+        orphans = sorted((moving | unref) - keep_hashes)
         snapshots = []
         for i in range(0, len(orphans), 400):
             chunk = orphans[i:i + 400]
@@ -132,7 +141,15 @@ def purge(path, cutoff_session):
         moving = {r[0] for r in _rows(
             c, "SELECT DISTINCT snapshot_hash FROM decisions WHERE session < ?",
             (cutoff_session,)) if r[0]}
-        orphans = sorted(moving - keep)
+        unref = {r[0] for r in _rows(c, "SELECT hash FROM decision_snapshots")} - {
+            r[0] for r in _rows(
+                c, "SELECT DISTINCT snapshot_hash FROM decisions "
+                   "WHERE snapshot_hash IS NOT NULL")}
+        # Only ever the snapshots this archive actually holds: a snapshot the
+        # export did not capture must never be deleted here.
+        held = {r[0] for r in _rows(sqlite3.connect(path),
+                                    "SELECT hash FROM decision_snapshots")}
+        orphans = sorted(((moving | unref) - keep) & held)
         n = c.execute("DELETE FROM decisions WHERE session < ?", (cutoff_session,)).rowcount
         s = 0
         for i in range(0, len(orphans), 400):
