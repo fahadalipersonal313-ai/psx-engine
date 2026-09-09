@@ -1,18 +1,18 @@
 {
-  "as_of": "2026-09-09T07:41:38Z",
+  "as_of": "2026-09-09T08:41:22Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
   "articles_read": 63,
   "read_urls": [
     "https://mettisglobal.news/BOP-secures-green-light-for-Rs30bn-Punjab-govt-capital-injection-63291",
+    "https://mettisglobal.news/Chenab-Limited-board-approves-sale-of-noncore-assets-to-repay-debt-63318",
     "https://mettisglobal.news/Commerce-Minister-to-lead-Pakistans-trade-push-at-Hong-Kong-summit-63297",
     "https://mettisglobal.news/FTMM-gets-SECPs-noobjection-for-merger-into-Treet-Packaging-63292",
     "https://mettisglobal.news/General-public-applies-for-26m-shares-in-Agro-Processors-Atmospheric-Gases-IPO-63284",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs1000-per-tola-63290",
     "https://mettisglobal.news/Gold-prices-steady-as-dollar-weakens-ahead-of-key-US-inflation-figures-63280",
     "https://mettisglobal.news/Gold-remains-steady-amid-subdued-dollar-US-Iran-tensions-63311",
-    "https://mettisglobal.news/Govt-begins-preparations-for-Monsoon-2027-to-shift-focus-toward-climateresilient-planning-63308",
     "https://mettisglobal.news/Govt-retires-Rs2tr-debt-in-a-week-63315",
     "https://mettisglobal.news/Govt-targets-lower-energy-costs-easier-business-regulations-63317",
     "https://mettisglobal.news/JK-Spinning-Mills-injects-Rs23bn-into-manufacturing-modernization-63293",
@@ -29,9 +29,6 @@
     "https://mettisglobal.news/Sindh-High-Court-allows-PHDL-windingup-under-court-supervision-63286",
     "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313",
     "https://mettisglobal.news/easypaisa-KTrade-join-hands-to-enable-instant-PSX-account-opening-63312",
-    "https://www.brecorder.com/news/40438617/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk",
-    "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points",
-    "https://www.brecorder.com/news/40438619/south-korea-shares-rise-as-chips-extend-rally",
     "https://www.brecorder.com/news/40438620/japans-nikkei-rallies-as-ai-exuberance-overrides-iran-war-concerns",
     "https://www.brecorder.com/news/40438621/thai-bahtus-dollar-steady-on-wednesday",
     "https://www.brecorder.com/news/40438622/mining-and-energy-stocks-lift-australian-shares-on-commodity-boost",
@@ -59,6 +56,9 @@
     "https://www.brecorder.com/news/40438644/zara-owner-inditex-reports-strong-august-sales-despite-heatwaves",
     "https://www.brecorder.com/news/40438645/south-african-rand-holds-steady-as-traders-await-domestic-news",
     "https://www.brecorder.com/news/40438646/director-gibney-says-fear-shadowed-making-of-musk-documentary",
+    "https://www.brecorder.com/news/40438647/thieves-steal-renoir-paintings-from-french-riviera-museum",
+    "https://www.brecorder.com/news/40438648/pm-shehbaz-urges-banks-to-boost-lending-to-farmers-smes-and-housing",
+    "https://www.brecorder.com/news/40438649/meydan-homes-bringing-planned-community-living-closer-to-where-karachi-lives-and-works",
     "https://www.dawn.com/news/2028355/psx-dips-nearly-1000-points-as-middle-east-tensions-weigh-on-investor-sentiment",
     "https://www.dawn.com/news/2028381/pm-shehbaz-seeks-input-from-business-community-as-he-stresses-export-led-growth",
     "https://www.dawn.com/news/2028387/govt-minimises-commercial-banks-role-in-pension-payments",
@@ -75,8 +75,8 @@
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.7,
-      "reason": "Lundali-1 gas well onstream at 10MMscfd; OGDC 30% WI, adds indigenous gas supply",
+      "confidence": 0.55,
+      "reason": "Lundali-1 well onstream at 10MMscfd; OGDC 30% WI adds modest incremental gas revenue",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307"
@@ -86,23 +86,22 @@
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.7,
-      "reason": "Lundali-1 gas well onstream at 10MMscfd; MARI 30% WI, new production disclosed to PSX",
+      "confidence": 0.55,
+      "reason": "Lundali-1 well onstream at 10MMscfd; MARI 30% WI adds modest incremental gas revenue",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307"
       ]
     },
-    "HUBC": {
+    "TREET": {
       "rating": "positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Lundali-1 gas well onstream; HUBC named co-discloser to PSX but its stake size unclear",
+      "confidence": 0.5,
+      "reason": "SECP no-objection clears FTMM merger into Treet Packaging, pending court/holder approval",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307",
-        "https://propakistani.pk/2026/09/09/ogdcl-mari-and-hubco-start-production-from-joint-venture-gas-well-in-sindh/"
+        "https://mettisglobal.news/FTMM-gets-SECPs-noobjection-for-merger-into-Treet-Packaging-63292"
       ]
     },
     "FTMM": {
@@ -110,7 +109,7 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.5,
-      "reason": "SECP no-objection clears FTMM merger into Treet Packaging; court/CCP/holder approvals still pending",
+      "reason": "SECP no-objection clears FTMM's merger into Treet Packaging, pending court/holder approval",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/FTMM-gets-SECPs-noobjection-for-merger-into-Treet-Packaging-63292"
@@ -118,12 +117,23 @@
     }
   },
   "sectors": {
+    "Real Estate": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "PM directs banks to expand Apna Ghar housing loans; Rs313bn already approved under plan",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438648/pm-shehbaz-urges-banks-to-boost-lending-to-farmers-smes-and-housing"
+      ]
+    },
     "Islamic Banking": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "correlated",
       "confidence": 0.3,
-      "reason": "Remittances +16.5% YoY and M2 +Rs214bn WoW support banking system liquidity/deposits",
+      "reason": "Remittances +16.5% YoY and M2 growth support broad banking liquidity, no bank-specific mechanism",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438634/pakistan-registers-37bn-in-remittances-for-august-2026",
@@ -132,53 +142,60 @@
       ]
     },
     "Fertilizer": {
-      "rating": "negative",
+      "rating": "neutral",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Broad KSE-100 selloff on Mideast tensions swept fertiliser names; no fertiliser-specific driver",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Story is US Chicago corn futures ahead of USDA report, no mechanism for PSX fertilizer names",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points"
+        "https://www.brecorder.com/news/40438628/chicago-corn-falls-ahead-of-usdas-supply-demand-report"
       ]
     },
     "Refinery": {
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Crude nearing $100 on Iran-US conflict aids refiner inventory gains; OCAC resists HSD margin cut",
-      "text_depth": "headline",
+      "confidence": 0.5,
+      "reason": "Brent near $100 on Iran-US strikes drove formula-linked local fuel price hike, aids refiner margins",
+      "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438617/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk",
         "https://mettisglobal.news/Oil-prices-edge-towards-100-amid-USIran-tensions-63309",
         "https://www.dawn.com/news/2028413/govt-hikes-petrol-price-by-rs558-hsd-by-rs418",
-        "https://propakistani.pk/2026/09/09/oil-sector-rejects-plan-to-lower-diesel-price/"
+        "https://mettisglobal.news/Petrol-price-jumps-Rs558-diesel-up-Rs418-63301"
       ]
     },
     "Oil Marketing": {
-      "rating": "negative",
+      "rating": "positive",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "OMCs named among sectors sold off as crude spikes toward $100 on Iran-US escalation",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "Brent near $100 lifted local pump prices via formula, near-term inventory-gain tailwind for OMCs",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438617/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk",
-        "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points",
         "https://mettisglobal.news/Oil-prices-edge-towards-100-amid-USIran-tensions-63309",
         "https://www.dawn.com/news/2028413/govt-hikes-petrol-price-by-rs558-hsd-by-rs418"
       ]
     },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Brent nearing $100 on Iran-US conflict directly lifts E&P realized oil/gas revenue",
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Matched story is a petrol/diesel price notice, not natural-gas distribution tariffs or volumes",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438617/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk",
+        "https://mettisglobal.news/Petrol-price-jumps-Rs558-diesel-up-Rs418-63301"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "Brent nearing $100 on Iran-US escalation lifts E&P realized prices; KSE-100 fell on same risk-off",
+      "text_depth": "full",
+      "sources": [
         "https://mettisglobal.news/Oil-prices-edge-towards-100-amid-USIran-tensions-63309",
         "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Bow-to-the-Bears-63295"
       ]
@@ -187,89 +204,11 @@
       "rating": "neutral",
       "horizon": "long_term",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "New SPAC (LSE Capital SPAC4) eyeing a food-sector deal; no target or terms named yet",
+      "confidence": 0.2,
+      "reason": "LSE Capital's SPAC4 targets an unidentified food-sector company; no named target or terms yet",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/LSE-Capital-incorporates-SPAC4-eyes-food-sector-business-combination-63316"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Hormuz/Gulf shipping attacks raise transit risk; Pakistan's LNG cargo tender drew no bids",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.brecorder.com/news/40438617/iran-attacks-us-base-in-jordan-ships-near-hormuz-after-tankers-sunk",
-        "https://propakistani.pk/2026/09/09/pakistan-fails-to-secure-lng-cargo-as-tender-receives-no-bids/"
-      ]
-    },
-    "Cement": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Broad KSE-100 selloff on Mideast tensions swept cement names; no cement-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Broad KSE-100 selloff on Mideast tensions swept cement names; no sector-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Broad KSE-100 selloff on Mideast tensions swept auto assemblers; no sector-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438618/psx-selling-continues-kse-100-down-nearly-400-points"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.2,
-      "reason": "PTA tightens telecom equipment import/deployment rules, adding compliance cost; headline only",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/09/pta-tightens-rules-for-telecom-equipment-imports-and-deployment/"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.2,
-      "reason": "PTA tightens telecom equipment import/deployment rules, adding compliance cost; headline only",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/09/pta-tightens-rules-for-telecom-equipment-imports-and-deployment/"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Petrol/HSD retail price pass-through; no direct mechanism for gas distribution tariffs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-jumps-Rs558-diesel-up-Rs418-63301"
       ]
     }
   }
