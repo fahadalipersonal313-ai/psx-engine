@@ -564,6 +564,38 @@ if _stale_level != "fresh":
         st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
                    "freshness threshold. Verify quotes manually before acting.")
 
+# ----------------------------- news read (compact) -------------------------
+# The per-card pills only render on Buy/Strong Buy cards, and in a risk-off
+# market there are none -- so the Claude routine's ratings were invisible
+# exactly when the reader most wanted a second opinion. This is the compact
+# always-on version: one line per rated symbol, no headline list.
+#
+# ZERO SCORE WEIGHT, and that is enforced upstream rather than promised here:
+# config.WEIGHTS has sentiment and macro_news at 0.0, so a rating cannot move a
+# signal. It is shown for manual cross-verification only.
+_nr, _nmeta = news_feed.load_glm_ratings()
+if _nr and _nmeta.get("status") == "ok":
+    st.markdown(f"### 📰 News read — {len(_nr)} symbols")
+    st.caption(
+        f"From the Claude routine ({_nmeta.get('provider','?')}), "
+        f"{_nmeta.get('age_hours', 0):.0f}h old. **Zero score weight** — a rating "
+        "never moves a signal. Causal means the story plausibly drives the price; "
+        "correlated means it merely coincides. Confidence is the rater's own.")
+    _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
+              "negative": 3, "highly_negative": 4}
+    for _sym in sorted(_nr, key=lambda x: (_order.get(_nr[x].get("rating"), 9), x)):
+        _rv = _nr[_sym]
+        _why = (_rv.get("reason") or "")[:150]
+        st.markdown(
+            f'<div style="margin:2px 0;font-size:13px">'
+            f'<b>{_sym}</b> {glm_pill(_rv)} {analysis_pills(_rv)} '
+            f'<span style="opacity:.7">{_why}</span></div>',
+            unsafe_allow_html=True)
+    st.divider()
+elif _nmeta.get("status") != "ok":
+    st.caption(f"📰 News read unavailable ({_nmeta.get('status')}) — "
+               "no rating is shown rather than an old one.")
+
 # --------------------------- momentum burst (top) --------------------------
 # Highest-placed panel by request. A burst is one session breaking out of the
 # stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was

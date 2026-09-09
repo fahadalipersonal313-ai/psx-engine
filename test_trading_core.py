@@ -522,3 +522,21 @@ class ArchiveDurability(unittest.TestCase):
                 with db.conn() as c:
                     kept = c.execute("SELECT COUNT(*) FROM decision_snapshots WHERE hash='shared'").fetchone()[0]
                 self.assertEqual(kept, 1, 'a snapshot a live decision still points at was purged')
+
+
+class NewsRatingsDisplayOnly(unittest.TestCase):
+    """News is shown for manual cross-verification and must never move a signal.
+    Restored to the dashboard on 2026-09-10 as an always-on compact panel: the
+    per-card pills only render on Buy/Strong Buy cards, so in a risk-off market
+    the ratings were invisible exactly when a second opinion was most wanted."""
+
+    def test_news_carries_zero_score_weight(self):
+        self.assertEqual(config.WEIGHTS.get('sentiment', 0), 0.0)
+        self.assertEqual(config.WEIGHTS.get('macro_news', 0), 0.0)
+
+    def test_only_the_claude_routine_file_is_read(self):
+        """The GLM file is three weeks old and carries the OLD shape with no
+        causality/horizon/confidence, so falling through to it would show a bare
+        rating stripped of the qualifiers that make it interpretable."""
+        import news_feed
+        self.assertEqual(news_feed._RATING_FILES, ('news_ai_ratings.json',))

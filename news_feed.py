@@ -374,11 +374,16 @@ def sector_headlines(symbol, limit=5):
 # signal so the user can see whether the LLM agrees. Missing/stale file →
 # returns None for every symbol.
 # --------------------------------------------------------------------------
-# Claude first, GLM second. The Claude rater replaced GLM as primary; the GLM
-# file stays readable so an unset ANTHROPIC_API_KEY degrades to the old second
-# opinion instead of leaving the dashboard with none. A stale/absent primary
-# falls through to the fallback rather than reporting "unavailable".
-_RATING_FILES = ("news_ai_ratings.json", "news_glm_ratings.json")
+# CLAUDE ROUTINE ONLY (2026-09-10, user instruction). The GLM fallback was
+# dropped rather than left as a silent second source: news_glm_ratings.json was
+# last written 2026-08-21 and carries the OLD rating shape with no causality,
+# horizon or confidence, so falling through to it would have shown a bare
+# rating with none of the qualifiers that make it interpretable -- and the
+# reader could not tell which model produced what.
+#
+# A stale or absent file now reports exactly that, instead of quietly serving
+# three-week-old ratings from a different rater.
+_RATING_FILES = ("news_ai_ratings.json",)
 
 
 def load_glm_ratings():
