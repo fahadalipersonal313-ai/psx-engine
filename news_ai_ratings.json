@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-10T08:41:41Z",
+  "as_of": "2026-09-10T09:41:29Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -9,14 +9,14 @@
     "https://mettisglobal.news/BML-drops-DM-Holdings-deal-eyes-Rs10bn-sponsor-injection-63337",
     "https://mettisglobal.news/Chenab-Limited-board-approves-sale-of-noncore-assets-to-repay-debt-63318",
     "https://mettisglobal.news/Chery-Q-bookings-open-at-Rs15m-ahead-of-Pakistan-auto-show-debut-63346",
+    "https://mettisglobal.news/Court-denies-bail-to-four-current-former-officials-63348",
     "https://mettisglobal.news/DYNO-FY26-profit-surges-25-63319",
     "https://mettisglobal.news/FBR-Urges-FPCCI-to-push-retailers-scheme-to-widen-tax-base-63339",
     "https://mettisglobal.news/Gates-Foundation-backs-Pakistans-cashless-drive-reform-push-63334",
     "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs800-per-tola-63320",
     "https://mettisglobal.news/Gold-remains-steady-amid-subdued-dollar-US-Iran-tensions-63311",
-    "https://mettisglobal.news/Govt-directs-faster-passport-verification-for-overseas-Pakistanis-63327",
+    "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350",
     "https://mettisglobal.news/Jam-Kamal-pitches-Pakistans-minerals-green-agenda-at-BRI-Summit-Hong-Kong-63344",
-    "https://mettisglobal.news/LSE-Capital-incorporates-SPAC4-eyes-food-sector-business-combination-63316",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63330",
     "https://mettisglobal.news/NICL-approves-Rs3bn-capex-for-Palmitic-Acid-CPW-expansion-63323",
     "https://mettisglobal.news/Naya-Nazimabad-REIT-offer-oversubscribed-4x-attracts-Rs1bn-63341",
@@ -25,15 +25,13 @@
     "https://mettisglobal.news/Pakistan-Rupee-seen-stable-at-PKR278-through-2026-63345",
     "https://mettisglobal.news/Pakistan-pavilion-opens-at-CIFTIS-2026-eyes-fresh-China-investment-63342",
     "https://mettisglobal.news/Pakistan-steps-up-business-reforms-to-attract-local-foreign-investment-63328",
+    "https://mettisglobal.news/SECP-proposes-key-reforms-to-boost-REITs-63349",
     "https://mettisglobal.news/SIFC-GPI-Collaborate-to-modernize-Pakistans-agricultural-seed-sector-63347",
     "https://mettisglobal.news/Softer-dollar-lifts-gold-to-4428-63340",
     "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338",
     "https://mettisglobal.news/Third-straight-fuel-hike-diesel-jumps-Rs672-petrol-Rs34-63329",
     "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313",
-    "https://mettisglobal.news/easypaisa-KTrade-join-hands-to-enable-instant-PSX-account-opening-63312",
-    "https://www.brecorder.com/news/40438819/india-bonds-face-twin-drag-from-rising-oil-us-yields",
-    "https://www.brecorder.com/news/40438820/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis",
-    "https://www.brecorder.com/news/40438821/china-hong-kong-stocks-track-regional-peers-lower-on-oil-driven-inflation-fears",
+    "https://www.brecorder.com/news/40438649/meydan-homes-bringing-planned-community-living-closer-to-where-karachi-lives-and-works",
     "https://www.brecorder.com/news/40438822/fitch-eyes-japan-budget-for-balance-between-growth-and-fiscal-discipline",
     "https://www.brecorder.com/news/40438823/copper-rally-holds-firm-even-as-rising-oil-threatens-growth-outlook",
     "https://www.brecorder.com/news/40438824/china-buys-1-million-tons-of-us-soybeans-ahead-of-xi-visit-sources-say",
@@ -61,6 +59,8 @@
     "https://www.brecorder.com/news/40438846/how-a-billion-dollar-sanctions-dodge-kept-chinese-goods-flowing-to-iran",
     "https://www.brecorder.com/news/40438847/tongue-routs-pakistan-as-england-dominate-third-test",
     "https://www.brecorder.com/news/40438848/psg-score-six-to-launch-champions-league-defence-arsenal-win-late-at-napoli",
+    "https://www.brecorder.com/news/40438849/ralph-lauren-presents-spring-2027-collection-ahead-of-new-york-fashion-week",
+    "https://www.brecorder.com/news/40438850/qatari-lng-cargo-reaches-pakistan",
     "https://www.dawn.com/news/2028610/brent-crude-rises-above-100-a-barrel-as-middle-east-conflict-intensifies",
     "https://www.dawn.com/news/2028647/fatf-warns-of-emerging-risks-to-economies-from-rising-online-gaming-gambling-operations",
     "https://www.dawn.com/news/2028663/govt-hikes-petrol-price-by-rs340-diesel-by-rs672",
@@ -68,14 +68,25 @@
     "https://www.dawn.com/news/2028750/global-goods-trade-continues-to-grow-world-trade-organisation",
     "https://www.dawn.com/news/2028772/pm-orders-survey-to-boost-apna-ghar-scheme"
   ],
-  "count": 1,
+  "count": 2,
   "ratings": {
+    "IPAK": {
+      "rating": "highly_positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.85,
+      "reason": "FY26 PAT surged 7x, EPS Rs6.73 vs Rs1.64, dividend raised to Rs2.00 from Rs0.60",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350"
+      ]
+    },
     "THCCL": {
       "rating": "positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "In-principle deal to restructure PSL (28%-owned investee); terms not yet finalised",
+      "confidence": 0.5,
+      "reason": "In-principle deal to restructure PSL stake amid IHC ownership dispute, pending definitive agreement",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438836/thatta-cement-moves-towards-restructuring-of-pakistan-services-limited",
@@ -84,51 +95,114 @@
     }
   },
   "sectors": {
-    "Oil & Gas Exploration": {
+    "Real Estate": {
       "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent tops $100 as Iran-US Hormuz strikes escalate, lifting E&P crude realisations",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "SECP proposes easing REIT investment/listing rules, still open for stakeholder comment",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
-        "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Crude near $101 on Mideast conflict likely lifts OMC inventory valuation gains",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
-        "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows"
+        "https://mettisglobal.news/SECP-proposes-key-reforms-to-boost-REITs-63349"
       ]
     },
     "Refinery": {
       "rating": "positive",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Rising crude from Hormuz conflict may lift refiners' inventory gains near-term",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Brent above $100/bbl on Iran-US tanker attacks; near-term inventory-gain tailwind for refiners",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40438845/european-shares-edge-higher-as-traders-await-ecb-decision",
         "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
+        "https://www.brecorder.com/news/40438831/jgb-yields-rise-as-boj-official-makes-case-for-faster-rate-hikes",
+        "https://www.brecorder.com/news/40438830/australian-dollar-holds-firm-as-yields-hit-six-month-highs",
+        "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows",
+        "https://www.brecorder.com/news/40438826/yuan-holds-near-3-12-year-high-as-investors-await-us-inflation-data"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Brent above $100/bbl raises OMC inventory/margin value, but no Pakistan-specific OMC story",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438845/european-shares-edge-higher-as-traders-await-ecb-decision",
+        "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
+        "https://www.brecorder.com/news/40438831/jgb-yields-rise-as-boj-official-makes-case-for-faster-rate-hikes",
+        "https://www.brecorder.com/news/40438830/australian-dollar-holds-firm-as-yields-hit-six-month-highs",
+        "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows",
+        "https://www.brecorder.com/news/40438826/yuan-holds-near-3-12-year-high-as-investors-await-us-inflation-data"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Brent above $100/bbl on Iran-US Hormuz attacks directly lifts E&P realised prices",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438845/european-shares-edge-higher-as-traders-await-ecb-decision",
+        "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
+        "https://www.brecorder.com/news/40438831/jgb-yields-rise-as-boj-official-makes-case-for-faster-rate-hikes",
+        "https://www.brecorder.com/news/40438830/australian-dollar-holds-firm-as-yields-hit-six-month-highs",
+        "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows",
+        "https://www.brecorder.com/news/40438826/yuan-holds-near-3-12-year-high-as-investors-await-us-inflation-data"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Mostly global-market/oil-price wraps; only a routine LNG cargo arrival, no listed PSX port name",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438850/qatari-lng-cargo-reaches-pakistan",
+        "https://www.brecorder.com/news/40438841/south-korean-shares-fall-over-1-as-middle-east-conflict-escalates",
+        "https://www.brecorder.com/news/40438840/australian-shares-hit-six-week-low-as-oil-tops-100-on-middle-east-tensions",
+        "https://www.brecorder.com/news/40438833/japans-nikkei-sinks-amid-rise-in-oil-as-iran-war-escalates",
         "https://www.brecorder.com/news/40438827/hormuz-shipping-traffic-in-single-digits-data-shows"
       ]
     },
-    "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "SBP: remittances +16.5% YoY to $3.66bn Aug 2026, supports bank deposits/forex inflow",
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Story is a petrol/diesel ex-depot price hike, not a natural-gas tariff or distributor event",
       "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/Third-straight-fuel-hike-diesel-jumps-Rs672-petrol-Rs34-63329"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Basket is BOJ/JGB monetary-policy noise plus generic remittance data, nothing Islamic-banking specific",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438838/boj-may-be-forced-to-hike-rates-rapidly-if-inflation-accelerates-board-member-masu-says",
+        "https://www.brecorder.com/news/40438831/jgb-yields-rise-as-boj-official-makes-case-for-faster-rate-hikes",
         "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Minerals/BRI speech and Chicago corn futures; no Pakistani fertilizer company or urea/DAP pricing",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Jam-Kamal-pitches-Pakistans-minerals-green-agenda-at-BRI-Summit-Hong-Kong-63344",
+        "https://www.brecorder.com/news/40438829/chicago-corn-edges-higher-as-traders-await-key-usda-supply-outlook"
       ]
     },
     "Auto Assembler": {
@@ -136,10 +210,34 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.3,
-      "reason": "New Auto Policy raises car/parts export targets; headline only, terms unclear",
+      "reason": "New Auto Policy raises export targets for cars/parts makers; headline-only, targets not yet detailed",
       "text_depth": "headline",
       "sources": [
         "https://propakistani.pk/2026/09/10/new-auto-policy-sets-higher-export-targets-for-car-auto-parts-makers/"
+      ]
+    },
+    "Cement": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Only story is THCCL's own PSL restructuring, a single-company event not a sector-wide driver",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438836/thatta-cement-moves-towards-restructuring-of-pakistan-services-limited",
+        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Only story is THCCL's own PSL restructuring, a single-company event not a sector-wide driver",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438836/thatta-cement-moves-towards-restructuring-of-pakistan-services-limited",
+        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
       ]
     }
   }
