@@ -1,35 +1,37 @@
 {
-  "as_of": "2026-09-10T04:41:21Z",
+  "as_of": "2026-09-10T05:41:20Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 60,
+  "articles_read": 63,
   "read_urls": [
     "https://mettisglobal.news/Asian-markets-slide-on-oil-surge-Wall-Street-selloff-63333",
+    "https://mettisglobal.news/BML-drops-DM-Holdings-deal-eyes-Rs10bn-sponsor-injection-63337",
     "https://mettisglobal.news/Chenab-Limited-board-approves-sale-of-noncore-assets-to-repay-debt-63318",
     "https://mettisglobal.news/China-pulls-far-ahead-of-India-in-turning-PhDs-into-science-63332",
     "https://mettisglobal.news/DYNO-FY26-profit-surges-25-63319",
+    "https://mettisglobal.news/FBR-Urges-FPCCI-to-push-retailers-scheme-to-widen-tax-base-63339",
+    "https://mettisglobal.news/Gates-Foundation-backs-Pakistans-cashless-drive-reform-push-63334",
     "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs800-per-tola-63320",
-    "https://mettisglobal.news/Gold-remains-steady-amid-subdued-dollar-US-Iran-tensions-63311",
     "https://mettisglobal.news/Govt-directs-faster-passport-verification-for-overseas-Pakistanis-63327",
     "https://mettisglobal.news/Govt-retires-Rs2tr-debt-in-a-week-63315",
     "https://mettisglobal.news/Govt-targets-lower-energy-costs-easier-business-regulations-63317",
     "https://mettisglobal.news/KP-oil-gas-output-from-Karak-Lakki-Marwat-fields-rises-in-FY26-63326",
     "https://mettisglobal.news/LSE-Capital-incorporates-SPAC4-eyes-food-sector-business-combination-63316",
-    "https://mettisglobal.news/M2-rises-by-Rs214bn-in-a-week-63314",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63330",
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63331",
     "https://mettisglobal.news/NICL-approves-Rs3bn-capex-for-Palmitic-Acid-CPW-expansion-63323",
     "https://mettisglobal.news/Nimir-Chemicals-FY26-profit-rises-18-to-Rs24bn-declares-Rs2-dividend-63322",
     "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307",
-    "https://mettisglobal.news/PKR-posts-marginal-gain-against-USD-63325",
+    "https://mettisglobal.news/Oil-extends-gains-above-101-amid-Middle-East-escalation-63335",
     "https://mettisglobal.news/PM-urges-banks-to-boost-financing-for-agriculture-SMEs-housing-63321",
     "https://mettisglobal.news/PSX-Closing-Bell-A-BackFoot-Finish-63324",
     "https://mettisglobal.news/Pakistan-steps-up-business-reforms-to-attract-local-foreign-investment-63328",
+    "https://mettisglobal.news/SBP-invites-bids-for-PIB-floating-rate-buyback-auction-targets-up-to-Rs600bn-63336",
+    "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338",
     "https://mettisglobal.news/Third-straight-fuel-hike-diesel-jumps-Rs672-petrol-Rs34-63329",
     "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313",
     "https://mettisglobal.news/easypaisa-KTrade-join-hands-to-enable-instant-PSX-account-opening-63312",
-    "https://www.brecorder.com/news/40438766/already-compliant-taxpayers-fbr-chief-urges-fpcci-leaders-to-help-ease-burden",
     "https://www.brecorder.com/news/40438767/import-ban-on-goods-from-illegal-settlements-in-west-bank-pakistan-among-8-states-welcomes-uks-decision",
     "https://www.brecorder.com/news/40438768/aurangzeb-tells-nz-envoy-govt-focuses-on-sustaining-reform-momentum",
     "https://www.brecorder.com/news/40438770/ambassador-asim-made-new-foreign-secretary",
@@ -59,6 +61,7 @@
     "https://www.brecorder.com/news/40438813/trump-says-activity-seen-at-irans-pickaxe-mountain-urges-tehran-not-to-get-cute",
     "https://www.brecorder.com/news/40438814/currency-markets-subdued-as-oil-shock-lifts-global-yields-ecb-us-inflation-eyed",
     "https://www.brecorder.com/news/40438815/payment-firms-visa-mastercard-and-ant-international-team-up-on-ai-agent-trust-framework",
+    "https://www.brecorder.com/news/40438816/psx-selling-continues-kse-100-sheds-over-400-points",
     "https://www.dawn.com/news/2028610/brent-crude-rises-above-100-a-barrel-as-middle-east-conflict-intensifies",
     "https://www.dawn.com/news/2028647/fatf-warns-of-emerging-risks-to-economies-from-rising-online-gaming-gambling-operations",
     "https://www.dawn.com/news/2028663/govt-hikes-petrol-price-by-rs340-diesel-by-rs672",
@@ -66,14 +69,26 @@
     "https://www.dawn.com/news/2028750/global-goods-trade-continues-to-grow-world-trade-organisation",
     "https://www.dawn.com/news/2028772/pm-orders-survey-to-boost-apna-ghar-scheme"
   ],
-  "count": 3,
+  "count": 4,
   "ratings": {
+    "THCCL": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "In-principle understanding to restructure PSL/PC Hotels, pending definitive agreement",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338",
+        "https://propakistani.pk/2026/09/10/thatta-cement-confirms-plan-to-restructure-pc-hotels/"
+      ]
+    },
     "OGDC": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Lundali-1 gas well onstream (30% stake) plus FY26 Karak/Lakki oil+gas output up ~16-20%",
+      "confidence": 0.4,
+      "reason": "Lundali-1 well onstream (30% stake) plus FY26 KP oil/gas output up 16-20%",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307",
@@ -84,19 +99,19 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "30% stake in newly onstream Lundali-1 gas well (10 MMscfd); broad market sold off on oil-driven inflation fear",
+      "confidence": 0.45,
+      "reason": "Mari holds 30% working interest in newly onstream Lundali-1 gas well",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307"
       ]
     },
     "HUBC": {
-      "rating": "positive",
+      "rating": "neutral",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Named alongside OGDC/MARI notifying PSX on Lundali-1 well startup; exact stake unstated",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Only indirect exposure via Mari stake; new well too small to move HUBC materially",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/OGDC-MARI-bring-Lundali1-gas-well-online-63307"
@@ -104,65 +119,50 @@
     }
   },
   "sectors": {
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Brent above $100 on Iran-US tanker attacks lifts E&P realized prices; OGDC rose but MARI fell in same session",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Asian-markets-slide-on-oil-surge-Wall-Street-selloff-63333",
-        "https://www.brecorder.com/news/40438814/currency-markets-subdued-as-oil-shock-lifts-global-yields-ecb-us-inflation-eyed",
-        "https://www.brecorder.com/news/40438813/trump-says-activity-seen-at-irans-pickaxe-mountain-urges-tehran-not-to-get-cute",
-        "https://www.brecorder.com/news/40438809/indian-rupee-oil-fuelled-slide-to-persist-rbi-support-seen-offering-limited-relief",
-        "https://www.brecorder.com/news/40438808/asian-stocks-wilt-as-brent-holds-above-100-yields-near-2023-peak",
-        "https://www.dawn.com/news/2028748/psx-extends-losses-on-economic-uncertainty"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Third straight ex-depot hike (diesel +Rs6.72, petrol +Rs3.4) gives OMCs an inventory-gain windfall",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Asian-markets-slide-on-oil-surge-Wall-Street-selloff-63333",
-        "https://www.brecorder.com/news/40438814/currency-markets-subdued-as-oil-shock-lifts-global-yields-ecb-us-inflation-eyed",
-        "https://www.brecorder.com/news/40438813/trump-says-activity-seen-at-irans-pickaxe-mountain-urges-tehran-not-to-get-cute",
-        "https://www.brecorder.com/news/40438809/indian-rupee-oil-fuelled-slide-to-persist-rbi-support-seen-offering-limited-relief",
-        "https://www.brecorder.com/news/40438808/asian-stocks-wilt-as-brent-holds-above-100-yields-near-2023-peak",
-        "https://www.dawn.com/news/2028748/psx-extends-losses-on-economic-uncertainty",
-        "https://mettisglobal.news/Third-straight-fuel-hike-diesel-jumps-Rs672-petrol-Rs34-63329"
-      ]
-    },
     "Refinery": {
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Crude above $100 on Strait-of-Hormuz tensions supports refiner inventory gains/crack spreads, against a risk-off tape",
+      "reason": "Brent above $101 on Mideast escalation lifts refiner inventory/GRM value",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Asian-markets-slide-on-oil-surge-Wall-Street-selloff-63333",
-        "https://www.brecorder.com/news/40438814/currency-markets-subdued-as-oil-shock-lifts-global-yields-ecb-us-inflation-eyed",
-        "https://www.brecorder.com/news/40438813/trump-says-activity-seen-at-irans-pickaxe-mountain-urges-tehran-not-to-get-cute",
-        "https://www.brecorder.com/news/40438809/indian-rupee-oil-fuelled-slide-to-persist-rbi-support-seen-offering-limited-relief",
-        "https://www.brecorder.com/news/40438808/asian-stocks-wilt-as-brent-holds-above-100-yields-near-2023-peak",
-        "https://www.dawn.com/news/2028748/psx-extends-losses-on-economic-uncertainty"
+        "https://mettisglobal.news/Oil-extends-gains-above-101-amid-Middle-East-escalation-63335",
+        "https://www.brecorder.com/news/40438816/psx-selling-continues-kse-100-sheds-over-400-points"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "OMCs traded red as oil-shock risk-off hit PSX; higher crude raises working-capital cost",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438816/psx-selling-continues-kse-100-sheds-over-400-points",
+        "https://mettisglobal.news/Oil-extends-gains-above-101-amid-Middle-East-escalation-63335"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "MARI, OGDC, PPL traded red in broad risk-off despite oil-price tailwind for E&P revenue",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40438816/psx-selling-continues-kse-100-sheds-over-400-points",
+        "https://mettisglobal.news/Oil-extends-gains-above-101-amid-Middle-East-escalation-63335"
       ]
     },
     "Logistics/Ports": {
-      "rating": "neutral",
+      "rating": "negative",
       "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Hormuz tanker attacks raise shipping/insurance costs but net effect on Pakistani ports/logistics is ambiguous",
+      "confidence": 0.25,
+      "reason": "Oil above $100 on tanker attacks raises bunker/fuel costs for shipping-linked logistics",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438814/currency-markets-subdued-as-oil-shock-lifts-global-yields-ecb-us-inflation-eyed",
-        "https://www.brecorder.com/news/40438808/asian-stocks-wilt-as-brent-holds-above-100-yields-near-2023-peak",
         "https://www.brecorder.com/news/40438806/brent-holds-above-100-as-tanker-attacks-deepen-supply-fear"
       ]
     },
@@ -170,8 +170,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "PM orders survey to expand Apna Ghar Scheme (Rs313bn approved) and urges banks to boost housing financing",
+      "confidence": 0.3,
+      "reason": "PM ordered survey + bank-financing push for Apna Ghar housing scheme, early-stage",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028772/pm-orders-survey-to-boost-apna-ghar-scheme",
@@ -181,36 +181,79 @@
     "Fertilizer": {
       "rating": "neutral",
       "horizon": "long_term",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Sarsabz PR campaign is noise; PM's general agri-financing push is only an indirect, unquantified tailwind",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Sarsabz item is a marketing campaign; ag-financing push is only loosely correlated",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438798/sarsabz-announces-winners-of-dil-se-dekho-sarsabz-pakistan-drive",
-        "https://mettisglobal.news/PM-urges-banks-to-boost-financing-for-agriculture-SMEs-housing-63321"
+        "https://www.brecorder.com/news/40438798/sarsabz-announces-winners-of-dil-se-dekho-sarsabz-pakistan-drive"
       ]
     },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "correlated",
+    "Auto Assembler": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "PM approved tax relief for new-energy vehicles (headline only, no detail read)",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/10/pm-approves-major-tax-relief-for-new-energy-vehicles/"
+      ]
+    },
+    "Technology/Telecom": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
       "confidence": 0.25,
-      "reason": "M2 and remittance growth are system-wide monetary data, not specific to Islamic banks over conventional ones",
+      "reason": "PTA granted surprise-inspection power over telecom equipment, adds compliance risk (headline only)",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/10/pta-can-now-conduct-surprise-inspections-of-telecom-equipment/"
+      ]
+    },
+    "Technology/Telecom Devices": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.25,
+      "reason": "PTA granted surprise-inspection power over telecom equipment, adds compliance risk (headline only)",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/10/pta-can-now-conduct-surprise-inspections-of-telecom-equipment/"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Hike is retail petrol/diesel pricing, not a distributor-margin mechanism for gas utilities",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/M2-rises-by-Rs214bn-in-a-week-63314",
-        "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313"
+        "https://mettisglobal.news/Third-straight-fuel-hike-diesel-jumps-Rs672-petrol-Rs34-63329"
       ]
     },
     "Food": {
-      "rating": "neutral",
+      "rating": "positive",
       "horizon": "long_term",
-      "causality": "correlated",
+      "causality": "causal",
       "confidence": 0.2,
-      "reason": "LSE Capital's SPAC4 targets an unnamed food-sector merger; too early-stage and firm-specific to reprice the sector",
+      "reason": "LSE Capital's SPAC4 targets a food-sector business combination, target unnamed, subject to SECP approval",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/LSE-Capital-incorporates-SPAC4-eyes-food-sector-business-combination-63316"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Remittances up 16.5% YoY boosts bank deposits/forex; PIB buyback and SBP data-access are routine",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Worker-remittances-rise-17-YoY-in-August-2026-63313",
+        "https://mettisglobal.news/SBP-invites-bids-for-PIB-floating-rate-buyback-auction-targets-up-to-Rs600bn-63336"
       ]
     }
   }
