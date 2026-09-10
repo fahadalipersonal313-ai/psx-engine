@@ -871,3 +871,190 @@ def _early_watch_section():
             unsafe_allow_html=True)
 
 
+
+
+# ----------------------------- tabs (drill-down) ---------------------------
+# Restored on request. They sit BELOW Action today and Momentum burst, which
+# stay where they are: the tabs are drill-down, not the front page.
+st.divider()
+
+(tab_watch, tab_edge, tab_stock, tab_hist,
+ tab_news, tab_reports) = st.tabs(
+    ["📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
+     "📈 History", "📰 News", "📋 Reports"])
+
+with tab_watch:
+    st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
+    show = latest[["symbol", "final_score", "relative_strength", "signal",
+                   "risk_level", "confidence", "price", "stop_loss", "target1",
+                   "buy_zone_low", "buy_zone_high",
+                   "data_quality", "shariah_status"]].copy()
+    show["buy_zone"] = [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
+                        for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
+    show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
+    show["news"] = [news_cell(s) for s in show["symbol"]]
+    show.columns = ["Symbol", "Score", "Market strength", "Signal", "Risk", "Quality",
+                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
+                    "News"]
+
+    def _sig_css(v):
+        c = NEON_SIG.get(v)
+        if not c:
+            return ""
+        r, g, b = _hex_rgb(c)
+        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
+
+    def _risk_css(v):
+        c = NEON_RISK.get(v)
+        if not c:
+            return ""
+        r, g, b = _hex_rgb(c)
+        return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
+
+    styled = (show.style
+              .map(_sig_css, subset=["Signal"])
+              .map(_risk_css, subset=["Risk"])
+              .format({"Score": "{:.1f}", "Market strength": "{:.0f}", "Quality": "{:.0f}",
+                       "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
+                      na_rep="—"))
+    st.dataframe(styled, width="stretch", hide_index=True, height=560)
+
+    # The two panels the trim orphaned: their functions survived with no caller,
+    # so they rendered nowhere. They belong with the full ranking rather than on
+    # the front page, which is what pushed them off it.
+    st.divider()
+    st.subheader("⚠ High score, but NOT a Buy — here's why")
+    _why_not_buy_section()
+    st.divider()
+    st.subheader("🔭 Early watch — building before the Buy band")
+    _early_watch_section()
+
+with tab_edge:
+    st.subheader("How past Buy signals performed")
+    st.caption("Checks all tracked stocks against verified daily prices. This "
+               "measures software behaviour on past bars — it is not a forecast "
+               "and not a profitability claim.")
+    if st.button("Check past signals for all stocks"):
+        with st.spinner("Checking past prices for all stocks..."):
+            res = bt_portfolio(os.stat(config.DB_PATH).st_mtime_ns)
+        import history_view
+        history_view.show(st, res)
+
+with tab_stock:
+    sym = st.selectbox("Stock", config.STOCKS)
+    r = db.last_run(sym)
+    if r:
+        from history_view import explain_run
+        r = dict(r)
+        r['main_reason'], r['main_risk'] = explain_run(r)
+        c1, c2, c3, c4, c5 = st.columns(5)
+        c1.metric("Signal", r["signal"], f"{fmt(r['confidence'], 0)}/100 quality")
+        c2.metric("Final score", fmt(r["final_score"], 1))
+        c3.metric("Strength versus market", fmt(r.get("relative_strength"), 0))
+        c4.metric("Price", fmt(r["price"]))
+        c5.metric("Risk", r["risk_level"])
+        st.write("**Why:**", r["main_reason"])
+        st.write("**Main risk:**", r["main_risk"])
+        st.write("**Shariah:**", r["shariah_status"], " · **Market direction:**",
+                 {'risk-on': 'Rising', 'risk-off': 'Falling'}.get(r.get("market_regime"), 'Unknown'))
+        # The news read for this symbol, including the story so far when there
+        # is one -- silent when this is a first sighting.
+        st.markdown(news_line(sym), unsafe_allow_html=True)
+        try:
+            import news_memory
+            _thread = news_memory.thread_summary(sym)
+            if _thread:
+                with st.expander("📰 Story so far — every earlier read on this stock"):
+                    st.code(_thread, language=None)
+        except Exception:
+            pass
+        _news_window(sym, news_feed.get(sym))
+
+    # Banked bars FIRST. daily_ohlc is the same completed-session history the
+    # strategy reads, it is already local, and it cannot stall. The live EOD
+    # call is only a top-up: when the feed is down -- which has happened twice
+    # -- it used to block the whole page here, so the tabs below never painted.
+    eod, meta = None, {}
+    _bars = db.get_daily_ohlc(sym, limit=config.FEATURE_HISTORY_LIMIT)
+    if _bars:
+        eod = pd.DataFrame(_bars)[["date", "close", "volume"]]
+        meta = {"source": "banked daily bars (completed sessions)",
+                "as_of": eod["date"].max()}
+    else:
+        try:
+            eod, meta = data_fetcher.fetch_eod(sym)
+        except Exception as exc:
+            eod, meta = None, {"warning": f"No banked bars and the live feed "
+                                          f"is unreachable: {exc}"}
+    if eod is not None:
+        eod = eod.sort_values('date').tail(config.FEATURE_HISTORY_LIMIT)
+        st.caption(f"Source: {meta['source']} (as of {meta['as_of']})")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"], name="Close",
+                                 line=dict(color=NEON["cyan"], width=2)))
+        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=20).mean(),
+                                 name="Short price trend (20 days)",
+                                 line=dict(color=NEON["amber"], dash="dot")))
+        fig.add_trace(go.Scatter(x=eod["date"], y=eod["close"].ewm(span=40).mean(),
+                                 name="Slower price trend (40 days)",
+                                 line=dict(color=NEON["violet"], dash="dash")))
+        if r:
+            for lvl, nm, clr in ((r["support"], "Support", NEON["green"]),
+                                 (r["resistance"], "Resistance", NEON["red"]),
+                                 (r["stop_loss"], "Stop", NEON["red"])):
+                if lvl:
+                    fig.add_hline(y=lvl, line_dash="dot", line_color=clr,
+                                  annotation_text=nm,
+                                  annotation_font_color=clr)
+        fig.update_layout(title=f"{sym} — price & moving averages")
+        st.plotly_chart(neon_fig(fig, height=420), width="stretch")
+        volf = go.Figure(go.Bar(x=eod["date"], y=eod["volume"], name="Volume",
+                                marker=dict(color="rgba(0,229,255,0.5)")))
+        volf.update_layout(title="Volume")
+        st.plotly_chart(neon_fig(volf, height=220), width="stretch")
+    else:
+        st.error(meta.get("warning", "No price data."))
+
+    with st.expander("How past Buy signals performed"):
+        if st.button(f"Check past signals for {sym}", key="bt_one"):
+            res = bt_symbol(sym, os.stat(config.DB_PATH).st_mtime_ns)
+            import history_view
+            history_view.show(st, res)
+
+with tab_hist:
+    sym = st.selectbox("Stock ", config.STOCKS, key="hist")
+    hist = pd.DataFrame(db.run_history(sym, 300))
+    if len(hist):
+        hist["run_time"] = pd.to_datetime(hist["run_time"], utc=True, format="mixed")
+        cols = [c for c in ["final_score", "technical_score", "relative_strength"]
+                if c in hist.columns]
+        st.line_chart(hist.set_index("run_time")[cols])
+        st.caption("The score is a guide, not a chance of profit. Older results "
+                   "compare the stock with the market.")
+        st.subheader("Signal history")
+        st.dataframe(hist[["run_time", "signal", "confidence", "price", "outcome"]],
+                     width="stretch", hide_index=True)
+    else:
+        st.info("No run history stored for this stock yet.")
+
+with tab_news:
+    st.caption("Raw headlines from approved publishers, last 72 hours. "
+               "Unrated and unscored — the rated read is the panel at the top.")
+    _items = db.recent_news(72)[:40]
+    if not _items:
+        st.info("No headlines in the last 72 hours.")
+    for n in _items:
+        tag = f" `[{n['symbols']}]`" if n["symbols"] else ""
+        st.markdown(f"- **{n['source']}** — {n['title']}{tag}")
+
+with tab_reports:
+    if os.path.isdir(config.REPORT_DIR):
+        files = sorted(os.listdir(config.REPORT_DIR), reverse=True)[:10]
+        pick = st.selectbox("Saved reports", files) if files else None
+        if pick:
+            with open(os.path.join(config.REPORT_DIR, pick), encoding="utf-8") as f:
+                st.markdown(f.read())
+        elif not files:
+            st.info("No reports saved yet.")
+    else:
+        st.info("No reports saved yet.")
