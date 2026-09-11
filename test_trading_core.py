@@ -444,6 +444,65 @@ class ProspectiveCohort(unittest.TestCase):
                     self.assertIsNone(db._record_cohort_candidate(c, {'symbol': 'X'}, None))
 
 
+class SignalChangeDetection(unittest.TestCase):
+    """The database differs byte-for-byte every cycle -- each run inserts a
+    `runs` row with a new timestamp -- so `git diff` cannot decide whether
+    there is anything new to publish. The digest is over the SIGNALS."""
+
+    def _r(self, **kw):
+        base = {"symbol": "PSO", "signal": "Avoid", "stop_loss": 1.0,
+                "target1": 2.0, "scoring": {"final_score": 35.5}}
+        base.update(kw)
+        return [base]
+
+    def test_identical_signals_give_an_identical_digest(self):
+        import main
+        self.assertEqual(main.signal_state(self._r()), main.signal_state(self._r()))
+
+    def test_a_moved_signal_score_stop_or_target_all_register(self):
+        import main
+        base = main.signal_state(self._r())
+        self.assertNotEqual(base, main.signal_state(self._r(signal="Buy")))
+        self.assertNotEqual(base, main.signal_state(self._r(stop_loss=1.5)))
+        self.assertNotEqual(base, main.signal_state(self._r(target1=2.5)))
+        self.assertNotEqual(base, main.signal_state(
+            self._r(scoring={"final_score": 36.0})))
+
+    def test_row_order_does_not_count_as_a_change(self):
+        import main
+        a = [{"symbol": "PSO", "signal": "Avoid", "stop_loss": 1.0, "target1": 2.0,
+              "scoring": {"final_score": 1.0}},
+             {"symbol": "OGDC", "signal": "Buy", "stop_loss": 3.0, "target1": 4.0,
+              "scoring": {"final_score": 2.0}}]
+        self.assertEqual(main.signal_state(a), main.signal_state(list(reversed(a))))
+
+    def test_state_file_records_when_signals_actually_moved(self):
+        """changed_at must hold at the moment of the change, not tick every
+        cycle -- the dashboard reports it as a fact."""
+        import main, time
+        with tempfile.TemporaryDirectory() as tmp:
+            p = str(Path(tmp) / "state.json")
+            self.assertTrue(main.write_signal_state("aaa", "2026-09-10", p))
+            first = main.read_signal_state(p)["changed_at"]
+            time.sleep(1.1)
+            self.assertFalse(main.write_signal_state("aaa", "2026-09-10", p))
+            same = main.read_signal_state(p)
+            self.assertEqual(same["changed_at"], first)      # held
+            self.assertNotEqual(same["checked_at"], first)   # but still checked
+            self.assertTrue(main.write_signal_state("bbb", "2026-09-11", p))
+            self.assertNotEqual(main.read_signal_state(p)["changed_at"], first)
+
+    def test_a_missing_state_file_reads_as_empty_not_as_a_crash(self):
+        """The loop treats an unreadable hint as 'commit anyway', so this must
+        degrade rather than raise."""
+        import main
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(main.read_signal_state(str(Path(tmp) / "nope.json")), {})
+            bad = Path(tmp) / "bad.json"
+            bad.write_text("{not json")
+            self.assertEqual(main.read_signal_state(str(bad)), {})
+
+
 class ArchiveDurability(unittest.TestCase):
     """decisions + decision_snapshots grow 0.67 MB per session, unbounded,
     against a 100 MB hard limit. They are immutable audit records, so they are

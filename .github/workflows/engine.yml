@@ -154,9 +154,43 @@ jobs:
               exit 1
             fi
 
-            # -f: *.log is gitignored, and a plain `git add` of an ignored path
-            # exits non-zero, which killed the whole step under `set -e`.
-            git add -A -- psx_engine.db
+            # News every cycle, not hourly. news.yml's cron is `5 4-11 * * 1-5`
+            # -- once an hour -- so a story breaking at 09:06 reached the
+            # dashboard at 10:05 at the earliest. Stocks move on the news, so
+            # that hour is the gap that matters most. This loop is already awake
+            # every RUN_INTERVAL_MINUTES; it just was not fetching.
+            #
+            # Non-fatal by design: a publisher timing out must never kill a
+            # cycle that has already produced signals. news.yml stays as the
+            # backstop for when this loop is not running.
+            python news_fetcher.py > /tmp/psx_news.log 2>&1 \
+              && tail -3 /tmp/psx_news.log \
+              || echo "news fetch failed this cycle (non-fatal) — keeping the last file"
+
+            # What gets committed, and why it differs per file:
+            #
+            #   news_raw_24h.json  ~100 KB, ALWAYS committed when it changes.
+            #     This is the 15-minute path. Cheap enough to push every cycle.
+            #
+            #   psx_engine.db      ~48 MB, committed only when the SIGNALS move.
+            #     The file differs every cycle regardless (each run inserts a
+            #     `runs` row with a new timestamp), so `git diff` cannot decide
+            #     this -- main.py writes .engine-state.json with a digest of the
+            #     signal set instead. Measured on 2026-09-10: 27 of 28 cycles
+            #     were identical, so this drops ~48 MB of push per cycle without
+            #     delaying a single real change.
+            CHANGED=$(python -c "import json;print(json.load(open('.engine-state.json'))['signal_digest'])" 2>/dev/null || echo "unknown")
+            PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
+                   | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
+            git add -A -- news_raw_24h.json .engine-state.json
+            if [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ]; then
+              # Unknown digest means the hint is missing or unreadable: commit
+              # the database rather than risk withholding a real change.
+              echo "signals changed ($PREV -> $CHANGED) — committing the database"
+              git add -A -- psx_engine.db
+            else
+              echo "signals unchanged ($CHANGED) — database not committed this cycle"
+            fi
             git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
               # A push race is NOT the same thing as a database conflict, and

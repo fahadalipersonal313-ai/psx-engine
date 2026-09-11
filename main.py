@@ -16,7 +16,7 @@ import sys
 import io
 import json
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # Force UTF-8 output on Windows consoles that default to cp1252
 if __name__ == "__main__" and hasattr(sys.stdout, "buffer"):
@@ -189,6 +189,55 @@ def _resolve_cutoff(cutoff, fetch_day, max_walk=10):
     return cutoff, bars
 
 
+SIGNAL_STATE_FILE = ".engine-state.json"
+
+
+def signal_state(results):
+    """A content digest of the SIGNALS, not of the database file.
+
+    The database differs byte-for-byte on every cycle -- each run inserts a
+    `runs` row with a fresh timestamp -- so "has the file changed?" is always
+    yes and cannot decide whether there is anything new to publish. Measured on
+    2026-09-10: 27 of 28 cycles produced an identical score, signal and price
+    for every symbol, because the engine reads the last COMPLETED session and
+    that does not move intraday.
+
+    So the test is logical. Timestamps, row order and SQLite page churn are not
+    in the digest; a moved stop on an unchanged Buy IS, because that is a change
+    worth seeing.
+    """
+    from decision_engine import digest
+    state = sorted(
+        (r["symbol"], r.get("signal"), r["scoring"].get("final_score"),
+         r.get("stop_loss"), r.get("target1"))
+        for r in results if r.get("symbol"))
+    return digest([list(x) for x in state])
+
+
+def read_signal_state(path=SIGNAL_STATE_FILE):
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, ValueError):
+        return {}
+
+
+def write_signal_state(sig, cutoff, path=SIGNAL_STATE_FILE):
+    """Record what the engine judged to be a change, and when. The dashboard
+    reads this to say 'signals last changed at ...' as a fact rather than
+    inferring it from a file timestamp."""
+    prev = read_signal_state(path)
+    changed = prev.get("signal_digest") != sig
+    blob = {"signal_digest": sig,
+            "cutoff_session": str(cutoff),
+            "changed_at": (datetime.now(timezone.utc).isoformat(timespec="seconds")
+                           if changed else prev.get("changed_at")),
+            "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(blob, fh, indent=2)
+    return changed
+
+
 def full_run(fast=False):
     """fast=True trims everything that does not affect TODAY'S signals, so the
     first cycle after the 09:32 open commits sooner. Safe because:
@@ -258,6 +307,16 @@ def full_run(fast=False):
         notify.send_report(results, report, xlsx)
     except Exception as e:
         log.warning("Excel/email step failed: %s", e)
+
+    # Publish decision: did the SIGNALS move, or only the clock?
+    try:
+        _sig = signal_state(results)
+        _changed = write_signal_state(_sig, cutoff)
+        log.info("signal state %s: %s", "CHANGED" if _changed else "unchanged", _sig[:16])
+    except Exception as exc:
+        # Never let the publish hint break a run. A missing hint makes the
+        # loop fall back to committing, which is the safe direction.
+        log.warning("signal state failed: %s", exc)
 
     log.info("=== Engine run finished ===")
     return results

@@ -688,6 +688,24 @@ if ups or downs:
 else:
     st.caption("No signal changes since the last run.")
 
+# When the signals last actually MOVED, as a fact rather than an inference.
+# The engine writes this digest each cycle and the loop commits the database
+# only when it differs, so "unchanged" here means the engine compared and found
+# nothing new -- not that it stopped running. The news panel above has its own,
+# much faster clock: headlines refresh every cycle regardless.
+try:
+    with open(".engine-state.json", encoding="utf-8") as _sf:
+        _state = json.load(_sf)
+    _ch, _ck = _state.get("changed_at"), _state.get("checked_at")
+    if _ch:
+        st.caption(f"Signals last changed {str(_ch)[:16].replace('T', ' ')} UTC "
+                   f"(session {_state.get('cutoff_session', '?')}) · last checked "
+                   f"{str(_ck)[:16].replace('T', ' ')} UTC. The engine reads the "
+                   f"last COMPLETED session, so signals move once a session, not "
+                   f"once a cycle.")
+except (OSError, ValueError, KeyError):
+    pass
+
 st.divider()
 
 # ----------------------------- ACTION TODAY -------------------------------
@@ -1041,18 +1059,64 @@ with tab_news:
     st.caption("Every headline gathered from approved publishers, banked and "
                "kept. Unrated and unscored — the rated read is the panel at "
                "the top. This is the record a new story is judged against.")
-    _win = st.radio("Window", [3, 7, 30, 365], index=1, horizontal=True,
-                    format_func=lambda d: {3: "3 days", 7: "7 days",
+    # LIVE is deliberately a different SOURCE, not a shorter window. The engine
+    # loop refetches news_raw_24h.json every cycle (~15 min) and that file is
+    # ~100 KB, so it is committed every time; the database is 48 MB and is
+    # committed only when signals move. Reading the file here is what makes a
+    # breaking story visible within a cycle instead of waiting for a signal
+    # change to carry the database along with it.
+    _win = st.radio("Window", ["live", 3, 7, 30, 365], index=0, horizontal=True,
+                    format_func=lambda d: {"live": "Latest (24h, live file)",
+                                           3: "3 days", 7: "7 days",
                                            30: "30 days", 365: "1 year"}[d],
                     key="news_win")
-    _items = db.recent_news(_win * 24)
+    if _win == "live":
+        _items = []
+        try:
+            with open("news_raw_24h.json", encoding="utf-8") as _fh:
+                _blob = json.load(_fh)
+            _fetched = _blob.get("fetched_at") or ""
+            for _it in _blob.get("items") or []:
+                _sym = _it.get("symbol") or ""
+                _items.append({"fetched_at": _it.get("published") or _fetched,
+                               "source": _it.get("source") or "?",
+                               "title": _it.get("title") or "",
+                               "link": _it.get("url") or _it.get("link") or "",
+                               "symbols": "" if _sym.startswith("_") else _sym})
+            _items.sort(key=lambda x: str(x["fetched_at"]), reverse=True)
+            _mins = None
+            try:
+                from datetime import datetime as _dt, timezone as _tz
+                _t = _dt.fromisoformat(str(_fetched))
+                if _t.tzinfo is None:
+                    _t = _t.replace(tzinfo=_tz.utc)
+                _mins = (_dt.now(_tz.utc) - _t).total_seconds() / 60
+            except (ValueError, TypeError):
+                pass
+            _agetxt = ""
+            if _mins is not None:
+                _agetxt = (f" · fetched {_mins:.0f} min ago" if _mins < 90
+                           else f" · fetched {_mins/60:.1f}h ago — the loop may "
+                                f"not be running")
+            st.caption(f"Straight from the live fetch file, refreshed every "
+                       f"engine cycle · collected {str(_fetched)[:16]}{_agetxt}")
+        except (OSError, ValueError) as _exc:
+            st.warning(f"Live news file unreadable ({_exc}). Falling back to the "
+                       "banked record — pick a day window above.")
+            _items = []
+    else:
+        _items = db.recent_news(_win * 24)
     _total = len(_items)
     if not _items:
         # Distinguish "nothing published" from "nothing ingested" -- the second
         # is a broken pipeline and used to look exactly like the first.
         with db.conn() as _c:
             _last = _c.execute("SELECT MAX(fetched_at) FROM news").fetchone()[0]
-        if _last:
+        if _win == "live":
+            st.warning("The live fetch file holds no items. The newest banked "
+                       f"headline is from {str(_last)[:16]}."
+                       if _last else "No news available from either source.")
+        elif _last:
             st.warning(f"No headlines in the last {_win} day(s). The newest "
                        f"banked headline is from {str(_last)[:16]} — if that is "
                        f"old, the news fetch has stopped running.")
