@@ -1,17 +1,17 @@
 {
-  "as_of": "2026-09-11T04:42:39Z",
+  "as_of": "2026-09-11T05:43:43Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 61,
+  "articles_read": 62,
   "read_urls": [
     "https://mettisglobal.news/Ahsan-Iqbal-calls-for-tax-reforms-to-power-Uraan-Pakistan-63366",
+    "https://mettisglobal.news/Asian-markets-slide-on-fears-of-prolonged-US-Iran-war-63375",
     "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361",
     "https://mettisglobal.news/Court-denies-bail-to-four-current-former-officials-63348",
     "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370",
     "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs600-per-tola-63363",
-    "https://mettisglobal.news/Govt-ACCA-join-hands-to-boost-skills-SMEs-and-private-sector-growth-63365",
     "https://mettisglobal.news/HomeNet-SBP-join-hands-to-boost-women-entrepreneurs-financial-inclusion-63362",
     "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350",
     "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355",
@@ -24,12 +24,12 @@
     "https://mettisglobal.news/PICG-Summit-puts-governance-leadership-at-centre-of-corporate-future-63367",
     "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359",
     "https://mettisglobal.news/Pakistan-Rwanda-set-to-deepen-trade-investment-ties-63371",
+    "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
     "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368",
     "https://mettisglobal.news/SCRA-balance-climbs-Rs1bn-to-Rs28bn-in-week-63373",
     "https://mettisglobal.news/SMEDA-PM-Youth-Programme-join-hands-to-expand-MSME-financing-access-63358",
     "https://mettisglobal.news/Softer-dollar-lifts-gold-to-4428-63340",
     "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338",
-    "https://www.brecorder.com/news/40438966/iran-attack-on-base-in-jordan-damaged-american-military-aircraft",
     "https://www.brecorder.com/news/40438979/kpra-sahulat-mobile-app-launched-to-facilitate-taxpayers",
     "https://www.brecorder.com/news/40438980/leadership-development-programme-journey-to-next-level-held",
     "https://www.brecorder.com/news/40438981/432000-students-registered-for-cm-e-bike-scheme-in-two-days",
@@ -56,9 +56,10 @@
     "https://www.brecorder.com/news/40439002/thar-coal-rail-link-set-to-boost-energy-security",
     "https://www.brecorder.com/news/40439003/turkish-cg-offers-support-for-education",
     "https://www.brecorder.com/news/40439004/wccip-executive-committee-elected-unopposed-for-2026-28",
-    "https://www.brecorder.com/news/40439010/global-bonds-buckle-as-surging-oil-prices-inflame-inflation-risks",
     "https://www.brecorder.com/news/40439011/indian-shares-may-fall-as-crude-hits-108-on-rising-mideast-risks",
     "https://www.brecorder.com/news/40439012/indonesia-expanding-its-economic-engagement-with-healthcare-sector",
+    "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points",
+    "https://www.brecorder.com/news/40439014/pakistan-urges-hong-kong-to-resume-cathay-pacific-flights",
     "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan",
     "https://www.dawn.com/news/2028892/imf-mission-due-on-sept-23-for-biannual-review-of-pakistans-economic-performance",
     "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
@@ -71,10 +72,10 @@
   "ratings": {
     "IPAK": {
       "rating": "highly_positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 PAT surged 7x to Rs4.95bn, dividend raised to Rs2/share",
+      "confidence": 0.8,
+      "reason": "FY26 PAT up 7x to Rs4.95bn, EPS Rs6.73, dividend up 3.3x to Rs2/sh",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438990/ipak-reports-sevenfold-surge-in-fy26-profit",
@@ -83,36 +84,13 @@
     },
     "ILP": {
       "rating": "highly_positive",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 net profit more than doubled to Rs12.45bn, dividend Rs2/share",
+      "confidence": 0.8,
+      "reason": "FY26 consolidated PAT more than doubled to Rs12.45bn, EPS Rs9.06, dividend declared",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355"
-      ]
-    },
-    "KOHC": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.7,
-      "reason": "FY26 profit fell 8% to Rs10.70bn on margin squeeze",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351"
-      ]
-    },
-    "THCCL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "In-principle deal on PSL restructuring; early stage, no terms disclosed",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
       ]
     },
     "GGL": {
@@ -120,178 +98,152 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.5,
-      "reason": "Commissioned 1.5MW solar plant (Rs120m) cutting grid reliance and costs",
+      "reason": "Subsidiary GGGL commissioned Rs120m 1.5MW solar plant, cuts grid dependence/costs",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
+      ]
+    },
+    "KOHC": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.65,
+      "reason": "FY26 consolidated PAT fell 8% to Rs10.70bn on higher manufacturing costs",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
+        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351"
+      ]
+    },
+    "THCCL": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "In-principle understanding on PSL restructuring, terms/economics undisclosed",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
       ]
     }
   },
   "sectors": {
-    "Cement": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Mixed single-company items (KOHC profit dip, Cherat bid, Thatta MoU); no sector driver",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361",
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351",
-        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Mixed single-company items (KOHC profit dip, Cherat bid, Thatta MoU); no sector driver",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361",
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351",
-        "https://mettisglobal.news/Thatta-Cement-reaches-inprinciple-understanding-on-PSL-restructuring-63338"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Items concern retail fuel pricing, not gas-distribution utility economics",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438996/fix-petroleum-prices-daily-president-kati-demands-pm-ogra-to-review-decision",
-        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
-      ]
-    },
-    "Glass/Holding": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Single constituent's solar capex to cut costs; not sector-wide",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
-      ]
-    },
     "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "multi_session",
+      "rating": "positive",
+      "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "General SBP/FX-reserve and financial-inclusion news, not Islamic-banking specific",
+      "confidence": 0.3,
+      "reason": "SBP reserves +$1.2bn WoW on loan inflows eases macro-stability risk premia",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40438999/shaping-pakistans-future-through-integrating-financial-literacy-in-curriculum",
         "https://www.dawn.com/news/2028999/sbp-forex-reserves-surge-12bn",
         "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368",
-        "https://mettisglobal.news/HomeNet-SBP-join-hands-to-boost-women-entrepreneurs-financial-inclusion-63362",
-        "https://propakistani.pk/2026/09/10/sbp-reserves-gain-1-2-billion-in-one-week/",
-        "https://propakistani.pk/2026/09/10/cant-release-profit-on-blocked-foreign-currency-accounts-sbp-governor/"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Mideast crude spike/Hormuz risk outweighs one relief LNG delivery",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439011/indian-shares-may-fall-as-crude-hits-108-on-rising-mideast-risks",
-        "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "Thar coal rail-link project advances, early-stage with no timeline",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439002/thar-coal-rail-link-set-to-boost-energy-security"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Brent surged to $108-110 on Mideast war, lifting E&P realized prices",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439011/indian-shares-may-fall-as-crude-hits-108-on-rising-mideast-risks",
-        "https://www.brecorder.com/news/40439010/global-bonds-buckle-as-surging-oil-prices-inflame-inflation-risks",
-        "https://www.dawn.com/news/2028998/equities-plunge-below-169000-on-panic-selling",
-        "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Daily fuel-price hikes, levy-cut pressure and oil-shock circular-debt risk",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438996/fix-petroleum-prices-daily-president-kati-demands-pm-ogra-to-review-decision",
-        "https://www.brecorder.com/news/40438995/pm-urged-to-reduce-petroleum-levy-by-rs60-per-litre",
-        "https://www.brecorder.com/news/40439011/indian-shares-may-fall-as-crude-hits-108-on-rising-mideast-risks",
-        "https://www.brecorder.com/news/40439010/global-bonds-buckle-as-surging-oil-prices-inflame-inflation-risks",
-        "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
-        "https://www.dawn.com/news/2028998/equities-plunge-below-169000-on-panic-selling"
-      ]
-    },
-    "Power Generation": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Background piece on IPP contract duration; no new decision",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/10/pakistans-current-ipp-contracts-can-easily-outlive-generations/"
-      ]
-    },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "KOHC subsidiary investment mention, not sector-wide real-estate news",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351"
+        "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377"
       ]
     },
     "Refinery": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Draft refinery upgrade agreements moved to ECC; crude surge aids margins, offset by market risk-off",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/11/govt-moves-draft-refinery-upgrade-agreements-to-ecc-for-approval/",
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
       "confidence": 0.45,
-      "reason": "Crude spike lifts inventory/GRM gains, offset by broad panic selling",
+      "reason": "4th straight daily fuel hike draws KATI/PBF backlash, political risk to pricing mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points",
+        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370",
+        "https://www.brecorder.com/news/40438995/pm-urged-to-reduce-petroleum-levy-by-rs60-per-litre"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Named top index drag two sessions running as US-Iran war risk-off dominates crude tailwind",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points",
+        "https://www.dawn.com/news/2028998/equities-plunge-below-169000-on-panic-selling",
+        "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359"
+      ]
+    },
+    "Cement": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "KOHC FY26 profit fell 8% and cement named among sold sectors in broad selloff",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "KOHC FY26 profit fell 8% and cement named among sold sectors in broad selloff",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points"
+      ]
+    },
+    "Auto Assembler": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Autos named among sectors sold in broad geopolitical-risk-off session",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-2600-points"
+      ]
+    },
+    "Logistics/Transport": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "105km Thar coal rail link advancing, cuts logistics costs and import reliance",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439002/thar-coal-rail-link-set-to-boost-energy-security"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Matched stories are petroleum pricing/levy pieces, not gas-tariff specific",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438996/fix-petroleum-prices-daily-president-kati-demands-pm-ogra-to-review-decision",
-        "https://www.brecorder.com/news/40438995/pm-urged-to-reduce-petroleum-levy-by-rs60-per-litre",
-        "https://www.brecorder.com/news/40439011/indian-shares-may-fall-as-crude-hits-108-on-rising-mideast-risks",
-        "https://www.brecorder.com/news/40439010/global-bonds-buckle-as-surging-oil-prices-inflame-inflation-risks",
-        "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
-        "https://www.dawn.com/news/2028998/equities-plunge-below-169000-on-panic-selling"
+        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
       ]
     },
     "Technology/IT": {
       "rating": "neutral",
       "horizon": "long_term",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Vague government meeting on IT for public services, no specifics",
+      "confidence": 0.2,
+      "reason": "Routine government meeting on IT for public services, no funding/policy specifics",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438988/dar-chairs-meeting-on-it-for-better-public-services"
@@ -301,11 +253,33 @@
       "rating": "neutral",
       "horizon": "long_term",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Vague government meeting on IT for public services, no specifics",
+      "confidence": 0.2,
+      "reason": "Routine government meeting on IT for public services, no funding/policy specifics",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438988/dar-chairs-meeting-on-it-for-better-public-services"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "First Qatari LNG cargo since July docked at Port Qasim, easing Hormuz supply disruption",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim"
+      ]
+    },
+    "Real Estate": {
+      "rating": "negative",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.25,
+      "reason": "Salaried-vs-property tax gap statistic builds political case for higher property taxation",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/11/salaried-class-paid-225-more-tax-than-property-sector-in-2-months-of-fy27/"
       ]
     },
     "Technology/Telecom": {
@@ -313,21 +287,43 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.35,
-      "reason": "NA panel summons telcos over service quality, PTA fines scrutiny",
+      "reason": "NA panel to summon telcos over service quality, presses PTA on insufficient fines",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
       ]
     },
     "Technology/Telecom Devices": {
-      "rating": "positive",
+      "rating": "neutral",
       "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "EDB effort to bring Apple manufacturing to Pakistan; early stage",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Early, informal efforts to attract Apple manufacturing mentioned in a telco-quality hearing",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
+      ]
+    },
+    "Power Generation": {
+      "rating": "negative",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "Report on ultra-long IPP contract durations signals continued renegotiation pressure",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/10/pakistans-current-ipp-contracts-can-easily-outlive-generations/"
+      ]
+    },
+    "Glass/Holding": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "GGGL commissioned Rs120m 1.5MW solar plant, cuts grid dependence and manufacturing costs",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
       ]
     }
   }
