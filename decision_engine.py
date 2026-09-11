@@ -21,11 +21,23 @@ def digest(value):
 
 
 def contract():
-    # Capture every serializable public config input, including eligibility and
-    # calendar policies. Runtime paths/credentials do not belong in snapshots.
+    # Explicit v6 decision inputs: display/replay settings cannot retire live
+    # decisions. Older records retain their frozen contract and hash.
     excluded = ('PATH', 'DIR', 'EMAIL', 'SMTP', 'PASSWORD', 'TOKEN', 'SECRET', 'KEY')
     values = {}
+    inputs = set('''STRATEGY_VERSION FEATURE_HISTORY_LIMIT MIN_STRATEGY_HISTORY
+        PURE_TECHNICAL RS_LOOKBACKS RS_WEIGHTS RS_POINTS BENCHMARK_INDEX REGIME_EMA_SPAN
+        EXECUTION RISK MIN_TURNOVER_PKR MIN_OHLC_BARS_FOR_TRUE PULLBACK_EMA_SPAN
+        CONCENTRATION_VETO_ENABLED POOR_RR_VETO_ENABLED BUY_MIN_CMF CHASE_GUARD_ENABLED
+        EARLY_WATCH_ENABLED EARLY_WATCH_MIN_CMF EARLY_WATCH_MIN_RS EARLY_WATCH_SCORE_BAND
+        EARNINGS_BLACKOUT_DAYS REGIME_GATE_ENABLED RS_LAGGARD_VETO SIGNAL_THRESHOLDS
+        HYSTERESIS_BAND WEIGHTS NEWS_SCORE_ADJUST_MAX SECTOR_NEWS_SCORE_ADJUST_MAX
+        CIRCUIT_LIMIT_PCT EXCHANGE_HOLIDAYS SESSION_OVERRIDES PUBLICATION_DELAY_MINUTES
+        STOCKS KMI30_VERIFIED KMIALLSHR_VERIFIED LOWER_PRICE_VERIFIED OTHER_COMPLIANT
+        UNIVERSE_KNOWN_FROM'''.split())
     for key, value in vars(config).items():
+        if key not in inputs:
+            continue
         if not key.isupper() or any(word in key for word in excluded):
             continue
         if isinstance(value, (set, frozenset)):
@@ -118,6 +130,8 @@ def decide(symbol, bars, benchmark, cutoff, eligible=True, previous=None, action
             raise ValueError('Aligned relative strength unavailable')
         regime = market_regime.assess_regime(ix)
         tech = technical_analyzer.analyze(symbol, df, {'price': adjusted[-1]['close'], 'volume': adjusted[-1]['volume']}, rs['rs_score'], adjusted)
+        from statistics import median
+        tech['median_turnover_pkr'] = median(float(b['close']) * float(b['volume']) for b in stock[-20:])
         if not finite(tech.get('cmf')) or not tech.get('atr_is_true') or not finite(tech.get('adx_proxy')):
             raise ValueError('Required OHLC indicators unavailable')
         score = scoring_engine.compute(symbol, neutral, neutral, tech, neutral)

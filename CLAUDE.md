@@ -15,6 +15,12 @@ Dated historical research, preferences and rationales are preserved verbatim in 
 
 ## Current implementation state
 
+- Audit fixes on `codex/audit-astra-recheck` introduce v6: 30-session horizon retained, prior-session capacity with frozen suggested quantity, and PKR median turnover enforced in the core decision and shortlist. Old opportunities select their original execution behavior from frozen policy.
+- v6 contract hashing includes explicit decision inputs; display and replay-only settings do not retire decisions. Any new decision input must be added to `decision_engine.contract`.
+- Database replay withholds entries before the documented current-universe selection date (2026-09-09), and reports unknown membership separately. Do not interpret these blocked dates as failed signals or fabricate earlier membership.
+- Target-time estimates require validated, action-adjusted history ending at the decision date. Missing/invalid history means no estimate. Daily-bar fills remain simulations, not proof of order-queue availability.
+- Cohort summaries separate strategy versions and config hashes; ten-day success uses the ten-day flag. Historical displays show actual holding duration; stale shortlist rows expose their analysis date.
+
 - User requests: use plain language throughout the dashboard; test past signals for all tracked stocks; include verified KMI All Share stocks below PKR 50. Do not confuse the user's Codex usage reset with a change to that price limit.
 - v4 fixes the obsolete 60-session weak-data flag: the complete 42-session contract must not automatically block all Buys. Each historical decision still uses only its preceding 42 sessions. Default evaluation is the latest 21 sessions, backed by 64 official sessions where available.
 - The universe is 60 symbols as of 2026-09-09 on the user's instruction: the 50 curated names plus `config.CURATED_ADDITIONS` (IPAK, ASL, DCR, GHGL, POWER, CNERGY, FTSM, LOADS, FIBLM, EPCL). It was briefly 168. The 10 were chosen AFTER the 2026-09-08 backfill so each had real history: >=220 bars, median 20-day turnover above MIN_TURNOVER_PKR, a scored signal, then ranked on trend quality and score with a cap of two per sector.

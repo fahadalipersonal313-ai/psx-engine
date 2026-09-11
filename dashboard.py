@@ -782,7 +782,9 @@ else:
                 # for a target this name historically took 12 to reach, and
                 # would hide that it arrived under half the time.
                 try:
-                    _eta = target_timing.estimate(r["symbol"], r["price"], r["target1"])
+                    _date = r.get('decision_session')
+                    _eta = (target_timing.estimate(r["symbol"], r["price"], r["target1"], cutoff=_date)
+                            if _date else None)
                 except Exception:
                     _eta = None
                 if _eta and _eta["typical_sessions"]:

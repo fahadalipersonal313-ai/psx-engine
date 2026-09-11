@@ -133,6 +133,7 @@ class DecisionTests(unittest.TestCase):
 class ExecutionTests(unittest.TestCase):
     def setUp(self):
         self.item={'session':'2026-09-01','reference_entry':100,'stop':90,'target':110,'target2':None,'quantity':1,
+                   'prior_avg_volume': 10000,
                    'execution':dict(config.EXECUTION,slippage_bps=0,fee_bps_per_side=0)}
         self.bar=dict(date='2026-09-02',open=100,high=111,low=95,close=108,volume=10000,source=SOURCE)
     def resolve(self,**fields):
@@ -244,7 +245,8 @@ class IntegrationTests(StorageTests):
             for b in bars:
                 db.save_hl_bar(symbol,b['date'],b['open'],b['high'],b['low'],b['close'],b['volume'],SOURCE)
         with patch.object(config,'STOCKS',['PSO','MARI']), patch('market_regime.fetch_index',return_value=(pd.DataFrame(ix),{})), patch('session_calendar.last_completed',return_value=bars[-1]['date']), patch('psx_historical.fetch_day',return_value=[]), patch('data_fetcher.fetch_news',side_effect=AssertionError('News on technical path')), patch('data_fetcher.latest_quote',side_effect=AssertionError('Live quote on completed path')), patch('reports.save_report'), patch('excel_export.export'), patch('notify.send_report') as notify, patch('portfolio_advisor.load_portfolio',return_value={'cash_pkr':1000000,'holdings':[]}), contextlib.redirect_stdout(io.StringIO()):
-            result=main.full_run()
+            with patch('main.write_signal_state'):
+                result=main.full_run()
         self.assertEqual(len(result),2)
         with db.conn() as c:
             self.assertEqual(c.execute("SELECT COUNT(*) FROM runs WHERE strategy_version=?",(config.STRATEGY_VERSION,)).fetchone()[0],2)

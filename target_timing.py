@@ -54,10 +54,27 @@ def _touch_sessions(high, close, atr, k, horizon=HORIZON):
     return out, attempts
 
 
-def for_symbol(symbol, k, horizon=HORIZON):
+def verified_history(symbol, cutoff=None):
+    from session_calendar import last_completed
+    from data_quality import bar_error, source_priority
+    from corporate_actions import verified_bars
+    cutoff = cutoff or last_completed()
+    bars = [b for b in db.get_daily_ohlc(symbol, limit=100000) if b['date'] <= cutoff]
+    if any(bar_error(b) or source_priority(b.get('source')) < 3 for b in bars):
+        return []
+    if len({b['date'] for b in bars}) != len(bars):
+        return []
+    bars.sort(key=lambda b: b['date'])
+    bars = verified_bars(bars, db.get_corporate_actions(symbol), cutoff)
+    if any(abs(b['close'] / a['close'] - 1) > .105 for a, b in zip(bars, bars[1:])):
+        return []
+    return bars
+
+
+def for_symbol(symbol, k, horizon=HORIZON, cutoff=None):
     """Median sessions and hit rate for a move of `k` ATR, from this symbol's
     own history. None when the sample is too thin to mean anything."""
-    bars = db.get_daily_ohlc(symbol, limit=100000)
+    bars = verified_history(symbol, cutoff)
     if len(bars) < 250:
         return None
     high = np.array([b["high"] for b in bars], dtype=float)
@@ -85,7 +102,7 @@ def _atr(bars, span=14):
     return out
 
 
-def estimate(symbol, price, target, atr=None):
+def estimate(symbol, price, target, atr=None, cutoff=None):
     """-> dict for a card, or None.
 
     `atr` should be the technical layer's own ATR so the card and the signal
@@ -93,7 +110,7 @@ def estimate(symbol, price, target, atr=None):
     recomputed from the symbol's bars when omitted — same 14-session true range.
     """
     if atr is None:
-        bars = db.get_daily_ohlc(symbol, limit=400)
+        bars = verified_history(symbol, cutoff)[-400:]
         if len(bars) < 60:
             return None
         series = _atr(bars)
@@ -106,7 +123,7 @@ def estimate(symbol, price, target, atr=None):
         return None
     if k <= 0 or k > 10:
         return None
-    stats = for_symbol(symbol, k)
+    stats = for_symbol(symbol, k, cutoff=cutoff)
     if not stats:
         return None
     stats["distance_pct"] = round((target / price - 1) * 100, 2)

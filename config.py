@@ -481,20 +481,9 @@ PORTFOLIO_RISK = {
 # ---------------------------------------------------------------------------
 # 4c. BACKTEST METRICS (Tier 2 #8)
 # ---------------------------------------------------------------------------
-# The backtest replays EOD history with the technical module and now reports the
-# metrics that actually predict whether an edge is real and tradeable:
-#   * expectancy   — average PKR/%, per trade, you can expect (the north star)
-#   * profit_factor— gross profit / gross loss (>1.5 = healthy, <1 = bleeding)
-#   * max_drawdown — worst peak-to-trough equity dip (can you stomach it?)
-#   * walk-forward — metrics on a held-out OUT-OF-SAMPLE tail + rolling folds,
-#                    so an edge that only exists in-sample is exposed as overfit.
-BACKTEST = {
-    "lookback": 250,            # trading days of history to replay
-    "hold_days": 5,            # bars held per trade (exit or stop)
-    "entry_score": 70,         # technical score threshold to open a backtest trade
-    "oos_fraction": 0.30,      # final fraction of the window held out (out-of-sample)
-    "walk_forward_folds": 4,   # rolling walk-forward folds for robustness
-}
+# Active evaluation uses REPLAY_LOOKBACK and the frozen EXECUTION contract below.
+# It reports individual opportunity outcomes, not portfolio drawdown or a
+# walk-forward profitability estimate. Obsolete unused backtest settings removed.
 
 # ---------------------------------------------------------------------------
 # 5. DATA SOURCES (public, no login, no protection bypass)
@@ -930,7 +919,9 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_short_v5"   # v5 = v4 with a 30-session holding horizon
+STRATEGY_VERSION = "technical_swing_short_v6"   # prior-session capacity and PKR liquidity
+REPLAY_LOOKBACK = 21
+UNIVERSE_KNOWN_FROM = "2026-09-09"  # dated 60-name selection; earlier membership not inferred
 FEATURE_HISTORY_LIMIT = 42
 MIN_STRATEGY_HISTORY = 42
 EXCHANGE_HOLIDAYS = []  # Populate from verified dated exchange notices.
@@ -955,4 +946,5 @@ PUBLICATION_DELAY_MINUTES = 30
 # for the stops. Do not optimise the win rate here.
 EXECUTION = {"holding_sessions": 30, "entry_gap_limit": 0.03,
              "slippage_bps": 20, "fee_bps_per_side": 15,
-             "max_volume_participation": 0.01}
+             "max_volume_participation": 0.01,
+             "capacity_basis": "decision_session"}

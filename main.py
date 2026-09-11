@@ -539,9 +539,8 @@ def main():
         graded = swing_evaluation.update_cohort_outcomes()
         print(f"cohort candidates seeded/present: {seeded}")
         print(f"graded this pass               : {graded}")
-        with db.conn() as _c:
-            for _row in _c.execute("SELECT status, COUNT(*) n FROM cohort_outcomes GROUP BY status"):
-                print(f"   {_row[0]:12s} {_row[1]}")
+        for _row in db.cohort_summary():
+            print(f"   {_row['version']} / {_row['config_hash']} / {_row['status']}: {_row['n']}")
 
     elif cmd == "measure":
         import measure

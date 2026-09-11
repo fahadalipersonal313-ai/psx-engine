@@ -39,7 +39,7 @@ class RecentHistoryTests(unittest.TestCase):
         d = {'signal': {'signal': 'Watch'}, 'snapshot': {'eligible': True},
              'technical': dict(price=100, ema10=98, ema20=96, ema40=94,
                 rsi=60, macd_hist=1, momentum_20d=5, relative_strength=65,
-                cmf=.2, avg_volume=500000, stop_loss=95, target1=110, target2=None)}
+                cmf=.2, avg_volume=500000, median_turnover_pkr=50000000, stop_loss=95, target1=110, target2=None)}
         self.assertTrue(up.qualifies(d))
         d['technical']['macd_hist'] = -1
         self.assertFalse(up.qualifies(d))

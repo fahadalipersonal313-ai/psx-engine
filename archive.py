@@ -165,8 +165,12 @@ def purge(path, cutoff_session):
                    "WHERE snapshot_hash IS NOT NULL")}
         # Only ever the snapshots this archive actually holds: a snapshot the
         # export did not capture must never be deleted here.
-        held = {r[0] for r in _rows(sqlite3.connect(path),
-                                    "SELECT hash FROM decision_snapshots")}
+        archive_connection = sqlite3.connect(path)
+        try:
+            held = {r[0] for r in _rows(archive_connection,
+                                      "SELECT hash FROM decision_snapshots")}
+        finally:
+            archive_connection.close()
         orphans = sorted(((moving | unref) - keep) & held)
         n = c.execute("DELETE FROM decisions WHERE session < ?", (cutoff_session,)).rowcount
         s = 0

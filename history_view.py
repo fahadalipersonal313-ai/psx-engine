@@ -1,8 +1,9 @@
 """Plain-language presentation for past signal checks."""
 import pandas as pd
+import config
 
 STATUS = {'target': 'Reached the target', 'stop': 'Reached the loss limit',
-          'expired': 'Sold after 10 trading days', 'pending': 'Still waiting',
+          'expired': 'Reached the planned holding limit', 'pending': 'Still waiting',
           'unfilled': 'Could not buy at the allowed price',
           'unavailable': 'Missing prices to finish the check', 'invalid': 'Trade could not be checked'}
 
@@ -45,21 +46,25 @@ def show(st, result):
     rows = result.get('results', [result])
     usable = sum(r['coverage']['usable_days'] for r in rows)
     missing = sum(r['coverage']['missing_days'] for r in rows)
+    unknown = sum(r['coverage'].get('membership_unverified_days', 0) for r in rows)
     a, b, c = st.columns(3)
     a.metric('Buy signals found', m['opportunities'])
     b.metric('Completed trades', m['resolved'])
     c.metric('Reached the target', m['counts'].get('target', 0))
     if not usable:
         st.warning('There are not enough verified prices to check this period yet.')
-    elif not m['opportunities']:
+    elif not m['opportunities'] and not unknown:
         st.info('The check worked. No Buy signals met all the rules in this period.')
+    if unknown:
+        st.warning(f'{unknown} stock-days have no verified stock-list membership. Those dates cannot create trades; this is missing evidence, not a failed buying signal.')
     if missing:
         st.warning(f'{missing} stock-days could not be checked because prices were missing or needed verification.')
     if m['net_expectancy_pct'] is not None:
         st.metric('Average return per completed trade, after costs', f"{m['net_expectancy_pct']:.2f}%")
-    st.caption('Checks the latest 21 trading days. Each signal uses only the 42 trading days ending on that date. A trade starts at the next opening price and lasts up to 10 trading days.')
+    st.caption('Each signal uses only prices available by its analysis date. Opening fills are daily-price estimates; actual order availability is not verified. Earlier stock-list membership is not assumed.')
     st.dataframe(pd.DataFrame([{'Stock': r['symbol'], 'Days checked': r['coverage']['usable_days'],
         'Days missing': r['coverage']['missing_days'], 'Buy signals': r['metrics']['opportunities'],
+        'Membership not verified': r['coverage'].get('membership_unverified_days', 0),
         'Targets reached': r['metrics']['counts'].get('target', 0),
         'Loss limits reached': r['metrics']['counts'].get('stop', 0),
         'Still waiting': r['metrics']['counts'].get('pending', 0),
@@ -67,7 +72,8 @@ def show(st, result):
     trades = [o for r in rows for o in r['outcomes']]
     if trades:
         st.dataframe(pd.DataFrame([{'Stock': o['symbol'], 'Signal date': o['signal_date'],
-            'Result': STATUS.get(o['status'], o['status']), 'Buy price': o.get('entry'),
+            'Result': STATUS.get(o['status'], o['status']), 'Trading days held': o.get('holding_sessions'),
+            'Planned holding limit': o.get('planned_holding_sessions'), 'Buy price': o.get('entry'),
             'Sell price': o.get('exit_price'), 'Return after costs (%)': o.get('net_return_pct')}
             for o in trades]), hide_index=True)
-    st.caption('Uses today’s stock list and rules on past prices. These results do not promise future profits or show the return on your whole account.')
+    st.caption(f'Stock-list membership before {config.UNIVERSE_KNOWN_FROM} is not verified and cannot create entries. Current rules are experimental; results do not show the return on your whole account.')

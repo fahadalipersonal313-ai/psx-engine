@@ -65,6 +65,11 @@ def assess(symbol, technical, sentiment, macro, capital_pkr=1_000_000,
     rr_min = _effective_min_headroom_rr(regime, regime_pct_above)
 
     # ---- hard warnings
+    from data_quality import finite
+    turnover = technical.get('median_turnover_pkr')
+    if not finite(turnover) or turnover < config.MIN_TURNOVER_PKR:
+        vetoes.append('illiquid')
+        warnings.append('Not enough verified daily trading value for entry')
     if technical.get("avg_volume") is not None and \
        technical["avg_volume"] < config.RISK["min_avg_daily_volume"]:
         vetoes.append("illiquid")

@@ -183,6 +183,14 @@ def _record_cohort_candidate(c, decision, snapshot_hash):
         return None
 
 
+def cohort_summary():
+    """Keep different rules separate in every cohort summary."""
+    with conn() as c:
+        return [dict(r) for r in c.execute('''SELECT k.version,k.config_hash,x.status,COUNT(*) AS n
+            FROM cohort_outcomes x JOIN cohort_candidates k ON k.id=x.candidate_id
+            GROUP BY k.version,k.config_hash,x.status''')]
+
+
 def open_cohort_candidates():
     with conn() as c:
         return [dict(r) for r in c.execute("""SELECT k.* FROM cohort_candidates k
