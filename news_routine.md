@@ -62,8 +62,12 @@ every cycle; both are wrapped, because a record must never cost a run.
 
 Routine 2 must, between steps 4 and 5:
 
-  4b. Run `python main.py newsmem` (or `newsmem <SYMBOL>`) and read the prior
-      reads for every symbol it is about to rate. Analyse the fresh item **in
+  4b. Run `python main.py newsmem context <SYMBOL>` for every symbol it is
+      about to rate. That prints BOTH the prior rated reads AND the raw
+      headlines already banked for that symbol over the last 180 days -- the
+      record a fresh item has to be judged against. (`newsmem` alone prints
+      the rated history for every symbol; `newsmem ingest` banks the raw file
+      by hand.) Analyse the fresh item **in
       line with that history**: is this a new story, the next stage of a running
       one, or a restatement of something already rated and already priced?
   4c. Say so in `reason` when a read continues an earlier one, and set
@@ -81,6 +85,25 @@ market-wide rally is not counted as a correct one. `python main.py newsmem grade
 prints the current accuracy buckets. These figures are evidence for later
 calibration, not a score input, and stay uncalibrated until a frozen prospective
 cohort has enough independently resolved reads.
+
+### Raw headlines are banked too
+
+Every item in `news_raw_24h.json` is written to the `news` table by
+`news_memory.ingest_raw()`, which `full_run` calls each cycle before it stores
+any rating. Rated or not, macro or company, the headline is kept.
+
+This closed a real gap. The v3 rewrite stopped `full_run` saving news, so the
+table's last write was 2026-09-05 while `news.yml` kept fetching hourly into
+the JSON: the dashboard's News tab read an empty 72-hour window for days while
+the file was full. Ingest is idempotent -- `news.title` is UNIQUE and the write
+is INSERT OR IGNORE -- so a headline keeps the timestamp of when it was FIRST
+seen and a re-published story does not reset its own age.
+
+`database.prune()` no longer deletes headlines by default (`news_days=None`).
+The raw record IS the historical context; a 7-day window destroyed it. At
+roughly 500 bytes a headline and ~74 a day this is the cheapest table in the
+database, and the window can be re-enabled by passing an integer if size ever
+demands it.
 
 ## 3. PSX engine loop
 

@@ -1038,14 +1038,37 @@ with tab_hist:
         st.info("No run history stored for this stock yet.")
 
 with tab_news:
-    st.caption("Raw headlines from approved publishers, last 72 hours. "
-               "Unrated and unscored — the rated read is the panel at the top.")
-    _items = db.recent_news(72)[:40]
+    st.caption("Every headline gathered from approved publishers, banked and "
+               "kept. Unrated and unscored — the rated read is the panel at "
+               "the top. This is the record a new story is judged against.")
+    _win = st.radio("Window", [3, 7, 30, 365], index=1, horizontal=True,
+                    format_func=lambda d: {3: "3 days", 7: "7 days",
+                                           30: "30 days", 365: "1 year"}[d],
+                    key="news_win")
+    _items = db.recent_news(_win * 24)
+    _total = len(_items)
     if not _items:
-        st.info("No headlines in the last 72 hours.")
-    for n in _items:
-        tag = f" `[{n['symbols']}]`" if n["symbols"] else ""
-        st.markdown(f"- **{n['source']}** — {n['title']}{tag}")
+        # Distinguish "nothing published" from "nothing ingested" -- the second
+        # is a broken pipeline and used to look exactly like the first.
+        with db.conn() as _c:
+            _last = _c.execute("SELECT MAX(fetched_at) FROM news").fetchone()[0]
+        if _last:
+            st.warning(f"No headlines in the last {_win} day(s). The newest "
+                       f"banked headline is from {str(_last)[:16]} — if that is "
+                       f"old, the news fetch has stopped running.")
+        else:
+            st.warning("No headlines banked at all. The news fetch is not "
+                       "reaching the database.")
+    else:
+        st.caption(f"{_total} headlines · newest {str(_items[0]['fetched_at'])[:16]}")
+        for n in _items[:120]:
+            tag = f" `[{n['symbols']}]`" if n["symbols"] else ""
+            _link = n["link"] or ""
+            _title = f"[{n['title']}]({_link})" if _link else n["title"]
+            st.markdown(f"- `{str(n['fetched_at'])[:10]}` **{n['source']}** — "
+                        f"{_title}{tag}")
+        if _total > 120:
+            st.caption(f"Showing the newest 120 of {_total}.")
 
 with tab_reports:
     if os.path.isdir(config.REPORT_DIR):

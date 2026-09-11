@@ -929,7 +929,7 @@ def accumulating_now(lookback=10, min_streak=1):
 
 
 
-def prune(runs_full_days=7, news_days=7):
+def prune(runs_full_days=7, news_days=None):
     """Shrink the tracked DB by dropping rows nothing reads. Returns a summary.
 
     The whole database is committed every 15-minute cycle, so its size is a
@@ -939,7 +939,7 @@ def prune(runs_full_days=7, news_days=7):
 
       prices  - data_fetcher.latest_quote reads only the LAST row per symbol,
                 so 41,888 rows existed to serve 50.
-      news    - recent_news() only ever queries a 48h window.
+      news    - was pruned to a 48h-ish window; NO LONGER, see news_days.
       runs    - 18.7x duplicated: 15-minute polling stores ~19 rows per symbol
                 per day, while every analysis in this repo day-dedupes before
                 trusting a number (see CLAUDE.md, "a win rate alone is not
@@ -955,9 +955,16 @@ def prune(runs_full_days=7, news_days=7):
                   for t in ("runs", "news", "prices")}
         c.execute("""DELETE FROM prices WHERE ts < (SELECT MAX(ts) FROM prices)
                      AND rowid NOT IN (SELECT MAX(rowid) FROM prices GROUP BY symbol)""")
-        c.execute("""DELETE FROM news WHERE fetched_at <
-                     datetime((SELECT MAX(fetched_at) FROM news), ?)""",
-                  (f"-{news_days} days",))
+        # news_days=None KEEPS EVERY HEADLINE. The raw record is the
+        # historical context a rating is judged against -- whether a
+        # development is the third in a running story or the first anyone has
+        # heard -- so deleting it destroys the only thing that can answer that.
+        # It is also the cheapest table here: ~500 bytes a headline, ~74 a day.
+        # Pass an integer to re-enable the window if size ever demands it.
+        if news_days is not None:
+            c.execute("""DELETE FROM news WHERE fetched_at <
+                         datetime((SELECT MAX(fetched_at) FROM news), ?)""",
+                      (f"-{news_days} days",))
         c.execute("""DELETE FROM runs WHERE run_time <
                      (SELECT datetime(MAX(run_time), ?) FROM runs)
                      AND id NOT IN (SELECT MAX(id) FROM runs

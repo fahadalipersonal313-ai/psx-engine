@@ -150,6 +150,69 @@ class NewsMemoryTests(unittest.TestCase):
         self.assertEqual(news_memory.thread_summary("NOSUCH"), "")
         self.assertEqual(news_memory.remembered_symbols(), [])
 
+    def _write_raw(self, items, stamp="2026-09-11T10:00:00+00:00"):
+        import json, os
+        p = os.path.join(self.tmp, "raw.json")
+        with open(p, "w", encoding="utf-8") as fh:
+            json.dump({"fetched_at": stamp, "count": len(items), "items": items}, fh)
+        return p
+
+    def test_every_gathered_headline_is_banked_including_macro(self):
+        """The gap that emptied the News tab: news.yml fetched hourly into JSON
+        and nothing wrote it to the database."""
+        import news_memory, database
+        raw = self._write_raw([
+            {"symbol": "OGDC", "title": "OGDC well online", "source": "BR",
+             "url": "https://x.test/1", "published": "2026-09-11T09:00:00+00:00"},
+            {"symbol": "_macro", "title": "Gold falls", "source": "Mettis",
+             "url": "https://x.test/2", "published": "2026-09-11T09:30:00+00:00"},
+        ])
+        self.assertEqual(news_memory.ingest_raw(raw)["stored"], 2)
+        self.assertEqual(news_memory.ingest_raw(raw)["stored"], 0)   # idempotent
+        rows = database.recent_news(72)
+        self.assertEqual(len(rows), 2)
+        # A macro item belongs to no symbol, and must not be filed under one.
+        self.assertEqual({r["title"]: r["symbols"] for r in rows}["Gold falls"], "")
+
+    def test_raw_without_a_timestamp_is_refused(self):
+        import news_memory, json, os
+        p = os.path.join(self.tmp, "nostamp.json")
+        with open(p, "w", encoding="utf-8") as fh:
+            json.dump({"items": [{"symbol": "OGDC", "title": "t"}]}, fh)
+        out = news_memory.ingest_raw(p)
+        self.assertEqual(out["stored"], 0)
+        self.assertIn("fetched_at", out["reason"])
+
+    def test_pruning_keeps_the_headline_history_by_default(self):
+        """The raw record IS the historical context, so prune must not eat it."""
+        import news_memory, database
+        news_memory.ingest_raw(self._write_raw(
+            [{"symbol": "OGDC", "title": "old story", "source": "BR",
+              "url": "https://x.test/9"}], stamp="2025-01-01T00:00:00+00:00"))
+        database.prune()
+        with database.conn() as c:
+            self.assertEqual(
+                c.execute("SELECT COUNT(*) FROM news").fetchone()[0], 1)
+        database.prune(news_days=7)          # window still available on request
+        with database.conn() as c:
+            self.assertEqual(
+                c.execute("SELECT COUNT(*) FROM news").fetchone()[0], 1)
+
+    def test_context_carries_ratings_and_headlines_and_is_empty_when_unknown(self):
+        import news_memory
+        self.assertEqual(news_memory.context_text("NOSUCH"), "")
+        news_memory.ingest_raw(self._write_raw(
+            [{"symbol": "OGDC", "title": "OGDC drills", "source": "BR",
+              "url": "https://x.test/3"}]))
+        self._write({"as_of": "2026-09-11T10:30:00Z",
+                     "ratings": {"OGDC": {"rating": "positive", "causality": "causal",
+                                          "confidence": 0.5, "horizon": "multi_session",
+                                          "reason": "well", "sources": ["https://x.test/3"]}}})
+        news_memory.remember(self.ratings)
+        text = news_memory.context_text("OGDC")
+        self.assertIn("Prior reads on OGDC", text)
+        self.assertIn("OGDC drills", text)
+
     def test_grade_measures_excess_over_the_cross_sectional_median(self):
         import news_memory, database, config
         days = [f"2026-06-{d:02d}" for d in range(1, 26)]

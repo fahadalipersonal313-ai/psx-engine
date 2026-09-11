@@ -233,7 +233,11 @@ def full_run(fast=False):
     # this is a record, not an input -- it must never cost a run.
     try:
         import news_memory
-        log.info("news memory: %s | %s", news_memory.remember(), news_memory.grade())
+        # Order matters: bank the raw headlines FIRST so a rating written this
+        # cycle already has its own source material behind it in the record.
+        log.info("news memory: raw %s | rated %s | %s",
+                 news_memory.ingest_raw(), news_memory.remember(),
+                 news_memory.grade())
     except Exception as exc:
         log.warning("news memory failed: %s", exc)
 
@@ -560,6 +564,14 @@ def main():
             print(news_memory.grade()); print(news_memory.accuracy())
         elif len(sys.argv) > 2 and sys.argv[2] == "remember":
             print(news_memory.remember())
+        elif len(sys.argv) > 2 and sys.argv[2] == "ingest":
+            print(news_memory.ingest_raw())
+        elif len(sys.argv) > 3 and sys.argv[2] == "context":
+            # Everything remembered about one symbol: prior rated reads plus
+            # the raw headlines behind them. This is what the Claude routine
+            # analyses a fresh item against.
+            print(news_memory.context_text(sys.argv[3].upper())
+                  or f"Nothing remembered for {sys.argv[3].upper()} yet.")
         else:
             syms = ([sys.argv[2].upper()] if len(sys.argv) > 2
                     else news_memory.remembered_symbols())

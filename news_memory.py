@@ -47,6 +47,96 @@ def _digest(*parts):
     return digest([str(p) for p in parts])
 
 
+RAW_FILE = "news_raw_24h.json"
+
+
+def ingest_raw(path=RAW_FILE):
+    """Bank every gathered headline permanently, rated or not.
+
+    news.yml fetches the last 24h into news_raw_24h.json every hour, but the
+    v3 rewrite stopped full_run from saving any of it: main.py passes an empty
+    news list, so the `news` table's last write was 2026-09-05 and the
+    dashboard's News tab has been empty ever since while the file was full.
+
+    The raw record is the historical context the rater needs. A rating says
+    "positive, causal" about one development; only the headline history says
+    whether that development is the third in a run or the first anyone has
+    heard. So every item is kept, including the macro ones no symbol claims.
+
+    Idempotent: `news.title` is UNIQUE and this is INSERT OR IGNORE, so a
+    headline keeps the fetched_at of when it was FIRST seen. Re-running over
+    the same file changes nothing, and a story re-published later does not
+    reset its own age.
+    """
+    if not os.path.exists(path):
+        return {"stored": 0, "reason": f"{path} absent"}
+    try:
+        with open(path, encoding="utf-8") as fh:
+            blob = json.load(fh)
+    except (ValueError, OSError) as exc:
+        return {"stored": 0, "reason": f"unreadable: {exc}"}
+    stamp = blob.get("fetched_at")
+    if not stamp:
+        # Same rule as remember(): an undated read cannot be placed in a
+        # sequence, and inventing a timestamp would corrupt every later window.
+        return {"stored": 0, "reason": "raw file carries no fetched_at"}
+    items = blob.get("items") or []
+    rows = []
+    for it in items:
+        title = (it.get("title") or "").strip()
+        if not title:
+            continue
+        sym = it.get("symbol") or ""
+        rows.append({"fetched_at": stamp, "source": it.get("source") or "?",
+                     "title": title, "link": it.get("url") or it.get("link") or "",
+                     "published": it.get("published") or "",
+                     # sentiment stays NULL: nothing here reads the text, and a
+                     # fabricated score is worse than an absent one.
+                     "sentiment": None,
+                     # A LIST: save_news joins it, so a bare string would be
+                     # stored one character at a time ("O,G,D,C").
+                     "symbols": [] if (not sym or sym.startswith("_")) else [sym]})
+    if not rows:
+        return {"stored": 0, "reason": "no items in file"}
+    with db.conn() as c:
+        before = c.execute("SELECT COUNT(*) FROM news").fetchone()[0]
+    db.save_news(rows)
+    with db.conn() as c:
+        after = c.execute("SELECT COUNT(*) FROM news").fetchone()[0]
+    return {"stored": after - before, "seen": len(rows), "fetched_at": stamp}
+
+
+def context_for(symbol, headline_days=180, rating_limit=12):
+    """Everything remembered about a symbol: prior rated reads AND the raw
+    headline history behind them. This is what a fresh item is analysed
+    against, so it deliberately reaches much further back than any dashboard
+    window."""
+    rows = history_for(symbol, rating_limit)
+    with db.conn() as c:
+        heads = [dict(r) for r in c.execute(
+            "SELECT fetched_at, source, title, link FROM news "
+            "WHERE symbols LIKE ? AND fetched_at > datetime('now', ?) "
+            "ORDER BY fetched_at DESC LIMIT 60",
+            (f"%{symbol}%", f"-{int(headline_days)} days"))]
+    return {"symbol": symbol, "ratings": rows, "headlines": heads}
+
+
+def context_text(symbol, headline_days=180):
+    """The same context as prompt-ready text. Empty when nothing is known --
+    the rater must never be handed an invented backstory."""
+    ctx = context_for(symbol, headline_days)
+    parts = []
+    thread = thread_summary(symbol)
+    if thread:
+        parts.append(thread)
+    if ctx["headlines"]:
+        parts.append(f"Headlines already seen for {symbol} "
+                     f"(last {headline_days} days, newest first):")
+        for h in ctx["headlines"]:
+            parts.append(f"  {str(h['fetched_at'])[:10]}  [{h['source']}] {h['title']}")
+    return "\n".join(parts)
+
+
 def remember(path=RATINGS_FILE, as_of=None):
     """Persist every rating in `path`. Idempotent: the id is a digest of the
     symbol, the rating timestamp and the sources, so the same read is never
