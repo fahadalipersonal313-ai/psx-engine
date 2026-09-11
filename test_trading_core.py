@@ -513,6 +513,91 @@ class ArchiveDurability(unittest.TestCase):
                         "SELECT COUNT(*) FROM decision_snapshots WHERE hash='stranded'"
                     ).fetchone()[0], 1)
 
+    def test_retired_contract_versions_archive_without_touching_the_live_one(self):
+        """Retired versions are unreachable by the engine already -- every live
+        reader filters on version AND config_hash -- so they archive on version,
+        not on age. A live-version decision from the same session stays."""
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db()
+                with db.conn() as c:
+                    for ver, sym in (('v4', 'OLD1'), ('v4', 'OLD2'), ('v5', 'NEW')):
+                        c.execute('INSERT OR IGNORE INTO decision_snapshots VALUES (?,?)',
+                                  (f'snap{sym}', '{"b":1}'))
+                        c.execute('INSERT OR IGNORE INTO decisions VALUES (?,?,?,?,?,?,?)',
+                                  (sym, '2026-09-04', ver, 'cfg', f'snap{sym}', '{}', '{}'))
+                out = str(Path(tmp) / 'r.db')
+                man = archive.export_selection('retired_decisions', 'v5', out)
+                self.assertEqual(man['decisions'], 2)
+                self.assertTrue(archive.verify(out, man)['ok'])
+                res = archive.purge_selection(out, 'retired_decisions', 'v5')
+                self.assertEqual(res['purged'], 2)
+                with db.conn() as c:
+                    self.assertEqual(
+                        [r[0] for r in c.execute('SELECT symbol FROM decisions')], ['NEW'])
+                    # The surviving decision's snapshot must NOT have gone with them.
+                    self.assertEqual(c.execute(
+                        'SELECT COUNT(*) FROM decisions d WHERE NOT EXISTS ('
+                        ' SELECT 1 FROM decision_snapshots s WHERE s.hash=d.snapshot_hash)'
+                    ).fetchone()[0], 0)
+                archive.restore_selection(out)
+                with db.conn() as c:
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM decisions').fetchone()[0], 3)
+
+    def test_runs_archive_round_trip_and_cutoff_guard(self):
+        import database as db, archive
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db()
+                with db.conn() as c:
+                    for t_ in ('2026-06-01T10:00:00', '2026-06-02T10:00:00',
+                               '2026-09-01T10:00:00'):
+                        c.execute('INSERT INTO runs (run_time, symbol) VALUES (?,?)',
+                                  (t_, 'PSO'))
+                out = str(Path(tmp) / 'runs.db')
+                man = archive.export_selection('runs_before', '2026-07-01', out)
+                self.assertEqual(man['runs'], 2)
+                self.assertTrue(archive.verify(out, man)['ok'])
+                # An archive holding one selection must refuse to purge another.
+                wrong = archive.purge_selection(out, 'runs_before', '2026-08-01')
+                self.assertEqual(wrong['purged'], 0)
+                self.assertIn('refused', wrong)
+                with db.conn() as c:
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM runs').fetchone()[0], 3)
+                self.assertEqual(
+                    archive.purge_selection(out, 'runs_before', '2026-07-01')['runs_purged'], 2)
+                with db.conn() as c:
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM runs').fetchone()[0], 1)
+                archive.restore_selection(out)
+                with db.conn() as c:
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM runs').fetchone()[0], 3)
+
+    def test_selection_purge_refuses_a_corrupted_archive(self):
+        """Same guarantee as the session archive: nothing is deleted that
+        cannot be restored."""
+        import database as db, archive, sqlite3
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(config, 'DB_PATH', str(Path(tmp) / 'live.db')):
+                db.init_db()
+                with db.conn() as c:
+                    c.execute('INSERT INTO runs (run_time, symbol) VALUES (?,?)',
+                              ('2026-06-01T10:00:00', 'PSO'))
+                out = str(Path(tmp) / 'runs.db')
+                archive.export_selection('runs_before', '2026-07-01', out)
+                bad = sqlite3.connect(out)
+                bad.execute('DELETE FROM runs'); bad.commit(); bad.close()
+                res = archive.purge_selection(out, 'runs_before', '2026-07-01')
+                self.assertEqual(res['purged'], 0)
+                self.assertIn('verification', res['refused'])
+                with db.conn() as c:
+                    self.assertEqual(
+                        c.execute('SELECT COUNT(*) FROM runs').fetchone()[0], 1)
+
     def test_purge_refuses_a_corrupted_archive(self):
         """The guarantee worth having: nothing is deleted that cannot be restored."""
         import database as db, archive, sqlite3

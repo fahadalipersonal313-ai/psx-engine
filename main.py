@@ -415,14 +415,47 @@ def main():
         print("purge:", _ar.purge(out, cutoff))
         print("run VACUUM to reclaim: python main.py vacuum")
 
+    elif cmd == "shrink":
+        # Archive what the running engine can no longer reach, in one pass.
+        # export -> verify -> purge for each selection; a selection that does
+        # not verify is skipped and its rows stay put.
+        import archive as _ar
+        import os as _os
+        import sqlite3 as _s
+        keep_days = int(sys.argv[2]) if len(sys.argv) > 2 else 14
+        db.init_db()
+        before = _os.path.getsize(config.DB_PATH)
+        cut = (datetime.now() - timedelta(days=keep_days)).isoformat()
+        plan = [("retired_decisions", config.STRATEGY_VERSION,
+                 "archive_retired_contracts.db"),
+                ("runs_before", cut[:10], "archive_runs_before_%s.db" % cut[:10])]
+        for kind, value, out in plan:
+            man = _ar.export_selection(kind, value, out)
+            print(f"{kind} {value}: {man['decisions']} decisions, "
+                  f"{man['snapshots']} snapshots, {man['runs']} runs "
+                  f"-> {out} ({man['bytes']/1e6:.1f} MB)")
+            chk = _ar.verify(out, man)
+            if not chk["ok"]:
+                print("  verify FAILED — refusing to purge this selection")
+                continue
+            print("  verify OK ·", _ar.purge_selection(out, kind, value))
+        v = _s.connect(config.DB_PATH); v.execute("VACUUM"); v.close()
+        after = _os.path.getsize(config.DB_PATH)
+        print(f"{before/1e6:.1f} MB -> {after/1e6:.1f} MB")
+        print("Restore any archive with: python main.py restore <file>")
+
     elif cmd == "restore":
         import archive as _ar
         path = sys.argv[2] if len(sys.argv) > 2 else None
         if not path:
             print("usage: python main.py restore <archive.db>"); return
         db.init_db()
-        print("verify:", _ar.verify(path))
-        print("restored:", _ar.restore(path))
+        chk = _ar.verify(path)
+        print("verify:", chk)
+        if not chk["ok"]:
+            print("refusing to restore — archive did not verify"); return
+        # restore_selection also handles the older decisions-only archives.
+        print("restored:", _ar.restore_selection(path))
 
     elif cmd == "vacuum":
         import sqlite3 as _s, os as _o

@@ -36,11 +36,27 @@ def _rows(c, sql, args=()):
     return [tuple(r) for r in c.execute(sql, args)]
 
 
-def manifest(decisions, snapshots):
-    """Content digest of everything the archive claims to hold."""
+def _table_rows(c, table):
+    """Rows of `table`, or [] when the archive predates it. An older archive
+    must keep verifying, not start failing because the format grew."""
+    try:
+        return _rows(c, f"SELECT * FROM {table}")
+    except sqlite3.OperationalError:
+        return []
+
+
+def manifest(decisions, snapshots, runs=()):
+    """Content digest of everything the archive claims to hold.
+
+    `runs` defaults to empty so an archive written before runs were archivable
+    re-derives exactly the digest it stored.
+    """
+    runs = list(runs)
+    body = [sorted(str(r) for r in decisions), sorted(str(r) for r in snapshots)]
+    if runs:
+        body.append(sorted(str(r) for r in runs))
     return {"decisions": len(decisions), "snapshots": len(snapshots),
-            "digest": digest([sorted(str(r) for r in decisions),
-                              sorted(str(r) for r in snapshots)])}
+            "runs": len(runs), "digest": digest(body)}
 
 
 def export(cutoff_session, out_path):
@@ -99,15 +115,17 @@ def verify(path, expected=None):
     try:
         decisions = _rows(a, "SELECT * FROM decisions")
         snapshots = _rows(a, "SELECT * FROM decision_snapshots")
+        runs = _table_rows(a, "runs")
         stored = dict(_rows(a, "SELECT key, value FROM archive_meta"))
     finally:
         a.close()
-    got = manifest(decisions, snapshots)
+    got = manifest(decisions, snapshots, runs)
     ok = got["digest"] == stored.get("digest")
     if expected:
         ok = ok and got["digest"] == expected["digest"]
     return {"ok": bool(ok), "recomputed": got["digest"], "stored": stored.get("digest"),
-            "decisions": got["decisions"], "snapshots": got["snapshots"]}
+            "decisions": got["decisions"], "snapshots": got["snapshots"],
+            "runs": got["runs"]}
 
 
 def restore(path):
@@ -157,3 +175,132 @@ def purge(path, cutoff_session):
             s += c.execute("DELETE FROM decision_snapshots WHERE hash IN (%s)"
                            % ",".join("?" * len(chunk)), chunk).rowcount
     return {"purged": n, "snapshots_purged": s, "verified": True}
+
+
+# ---------------------------------------------------------------------------
+# Selection-based archiving.
+#
+# The original export moves decisions OLDER THAN a session. That is the wrong
+# instrument for the two things actually filling the database:
+#
+#   retired contracts - v3 and v4 decisions are unreachable by the running
+#       engine already. Every live reader filters on version AND config_hash
+#       (database.py, upward_candidates.py), so a superseded version can never
+#       be returned. They are pure audit records, and archiving them costs the
+#       engine nothing. NOT time-based: a v5 decision from the same day stays.
+#
+#   old runs - one row per symbol per cycle. prune() already day-dedupes them
+#       past runs_full_days; what remains is history, and history belongs in a
+#       file rather than in every push.
+#
+# Both keep the export -> verify -> purge order, and purge re-derives the
+# selection itself rather than trusting the archive's own description of it.
+# ---------------------------------------------------------------------------
+
+def _selection(c, kind, value):
+    """The rows a selection names, re-derived from the LIVE database."""
+    if kind == "retired_decisions":
+        # value is the version that must survive.
+        decisions = _rows(c, "SELECT * FROM decisions WHERE version <> ?", (value,))
+        keep = {r[0] for r in _rows(
+            c, "SELECT DISTINCT snapshot_hash FROM decisions WHERE version = ?",
+            (value,)) if r[0]}
+        moving = {r[4] for r in decisions if r[4]}
+        return {"decisions": decisions, "snapshots": sorted(moving - keep), "runs": []}
+    if kind == "runs_before":
+        return {"decisions": [], "snapshots": [],
+                "runs": _rows(c, "SELECT * FROM runs WHERE run_time < ?", (value,))}
+    raise ValueError(f"unknown selection {kind!r}")
+
+
+def export_selection(kind, value, out_path):
+    """Write the rows a selection names to `out_path`. Deletes nothing."""
+    with db.conn() as c:
+        sel = _selection(c, kind, value)
+        snapshots = []
+        orphans = sel["snapshots"]
+        for i in range(0, len(orphans), 400):
+            chunk = orphans[i:i + 400]
+            snapshots += _rows(c, "SELECT * FROM decision_snapshots WHERE hash IN (%s)"
+                               % ",".join("?" * len(chunk)), chunk)
+        run_cols = [r[1] for r in _rows(c, "PRAGMA table_info(runs)")]
+    decisions, runs = sel["decisions"], sel["runs"]
+    if os.path.exists(out_path):
+        os.remove(out_path)
+    out = sqlite3.connect(out_path)
+    out.executescript("""
+        CREATE TABLE decisions (symbol TEXT, session TEXT, version TEXT,
+          config_hash TEXT, snapshot_hash TEXT, state BLOB, payload BLOB);
+        CREATE TABLE decision_snapshots (hash TEXT PRIMARY KEY, payload BLOB);
+        CREATE TABLE archive_meta (key TEXT PRIMARY KEY, value TEXT);""")
+    # The runs schema is wide and has changed before, so it is copied from the
+    # live table rather than restated here, which would rot.
+    out.execute("CREATE TABLE runs (%s)" % ",".join(f'"{c_}"' for c_ in run_cols))
+    out.executemany("INSERT INTO decisions VALUES (?,?,?,?,?,?,?)", decisions)
+    out.executemany("INSERT INTO decision_snapshots VALUES (?,?)", snapshots)
+    if runs:
+        out.executemany("INSERT INTO runs VALUES (%s)" % ",".join("?" * len(run_cols)),
+                        runs)
+    man = manifest(decisions, snapshots, runs)
+    out.executemany("INSERT INTO archive_meta VALUES (?,?)",
+                    [("selection_kind", kind), ("selection_value", str(value)),
+                     ("digest", man["digest"]), ("decisions", str(man["decisions"])),
+                     ("snapshots", str(man["snapshots"])), ("runs", str(man["runs"]))])
+    out.commit(); out.close()
+    man["path"] = out_path
+    man["bytes"] = os.path.getsize(out_path)
+    return man
+
+
+def purge_selection(path, kind, value):
+    """Delete a selection's rows -- only if the archive verifies AND holds this
+    exact selection. Deletes only rows the archive actually contains."""
+    check = verify(path)
+    a = sqlite3.connect(path)
+    meta = dict(_rows(a, "SELECT key, value FROM archive_meta"))
+    held_runs = {r[0] for r in _table_rows(a, "runs")}
+    held_dec = {(r[0], r[1], r[2], r[3]) for r in _rows(a, "SELECT * FROM decisions")}
+    held_snap = {r[0] for r in _rows(a, "SELECT * FROM decision_snapshots")}
+    a.close()
+    if not check["ok"]:
+        return {"purged": 0, "refused": "archive failed verification", **check}
+    if (meta.get("selection_kind"), meta.get("selection_value")) != (kind, str(value)):
+        return {"purged": 0,
+                "refused": f"archive holds {meta.get('selection_kind')!r}/"
+                           f"{meta.get('selection_value')!r}, not {kind!r}/{value!r}"}
+    n = s = r = 0
+    with db.conn() as c:
+        sel = _selection(c, kind, value)
+        for row in sel["decisions"]:
+            if (row[0], row[1], row[2], row[3]) in held_dec:
+                n += c.execute("DELETE FROM decisions WHERE symbol=? AND session=? "
+                               "AND version=? AND config_hash=?", row[:4]).rowcount
+        orphans = [h for h in sel["snapshots"] if h in held_snap]
+        for i in range(0, len(orphans), 400):
+            chunk = orphans[i:i + 400]
+            s += c.execute("DELETE FROM decision_snapshots WHERE hash IN (%s)"
+                           % ",".join("?" * len(chunk)), chunk).rowcount
+        run_ids = [row[0] for row in sel["runs"] if row[0] in held_runs]
+        for i in range(0, len(run_ids), 400):
+            chunk = run_ids[i:i + 400]
+            r += c.execute("DELETE FROM runs WHERE id IN (%s)"
+                           % ",".join("?" * len(chunk)), chunk).rowcount
+    return {"purged": n, "snapshots_purged": s, "runs_purged": r, "verified": True}
+
+
+def restore_selection(path):
+    """Put an archived selection back. Idempotent."""
+    a = sqlite3.connect(path)
+    decisions = _rows(a, "SELECT * FROM decisions")
+    snapshots = _rows(a, "SELECT * FROM decision_snapshots")
+    runs = _table_rows(a, "runs")
+    run_cols = [r[1] for r in _rows(a, "PRAGMA table_info(runs)")]
+    a.close()
+    with db.conn() as c:
+        c.executemany("INSERT OR IGNORE INTO decision_snapshots VALUES (?,?)", snapshots)
+        c.executemany("INSERT OR IGNORE INTO decisions VALUES (?,?,?,?,?,?,?)", decisions)
+        if runs:
+            c.executemany("INSERT OR IGNORE INTO runs (%s) VALUES (%s)"
+                          % (",".join(f'"{x}"' for x in run_cols),
+                             ",".join("?" * len(run_cols))), runs)
+    return {"decisions": len(decisions), "snapshots": len(snapshots), "runs": len(runs)}
