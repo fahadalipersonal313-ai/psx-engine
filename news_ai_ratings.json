@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-09-11T07:42:00Z",
+  "as_of": "2026-09-11T08:43:02Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 62,
+  "articles_read": 63,
   "read_urls": [
     "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380",
     "https://mettisglobal.news/Asian-markets-slide-on-fears-of-prolonged-US-Iran-war-63375",
@@ -22,16 +22,15 @@
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63374",
     "https://mettisglobal.news/Naya-Nazimabad-REIT-offer-oversubscribed-4x-attracts-Rs1bn-63341",
     "https://mettisglobal.news/Nimir-Resins-doubles-FY26-profit-to-Rs503m-63379",
+    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs11tr-63382",
     "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359",
     "https://mettisglobal.news/Pakistan-Rwanda-set-to-deepen-trade-investment-ties-63371",
     "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
     "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368",
     "https://mettisglobal.news/SCRA-balance-climbs-Rs1bn-to-Rs28bn-in-week-63373",
+    "https://mettisglobal.news/SE-Fruits-and-Vegetable-gets-SECP-approval-for-30m-share-IPO-63381",
     "https://mettisglobal.news/SMEDA-PM-Youth-Programme-join-hands-to-expand-MSME-financing-access-63358",
     "https://mettisglobal.news/Shenzhens-tech-rise-captivates-global-scholars-experts-63378",
-    "https://mettisglobal.news/Softer-dollar-lifts-gold-to-4428-63340",
-    "https://www.brecorder.com/news/40439002/thar-coal-rail-link-set-to-boost-energy-security",
-    "https://www.brecorder.com/news/40439003/turkish-cg-offers-support-for-education",
     "https://www.brecorder.com/news/40439004/wccip-executive-committee-elected-unopposed-for-2026-28",
     "https://www.brecorder.com/news/40439012/indonesia-expanding-its-economic-engagement-with-healthcare-sector",
     "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points",
@@ -60,6 +59,8 @@
     "https://www.brecorder.com/news/40439036/australian-dollar-suffers-setback-yields-spike-to-15-year-peak",
     "https://www.brecorder.com/news/40439037/japans-nikkei-slumps-as-fed-hike-bets-soaring-oil-weigh",
     "https://www.brecorder.com/news/40439038/australian-shares-head-for-worst-week-in-six-months-miners-lose-lustre",
+    "https://www.brecorder.com/news/40439039/four-terrorists-including-afghan-national-killed-in-kurram-ibo-state-media",
+    "https://www.brecorder.com/news/40439040/imf-mission-to-visit-pakistan-in-coming-weeks-for-next-review",
     "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan",
     "https://www.dawn.com/news/2028892/imf-mission-due-on-sept-23-for-biannual-review-of-pakistans-economic-performance",
     "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
@@ -74,8 +75,8 @@
       "rating": "highly_positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 consolidated profit more than doubled to Rs12.45bn, EPS Rs9.06, Rs2/sh dividend declared",
+      "confidence": 0.8,
+      "reason": "FY26 profit >2x to Rs12.45bn, EPS Rs9.06, dividend Rs2/sh declared",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355"
@@ -85,8 +86,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.75,
-      "reason": "FY26 consolidated profit fell 8% to Rs10.70bn on cost-driven gross margin squeeze",
+      "confidence": 0.6,
+      "reason": "FY26 profit fell 8% to Rs10.70bn on cost margin squeeze despite renewed investment",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
@@ -97,8 +98,8 @@
       "rating": "highly_positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 consolidated PAT surged 7x to Rs4.95bn, EPS Rs6.73, dividend raised to Rs2/sh",
+      "confidence": 0.8,
+      "reason": "FY26 PAT surged 7x to Rs4.95bn, EPS Rs6.73, dividend raised to Rs2/sh",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350"
@@ -110,8 +111,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "ARL among red index-heavy stocks in Friday's oil-price/war-driven ~700pt KSE-100 selloff",
+      "confidence": 0.5,
+      "reason": "Oil-price/geopolitical shock selloff hit index-heavy energy names incl ARL",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points"
@@ -121,8 +122,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "OMCs named among sectors sold off in Friday's oil-price/war-driven KSE-100 slide",
+      "confidence": 0.5,
+      "reason": "PSX selloff amid oil price shock explicitly named OMCs among sellers",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points"
@@ -132,8 +133,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.65,
-      "reason": "OGDC, PPL, POL, MARI traded red in oil-driven ~700pt KSE-100 selloff amid US-Iran war",
+      "confidence": 0.55,
+      "reason": "Selloff hit OGDC, PPL, POL, MARI red amid oil price/geopolitical shock",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points"
@@ -143,8 +144,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Cement named among sectors sold off; KOHC FY26 profit fell 8% on cost pressure",
+      "confidence": 0.45,
+      "reason": "Cement named among sectors selling in PSX rout; KOHC earnings also softened",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points",
@@ -155,8 +156,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Cement named among sectors sold off; KOHC FY26 profit fell 8% on cost pressure",
+      "confidence": 0.45,
+      "reason": "Cement named among sectors selling in PSX rout; KOHC earnings also softened",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points",
@@ -167,8 +168,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Automobile assemblers named among sectors sold off in oil-driven KSE-100 slide",
+      "confidence": 0.4,
+      "reason": "Auto assemblers named among sectors selling in broad PSX selloff",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439013/psx-selling-continues-kse-100-sheds-nearly-700-points"
@@ -176,14 +177,15 @@
     },
     "Logistics/Ports": {
       "rating": "positive",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Gulf-Iran meet Monday for Hormuz deal; first Qatari LNG cargo since July reached Port Qasim",
+      "confidence": 0.5,
+      "reason": "First Qatari LNG cargo since July docked at Port Qasim despite Hormuz strain",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439024/iran-and-gulf-states-to-meet-in-push-for-hormuz-deal-ft-reports",
-        "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim"
+        "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim",
+        "https://propakistani.pk/2026/09/11/first-qatari-lng-cargo-since-july-reaches-pakistan/",
+        "https://www.brecorder.com/news/40439024/iran-and-gulf-states-to-meet-in-push-for-hormuz-deal-ft-reports"
       ]
     },
     "Real Estate": {
@@ -191,41 +193,18 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.45,
-      "reason": "Apna Ghar housing finance approvals rose 12% WoW to Rs351bn, supporting construction demand",
+      "reason": "Apna Ghar housing finance approvals cross Rs351bn, rising access to credit",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "SBP forex reserves jumped $1.2bn WoW to $18.33bn, easing external-account pressure",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2028999/sbp-forex-reserves-surge-12bn",
-        "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "105km Thar coal rail link advancing, to cut coal logistics costs and expand rail freight",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439002/thar-coal-rail-link-set-to-boost-energy-security"
       ]
     },
     "Technology/Telecom": {
       "rating": "negative",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "NA panel to summon telcos over network quality; PTA fine threat looms",
+      "confidence": 0.3,
+      "reason": "NA panel summons telcos over poor mobile service quality, regulatory overhang",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
@@ -236,7 +215,7 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.25,
-      "reason": "EDB says efforts underway to attract Apple manufacturing entry to Pakistan",
+      "reason": "Govt (EDB) pursuing early-stage effort to bring Apple into Pakistan market",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
@@ -247,7 +226,7 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "GGGL commissioned Rs120m 1.5MW solar plant, cutting grid power costs",
+      "reason": "Ghani Global Glass commissions 1.5MW solar plant, cuts grid cost dependence",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
