@@ -122,6 +122,12 @@ jobs:
           # last available prices, not live trading — that is the point of it
           # being opt-in per dispatch rather than a relaxed guard.
           FORCE_NOW="${{ inputs.force_now }}"
+          # An explicit last-line refresh request publishes changed rules once,
+          # even after close. Later ordinary kicks append a different last line.
+          if [ "${{ github.event_name }}" = "push" ] && tail -n 1 .engine-kick | grep -q '^refresh_once:'; then
+            FORCE_NOW=true
+            export EMAIL_MODE=off
+          fi
           # A forced cycle takes the FULL path, not --fast: the point of it is
           # to exercise the news fetch and grading, which --fast skips.
           [ "$FORCE_NOW" = "true" ] && first_cycle=0

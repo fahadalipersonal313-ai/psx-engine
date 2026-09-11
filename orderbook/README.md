@@ -1,7 +1,9 @@
 # Order-book captures
 
-Drop L1 snapshot CSVs here. Every engine run re-scans this folder and ingests
-anything new; re-ingesting the same file is a no-op.
+This directory holds legacy measurement captures. `python main.py orderbook`
+explicitly ingests them; do not assume the regular engine loop scans it.
+New private captures belong in ignored `private_depth/`, or can be loaded into
+the Streamlit intraday panel. See [the capture guide](../docs/TRADING_AND_DEPTH.md).
 
 Capture them with `tools/investify_l1.js` — paste it into Chrome's DevTools
 console on the broker's quote page (nothing to install), then:

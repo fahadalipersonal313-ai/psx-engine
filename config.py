@@ -390,7 +390,7 @@ PULLBACK_EMA_SPAN = 20
 # market). Confirmed live 2026-06-14: KSE100, KMI30, KSE30, ALLSHR, KMIALLSHR.
 BENCHMARK_INDEX = "KMI30"
 REGIME_EMA_SPAN = 40           # fits the 42-session contract while retaining a slow trend filter
-REGIME_GATE_ENABLED = True     # in a risk-off market, soften Buy/Strong Buy -> Watch
+REGIME_GATE_ENABLED = False    # market direction is a warning; stock-specific checks remain
 # Relative strength: stock return minus index return over these trading-day
 # windows, blended across roughly two weeks, one month, and two months.
 RS_LOOKBACKS = {"2w": 10, "1m": 21, "2m": 41}
@@ -919,7 +919,7 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_short_v6"   # prior-session capacity and PKR liquidity
+STRATEGY_VERSION = "technical_swing_short_v7"   # falling market warns but does not veto
 REPLAY_LOOKBACK = 21
 UNIVERSE_KNOWN_FROM = "2026-09-09"  # dated 60-name selection; earlier membership not inferred
 FEATURE_HISTORY_LIMIT = 42

@@ -84,6 +84,8 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
     it proved misleading (15-min polling let raw run-counts look like many
     independent confirmations when they were really one session)."""
     reasons, override = [], None
+    if regime == 'risk-off' and not config.REGIME_GATE_ENABLED:
+        reasons.append('The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.')
 
     # No usable price this run -> not analysable. Emit an explicit "No data"
     # signal so a fetch failure can never masquerade as a Hold/Watch with a
@@ -117,7 +119,7 @@ def generate(symbol, final_score, confidence, risk, shariah, technical,
             base = "Buy"
             reasons.append("Downgraded: score high but technicals not confirming")
     elif final_score >= T["buy"]:
-        base = "Buy"; reasons.append(f"Score {final_score} in Buy band 70-80")
+        base = "Buy"; reasons.append(f"Score {final_score} meets Buy threshold {T['buy']}")
     elif final_score >= T["watch"]:
         base = "Watch"; reasons.append(f"Score {final_score} in Watch band 60-70")
     elif final_score >= T["hold"]:

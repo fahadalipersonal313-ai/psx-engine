@@ -36,6 +36,7 @@
         var r = read();
         if (r.bid_price != null || r.ask_price != null) {
           r.t = new Date().toTimeString().slice(0, 8);
+          r.captured_at = new Date().toISOString();
           rows.push(r);
         }
         if (Date.now() > until) { clearInterval(timer); console.log('done — ' + rows.length + ' rows. book.dump()'); }
@@ -44,7 +45,7 @@
     },
     stop: function () { clearInterval(timer); console.log('stopped — ' + rows.length + ' rows'); },
     dump: function () {
-      var cols = ['t'].concat(KEY);
+      var cols = ['captured_at','t'].concat(KEY);
       var out = ['symbol,' + cols.join(',')].concat(rows.map(function (r) {
         return sym + ',' + cols.map(function (c) { return r[c] == null ? '' : r[c]; }).join(',');
       })).join('\n');

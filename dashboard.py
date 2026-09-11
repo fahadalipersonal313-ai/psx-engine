@@ -282,6 +282,8 @@ def whatif_regime_note(actual_regime, assumed_regime, signal):
     regime-downgraded Watches surface as Buys. Actual regime → no note."""
     if not assumed_regime or assumed_regime == actual_regime:
         return ""
+    if not config.REGIME_GATE_ENABLED:
+        return 'Market direction is a warning only. The stock must still pass its own buying checks.'
     if assumed_regime == "risk-off" and signal in ("Buy", "Strong Buy"):
         return ("🌩 Under **risk-off**: signal would soft-downgrade to Watch "
                 "(regime gate) — position size accordingly.")
@@ -710,6 +712,10 @@ st.divider()
 
 # ----------------------------- ACTION TODAY -------------------------------
 st.subheader("🎯 Action today")
+import trading_review
+trading_review.show(st, rows)
+import depth_analysis
+depth_analysis.show(st)
 import upward_candidates
 st.subheader("Up to 10 stocks with a rising trend")
 _upward = upward_candidates.current()

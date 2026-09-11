@@ -15,6 +15,10 @@ Dated historical research, preferences and rationales are preserved verbatim in 
 
 ## Current implementation state
 
+- v7: user explicitly requested disabling the falling-market veto. REGIME_GATE_ENABLED is false; market direction warns only. Keep price/eligibility/liquidity/support and stock-strength guards. Never translate an existing loss into permission to increase a position.
+- Intraday quote context is separate from completed-session calls and has zero score weight. User confirmed accessible KTrade/Investify data is best bid/offer, not full depth. `depth_analysis.py` validates CSV captures and supports local monitoring; Streamlit Cloud uploads are session-local. No continuous cloud broker feed is connected. Private captures are ignored by Git.
+- See docs/TRADING_AND_DEPTH.md for evidence, data-source limits and no-subscription capture steps. A v7 rule change is not demonstrated profitability; keep outcome versions/contracts separate.
+
 - Audit fixes on `codex/audit-astra-recheck` introduce v6: 30-session horizon retained, prior-session capacity with frozen suggested quantity, and PKR median turnover enforced in the core decision and shortlist. Old opportunities select their original execution behavior from frozen policy.
 - v6 contract hashing includes explicit decision inputs; display and replay-only settings do not retire decisions. Any new decision input must be added to `decision_engine.contract`.
 - Database replay withholds entries before the documented current-universe selection date (2026-09-09), and reports unknown membership separately. Do not interpret these blocked dates as failed signals or fabricate earlier membership.
