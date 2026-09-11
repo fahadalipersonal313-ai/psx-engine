@@ -1,38 +1,37 @@
 {
-  "as_of": "2026-09-11T09:43:17Z",
+  "as_of": "2026-09-11T10:43:03Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
   "articles_read": 63,
   "read_urls": [
     "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380",
-    "https://mettisglobal.news/Asian-markets-slide-on-fears-of-prolonged-US-Iran-war-63375",
     "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361",
     "https://mettisglobal.news/Court-denies-bail-to-four-current-former-officials-63348",
     "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370",
     "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353",
+    "https://mettisglobal.news/Gold-falls-Rs5600-per-tola-silver-also-declines-63387",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs600-per-tola-63363",
-    "https://mettisglobal.news/HomeNet-SBP-join-hands-to-boost-women-entrepreneurs-financial-inclusion-63362",
     "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350",
     "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355",
     "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
     "https://mettisglobal.news/KPRA-introduces-Sahulat-app-for-digital-sales-tax-services-63369",
     "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63372",
-    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63374",
     "https://mettisglobal.news/Nimir-Resins-doubles-FY26-profit-to-Rs503m-63379",
     "https://mettisglobal.news/OMO-Result-SBP-injects-Rs11tr-63382",
     "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359",
     "https://mettisglobal.news/Pakistan-Rwanda-set-to-deepen-trade-investment-ties-63371",
+    "https://mettisglobal.news/RDA-attracts-259m-inflows-in-August-63385",
     "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
-    "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368",
     "https://mettisglobal.news/SCRA-balance-climbs-Rs1bn-to-Rs28bn-in-week-63373",
     "https://mettisglobal.news/SE-Fruits-and-Vegetable-gets-SECP-approval-for-30m-share-IPO-63381",
     "https://mettisglobal.news/SHC-cancels-bail-in-Rs44bn-Unity-Foods-case-allows-FIA-custody-63383",
     "https://mettisglobal.news/Shenzhens-tech-rise-captivates-global-scholars-experts-63378",
+    "https://mettisglobal.news/Softer-dollar-lifts-gold-to-4428-63340",
+    "https://mettisglobal.news/Upcoming-IMF-review-Pakistan-can-no-longer-delay-SOE-reform-63386",
     "https://mettisglobal.news/Weekly-SPI-increased-by-023-63384",
     "https://www.brecorder.com/news/40438469/unilever-says-it-is-ahead-of-target-in-capturing-pampgs-vacuum-in-pakistan",
-    "https://www.brecorder.com/news/40439014/pakistan-urges-hong-kong-to-resume-cathay-pacific-flights",
     "https://www.brecorder.com/news/40439015/south-koreas-lee-to-host-central-asia-summit-in-seoul-next-week",
     "https://www.brecorder.com/news/40439016/two-killed-three-injured-in-drone-attacks-on-russias-tula-region-governor-says",
     "https://www.brecorder.com/news/40439017/india-court-orders-regulator-to-provide-timeline-for-food-warning-labels",
@@ -61,6 +60,7 @@
     "https://www.brecorder.com/news/40439040/imf-mission-to-visit-pakistan-in-coming-weeks-for-next-review",
     "https://www.brecorder.com/news/40439041/european-stocks-rise-but-head-for-sharp-weekly-declines",
     "https://www.brecorder.com/news/40439042/pm-shehbaz-calls-for-higher-farm-output-boost-in-agricultural-exports",
+    "https://www.brecorder.com/news/40439043/gold-price-drops-by-rs2700-per-tola-in-pakistan",
     "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan",
     "https://www.dawn.com/news/2028892/imf-mission-due-on-sept-23-for-biannual-review-of-pakistans-economic-performance",
     "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
@@ -76,7 +76,7 @@
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.85,
-      "reason": "FY26 net profit more than doubled to Rs12.45bn, EPS Rs9.06, dividend Rs2/sh",
+      "reason": "FY26 net profit >2x YoY to Rs12.45bn, EPS Rs9.06, final div Rs2/sh",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355"
@@ -87,7 +87,7 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Commissioned 1.5MW solar plant (Rs120m) to cut grid power cost",
+      "reason": "Commissioned captive 1.5MW solar plant (Rs120m), cuts grid dependence/costs",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
@@ -98,7 +98,7 @@
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.75,
-      "reason": "FY26 net profit fell 8% to Rs10.70bn on gross margin squeeze",
+      "reason": "FY26 net profit down 8% YoY to Rs10.70bn on manufacturing-cost margin squeeze",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
@@ -110,7 +110,7 @@
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.85,
-      "reason": "FY26 PAT surged 7x to Rs4.95bn, EPS Rs6.73, dividend up to Rs2/sh",
+      "reason": "FY26 PAT surged ~7x YoY to Rs4.95bn, EPS Rs6.73, div raised to Rs2/sh",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350"
@@ -118,27 +118,30 @@
     }
   },
   "sectors": {
-    "Fertilizer": {
+    "Islamic Banking": {
       "rating": "positive",
-      "horizon": "long_term",
+      "horizon": "multi_session",
       "causality": "correlated",
       "confidence": 0.3,
-      "reason": "PM chairs meeting on farm output/export financing, no fertilizer-specific measure yet",
+      "reason": "FX reserves +$1.2bn, stable rupee outlook, ample SBP liquidity ease bank funding backdrop",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/RDA-attracts-259m-inflows-in-August-63385",
+        "https://mettisglobal.news/OMO-Result-SBP-injects-Rs11tr-63382",
+        "https://www.brecorder.com/news/40439021/rupee-to-hold-at-rs278usd-in-2026-as-pakistans-fx-buffers-improve-bmi",
+        "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
+        "https://www.dawn.com/news/2028999/sbp-forex-reserves-surge-12bn"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "No direct fertilizer feedstock/subsidy news; agri-export push is indirect at best",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439042/pm-shehbaz-calls-for-higher-farm-output-boost-in-agricultural-exports"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Brent above $100 for 3rd day on Hormuz tensions lifts E&P realised prices",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439023/hormuz-shipping-traffic-falls-to-single-digits-data-shows",
-        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields"
       ]
     },
     "Refinery": {
@@ -146,55 +149,57 @@
       "horizon": "single_session",
       "causality": "correlated",
       "confidence": 0.35,
-      "reason": "Crude above $100 on Hormuz tensions typically lifts local refiners via inventory gains",
+      "reason": "Brent >$100 for a 3rd day on Mideast/Hormuz crisis, near-term inventory/margin tailwind",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439041/european-stocks-rise-but-head-for-sharp-weekly-declines",
-        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields"
+        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields",
+        "https://www.brecorder.com/news/40439037/japans-nikkei-slumps-as-fed-hike-bets-soaring-oil-weigh"
       ]
     },
     "Oil Marketing": {
       "rating": "positive",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Rising global crude aids near-term OMC inventory gains, offset by circular-debt risk",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Rising crude (Brent>$100) plus Sept 11 fuel-price hike support OMC inventory gains",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields",
+        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Brent >$100 on Mideast/Hormuz crisis directly lifts E&P realized oil price/revenue",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields"
       ]
     },
     "Food": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Unilever says it is ahead of target capturing P&G's vacated market share in Pakistan",
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Story covers Unilever's home-care (non-food) share gain, not listed Food-sector names",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40438469/unilever-says-it-is-ahead-of-target-in-capturing-pampgs-vacuum-in-pakistan"
       ]
     },
-    "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "SBP reserves up $1.2bn to $18.33bn, rupee seen stable at Rs278/USD in 2026",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/SBP-reserves-rise-12104m-to-1833bn-63368",
-        "https://www.brecorder.com/news/40439021/rupee-to-hold-at-rs278usd-in-2026-as-pakistans-fx-buffers-improve-bmi"
-      ]
-    },
     "Logistics/Ports": {
       "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Routine scheduled Qatari LNG cargo arrival at Port Qasim, no repricing mechanism",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Qatari LNG cargo reached Port Qasim and Hormuz-deal talks set for Monday, but transits still near record lows",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40439024/iran-and-gulf-states-to-meet-in-push-for-hormuz-deal-ft-reports",
+        "https://www.brecorder.com/news/40439023/hormuz-shipping-traffic-falls-to-single-digits-data-shows",
         "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim"
       ]
     },
@@ -202,33 +207,79 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Apna Ghar low-cost housing finance approvals cross Rs351bn cumulative",
+      "confidence": 0.5,
+      "reason": "Apna Ghar housing-finance approvals +Rs351bn (+12% w/w) should lift construction-linked demand",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380"
       ]
     },
-    "Technology/Telecom": {
+    "Gas Distribution": {
       "rating": "neutral",
-      "horizon": "long_term",
+      "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.2,
-      "reason": "NA panel rebukes poor mobile service quality, no concrete regulatory action yet",
+      "confidence": 0.15,
+      "reason": "This is a petrol/diesel ex-depot price hike, unrelated to natural-gas distribution tariffs",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
+      ]
+    },
+    "Technology/Telecom": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "NA panel threatens telcos with fines/summons over network-quality complaints; none imposed yet",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
       ]
     },
     "Technology/Telecom Devices": {
-      "rating": "neutral",
+      "rating": "positive",
       "horizon": "long_term",
-      "causality": "noise",
+      "causality": "causal",
       "confidence": 0.2,
-      "reason": "NA panel urges effort to bring Apple to Pakistan, aspirational with no plan or timeline",
+      "reason": "EDB pursuing Apple manufacturing entry; very early-stage, no sponsor, number or timeline",
       "text_depth": "full",
       "sources": [
         "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
+      ]
+    },
+    "Cement": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "KOHC FY26 results show manufacturing-cost margin squeeze, a sector-wide cost-pressure signal",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
+        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "KOHC FY26 results show manufacturing-cost margin squeeze, a sector-wide cost-pressure signal",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
+        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361"
+      ]
+    },
+    "Glass/Holding": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "GGGL commissioned captive 1.5MW solar (Rs120m) cutting grid dependence; modest scale",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
       ]
     }
   }
