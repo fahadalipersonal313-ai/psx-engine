@@ -1,5 +1,20 @@
 # News Operations
 
+## Current dual-review arrangement (2026-09-14; supersedes sole-owner wording below)
+
+Claude keeps its existing 09:25 PKT then hourly routine. Codex runs at 09:45
+then hourly within actual trading sessions, skipping holidays and Friday lunch.
+Claude owns news_ai_ratings.json. Codex owns news_codex_ratings.json and dated
+news_reviews/YYYY-MM-DD/codex-HHMM.json. Never replace the other reviewer's file.
+The dashboard's News assessment desk compares both without combining their scores.
+Use plain source-linked language and distinguish no reviewed news from Neutral.
+Record publication timestamps from the article, not an assumed timezone in the
+raw feed. Read linked articles and test company identity: a generic 'power'
+headline is not evidence about Power Cement. No invented negative examples.
+Publish only owned review files using safe rebase; news retains zero signal weight.
+The user requested a single after-hours manual review on September 14; that is
+not a change to the ongoing trading-hours schedule.
+
 This repository deliberately separates raw-news collection from AI analysis.
 The old `news_signals.json` / 20%-sentiment description is retired.
 

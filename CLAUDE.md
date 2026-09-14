@@ -15,6 +15,8 @@ Dated historical research, preferences and rationales are preserved verbatim in 
 
 ## Current implementation state
 
+- Dual news reviews: Claude writes news_ai_ratings.json; Codex writes news_codex_ratings.json plus dated news_reviews files. News assessment desk compares them with links and plain labels for every stock. Codex starts 09:45 PKT hourly during trading sessions only; Claude's schedule remains unchanged. Never overwrite the other rater. No-news is distinct from Neutral; unsupported ticker matches are rejected. Zero news score weight remains.
+
 - 2026-09-14 runtime recovery: engine/news/evening publish via `python runtime_publish.py`. All Claude news pushes should also use this helper after committing. It uses plain rebase, unions raw headlines by URL+symbol within the newest window, and refuses database/code/ratings conflicts. Never use `-X theirs` or force push. Keep news ratings in news_ai_ratings.json; avoid editing the engine database during its loop.
 - `intraday_momentum.py` reads timestamped official trades into a separate small JSON file, never daily_ohlc. Live Watch ideas require fresh same-day trades, eligible stocks and verified prior-session history; volume-so-far must exceed the full-day baseline. No intraday success rate is claimed. Completed-session signals stay v7.
 - Engine publishes a database checkpoint at least hourly when cycles succeed, with immediate publication on price/session/rule/signal changes. Watchdog checks every 20 minutes and after worker completion, avoiding duplicate workers and limiting repeated starts to three per hour. GitHub scheduling is best-effort; external kickoff remains useful.

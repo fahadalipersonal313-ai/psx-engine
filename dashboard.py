@@ -113,6 +113,20 @@ def _inject_theme():
           background: rgba(10,16,32,0.7) !important;
           border-color: rgba(0,229,255,0.25) !important;
         }
+        /* Quiet management layout: keep all controls and existing sections. */
+        .stApp { background: #0b1220; color: #e6edf7; }
+        h1, h2, h3 { text-shadow: none !important; letter-spacing: -.02em; }
+        .block-container { max-width: 1480px; padding-top: 2rem; }
+        [data-testid="stMetric"] { background: #142035; padding: 18px 22px;
+          border: 1px solid #29384e; border-radius: 12px; }
+        [data-testid="stMetricValue"] { text-shadow: none; color: #e6edf7; }
+        [data-testid="stVerticalBlockBorderWrapper"] { box-shadow: none; background: #111d30; }
+        .stButton > button { background: #2363a4; color: white; box-shadow: none; }
+        [data-testid="stCaptionContainer"] { color: #b8c7da; }
+        p, li { line-height: 1.6; }
+        [data-baseweb="tab-list"] { flex-wrap: wrap; gap: 6px; }
+        @media (max-width: 768px) { .block-container { padding: 1rem; }
+          [data-testid="stMetric"] { padding: 12px; } }
         </style>
         """,
         unsafe_allow_html=True)
@@ -619,6 +633,8 @@ elif _engine_state.get("changed_at"):
         f"is the contract, not a stalled run.")
 
 # ----------------------------- news read (compact) -------------------------
+import news_review_panel
+news_review_panel.show(st)
 # The per-card pills only render on Buy/Strong Buy cards, and in a risk-off
 # market there are none -- so the Claude routine's ratings were invisible
 # exactly when the reader most wanted a second opinion. This is the compact
@@ -631,7 +647,7 @@ _nr, _nmeta = news_feed.load_glm_ratings()
 if _nr and _nmeta.get("status") == "ok":
     st.markdown(f"### 📰 News read — {len(_nr)} symbols")
     st.caption(
-        f"From the Claude routine ({_nmeta.get('provider','?')}), "
+        f"From {_nmeta.get('provider','AI reviewer')}, "
         f"{_nmeta.get('age_hours', 0):.0f}h old. **Zero score weight** — a rating "
         "never moves a signal. Causal means the story plausibly drives the price; "
         "correlated means it merely coincides. Confidence is the rater's own.")

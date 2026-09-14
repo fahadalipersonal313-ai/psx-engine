@@ -285,8 +285,9 @@ def full_run(fast=False):
         import news_memory
         # Order matters: bank the raw headlines FIRST so a rating written this
         # cycle already has its own source material behind it in the record.
-        log.info("news memory: raw %s | rated %s | %s",
+        log.info("news memory: raw %s | rated %s | codex %s | %s",
                  news_memory.ingest_raw(), news_memory.remember(),
+                 news_memory.remember('news_codex_ratings.json'),
                  news_memory.grade())
     except Exception as exc:
         log.warning("news memory failed: %s", exc)
