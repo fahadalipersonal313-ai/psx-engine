@@ -68,8 +68,4 @@ jobs:
             exit 0
           fi
           git commit -m "news raw fetch $(date -u +'%Y-%m-%dT%H:%MZ')"
-          git pull --rebase -X theirs --autostash origin main || git rebase --abort
-          for i in 1 2 3 4; do
-            git push origin main && break
-            sleep $((2 ** i))
-          done
+          python runtime_publish.py

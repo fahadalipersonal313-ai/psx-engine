@@ -209,7 +209,8 @@ def signal_state(results):
     from decision_engine import digest
     state = sorted(
         (r["symbol"], r.get("signal"), r["scoring"].get("final_score"),
-         r.get("stop_loss"), r.get("target1"))
+         r.get("stop_loss"), r.get("target1"), r.get("price"),
+         r.get("strategy_version"), r.get("config_hash"), r.get("decision_session"))
         for r in results if r.get("symbol"))
     return digest([list(x) for x in state])
 

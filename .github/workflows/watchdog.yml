@@ -1,0 +1,29 @@
+name: Engine recovery watchdog
+on:
+  schedule:
+    - cron: '7,27,47 3-11 * * 1-5'
+  workflow_run:
+    workflows: ['PSX Engine Loop']
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: engine-watchdog
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - run: python engine_watchdog.py
+        env:
+          GH_TOKEN: ${{ github.token }}

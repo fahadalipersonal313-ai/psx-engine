@@ -15,6 +15,10 @@ Dated historical research, preferences and rationales are preserved verbatim in 
 
 ## Current implementation state
 
+- 2026-09-14 runtime recovery: engine/news/evening publish via `python runtime_publish.py`. All Claude news pushes should also use this helper after committing. It uses plain rebase, unions raw headlines by URL+symbol within the newest window, and refuses database/code/ratings conflicts. Never use `-X theirs` or force push. Keep news ratings in news_ai_ratings.json; avoid editing the engine database during its loop.
+- `intraday_momentum.py` reads timestamped official trades into a separate small JSON file, never daily_ohlc. Live Watch ideas require fresh same-day trades, eligible stocks and verified prior-session history; volume-so-far must exceed the full-day baseline. No intraday success rate is claimed. Completed-session signals stay v7.
+- Engine publishes a database checkpoint at least hourly when cycles succeed, with immediate publication on price/session/rule/signal changes. Watchdog checks every 20 minutes and after worker completion, avoiding duplicate workers and limiting repeated starts to three per hour. GitHub scheduling is best-effort; external kickoff remains useful.
+
 - v7: user explicitly requested disabling the falling-market veto. REGIME_GATE_ENABLED is false; market direction warns only. Keep price/eligibility/liquidity/support and stock-strength guards. Never translate an existing loss into permission to increase a position.
 - Intraday quote context is separate from completed-session calls and has zero score weight. User confirmed accessible KTrade/Investify data is best bid/offer, not full depth. `depth_analysis.py` validates CSV captures and supports local monitoring; Streamlit Cloud uploads are session-local. No continuous cloud broker feed is connected. Private captures are ignored by Git.
 - See docs/TRADING_AND_DEPTH.md for evidence, data-source limits and no-subscription capture steps. A v7 rule change is not demonstrated profitability; keep outcome versions/contracts separate.

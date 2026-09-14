@@ -84,6 +84,8 @@ jobs:
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
 
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
@@ -140,6 +142,7 @@ jobs:
             fi
 
             echo "=== Cycle at $now PKT ==="
+            timeout 300 python intraday_momentum.py
             # The checkout and installed dependencies stay pinned for this worker.
             # A concurrent writer causes a visible push failure, never a binary merge.
 
@@ -150,7 +153,7 @@ jobs:
             # waiting for the 6h job to end and release its step log.
             if [ "$first_cycle" = "1" ]; then FAST="--fast"; else FAST=""; fi
             first_cycle=0
-            if python main.py run $FAST > /tmp/psx_run.log 2>&1; then
+            if timeout 600 python main.py run $FAST > /tmp/psx_run.log 2>&1; then
               cat /tmp/psx_run.log
               rm -f engine_last_error.log
             else
@@ -169,7 +172,7 @@ jobs:
             # Non-fatal by design: a publisher timing out must never kill a
             # cycle that has already produced signals. news.yml stays as the
             # backstop for when this loop is not running.
-            python news_fetcher.py > /tmp/psx_news.log 2>&1 \
+            timeout 180 python news_fetcher.py > /tmp/psx_news.log 2>&1 \
               && tail -3 /tmp/psx_news.log \
               || echo "news fetch failed this cycle (non-fatal) — keeping the last file"
 
@@ -188,11 +191,12 @@ jobs:
             CHANGED=$(python -c "import json;print(json.load(open('.engine-state.json'))['signal_digest'])" 2>/dev/null || echo "unknown")
             PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
                    | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
-            git add -A -- news_raw_24h.json .engine-state.json
-            if [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ]; then
+            git add -A -- news_raw_24h.json .engine-state.json intraday_momentum.json
+            DB_AGE=$(( $(date +%s) - $(git log -1 --format=%ct -- psx_engine.db) ))
+            if [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ] || [ "$DB_AGE" -ge 3600 ]; then
               # Unknown digest means the hint is missing or unreadable: commit
               # the database rather than risk withholding a real change.
-              echo "signals changed ($PREV -> $CHANGED) — committing the database"
+              echo "signals changed or hourly checkpoint due — committing the database"
               git add -A -- psx_engine.db
             else
               echo "signals unchanged ($CHANGED) — database not committed this cycle"
@@ -211,21 +215,7 @@ jobs:
               # different file) replays cleanly and we push; a genuine
               # DB-vs-DB conflict still aborts and fails loudly, which is the
               # visibility the bare push was reaching for.
-              pushed=0
-              for attempt in 1 2 3; do
-                if git push; then pushed=1; break; fi
-                echo "push rejected (attempt $attempt) — reconciling with remote..."
-                if ! git pull --rebase --autostash origin "${{ github.ref_name }}"; then
-                  git rebase --abort || true
-                  echo "Genuine conflict on rebase — another writer changed the same file."
-                  break
-                fi
-                sleep 3
-              done
-              if [ "$pushed" != "1" ]; then
-                echo "Runtime publication failed; database conflict requires reconciliation."
-                exit 1
-              fi
+              python runtime_publish.py
             else
               echo "No data changes to commit this cycle."
             fi

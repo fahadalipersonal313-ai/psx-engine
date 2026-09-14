@@ -161,12 +161,14 @@ class NewsMemoryTests(unittest.TestCase):
         """The gap that emptied the News tab: news.yml fetched hourly into JSON
         and nothing wrote it to the database."""
         import news_memory, database
+        from datetime import datetime, timezone
+        stamp = datetime.now(timezone.utc).isoformat()
         raw = self._write_raw([
             {"symbol": "OGDC", "title": "OGDC well online", "source": "BR",
-             "url": "https://x.test/1", "published": "2026-09-11T09:00:00+00:00"},
+             "url": "https://x.test/1", "published": stamp},
             {"symbol": "_macro", "title": "Gold falls", "source": "Mettis",
-             "url": "https://x.test/2", "published": "2026-09-11T09:30:00+00:00"},
-        ])
+             "url": "https://x.test/2", "published": stamp},
+        ], stamp=stamp)
         self.assertEqual(news_memory.ingest_raw(raw)["stored"], 2)
         self.assertEqual(news_memory.ingest_raw(raw)["stored"], 0)   # idempotent
         rows = database.recent_news(72)

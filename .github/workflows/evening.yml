@@ -47,4 +47,4 @@ jobs:
           git add psx_engine.db
           git commit -m "Evening grading $(date -u +'%Y-%m-%dT%H:%MZ')" \
             || { echo "No data changes to commit."; exit 0; }
-          git push || { echo "Runtime publication failed; reconcile concurrent writer."; exit 1; }
+          python runtime_publish.py

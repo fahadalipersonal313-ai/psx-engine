@@ -671,6 +671,8 @@ elif _nmeta.get("status") != "ok":
                "no rating is shown rather than an old one.")
 
 # --------------------------- momentum burst (top) --------------------------
+import intraday_momentum
+intraday_momentum.show(st)
 # Highest-placed panel by request. A burst is one session breaking out of the
 # stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
 # built — 83% beat at 3d (n=42), 71% at 7d (n=35), independence OK on both.
@@ -685,7 +687,7 @@ if _bursts:
     # — so momentum.detect reads the last completed session all day. Labelling
     # that "today" made a two-day-old burst read as live.
     _bdate = max((b.get("date") or "") for b in _bursts)
-    st.markdown(f"### ⚡ Momentum burst — {len(_bursts)} on {_bdate}")
+    st.markdown(f"### Completed-session momentum — {len(_bursts)} on {_bdate}")
     _sess = momentum.session_fraction()
     # Provisional is a property of the BARS, not of the wall clock: session_fraction
     # is <1.0 before the open as well as during the session, so keying the "market
