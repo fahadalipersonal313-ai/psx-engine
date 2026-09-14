@@ -479,15 +479,54 @@ _now_pkt = pd.Timestamp.now(tz="Asia/Karachi")
 _age_hours = (_now_pkt - _latest_pkt).total_seconds() / 3600
 _amber = getattr(config, "DATA_FRESHNESS_AMBER_HOURS", 4)
 _red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
+
+# Two DIFFERENT questions were being answered with one number, and since the
+# loop stopped committing the database on every cycle the answer was wrong:
+#
+#   "is the engine alive?"        -> .engine-state.json checked_at, written and
+#                                    committed EVERY cycle even when nothing
+#                                    moved. This is the liveness question.
+#   "how old is the market data?" -> the completed session the numbers describe.
+#
+# The newest `runs` row answered neither well. It is only committed when the
+# signal digest changes, so on a Monday morning it reported 59 hours old while
+# the engine had in fact run ten minutes earlier. Liveness now drives the
+# colour, because a stopped pipeline is the failure worth shouting about; the
+# session is stated separately, because "Friday's numbers on a Monday morning"
+# is the completed-session contract working, not a fault.
+_engine_state, _checked_age_h = {}, None
+try:
+    with open(".engine-state.json", encoding="utf-8") as _esf:
+        _engine_state = json.load(_esf)
+    _ck = pd.to_datetime(_engine_state.get("checked_at"))
+    if _ck is not None and not pd.isna(_ck):
+        _ck = _ck.tz_localize("UTC") if _ck.tzinfo is None else _ck
+        _checked_age_h = (pd.Timestamp.now(tz="UTC") - _ck).total_seconds() / 3600
+except (OSError, ValueError, TypeError):
+    _engine_state, _checked_age_h = {}, None
+
+# Fall back to the run_time age when the state file is absent (older checkouts,
+# local runs): a missing hint must not make a stale dashboard look fresh.
+if _checked_age_h is not None:
+    _age_hours = _checked_age_h
 if _age_hours >= _red:
     _stale_level, _stale_color, _stale_label = "red", NEON["red"], "STALE"
 elif _age_hours >= _amber:
     _stale_level, _stale_color, _stale_label = "amber", NEON["amber"], "aging"
 else:
     _stale_level, _stale_color, _stale_label = "fresh", NEON["green"], "fresh"
-_last_updated_html = (f'<span style="color:{_stale_color}">{last_updated}</span>'
-                      f' <span style="font-size:11px;opacity:.7">'
-                      f'({_stale_label}, {_age_hours:.1f}h old)</span>')
+if _checked_age_h is not None:
+    _ago = (f"{_checked_age_h * 60:.0f} min ago" if _checked_age_h < 1.5
+            else f"{_checked_age_h:.1f}h ago")
+    _sess = _engine_state.get("cutoff_session") or "?"
+    _last_updated_html = (
+        f'<span style="color:{_stale_color}">engine checked {_ago}</span>'
+        f' <span style="font-size:11px;opacity:.7">({_stale_label}) · '
+        f'signals from session {_sess}</span>')
+else:
+    _last_updated_html = (f'<span style="color:{_stale_color}">{last_updated}</span>'
+                          f' <span style="font-size:11px;opacity:.7">'
+                          f'({_stale_label}, {_age_hours:.1f}h old)</span>')
 good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
@@ -558,13 +597,26 @@ st.markdown(
 
 # Staleness banner — louder than the tile, only shown when data is past amber.
 if _stale_level != "fresh":
+    # Now a statement about the ENGINE, not about the numbers: it fires when no
+    # cycle has completed recently, which is the condition that actually needs
+    # acting on. Signals describing the previous session is the contract and
+    # must never be reported as a fault.
+    _what = "The engine has not completed a cycle"
     if _stale_level == "red":
-        st.error(f"⚠ Data is **{_age_hours:.1f} hours old** (over "
-                 f"{_red}h threshold). Signals below reflect the LAST RUN, not "
-                 "current market action. Re-run the engine before acting.")
+        st.error(f"⚠ {_what} for **{_age_hours:.1f} hours** (over the {_red}h "
+                 "threshold). The loop may have stopped — check the Actions run "
+                 "before acting on anything below.")
     else:
-        st.warning(f"⏳ Data is **{_age_hours:.1f} hours old** — past the {_amber}h "
-                   "freshness threshold. Verify quotes manually before acting.")
+        st.warning(f"⏳ {_what} for **{_age_hours:.1f} hours** — past the "
+                   f"{_amber}h threshold. Verify quotes manually before acting.")
+elif _engine_state.get("changed_at"):
+    # Fresh: say when the signals last genuinely moved, so an unchanged board
+    # reads as "nothing has happened" rather than "nothing is working".
+    st.caption(
+        f"Signals last changed {str(_engine_state['changed_at'])[:16].replace('T', ' ')} "
+        f"UTC. The engine reads the last COMPLETED session, so they move once a "
+        f"session, not once a cycle — an unchanged board during a live session "
+        f"is the contract, not a stalled run.")
 
 # ----------------------------- news read (compact) -------------------------
 # The per-card pills only render on Buy/Strong Buy cards, and in a risk-off
