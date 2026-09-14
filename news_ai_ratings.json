@@ -1,285 +1,119 @@
 {
-  "as_of": "2026-09-11T10:43:03Z",
+  "as_of": "2026-09-14T04:40:13Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 63,
+  "articles_read": 33,
   "read_urls": [
-    "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380",
-    "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361",
-    "https://mettisglobal.news/Court-denies-bail-to-four-current-former-officials-63348",
-    "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370",
-    "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353",
-    "https://mettisglobal.news/Gold-falls-Rs5600-per-tola-silver-also-declines-63387",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs600-per-tola-63363",
-    "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350",
-    "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355",
-    "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-    "https://mettisglobal.news/KPRA-introduces-Sahulat-app-for-digital-sales-tax-services-63369",
-    "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63372",
-    "https://mettisglobal.news/Nimir-Resins-doubles-FY26-profit-to-Rs503m-63379",
-    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs11tr-63382",
-    "https://mettisglobal.news/PSX-Closing-Bell-The-Long-Goodbye-63359",
-    "https://mettisglobal.news/Pakistan-Rwanda-set-to-deepen-trade-investment-ties-63371",
-    "https://mettisglobal.news/RDA-attracts-259m-inflows-in-August-63385",
-    "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
-    "https://mettisglobal.news/SCRA-balance-climbs-Rs1bn-to-Rs28bn-in-week-63373",
-    "https://mettisglobal.news/SE-Fruits-and-Vegetable-gets-SECP-approval-for-30m-share-IPO-63381",
-    "https://mettisglobal.news/SHC-cancels-bail-in-Rs44bn-Unity-Foods-case-allows-FIA-custody-63383",
-    "https://mettisglobal.news/Shenzhens-tech-rise-captivates-global-scholars-experts-63378",
-    "https://mettisglobal.news/Softer-dollar-lifts-gold-to-4428-63340",
-    "https://mettisglobal.news/Upcoming-IMF-review-Pakistan-can-no-longer-delay-SOE-reform-63386",
-    "https://mettisglobal.news/Weekly-SPI-increased-by-023-63384",
-    "https://www.brecorder.com/news/40438469/unilever-says-it-is-ahead-of-target-in-capturing-pampgs-vacuum-in-pakistan",
-    "https://www.brecorder.com/news/40439015/south-koreas-lee-to-host-central-asia-summit-in-seoul-next-week",
-    "https://www.brecorder.com/news/40439016/two-killed-three-injured-in-drone-attacks-on-russias-tula-region-governor-says",
-    "https://www.brecorder.com/news/40439017/india-court-orders-regulator-to-provide-timeline-for-food-warning-labels",
-    "https://www.brecorder.com/news/40439018/elena-rybakina-not-putting-pressure-on-herself-before-sabalenka-showdown",
-    "https://www.brecorder.com/news/40439019/coco-gauff-sees-progress-despite-us-open-exit",
-    "https://www.brecorder.com/news/40439020/trump-declines-saudi-crown-princes-call-for-us-strikes-on-houthis-axios-reports",
-    "https://www.brecorder.com/news/40439021/rupee-to-hold-at-rs278usd-in-2026-as-pakistans-fx-buffers-improve-bmi",
-    "https://www.brecorder.com/news/40439022/china-hong-kong-shares-head-for-weekly-drop-on-fed-rate-concerns",
-    "https://www.brecorder.com/news/40439023/hormuz-shipping-traffic-falls-to-single-digits-data-shows",
-    "https://www.brecorder.com/news/40439024/iran-and-gulf-states-to-meet-in-push-for-hormuz-deal-ft-reports",
-    "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields",
-    "https://www.brecorder.com/news/40439026/copper-set-to-snap-10-week-winning-streak-on-white-house-tariff-hesitation",
-    "https://www.brecorder.com/news/40439027/south-korea-shares-drop-on-oil-bond-rout-concerns",
-    "https://www.brecorder.com/news/40439028/chinas-yuan-steady-as-dollar-rebounds-investors-eye-us-cpi",
-    "https://www.brecorder.com/news/40439029/man-uniteds-carrick-pleased-with-seskos-return-to-form-ahead-of-city-derby",
-    "https://www.brecorder.com/news/40439030/from-desperation-to-confidence-sabalenka-flips-the-script",
-    "https://www.brecorder.com/news/40439031/chicago-soybeans-edge-lower-after-notching-3-year-high-on-china-demand",
-    "https://www.brecorder.com/news/40439032/se-fruits-and-vegetable-secures-secp-approval-for-ipo",
-    "https://www.brecorder.com/news/40439033/thai-bahtus-dollar-slightly-weaker-on-friday",
-    "https://www.brecorder.com/news/40439034/palm-rebounds-on-firm-dalian-soyoil-crude-set-for-second-weekly-gain",
-    "https://www.brecorder.com/news/40439035/rain-thunderstorm-likely-in-karachi-from-monday-pmd",
-    "https://www.brecorder.com/news/40439036/australian-dollar-suffers-setback-yields-spike-to-15-year-peak",
-    "https://www.brecorder.com/news/40439037/japans-nikkei-slumps-as-fed-hike-bets-soaring-oil-weigh",
-    "https://www.brecorder.com/news/40439038/australian-shares-head-for-worst-week-in-six-months-miners-lose-lustre",
-    "https://www.brecorder.com/news/40439039/four-terrorists-including-afghan-national-killed-in-kurram-ibo-state-media",
-    "https://www.brecorder.com/news/40439040/imf-mission-to-visit-pakistan-in-coming-weeks-for-next-review",
-    "https://www.brecorder.com/news/40439041/european-stocks-rise-but-head-for-sharp-weekly-declines",
-    "https://www.brecorder.com/news/40439042/pm-shehbaz-calls-for-higher-farm-output-boost-in-agricultural-exports",
-    "https://www.brecorder.com/news/40439043/gold-price-drops-by-rs2700-per-tola-in-pakistan",
-    "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan",
-    "https://www.dawn.com/news/2028892/imf-mission-due-on-sept-23-for-biannual-review-of-pakistans-economic-performance",
-    "https://www.dawn.com/news/2028913/govt-increases-petrol-price-by-rs305-diesel-by-rs537",
-    "https://www.dawn.com/news/2028998/equities-plunge-below-169000-on-panic-selling",
-    "https://www.dawn.com/news/2028999/sbp-forex-reserves-surge-12bn",
-    "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim",
-    "https://www.dawn.com/news/2029005/fbr-allowed-to-retain-rs390bn-in-refunds-senate-committee-told"
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63407",
+    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63408",
+    "https://mettisglobal.news/No-Umrah-Hajj-travel-without-NADRAintegrated-vaccination-card-after-Sept-14-63406",
+    "https://www.brecorder.com/news/40439346/president-upholds-fbr-data-confidentiality-order",
+    "https://www.brecorder.com/news/40439347/pll-warns-ke-of-rlng-supply-cut",
+    "https://www.brecorder.com/news/40439348/oman-says-planned-hormuz-talks-postponed",
+    "https://www.brecorder.com/news/40439349/wars-spread-worsens-oil-disruption",
+    "https://www.brecorder.com/news/40439350/pm-mbs-discuss-houthi-challenge",
+    "https://www.brecorder.com/news/40439351/xi-pushes-greater-brics-economic-ties",
+    "https://www.brecorder.com/news/40439352/pibt-rejects-priority-berthing-for-coal-vessels",
+    "https://www.brecorder.com/news/40439353/steel-sector-urges-fbr-to-fast-track-budget-reforms",
+    "https://www.brecorder.com/news/40439354/pm-launches-relief-scheme-for-bikes-800cc-vehicles",
+    "https://www.brecorder.com/news/40439358/pd-proposes-rs75bn-fuel-relief-scheme",
+    "https://www.brecorder.com/news/40439359/suparco-to-observe-world-space-week",
+    "https://www.brecorder.com/news/40439360/six-pti-linked-ex-mps-submit-financial-statements",
+    "https://www.brecorder.com/news/40439361/pdwp-approves-14-uplift-projects-in-kp",
+    "https://www.brecorder.com/news/40439362/nehal-urges-ned-graduates-to-drive-pakistans-digital-future",
+    "https://www.brecorder.com/news/40439363/moot-urges-corporate-boards-to-move-beyond-compliance",
+    "https://www.brecorder.com/news/40439364/kwsc-repairs-leaking-water-pipeline",
+    "https://www.brecorder.com/news/40439368/revival-of-industries-pakistan-needs-intelligent-initiatives",
+    "https://www.brecorder.com/news/40439369/karachi-sizzles-at-a-september-high-of-403-degrees-celsius",
+    "https://www.brecorder.com/news/40439370/power-breakdown-at-dhabeji-station-disrupts-water-supply",
+    "https://www.brecorder.com/news/40439371/businesses-urged-to-accelerate-investments-in-ai-digital-skills",
+    "https://www.brecorder.com/news/40439372/oil-prices-jump-more-than-2-after-new-strikes-on-saudi-strait-of-hormuz",
+    "https://www.brecorder.com/news/40439373/dollar-steady-yen-near-7-month-high-ahead-of-fed-boj-meetings",
+    "https://www.brecorder.com/news/40439374/shares-skid-in-asia-as-oil-rises-rate-hikes-loom",
+    "https://www.brecorder.com/news/40439375/amazon-pauses-operations-with-21-air-after-miami-cargo-plane-crash",
+    "https://www.brecorder.com/news/40439376/indonesia-rescuers-searching-for-129-people-still-missing-after-passenger-ship-capsizes",
+    "https://www.brecorder.com/news/40439377/samsung-sk-hynix-reject-kepcos-19-billion-power-prepayment-proposal-document-shows",
+    "https://www.brecorder.com/news/40439378/goldman-sachs-now-expects-fed-to-hike-rates-in-september",
+    "https://www.brecorder.com/news/40439379/saudi-civil-defence-lifts-warnings-of-potential-danger-in-four-cities",
+    "https://www.brecorder.com/news/40439380/zverev-banishes-us-open-demons-with-victory-over-shelton",
+    "https://www.brecorder.com/news/40439381/north-korea-says-missile-launches-were-part-of-live-fire-drills"
   ],
-  "count": 4,
+  "count": 2,
   "ratings": {
-    "ILP": {
-      "rating": "highly_positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 net profit >2x YoY to Rs12.45bn, EPS Rs9.06, final div Rs2/sh",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Interloop-profit-more-than-doubles-to-Rs12bn-in-FY26-63355"
-      ]
-    },
-    "GGL": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Commissioned captive 1.5MW solar plant (Rs120m), cuts grid dependence/costs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
-      ]
-    },
-    "KOHC": {
+    "KEL": {
       "rating": "negative",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.75,
-      "reason": "FY26 net profit down 8% YoY to Rs10.70bn on manufacturing-cost margin squeeze",
+      "confidence": 0.35,
+      "reason": "PLL threatens RLNG cutoff to KE over Rs8.7bn unpaid dues dispute",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Kohat-Cement-Board-approves-over-Rs2bn-combined-investment-renewal-63351"
+        "https://www.brecorder.com/news/40439347/pll-warns-ke-of-rlng-supply-cut"
       ]
     },
-    "IPAK": {
-      "rating": "highly_positive",
+    "PIBTL": {
+      "rating": "neutral",
       "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 PAT surged ~7x YoY to Rs4.95bn, EPS Rs6.73, div raised to Rs2/sh",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "PIBT rebuts berthing-delay claims; vessel's own faults, no cash-flow shift",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/IPAK-Group-earnings-surge-7x-to-around-Rs5bn-in-FY26-63350"
+        "https://www.brecorder.com/news/40439352/pibt-rejects-priority-berthing-for-coal-vessels"
       ]
     }
   },
   "sectors": {
-    "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "FX reserves +$1.2bn, stable rupee outlook, ample SBP liquidity ease bank funding backdrop",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/RDA-attracts-259m-inflows-in-August-63385",
-        "https://mettisglobal.news/OMO-Result-SBP-injects-Rs11tr-63382",
-        "https://www.brecorder.com/news/40439021/rupee-to-hold-at-rs278usd-in-2026-as-pakistans-fx-buffers-improve-bmi",
-        "https://mettisglobal.news/SBP-buys-back-Rs585bn-floating-rate-PIBs-63377",
-        "https://www.dawn.com/news/2028999/sbp-forex-reserves-surge-12bn"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "No direct fertilizer feedstock/subsidy news; agri-export push is indirect at best",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439042/pm-shehbaz-calls-for-higher-farm-output-boost-in-agricultural-exports"
-      ]
-    },
     "Refinery": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent >$100 for a 3rd day on Mideast/Hormuz crisis, near-term inventory/margin tailwind",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields",
-        "https://www.brecorder.com/news/40439037/japans-nikkei-slumps-as-fed-hike-bets-soaring-oil-weigh"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Rising crude (Brent>$100) plus Sept 11 fuel-price hike support OMC inventory gains",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields",
-        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Brent >$100 on Mideast/Hormuz crisis directly lifts E&P realized oil price/revenue",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439025/india-10-year-bond-yield-crosses-7-on-rising-oil-treasury-yields"
-      ]
-    },
-    "Food": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Story covers Unilever's home-care (non-food) share gain, not listed Food-sector names",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40438469/unilever-says-it-is-ahead-of-target-in-capturing-pampgs-vacuum-in-pakistan"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Qatari LNG cargo reached Port Qasim and Hormuz-deal talks set for Monday, but transits still near record lows",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439024/iran-and-gulf-states-to-meet-in-push-for-hormuz-deal-ft-reports",
-        "https://www.brecorder.com/news/40439023/hormuz-shipping-traffic-falls-to-single-digits-data-shows",
-        "https://www.dawn.com/news/2029001/vessel-carrying-qatari-lng-arrives-at-port-qasim"
-      ]
-    },
-    "Real Estate": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.5,
-      "reason": "Apna Ghar housing-finance approvals +Rs351bn (+12% w/w) should lift construction-linked demand",
+      "reason": "Mideast strikes shut Saudi pipeline, Brent +8%/wk to $107 lifts inventory gains",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Apna-Ghar-Programme-financing-approvals-cross-Rs351bn-63380"
+        "https://www.brecorder.com/news/40439372/oil-prices-jump-more-than-2-after-new-strikes-on-saudi-strait-of-hormuz",
+        "https://www.brecorder.com/news/40439374/shares-skid-in-asia-as-oil-rises-rate-hikes-loom",
+        "https://www.brecorder.com/news/40439373/dollar-steady-yen-near-7-month-high-ahead-of-fed-boj-meetings"
       ]
     },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "This is a petrol/diesel ex-depot price hike, unrelated to natural-gas distribution tariffs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Fuel-prices-rise-again-diesel-up-Rs537-petrol-Rs305-63370"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "NA panel threatens telcos with fines/summons over network-quality complaints; none imposed yet",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
-      ]
-    },
-    "Technology/Telecom Devices": {
+    "Oil Marketing": {
       "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.2,
-      "reason": "EDB pursuing Apple manufacturing entry; very early-stage, no sponsor, number or timeline",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2028884/na-panel-irked-over-poor-mobile-services-seeks-efforts-to-bring-apple-to-pakistan"
-      ]
-    },
-    "Cement": {
-      "rating": "negative",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "KOHC FY26 results show manufacturing-cost margin squeeze, a sector-wide cost-pressure signal",
+      "confidence": 0.45,
+      "reason": "Crude spike to $107 lifts OMC inventory value; govt relief scheme caps upside",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361"
+        "https://www.brecorder.com/news/40439372/oil-prices-jump-more-than-2-after-new-strikes-on-saudi-strait-of-hormuz",
+        "https://www.brecorder.com/news/40439374/shares-skid-in-asia-as-oil-rises-rate-hikes-loom",
+        "https://www.dawn.com/news/2029634/pm-shehbaz-announces-relief-scheme-for-bikes-autos-800cc-vehicles-amid-rising-fuel-prices",
+        "https://www.dawn.com/news/2029632/next-round-of-ji-govt-talks-on-petroleum-levy-rescheduled-for-tuesday"
       ]
     },
-    "Cement/Conglomerate": {
-      "rating": "negative",
+    "Oil & Gas Exploration": {
+      "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "KOHC FY26 results show manufacturing-cost margin squeeze, a sector-wide cost-pressure signal",
+      "confidence": 0.6,
+      "reason": "Hormuz/Saudi supply shocks push Brent to $107, lifting E&P realized prices",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/KOHC-FY26-profit-softens-8-63352",
-        "https://mettisglobal.news/Cherat-Cement-targets-30-stake-in-Nimir-Industrial-Chemicals-63361"
+        "https://www.brecorder.com/news/40439372/oil-prices-jump-more-than-2-after-new-strikes-on-saudi-strait-of-hormuz",
+        "https://www.brecorder.com/news/40439374/shares-skid-in-asia-as-oil-rises-rate-hikes-loom",
+        "https://www.brecorder.com/news/40439373/dollar-steady-yen-near-7-month-high-ahead-of-fed-boj-meetings"
       ]
     },
-    "Glass/Holding": {
+    "Auto Assembler": {
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.35,
-      "reason": "GGGL commissioned captive 1.5MW solar (Rs120m) cutting grid dependence; modest scale",
-      "text_depth": "full",
+      "reason": "Used-car imports plunge on baggage-scheme ban, easing competition for assemblers",
+      "text_depth": "headline",
       "sources": [
-        "https://mettisglobal.news/GGGL-Powers-up-with-15MW-solar-plant-at-Rs120m-63353"
+        "https://www.dawn.com/news/2029573/used-car-imports-fall-sharply"
       ]
     }
   }
