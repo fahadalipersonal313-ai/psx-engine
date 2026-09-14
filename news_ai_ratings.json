@@ -1,14 +1,16 @@
 {
-  "as_of": "2026-09-14T06:42:22Z",
+  "as_of": "2026-09-14T07:42:53Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 44,
+  "articles_read": 46,
   "read_urls": [
     "https://mettisglobal.news/ECC-likely-to-approve-draft-upgrade-agreements-for-Brownfield-Refineries-63414",
     "https://mettisglobal.news/ECOP-FY26-profit-rises-22-63409",
+    "https://mettisglobal.news/Gold-falls-to-4322-as-oil-surge-stokes-inflation-fears-63424",
     "https://mettisglobal.news/Govt-unveils-Rs100litre-petrol-relief-for-bikes-rickshaws-small-cars-63416",
-    "https://mettisglobal.news/KTBA-seeks-corrected-return-form-formal-notification-from-FBR-63412",
+    "https://mettisglobal.news/LSE-Financial-Services-to-raise-Rs159m-through-5889-rights-issue-63425",
+    "https://mettisglobal.news/New-Provinces-Debate-Belongs-in-Parliament-Says-Rana-Sanaullah-63426",
     "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
     "https://mettisglobal.news/PM-Youth-Programme-UN-Women-join-hands-to-empower-young-women-63420",
     "https://mettisglobal.news/Pakistan-Africa-target-15bn-bilateral-trade-by-2030-63415",
@@ -20,17 +22,6 @@
     "https://mettisglobal.news/SHFA-profit-rises-11-to-Rs25bn-declares-Rs5-dividend-63411",
     "https://mettisglobal.news/STL-secures-98-subscription-for-Rs915m-rights-issue-63418",
     "https://www.brecorder.com/news/40439161/market-expects-status-quo-as-mpc-meets-today",
-    "https://www.brecorder.com/news/40439346/president-upholds-fbr-data-confidentiality-order",
-    "https://www.brecorder.com/news/40439347/pll-warns-ke-of-rlng-supply-cut",
-    "https://www.brecorder.com/news/40439368/revival-of-industries-pakistan-needs-intelligent-initiatives",
-    "https://www.brecorder.com/news/40439369/karachi-sizzles-at-a-september-high-of-403-degrees-celsius",
-    "https://www.brecorder.com/news/40439370/power-breakdown-at-dhabeji-station-disrupts-water-supply",
-    "https://www.brecorder.com/news/40439371/businesses-urged-to-accelerate-investments-in-ai-digital-skills",
-    "https://www.brecorder.com/news/40439372/oil-prices-up-over-3-following-new-strikes-on-saudi-strait-of-hormuz",
-    "https://www.brecorder.com/news/40439373/dollar-steady-yen-near-7-month-high-ahead-of-fed-boj-meetings",
-    "https://www.brecorder.com/news/40439374/shares-skid-in-asia-as-oil-rises-rate-hikes-loom",
-    "https://www.brecorder.com/news/40439375/amazon-pauses-operations-with-21-air-after-miami-cargo-plane-crash",
-    "https://www.brecorder.com/news/40439376/indonesia-rescuers-searching-for-129-people-still-missing-after-passenger-ship-capsizes",
     "https://www.brecorder.com/news/40439377/samsung-sk-hynix-reject-kepcos-19-billion-power-prepayment-proposal-document-shows",
     "https://www.brecorder.com/news/40439378/goldman-sachs-now-expects-fed-to-hike-rates-in-september",
     "https://www.brecorder.com/news/40439379/saudi-civil-defence-lifts-warnings-of-potential-danger-in-four-cities",
@@ -48,32 +39,30 @@
     "https://www.brecorder.com/news/40439391/china-stocks-mixed-as-tech-shares-fall",
     "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows",
     "https://www.brecorder.com/news/40439393/palm-oil-gains-as-crude-prices-climb-higher",
-    "https://www.brecorder.com/news/40439394/yuan-hits-fresh-multi-year-high-as-markets-await-fed-boj-decisions"
+    "https://www.brecorder.com/news/40439394/yuan-hits-fresh-multi-year-high-as-markets-await-fed-boj-decisions",
+    "https://www.brecorder.com/news/40439395/copper-extends-losses-driven-by-uncertainties-over-us-tariffs",
+    "https://www.brecorder.com/news/40439396/australian-nz-dollars-weaken-as-oil-rally-dampens-risk-appetite",
+    "https://www.brecorder.com/news/40439397/south-korea-shares-retreat-on-ai-concerns-set-for-longer-trading-hours",
+    "https://www.brecorder.com/news/40439398/jgbs-steady-as-central-bank-decisions-loom",
+    "https://www.brecorder.com/news/40439399/trump-downplays-report-china-entities-helped-iran-before-attack-that-killed-us-troops",
+    "https://www.brecorder.com/news/40439400/lamine-yamal-says-mbappe-his-only-rival-for-ballon-dor",
+    "https://www.brecorder.com/news/40439401/tiff-2026-courteney-cox-thriller-tells-dysfunctional-love-story-behind-pizza-bomber-case",
+    "https://www.brecorder.com/news/40439402/london-plant-parents-adopt-a-piece-of-historic-barbican-urban-jungle",
+    "https://www.brecorder.com/news/40439403/tiff-2026-k-pop-superstar-lisa-sparks-fan-frenzy-at-documentary-premiere",
+    "https://www.brecorder.com/news/40439404/three-terrorists-including-commander-naqeeb-killed-in-mastung-operation-state-media",
+    "https://www.brecorder.com/news/40439405/pia-afghanistans-kam-air-launch-transit-link-via-islamabad"
   ],
-  "count": 1,
-  "ratings": {
-    "KEL": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "PLL threatens RLNG supply cut over Rs8.7bn dues KE disputes; billing/supply risk",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439347/pll-warns-ke-of-rlng-supply-cut"
-      ]
-    }
-  },
+  "count": 0,
+  "ratings": {},
   "sectors": {
-    "Refinery": {
+    "Oil & Gas Exploration": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Brent +3% to ~$108 on Saudi pipeline shutdown/Hormuz strikes; inventory-gain tailwind",
+      "confidence": 0.55,
+      "reason": "Saudi pipeline hit, Hormuz risk push Brent to $106.77; higher realized crude price lifts E&P revenue",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439372/oil-prices-up-over-3-following-new-strikes-on-saudi-strait-of-hormuz",
         "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
         "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
       ]
@@ -82,125 +71,68 @@
       "rating": "negative",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Crude spike raises import/FX cost; PSX OMCs sold off today amid Mideast escalation",
+      "confidence": 0.4,
+      "reason": "Crude supply shock raises import cost/security risk for OMCs; sector sold off in market open",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me",
-        "https://www.brecorder.com/news/40439372/oil-prices-up-over-3-following-new-strikes-on-saudi-strait-of-hormuz"
+        "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
+        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
       ]
     },
-    "Oil & Gas Exploration": {
+    "Refinery": {
       "rating": "negative",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "E&P shares sold off despite crude +3% as broad risk-off on Mideast war dominates",
+      "confidence": 0.4,
+      "reason": "Saudi pipeline attack, Hormuz risk raise landed-crude cost/import-security risk for refiners",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me",
-        "https://www.brecorder.com/news/40439372/oil-prices-up-over-3-following-new-strikes-on-saudi-strait-of-hormuz"
-      ]
-    },
-    "Cement": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Cement sold off in broad PSX risk-off on Mideast tensions; no sector-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Cement sold off in broad PSX risk-off on Mideast tensions; no sector-specific driver",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me"
+        "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
+        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
       ]
     },
     "Islamic Banking": {
       "rating": "neutral",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "MPC expected to hold rates status quo; other matches (BOJ, yen) are not Pakistani banks",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "SBP MPC meets today; 84% of poll expects 11.5% rate held, status quo largely priced in",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439161/market-expects-status-quo-as-mpc-meets-today"
       ]
     },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Hormuz transit data & Amazon-21Air unrelated to PSX ports; maritime piece headline-only",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows",
-        "https://www.dawn.com/news/2029680/building-a-stronger-maritime-future"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "multi_session",
+    "Cement": {
+      "rating": "positive",
+      "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.3,
-      "reason": "Railways targets 20% freight share post-ML1; no PSX-listed operator named as beneficiary",
+      "reason": "Approved rail reform targets 20% freight share incl. cement via ML-1 upgrade; multi-year payoff",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
       ]
     },
-    "Pharmaceuticals": {
+    "Cement/Conglomerate": {
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.3,
-      "reason": "Pakistan-Bangladesh explore pharma cooperation; early-stage MOU talk, no specifics",
+      "reason": "Approved rail reform targets 20% freight share incl. cement via ML-1 upgrade; multi-year payoff",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Pakistan-Bangladesh-explore-cooperation-in-pharma-agriculture-healthcare-63421"
+        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
       ]
     },
-    "Technology/Telecom": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "FBR allows instalment PTA tax payments on imported phones, easing device costs",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/14/fbr-finally-allows-instalment-payments-of-pta-tax-on-imported-phones/"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "FBR allows instalment PTA tax payments on imported phones, easing device costs",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/14/fbr-finally-allows-instalment-payments-of-pta-tax-on-imported-phones/"
-      ]
-    },
-    "Auto Assembler": {
+    "Logistics/Transport": {
       "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Auto assemblers sold off broadly; new auto policy approval tied to IMF review adds risk",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "Railways plans freight share 8%->20% post ML-1, a long-term competitive risk to road logistics",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me",
-        "https://propakistani.pk/2026/09/14/pakistans-new-auto-policy-approval-tied-to-imf-consultations/"
+        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
       ]
     }
   }
