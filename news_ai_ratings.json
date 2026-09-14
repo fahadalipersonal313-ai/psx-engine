@@ -1,15 +1,18 @@
 {
-  "as_of": "2026-09-14T08:42:41Z",
+  "as_of": "2026-09-14T09:41:32Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 46,
+  "articles_read": 48,
   "read_urls": [
-    "https://mettisglobal.news/ECC-likely-to-approve-draft-upgrade-agreements-for-Brownfield-Refineries-63414",
     "https://mettisglobal.news/ECOP-FY26-profit-rises-22-63409",
     "https://mettisglobal.news/Gold-falls-to-4322-as-oil-surge-stokes-inflation-fears-63424",
     "https://mettisglobal.news/Govt-unveils-Rs100litre-petrol-relief-for-bikes-rickshaws-small-cars-63416",
+    "https://mettisglobal.news/Ishaq-Dar-calls-for-stronger-PakistanChina-trade-investment-ties-63427",
+    "https://mettisglobal.news/Karachis-Shadman-Park-IT-centre-get-Rs145m-revamp-63429",
     "https://mettisglobal.news/LSE-Financial-Services-to-raise-Rs159m-through-5889-rights-issue-63425",
+    "https://mettisglobal.news/Millat-Tractors-enters-distribution-deal-with-Chinas-Weichai-Lovol-63428",
+    "https://mettisglobal.news/Naltar-PhaseIII-to-add-16MW-to-Gilgit-Power-Grid-63430",
     "https://mettisglobal.news/New-Provinces-Debate-Belongs-in-Parliament-Says-Rana-Sanaullah-63426",
     "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
     "https://mettisglobal.news/PM-Youth-Programme-UN-Women-join-hands-to-empower-young-women-63420",
@@ -18,13 +21,8 @@
     "https://mettisglobal.news/Pakistan-Bangladesh-explore-cooperation-in-pharma-agriculture-healthcare-63421",
     "https://mettisglobal.news/Pakistan-China-eye-deeper-B2B-ties-in-AI-digital-infrastructure-63417",
     "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419",
-    "https://mettisglobal.news/Pakistan-warns-Houthi-attacks-could-disrupt-global-energy-supplies-63413",
     "https://mettisglobal.news/SHFA-profit-rises-11-to-Rs25bn-declares-Rs5-dividend-63411",
     "https://mettisglobal.news/STL-secures-98-subscription-for-Rs915m-rights-issue-63418",
-    "https://www.brecorder.com/news/40439161/market-expects-status-quo-as-mpc-meets-today",
-    "https://www.brecorder.com/news/40439381/north-korea-says-missile-launches-were-part-of-live-fire-drills",
-    "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me",
-    "https://www.brecorder.com/news/40439383/gold-slips-as-oil-rally-fans-rate-hike-bets-ahead-of-fed-meeting",
     "https://www.brecorder.com/news/40439384/supernet-technologies-rs915mn-rights-issue-attracts-9816-subscription",
     "https://www.brecorder.com/news/40439385/thai-bahtus-dollar-weaker-on-monday",
     "https://www.brecorder.com/news/40439386/soybeans-rise-on-chinese-demand-higher-crude-oil-prices",
@@ -50,7 +48,11 @@
     "https://www.brecorder.com/news/40439406/iran-nuclear-chief-blocked-by-us-from-vienna-meeting-state-tv",
     "https://www.brecorder.com/news/40439407/russian-strike-on-train-on-ukraine-poland-border-was-meant-to-scare-western-states-says-eus-kallas",
     "https://www.brecorder.com/news/40439408/privatisation-commission-blocks-ufones-proposed-eamp-rebranding-says-matter-requires-intergovernmental-approval",
-    "https://www.brecorder.com/news/40439409/psl-restructuring-being-negotiated-to-settle-court-case-says-thatta-cement"
+    "https://www.brecorder.com/news/40439409/psl-restructuring-being-negotiated-to-settle-court-case-says-thatta-cement",
+    "https://www.brecorder.com/news/40439410/south-african-rand-weakens-as-higher-oil-weighs-fed-meeting-looms",
+    "https://www.brecorder.com/news/40439411/pakistan-docked-11-points-in-world-test-championship-for-slow-over-rate-in-birmingham",
+    "https://www.brecorder.com/news/40439412/india-cruise-past-afghanistan-as-sharma-blitz-earns-series-lead",
+    "https://www.brecorder.com/news/40439413/players-move-push-for-pay-and-reforms-into-new-grand-slam-council"
   ],
   "count": 1,
   "ratings": {
@@ -58,8 +60,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "PSL restructuring talks advance to settle IHC dispute over THCCL's Rs6.45bn 28% stake",
+      "confidence": 0.55,
+      "reason": "PSL restructuring talks advance toward definitive pact, resolving IHC dispute over 28% stake/board control",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439409/psl-restructuring-being-negotiated-to-settle-court-case-says-thatta-cement"
@@ -67,108 +69,63 @@
     }
   },
   "sectors": {
-    "Refinery": {
+    "Oil & Gas Exploration": {
       "rating": "positive",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.6,
-      "reason": "Brent to $106.77 (+2%) after Saudi pipeline shutdown & Hormuz tension lifts refiners' inventory gains",
+      "reason": "Brent +3% to $107 on Saudi pipeline attack/Hormuz strikes lifts E&P realized crude prices",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
+        "https://www.dawn.com/news/2029863/brent-crude-at-107-per-barrel-following-new-strikes-on-saudi-arabia-strait-of-hormuz",
+        "https://mettisglobal.news/Gold-falls-to-4322-as-oil-surge-stokes-inflation-fears-63424",
         "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
+      ]
+    },
+    "Refinery": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Crude spike to $107 lifts refiner inventory valuation gains despite higher feedstock cost",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2029863/brent-crude-at-107-per-barrel-following-new-strikes-on-saudi-arabia-strait-of-hormuz",
+        "https://mettisglobal.news/Gold-falls-to-4322-as-oil-surge-stokes-inflation-fears-63424"
       ]
     },
     "Oil Marketing": {
       "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Crude rally to $106 on Gulf supply disruption lifts OMC inventory valuations",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
-        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Brent surges to $106 on Saudi pipeline shutdown & Hormuz tension, lifting E&P realised prices",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-to-106-after-Saudi-pipeline-shutdown-63423",
-        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
-      ]
-    },
-    "Cement": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Railways reform roadmap targets 20% freight share post-ML-1, easing bulk cement logistics costs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Railways reform roadmap targets 20% freight share post-ML-1, easing bulk cement logistics costs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Reports of a Rs200/bag fertilizer price hike plus ML-1 rail reform targeting bulk fertilizer freight",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/09/14/fertilizer-prices-could-increase-by-rs-200-per-bag-in-pakistan/",
-        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Pakistan Railways reform targets 20% freight share (from 8%) after ML-1 upgrade, shifting cargo to rail",
+      "confidence": 0.45,
+      "reason": "Oil surge to $107 boosts OMC inventory gains; retail pass-through and receivables risk pending",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Pakistan-Railways-targets-20-freight-share-after-ML1-upgrade-63419"
+        "https://www.dawn.com/news/2029863/brent-crude-at-107-per-barrel-following-new-strikes-on-saudi-arabia-strait-of-hormuz",
+        "https://mettisglobal.news/Gold-falls-to-4322-as-oil-surge-stokes-inflation-fears-63424"
       ]
     },
     "Logistics/Ports": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "Hormuz/Gulf attacks raise shipping cost, insurance and delay risk on Pakistan-linked trade routes",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows"
+      ]
+    },
+    "Technology/Telecom": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Hormuz transit data is global supply context; maritime piece is headline-only, no PSX-specific mechanism",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.brecorder.com/news/40439392/hormuz-shipping-traffic-remains-below-10-day-average-at-weekend-data-shows",
-        "https://www.dawn.com/news/2029680/building-a-stronger-maritime-future"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "SBP MPC meets today; consensus expects policy rate held at 11.5%, so no surprise priced",
+      "confidence": 0.2,
+      "reason": "Ufone-Telenor 'e&' rebrand blocked pending intergovernmental approval; no earnings mechanism",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439161/market-expects-status-quo-as-mpc-meets-today"
+        "https://www.brecorder.com/news/40439408/privatisation-commission-blocks-ufones-proposed-eamp-rebranding-says-matter-requires-intergovernmental-approval"
       ]
     },
     "Pharmaceuticals": {
@@ -176,43 +133,10 @@
       "horizon": "long_term",
       "causality": "noise",
       "confidence": 0.15,
-      "reason": "Pakistan-Bangladesh pharma/agri cooperation talks are exploratory, no deal or numbers",
+      "reason": "Pakistan-Bangladesh pharma/healthcare cooperation talk is exploratory with no deal specifics",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Pakistan-Bangladesh-explore-cooperation-in-pharma-agriculture-healthcare-63421"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Ufone 'e&' rebrand blocked pending intergovernmental approval; Ufone itself is not PSX-listed",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439408/privatisation-commission-blocks-ufones-proposed-eamp-rebranding-says-matter-requires-intergovernmental-approval"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Ufone 'e&' rebrand blocked pending intergovernmental approval; Ufone itself is not PSX-listed",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439408/privatisation-commission-blocks-ufones-proposed-eamp-rebranding-says-matter-requires-intergovernmental-approval"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Named among sectors sold in broad ME-tension selloff; no auto-specific driver in article text",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439382/psx-kse-100-sheds-nearly-1500-points-as-situation-remains-tense-in-me"
       ]
     }
   }
