@@ -1,0 +1,137 @@
+{
+  "as_of": "2026-09-14T17:03:26Z",
+  "provider": "codex",
+  "model": "Codex session",
+  "review_mode": "One-time after-hours review requested by the user",
+  "input_fetched_at": "2026-09-14T16:38:50.871792+00:00",
+  "limitations": [
+    "Article text was read from Mettis Global. Company filings and market expectations were not independently checked; confidence is the reviewer's judgment, not a return probability.",
+    "No supported stock-specific negative call was found in the selected material stories. Unreviewed stocks are not labelled Neutral. News does not change daily Buy/Watch rules."
+  ],
+  "ratings": {
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "PPL reported 9% higher annual profit and a Rs6 final dividend. Revenue rose, but pre-tax profit slipped slightly and lower tax helped the final result. Positive earnings news, with a quality-of-profit caveat; expectations and price reaction are unverified.",
+      "relevance": "Direct company: Pakistan Petroleum",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PPL-FY26-profit-jumps-9-to-Rs98bn-63433"
+      ],
+      "source_published_at": [
+        "2026-09-14T15:28:00+05:00"
+      ],
+      "thread_key": "ppl-fy26-results"
+    },
+    "POWER": {
+      "rating": "neutral",
+      "causality": "noise",
+      "confidence": 0.85,
+      "horizon": "multi_session",
+      "reason": "The article describes a government hydropower project in Gilgit and does not identify Power Cement. The feed's POWER tag is not supported by the article. Neutral company impact here means this particular story is irrelevant, not that the stock is attractive.",
+      "relevance": "Rejected match: article is not about Power Cement",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Naltar-PhaseIII-to-add-16MW-to-Gilgit-Power-Grid-63430"
+      ],
+      "source_published_at": [
+        "2026-09-14T14:30:00+05:00"
+      ],
+      "thread_key": "naltar-unconfirmed-power-match"
+    },
+    "HCAR": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Honda Civic and City sales rose strongly year on year. However, overall passenger-car sales fell versus July and Honda SUV sales were weaker. Positive for the reported car segment; not evidence that all Honda sales or profits improved.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Auto-sales-accelerate-36-in-August-63441"
+      ],
+      "source_published_at": [
+        "2026-09-14T17:13:00+05:00"
+      ],
+      "relevance": "Direct brand/model link: Honda Atlas Cars"
+    },
+    "NRL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "The ECC approved the framework for refinery upgrades and incentives. This is a positive sector development, but signing, project funding and implementation remain ahead. It is not a confirmed company-specific earnings increase.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/ECC-approves-Brownfield-Policy-upgrade-agreement-63442"
+      ],
+      "source_published_at": [
+        "2026-09-14T18:39:00+05:00"
+      ],
+      "relevance": "Sector link: refinery; company benefit conditional"
+    },
+    "PRL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "The ECC approved the framework for refinery upgrades and incentives. This is a positive sector development, but signing, project funding and implementation remain ahead. It is not a confirmed company-specific earnings increase.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/ECC-approves-Brownfield-Policy-upgrade-agreement-63442"
+      ],
+      "source_published_at": [
+        "2026-09-14T18:39:00+05:00"
+      ],
+      "relevance": "Sector link: refinery; company benefit conditional"
+    },
+    "ATRL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "The ECC approved the framework for refinery upgrades and incentives. This is a positive sector development, but signing, project funding and implementation remain ahead. It is not a confirmed company-specific earnings increase.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/ECC-approves-Brownfield-Policy-upgrade-agreement-63442"
+      ],
+      "source_published_at": [
+        "2026-09-14T18:39:00+05:00"
+      ],
+      "relevance": "Sector link: refinery; company benefit conditional"
+    },
+    "PSO": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "The ECC approved an interim route to settle oil-marketing companies' verified input-sales-tax claims. Potentially positive for cash recovery, but PSO's eligible amount and payment timing were not given.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/ECC-approves-Brownfield-Policy-upgrade-agreement-63442"
+      ],
+      "source_published_at": [
+        "2026-09-14T18:39:00+05:00"
+      ],
+      "relevance": "Sector link: oil marketing; PSO amount not disclosed"
+    }
+  },
+  "sectors": {},
+  "market_context": [
+    {
+      "topic": "Business confidence",
+      "impact": "Mildly negative / mixed",
+      "reason": "Business confidence fell below 50 and inflation expectations rose. The purchasing-managers measure improved, so this is not uniformly negative and is not a sell call on every stock.",
+      "source": "https://mettisglobal.news/Business-confidence-slips-to-491-in-September-63440"
+    }
+  ],
+  "reviewed_urls": [
+    "https://mettisglobal.news/PPL-FY26-profit-jumps-9-to-Rs98bn-63433",
+    "https://mettisglobal.news/Naltar-PhaseIII-to-add-16MW-to-Gilgit-Power-Grid-63430",
+    "https://mettisglobal.news/Auto-sales-accelerate-36-in-August-63441",
+    "https://mettisglobal.news/ECC-approves-Brownfield-Policy-upgrade-agreement-63442",
+    "https://mettisglobal.news/Business-confidence-slips-to-491-in-September-63440",
+    "https://mettisglobal.news/SBP-keeps-policy-rate-unchanged-at-115-63434"
+  ]
+}
