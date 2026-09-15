@@ -162,3 +162,81 @@ class LivePriceQuoteTests(unittest.TestCase):
         ]
         q = im.quote("PSO", ticks, self._hist(100.0), self.now)
         self.assertAlmostEqual(q["price"], 105.0)         # never 999.0
+
+
+class LivePricePanelRendersWhenMomentumIsStale(unittest.TestCase):
+    """The prices panel must NOT sit behind the momentum freshness gate.
+
+    It did, and the early return meant that whenever the dashboard's checkout
+    lagged the loop -- which is most of the time, the loop commits every ~15
+    minutes and the host does not redeploy on every commit -- the whole panel
+    vanished. A stale price is shown WITH its age, never hidden.
+    """
+
+    class FakeSt:
+        def __init__(self):
+            self.md, self.captions, self.warns, self.infos, self.frames = \
+                [], [], [], [], []
+        def markdown(self, t, **k): self.md.append(t)
+        def caption(self, t, **k): self.captions.append(t)
+        def warning(self, t, **k): self.warns.append(t)
+        def info(self, t, **k): self.infos.append(t)
+        def dataframe(self, rows, **k): self.frames.append(rows)
+
+    def _write(self, tmp, checked_at, session, prices):
+        import json, pathlib
+        p = pathlib.Path(tmp) / "intraday_momentum.json"
+        p.write_text(json.dumps({"session": session, "checked_at": checked_at,
+                                 "source": "t", "checked": 1, "fresh": 1,
+                                 "failed": [], "items": [], "prices": prices}))
+        return p
+
+    def _price(self, sym="PSO", stale=False):
+        from datetime import datetime, timezone
+        return {"symbol": sym, "price": 105.0, "prior_close": 100.0,
+                "change_pct": 5.0, "day_volume": 10.0, "trades": 3,
+                "last_trade": datetime.now(timezone.utc).isoformat(),
+                "stale": stale, "age_minutes": 1.0, "note": None}
+
+    def test_prices_render_even_when_the_capture_is_far_too_old(self):
+        import tempfile, intraday_momentum as im, session_calendar as cal
+        from datetime import datetime, timezone, timedelta
+        from unittest import mock
+        now = datetime.now(timezone.utc)
+        old = (now - timedelta(minutes=90)).isoformat()
+        today = cal.local_now(now).date().isoformat()
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._write(tmp, old, today, [self._price()])
+            st = self.FakeSt()
+            with mock.patch.object(im, "PATH", p):
+                im.show(st, now)
+            self.assertTrue(any("Live prices" in m for m in st.md),
+                            "prices panel missing on a stale capture")
+            self.assertTrue(st.frames, "no price table rendered")
+            self.assertTrue(any("minutes ago" in w for w in st.warns),
+                            "stale capture not labelled with its age")
+
+    def test_a_previous_session_capture_is_labelled_not_passed_off_as_live(self):
+        import tempfile, intraday_momentum as im
+        from datetime import datetime, timezone
+        from unittest import mock
+        now = datetime.now(timezone.utc)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self._write(tmp, now.isoformat(), "1999-01-04", [self._price()])
+            st = self.FakeSt()
+            with mock.patch.object(im, "PATH", p):
+                im.show(st, now)
+            self.assertTrue(any("1999-01-04" in w and "not today" in w
+                                for w in st.warns))
+            self.assertTrue(st.frames)
+
+    def test_a_missing_file_still_renders_the_momentum_notice_without_crashing(self):
+        import tempfile, pathlib, intraday_momentum as im
+        from datetime import datetime, timezone
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            st = self.FakeSt()
+            with mock.patch.object(im, "PATH", pathlib.Path(tmp) / "absent.json"):
+                im.show(st, datetime.now(timezone.utc))
+            self.assertFalse(st.frames)
+            self.assertTrue(st.infos)

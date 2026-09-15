@@ -155,10 +155,26 @@ def collect(now=None):
 
 def show(st, now=None):
     now = now or datetime.now(timezone.utc)
-    st.markdown('### ⚡ Momentum now — current-session watch')
+    # Read ONCE, then decide per panel. The momentum trigger needs a capture
+    # under 20 minutes old to mean anything; a price does not stop being the
+    # last traded price because the file is 25 minutes old. Prices used to sit
+    # behind the momentum freshness gate and simply vanished whenever the
+    # dashboard's checkout lagged the loop -- which is most of the time, since
+    # the loop commits every ~15 minutes and the host does not redeploy on
+    # every commit. Showing a stale price WITH its age is the whole point.
+    data, age = None, None
     try:
         data = json.loads(PATH.read_text(encoding='utf-8'))
         age = (now - datetime.fromisoformat(data['checked_at'])).total_seconds()
+    except (OSError, ValueError, KeyError):
+        data, age = None, None
+    if data is not None:
+        show_prices(st, data, now, age)
+
+    st.markdown('### ⚡ Momentum now — current-session watch')
+    try:
+        if data is None:
+            raise ValueError('No capture')
         if data['session'] != calendar.local_now(now).date().isoformat() or not 0 <= age <= 1200:
             raise ValueError('Capture is old')
     except (OSError, ValueError, KeyError):
@@ -176,10 +192,9 @@ def show(st, now=None):
         st.info('No stocks have fresh current-session trades. Current momentum is unavailable.')
     else:
         st.info('No freshly traded stocks passed these momentum checks.')
-    show_prices(st, data, now)
 
 
-def show_prices(st, data, now):
+def show_prices(st, data, now, capture_age_s=None):
     """Today's price for every stock, whether or not it is a Watch idea.
 
     The momentum panel above answers one question and correctly stays silent on
@@ -196,6 +211,17 @@ def show_prices(st, data, now):
     if not prices:
         return
     st.markdown('### 💹 Live prices — current session')
+    # State the capture's own age first. A price from a session that is not
+    # today is labelled as such rather than passed off as live.
+    session = data.get('session')
+    today = calendar.local_now(now).date().isoformat()
+    if session != today:
+        st.warning(f"These are the last prices captured on {session}, not today. "
+                   "The engine loop has not published a scan for today yet.")
+    elif capture_age_s is not None and capture_age_s > 1200:
+        st.warning(f"Captured {capture_age_s / 60:.0f} minutes ago — the page is "
+                   "behind the engine, or the loop has stopped. Prices below are "
+                   "real but not current; reload before acting on them.")
     fresh = [p for p in prices if not p.get('stale')]
     moved = [p for p in fresh if p.get('change_pct') is not None]
     up = sum(1 for p in moved if p['change_pct'] > 0)
