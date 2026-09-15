@@ -84,3 +84,81 @@ class QuoteTests(unittest.TestCase):
         data = 'symbol,t,bid_price,bid_volume,ask_price,ask_volume\nPSO,10:20:00,100,300,100.02,100\n'
         self.assertFalse(depth.parse(data)[0])
         self.assertEqual(depth.parse(data, 'PSO_2026-09-11.csv')[0][0]['time'], self.now)
+
+
+class LivePriceQuoteTests(unittest.TestCase):
+    """quote() keeps the price for EVERY symbol. detect() answers a different
+    question and returns None for most of them, which is why a day with 60
+    freshly-trading stocks could render an empty dashboard."""
+
+    def setUp(self):
+        from datetime import datetime, timezone
+        import session_calendar as calendar
+        self.now = datetime.now(timezone.utc)
+        self.today = calendar.local_now(self.now).date().isoformat()
+        self.prior_day = "2000-01-03"
+
+    def _ticks(self, price, minutes_ago=1, n=3):
+        base = self.now.timestamp() - minutes_ago * 60
+        return [[base - i * 60, price, 100.0] for i in range(n)][::-1]
+
+    def _hist(self, close=100.0, source="PSX historical"):
+        # "PSX historical" is the only source scoring >=3 in source_priority;
+        # the banked daily bars carry it. A weaker source must not be trusted
+        # as a change baseline, which test_an_unvalidated_prior_bar checks.
+        return [{"date": self.prior_day, "open": close, "high": close,
+                 "low": close, "close": close, "volume": 1000.0, "source": source}]
+
+    def test_price_and_change_for_an_ordinary_symbol(self):
+        import intraday_momentum as im
+        q = im.quote("PSO", self._ticks(105.0), self._hist(100.0), self.now)
+        self.assertEqual(q["symbol"], "PSO")
+        self.assertAlmostEqual(q["price"], 105.0)
+        self.assertAlmostEqual(q["change_pct"], 5.0)
+        self.assertAlmostEqual(q["prior_close"], 100.0)
+        self.assertFalse(q["stale"])
+        self.assertEqual(q["trades"], 3)
+
+    def test_no_prior_close_yields_no_change_not_a_guess(self):
+        import intraday_momentum as im
+        q = im.quote("PSO", self._ticks(105.0), [], self.now)
+        self.assertIsNone(q["change_pct"])
+        self.assertIsNone(q["prior_close"])
+        self.assertAlmostEqual(q["price"], 105.0)   # the price is still real
+
+    def test_an_unvalidated_prior_bar_is_not_used_as_a_baseline(self):
+        import intraday_momentum as im
+        bad = self._hist(100.0, source="scraped guess")
+        self.assertIsNone(im.quote("PSO", self._ticks(105.0), bad, self.now)["change_pct"])
+
+    def test_a_move_past_the_circuit_limit_withholds_the_percentage(self):
+        """Beyond +-10.5% is an unadjusted corporate action far more often than
+        a real gap, so the number is withheld and the reason given."""
+        import intraday_momentum as im
+        q = im.quote("PSO", self._ticks(150.0), self._hist(100.0), self.now)
+        self.assertIsNone(q["change_pct"])
+        self.assertIn("corporate action", q["note"])
+        self.assertAlmostEqual(q["price"], 150.0)
+
+    def test_a_stale_price_is_shown_and_marked_never_hidden(self):
+        import intraday_momentum as im
+        q = im.quote("PSO", self._ticks(105.0, minutes_ago=45), self._hist(100.0), self.now)
+        self.assertTrue(q["stale"])
+        self.assertGreater(q["age_minutes"], 20)
+        self.assertAlmostEqual(q["price"], 105.0)
+
+    def test_no_same_day_trades_returns_nothing(self):
+        import intraday_momentum as im
+        old = [[self.now.timestamp() - 86400 * 3, 105.0, 100.0]]
+        self.assertIsNone(im.quote("PSO", old, self._hist(), self.now))
+
+    def test_future_and_malformed_ticks_are_dropped_not_raised(self):
+        """quote() runs for all 60 symbols; one bad tick must not blank the panel."""
+        import intraday_momentum as im
+        ticks = self._ticks(105.0) + [
+            [self.now.timestamp() + 3600, 999.0, 1.0],   # future
+            ["x", "y", "z"],                              # malformed
+            [self.now.timestamp(), -5.0, 1.0],            # negative price
+        ]
+        q = im.quote("PSO", ticks, self._hist(100.0), self.now)
+        self.assertAlmostEqual(q["price"], 105.0)         # never 999.0

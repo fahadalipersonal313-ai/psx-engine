@@ -59,11 +59,64 @@ def detect(symbol, ticks, history, now):
             'price': price, 'last_trade': at.isoformat(), 'date': today}
 
 
+def quote(symbol, ticks, history, now):
+    """Last traded price this session, for EVERY symbol -- no momentum filter.
+
+    detect() answers "is this a Watch idea?" and returns None for the other 59
+    names, so the prices it had in hand were thrown away. That is why the
+    dashboard could show nothing live on a day when all 60 symbols had fresh
+    ticks. This keeps the price; it applies no opinion to it.
+
+    Never fabricates: a missing or unvalidated prior close yields change=None
+    rather than a number, and a tick older than 20 minutes is returned marked
+    stale rather than hidden, because a silently old price is the dangerous one.
+    """
+    today = calendar.local_now(now).date().isoformat()
+    rows = []
+    for tick in ticks:
+        try:
+            ts, price, volume = map(float, tick[:3])
+        except (TypeError, ValueError):
+            continue
+        if not all(math.isfinite(x) for x in (ts, price, volume)) or price <= 0 or volume < 0:
+            continue
+        at = datetime.fromtimestamp(ts, timezone.utc)
+        if at > now:
+            continue                      # a future trade is bad data, not a quote
+        if calendar.local_now(at).date().isoformat() == today:
+            rows.append((at, price, volume))
+    if not rows:
+        return None
+    rows.sort()
+    at, price, _ = rows[-1]
+    age_s = (now - at).total_seconds()
+
+    prior_close = change = None
+    prior = [x for x in history if x['date'] < today]
+    if prior:
+        last = prior[-1]
+        if not bar_error(last) and source_priority(last.get('source')) >= 3 \
+                and last.get('close'):
+            prior_close = float(last['close'])
+            change = (price / prior_close - 1) * 100
+    suspect = change is not None and abs(change) > 10.5   # beyond the circuit limit
+    return {'symbol': symbol, 'price': price, 'prior_close': prior_close,
+            'change_pct': None if suspect else change,
+            'day_volume': sum(r[2] for r in rows), 'trades': len(rows),
+            'last_trade': at.isoformat(), 'stale': age_s > 1200,
+            'age_minutes': round(age_s / 60, 1),
+            # A move beyond the circuit limit means an unadjusted corporate
+            # action far more often than a real 10%+ gap, so the percentage is
+            # withheld and the reason is stated rather than a wrong number shown.
+            'note': 'change withheld: move exceeds the circuit limit, '
+                    'likely an unadjusted corporate action' if suspect else None}
+
+
 def collect(now=None):
     now = now or datetime.now(timezone.utc)
     day = calendar.local_now(now).date().isoformat()
     result = {'session': day, 'checked_at': now.isoformat(), 'source': 'PSX DPS intraday',
-              'checked': 0, 'fresh': 0, 'failed': [], 'items': []}
+              'checked': 0, 'fresh': 0, 'failed': [], 'items': [], 'prices': []}
     with db.conn() as c:
         history = {s: [dict(x) for x in c.execute(
             'SELECT * FROM daily_ohlc WHERE symbol=? AND date<? ORDER BY date DESC LIMIT 20', (s, day))][::-1]
@@ -74,25 +127,29 @@ def collect(now=None):
         ticks = response.json()['data']
         checked = datetime.now(timezone.utc)
         candidate = detect(symbol, ticks, history[symbol], checked)
+        live = quote(symbol, ticks, history[symbol], checked)
         last = datetime.fromtimestamp(max(float(t[0]) for t in ticks), timezone.utc) if ticks else None
         fresh = bool(last and calendar.local_now(last).date().isoformat() == day
                      and 0 <= (checked-last).total_seconds() <= 1200)
-        return candidate, fresh
+        return candidate, fresh, live
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         futures = {pool.submit(fetch, s): s for s in config.STOCKS}
         for future in concurrent.futures.as_completed(futures):
             symbol = futures[future]
             try:
-                row, fresh = future.result()
+                row, fresh, live = future.result()
                 result['checked'] += 1
                 result['fresh'] += int(fresh)
                 if row:
                     result['items'].append(row)
+                if live:
+                    result['prices'].append(live)
             except Exception:
                 result['failed'].append(symbol)
     result['items'].sort(key=lambda x: -x['gain_pct'])
+    result['prices'].sort(key=lambda x: (x['change_pct'] is None, -(x['change_pct'] or 0)))
     PATH.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-    print(f"Intraday scan {day}: {result['checked']}/{len(config.STOCKS)} checked; {len(result['items'])} candidates; {len(result['failed'])} failed")
+    print(f"Intraday scan {day}: {result['checked']}/{len(config.STOCKS)} checked; {len(result['items'])} candidates; {len(result['prices'])} live prices; {len(result['failed'])} failed")
     return result
 
 
@@ -119,6 +176,50 @@ def show(st, now=None):
         st.info('No stocks have fresh current-session trades. Current momentum is unavailable.')
     else:
         st.info('No freshly traded stocks passed these momentum checks.')
+    show_prices(st, data, now)
+
+
+def show_prices(st, data, now):
+    """Today's price for every stock, whether or not it is a Watch idea.
+
+    The momentum panel above answers one question and correctly stays silent on
+    a quiet day. That silence was being read as "no live data" when in fact all
+    60 symbols had fresh ticks, so the prices were fetched every cycle and then
+    discarded. This shows them.
+
+    Context only, and that is enforced rather than promised: nothing here is
+    written to daily_ohlc, reaches decision_engine, or carries score weight. The
+    signals above it are still computed from the last COMPLETED session, which
+    is why they can legitimately differ from these numbers all day.
+    """
+    prices = data.get('prices') or []
+    if not prices:
+        return
+    st.markdown('### 💹 Live prices — current session')
+    fresh = [p for p in prices if not p.get('stale')]
+    moved = [p for p in fresh if p.get('change_pct') is not None]
+    up = sum(1 for p in moved if p['change_pct'] > 0)
+    st.caption(
+        f"{len(fresh)} of {len(prices)} stocks trading in the last 20 minutes · "
+        f"{up} up, {len(moved) - up} down versus the previous close. "
+        "Context only — these prices carry ZERO weight and do not move any "
+        "signal. Buy/Watch calls above use the last COMPLETED session, so they "
+        "will not follow these until after today's close.")
+    rows = []
+    for p in prices:
+        change = p.get('change_pct')
+        rows.append({
+            'Stock': p['symbol'],
+            'Price now': round(p['price'], 2),
+            'Change %': None if change is None else round(change, 2),
+            'Previous close': None if p.get('prior_close') is None else round(p['prior_close'], 2),
+            'Trades today': p.get('trades'),
+            'Last trade (PKT)': calendar.local_now(
+                datetime.fromisoformat(p['last_trade'])).strftime('%H:%M:%S'),
+            'Note': p.get('note') or ('stale — no trade for '
+                                      f"{p.get('age_minutes')} min" if p.get('stale') else ''),
+        })
+    st.dataframe(rows, hide_index=True, height=420)
 
 
 if __name__ == '__main__':
