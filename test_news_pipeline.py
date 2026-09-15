@@ -150,7 +150,14 @@ class NewsMemoryTests(unittest.TestCase):
         self.assertEqual(news_memory.thread_summary("NOSUCH"), "")
         self.assertEqual(news_memory.remembered_symbols(), [])
 
-    def _write_raw(self, items, stamp="2026-09-11T10:00:00+00:00"):
+    def _write_raw(self, items, stamp=None):
+        # Relative to NOW, never a hard-coded date: a fixture pinned to
+        # 2026-09-11 silently drifted outside the 72-hour window this test
+        # queries and began failing four days later, reporting a product bug
+        # that did not exist.
+        if stamp is None:
+            from datetime import datetime, timezone
+            stamp = datetime.now(timezone.utc).isoformat()
         import json, os
         p = os.path.join(self.tmp, "raw.json")
         with open(p, "w", encoding="utf-8") as fh:
@@ -206,7 +213,8 @@ class NewsMemoryTests(unittest.TestCase):
         news_memory.ingest_raw(self._write_raw(
             [{"symbol": "OGDC", "title": "OGDC drills", "source": "BR",
               "url": "https://x.test/3"}]))
-        self._write({"as_of": "2026-09-11T10:30:00Z",
+        from datetime import datetime, timezone
+        self._write({"as_of": datetime.now(timezone.utc).isoformat(),
                      "ratings": {"OGDC": {"rating": "positive", "causality": "causal",
                                           "confidence": 0.5, "horizon": "multi_session",
                                           "reason": "well", "sources": ["https://x.test/3"]}}})
