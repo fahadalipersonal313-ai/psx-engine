@@ -1,0 +1,247 @@
+{
+  "as_of": "2026-09-16T06:45:00Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-16T06:43:32.420553+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "The Strait of Hormuz update continues the existing middle-east-oil-supply-shock thread. Full text was verified from the original Reuters report because the linked Business Recorder copy was not directly retrievable in this cloud browser.",
+    "The 11:26 PKT Business Recorder PSX selloff item was available through the committed raw summary during this run, so it is used as broad-market context only and not as company-rating evidence.",
+    "The KSE-100 recomposition and Pakistan fuel-price stories are carried forward from the current session because they remain valid current-session reviewed evidence; they were not reinterpreted as new stories.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "PSX recomposes KSE-100 Index, effective October 1",
+      "assessment": "positive",
+      "linkage": "direct for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "Image Pakistan Limited and Thatta Cement Company Limited are explicitly being added to the KSE-100 from October 1, which can improve benchmark visibility and may create index-rebalancing demand. Nishat Chunian Power Limited is NCPL, not Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Petrol price rises Rs4.1, HSD jumps Rs6.4 from Sept 16",
+      "assessment": "neutral",
+      "linkage": "direct operating exposure for PSO",
+      "reason": "The ex-depot petrol and HSD price increases are directly relevant to PSO's core products, but the article gives no PSO-specific margin, volume, inventory or working-capital impact. A higher selling price alone is not enough to infer higher profit.",
+      "source": "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476",
+      "published": "2026-09-15T23:05:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.65
+    },
+    {
+      "title": "Oil slips on US stock build, Middle East disruptions limit losses",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation backdrop",
+      "reason": "Brent was still about $108 despite a large US inventory build because Saudi Yanbu loadings and the East-West pipeline disruption remained unresolved. The physical supply problem continues to support upstream oil-linked exposure while worsening Pakistan's imported-energy backdrop.",
+      "source": "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+      "published": "2026-09-16T00:41:00Z",
+      "text_depth": "full",
+      "confidence": 0.55
+    },
+    {
+      "title": "Strait of Hormuz ship crossings remain in single digits, data shows",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation backdrop",
+      "reason": "Visible Hormuz transits fell to four on Tuesday from seven a day earlier and a 10-day average of 18, with no VLCC or LNG tanker among the counted crossings. That is a material continuation of the supply-disruption thread and supports elevated crude risk, while increasing Pakistan's imported-energy exposure.",
+      "source": "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/",
+      "published": "2026-09-16T03:33:00Z",
+      "text_depth": "full",
+      "confidence": 0.6
+    },
+    {
+      "title": "PSX: Selling continues as KSE-100 sheds over 800 points",
+      "assessment": "negative",
+      "linkage": "broad-market context only; no company-specific rating",
+      "reason": "The committed raw summary reported the KSE-100 down 857.46 points at 11:20 PKT, with selling across autos, cement, banks, exploration companies and OMCs amid escalating Middle East tensions. This is market reaction evidence, not a new company cash-flow event.",
+      "source": "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points",
+      "published": "2026-09-16T11:26:40+05:00",
+      "text_depth": "raw_summary",
+      "confidence": 0.6
+    }
+  ],
+  "ratings": {
+    "IMAGE": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Image Pakistan Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, though the size of any flow is not guaranteed.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
+      ],
+      "source_published": [
+        "2026-09-15T16:52:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-15T16:52:00+05:00"
+      ],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
+    "THCCL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Thatta Cement Company Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, while the actual flow magnitude remains uncertain.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
+      ],
+      "source_published": [
+        "2026-09-15T16:52:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-15T16:52:00+05:00"
+      ],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: Brent remained near $108 and visible Hormuz transits fell to four, far below the recent average, while Saudi export-route disruption remained unresolved. That supports OGDC's upstream oil-linked exposure, though receivables and production mix remain separate risks.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+        "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/"
+      ],
+      "source_published": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "source_published_at": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: Brent remained near $108 and visible Hormuz transits fell to four, far below the recent average, while Saudi export-route disruption remained unresolved. That supports PPL's upstream oil-linked exposure; this is a sector read, not a new company-specific earnings estimate.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+        "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/"
+      ],
+      "source_published": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "source_published_at": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: crude remains near $108 and Hormuz traffic is severely constrained, supporting the upstream energy backdrop. Mari's gas-heavy production mix makes the direct crude sensitivity weaker than for more oil-linked producers, so confidence remains lower.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+        "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/"
+      ],
+      "source_published": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "source_published_at": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Direct operating link: ex-depot petrol rose Rs4.10 per litre and HSD rose Rs6.41 effective September 16. The article does not disclose PSO-specific margin, volume, inventory or working-capital effects, so the price increase is operationally relevant but not enough for a defensible positive or negative earnings call.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"
+      ],
+      "source_published": [
+        "2026-09-15T23:05:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-15T23:05:00+05:00"
+      ],
+      "thread_key": "pakistan-fuel-price-shock"
+    }
+  },
+  "sectors": {
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Brent remains near $108, visible Hormuz transits fell to four versus a 10-day average of 18, and Saudi export-route disruption remains unresolved. The worsening physical-flow evidence keeps the upstream backdrop supportive.",
+      "text_depth": "full",
+      "sources": [
+        "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+        "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/"
+      ],
+      "source_published": [
+        "2026-09-16T00:41:00Z",
+        "2026-09-16T03:33:00Z"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Petrol and HSD ex-depot prices rose effective September 16, but the source does not establish a sector-wide margin or volume benefit. Higher selling prices are operationally relevant without proving a directional earnings effect.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"
+      ],
+      "source_published": [
+        "2026-09-15T23:05:00+05:00"
+      ]
+    }
+  },
+  "market_context": [
+    {
+      "topic": "KSE-100 recomposition creates direct inclusion catalysts for IMAGE and THCCL",
+      "impact": "Positive for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "PSX will add Image Pakistan Limited and Thatta Cement Company Limited to the KSE-100 effective October 1. Nishat Chunian Power Limited is NCPL, not Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00"
+    },
+    {
+      "topic": "Hormuz physical-flow disruption worsens",
+      "impact": "Positive for upstream oil exposure; negative for Pakistan's broad import and inflation backdrop",
+      "reason": "Visible Hormuz transits fell to four on Tuesday from seven a day earlier and a 10-day average of 18, with no VLCC or LNG tanker in the counted crossings. Brent remained near $108 despite a large US inventory build.",
+      "source": "https://www.reuters.com/world/middle-east/strait-hormuz-ship-crossings-remain-single-digits-data-shows-2026-09-16/",
+      "published": "2026-09-16T03:33:00Z"
+    },
+    {
+      "topic": "Intraday PSX selling deepens",
+      "impact": "Negative broad-market context; not a company-specific rating",
+      "reason": "The committed Business Recorder raw summary reported the KSE-100 down 857.46 points at 11:20 PKT, with selling across auto assemblers, cement, banks, exploration companies and OMCs amid escalating Middle East tensions.",
+      "source": "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points",
+      "published": "2026-09-16T11:26:40+05:00",
+      "text_depth": "raw_summary"
+    }
+  ]
+}
