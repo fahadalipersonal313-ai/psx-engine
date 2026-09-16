@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-16T06:41:21Z",
+  "as_of": "2026-09-16T07:41:17Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -29,13 +29,6 @@
     "https://mettisglobal.news/SECP-targets-digital-transformation-of-Pakistans-insurance-sector-63468",
     "https://mettisglobal.news/SMCPL-flags-fraudulent-accounts-misusing-Arif-Habibs-name-63471",
     "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480",
-    "https://www.brecorder.com/news/40439702/nutshell-group-to-host-9th-edition-of-liibs-2026-tomorrow",
-    "https://www.brecorder.com/news/40439703/pak-china-strategic-trust-must-be-sustained-reinforced-president",
-    "https://www.brecorder.com/news/40439704/mobile-internet-usage-gap-pakistan-ranks-among-top-countries-by-absolute-number",
-    "https://www.brecorder.com/news/40439705/iks-hospital-transfer-case-pti-criticises-fcc-intervention-to-sc-order",
-    "https://www.brecorder.com/news/40439706/pti-punjab-mps-agree-to-sustain-intensify-public-outreach",
-    "https://www.brecorder.com/news/40439707/punjab-mandates-wet-cleaning-to-combat-smog",
-    "https://www.brecorder.com/news/40439708/secp-chief-highlights-importance-of-digital-transformation",
     "https://www.brecorder.com/news/40439709/smeda-gears-up-to-connect-smes-with-japans-b2b-platform",
     "https://www.brecorder.com/news/40439710/speakers-raise-questions-over-new-electricity-charges-system",
     "https://www.brecorder.com/news/40439711/ugdc-establishes-national-presence-at-gastech-expo",
@@ -57,16 +50,45 @@
     "https://www.brecorder.com/news/40439747/australian-nz-dollars-on-edge-as-markets-weigh-fed-scenarios",
     "https://www.brecorder.com/news/40439749/australian-shares-rise-on-energy-boost-fed-decision-in-focus",
     "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows",
-    "https://www.brecorder.com/news/40439751/five-killed-in-hanoi-house-fire-police-say"
+    "https://www.brecorder.com/news/40439751/five-killed-in-hanoi-house-fire-police-say",
+    "https://www.brecorder.com/news/40439752/brook-hits-lightning-century-as-england-crush-sri-lanka-by-119-runs-in-opening-t20",
+    "https://www.brecorder.com/news/40439753/samson-reddy-lead-india-to-series-clinching-win-over-afghanistan",
+    "https://www.brecorder.com/news/40439754/worldcall-placed-in-non-compliant-segment-after-court-dismisses-plea",
+    "https://www.brecorder.com/news/40439755/messi-called-up-by-argentina-to-make-farewell-appearance-following-international-retirement",
+    "https://www.brecorder.com/news/40439756/sloane-stephens-squeezes-into-guadalajara-quarterfinals",
+    "https://www.brecorder.com/news/40439757/after-quiet-olympics-japan-seeks-a-sporting-celebration-at-asian-games",
+    "https://www.brecorder.com/news/40439758/russian-drone-strike-on-ukraine-bus-near-front-kills-5"
   ],
-  "count": 2,
+  "count": 4,
   "ratings": {
+    "POWER": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "KSE-100 recompose story names Nishat Chunian Power (NCPL), not Power Cement (POWER); no real POWER story today",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
+      ]
+    },
+    "OGDC": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "OGDC sold off with broad market on Fed-hike jitters and Mideast risk-off, no OGDC-specific driver",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points"
+      ]
+    },
     "IMAGE": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Image Pakistan Limited joins KSE-100 index Oct 1, drawing passive/index-tracker inflows",
+      "confidence": 0.55,
+      "reason": "Image Pakistan added to KSE-100 index effective Oct 1, creating passive index-tracking demand",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -76,8 +98,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Thatta Cement Company joins KSE-100 index Oct 1, drawing passive/index-tracker inflows",
+      "confidence": 0.55,
+      "reason": "Thatta Cement added to KSE-100 index effective Oct 1, creating passive index-tracking demand",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -85,12 +107,35 @@
     }
   },
   "sectors": {
-    "Food": {
-      "rating": "negative",
+    "Technology/Telecom": {
+      "rating": "neutral",
       "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "WTL non-compliance and PTML SIM suspension are single-company; PTA device standards are routine",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439754/worldcall-placed-in-non-compliant-segment-after-court-dismisses-plea",
+        "https://www.dawn.com/news/2030159/pta-orders-ptml-to-suspend-new-onic-sim-esim-issuance-and-subscriptions"
+      ]
+    },
+    "Technology/Telecom Devices": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "PTA Bluetooth/Wi-Fi/GPS/NFC standards are routine compliance, not a sector repricing catalyst",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/09/16/pta-sets-new-standards-for-bluetooth-wi-fi-gps-and-nfc-devices/"
+      ]
+    },
+    "Food": {
+      "rating": "neutral",
+      "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.35,
-      "reason": "PAC halts 200k-tonne sugar export despite Advisory Board's green light, pausing export upside",
+      "reason": "Advisory Board approved 200k-tonne sugar exports but PAC immediately halted the move same day",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Govt-allows-export-of-200000-tonnes-of-sugar-after-Advisory-Board-review-63487",
@@ -98,22 +143,23 @@
       ]
     },
     "Oil Marketing": {
-      "rating": "neutral",
+      "rating": "negative",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Only global Mideast/Fed macro wire pieces mention oil; no PSX-specific OMC catalyst today",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Hormuz shipping disruption keeps crude elevated near $108, pressuring OMC input costs and margins",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows"
+        "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows",
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points"
       ]
     },
     "Cement": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Only broad market selloff recap and yesterday's rebound; no fresh cement-specific catalyst",
+      "confidence": 0.3,
+      "reason": "Cement swung from Tuesday's broad-based rally to Wednesday's broad selloff, index rotation not sector news",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points",
@@ -124,8 +170,8 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Only broad market selloff recap and yesterday's rebound; no fresh cement-specific catalyst",
+      "confidence": 0.3,
+      "reason": "Cement swung from Tuesday's broad-based rally to Wednesday's broad selloff, index rotation not sector news",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points",
@@ -137,42 +183,44 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "SBP sandbox/fintech clarification and M2 data carry no Islamic-banking-specific mechanism",
+      "reason": "M2 money-supply data and SBP sandbox conclusion are system-wide, no Islamic-banking-specific mechanism",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/M2-rises-by-Rs449bn-in-a-week-63484"
+        "https://mettisglobal.news/M2-rises-by-Rs449bn-in-a-week-63484",
+        "https://mettisglobal.news/SBP-concludes-First-Cohort-of-its-Regulatory-Sandbox-63475"
       ]
     },
     "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Named only as one of several sectors selling in today's broad market decline",
-      "text_depth": "full",
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "New auto policy in final stages, official said extra duties set to be removed soon",
+      "text_depth": "headline",
       "sources": [
-        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points"
+        "https://propakistani.pk/2026/09/16/govt-set-to-remove-extra-duties-under-new-auto-policy/"
       ]
     },
     "Refinery": {
-      "rating": "positive",
+      "rating": "neutral",
       "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Hormuz tanker traffic near record lows amid Mideast attacks keeps crude elevated, aiding refiner inventory economics",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Only global oil/bond macro items today, no Pakistan-specific refinery policy or contract story",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows"
       ]
     },
     "Oil & Gas Exploration": {
-      "rating": "positive",
+      "rating": "negative",
       "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Hormuz supply disruption sustains high global crude, directly lifting E&P wellhead realisation",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "E&P names sold off with the broad market on Fed-hike/Mideast risk-off despite firmer global crude",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-over-800-points",
         "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows"
       ]
     },
@@ -180,19 +228,19 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Petrol/HSD ex-depot price hike doesn't mechanically move OGRA-regulated gas-distribution tariffs",
+      "confidence": 0.2,
+      "reason": "Petrol/HSD ex-depot price hike is an OMC pass-through matter, not a gas-utility tariff mechanism",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"
       ]
     },
     "Logistics/Ports": {
-      "rating": "neutral",
+      "rating": "negative",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Strait of Hormuz shipping data covers global tanker routes, not Pakistani port/logistics operators",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Hormuz transits near multi-week lows signal regional shipping disruption risk raising freight/insurance costs",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40439750/strait-of-hormuz-ship-crossings-remain-in-single-digits-data-shows"
@@ -203,33 +251,10 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "Only a headline-only soybean/crude story and yesterday's index recap; no fresh fertilizer catalyst",
+      "reason": "US soybean futures move is unrelated to Pakistani urea/DAP producers; other item is yesterday's stale close recap",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "WTL stays non-compliant after court dismisses relief plea; PTA halts PTML new SIM/eSIM issuance",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480",
-        "https://www.dawn.com/news/2030159/pta-orders-ptml-to-suspend-new-onic-sim-esim-issuance-and-subscriptions"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "WTL/PTML items are telecom-operator regulatory actions, not mechanically relevant to device makers",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480"
       ]
     },
     "Textile": {
@@ -237,7 +262,7 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "Index reshuffle drops one textile name (not tracked); no sector-wide driver",
+      "reason": "Only story is Mehmood Textile Mills' single-company KSE-100 exit, not a sector-wide event",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -248,7 +273,7 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "Index reshuffle drops one textile name (not tracked); no sector-wide driver",
+      "reason": "Only story is Mehmood Textile Mills' single-company KSE-100 exit, not a sector-wide event",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
