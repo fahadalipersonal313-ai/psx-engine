@@ -1,13 +1,15 @@
 {
-  "as_of": "2026-09-16T04:40:38Z",
+  "as_of": "2026-09-16T05:40:24Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 49,
+  "articles_read": 53,
   "read_urls": [
     "https://mettisglobal.news/APAG-marks-PSX-listing-with-Gong-Ceremony-63472",
+    "https://mettisglobal.news/Amreli-Steels-swings-to-Rs548m-profit-in-FY26-63481",
     "https://mettisglobal.news/Asian-markets-open-mixed-ahead-of-key-fed-rate-decision-63478",
     "https://mettisglobal.news/Federal-SOEs-deliver-Rs35bn-positive-fiscal-flow-in-H1FY26-63456",
+    "https://mettisglobal.news/Gold-edges-up-to-4324-as-Fed-decision-awaited-63482",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs4000-per-tola-63467",
     "https://mettisglobal.news/Gold-steadies-around-4288-amid-Fed-rate-wait-63458",
     "https://mettisglobal.news/Govt-issues-first-batch-of-green-plates-under-Asaan-Tax-Scheme-for-traders-63465",
@@ -15,6 +17,7 @@
     "https://mettisglobal.news/Mughal-Steel-profit-doubles-to-Rs25bn-declares-Rs2share-dividend-63461",
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63479",
     "https://mettisglobal.news/NSS-mobilised-Rs325-billion-63469",
+    "https://mettisglobal.news/Oil-holds-above-108-amid-Middle-East-supply-fears-63483",
     "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470",
     "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
     "https://mettisglobal.news/Pakistan-Canada-to-accelerate-FIPA-negotiations-63464",
@@ -24,6 +27,7 @@
     "https://mettisglobal.news/SBP-concludes-First-Cohort-of-its-Regulatory-Sandbox-63475",
     "https://mettisglobal.news/SECP-targets-digital-transformation-of-Pakistans-insurance-sector-63468",
     "https://mettisglobal.news/SMCPL-flags-fraudulent-accounts-misusing-Arif-Habibs-name-63471",
+    "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480",
     "https://www.brecorder.com/news/40439690/ahsan-proposes-sco-digital-governance-ai-capacity-building-network",
     "https://www.brecorder.com/news/40439691/chinese-manufacturers-invited-to-establish-jvs-in-country",
     "https://www.brecorder.com/news/40439692/democracy-must-rest-on-peoples-will-governor",
@@ -46,14 +50,14 @@
     "https://www.brecorder.com/news/40439709/smeda-gears-up-to-connect-smes-with-japans-b2b-platform",
     "https://www.brecorder.com/news/40439710/speakers-raise-questions-over-new-electricity-charges-system",
     "https://www.brecorder.com/news/40439711/ugdc-establishes-national-presence-at-gastech-expo",
-    "https://www.brecorder.com/news/40439723/oil-falls-as-us-crude-inventories-rise-despite-saudi-supply-concerns",
-    "https://www.brecorder.com/news/40439725/gold-muted-as-investors-brace-for-fed-rate-decision",
-    "https://www.brecorder.com/news/40439726/dollar-girded-by-bets-on-a-us-hiking-cycle",
-    "https://www.brecorder.com/news/40439727/asian-markets-make-nervous-start-ahead-of-fed-decision",
-    "https://www.brecorder.com/news/40439728/indian-shares-seen-opening-higher-after-selloff-higher-oil-fed-caution-to-cap-gains",
-    "https://www.brecorder.com/news/40439729/boeing-korean-air-finalize-order-for-103-aircraft",
     "https://www.brecorder.com/news/40439730/saudi-coalition-says-houthi-drone-destroyed-near-makkah",
-    "https://www.brecorder.com/news/40439731/indian-rupee-faces-more-pressure-with-likely-fed-rate-hike-compounding-oil-pain"
+    "https://www.brecorder.com/news/40439731/indian-rupee-faces-more-pressure-with-likely-fed-rate-hike-compounding-oil-pain",
+    "https://www.brecorder.com/news/40439732/indian-central-bank-likely-intervenes-to-support-rupee-traders-say",
+    "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points",
+    "https://www.brecorder.com/news/40439734/thai-bahtus-dollar-weaker-on-wednesday",
+    "https://www.brecorder.com/news/40439735/three-dead-after-helicopter-crash-in-los-angeles-fire-department-says",
+    "https://www.brecorder.com/news/40439736/chinas-yuan-holds-ground-ahead-of-fed-outcome",
+    "https://www.brecorder.com/news/40439737/south-korean-shares-rise-as-chipmakers-gain-ahead-of-fed-outcome"
   ],
   "count": 3,
   "ratings": {
@@ -61,8 +65,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Joins KSE-100 index Oct 1 notification, passive inflows likely",
+      "confidence": 0.5,
+      "reason": "Joins KSE-100 index Oct 1, likely drawing passive/index-tracker inflows",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -72,8 +76,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Joins KSE-100 index Oct 1 notification, passive inflows likely",
+      "confidence": 0.5,
+      "reason": "Joins KSE-100 index Oct 1, likely drawing passive/index-tracker inflows",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -83,8 +87,8 @@
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Joins KSE-100 index Oct 1 notification, passive inflows likely",
+      "confidence": 0.5,
+      "reason": "Joins KSE-100 index Oct 1, likely drawing passive/index-tracker inflows",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
@@ -92,121 +96,131 @@
     }
   },
   "sectors": {
-    "Technology/Telecom": {
+    "Refinery": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Mideast supply risk (Saudi pipeline/port halt) lifts crude, raising refiner inventory economics",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-holds-above-108-amid-Middle-East-supply-fears-63483",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63477"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Ex-depot fuel price hike (petrol +Rs4.10, HSD +Rs6.41) lifts OMC per-litre revenue",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63477"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.55,
+      "reason": "Brent/WTI up on Mideast pipeline attack directly lifts E&P sales realisation",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-holds-above-108-amid-Middle-East-supply-fears-63483"
+      ]
+    },
+    "Cement": {
       "rating": "neutral",
-      "horizon": "long_term",
+      "horizon": "single_session",
       "causality": "correlated",
       "confidence": 0.3,
-      "reason": "PTA order hits PTML only; usage-gap report is structural not a catalyst",
-      "text_depth": "headline",
+      "reason": "No fresh cement-specific catalyst; sector only tracks today's broad market selloff",
+      "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439704/mobile-internet-usage-gap-pakistan-ranks-among-top-countries-by-absolute-number",
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points",
+        "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "No fresh cement-specific catalyst; sector only tracks today's broad market selloff",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points",
+        "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "SBP fintech regulatory-sandbox cohort update carries no Islamic-banking-specific mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/SBP-concludes-First-Cohort-of-its-Regulatory-Sandbox-63475"
+      ]
+    },
+    "Auto Assembler": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Named only as one of several sectors selling in today's broad market decline",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points"
+      ]
+    },
+    "Technology/Telecom": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "WTL stays non-compliant after losing court relief; PTA halts PTML SIM/eSIM issuance",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480",
         "https://www.dawn.com/news/2030159/pta-orders-ptml-to-suspend-new-onic-sim-esim-issuance-and-subscriptions"
       ]
     },
     "Technology/Telecom Devices": {
       "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Usage-gap report flags handset-affordability policy push, no near-term mechanism",
-      "text_depth": "headline",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Telecom-operator regulatory items (WTL, PTML) don't mechanically hit device makers",
+      "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439704/mobile-internet-usage-gap-pakistan-ranks-among-top-countries-by-absolute-number",
+        "https://mettisglobal.news/WTL-placed-in-noncompliant-segment-again-after-court-dismisses-relief-plea-63480",
         "https://www.dawn.com/news/2030159/pta-orders-ptml-to-suspend-new-onic-sim-esim-issuance-and-subscriptions"
       ]
     },
-    "Pharmaceuticals": {
+    "Textile": {
       "rating": "neutral",
-      "horizon": "long_term",
+      "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "LCCI-DRAP portal session is preliminary, no policy change decided",
+      "reason": "Index reshuffle drops one textile name (not tracked); no sector-wide driver",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439697/alternative-medicines-health-products-lcci-holds-session-on-integrated-online-portal"
+        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
       ]
     },
-    "Refinery": {
+    "Textile/Synthetic Fibre": {
       "rating": "neutral",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Crude volatile pre-Fed; local Refinery sub-index fell despite market rally",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439731/indian-rupee-faces-more-pressure-with-likely-fed-rate-hike-compounding-oil-pain",
-        "https://www.brecorder.com/news/40439728/indian-shares-seen-opening-higher-after-selloff-higher-oil-fed-caution-to-cap-gains",
-        "https://www.brecorder.com/news/40439727/asian-markets-make-nervous-start-ahead-of-fed-decision",
-        "https://www.brecorder.com/news/40439723/oil-falls-as-us-crude-inventories-rise-despite-saudi-supply-concerns",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63477",
-        "https://www.dawn.com/news/2030163/govt-raises-petrol-price-by-rs410-per-litre-hsd-by-rs641-per-litre"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "OGRA price hike is formula pass-through, limited margin effect on OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439731/indian-rupee-faces-more-pressure-with-likely-fed-rate-hike-compounding-oil-pain",
-        "https://www.brecorder.com/news/40439728/indian-shares-seen-opening-higher-after-selloff-higher-oil-fed-caution-to-cap-gains",
-        "https://www.brecorder.com/news/40439727/asian-markets-make-nervous-start-ahead-of-fed-decision",
-        "https://www.brecorder.com/news/40439723/oil-falls-as-us-crude-inventories-rise-despite-saudi-supply-concerns",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63477",
-        "https://www.dawn.com/news/2030163/govt-raises-petrol-price-by-rs410-per-litre-hsd-by-rs641-per-litre"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Brent near multi-month highs on Saudi Yanbu attack lifts local E&P realizations",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439731/indian-rupee-faces-more-pressure-with-likely-fed-rate-hike-compounding-oil-pain",
-        "https://www.brecorder.com/news/40439728/indian-shares-seen-opening-higher-after-selloff-higher-oil-fed-caution-to-cap-gains",
-        "https://www.brecorder.com/news/40439727/asian-markets-make-nervous-start-ahead-of-fed-decision",
-        "https://www.brecorder.com/news/40439723/oil-falls-as-us-crude-inventories-rise-despite-saudi-supply-concerns",
-        "https://www.dawn.com/news/2030246/psx-stages-partial-recovery-on-value-hunting"
-      ]
-    },
-    "Food": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "PAC blocks 200k-tonne sugar export nod pending its own review",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2030266/pac-halts-sugar-export-despite-green-light-from-advisory-board"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "long_term",
       "causality": "noise",
       "confidence": 0.2,
-      "reason": "Fintech regulatory-sandbox update is administrative, no direct mechanism",
+      "reason": "Index reshuffle drops one textile name (not tracked); no sector-wide driver",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63477",
-        "https://www.dawn.com/news/2030248/state-bank-of-pakistan-cautions-on-sandbox-approval",
-        "https://mettisglobal.news/SBP-concludes-First-Cohort-of-its-Regulatory-Sandbox-63475"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Global oil-price story has no direct mechanism for local ports/logistics",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439723/oil-falls-as-us-crude-inventories-rise-despite-saudi-supply-concerns"
+        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
       ]
     },
     "Gas Distribution": {
@@ -214,64 +228,40 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.15,
-      "reason": "Fuel price hike concerns petrol/diesel, not piped-gas distribution tariffs",
+      "reason": "Petrol/diesel price hike doesn't mechanically move gas-distribution utility tariffs",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"
       ]
     },
-    "Cement": {
-      "rating": "positive",
+    "Food": {
+      "rating": "negative",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Cement led Tuesday's rally (+307pts) on broad value-hunting; THCCL joins KSE-100 Oct 1",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470",
-        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
+      "causality": "causal",
       "confidence": 0.35,
-      "reason": "Cement led Tuesday's rally (+307pts) on broad value-hunting; THCCL joins KSE-100 Oct 1",
-      "text_depth": "full",
+      "reason": "PAC blocks sugar export despite advisory board's green light, removing export upside",
+      "text_depth": "headline",
       "sources": [
-        "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470",
-        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
+        "https://www.dawn.com/news/2030266/pac-halts-sugar-export-despite-green-light-from-advisory-board"
       ]
     },
-    "Textile": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Mehmood Textile Mills exits KSE-100 Oct 1, passive outflows likely",
+    "Pharmaceuticals": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "LCCI session on alt-medicine online portal is procedural, no earnings mechanism",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
-      ]
-    },
-    "Textile/Synthetic Fibre": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Mehmood Textile Mills exits KSE-100 Oct 1, passive outflows likely",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"
+        "https://www.brecorder.com/news/40439697/alternative-medicines-health-products-lcci-holds-session-on-integrated-online-portal"
       ]
     },
     "Fertilizer": {
-      "rating": "positive",
+      "rating": "neutral",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Fertilizer rallied hard Tuesday (+253pts), FFC a top index contributor",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Only stale index recap and generic Canada-FIPA trade talks; no fresh fertilizer catalyst",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSX-Closing-Bell-Green-Takes-the-Checkered-Flag-63470",
