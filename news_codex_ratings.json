@@ -1,24 +1,93 @@
 {
-  "as_of": "2026-09-16T04:43:29Z",
+  "as_of": "2026-09-16T05:47:56Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-16T04:36:44.716723+00:00",
+  "input_fetched_at": "2026-09-16T05:36:10.305332+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
-    "This review starts a new PSX session. Prior-session Codex ratings were not carried forward merely because the underlying stories remain in the 24-hour raw window.",
-    "The overnight oil story is a continuation of the middle-east-oil-supply-shock thread: Brent eased on a large US inventory build but remained above $107 while Saudi Yanbu loadings were suspended and pipeline repair timing remained uncertain.",
-    "The Pakistan fuel-price and energy-crunch story is sector-relevant to Oil Marketing, but it does not disclose PSO-specific sales volumes, margins, reimbursement amounts or working-capital effects, so the PSO assessment is Neutral rather than guessed positive or negative.",
-    "Several Mettis raw timestamps are later than the raw file fetch time when interpreted as UTC. Those timestamps were not used as verified publication times.",
+    "The KSE-100 recomposition story was not included in the earlier 09:43 Codex review. It is reviewed here because it is material for the current session and was published after the prior trading close.",
+    "The KSE-100 article names Nishat Chunian Power Limited, ticker NCPL, not Power Cement Limited, ticker POWER. The story is therefore irrelevant to POWER and creates no POWER rating.",
+    "Mettis raw-feed timestamps for some items carry an inconsistent UTC offset. Where the article page was available, the page publication time was used instead of the raw-feed offset.",
+    "The 10:25 PKT Business Recorder market-selloff item was available only through the committed raw summary during this run, so it is used as market context only and not as company-rating evidence.",
+    "The newer Mettis oil headline was not used to change ratings because its article timestamp could not be independently verified; the upstream assessment remains anchored to the full Reuters article.",
     "Stories not reviewed are not Neutral ratings."
   ],
+  "reviewed_stories": [
+    {
+      "title": "PSX recomposes KSE-100 Index, effective October 1",
+      "assessment": "positive",
+      "linkage": "direct for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "Image Pakistan Limited and Thatta Cement Company Limited are explicitly being added to the KSE-100 from October 1, which can improve benchmark visibility and may create index-rebalancing demand. The same article names Nishat Chunian Power Limited, which is NCPL, so it is not evidence about Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Petrol price rises Rs4.1, HSD jumps Rs6.4 from Sept 16",
+      "assessment": "neutral",
+      "linkage": "direct operating exposure for PSO",
+      "reason": "The ex-depot petrol and HSD price increases are directly relevant to PSO's core products, but the article gives no PSO-specific margin, volume, inventory or working-capital impact. A higher selling price alone is not enough to infer higher profit.",
+      "source": "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476",
+      "published": "2026-09-15T23:05:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.65
+    },
+    {
+      "title": "Oil falls as US crude inventories rise despite Saudi supply concerns",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation backdrop",
+      "reason": "Brent remained above $107 while Saudi Yanbu loadings and the East-West pipeline disruption remained unresolved. That supports upstream oil-linked exposure while keeping Pakistan's imported-energy risk elevated.",
+      "source": "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+      "published": "2026-09-16T00:41:00Z",
+      "text_depth": "full",
+      "confidence": 0.55
+    },
+    {
+      "title": "PSX: Selling continues as KSE-100 sheds nearly 400 points",
+      "assessment": "negative",
+      "linkage": "broad-market context only; no company-specific rating",
+      "reason": "The committed raw summary reports renewed selling across banks, cement, exploration and OMCs amid Middle East tensions. This confirms the market is still pricing geopolitical risk, but the story is a market reaction rather than evidence of a new company-specific cash-flow event.",
+      "source": "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points",
+      "published": "2026-09-16T10:25:04+05:00",
+      "text_depth": "raw_summary",
+      "confidence": 0.55
+    }
+  ],
   "ratings": {
+    "IMAGE": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Image Pakistan Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, though the size of any flow is not guaranteed.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"],
+      "source_published": ["2026-09-15T16:52:00+05:00"],
+      "source_published_at": ["2026-09-15T16:52:00+05:00"],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
+    "THCCL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Thatta Cement Company Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, while the actual flow magnitude remains uncertain.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"],
+      "source_published": ["2026-09-15T16:52:00+05:00"],
+      "source_published_at": ["2026-09-15T16:52:00+05:00"],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
     "OGDC": {
       "rating": "positive",
       "causality": "causal",
       "confidence": 0.55,
       "horizon": "multi_session",
-      "reason": "Sector continuation: Brent slipped 0.86% to $107.82 on a surprise US inventory build, but Saudi Yanbu loadings remained suspended after the East-West pipeline attack and repair estimates ranged from days to five or six weeks. The still-elevated crude and unresolved supply disruption support OGDC's upstream oil-linked exposure, though receivables and production mix remain separate risks.",
+      "reason": "Sector continuation: Brent remained above $107 while Saudi Yanbu loadings and the East-West pipeline disruption were unresolved. The still-elevated crude and physical supply risk support OGDC's upstream oil-linked exposure, though receivables and production mix remain separate risks.",
       "relevance": "Sector link: Oil & Gas Exploration",
       "text_depth": "full",
       "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
@@ -31,7 +100,7 @@
       "causality": "causal",
       "confidence": 0.55,
       "horizon": "multi_session",
-      "reason": "Sector continuation: Brent slipped 0.86% to $107.82 on a surprise US inventory build, but Saudi Yanbu loadings remained suspended after the East-West pipeline attack and repair estimates ranged from days to five or six weeks. The still-elevated crude and unresolved supply disruption support PPL's upstream oil-linked exposure; this is a sector read, not a new company-specific earnings estimate.",
+      "reason": "Sector continuation: Brent remained above $107 while Saudi Yanbu loadings and the East-West pipeline disruption were unresolved. The still-elevated crude and physical supply risk support PPL's upstream oil-linked exposure; this is a sector read, not a new company-specific earnings estimate.",
       "relevance": "Sector link: Oil & Gas Exploration",
       "text_depth": "full",
       "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
@@ -55,14 +124,14 @@
     "PSO": {
       "rating": "neutral",
       "causality": "causal",
-      "confidence": 0.55,
-      "horizon": "multi_session",
-      "reason": "Sector link: Pakistan's fuel shock worsened, with petrol and diesel raised again and the government rolling out targeted fuel relief while relying on daily price adjustment. Higher pump prices can pressure demand and working capital, while pass-through pricing and targeted relief partly offset that pressure. The article provides no PSO-specific volume, margin or reimbursement data, so there is no defensible directional PSO call.",
-      "relevance": "Sector link: Oil Marketing; no PSO-specific operating data",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Direct operating link: ex-depot petrol rose Rs4.10 per litre and HSD rose Rs6.41 effective September 16. The article does not disclose PSO-specific margin, volume, inventory or working-capital effects, so the price increase is operationally relevant but not enough for a defensible positive or negative earnings call.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
       "text_depth": "full",
-      "sources": ["https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms"],
-      "source_published": ["2026-09-16T07:36:00+05:00"],
-      "source_published_at": ["2026-09-16T07:36:00+05:00"],
+      "sources": ["https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"],
+      "source_published": ["2026-09-15T23:05:00+05:00"],
+      "source_published_at": ["2026-09-15T23:05:00+05:00"],
       "thread_key": "pakistan-fuel-price-shock"
     }
   },
@@ -72,7 +141,7 @@
       "causality": "causal",
       "confidence": 0.55,
       "horizon": "multi_session",
-      "reason": "Brent remains above $107 and Saudi Yanbu loadings are suspended after the East-West pipeline attack. A large US inventory build caused a modest price pullback, but the physical supply disruption and uncertain repair window keep the upstream backdrop supportive.",
+      "reason": "Brent remains above $107 and Saudi Yanbu loadings remain suspended after the East-West pipeline attack. The modest price pullback does not remove the physical supply disruption, so the upstream backdrop remains supportive.",
       "text_depth": "full",
       "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
       "source_published": ["2026-09-16T00:41:00Z"]
@@ -80,28 +149,36 @@
     "Oil Marketing": {
       "rating": "neutral",
       "causality": "causal",
-      "confidence": 0.55,
-      "horizon": "multi_session",
-      "reason": "Pakistan raised pump prices again while rolling out targeted fuel relief. Higher prices can weaken demand and lift working-capital needs, but daily pass-through pricing and relief support offset part of that pressure; no company-level margin or volume evidence supports a directional sector call.",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Petrol and HSD ex-depot prices rose effective September 16, but the source does not establish a sector-wide margin or volume benefit. Higher selling prices are relevant operationally without proving a directional earnings effect.",
       "text_depth": "full",
-      "sources": ["https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms"],
-      "source_published": ["2026-09-16T07:36:00+05:00"]
+      "sources": ["https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"],
+      "source_published": ["2026-09-15T23:05:00+05:00"]
     }
   },
   "market_context": [
     {
-      "topic": "Middle East oil supply shock remains unresolved despite a modest crude pullback",
+      "topic": "KSE-100 recomposition creates direct inclusion catalysts for IMAGE and THCCL",
+      "impact": "Positive for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "PSX will add Image Pakistan Limited and Thatta Cement Company Limited to the KSE-100 effective October 1. The fourth incoming power company is Nishat Chunian Power Limited, ticker NCPL, not Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00"
+    },
+    {
+      "topic": "Middle East oil supply shock remains unresolved",
       "impact": "Negative for the broad PSX import and inflation backdrop; positive for upstream oil exposure",
-      "reason": "Brent eased to $107.82 after a surprise US inventory build, but Saudi Yanbu loadings remained suspended after an attack on the East-West pipeline and repair estimates were highly uncertain. That keeps Pakistan's imported-energy risk elevated even though crude pulled back from Tuesday's close.",
+      "reason": "Brent remained above $107 while Saudi Yanbu loadings and the East-West pipeline disruption remained unresolved. The physical supply risk keeps Pakistan's imported-energy pressure elevated even as Wednesday crude futures eased from Tuesday's close.",
       "source": "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
       "published": "2026-09-16T00:41:00Z"
     },
     {
-      "topic": "Pakistan energy crunch and fuel-price pass-through",
-      "impact": "Negative broad-market cost pressure; mixed for regulated energy names",
-      "reason": "The government said Gulf transit disruptions and high oil prices were straining fuel supply and power generation. RLNG spot cargo prices were cited at $23.25 per MMBtu, while domestic gas was redirected to avoid more expensive imported generation. Petrol and diesel prices rose again and targeted fuel relief was expanded nationwide.",
-      "source": "https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms",
-      "published": "2026-09-16T07:36:00+05:00"
+      "topic": "Morning PSX selling confirms geopolitical risk remains priced",
+      "impact": "Negative broad-market context; not a company-specific rating",
+      "reason": "The committed Business Recorder raw summary reported the KSE-100 down about 398 points at 10:05 PKT, with selling across auto assemblers, cement, banks, exploration companies and OMCs amid escalating Middle East tensions.",
+      "source": "https://www.brecorder.com/news/40439733/psx-selling-continues-as-kse-100-sheds-nearly-400-points",
+      "published": "2026-09-16T10:25:04+05:00",
+      "text_depth": "raw_summary"
     }
   ]
 }
