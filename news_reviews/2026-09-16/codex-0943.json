@@ -1,0 +1,107 @@
+{
+  "as_of": "2026-09-16T04:43:29Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-16T04:36:44.716723+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "This review starts a new PSX session. Prior-session Codex ratings were not carried forward merely because the underlying stories remain in the 24-hour raw window.",
+    "The overnight oil story is a continuation of the middle-east-oil-supply-shock thread: Brent eased on a large US inventory build but remained above $107 while Saudi Yanbu loadings were suspended and pipeline repair timing remained uncertain.",
+    "The Pakistan fuel-price and energy-crunch story is sector-relevant to Oil Marketing, but it does not disclose PSO-specific sales volumes, margins, reimbursement amounts or working-capital effects, so the PSO assessment is Neutral rather than guessed positive or negative.",
+    "Several Mettis raw timestamps are later than the raw file fetch time when interpreted as UTC. Those timestamps were not used as verified publication times.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "ratings": {
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: Brent slipped 0.86% to $107.82 on a surprise US inventory build, but Saudi Yanbu loadings remained suspended after the East-West pipeline attack and repair estimates ranged from days to five or six weeks. The still-elevated crude and unresolved supply disruption support OGDC's upstream oil-linked exposure, though receivables and production mix remain separate risks.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
+      "source_published": ["2026-09-16T00:41:00Z"],
+      "source_published_at": ["2026-09-16T00:41:00Z"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: Brent slipped 0.86% to $107.82 on a surprise US inventory build, but Saudi Yanbu loadings remained suspended after the East-West pipeline attack and repair estimates ranged from days to five or six weeks. The still-elevated crude and unresolved supply disruption support PPL's upstream oil-linked exposure; this is a sector read, not a new company-specific earnings estimate.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
+      "source_published": ["2026-09-16T00:41:00Z"],
+      "source_published_at": ["2026-09-16T00:41:00Z"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Sector continuation: crude remains above $107 with Saudi export-route disruption unresolved, which supports the upstream energy backdrop. Mari's gas-heavy production mix makes the direct crude sensitivity weaker than for more oil-linked producers, so confidence is lower.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
+      "source_published": ["2026-09-16T00:41:00Z"],
+      "source_published_at": ["2026-09-16T00:41:00Z"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector link: Pakistan's fuel shock worsened, with petrol and diesel raised again and the government rolling out targeted fuel relief while relying on daily price adjustment. Higher pump prices can pressure demand and working capital, while pass-through pricing and targeted relief partly offset that pressure. The article provides no PSO-specific volume, margin or reimbursement data, so there is no defensible directional PSO call.",
+      "relevance": "Sector link: Oil Marketing; no PSO-specific operating data",
+      "text_depth": "full",
+      "sources": ["https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms"],
+      "source_published": ["2026-09-16T07:36:00+05:00"],
+      "source_published_at": ["2026-09-16T07:36:00+05:00"],
+      "thread_key": "pakistan-fuel-price-shock"
+    }
+  },
+  "sectors": {
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $107 and Saudi Yanbu loadings are suspended after the East-West pipeline attack. A large US inventory build caused a modest price pullback, but the physical supply disruption and uncertain repair window keep the upstream backdrop supportive.",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/"],
+      "source_published": ["2026-09-16T00:41:00Z"]
+    },
+    "Oil Marketing": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Pakistan raised pump prices again while rolling out targeted fuel relief. Higher prices can weaken demand and lift working-capital needs, but daily pass-through pricing and relief support offset part of that pressure; no company-level margin or volume evidence supports a directional sector call.",
+      "text_depth": "full",
+      "sources": ["https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms"],
+      "source_published": ["2026-09-16T07:36:00+05:00"]
+    }
+  },
+  "market_context": [
+    {
+      "topic": "Middle East oil supply shock remains unresolved despite a modest crude pullback",
+      "impact": "Negative for the broad PSX import and inflation backdrop; positive for upstream oil exposure",
+      "reason": "Brent eased to $107.82 after a surprise US inventory build, but Saudi Yanbu loadings remained suspended after an attack on the East-West pipeline and repair estimates were highly uncertain. That keeps Pakistan's imported-energy risk elevated even though crude pulled back from Tuesday's close.",
+      "source": "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+      "published": "2026-09-16T00:41:00Z"
+    },
+    {
+      "topic": "Pakistan energy crunch and fuel-price pass-through",
+      "impact": "Negative broad-market cost pressure; mixed for regulated energy names",
+      "reason": "The government said Gulf transit disruptions and high oil prices were straining fuel supply and power generation. RLNG spot cargo prices were cited at $23.25 per MMBtu, while domestic gas was redirected to avoid more expensive imported generation. Petrol and diesel prices rose again and targeted fuel relief was expanded nationwide.",
+      "source": "https://www.dawn.com/news/2030288/ministers-sound-alarm-as-energy-crunch-looms",
+      "published": "2026-09-16T07:36:00+05:00"
+    }
+  ]
+}
