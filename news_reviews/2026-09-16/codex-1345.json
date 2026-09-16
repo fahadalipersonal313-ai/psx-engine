@@ -1,0 +1,191 @@
+{
+  "as_of": "2026-09-16T08:45:30Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-16T08:37:51.163272+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "The Saudi supply workaround materially softens, but does not remove, the existing middle-east-oil-supply-shock thread: Brent remained near $108 while Hormuz traffic stayed severely constrained.",
+    "The Houthi F-15 claim was read in full from Business Recorder/AFP. It is conflict and shipping-risk evidence, not proof of an additional oil-facility outage.",
+    "The KSE-100 recomposition and Pakistan fuel-price stories are carried forward because they remain valid reviewed evidence; they were not reinterpreted as new stories.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "PSX recomposes KSE-100 Index, effective October 1",
+      "assessment": "positive",
+      "linkage": "direct for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "Image Pakistan Limited and Thatta Cement Company Limited are explicitly being added to the KSE-100 from October 1, which can improve benchmark visibility and may create index-rebalancing demand. Nishat Chunian Power Limited is NCPL, not Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Petrol price rises Rs4.1, HSD jumps Rs6.4 from Sept 16",
+      "assessment": "neutral",
+      "linkage": "direct operating exposure for PSO",
+      "reason": "The ex-depot petrol and HSD price increases are directly relevant to PSO's core products, but the article gives no PSO-specific margin, volume, inventory or working-capital impact. A higher selling price alone is not enough to infer higher profit.",
+      "source": "https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476",
+      "published": "2026-09-15T23:05:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.65
+    },
+    {
+      "title": "Saudi offers more crude via Oman loading after pipeline attacks, sources say",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration, but materially less bullish than an unresolved export-route outage",
+      "reason": "Saudi Arabia is moving more crude to Asian refiners via ship-to-ship transfers off Sohar, Oman, which reduces the risk that the damaged East-West pipeline and suspended Yanbu loadings translate into a prolonged loss of Saudi export volume. Brent nevertheless remained near $108 and Hormuz traffic stayed severely constrained, so the upstream price backdrop remains supportive but the supply-shock severity has eased.",
+      "source": "https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/",
+      "published": "2026-09-16T04:42:00Z",
+      "text_depth": "full",
+      "confidence": 0.55
+    },
+    {
+      "title": "Oil slips as Saudi Arabia offers more crude via Oman",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation backdrop",
+      "reason": "Brent eased to about $107.92 as the Oman workaround reduced fears of a larger Saudi supply loss, while visible Hormuz transits remained at four versus a recent average of 18. The story changes the thread from an unmitigated export-route disruption to a partially mitigated one, but crude remains elevated enough to support upstream oil-linked exposure.",
+      "source": "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/",
+      "published": "2026-09-16T00:41:00Z",
+      "text_depth": "full",
+      "confidence": 0.55
+    },
+    {
+      "title": "Yemen's Houthis say shot down Saudi fighter jet",
+      "assessment": "negative",
+      "linkage": "broad-market geopolitical risk; supportive only as secondary risk-premium context for upstream oil",
+      "reason": "The Houthi claim marks further military escalation and the article reiterates a maritime blockade on Saudi Arabia plus attacks on Saudi ships in the Red Sea. That raises regional and shipping risk, but it does not by itself establish a new oil-facility outage or lost barrels.",
+      "source": "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet",
+      "published": "2026-09-16T13:00:04+05:00",
+      "text_depth": "full",
+      "confidence": 0.55
+    }
+  ],
+  "ratings": {
+    "IMAGE": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Image Pakistan Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, though the size of any flow is not guaranteed.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"],
+      "source_published": ["2026-09-15T16:52:00+05:00"],
+      "source_published_at": ["2026-09-15T16:52:00+05:00"],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
+    "THCCL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Direct company link: Thatta Cement Company Limited will enter the KSE-100 effective October 1. Benchmark inclusion can improve visibility and may create rebalancing or index-tracker demand around the effective date, while the actual flow magnitude remains uncertain.",
+      "relevance": "Direct link: KSE-100 inclusion effective 2026-10-01",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474"],
+      "source_published": ["2026-09-15T16:52:00+05:00"],
+      "source_published_at": ["2026-09-15T16:52:00+05:00"],
+      "thread_key": "kse100-recomposition-2026-10-01"
+    },
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector continuation with mitigation: Brent remained near $108 and Hormuz traffic stayed severely constrained, but Saudi Arabia is now rerouting more crude through ship-to-ship transfers off Oman. The workaround reduces the probability of a prolonged Saudi export loss, so the upstream backdrop stays positive but with lower confidence than an unmitigated outage.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/", "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/", "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet"],
+      "source_published": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "source_published_at": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Sector continuation with mitigation: crude remains elevated and regional shipping risk is high, but Saudi Arabia's Oman loading workaround reduces the risk of a prolonged loss of export barrels. That leaves PPL's upstream oil-linked backdrop positive, but less strongly than when the Saudi export-route disruption appeared unresolved.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/", "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/", "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet"],
+      "source_published": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "source_published_at": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Sector continuation with mitigation: elevated crude and regional shipping risk remain supportive to upstream energy, but the Saudi Oman workaround reduces supply-shock severity. Mari's gas-heavy production mix also makes its direct crude sensitivity weaker than OGDC or PPL, so confidence is lower.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/", "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/", "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet"],
+      "source_published": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "source_published_at": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Direct operating link: ex-depot petrol rose Rs4.10 per litre and HSD rose Rs6.41 effective September 16. The article does not disclose PSO-specific margin, volume, inventory or working-capital effects, so the price increase is operationally relevant but not enough for a defensible positive or negative earnings call.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"],
+      "source_published": ["2026-09-15T23:05:00+05:00"],
+      "source_published_at": ["2026-09-15T23:05:00+05:00"],
+      "thread_key": "pakistan-fuel-price-shock"
+    }
+  },
+  "sectors": {
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "reason": "Brent remains near $108 and regional shipping risk is still high, but Saudi Arabia is moving more crude via Oman and Gulf loadings, reducing the risk that pipeline and Yanbu disruptions become a prolonged export-volume loss. Upstream conditions remain supportive, with lower confidence than the prior unmitigated-disruption read.",
+      "text_depth": "full",
+      "sources": ["https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/", "https://www.reuters.com/business/energy/oil-falls-us-crude-inventories-rise-despite-saudi-supply-concerns-2026-09-16/", "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet"],
+      "source_published": ["2026-09-16T04:42:00Z", "2026-09-16T00:41:00Z", "2026-09-16T13:00:04+05:00"]
+    },
+    "Oil Marketing": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "reason": "Petrol and HSD ex-depot prices rose effective September 16, but the source does not establish a sector-wide margin or volume benefit. Higher selling prices are operationally relevant without proving a directional earnings effect.",
+      "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Petrol-price-rises-Rs41-HSD-jumps-Rs64-from-Sept-16-63476"],
+      "source_published": ["2026-09-15T23:05:00+05:00"]
+    }
+  },
+  "market_context": [
+    {
+      "topic": "KSE-100 recomposition creates direct inclusion catalysts for IMAGE and THCCL",
+      "impact": "Positive for IMAGE and THCCL; irrelevant to POWER",
+      "reason": "PSX will add Image Pakistan Limited and Thatta Cement Company Limited to the KSE-100 effective October 1. Nishat Chunian Power Limited is NCPL, not Power Cement Limited (POWER).",
+      "source": "https://mettisglobal.news/PSX-recomposes-KSE100-Index-effective-October-1-63474",
+      "published": "2026-09-15T16:52:00+05:00"
+    },
+    {
+      "topic": "Saudi supply workaround partially mitigates the oil shock",
+      "impact": "Still positive for upstream oil exposure, but less strongly; still negative for Pakistan's broad import and inflation backdrop",
+      "reason": "Saudi Arabia is offering more crude via ship-to-ship transfers off Oman and has increased Gulf loadings. Brent eased to about $107.92, while Hormuz visible transits remained only four. The supply shock is now partially mitigated rather than unresolved.",
+      "source": "https://www.reuters.com/business/energy/saudi-offers-more-crude-via-oman-loading-after-pipeline-attacks-sources-say-2026-09-16/",
+      "published": "2026-09-16T04:42:00Z"
+    },
+    {
+      "topic": "Houthi-Saudi military escalation continues",
+      "impact": "Negative geopolitical and shipping-risk context; not a stand-alone company rating",
+      "reason": "The Houthis claimed they shot down a Saudi F-15 and reiterated a maritime blockade plus attacks on Saudi ships in the Red Sea. The report raises conflict risk but does not establish additional lost oil production or export capacity.",
+      "source": "https://www.brecorder.com/news/40439760/yemens-houthis-say-shot-down-saudi-fighter-jet",
+      "published": "2026-09-16T13:00:04+05:00"
+    }
+  ]
+}
