@@ -1,136 +1,109 @@
 {
-  "as_of": "2026-09-17T06:43:31Z",
+  "as_of": "2026-09-17T07:42:11Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-17T06:43:21.439490+00:00",
+  "input_fetched_at": "2026-09-17T07:32:21.354380+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
     "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
-    "The Middle East oil thread remains supportive for upstream producers because Brent remains above $100 and physical disruption persists, but alternative Saudi loading routes and renewed diplomatic signals reduce the earlier supply-shock premium.",
-    "Ferozsons Laboratories is not in the tracked universe. Its Gilead license was not mapped to AGP, SEARL, CPHL, or the pharmaceuticals sector.",
+    "Visible Hormuz transits deteriorated sharply after the prior read, while Saudi alternative loadings and lower Brent partly offset the physical supply signal.",
     "The broad KSE-100 rally was treated as market reaction, not a causal company event.",
+    "The auto-financing headline was not rated because its current linked article body and publication timestamp could not be independently verified during this run.",
     "Stories not reviewed are not Neutral ratings."
   ],
   "reviewed_stories": [
     {
-      "title": "Oil slides below $106 on easing supply concerns",
-      "assessment": "negative",
-      "linkage": "sector link for Oil & Gas Exploration relative to the prior shock premium; positive broad-market import and inflation backdrop",
-      "reason": "Brent fell to about $105.77 as Saudi Arabia offered additional cargoes through Sohar, Oman, and the US Energy Secretary described the East-West pipeline disruption as brief and temporary. This materially reduces the earlier supply-shock premium, although crude remains above $100 and regional disruption is unresolved.",
-      "source": "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
-      "sources": [
-        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517"
-      ],
-      "published": "2026-09-17T10:37:36+05:00",
-      "text_depth": "full",
-      "confidence": 0.75
-    },
-    {
-      "title": "Trump says 'hopefully we are towards end' of Iran war",
+      "title": "Number of ships transiting Strait of Hormuz falls to three on Wednesday, data shows",
       "assessment": "positive",
-      "linkage": "broad-market de-escalation context; reduces the upstream geopolitical risk premium if followed by concrete progress",
-      "reason": "The US president said he hoped the Iran war was nearing an end and was expected to discuss the conflict with Gulf leaders. No ceasefire, Hormuz reopening, or restored supply capacity was confirmed, so this is a de-escalation signal rather than a resolved event.",
-      "source": "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation risk",
+      "reason": "Visible commodity vessel transits through the Strait of Hormuz fell to three on Wednesday from 12 a day earlier, versus a 10-day average of about 17. The sharp deterioration is fresh physical evidence that the regional supply chokepoint remains materially impaired, which restores some upstream risk premium even though alternative Saudi routes are partly mitigating lost exports.",
+      "source": "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
       "sources": [
-        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows"
       ],
-      "published": "2026-09-17T11:25:33+05:00",
-      "text_depth": "full",
-      "confidence": 0.45
-    },
-    {
-      "title": "Textile exports drops 12% MoM in August",
-      "assessment": "neutral",
-      "linkage": "sector link for Textile",
-      "reason": "Textile exports fell 12.48% month on month to about $1.43 billion in August but were still 1.99% higher year on year. Subcategories were mixed, so the fresh evidence is economically relevant but not cleanly directional.",
-      "source": "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514",
-      "sources": [
-        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
-      ],
-      "published": "2026-09-17T10:12:15+05:00",
-      "text_depth": "full",
-      "confidence": 0.8
-    },
-    {
-      "title": "Ferozsons secures Gilead license for once-yearly HIV prevention drug",
-      "assessment": "positive",
-      "linkage": "direct for Ferozsons Laboratories; irrelevant to the tracked PSX universe",
-      "reason": "Ferozsons received a royalty-free license covering once-yearly lenacapavir for HIV prevention across 120 high-incidence countries, with manufacturing readiness and technology transfer work ahead. FEROZ is not in the tracked universe, so no tracked company or sector rating was inferred.",
-      "source": "https://mettisglobal.news/Ferozsons-secures-Gilead-license-for-onceearly-HIV-prevention-drug-63515",
-      "sources": [
-        "https://mettisglobal.news/Ferozsons-secures-Gilead-license-for-onceearly-HIV-prevention-drug-63515",
-        "https://www.brecorder.com/news/40439920/pakistans-ferozsons-to-manufacture-us-based-gileads-hiv-prevention-drug"
-      ],
-      "published": "2026-09-17T10:14:52+05:00",
+      "published": "2026-09-17T11:56:00+05:00",
       "text_depth": "full",
       "confidence": 0.9
+    },
+    {
+      "title": "Oil prices extend losses as fears of Middle East supply disruptions ease",
+      "assessment": "negative",
+      "linkage": "sector link for Oil & Gas Exploration relative to the supply-shock premium; positive broad-market import and inflation context",
+      "reason": "Brent eased to about $105.64 as Saudi Arabia offered additional crude cargoes through Oman. The workaround reduces the probability of a larger sustained export loss, but analysts said it only partly offsets disrupted barrels and the pipeline outage remains unresolved, so the supply shock has softened rather than disappeared.",
+      "source": "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "published": "2026-09-17T11:50:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.85
     }
   ],
   "ratings": {
     "OGDC": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.45,
+      "confidence": 0.5,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and regional physical disruption still supports upstream pricing, but Saudi alternative cargoes and signs of possible diplomatic de-escalation reduce the severity and expected persistence of the earlier supply shock.",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
       "relevance": "Sector link: Oil & Gas Exploration",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
-        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
     "PPL": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.45,
+      "confidence": 0.5,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and regional physical disruption still supports upstream pricing, but Saudi alternative cargoes and possible diplomatic de-escalation reduce the earlier tail-risk premium.",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
       "relevance": "Sector link: Oil & Gas Exploration",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
-        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
     "MARI": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.4,
+      "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "Elevated crude and residual regional supply risk remain supportive to upstream energy, but alternative Saudi cargoes and de-escalation signals reduce the risk premium. Mari's gas-heavy production mix also makes its direct crude sensitivity weaker than OGDC or PPL.",
+      "reason": "The collapse in visible Hormuz vessel traffic keeps regional upstream supply risk elevated while Brent remains above $100, although Saudi alternative cargoes reduce the expected severity of the disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL.",
       "relevance": "Sector link: Oil & Gas Exploration",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
-        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T10:37:36+05:00",
-        "2026-09-17T11:25:33+05:00"
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
