@@ -1,0 +1,219 @@
+{
+  "as_of": "2026-09-17T06:43:31Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-17T06:43:21.439490+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
+    "The Middle East oil thread remains supportive for upstream producers because Brent remains above $100 and physical disruption persists, but alternative Saudi loading routes and renewed diplomatic signals reduce the earlier supply-shock premium.",
+    "Ferozsons Laboratories is not in the tracked universe. Its Gilead license was not mapped to AGP, SEARL, CPHL, or the pharmaceuticals sector.",
+    "The broad KSE-100 rally was treated as market reaction, not a causal company event.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "Oil slides below $106 on easing supply concerns",
+      "assessment": "negative",
+      "linkage": "sector link for Oil & Gas Exploration relative to the prior shock premium; positive broad-market import and inflation backdrop",
+      "reason": "Brent fell to about $105.77 as Saudi Arabia offered additional cargoes through Sohar, Oman, and the US Energy Secretary described the East-West pipeline disruption as brief and temporary. This materially reduces the earlier supply-shock premium, although crude remains above $100 and regional disruption is unresolved.",
+      "source": "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
+      "sources": [
+        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517"
+      ],
+      "published": "2026-09-17T10:37:36+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Trump says 'hopefully we are towards end' of Iran war",
+      "assessment": "positive",
+      "linkage": "broad-market de-escalation context; reduces the upstream geopolitical risk premium if followed by concrete progress",
+      "reason": "The US president said he hoped the Iran war was nearing an end and was expected to discuss the conflict with Gulf leaders. No ceasefire, Hormuz reopening, or restored supply capacity was confirmed, so this is a de-escalation signal rather than a resolved event.",
+      "source": "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war",
+      "sources": [
+        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+      ],
+      "published": "2026-09-17T11:25:33+05:00",
+      "text_depth": "full",
+      "confidence": 0.45
+    },
+    {
+      "title": "Textile exports drops 12% MoM in August",
+      "assessment": "neutral",
+      "linkage": "sector link for Textile",
+      "reason": "Textile exports fell 12.48% month on month to about $1.43 billion in August but were still 1.99% higher year on year. Subcategories were mixed, so the fresh evidence is economically relevant but not cleanly directional.",
+      "source": "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514",
+      "sources": [
+        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
+      ],
+      "published": "2026-09-17T10:12:15+05:00",
+      "text_depth": "full",
+      "confidence": 0.8
+    },
+    {
+      "title": "Ferozsons secures Gilead license for once-yearly HIV prevention drug",
+      "assessment": "positive",
+      "linkage": "direct for Ferozsons Laboratories; irrelevant to the tracked PSX universe",
+      "reason": "Ferozsons received a royalty-free license covering once-yearly lenacapavir for HIV prevention across 120 high-incidence countries, with manufacturing readiness and technology transfer work ahead. FEROZ is not in the tracked universe, so no tracked company or sector rating was inferred.",
+      "source": "https://mettisglobal.news/Ferozsons-secures-Gilead-license-for-onceearly-HIV-prevention-drug-63515",
+      "sources": [
+        "https://mettisglobal.news/Ferozsons-secures-Gilead-license-for-onceearly-HIV-prevention-drug-63515",
+        "https://www.brecorder.com/news/40439920/pakistans-ferozsons-to-manufacture-us-based-gileads-hiv-prevention-drug"
+      ],
+      "published": "2026-09-17T10:14:52+05:00",
+      "text_depth": "full",
+      "confidence": 0.9
+    }
+  ],
+  "ratings": {
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and regional physical disruption still supports upstream pricing, but Saudi alternative cargoes and signs of possible diplomatic de-escalation reduce the severity and expected persistence of the earlier supply shock.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
+        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+      ],
+      "source_published": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and regional physical disruption still supports upstream pricing, but Saudi alternative cargoes and possible diplomatic de-escalation reduce the earlier tail-risk premium.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
+        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+      ],
+      "source_published": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.4,
+      "horizon": "multi_session",
+      "reason": "Elevated crude and residual regional supply risk remain supportive to upstream energy, but alternative Saudi cargoes and de-escalation signals reduce the risk premium. Mari's gas-heavy production mix also makes its direct crude sensitivity weaker than OGDC or PPL.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slides-toward-106-on-easing-supply-concerns-63517",
+        "https://www.brecorder.com/news/40439925/trump-says-hopefully-we-are-towards-end-of-iran-war"
+      ],
+      "source_published": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:37:36+05:00",
+        "2026-09-17T11:25:33+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.7,
+      "horizon": "single_session",
+      "reason": "Petrol rose by Rs6.88 per litre and HSD by Rs5.62 under the daily OGRA mechanism. This is directly relevant to PSO's core products, but no PSO-specific margin, volume, inventory, or working-capital effect is disclosed, so the earnings direction remains unproven.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"
+      ],
+      "source_published": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "thread_key": "pakistan-daily-fuel-pricing"
+    }
+  },
+  "sectors": {
+    "Cement": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Sector fundamentals improved in FY26 and two-month FY27 domestic dispatches remain higher year on year, but August volumes weakened, northern exports halted, regional performance diverged, and energy and freight risks remain elevated. The current evidence is mixed.",
+      "relevance": "Sector-wide operating and demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven",
+        "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"
+      ],
+      "source_published": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "thread_key": "cement-demand-fy27"
+    },
+    "Technology/IT Exports": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Pakistan's telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. This is constructive for the IT-export environment, but the aggregate data do not establish Systems Limited's company-specific revenue outcome.",
+      "relevance": "Sector context for Technology/IT Exports",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"
+      ],
+      "source_published": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "thread_key": "pakistan-it-services-exports"
+    },
+    "Textile": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "multi_session",
+      "reason": "August textile exports fell 12.48% month on month but remained 1.99% higher year on year, with mixed product-level trends. The current sector evidence is material but not cleanly directional.",
+      "relevance": "Sector-wide export demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
+      ],
+      "source_published": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "thread_key": "pakistan-textile-exports-august"
+    }
+  }
+}
