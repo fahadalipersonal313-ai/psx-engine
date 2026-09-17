@@ -1,0 +1,192 @@
+{
+  "as_of": "2026-09-17T07:42:11Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-17T07:32:21.354380+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
+    "Visible Hormuz transits deteriorated sharply after the prior read, while Saudi alternative loadings and lower Brent partly offset the physical supply signal.",
+    "The broad KSE-100 rally was treated as market reaction, not a causal company event.",
+    "The auto-financing headline was not rated because its current linked article body and publication timestamp could not be independently verified during this run.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "Number of ships transiting Strait of Hormuz falls to three on Wednesday, data shows",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation risk",
+      "reason": "Visible commodity vessel transits through the Strait of Hormuz fell to three on Wednesday from 12 a day earlier, versus a 10-day average of about 17. The sharp deterioration is fresh physical evidence that the regional supply chokepoint remains materially impaired, which restores some upstream risk premium even though alternative Saudi routes are partly mitigating lost exports.",
+      "source": "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+      "sources": [
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows"
+      ],
+      "published": "2026-09-17T11:56:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9
+    },
+    {
+      "title": "Oil prices extend losses as fears of Middle East supply disruptions ease",
+      "assessment": "negative",
+      "linkage": "sector link for Oil & Gas Exploration relative to the supply-shock premium; positive broad-market import and inflation context",
+      "reason": "Brent eased to about $105.64 as Saudi Arabia offered additional crude cargoes through Oman. The workaround reduces the probability of a larger sustained export loss, but analysts said it only partly offsets disrupted barrels and the pipeline outage remains unresolved, so the supply shock has softened rather than disappeared.",
+      "source": "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "published": "2026-09-17T11:50:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.85
+    }
+  ],
+  "ratings": {
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "The collapse in visible Hormuz vessel traffic keeps regional upstream supply risk elevated while Brent remains above $100, although Saudi alternative cargoes reduce the expected severity of the disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL.",
+      "relevance": "Sector link: Oil & Gas Exploration",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.7,
+      "horizon": "single_session",
+      "reason": "Petrol rose by Rs6.88 per litre and HSD by Rs5.62 under the daily OGRA mechanism. This is directly relevant to PSO's core products, but no PSO-specific margin, volume, inventory, or working-capital effect is disclosed, so the earnings direction remains unproven.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"
+      ],
+      "source_published": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "thread_key": "pakistan-daily-fuel-pricing"
+    }
+  },
+  "sectors": {
+    "Cement": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Sector fundamentals improved in FY26 and two-month FY27 domestic dispatches remain higher year on year, but August volumes weakened, northern exports halted, regional performance diverged, and energy and freight risks remain elevated. The current evidence is mixed.",
+      "relevance": "Sector-wide operating and demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven",
+        "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"
+      ],
+      "source_published": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "thread_key": "cement-demand-fy27"
+    },
+    "Technology/IT Exports": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Pakistan's telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. This is constructive for the IT-export environment, but the aggregate data do not establish Systems Limited's company-specific revenue outcome.",
+      "relevance": "Sector context for Technology/IT Exports",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"
+      ],
+      "source_published": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "thread_key": "pakistan-it-services-exports"
+    },
+    "Textile": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "multi_session",
+      "reason": "August textile exports fell 12.48% month on month but remained 1.99% higher year on year, with mixed product-level trends. The current sector evidence is material but not cleanly directional.",
+      "relevance": "Sector-wide export demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
+      ],
+      "source_published": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "thread_key": "pakistan-textile-exports-august"
+    }
+  }
+}
