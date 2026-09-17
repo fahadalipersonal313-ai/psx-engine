@@ -1,0 +1,286 @@
+{
+  "as_of": "2026-09-17T08:44:32Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-17T08:37:44.518283+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
+    "Mettis raw-feed timezone labels for the two newly reviewed Mettis stories did not match the article pages; publication timestamps below use the article pages' displayed GMT+05:00 times.",
+    "The RDA story is not treated as a Meezan-specific earnings event merely because Meezan Bank co-organised the roadshow; the rating is sector-level and correlated.",
+    "The Houthi escalation reinforces regional oil-shipping risk but does not by itself prove an additional production outage, so existing upstream confidence is not increased.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "GAL FY26 profit surges 57%",
+      "assessment": "positive",
+      "linkage": "direct link to GAL",
+      "reason": "Ghandhara Automobiles Limited, PSX ticker GAL, reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, with EPS rising to Rs112.58 from Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. This is direct company earnings evidence.",
+      "source": "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+      "sources": [
+        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+        "https://dps.psx.com.pk/company/GAL"
+      ],
+      "published": "2026-09-17T12:36:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9
+    },
+    {
+      "title": "Auto financing in Pakistan rises to Rs393bn in August",
+      "assessment": "positive",
+      "linkage": "sector link for Automobile Assembler",
+      "reason": "Auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The stronger financing backdrop is constructive for vehicle demand, but the aggregate SBP data do not establish sales or margins for any one listed assembler.",
+      "source": "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521",
+      "sources": [
+        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
+      ],
+      "published": "2026-09-17T12:07:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "RDA inflows rise as regional conflict prompts strategic fund relocation: Aurangzeb",
+      "assessment": "positive",
+      "linkage": "sector link for Commercial Banks; positive broad-market FX and liquidity context",
+      "reason": "The finance minister said recent Roshan Digital Account inflows have been consistently close to $300m versus more than $200m previously, while import cover has improved to roughly three months. The London roadshow was organised by UBL and Meezan Bank, but the article does not quantify any bank-specific deposit, fee, or earnings effect.",
+      "source": "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb",
+      "sources": [
+        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
+      ],
+      "published": "2026-09-17T13:11:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.7
+    },
+    {
+      "title": "Yemen's Houthis say Saudi strikes killed one, targeted telecom towers",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration Companies; negative broad-market geopolitical and shipping risk",
+      "reason": "Saudi strikes and Houthi territorial gains around the Red Sea add fresh evidence that regional shipping risk remains elevated. The article says the Houthis have announced a maritime blockade of Saudi Arabia and highlights their position around Bab al-Mandeb, but it does not document a new oil-production outage, so it reinforces rather than upgrades the existing upstream view.",
+      "source": "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+      "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers"
+      ],
+      "published": "2026-09-17T13:13:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.7
+    }
+  ],
+  "ratings": {
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "Hormuz traffic remains severely impaired and the new Red Sea escalation reinforces regional upstream and shipping risk, while Saudi alternative cargoes reduce the expected severity of supply disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL, so confidence remains lower.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+      ],
+      "source_published": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
+        "2026-09-17T11:56:00+05:00",
+        "2026-09-17T11:50:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.7,
+      "horizon": "single_session",
+      "reason": "Petrol rose by Rs6.88 per litre and HSD by Rs5.62 under the daily OGRA mechanism. This is directly relevant to PSO's core products, but no PSO-specific margin, volume, inventory, or working-capital effect is disclosed, so the earnings direction remains unproven.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"
+      ],
+      "source_published": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T23:44:00+05:00"
+      ],
+      "thread_key": "pakistan-daily-fuel-pricing"
+    },
+    "GAL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.9,
+      "horizon": "multi_session",
+      "reason": "Ghandhara Automobiles Limited reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, EPS of Rs112.58 versus Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. The PSX company page confirms GAL is Ghandhara Automobiles Limited in the Automobile Assembler sector.",
+      "relevance": "Direct link: GAL company earnings and dividend",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+        "https://dps.psx.com.pk/company/GAL"
+      ],
+      "source_published": [
+        "2026-09-17T12:36:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T12:36:00+05:00"
+      ],
+      "thread_key": "gal-fy26-results"
+    }
+  },
+  "sectors": {
+    "Cement": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "reason": "Sector fundamentals improved in FY26 and two-month FY27 domestic dispatches remain higher year on year, but August volumes weakened, northern exports halted, regional performance diverged, and energy and freight risks remain elevated. The current evidence is mixed.",
+      "relevance": "Sector-wide operating and demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven",
+        "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"
+      ],
+      "source_published": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T02:47:00+05:00",
+        "2026-09-16T16:45:00+05:00"
+      ],
+      "thread_key": "cement-demand-fy27"
+    },
+    "Technology/IT Exports": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.6,
+      "horizon": "multi_session",
+      "reason": "Pakistan's telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. This is constructive for the IT-export environment, but the aggregate data do not establish Systems Limited's company-specific revenue outcome.",
+      "relevance": "Sector context for Technology/IT Exports",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"
+      ],
+      "source_published": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-16T17:00:00+05:00"
+      ],
+      "thread_key": "pakistan-it-services-exports"
+    },
+    "Textile": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "multi_session",
+      "reason": "August textile exports fell 12.48% month on month but remained 1.99% higher year on year, with mixed product-level trends. The current sector evidence is material but not cleanly directional.",
+      "relevance": "Sector-wide export demand evidence",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
+      ],
+      "source_published": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T10:12:15+05:00"
+      ],
+      "thread_key": "pakistan-textile-exports-august"
+    },
+    "Automobile Assembler": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.65,
+      "horizon": "multi_session",
+      "reason": "Pakistan auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The financing trend is supportive of sector demand, but aggregate SBP credit data do not establish volumes, pricing, or margins for any individual listed assembler.",
+      "relevance": "Sector link: Automobile Assembler",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
+      ],
+      "source_published": [
+        "2026-09-17T12:07:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T12:07:00+05:00"
+      ],
+      "thread_key": "pakistan-auto-financing"
+    },
+    "Commercial Banks": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Recent Roshan Digital Account inflows were described as consistently close to $300m versus more than $200m previously, with improved import cover. That is constructive for banking liquidity and formal foreign-currency inflows, but the article does not quantify bank-level balances, fees, or earnings, so the sector link remains correlated rather than company-specific.",
+      "relevance": "Sector link: Commercial Banks",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
+      ],
+      "source_published": [
+        "2026-09-17T13:11:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T13:11:00+05:00"
+      ],
+      "thread_key": "pakistan-rda-inflows"
+    }
+  }
+}
