@@ -1,43 +1,70 @@
 {
-  "as_of": "2026-09-17T07:42:11Z",
+  "as_of": "2026-09-17T08:44:32Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-17T07:32:21.354380+00:00",
+  "input_fetched_at": "2026-09-17T08:37:44.518283+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
     "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
-    "Visible Hormuz transits deteriorated sharply after the prior read, while Saudi alternative loadings and lower Brent partly offset the physical supply signal.",
-    "The broad KSE-100 rally was treated as market reaction, not a causal company event.",
-    "The auto-financing headline was not rated because its current linked article body and publication timestamp could not be independently verified during this run.",
+    "Mettis raw-feed timezone labels for the two newly reviewed Mettis stories did not match the article pages; publication timestamps below use the article pages' displayed GMT+05:00 times.",
+    "The RDA story is not treated as a Meezan-specific earnings event merely because Meezan Bank co-organised the roadshow; the rating is sector-level and correlated.",
+    "The Houthi escalation reinforces regional oil-shipping risk but does not by itself prove an additional production outage, so existing upstream confidence is not increased.",
     "Stories not reviewed are not Neutral ratings."
   ],
   "reviewed_stories": [
     {
-      "title": "Number of ships transiting Strait of Hormuz falls to three on Wednesday, data shows",
+      "title": "GAL FY26 profit surges 57%",
       "assessment": "positive",
-      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation risk",
-      "reason": "Visible commodity vessel transits through the Strait of Hormuz fell to three on Wednesday from 12 a day earlier, versus a 10-day average of about 17. The sharp deterioration is fresh physical evidence that the regional supply chokepoint remains materially impaired, which restores some upstream risk premium even though alternative Saudi routes are partly mitigating lost exports.",
-      "source": "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
+      "linkage": "direct link to GAL",
+      "reason": "Ghandhara Automobiles Limited, PSX ticker GAL, reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, with EPS rising to Rs112.58 from Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. This is direct company earnings evidence.",
+      "source": "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
       "sources": [
-        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows"
+        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+        "https://dps.psx.com.pk/company/GAL"
       ],
-      "published": "2026-09-17T11:56:00+05:00",
+      "published": "2026-09-17T12:36:00+05:00",
       "text_depth": "full",
       "confidence": 0.9
     },
     {
-      "title": "Oil prices extend losses as fears of Middle East supply disruptions ease",
-      "assessment": "negative",
-      "linkage": "sector link for Oil & Gas Exploration relative to the supply-shock premium; positive broad-market import and inflation context",
-      "reason": "Brent eased to about $105.64 as Saudi Arabia offered additional crude cargoes through Oman. The workaround reduces the probability of a larger sustained export loss, but analysts said it only partly offsets disrupted barrels and the pipeline outage remains unresolved, so the supply shock has softened rather than disappeared.",
-      "source": "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+      "title": "Auto financing in Pakistan rises to Rs393bn in August",
+      "assessment": "positive",
+      "linkage": "sector link for Automobile Assembler",
+      "reason": "Auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The stronger financing backdrop is constructive for vehicle demand, but the aggregate SBP data do not establish sales or margins for any one listed assembler.",
+      "source": "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521",
       "sources": [
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
       ],
-      "published": "2026-09-17T11:50:00+05:00",
+      "published": "2026-09-17T12:07:00+05:00",
       "text_depth": "full",
-      "confidence": 0.85
+      "confidence": 0.75
+    },
+    {
+      "title": "RDA inflows rise as regional conflict prompts strategic fund relocation: Aurangzeb",
+      "assessment": "positive",
+      "linkage": "sector link for Commercial Banks; positive broad-market FX and liquidity context",
+      "reason": "The finance minister said recent Roshan Digital Account inflows have been consistently close to $300m versus more than $200m previously, while import cover has improved to roughly three months. The London roadshow was organised by UBL and Meezan Bank, but the article does not quantify any bank-specific deposit, fee, or earnings effect.",
+      "source": "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb",
+      "sources": [
+        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
+      ],
+      "published": "2026-09-17T13:11:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.7
+    },
+    {
+      "title": "Yemen's Houthis say Saudi strikes killed one, targeted telecom towers",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration Companies; negative broad-market geopolitical and shipping risk",
+      "reason": "Saudi strikes and Houthi territorial gains around the Red Sea add fresh evidence that regional shipping risk remains elevated. The article says the Houthis have announced a maritime blockade of Saudi Arabia and highlights their position around Bab al-Mandeb, but it does not document a new oil-production outage, so it reinforces rather than upgrades the existing upstream view.",
+      "source": "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+      "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers"
+      ],
+      "published": "2026-09-17T13:13:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.7
     }
   ],
   "ratings": {
@@ -46,18 +73,21 @@
       "causality": "causal",
       "confidence": 0.5,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
-      "relevance": "Sector link: Oil & Gas Exploration",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
         "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
         "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
@@ -68,18 +98,21 @@
       "causality": "causal",
       "confidence": 0.5,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, versus a 10-day average near 17. Saudi cargoes through Oman partly mitigate disrupted exports, so the fresh physical chokepoint evidence restores some supply-risk premium without reversing the easing seen in spot crude.",
-      "relevance": "Sector link: Oil & Gas Exploration",
+      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
         "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
         "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
@@ -90,18 +123,21 @@
       "causality": "causal",
       "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "The collapse in visible Hormuz vessel traffic keeps regional upstream supply risk elevated while Brent remains above $100, although Saudi alternative cargoes reduce the expected severity of the disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL.",
-      "relevance": "Sector link: Oil & Gas Exploration",
+      "reason": "Hormuz traffic remains severely impaired and the new Red Sea escalation reinforces regional upstream and shipping risk, while Saudi alternative cargoes reduce the expected severity of supply disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL, so confidence remains lower.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
         "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
         "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
       ],
       "source_published": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
       "source_published_at": [
+        "2026-09-17T13:13:00+05:00",
         "2026-09-17T11:56:00+05:00",
         "2026-09-17T11:50:00+05:00"
       ],
@@ -125,6 +161,26 @@
         "2026-09-16T23:44:00+05:00"
       ],
       "thread_key": "pakistan-daily-fuel-pricing"
+    },
+    "GAL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.9,
+      "horizon": "multi_session",
+      "reason": "Ghandhara Automobiles Limited reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, EPS of Rs112.58 versus Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. The PSX company page confirms GAL is Ghandhara Automobiles Limited in the Automobile Assembler sector.",
+      "relevance": "Direct link: GAL company earnings and dividend",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+        "https://dps.psx.com.pk/company/GAL"
+      ],
+      "source_published": [
+        "2026-09-17T12:36:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T12:36:00+05:00"
+      ],
+      "thread_key": "gal-fy26-results"
     }
   },
   "sectors": {
@@ -187,6 +243,44 @@
         "2026-09-17T10:12:15+05:00"
       ],
       "thread_key": "pakistan-textile-exports-august"
+    },
+    "Automobile Assembler": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.65,
+      "horizon": "multi_session",
+      "reason": "Pakistan auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The financing trend is supportive of sector demand, but aggregate SBP credit data do not establish volumes, pricing, or margins for any individual listed assembler.",
+      "relevance": "Sector link: Automobile Assembler",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
+      ],
+      "source_published": [
+        "2026-09-17T12:07:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T12:07:00+05:00"
+      ],
+      "thread_key": "pakistan-auto-financing"
+    },
+    "Commercial Banks": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.5,
+      "horizon": "multi_session",
+      "reason": "Recent Roshan Digital Account inflows were described as consistently close to $300m versus more than $200m previously, with improved import cover. That is constructive for banking liquidity and formal foreign-currency inflows, but the article does not quantify bank-level balances, fees, or earnings, so the sector link remains correlated rather than company-specific.",
+      "relevance": "Sector link: Commercial Banks",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
+      ],
+      "source_published": [
+        "2026-09-17T13:11:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T13:11:00+05:00"
+      ],
+      "thread_key": "pakistan-rda-inflows"
     }
   }
 }
