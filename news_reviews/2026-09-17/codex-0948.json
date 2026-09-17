@@ -1,0 +1,141 @@
+{
+  "as_of": "2026-09-17T04:48:16Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-17T04:36:29.663541+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "Only evidence belonging to the current PSX session was rated. Older stories that remained in the 24-hour raw window were not re-scored merely because they were still present.",
+    "The Middle East oil thread remains supportive for upstream producers, but the Saudi Oman loading workaround and lower Brent materially reduce the severity of the earlier supply-shock case.",
+    "The current-account improvement, Federal Reserve hike, and power-sector FDI are broad macro or sector context. No company rating was inferred where the article did not establish a company-specific mechanism.",
+    "The July LSM rebound was not treated as a new event because the same data was already public before the previous PSX close; a morning republication does not reset the event clock.",
+    "Amreli Steels coverage was not mapped to ASL: Amreli Steels is ASTL, while ASL is a different listed company.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "Oil prices extend losses as fears of Middle East supply disruptions ease",
+      "assessment": "positive",
+      "linkage": "sector link for Oil & Gas Exploration; negative broad-market import and inflation backdrop",
+      "reason": "Brent fell to about $104.59 as Saudi Arabia's additional Oman cargoes reduced fears of a larger supply loss. The physical disruption has not disappeared and crude remains elevated, so the upstream backdrop is still supportive, but less strongly than in the prior review.",
+      "source": "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+      "sources": ["https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"],
+      "published": "2026-09-17T07:45:27+05:00",
+      "text_depth": "full",
+      "confidence": 0.5
+    },
+    {
+      "title": "Petrol price jumps Rs6.88, diesel Rs5.62 from Sept 17",
+      "assessment": "neutral",
+      "linkage": "direct operating exposure for PSO",
+      "reason": "Petrol rose to Rs391.22 per litre and HSD to Rs421.45 under the daily OGRA mechanism. The change is directly relevant to PSO's core products, but the article provides no PSO-specific margin, volume, inventory, or working-capital effect, so a directional earnings call is not justified.",
+      "source": "https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507",
+      "sources": ["https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"],
+      "published": "2026-09-16T23:44:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.7
+    },
+    {
+      "title": "Cement: Earnings rise; recovery turns uneven",
+      "assessment": "neutral",
+      "linkage": "sector link for Cement",
+      "reason": "FY26 sector profitability improved, but August dispatches weakened and regional conditions diverged. Domestic dispatches were still up over the first two months of FY27, while August total and local volumes softened and northern exports halted. The evidence is economically relevant but mixed rather than cleanly directional.",
+      "source": "https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven",
+      "sources": ["https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven", "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"],
+      "published": "2026-09-17T02:47:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Current account posts $98m deficit in August",
+      "assessment": "positive",
+      "linkage": "broad-market macro; no direct company link",
+      "reason": "Pakistan's August current-account deficit narrowed sharply to $98 million and the two-month FY27 deficit was 36.3% smaller year on year. The improvement is constructive for external-balance risk, but the goods trade gap remains wide and high oil prices are a fresh headwind.",
+      "source": "https://mettisglobal.news/Current-account-posts-98m-deficit-in-August-63494",
+      "sources": ["https://mettisglobal.news/Current-account-posts-98m-deficit-in-August-63494"],
+      "published": "2026-09-16T16:35:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.8
+    },
+    {
+      "title": "Fed raises rates in search of 'timelier' drop in inflation, sees more tightening ahead",
+      "assessment": "negative",
+      "linkage": "broad-market macro; no direct company link",
+      "reason": "The Federal Reserve raised its policy rate by 25 basis points to 3.75% to 4.00% and signalled further tightening. A stronger dollar and higher global yields are an adverse financing and valuation backdrop for frontier markets, but this is not a direct company event for the PSX universe.",
+      "source": "https://www.brecorder.com/news/40439909",
+      "sources": ["https://www.brecorder.com/news/40439909"],
+      "published": "2026-09-17T04:22:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.75
+    },
+    {
+      "title": "Service sector posts trade deficit of $286m in August",
+      "assessment": "positive",
+      "linkage": "sector context for Technology/IT Exports; not company-specific",
+      "reason": "Telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. That is constructive sector demand evidence for IT exporters, but the data do not identify Systems Limited or another tracked company, so the linkage is correlated rather than company-specific.",
+      "source": "https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497",
+      "sources": ["https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"],
+      "published": "2026-09-16T17:00:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.6
+    },
+    {
+      "title": "Power sector again tops FDI inflows in August 2026",
+      "assessment": "positive",
+      "linkage": "sector context for power generation; insufficient for a direct HUBC or KEL rating",
+      "reason": "Power-sector net FDI rose to $87.8 million in August, but the article attributes flows across hydel, coal, and thermal categories without identifying a tracked listed company's project. The sector backdrop is constructive, while a direct company inference would be unsupported.",
+      "source": "https://mettisglobal.news/Power-sector-again-tops-FDI-inflows-in-August-2026-63504",
+      "sources": ["https://mettisglobal.news/Power-sector-again-tops-FDI-inflows-in-August-2026-63504"],
+      "published": "2026-09-16T19:57:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.6
+    }
+  ],
+  "ratings": {
+    "OGDC": {
+      "rating": "positive", "causality": "causal", "confidence": 0.5, "horizon": "multi_session",
+      "reason": "The Middle East oil-supply thread remains supportive because Brent is still above $100 and physical disruptions persist, but Saudi Arabia's Oman-loading workaround has reduced the probability of a larger prolonged export loss. The positive upstream read is therefore retained with lower confidence.",
+      "relevance": "Sector link: Oil & Gas Exploration", "text_depth": "full",
+      "sources": ["https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"],
+      "source_published": ["2026-09-17T07:45:27+05:00"], "source_published_at": ["2026-09-17T07:45:27+05:00"], "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive", "causality": "causal", "confidence": 0.5, "horizon": "multi_session",
+      "reason": "The Middle East oil-supply thread remains supportive because Brent is still above $100 and regional supply risk persists, while Saudi Arabia's Oman-loading workaround reduces the severity of the earlier shock. PPL retains a positive upstream read with lower confidence.",
+      "relevance": "Sector link: Oil & Gas Exploration", "text_depth": "full",
+      "sources": ["https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"],
+      "source_published": ["2026-09-17T07:45:27+05:00"], "source_published_at": ["2026-09-17T07:45:27+05:00"], "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive", "causality": "causal", "confidence": 0.45, "horizon": "multi_session",
+      "reason": "Elevated crude and residual regional supply risk remain supportive to upstream energy, but the Oman workaround and falling oil prices reduce the tail-risk premium. Mari's gas-heavy production mix also makes its direct crude sensitivity weaker than OGDC or PPL.",
+      "relevance": "Sector link: Oil & Gas Exploration", "text_depth": "full",
+      "sources": ["https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"],
+      "source_published": ["2026-09-17T07:45:27+05:00"], "source_published_at": ["2026-09-17T07:45:27+05:00"], "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "neutral", "causality": "causal", "confidence": 0.7, "horizon": "single_session",
+      "reason": "Petrol rose by Rs6.88 per litre and HSD by Rs5.62 under the daily OGRA mechanism. This is directly relevant to PSO's core products, but no PSO-specific margin, volume, inventory, or working-capital effect is disclosed, so the earnings direction remains unproven.",
+      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established", "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"],
+      "source_published": ["2026-09-16T23:44:00+05:00"], "source_published_at": ["2026-09-16T23:44:00+05:00"], "thread_key": "pakistan-daily-fuel-pricing"
+    }
+  },
+  "sectors": {
+    "Cement": {
+      "rating": "neutral", "causality": "causal", "confidence": 0.75, "horizon": "multi_session",
+      "reason": "Sector fundamentals improved in FY26 and two-month FY27 domestic dispatches remain higher year on year, but August volumes weakened, northern exports halted, regional performance diverged, and energy and freight risks remain elevated. The current evidence is mixed.",
+      "relevance": "Sector-wide operating and demand evidence", "text_depth": "full",
+      "sources": ["https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven", "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"],
+      "source_published": ["2026-09-17T02:47:00+05:00", "2026-09-16T16:45:00+05:00"], "source_published_at": ["2026-09-17T02:47:00+05:00", "2026-09-16T16:45:00+05:00"], "thread_key": "cement-demand-fy27"
+    },
+    "Technology/IT Exports": {
+      "rating": "positive", "causality": "correlated", "confidence": 0.6, "horizon": "multi_session",
+      "reason": "Pakistan's telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. This is constructive for the IT-export environment, but the aggregate data do not establish Systems Limited's company-specific revenue outcome.",
+      "relevance": "Sector context for Technology/IT Exports", "text_depth": "full",
+      "sources": ["https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"],
+      "source_published": ["2026-09-16T17:00:00+05:00"], "source_published_at": ["2026-09-16T17:00:00+05:00"], "thread_key": "pakistan-it-services-exports"
+    }
+  }
+}
