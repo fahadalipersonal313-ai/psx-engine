@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-18T07:42:10Z",
+  "as_of": "2026-09-18T08:40:17Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -31,17 +31,15 @@
     "https://mettisglobal.news/Wahdat-Poultry-Farm-secures-Rs500m-shortterm-financing-facility-from-Saudi-Pak-63523",
     "https://mettisglobal.news/Weekly-SPI-increased-by-049-63558",
     "https://propakistani.pk/2026/09/18/bankislami-inaugurates-flagship-priority-banking-experience-centre-in-multan/",
+    "https://propakistani.pk/2026/09/18/burns-road-to-be-transformed-into-modern-food-street/",
     "https://propakistani.pk/2026/09/18/cda-plans-double-decker-electric-bus-service-for-islamabad/",
-    "https://propakistani.pk/2026/09/18/fed-hits-rs-840-billion-as-cigarettes-cement-and-air-travel-collections-grow/",
-    "https://propakistani.pk/2026/09/18/govt-and-petrol-pump-owners-finally-agree-on-fuel-relief-scheme/",
+    "https://propakistani.pk/2026/09/18/goods-transporters-announce-another-7-fare-hike/",
     "https://propakistani.pk/2026/09/18/govt-finalizes-big-changes-to-css-exams-recruitment-and-promotions/",
     "https://propakistani.pk/2026/09/18/iran-war-has-made-oil-impossible-to-forecast-jp-morgan/",
-    "https://propakistani.pk/2026/09/18/karachi-industrial-park-plan-nears-final-approval/",
-    "https://propakistani.pk/2026/09/18/pakistan-among-asias-worst-hit-by-lng-disruptions-report/",
-    "https://propakistani.pk/2026/09/18/pakistan-completes-5th-eu-gsp-review/",
+    "https://propakistani.pk/2026/09/18/islamabad-reports-11-kidnapping-cases-in-just-24-hours/",
+    "https://propakistani.pk/2026/09/18/park-road-underpass-finally-opens-after-months-of-delay/",
+    "https://propakistani.pk/2026/09/18/punjab-plans-rs-4-23-billion-luxury-apartments-for-govt-officers/",
     "https://propakistani.pk/2026/09/18/secp-approves-up-to-rs-3-million-digital-loan-facility-for-small-businesses/",
-    "https://www.brecorder.com/news/40440097/stocks-rise-as-oil-dips-yen-wobbles-ahead-of-boj",
-    "https://www.brecorder.com/news/40440098/indian-rupee-may-find-breathing-room-on-ipo-linked-inflows-oil-retreat",
     "https://www.brecorder.com/news/40440099/indian-shares-set-to-inch-higher-as-oil-eases-ipo-rush-to-cap-upside",
     "https://www.brecorder.com/news/40440100/boj-raises-interest-rates-to-31-year-high-in-widely-expected-move",
     "https://www.brecorder.com/news/40440101/south-koreas-lee-says-will-not-deploy-military-to-get-involved-in-middle-east-conflict",
@@ -69,27 +67,18 @@
     "https://www.brecorder.com/news/40440123/moodys-raises-india-fiscal-2027-gdp-growth-forecast-to-7-on-middle-east-resilience",
     "https://www.brecorder.com/news/40440124/chinas-august-refined-fuel-exports-exceed-pre-iran-war-levels-jet-fuel-exports-hit-record-high",
     "https://www.brecorder.com/news/40440125/pakistan-will-go-to-any-length-to-defend-saudi-arabia-dg-ispr",
-    "https://www.brecorder.com/news/40440126/at-least-one-dead-four-injured-in-school-shooting-in-southern-philippines"
+    "https://www.brecorder.com/news/40440126/at-least-one-dead-four-injured-in-school-shooting-in-southern-philippines",
+    "https://www.brecorder.com/news/40440127/dada-partners-advises-qistbazaar-on-its-groundbreaking-pkr-500-million-sukuk",
+    "https://www.brecorder.com/news/40440128/ningbo-green-light-energy-set-to-be-pakistans-first-listing-via-spac-report"
   ],
-  "count": 4,
+  "count": 3,
   "ratings": {
-    "POWER": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "No genuine POWER (Power Cement) story; tagged items are generic Disco/LNG/global macro pieces",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2030751/bids-for-power-firms-being-evaluated"
-      ]
-    },
     "GAL": {
       "rating": "highly_positive",
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.75,
-      "reason": "FY26 profit +57% to Rs6.42bn, EPS Rs112.58, Rs12 dividend; plus Rs2.3bn Paint Shop capex",
+      "reason": "FY26 net profit +57% to Rs6.42bn, EPS Rs112.58, Rs12/sh dividend, plus Rs2.3bn paint shop capex",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
@@ -97,11 +86,11 @@
       ]
     },
     "GHNI": {
-      "rating": "highly_positive",
+      "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.8,
-      "reason": "FY26 net profit +51% to Rs6.93bn, EPS Rs162.57, final dividend Rs12/share declared",
+      "confidence": 0.75,
+      "reason": "FY26 net profit +51% to Rs6.93bn, EPS Rs162.57, Rs12/sh dividend declared",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527"
@@ -111,8 +100,8 @@
       "rating": "positive",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.65,
-      "reason": "FY26 profit tripled to Rs271m, EPS Rs1.40 vs Rs0.97; MAIL receivable formalized as loan",
+      "confidence": 0.7,
+      "reason": "FY26 profit more than tripled to Rs271m, revenue +26%, EPS Rs1.40 vs Rs0.97",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/LOADS-profit-more-than-triples-to-Rs271m-in-FY26-63552",
@@ -122,45 +111,90 @@
   },
   "sectors": {
     "Oil Marketing": {
-      "rating": "negative",
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "crude mixed/minor (Brent -0.7%, WTI +4.6%), no OMC margin change, no clear direction",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549"
+      ]
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "crude price move mixed/minor, unclear refining-margin impact today",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "neutral",
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.3,
-      "reason": "Brent eased ~0.7% to ~$103.74 on easing Saudi supply fears, light pressure on OMC inventory economics",
+      "reason": "mixed crude signals (Brent down, WTI up) leave realized-price direction unclear",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549",
-        "https://www.brecorder.com/news/40440099/indian-shares-set-to-inch-higher-as-oil-eases-ipo-rush-to-cap-upside"
+        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "correlated",
+      "confidence": 0.4,
+      "reason": "Karachi Port liner connectivity index hit record 343.02, improved global trade integration",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548"
+      ]
+    },
+    "Logistics/Transport": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "goods transporters' 7% fare hike passes through fuel-cost rise, margin-neutral",
+      "text_depth": "full",
+      "sources": [
+        "https://propakistani.pk/2026/09/18/goods-transporters-announce-another-7-fare-hike/"
       ]
     },
     "Cement": {
       "rating": "positive",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "correlated",
       "confidence": 0.3,
-      "reason": "FBR FED collections show cement receipts growing, a weak proxy for dispatch volumes",
+      "reason": "cement named among sectors driving broad PSX buying momentum, no cement-specific catalyst",
       "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/09/18/fed-hits-rs-840-billion-as-cigarettes-cement-and-air-travel-collections-grow/"
+        "https://www.brecorder.com/news/40440103/psx-buying-continues-kse-100-up-over-1800-points",
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Close-the-Loop-63529"
       ]
     },
     "Cement/Conglomerate": {
       "rating": "positive",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "correlated",
       "confidence": 0.3,
-      "reason": "FBR FED collections show cement receipts growing, a weak proxy for dispatch volumes",
+      "reason": "cement named among sectors driving broad PSX buying momentum, no cement-specific catalyst",
       "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/09/18/fed-hits-rs-840-billion-as-cigarettes-cement-and-air-travel-collections-grow/"
+        "https://www.brecorder.com/news/40440103/psx-buying-continues-kse-100-up-over-1800-points",
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Close-the-Loop-63529"
       ]
     },
     "Auto Assembler": {
-      "rating": "neutral",
+      "rating": "positive",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Only generic market-rally mention naming assemblers among sectors buying broadly",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "auto assemblers among sectors in market-wide buying; GAL's strong FY26 results add read-through",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40440103/psx-buying-continues-kse-100-up-over-1800-points"
@@ -171,98 +205,21 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Cotton arrivals up 19% y/y to 2.4m bales by Sept 15, easing mill input costs",
+      "reason": "cotton arrivals +19% YoY to 2.4m bales eases raw-material cost pressure for spinners/mills",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Pakistan-cotton-arrivals-surge-19-to-24m-bales-by-Sept-15-63556"
-      ]
-    },
-    "Textile/Synthetic Fibre": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Cotton-arrivals story is cotton-specific; no mechanism for man-made/synthetic fibre producers",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-cotton-arrivals-surge-19-to-24m-bales-by-Sept-15-63556"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Karachi Port liner connectivity (PLSCI) hits record high, LSCI rank improves 35->34",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Qantas (Australia) ground-worker strike story has no PSX logistics linkage",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440109/qantas-ground-workers-to-strike-over-pay-and-conditions-next-week"
-      ]
-    },
-    "Refinery": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Brent eased ~0.7% on easing supply fears; thin daily move, modest inventory-valuation pressure for refiners",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Brent eased ~0.7% to ~$103.74 on easing Saudi supply fears, pressuring E&P realizations",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-prices-slip-toward-104-on-easing-supply-concerns-63549"
       ]
     },
     "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Only a routine BankIslami branch opening and unrelated BOJ/gold items; no repricing mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://propakistani.pk/2026/09/18/bankislami-inaugurates-flagship-priority-banking-experience-centre-in-multan/"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "negative",
+      "rating": "positive",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Pakistan flagged as Asia's most LNG-disruption-exposed; gas curtailment risk to fertilizer feedstock (~30% of supply)",
+      "causality": "correlated",
+      "confidence": 0.45,
+      "reason": "SBP forex reserves +16.7% WoW to $21.39bn eases external-account stress, supportive for banks",
       "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/09/18/pakistan-among-asias-worst-hit-by-lng-disruptions-report/"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Hormuz-linked LNG disruption risk threatens ~30% of Pakistan's gas supply, raising security-of-supply risk for distributors",
-      "text_depth": "full",
-      "sources": [
-        "https://propakistani.pk/2026/09/18/pakistan-among-asias-worst-hit-by-lng-disruptions-report/"
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63543"
       ]
     }
   }
