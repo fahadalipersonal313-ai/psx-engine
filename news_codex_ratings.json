@@ -1,286 +1,324 @@
 {
-  "as_of": "2026-09-17T08:44:32Z",
+  "as_of": "2026-09-18T04:50:39Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-17T08:37:44.518283+00:00",
+  "input_fetched_at": "2026-09-18T04:43:40.006054+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
-    "Only material new or materially changed evidence since the prior Codex read is listed under reviewed_stories. Existing same-session ratings are preserved where their evidence remains valid.",
-    "Mettis raw-feed timezone labels for the two newly reviewed Mettis stories did not match the article pages; publication timestamps below use the article pages' displayed GMT+05:00 times.",
-    "The RDA story is not treated as a Meezan-specific earnings event merely because Meezan Bank co-organised the roadshow; the rating is sector-level and correlated.",
-    "The Houthi escalation reinforces regional oil-shipping risk but does not by itself prove an additional production outage, so existing upstream confidence is not increased.",
+    "Only material new or materially changed evidence belonging to the current Friday session is listed. Items published before Thursday's 15:30 PKT close are not caught up into Friday ratings even if they remain in the 24-hour raw file.",
+    "The Dawn fuel-subsidy article exposes a publication date and a 23:43 PKT update time but not a publication clock time. The score-bearing PSO record transparently uses that displayed update time alongside exact-timestamped Business Recorder sources.",
+    "The morning LNG-shortage headline is treated as a continuation of the verified LNG supply-stress story rather than a separate company rating.",
     "Stories not reviewed are not Neutral ratings."
   ],
   "reviewed_stories": [
     {
-      "title": "GAL FY26 profit surges 57%",
+      "title": "GHNI FY26 profit jumps 51%",
       "assessment": "positive",
-      "linkage": "direct link to GAL",
-      "reason": "Ghandhara Automobiles Limited, PSX ticker GAL, reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, with EPS rising to Rs112.58 from Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. This is direct company earnings evidence.",
-      "source": "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
+      "linkage": "direct",
+      "linkage_detail": "Direct link to GHNI, Ghandhara Industries Limited",
+      "reason": "GHNI reported FY26 net profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57 versus Rs107.58, net sales up 62%, gross profit up 54%, finance costs down 9%, and a Rs12 per share final cash dividend. The official PSX profile confirms GHNI is Ghandhara Industries Limited in Automobile Assembler.",
+      "source": "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
       "sources": [
-        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
-        "https://dps.psx.com.pk/company/GAL"
+        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+        "https://dps.psx.com.pk/company/GHNI"
       ],
-      "published": "2026-09-17T12:36:00+05:00",
+      "published": "2026-09-17T15:35:00+05:00",
       "text_depth": "full",
-      "confidence": 0.9
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "ghni-fy26-results"
     },
     {
-      "title": "Auto financing in Pakistan rises to Rs393bn in August",
-      "assessment": "positive",
-      "linkage": "sector link for Automobile Assembler",
-      "reason": "Auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The stronger financing backdrop is constructive for vehicle demand, but the aggregate SBP data do not establish sales or margins for any one listed assembler.",
-      "source": "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521",
+      "title": "Oil prices fall 1% on hopes of limited supply disruptions",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to Oil & Gas Exploration Companies, including OGDC, PPL and MARI",
+      "reason": "Brent extended its decline to about $103.77 as Saudi cargoes via Oman and expected East-West pipeline repairs reduced fears of a larger supply loss. Crude remains above $100 and regional disruption persists, so this materially reduces but does not reverse the existing positive upstream oil-price backdrop.",
+      "source": "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions",
       "sources": [
-        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
       ],
-      "published": "2026-09-17T12:07:00+05:00",
+      "published": "2026-09-18T07:48:00+05:00",
       "text_depth": "full",
-      "confidence": 0.75
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "middle-east-oil-supply-shock"
     },
     {
-      "title": "RDA inflows rise as regional conflict prompts strategic fund relocation: Aurangzeb",
-      "assessment": "positive",
-      "linkage": "sector link for Commercial Banks; positive broad-market FX and liquidity context",
-      "reason": "The finance minister said recent Roshan Digital Account inflows have been consistently close to $300m versus more than $200m previously, while import cover has improved to roughly three months. The London roadshow was organised by UBL and Meezan Bank, but the article does not quantify any bank-specific deposit, fee, or earnings effect.",
-      "source": "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb",
+      "title": "Energy disruption hits Pakistan and Bangladesh as Gulf crisis worsens",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector and broad-market link to Pakistan gas and power availability; no company-specific earnings attribution",
+      "reason": "Asian spot LNG prices moved back toward $30 per mmBtu from about $10 before the war. Pakistan's power sector may need up to 400 mmcfd through winter while only two LNG cargoes were confirmed for September. This is a negative operating and macro backdrop, but the article does not establish a directional earnings effect for SNGP, SSGC, HUBC or KEL.",
+      "source": "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
       "sources": [
-        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
+        "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
+        "https://www.brecorder.com/news/40439965/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens"
       ],
-      "published": "2026-09-17T13:11:00+05:00",
+      "published": "2026-09-17T16:03:00+05:00",
       "text_depth": "full",
-      "confidence": 0.7
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-lng-supply-stress"
     },
     {
-      "title": "Yemen's Houthis say Saudi strikes killed one, targeted telecom towers",
-      "assessment": "positive",
-      "linkage": "sector link for Oil & Gas Exploration Companies; negative broad-market geopolitical and shipping risk",
-      "reason": "Saudi strikes and Houthi territorial gains around the Red Sea add fresh evidence that regional shipping risk remains elevated. The article says the Houthis have announced a maritime blockade of Saudi Arabia and highlights their position around Bab al-Mandeb, but it does not document a new oil-production outage, so it reinforces rather than upgrades the existing upstream view.",
-      "source": "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
+      "title": "PM's fuel subsidy scheme faces first-day hurdles at petrol pumps",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
+      "reason": "Dealer reimbursement concerns were largely resolved, but the same report carries a fresh OCAC warning that Rs66.7bn of price-differential claims remain unsettled, OMC liquidity is being drained while companies finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. That is a negative working-capital and margin backdrop for OMCs including PSO.",
+      "source": "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
       "sources": [
-        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers"
+        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+        "https://www.brecorder.com/news/40439989"
       ],
-      "published": "2026-09-17T13:13:00+05:00",
+      "published": "2026-09-17; article updated 2026-09-17T23:43:00+05:00",
       "text_depth": "full",
-      "confidence": 0.7
+      "confidence": 0.85,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-omc-liquidity-pdc"
+    },
+    {
+      "title": "Petrol price cut by 43 paise, HSD up by Rs3.47",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "Direct product-price link to PSO's petrol and HSD business, with no company-specific volume or inventory evidence",
+      "reason": "Petrol fell to Rs390.79 per litre while HSD rose to Rs424.92. OMC profit margin remained fixed at Rs7.87 per litre. Mixed retail-price changes with an unchanged regulated margin do not by themselves establish a positive or negative PSO earnings direction.",
+      "source": "https://www.brecorder.com/news/40440079",
+      "sources": [
+        "https://www.brecorder.com/news/40440079"
+      ],
+      "published": "2026-09-18T06:37:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-daily-fuel-pricing"
+    },
+    {
+      "title": "Pakistan completes fifth EU GSP+ review",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to export-oriented textiles; company exposure varies",
+      "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued GSP+ access supports the tariff and market-access backdrop for exporters, especially textiles, although this is not company-specific revenue evidence.",
+      "source": "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review",
+      "sources": [
+        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
+      ],
+      "published": "2026-09-18T05:15:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-eu-gsp-plus"
+    },
+    {
+      "title": "SBP reserves surge $3.06bn to $21.39bn",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Positive broad-market FX-buffer context; irrelevant to any specific tracked stock without company-level transmission evidence",
+      "reason": "SBP reserves rose by $3.06bn to $21.39bn and total liquid reserves to $26.79bn, mainly due to Eurobond proceeds. This improves the near-term external liquidity buffer, but the increase is financing-driven and does not establish a specific tracked company's earnings outcome.",
+      "source": "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
+      "sources": [
+        "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541"
+      ],
+      "published": "2026-09-17T21:23:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-fx-reserves"
+    },
+    {
+      "title": "SCRA balance drops Rs374m, securities see Rs3bn net selling",
+      "assessment": "negative",
+      "linkage": "irrelevant",
+      "linkage_detail": "Negative broad-market foreign-flow context; irrelevant to any specific tracked stock",
+      "reason": "SCRA balance fell Rs374m in the week ended September 11 and securities recorded Rs3bn of net selling, while the equity investment market value fell Rs19.62bn. This is negative foreign-flow context but is not attributable to a specific tracked company.",
+      "source": "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539",
+      "sources": [
+        "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539"
+      ],
+      "published": "2026-09-17T18:36:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-scra-foreign-flows"
+    },
+    {
+      "title": "Privatisation Commission plans 51% to 100% divestment of each Disco",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "Irrelevant to HUBC and KEL as company-specific evidence",
+      "reason": "The proposed transactions concern state electricity distribution companies. The article does not identify HUBC or KEL as divestment targets and does not establish a direct earnings effect for either tracked company, so no power-company rating is created.",
+      "source": "https://www.brecorder.com/news/40440084",
+      "sources": [
+        "https://www.brecorder.com/news/40440084"
+      ],
+      "published": "2026-09-18T05:15:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-disco-privatisation"
+    },
+    {
+      "title": "Karachi Port's liner shipping connectivity reaches record 343",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Positive national trade-connectivity context; irrelevant to PIBTL as direct company evidence",
+      "reason": "Karachi Port's liner shipping connectivity index rose to a record 343.02 in Q2 2026. This supports national trade-connectivity context, but PIBTL operates a bulk terminal at Port Qasim, so the Karachi Port result is not direct evidence about PIBTL.",
+      "source": "https://www.brecorder.com/news/40440056",
+      "sources": [
+        "https://www.brecorder.com/news/40440056"
+      ],
+      "published": "2026-09-18T06:03:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "karachi-port-connectivity"
     }
   ],
   "ratings": {
+    "GHNI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.95,
+      "horizon": "multi_session",
+      "reason": "Ghandhara Industries Limited reported FY26 profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57, sales up 62%, gross profit up 54%, lower finance costs and a Rs12 per share final dividend. This is direct company earnings evidence.",
+      "relevance": "Direct link: GHNI company earnings and dividend",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+        "https://dps.psx.com.pk/company/GHNI"
+      ],
+      "source_published": [
+        "2026-09-17T15:35:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T15:35:00+05:00"
+      ],
+      "thread_key": "ghni-fy26-results"
+    },
     "OGDC": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.5,
+      "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
-        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
       ],
       "source_published": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
     "PPL": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.5,
+      "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100 and visible Hormuz commodity transits fell to just three from 12 a day earlier, while fresh Red Sea escalation keeps regional shipping risk elevated. Saudi cargoes through Oman partly mitigate disrupted exports, and the new Houthi report does not prove another production outage, so the existing positive view and confidence are unchanged.",
+      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
-        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
       ],
       "source_published": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
     "MARI": {
       "rating": "positive",
       "causality": "causal",
-      "confidence": 0.45,
+      "confidence": 0.4,
       "horizon": "multi_session",
-      "reason": "Hormuz traffic remains severely impaired and the new Red Sea escalation reinforces regional upstream and shipping risk, while Saudi alternative cargoes reduce the expected severity of supply disruption. Mari's gas-heavy production mix makes its direct crude sensitivity weaker than OGDC or PPL, so confidence remains lower.",
+      "reason": "Brent remains above $100, but Saudi alternative exports and expected East-West pipeline repairs have reduced the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view is retained at lower confidence.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439942/yemens-houthis-say-saudi-strikes-killed-one-targeted-telecom-towers",
-        "https://www.brecorder.com/news/40439932/number-of-ships-transiting-strait-of-hormuz-falls-to-three-on-wednesday-data-shows",
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease"
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
       ],
       "source_published": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T13:13:00+05:00",
-        "2026-09-17T11:56:00+05:00",
-        "2026-09-17T11:50:00+05:00"
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
     "PSO": {
-      "rating": "neutral",
+      "rating": "negative",
       "causality": "causal",
       "confidence": 0.7,
-      "horizon": "single_session",
-      "reason": "Petrol rose by Rs6.88 per litre and HSD by Rs5.62 under the daily OGRA mechanism. This is directly relevant to PSO's core products, but no PSO-specific margin, volume, inventory, or working-capital effect is disclosed, so the earnings direction remains unproven.",
-      "relevance": "Direct link: core petrol and diesel products; directional earnings effect not established",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-jumps-Rs688-diesel-Rs562-from-Sept-17-63507"
-      ],
-      "source_published": [
-        "2026-09-16T23:44:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-16T23:44:00+05:00"
-      ],
-      "thread_key": "pakistan-daily-fuel-pricing"
-    },
-    "GAL": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.9,
       "horizon": "multi_session",
-      "reason": "Ghandhara Automobiles Limited reported FY26 consolidated net profit of Rs6.42bn, up 57% year on year, EPS of Rs112.58 versus Rs71.85, revenue up 36%, gross profit up 51%, finance costs down 71%, and a Rs12 per share final cash dividend. The PSX company page confirms GAL is Ghandhara Automobiles Limited in the Automobile Assembler sector.",
-      "relevance": "Direct link: GAL company earnings and dividend",
+      "reason": "Fresh OMC industry evidence says Rs66.7bn of price-differential claims remain unsettled, liquidity is being drained while OMCs finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. Dealer subsidy reimbursement clarity partly reduces implementation risk, while today's mixed petrol and diesel price changes leave the regulated OMC margin fixed at Rs7.87 per litre. The negative working-capital and margin evidence therefore outweighs the neutral daily price move for PSO as an OMC, without claiming a PSO-specific loss amount.",
+      "relevance": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/GAL-FY26-profit-surges-57-63522",
-        "https://dps.psx.com.pk/company/GAL"
+        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+        "https://www.brecorder.com/news/40439989",
+        "https://www.brecorder.com/news/40440079"
       ],
       "source_published": [
-        "2026-09-17T12:36:00+05:00"
+        "2026-09-17T23:43:00+05:00",
+        "2026-09-17T20:55:00+05:00",
+        "2026-09-18T06:37:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-17T12:36:00+05:00"
+        "2026-09-17T23:43:00+05:00",
+        "2026-09-17T20:55:00+05:00",
+        "2026-09-18T06:37:00+05:00"
       ],
-      "thread_key": "gal-fy26-results"
+      "thread_key": "pakistan-omc-liquidity-pdc"
     }
   },
   "sectors": {
-    "Cement": {
-      "rating": "neutral",
-      "causality": "causal",
-      "confidence": 0.75,
-      "horizon": "multi_session",
-      "reason": "Sector fundamentals improved in FY26 and two-month FY27 domestic dispatches remain higher year on year, but August volumes weakened, northern exports halted, regional performance diverged, and energy and freight risks remain elevated. The current evidence is mixed.",
-      "relevance": "Sector-wide operating and demand evidence",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439830/cement-earnings-rise-recovery-turns-uneven",
-        "https://mettisglobal.news/Cement-Sector-rebounds-in-FY26-demand-momentum-expected-to-build-further-63493"
-      ],
-      "source_published": [
-        "2026-09-17T02:47:00+05:00",
-        "2026-09-16T16:45:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T02:47:00+05:00",
-        "2026-09-16T16:45:00+05:00"
-      ],
-      "thread_key": "cement-demand-fy27"
-    },
-    "Technology/IT Exports": {
+    "Textile Composite": {
       "rating": "positive",
       "causality": "correlated",
-      "confidence": 0.6,
+      "confidence": 0.7,
       "horizon": "multi_session",
-      "reason": "Pakistan's telecommunications, computer, and information service exports reached $394 million in August, up 16.91% year on year. This is constructive for the IT-export environment, but the aggregate data do not establish Systems Limited's company-specific revenue outcome.",
-      "relevance": "Sector context for Technology/IT Exports",
+      "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued preferential EU market access is constructive for export-oriented textile companies, but exposure and realised sales vary by company, so the linkage is sector-level and correlated rather than company-specific.",
+      "relevance": "Sector link: Textile Composite",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Service-sector-posts-trade-deficit-of-286m-in-August-63497"
+        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
       ],
       "source_published": [
-        "2026-09-16T17:00:00+05:00"
+        "2026-09-18T05:15:00+05:00"
       ],
       "source_published_at": [
-        "2026-09-16T17:00:00+05:00"
+        "2026-09-18T05:15:00+05:00"
       ],
-      "thread_key": "pakistan-it-services-exports"
-    },
-    "Textile": {
-      "rating": "neutral",
-      "causality": "causal",
-      "confidence": 0.65,
-      "horizon": "multi_session",
-      "reason": "August textile exports fell 12.48% month on month but remained 1.99% higher year on year, with mixed product-level trends. The current sector evidence is material but not cleanly directional.",
-      "relevance": "Sector-wide export demand evidence",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Textile-exports-drops-12-MoM-in-August-63514"
-      ],
-      "source_published": [
-        "2026-09-17T10:12:15+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T10:12:15+05:00"
-      ],
-      "thread_key": "pakistan-textile-exports-august"
-    },
-    "Automobile Assembler": {
-      "rating": "positive",
-      "causality": "correlated",
-      "confidence": 0.65,
-      "horizon": "multi_session",
-      "reason": "Pakistan auto financing rose to Rs393.4bn in August, up 1.84% month on month and 33.77% year on year. The financing trend is supportive of sector demand, but aggregate SBP credit data do not establish volumes, pricing, or margins for any individual listed assembler.",
-      "relevance": "Sector link: Automobile Assembler",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Auto-financing-in-Pakistan-rises-to-Rs393bn-in-August-63521"
-      ],
-      "source_published": [
-        "2026-09-17T12:07:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T12:07:00+05:00"
-      ],
-      "thread_key": "pakistan-auto-financing"
-    },
-    "Commercial Banks": {
-      "rating": "positive",
-      "causality": "correlated",
-      "confidence": 0.5,
-      "horizon": "multi_session",
-      "reason": "Recent Roshan Digital Account inflows were described as consistently close to $300m versus more than $200m previously, with improved import cover. That is constructive for banking liquidity and formal foreign-currency inflows, but the article does not quantify bank-level balances, fees, or earnings, so the sector link remains correlated rather than company-specific.",
-      "relevance": "Sector link: Commercial Banks",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40439941/rda-inflows-rise-as-regional-conflict-prompts-strategic-fund-relocation-aurangzeb"
-      ],
-      "source_published": [
-        "2026-09-17T13:11:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T13:11:00+05:00"
-      ],
-      "thread_key": "pakistan-rda-inflows"
+      "thread_key": "pakistan-eu-gsp-plus"
     }
   }
 }
