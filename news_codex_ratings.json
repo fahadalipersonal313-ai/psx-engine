@@ -1,14 +1,15 @@
 {
-  "as_of": "2026-09-18T06:45:01Z",
+  "as_of": "2026-09-18T06:59:16Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-18T06:36:06.377837+00:00",
+  "input_fetched_at": "2026-09-18T06:54:23.657017+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
     "Only material new or materially changed evidence belonging to the current Friday session is listed. Items published before Thursday's close are not caught up after the session has closed.",
     "The Business Recorder Hormuz link in the raw feed was not accessible in the cloud reader, so the matching Reuters original was read as full-text evidence instead of inventing missing article text.",
     "The NexGen Auto iCAUR launch was read but not converted into a tracked-stock rating because it is sponsored content about an untracked Nishat Group venture and provides no measured earnings effect for HCAR, SAZEW, GHNI or another tracked assembler.",
+    "The 11:54 PKT raw-feed refresh was reconciled before publication. Its additional items did not add a material tracked-stock finding beyond the oil and Hormuz thread already reviewed.",
     "Stories not reviewed are not Neutral ratings."
   ],
   "reviewed_stories": [
@@ -19,10 +20,7 @@
       "linkage_detail": "Direct link to GHNI, Ghandhara Industries Limited",
       "reason": "GHNI reported FY26 net profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57 versus Rs107.58, net sales up 62%, gross profit up 54%, finance costs down 9%, and a Rs12 per share final cash dividend. The official PSX profile confirms GHNI is Ghandhara Industries Limited.",
       "source": "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
-      "sources": [
-        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
-        "https://dps.psx.com.pk/company/GHNI"
-      ],
+      "sources": ["https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527","https://dps.psx.com.pk/company/GHNI"],
       "published": "2026-09-17T15:35:00+05:00",
       "text_depth": "full",
       "confidence": 0.95,
@@ -37,10 +35,7 @@
       "linkage_detail": "Sector link to Oil & Gas Exploration Companies, including OGDC, PPL and MARI",
       "reason": "Brent fell for a third day to about $104 as Saudi efforts to restore East-West pipeline capacity and additional cargoes through Oman reduced immediate supply anxiety. Oil is still above $100 and regional transport risk remains high, so this is a materially changed continuation of the same supply-shock thread rather than a reversal of the upstream backdrop.",
       "source": "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
-      "sources": [
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
-        "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
-      ],
+      "sources": ["https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions","https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"],
       "published": "2026-09-18; article updated 2026-09-18T11:16:00+05:00",
       "text_depth": "full",
       "confidence": 0.9,
@@ -55,9 +50,7 @@
       "linkage_detail": "Sector link to upstream oil and gas producers OGDC, PPL and MARI; no company-specific operating event",
       "reason": "Reuters reported only four commodity vessels transited Hormuz on Thursday, down from six a day earlier and far below the recent average of about 16. The physical chokepoint remains materially constrained, which supports an oil supply-risk premium for upstream producers, but Saudi export workarounds and falling Brent prevent treating this as a stronger company-specific call.",
       "source": "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/",
-      "sources": [
-        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
-      ],
+      "sources": ["https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"],
       "published": "2026-09-18T03:27:15+00:00",
       "text_depth": "full",
       "confidence": 0.85,
@@ -72,10 +65,7 @@
       "linkage_detail": "Sector and broad-market link to Pakistan gas and power availability; no company-specific earnings attribution",
       "reason": "Asian spot LNG prices moved back toward $30 per mmBtu from about $10 before the war. Pakistan's power sector may need up to 400 mmcfd through winter while only two LNG cargoes were confirmed for September. This is a negative operating and macro backdrop, but the article does not establish a directional earnings effect for SNGP, SSGC, HUBC or KEL.",
       "source": "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
-      "sources": [
-        "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
-        "https://www.brecorder.com/news/40439965/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens"
-      ],
+      "sources": ["https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens","https://www.brecorder.com/news/40439965/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens"],
       "published": "2026-09-17T16:03:00+05:00",
       "text_depth": "full",
       "confidence": 0.9,
@@ -90,10 +80,7 @@
       "linkage_detail": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
       "reason": "Dealer reimbursement concerns were largely resolved, but the report carries an OCAC warning that Rs66.7bn of price-differential claims remain unsettled, OMC liquidity is being drained while companies finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. That remains a negative working-capital and margin backdrop for OMCs including PSO.",
       "source": "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
-      "sources": [
-        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
-        "https://www.brecorder.com/news/40439989"
-      ],
+      "sources": ["https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps","https://www.brecorder.com/news/40439989"],
       "published": "2026-09-17; article updated 2026-09-17T23:43:00+05:00",
       "text_depth": "full",
       "confidence": 0.85,
@@ -108,9 +95,7 @@
       "linkage_detail": "Direct product-price link to PSO's petrol and HSD business, with no company-specific volume or inventory evidence",
       "reason": "Petrol fell to Rs390.79 per litre while HSD rose to Rs424.92. OMC profit margin remained fixed at Rs7.87 per litre. Mixed retail-price changes with an unchanged regulated margin do not by themselves establish a positive or negative PSO earnings direction.",
       "source": "https://www.brecorder.com/news/40440079",
-      "sources": [
-        "https://www.brecorder.com/news/40440079"
-      ],
+      "sources": ["https://www.brecorder.com/news/40440079"],
       "published": "2026-09-18T06:37:00+05:00",
       "text_depth": "full",
       "confidence": 0.9,
@@ -125,9 +110,7 @@
       "linkage_detail": "Sector link to export-oriented textiles; company exposure varies",
       "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued GSP+ access supports the tariff and market-access backdrop for exporters, especially textiles, although this is not company-specific revenue evidence.",
       "source": "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review",
-      "sources": [
-        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
-      ],
+      "sources": ["https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"],
       "published": "2026-09-18T05:15:00+05:00",
       "text_depth": "full",
       "confidence": 0.8,
@@ -137,137 +120,13 @@
     }
   ],
   "ratings": {
-    "GHNI": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.95,
-      "horizon": "multi_session",
-      "reason": "Ghandhara Industries Limited reported FY26 profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57, sales up 62%, gross profit up 54%, lower finance costs and a Rs12 per share final dividend. This is direct company earnings evidence.",
-      "relevance": "Direct link: GHNI company earnings and dividend",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
-        "https://dps.psx.com.pk/company/GHNI"
-      ],
-      "source_published": [
-        "2026-09-17T15:35:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T15:35:00+05:00"
-      ],
-      "thread_key": "ghni-fy26-results"
-    },
-    "OGDC": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.45,
-      "horizon": "multi_session",
-      "reason": "Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.",
-      "relevance": "Sector link: Oil & Gas Exploration Companies",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
-        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
-      ],
-      "source_published": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "source_published_at": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "thread_key": "middle-east-oil-supply-shock"
-    },
-    "PPL": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.45,
-      "horizon": "multi_session",
-      "reason": "Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.",
-      "relevance": "Sector link: Oil & Gas Exploration Companies",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
-        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
-      ],
-      "source_published": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "source_published_at": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "thread_key": "middle-east-oil-supply-shock"
-    },
-    "MARI": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.4,
-      "horizon": "multi_session",
-      "reason": "Brent remains above $100 and Hormuz traffic is still severely constrained, but Saudi alternative exports and expected pipeline repairs are limiting the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view remains at lower confidence.",
-      "relevance": "Sector link: Oil & Gas Exploration Companies",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
-        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
-      ],
-      "source_published": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "source_published_at": [
-        "2026-09-18T11:16:00+05:00",
-        "2026-09-18T03:27:15+00:00"
-      ],
-      "thread_key": "middle-east-oil-supply-shock"
-    },
-    "PSO": {
-      "rating": "negative",
-      "causality": "causal",
-      "confidence": 0.7,
-      "horizon": "multi_session",
-      "reason": "Fresh OMC industry evidence says Rs66.7bn of price-differential claims remain unsettled, liquidity is being drained while OMCs finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. Dealer subsidy reimbursement clarity partly reduces implementation risk, while today's mixed petrol and diesel price changes leave the regulated OMC margin fixed at Rs7.87 per litre. The negative working-capital and margin evidence therefore outweighs the neutral daily price move for PSO as an OMC, without claiming a PSO-specific loss amount.",
-      "relevance": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
-        "https://www.brecorder.com/news/40439989",
-        "https://www.brecorder.com/news/40440079"
-      ],
-      "source_published": [
-        "2026-09-17T23:43:00+05:00",
-        "2026-09-17T20:55:00+05:00",
-        "2026-09-18T06:37:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-17T23:43:00+05:00",
-        "2026-09-17T20:55:00+05:00",
-        "2026-09-18T06:37:00+05:00"
-      ],
-      "thread_key": "pakistan-omc-liquidity-pdc"
-    }
+    "GHNI": {"rating":"positive","causality":"causal","confidence":0.95,"horizon":"multi_session","reason":"Ghandhara Industries Limited reported FY26 profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57, sales up 62%, gross profit up 54%, lower finance costs and a Rs12 per share final dividend. This is direct company earnings evidence.","relevance":"Direct link: GHNI company earnings and dividend","text_depth":"full","sources":["https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527","https://dps.psx.com.pk/company/GHNI"],"source_published":["2026-09-17T15:35:00+05:00"],"source_published_at":["2026-09-17T15:35:00+05:00"],"thread_key":"ghni-fy26-results"},
+    "OGDC": {"rating":"positive","causality":"causal","confidence":0.45,"horizon":"multi_session","reason":"Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.","relevance":"Sector link: Oil & Gas Exploration Companies","text_depth":"full","sources":["https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions","https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"],"source_published":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"source_published_at":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"thread_key":"middle-east-oil-supply-shock"},
+    "PPL": {"rating":"positive","causality":"causal","confidence":0.45,"horizon":"multi_session","reason":"Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.","relevance":"Sector link: Oil & Gas Exploration Companies","text_depth":"full","sources":["https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions","https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"],"source_published":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"source_published_at":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"thread_key":"middle-east-oil-supply-shock"},
+    "MARI": {"rating":"positive","causality":"causal","confidence":0.4,"horizon":"multi_session","reason":"Brent remains above $100 and Hormuz traffic is still severely constrained, but Saudi alternative exports and expected pipeline repairs are limiting the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view remains at lower confidence.","relevance":"Sector link: Oil & Gas Exploration Companies","text_depth":"full","sources":["https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions","https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"],"source_published":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"source_published_at":["2026-09-18T11:16:00+05:00","2026-09-18T03:27:15+00:00"],"thread_key":"middle-east-oil-supply-shock"},
+    "PSO": {"rating":"negative","causality":"causal","confidence":0.7,"horizon":"multi_session","reason":"Fresh OMC industry evidence says Rs66.7bn of price-differential claims remain unsettled, liquidity is being drained while OMCs finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. Dealer subsidy reimbursement clarity partly reduces implementation risk, while today's mixed petrol and diesel price changes leave the regulated OMC margin fixed at Rs7.87 per litre. The negative working-capital and margin evidence therefore outweighs the neutral daily price move for PSO as an OMC, without claiming a PSO-specific loss amount.","relevance":"Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure","text_depth":"full","sources":["https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps","https://www.brecorder.com/news/40439989","https://www.brecorder.com/news/40440079"],"source_published":["2026-09-17T23:43:00+05:00","2026-09-17T20:55:00+05:00","2026-09-18T06:37:00+05:00"],"source_published_at":["2026-09-17T23:43:00+05:00","2026-09-17T20:55:00+05:00","2026-09-18T06:37:00+05:00"],"thread_key":"pakistan-omc-liquidity-pdc"}
   },
   "sectors": {
-    "Textile Composite": {
-      "rating": "positive",
-      "causality": "correlated",
-      "confidence": 0.7,
-      "horizon": "multi_session",
-      "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued preferential EU market access is constructive for export-oriented textile companies, but exposure and realised sales vary by company, so the linkage is sector-level and correlated rather than company-specific.",
-      "relevance": "Sector link: Textile Composite",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
-      ],
-      "source_published": [
-        "2026-09-18T05:15:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-09-18T05:15:00+05:00"
-      ],
-      "thread_key": "pakistan-eu-gsp-plus"
-    }
+    "Textile Composite": {"rating":"positive","causality":"correlated","confidence":0.7,"horizon":"multi_session","reason":"Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued preferential EU market access is constructive for export-oriented textile companies, but exposure and realised sales vary by company, so the linkage is sector-level and correlated rather than company-specific.","relevance":"Sector link: Textile Composite","text_depth":"full","sources":["https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"],"source_published":["2026-09-18T05:15:00+05:00"],"source_published_at":["2026-09-18T05:15:00+05:00"],"thread_key":"pakistan-eu-gsp-plus"}
   }
 }
