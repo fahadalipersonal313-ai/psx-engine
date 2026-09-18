@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-09-18T04:50:39Z",
+  "as_of": "2026-09-18T06:45:01Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "review_mode": "Scheduled cloud dual-review; independent Codex desk",
-  "input_fetched_at": "2026-09-18T04:43:40.006054+00:00",
+  "input_fetched_at": "2026-09-18T06:36:06.377837+00:00",
   "limitations": [
     "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
-    "Only material new or materially changed evidence belonging to the current Friday session is listed. Items published before Thursday's 15:30 PKT close are not caught up into Friday ratings even if they remain in the 24-hour raw file.",
-    "The Dawn fuel-subsidy article exposes a publication date and a 23:43 PKT update time but not a publication clock time. The score-bearing PSO record transparently uses that displayed update time alongside exact-timestamped Business Recorder sources.",
-    "The morning LNG-shortage headline is treated as a continuation of the verified LNG supply-stress story rather than a separate company rating.",
+    "Only material new or materially changed evidence belonging to the current Friday session is listed. Items published before Thursday's close are not caught up after the session has closed.",
+    "The Business Recorder Hormuz link in the raw feed was not accessible in the cloud reader, so the matching Reuters original was read as full-text evidence instead of inventing missing article text.",
+    "The NexGen Auto iCAUR launch was read but not converted into a tracked-stock rating because it is sponsored content about an untracked Nishat Group venture and provides no measured earnings effect for HCAR, SAZEW, GHNI or another tracked assembler.",
     "Stories not reviewed are not Neutral ratings."
   ],
   "reviewed_stories": [
@@ -17,7 +17,7 @@
       "assessment": "positive",
       "linkage": "direct",
       "linkage_detail": "Direct link to GHNI, Ghandhara Industries Limited",
-      "reason": "GHNI reported FY26 net profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57 versus Rs107.58, net sales up 62%, gross profit up 54%, finance costs down 9%, and a Rs12 per share final cash dividend. The official PSX profile confirms GHNI is Ghandhara Industries Limited in Automobile Assembler.",
+      "reason": "GHNI reported FY26 net profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57 versus Rs107.58, net sales up 62%, gross profit up 54%, finance costs down 9%, and a Rs12 per share final cash dividend. The official PSX profile confirms GHNI is Ghandhara Industries Limited.",
       "source": "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
       "sources": [
         "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
@@ -31,19 +31,36 @@
       "thread_key": "ghni-fy26-results"
     },
     {
-      "title": "Oil prices fall 1% on hopes of limited supply disruptions",
+      "title": "Oil prices fall for third day on hopes of limited Saudi supply disruptions",
       "assessment": "neutral",
       "linkage": "sector",
       "linkage_detail": "Sector link to Oil & Gas Exploration Companies, including OGDC, PPL and MARI",
-      "reason": "Brent extended its decline to about $103.77 as Saudi cargoes via Oman and expected East-West pipeline repairs reduced fears of a larger supply loss. Crude remains above $100 and regional disruption persists, so this materially reduces but does not reverse the existing positive upstream oil-price backdrop.",
-      "source": "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions",
+      "reason": "Brent fell for a third day to about $104 as Saudi efforts to restore East-West pipeline capacity and additional cargoes through Oman reduced immediate supply anxiety. Oil is still above $100 and regional transport risk remains high, so this is a materially changed continuation of the same supply-shock thread rather than a reversal of the upstream backdrop.",
+      "source": "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
       "sources": [
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
+        "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
       ],
-      "published": "2026-09-18T07:48:00+05:00",
+      "published": "2026-09-18; article updated 2026-09-18T11:16:00+05:00",
       "text_depth": "full",
       "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    {
+      "title": "Shipping traffic via Strait of Hormuz stays below 10-day average",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to upstream oil and gas producers OGDC, PPL and MARI; no company-specific operating event",
+      "reason": "Reuters reported only four commodity vessels transited Hormuz on Thursday, down from six a day earlier and far below the recent average of about 16. The physical chokepoint remains materially constrained, which supports an oil supply-risk premium for upstream producers, but Saudi export workarounds and falling Brent prevent treating this as a stronger company-specific call.",
+      "source": "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/",
+      "sources": [
+        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
+      ],
+      "published": "2026-09-18T03:27:15+00:00",
+      "text_depth": "full",
+      "confidence": 0.85,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "middle-east-oil-supply-shock"
@@ -71,7 +88,7 @@
       "assessment": "negative",
       "linkage": "sector",
       "linkage_detail": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
-      "reason": "Dealer reimbursement concerns were largely resolved, but the same report carries a fresh OCAC warning that Rs66.7bn of price-differential claims remain unsettled, OMC liquidity is being drained while companies finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. That is a negative working-capital and margin backdrop for OMCs including PSO.",
+      "reason": "Dealer reimbursement concerns were largely resolved, but the report carries an OCAC warning that Rs66.7bn of price-differential claims remain unsettled, OMC liquidity is being drained while companies finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. That remains a negative working-capital and margin backdrop for OMCs including PSO.",
       "source": "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
       "sources": [
         "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
@@ -117,74 +134,6 @@
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "pakistan-eu-gsp-plus"
-    },
-    {
-      "title": "SBP reserves surge $3.06bn to $21.39bn",
-      "assessment": "positive",
-      "linkage": "irrelevant",
-      "linkage_detail": "Positive broad-market FX-buffer context; irrelevant to any specific tracked stock without company-level transmission evidence",
-      "reason": "SBP reserves rose by $3.06bn to $21.39bn and total liquid reserves to $26.79bn, mainly due to Eurobond proceeds. This improves the near-term external liquidity buffer, but the increase is financing-driven and does not establish a specific tracked company's earnings outcome.",
-      "source": "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
-      "sources": [
-        "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541"
-      ],
-      "published": "2026-09-17T21:23:00+05:00",
-      "text_depth": "full",
-      "confidence": 0.95,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-fx-reserves"
-    },
-    {
-      "title": "SCRA balance drops Rs374m, securities see Rs3bn net selling",
-      "assessment": "negative",
-      "linkage": "irrelevant",
-      "linkage_detail": "Negative broad-market foreign-flow context; irrelevant to any specific tracked stock",
-      "reason": "SCRA balance fell Rs374m in the week ended September 11 and securities recorded Rs3bn of net selling, while the equity investment market value fell Rs19.62bn. This is negative foreign-flow context but is not attributable to a specific tracked company.",
-      "source": "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539",
-      "sources": [
-        "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539"
-      ],
-      "published": "2026-09-17T18:36:00+05:00",
-      "text_depth": "full",
-      "confidence": 0.9,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-scra-foreign-flows"
-    },
-    {
-      "title": "Privatisation Commission plans 51% to 100% divestment of each Disco",
-      "assessment": "neutral",
-      "linkage": "irrelevant",
-      "linkage_detail": "Irrelevant to HUBC and KEL as company-specific evidence",
-      "reason": "The proposed transactions concern state electricity distribution companies. The article does not identify HUBC or KEL as divestment targets and does not establish a direct earnings effect for either tracked company, so no power-company rating is created.",
-      "source": "https://www.brecorder.com/news/40440084",
-      "sources": [
-        "https://www.brecorder.com/news/40440084"
-      ],
-      "published": "2026-09-18T05:15:00+05:00",
-      "text_depth": "full",
-      "confidence": 0.95,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-disco-privatisation"
-    },
-    {
-      "title": "Karachi Port's liner shipping connectivity reaches record 343",
-      "assessment": "positive",
-      "linkage": "irrelevant",
-      "linkage_detail": "Positive national trade-connectivity context; irrelevant to PIBTL as direct company evidence",
-      "reason": "Karachi Port's liner shipping connectivity index rose to a record 343.02 in Q2 2026. This supports national trade-connectivity context, but PIBTL operates a bulk terminal at Port Qasim, so the Karachi Port result is not direct evidence about PIBTL.",
-      "source": "https://www.brecorder.com/news/40440056",
-      "sources": [
-        "https://www.brecorder.com/news/40440056"
-      ],
-      "published": "2026-09-18T06:03:00+05:00",
-      "text_depth": "full",
-      "confidence": 0.95,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "karachi-port-connectivity"
     }
   ],
   "ratings": {
@@ -213,20 +162,20 @@
       "causality": "causal",
       "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
+      "reason": "Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
+        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
       ],
       "source_published": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "source_published_at": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
@@ -235,20 +184,20 @@
       "causality": "causal",
       "confidence": 0.45,
       "horizon": "multi_session",
-      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
+      "reason": "Brent has fallen for a third day to about $104 as Saudi export workarounds ease immediate supply fears, while only four commodity vessels crossed Hormuz on Thursday versus six a day earlier and a recent average near 16. Physical disruption remains real but is being partly offset, so the existing positive upstream view is retained without a confidence increase.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
+        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
       ],
       "source_published": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "source_published_at": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
@@ -257,20 +206,20 @@
       "causality": "causal",
       "confidence": 0.4,
       "horizon": "multi_session",
-      "reason": "Brent remains above $100, but Saudi alternative exports and expected East-West pipeline repairs have reduced the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view is retained at lower confidence.",
+      "reason": "Brent remains above $100 and Hormuz traffic is still severely constrained, but Saudi alternative exports and expected pipeline repairs are limiting the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view remains at lower confidence.",
       "relevance": "Sector link: Oil & Gas Exploration Companies",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
-        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-for-third-day-on-hopes-of-limited-saudi-supply-disruptions",
+        "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
       ],
       "source_published": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "source_published_at": [
-        "2026-09-17T21:25:00+05:00",
-        "2026-09-18T07:48:00+05:00"
+        "2026-09-18T11:16:00+05:00",
+        "2026-09-18T03:27:15+00:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
