@@ -1,0 +1,324 @@
+{
+  "as_of": "2026-09-18T04:50:39Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+  "input_fetched_at": "2026-09-18T04:43:40.006054+00:00",
+  "limitations": [
+    "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+    "Only material new or materially changed evidence belonging to the current Friday session is listed. Items published before Thursday's 15:30 PKT close are not caught up into Friday ratings even if they remain in the 24-hour raw file.",
+    "The Dawn fuel-subsidy article exposes a publication date and a 23:43 PKT update time but not a publication clock time. The score-bearing PSO record transparently uses that displayed update time alongside exact-timestamped Business Recorder sources.",
+    "The morning LNG-shortage headline is treated as a continuation of the verified LNG supply-stress story rather than a separate company rating.",
+    "Stories not reviewed are not Neutral ratings."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "GHNI FY26 profit jumps 51%",
+      "assessment": "positive",
+      "linkage": "direct",
+      "linkage_detail": "Direct link to GHNI, Ghandhara Industries Limited",
+      "reason": "GHNI reported FY26 net profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57 versus Rs107.58, net sales up 62%, gross profit up 54%, finance costs down 9%, and a Rs12 per share final cash dividend. The official PSX profile confirms GHNI is Ghandhara Industries Limited in Automobile Assembler.",
+      "source": "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+      "sources": [
+        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+        "https://dps.psx.com.pk/company/GHNI"
+      ],
+      "published": "2026-09-17T15:35:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "ghni-fy26-results"
+    },
+    {
+      "title": "Oil prices fall 1% on hopes of limited supply disruptions",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to Oil & Gas Exploration Companies, including OGDC, PPL and MARI",
+      "reason": "Brent extended its decline to about $103.77 as Saudi cargoes via Oman and expected East-West pipeline repairs reduced fears of a larger supply loss. Crude remains above $100 and regional disruption persists, so this materially reduces but does not reverse the existing positive upstream oil-price backdrop.",
+      "source": "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+      ],
+      "published": "2026-09-18T07:48:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    {
+      "title": "Energy disruption hits Pakistan and Bangladesh as Gulf crisis worsens",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector and broad-market link to Pakistan gas and power availability; no company-specific earnings attribution",
+      "reason": "Asian spot LNG prices moved back toward $30 per mmBtu from about $10 before the war. Pakistan's power sector may need up to 400 mmcfd through winter while only two LNG cargoes were confirmed for September. This is a negative operating and macro backdrop, but the article does not establish a directional earnings effect for SNGP, SSGC, HUBC or KEL.",
+      "source": "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
+      "sources": [
+        "https://www.dawn.com/news/2030642/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens",
+        "https://www.brecorder.com/news/40439965/energy-disruption-hits-pakistan-and-bangladesh-as-gulf-crisis-worsens"
+      ],
+      "published": "2026-09-17T16:03:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-lng-supply-stress"
+    },
+    {
+      "title": "PM's fuel subsidy scheme faces first-day hurdles at petrol pumps",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
+      "reason": "Dealer reimbursement concerns were largely resolved, but the same report carries a fresh OCAC warning that Rs66.7bn of price-differential claims remain unsettled, OMC liquidity is being drained while companies finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. That is a negative working-capital and margin backdrop for OMCs including PSO.",
+      "source": "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+      "sources": [
+        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+        "https://www.brecorder.com/news/40439989"
+      ],
+      "published": "2026-09-17; article updated 2026-09-17T23:43:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.85,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-omc-liquidity-pdc"
+    },
+    {
+      "title": "Petrol price cut by 43 paise, HSD up by Rs3.47",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "Direct product-price link to PSO's petrol and HSD business, with no company-specific volume or inventory evidence",
+      "reason": "Petrol fell to Rs390.79 per litre while HSD rose to Rs424.92. OMC profit margin remained fixed at Rs7.87 per litre. Mixed retail-price changes with an unchanged regulated margin do not by themselves establish a positive or negative PSO earnings direction.",
+      "source": "https://www.brecorder.com/news/40440079",
+      "sources": [
+        "https://www.brecorder.com/news/40440079"
+      ],
+      "published": "2026-09-18T06:37:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-daily-fuel-pricing"
+    },
+    {
+      "title": "Pakistan completes fifth EU GSP+ review",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "Sector link to export-oriented textiles; company exposure varies",
+      "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued GSP+ access supports the tariff and market-access backdrop for exporters, especially textiles, although this is not company-specific revenue evidence.",
+      "source": "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review",
+      "sources": [
+        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
+      ],
+      "published": "2026-09-18T05:15:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-eu-gsp-plus"
+    },
+    {
+      "title": "SBP reserves surge $3.06bn to $21.39bn",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Positive broad-market FX-buffer context; irrelevant to any specific tracked stock without company-level transmission evidence",
+      "reason": "SBP reserves rose by $3.06bn to $21.39bn and total liquid reserves to $26.79bn, mainly due to Eurobond proceeds. This improves the near-term external liquidity buffer, but the increase is financing-driven and does not establish a specific tracked company's earnings outcome.",
+      "source": "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
+      "sources": [
+        "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541"
+      ],
+      "published": "2026-09-17T21:23:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-fx-reserves"
+    },
+    {
+      "title": "SCRA balance drops Rs374m, securities see Rs3bn net selling",
+      "assessment": "negative",
+      "linkage": "irrelevant",
+      "linkage_detail": "Negative broad-market foreign-flow context; irrelevant to any specific tracked stock",
+      "reason": "SCRA balance fell Rs374m in the week ended September 11 and securities recorded Rs3bn of net selling, while the equity investment market value fell Rs19.62bn. This is negative foreign-flow context but is not attributable to a specific tracked company.",
+      "source": "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539",
+      "sources": [
+        "https://mettisglobal.news/SCRA-balance-drops-Rs374m-securities-see-Rs3bn-net-selling-63539"
+      ],
+      "published": "2026-09-17T18:36:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-scra-foreign-flows"
+    },
+    {
+      "title": "Privatisation Commission plans 51% to 100% divestment of each Disco",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "Irrelevant to HUBC and KEL as company-specific evidence",
+      "reason": "The proposed transactions concern state electricity distribution companies. The article does not identify HUBC or KEL as divestment targets and does not establish a direct earnings effect for either tracked company, so no power-company rating is created.",
+      "source": "https://www.brecorder.com/news/40440084",
+      "sources": [
+        "https://www.brecorder.com/news/40440084"
+      ],
+      "published": "2026-09-18T05:15:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-disco-privatisation"
+    },
+    {
+      "title": "Karachi Port's liner shipping connectivity reaches record 343",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Positive national trade-connectivity context; irrelevant to PIBTL as direct company evidence",
+      "reason": "Karachi Port's liner shipping connectivity index rose to a record 343.02 in Q2 2026. This supports national trade-connectivity context, but PIBTL operates a bulk terminal at Port Qasim, so the Karachi Port result is not direct evidence about PIBTL.",
+      "source": "https://www.brecorder.com/news/40440056",
+      "sources": [
+        "https://www.brecorder.com/news/40440056"
+      ],
+      "published": "2026-09-18T06:03:00+05:00",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "karachi-port-connectivity"
+    }
+  ],
+  "ratings": {
+    "GHNI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.95,
+      "horizon": "multi_session",
+      "reason": "Ghandhara Industries Limited reported FY26 profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57, sales up 62%, gross profit up 54%, lower finance costs and a Rs12 per share final dividend. This is direct company earnings evidence.",
+      "relevance": "Direct link: GHNI company earnings and dividend",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+        "https://dps.psx.com.pk/company/GHNI"
+      ],
+      "source_published": [
+        "2026-09-17T15:35:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T15:35:00+05:00"
+      ],
+      "thread_key": "ghni-fy26-results"
+    },
+    "OGDC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+      ],
+      "source_published": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PPL": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.45,
+      "horizon": "multi_session",
+      "reason": "Brent has fallen toward $104 as Saudi cargoes via Oman and expected East-West pipeline repairs ease supply fears, but crude remains above $100 and regional disruption persists. This continues the Middle East oil-supply thread while reducing confidence in the prior positive upstream view.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+      ],
+      "source_published": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "MARI": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.4,
+      "horizon": "multi_session",
+      "reason": "Brent remains above $100, but Saudi alternative exports and expected East-West pipeline repairs have reduced the supply premium. Mari's gas-heavy production mix makes the crude-price linkage weaker than OGDC or PPL, so the existing positive view is retained at lower confidence.",
+      "relevance": "Sector link: Oil & Gas Exploration Companies",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40439910/oil-prices-extend-losses-as-fears-of-middle-east-supply-disruptions-ease",
+        "https://www.brecorder.com/news/40440095/oil-prices-fall-1-on-hopes-of-limited-supply-disruptions"
+      ],
+      "source_published": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T21:25:00+05:00",
+        "2026-09-18T07:48:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "PSO": {
+      "rating": "negative",
+      "causality": "causal",
+      "confidence": 0.7,
+      "horizon": "multi_session",
+      "reason": "Fresh OMC industry evidence says Rs66.7bn of price-differential claims remain unsettled, liquidity is being drained while OMCs finance the supply chain, and an approved Rs1.22 per litre OMC margin increase remains unnotified. Dealer subsidy reimbursement clarity partly reduces implementation risk, while today's mixed petrol and diesel price changes leave the regulated OMC margin fixed at Rs7.87 per litre. The negative working-capital and margin evidence therefore outweighs the neutral daily price move for PSO as an OMC, without claiming a PSO-specific loss amount.",
+      "relevance": "Sector link to PSO as an oil marketing company; not PSO-specific financial disclosure",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+        "https://www.brecorder.com/news/40439989",
+        "https://www.brecorder.com/news/40440079"
+      ],
+      "source_published": [
+        "2026-09-17T23:43:00+05:00",
+        "2026-09-17T20:55:00+05:00",
+        "2026-09-18T06:37:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-17T23:43:00+05:00",
+        "2026-09-17T20:55:00+05:00",
+        "2026-09-18T06:37:00+05:00"
+      ],
+      "thread_key": "pakistan-omc-liquidity-pdc"
+    }
+  },
+  "sectors": {
+    "Textile Composite": {
+      "rating": "positive",
+      "causality": "correlated",
+      "confidence": 0.7,
+      "horizon": "multi_session",
+      "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued preferential EU market access is constructive for export-oriented textile companies, but exposure and realised sales vary by company, so the linkage is sector-level and correlated rather than company-specific.",
+      "relevance": "Sector link: Textile Composite",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
+      ],
+      "source_published": [
+        "2026-09-18T05:15:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-09-18T05:15:00+05:00"
+      ],
+      "thread_key": "pakistan-eu-gsp-plus"
+    }
+  }
+}
