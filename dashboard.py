@@ -628,6 +628,46 @@ elif _stale_level != "fresh":
     else:
         st.warning(f"⏳ {_what} for **{_age_hours:.1f} hours** — past the "
                    f"{_amber}h threshold. Verify quotes manually before acting.")
+def _why_not_buy_section():
+    why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
+                 (~latest["signal"].isin(["Strong Buy", "Buy"]))]
+    if why.empty:
+        return
+    st.caption("These scored in Buy range but a safety rule held them back. "
+               "No need to dig — the reason is shown.")
+    for _, r in why.iterrows():
+        st.markdown(
+            f'{sig_pill(r["signal"])} &nbsp;**{r["symbol"]}** '
+            f'(score {r["final_score"]:.0f}) — '
+            f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>'
+            f'<br>{news_line(r["symbol"])}',
+            unsafe_allow_html=True)
+
+
+def _early_watch_section():
+    ew = latest[latest.get("early_watch").fillna(0) == 1] if "early_watch" in latest.columns \
+        else latest.iloc[0:0]
+    if ew.empty:
+        st.caption("No early-watch names right now. This tier only fires on real "
+                   "money-flow build-up (CMF) below the Buy band.")
+        return
+    st.caption("Lead-time tier: money flow building BEFORE the score confirms. "
+               "NOT a buy signal — it exists so a move can be prepared for "
+               "instead of chased. Graded on the 7-day horizon; treat as "
+               "unproven until that history accumulates.")
+    for _, r in ew.sort_values("cmf", ascending=False).iterrows():
+        st.markdown(
+            f'<span style="background:rgba(122,162,255,0.16);color:#7aa2ff;'
+            f'padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700">'
+            f'🔭 EARLY</span> &nbsp;**{r["symbol"]}** · price {fmt(r["price"])} · '
+            f'score {fmt(r["final_score"], 0)} · CMF {fmt(r.get("cmf"), 2)} · '
+            f'RS {fmt(r.get("relative_strength"), 0)}'
+            f'<br><span style="opacity:.75;font-size:13px">'
+            f'{r.get("early_reason") or ""}</span>'
+            f'<br>{news_line(r["symbol"])}',
+            unsafe_allow_html=True)
+
+
 # The trading desk shows opportunities only. Supporting tools live in their own tabs.
 (tab_desk, tab_watch, tab_edge, tab_stock, tab_hist,
  tab_news, tab_reports) = st.tabs(
