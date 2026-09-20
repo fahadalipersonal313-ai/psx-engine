@@ -1,780 +1,1087 @@
 {
-  "session": "2026-09-18",
-  "checked_at": "2026-09-18T11:22:11.823686+00:00",
+  "session": "2026-09-20",
+  "checked_at": "2026-09-20T12:37:43.621762+00:00",
   "source": "PSX DPS intraday",
   "checked": 60,
-  "fresh": 60,
+  "fresh": 0,
   "failed": [],
-  "items": [
-    {
-      "symbol": "GGL",
-      "gain_pct": 7.131537242472263,
-      "vol_mult": 2.3462411537935197,
-      "price": 20.28,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "date": "2026-09-18"
-    },
-    {
-      "symbol": "TREET",
-      "gain_pct": 4.833411543876109,
-      "vol_mult": 1.5797321421372321,
-      "price": 22.34,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "date": "2026-09-18"
-    },
-    {
-      "symbol": "AIRLINK",
-      "gain_pct": 4.532211071544179,
-      "vol_mult": 1.6259404849206571,
-      "price": 129.16,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "date": "2026-09-18"
-    },
-    {
-      "symbol": "PAEL",
-      "gain_pct": 3.3090297251822998,
-      "vol_mult": 1.8673732527464908,
-      "price": 36.84,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "date": "2026-09-18"
-    },
-    {
-      "symbol": "KEL",
-      "gain_pct": 2.865761689291113,
-      "vol_mult": 1.6644714798172098,
-      "price": 6.82,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "date": "2026-09-18"
-    },
-    {
-      "symbol": "FCCL",
-      "gain_pct": 2.392164249387818,
-      "vol_mult": 1.7371960861344546,
-      "price": 54.36,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "date": "2026-09-18"
-    }
-  ],
-  "prices": [
-    {
-      "symbol": "FTSM",
-      "price": 40.6,
-      "prior_close": 37.37,
-      "change_pct": 8.643296762108665,
-      "day_volume": 168414.0,
-      "trades": 175,
-      "last_trade": "2026-09-18T11:20:52+00:00",
-      "stale": false,
-      "age_minutes": 1.9,
-      "note": null
-    },
-    {
-      "symbol": "GGL",
-      "price": 20.28,
-      "prior_close": 18.93,
-      "change_pct": 7.131537242472263,
-      "day_volume": 2161954.0,
-      "trades": 871,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.6,
-      "note": null
-    },
-    {
-      "symbol": "TREET",
-      "price": 22.34,
-      "prior_close": 21.31,
-      "change_pct": 4.833411543876109,
-      "day_volume": 1890663.0,
-      "trades": 598,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.2,
-      "note": null
-    },
-    {
-      "symbol": "AIRLINK",
-      "price": 129.16,
-      "prior_close": 123.56,
-      "change_pct": 4.532211071544179,
-      "day_volume": 954942.0,
-      "trades": 1394,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "BNL",
-      "price": 5.83,
-      "prior_close": 5.6,
-      "change_pct": 4.107142857142865,
-      "day_volume": 856740.0,
-      "trades": 378,
-      "last_trade": "2026-09-18T11:20:57+00:00",
-      "stale": false,
-      "age_minutes": 1.7,
-      "note": null
-    },
-    {
-      "symbol": "PIBTL",
-      "price": 15.46,
-      "prior_close": 14.96,
-      "change_pct": 3.342245989304815,
-      "day_volume": 6705481.0,
-      "trades": 1099,
-      "last_trade": "2026-09-18T11:20:47+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "PAEL",
-      "price": 36.84,
-      "prior_close": 35.66,
-      "change_pct": 3.3090297251822998,
-      "day_volume": 7362483.0,
-      "trades": 1719,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "NML",
-      "price": 133.11,
-      "prior_close": 129.04,
-      "change_pct": 3.1540607563546263,
-      "day_volume": 885981.0,
-      "trades": 833,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "KEL",
-      "price": 6.82,
-      "prior_close": 6.63,
-      "change_pct": 2.865761689291113,
-      "day_volume": 20972072.0,
-      "trades": 1186,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "stale": false,
-      "age_minutes": 1.7,
-      "note": null
-    },
-    {
-      "symbol": "THCCL",
-      "price": 77.7,
-      "prior_close": 75.58,
-      "change_pct": 2.804974861074361,
-      "day_volume": 5914635.0,
-      "trades": 2369,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "DCL",
-      "price": 9.76,
-      "prior_close": 9.5,
-      "change_pct": 2.7368421052631486,
-      "day_volume": 2245636.0,
-      "trades": 502,
-      "last_trade": "2026-09-18T11:20:10+00:00",
-      "stale": false,
-      "age_minutes": 2.4,
-      "note": null
-    },
-    {
-      "symbol": "EPCL",
-      "price": 34.19,
-      "prior_close": 33.31,
-      "change_pct": 2.641849294506149,
-      "day_volume": 826652.0,
-      "trades": 255,
-      "last_trade": "2026-09-18T11:20:24+00:00",
-      "stale": false,
-      "age_minutes": 2.4,
-      "note": null
-    },
-    {
-      "symbol": "FCCL",
-      "price": 54.36,
-      "prior_close": 53.09,
-      "change_pct": 2.392164249387818,
-      "day_volume": 6511105.0,
-      "trades": 1415,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "TOMCL",
-      "price": 32.61,
-      "prior_close": 31.9,
-      "change_pct": 2.2257053291536044,
-      "day_volume": 1139356.0,
-      "trades": 587,
-      "last_trade": "2026-09-18T11:20:35+00:00",
-      "stale": false,
-      "age_minutes": 2.1,
-      "note": null
-    },
-    {
-      "symbol": "LUCK",
-      "price": 415.99,
-      "prior_close": 406.95,
-      "change_pct": 2.2214031207765217,
-      "day_volume": 809059.0,
-      "trades": 1714,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "TELE",
-      "price": 7.74,
-      "prior_close": 7.58,
-      "change_pct": 2.110817941952514,
-      "day_volume": 1260528.0,
-      "trades": 357,
-      "last_trade": "2026-09-18T11:19:55+00:00",
-      "stale": false,
-      "age_minutes": 2.6,
-      "note": null
-    },
-    {
-      "symbol": "CPHL",
-      "price": 75.5,
-      "prior_close": 73.94,
-      "change_pct": 2.10981877197729,
-      "day_volume": 1914237.0,
-      "trades": 697,
-      "last_trade": "2026-09-18T11:20:59+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "SYM",
-      "price": 12.74,
-      "prior_close": 12.48,
-      "change_pct": 2.083333333333326,
-      "day_volume": 268000.0,
-      "trades": 111,
-      "last_trade": "2026-09-18T11:16:45+00:00",
-      "stale": false,
-      "age_minutes": 5.9,
-      "note": null
-    },
+  "items": [],
+  "prices": [],
+  "observations": [
     {
       "symbol": "AGP",
-      "price": 153.88,
-      "prior_close": 150.9,
-      "change_pct": 1.974817760106018,
-      "day_volume": 564571.0,
-      "trades": 493,
-      "last_trade": "2026-09-18T11:20:28+00:00",
-      "stale": false,
-      "age_minutes": 2.2,
-      "note": null
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
-      "symbol": "ILP",
-      "price": 98.49,
-      "prior_close": 96.83,
-      "change_pct": 1.7143447278735957,
-      "day_volume": 508457.0,
-      "trades": 565,
-      "last_trade": "2026-09-18T11:20:22+00:00",
-      "stale": false,
-      "age_minutes": 2.2,
-      "note": null
-    },
-    {
-      "symbol": "POWER",
-      "price": 22.2,
-      "prior_close": 21.83,
-      "change_pct": 1.6949152542372836,
-      "day_volume": 399761.0,
-      "trades": 203,
-      "last_trade": "2026-09-18T11:19:01+00:00",
-      "stale": false,
-      "age_minutes": 3.7,
-      "note": null
-    },
-    {
-      "symbol": "FFC",
-      "price": 540.0,
-      "prior_close": 531.01,
-      "change_pct": 1.6930001318242516,
-      "day_volume": 585273.0,
-      "trades": 1737,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "FIBLM",
-      "price": 15.4,
-      "prior_close": 15.15,
-      "change_pct": 1.650165016501659,
-      "day_volume": 269860.0,
-      "trades": 243,
-      "last_trade": "2026-09-18T11:18:41+00:00",
-      "stale": false,
-      "age_minutes": 4.1,
-      "note": null
-    },
-    {
-      "symbol": "MEBL",
-      "price": 552.54,
-      "prior_close": 543.86,
-      "change_pct": 1.5959989703232313,
-      "day_volume": 615976.0,
-      "trades": 1727,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.2,
-      "note": null
-    },
-    {
-      "symbol": "FFL",
-      "price": 14.77,
-      "prior_close": 14.54,
-      "change_pct": 1.5818431911966968,
-      "day_volume": 1636643.0,
-      "trades": 696,
-      "last_trade": "2026-09-18T11:20:56+00:00",
-      "stale": false,
-      "age_minutes": 1.6,
-      "note": null
-    },
-    {
-      "symbol": "PPL",
-      "price": 228.8,
-      "prior_close": 225.51,
-      "change_pct": 1.4589153474347194,
-      "day_volume": 5868868.0,
-      "trades": 3729,
-      "last_trade": "2026-09-18T11:20:59+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "SLGL",
-      "price": 14.05,
-      "prior_close": 13.85,
-      "change_pct": 1.4440433212996373,
-      "day_volume": 1619609.0,
-      "trades": 352,
-      "last_trade": "2026-09-18T11:18:59+00:00",
-      "stale": false,
-      "age_minutes": 3.7,
-      "note": null
-    },
-    {
-      "symbol": "SEARL",
-      "price": 79.59,
-      "prior_close": 78.46,
-      "change_pct": 1.440224318123895,
-      "day_volume": 2216387.0,
-      "trades": 1369,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "MLCF",
-      "price": 94.58,
-      "prior_close": 93.26,
-      "change_pct": 1.4153978125670097,
-      "day_volume": 7058400.0,
-      "trades": 2557,
-      "last_trade": "2026-09-18T11:20:57+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "WAVES",
-      "price": 9.0,
-      "prior_close": 8.88,
-      "change_pct": 1.3513513513513375,
-      "day_volume": 1052026.0,
-      "trades": 258,
-      "last_trade": "2026-09-18T11:20:50+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "FABL",
-      "price": 94.2,
-      "prior_close": 92.99,
-      "change_pct": 1.3012151844284503,
-      "day_volume": 346600.0,
-      "trades": 628,
-      "last_trade": "2026-09-18T11:20:01+00:00",
-      "stale": false,
-      "age_minutes": 2.2,
-      "note": null
-    },
-    {
-      "symbol": "PSO",
-      "price": 345.7,
-      "prior_close": 341.93,
-      "change_pct": 1.1025648524551679,
-      "day_volume": 610190.0,
-      "trades": 1308,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "JVDC",
-      "price": 141.1,
-      "prior_close": 139.73,
-      "change_pct": 0.9804623201889351,
-      "day_volume": 188220.0,
-      "trades": 423,
-      "last_trade": "2026-09-18T11:20:53+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "SLM",
-      "price": 22.76,
-      "prior_close": 22.55,
-      "change_pct": 0.9312638580931232,
-      "day_volume": 1171563.0,
-      "trades": 682,
-      "last_trade": "2026-09-18T11:20:46+00:00",
-      "stale": false,
-      "age_minutes": 1.9,
-      "note": null
-    },
-    {
-      "symbol": "DGKC",
-      "price": 195.71,
-      "prior_close": 193.98,
-      "change_pct": 0.8918445200536196,
-      "day_volume": 2381447.0,
-      "trades": 1575,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "SSGC",
-      "price": 23.8,
-      "prior_close": 23.61,
-      "change_pct": 0.8047437526471857,
-      "day_volume": 4801611.0,
-      "trades": 1551,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "FCEPL",
-      "price": 140.25,
-      "prior_close": 139.2,
-      "change_pct": 0.7543103448276023,
-      "day_volume": 265340.0,
-      "trades": 336,
-      "last_trade": "2026-09-18T11:20:47+00:00",
-      "stale": false,
-      "age_minutes": 1.9,
-      "note": null
-    },
-    {
-      "symbol": "OGDC",
-      "price": 318.49,
-      "prior_close": 316.2,
-      "change_pct": 0.7242251739405514,
-      "day_volume": 2828422.0,
-      "trades": 2312,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "EFERT",
-      "price": 188.35,
-      "prior_close": 187.03,
-      "change_pct": 0.7057691279473755,
-      "day_volume": 215310.0,
-      "trades": 625,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "GHGL",
-      "price": 40.49,
-      "prior_close": 40.21,
-      "change_pct": 0.6963441929868308,
-      "day_volume": 177873.0,
-      "trades": 81,
-      "last_trade": "2026-09-18T11:19:09+00:00",
-      "stale": false,
-      "age_minutes": 3.6,
-      "note": null
-    },
-    {
-      "symbol": "HUBC",
-      "price": 203.9,
-      "prior_close": 202.57,
-      "change_pct": 0.6565631633509428,
-      "day_volume": 1227402.0,
-      "trades": 1644,
-      "last_trade": "2026-09-18T11:20:55+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "ENGROH",
-      "price": 262.8,
-      "prior_close": 261.5,
-      "change_pct": 0.49713193116636134,
-      "day_volume": 488349.0,
-      "trades": 595,
-      "last_trade": "2026-09-18T11:20:54+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "SNGP",
-      "price": 91.49,
-      "prior_close": 91.09,
-      "change_pct": 0.43912613898340336,
-      "day_volume": 1273218.0,
-      "trades": 903,
-      "last_trade": "2026-09-18T11:20:59+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "KOHC",
-      "price": 90.5,
-      "prior_close": 90.17,
-      "change_pct": 0.3659753798380905,
-      "day_volume": 144587.0,
-      "trades": 215,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.7,
-      "note": null
-    },
-    {
-      "symbol": "FCL",
-      "price": 27.05,
-      "prior_close": 26.97,
-      "change_pct": 0.29662588060808126,
-      "day_volume": 1085792.0,
-      "trades": 667,
-      "last_trade": "2026-09-18T11:20:41+00:00",
-      "stale": false,
-      "age_minutes": 1.9,
-      "note": null
-    },
-    {
-      "symbol": "MARI",
-      "price": 651.99,
-      "prior_close": 650.22,
-      "change_pct": 0.2722155578112062,
-      "day_volume": 577174.0,
-      "trades": 1767,
-      "last_trade": "2026-09-18T11:20:57+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
-    },
-    {
-      "symbol": "HCAR",
-      "price": 222.49,
-      "prior_close": 221.9,
-      "change_pct": 0.2658855340243349,
-      "day_volume": 114069.0,
-      "trades": 468,
-      "last_trade": "2026-09-18T11:20:55+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
-    },
-    {
-      "symbol": "IMAGE",
-      "price": 25.15,
-      "prior_close": 25.11,
-      "change_pct": 0.15929908403027326,
-      "day_volume": 29548.0,
-      "trades": 71,
-      "last_trade": "2026-09-18T11:17:02+00:00",
-      "stale": false,
-      "age_minutes": 5.6,
-      "note": null
-    },
-    {
-      "symbol": "CNERGY",
-      "price": 12.9,
-      "prior_close": 12.88,
-      "change_pct": 0.15527950310558758,
-      "day_volume": 28101465.0,
-      "trades": 2914,
-      "last_trade": "2026-09-18T11:20:58+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "DCR",
-      "price": 39.79,
-      "prior_close": 39.74,
-      "change_pct": 0.1258178158027201,
-      "day_volume": 200657.0,
-      "trades": 675,
-      "last_trade": "2026-09-18T11:20:56+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
-    },
-    {
-      "symbol": "SYS",
-      "price": 121.91,
-      "prior_close": 121.86,
-      "change_pct": 0.041030690956822546,
-      "day_volume": 978193.0,
-      "trades": 1735,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "NRL",
-      "price": 518.45,
-      "prior_close": 519.07,
-      "change_pct": -0.11944439092993475,
-      "day_volume": 654064.0,
-      "trades": 1366,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.3,
-      "note": null
-    },
-    {
-      "symbol": "PRL",
-      "price": 82.99,
-      "prior_close": 83.12,
-      "change_pct": -0.15640038498557773,
-      "day_volume": 9373463.0,
-      "trades": 3678,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
+      "symbol": "AIRLINK",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
       "symbol": "ASL",
-      "price": 17.07,
-      "prior_close": 17.1,
-      "change_pct": -0.17543859649123972,
-      "day_volume": 10698168.0,
-      "trades": 2199,
-      "last_trade": "2026-09-18T11:20:59+00:00",
-      "stale": false,
-      "age_minutes": 1.7,
-      "note": null
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
       "symbol": "ATRL",
-      "price": 1095.16,
-      "prior_close": 1099.69,
-      "change_pct": -0.4119342723858499,
-      "day_volume": 219042.0,
-      "trades": 912,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.4,
-      "note": null
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
-      "symbol": "SAZEW",
-      "price": 1745.0,
-      "prior_close": 1752.48,
-      "change_pct": -0.42682370126906344,
-      "day_volume": 58923.0,
-      "trades": 1125,
-      "last_trade": "2026-09-18T11:21:01+00:00",
-      "stale": false,
-      "age_minutes": 1.5,
-      "note": null
+      "symbol": "BNL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "CNERGY",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "CPHL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "DCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "DCR",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "DGKC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "EFERT",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "ENGROH",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "EPCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FABL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FCCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FCEPL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FFC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FFL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FIBLM",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "FTSM",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
       "symbol": "GAL",
-      "price": 544.0,
-      "prior_close": 546.92,
-      "change_pct": -0.533898924888454,
-      "day_volume": 399390.0,
-      "trades": 1281,
-      "last_trade": "2026-09-18T11:21:00+00:00",
-      "stale": false,
-      "age_minutes": 1.6,
-      "note": null
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
-      "symbol": "LOADS",
-      "price": 12.82,
-      "prior_close": 12.97,
-      "change_pct": -1.156515034695449,
-      "day_volume": 3420961.0,
-      "trades": 663,
-      "last_trade": "2026-09-18T11:20:08+00:00",
-      "stale": false,
-      "age_minutes": 2.6,
-      "note": null
+      "symbol": "GGL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
-      "symbol": "IPAK",
-      "price": 35.36,
-      "prior_close": 35.9,
-      "change_pct": -1.5041782729804942,
-      "day_volume": 3059336.0,
-      "trades": 617,
-      "last_trade": "2026-09-18T11:20:53+00:00",
-      "stale": false,
-      "age_minutes": 1.8,
-      "note": null
+      "symbol": "GHGL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     },
     {
       "symbol": "GHNI",
-      "price": 1080.0,
-      "prior_close": 1103.1,
-      "change_pct": -2.094098449823223,
-      "day_volume": 121847.0,
-      "trades": 1019,
-      "last_trade": "2026-09-18T11:20:55+00:00",
-      "stale": false,
-      "age_minutes": 1.6,
-      "note": null
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "HCAR",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "HUBC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "ILP",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "IMAGE",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "IPAK",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "JVDC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "KEL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "KOHC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "LOADS",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "LUCK",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "MARI",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "MEBL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "MLCF",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "NML",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "NRL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "OGDC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "PAEL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "PIBTL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "POWER",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "PPL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "PRL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "PSO",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SAZEW",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SEARL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SLGL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SLM",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SNGP",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SSGC",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SYM",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "SYS",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "TELE",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "THCCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "TOMCL",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "TREET",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
+    },
+    {
+      "symbol": "WAVES",
+      "state": "Unavailable",
+      "qualifies": false,
+      "version": "intraday-observation-v1",
+      "reason": "No usable current-session observation",
+      "risk": "Feed missing or failed; no entry assessment",
+      "episode": null,
+      "observed_at": "2026-09-20T12:37:43.621762+00:00"
     }
-  ]
+  ],
+  "market_watch": {
+    "ok": false,
+    "error": "Market closed"
+  },
+  "news_reviews": {
+    "news_ai_ratings.json": {
+      "as_of": "2026-09-18T10:41:23Z",
+      "provider": "claude-routine",
+      "model": "claude-session",
+      "depth": "full-text",
+      "articles_read": 63,
+      "read_urls": [
+        "https://mettisglobal.news/Breakup-of-Pakistans-trade-data-in-August-PBS-63554",
+        "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561",
+        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+        "https://mettisglobal.news/Ghandhara-Automobiles-to-invest-Rs23bn-in-Paint-Shop-expansion-63526",
+        "https://mettisglobal.news/Gold-jumps-to-4366-as-oil-slips-dollar-weakens-63550",
+        "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3800-per-tola-63533",
+        "https://mettisglobal.news/Gold-rises-to-4307-amid-Fed-rate-hike-aftermath-63519",
+        "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542",
+        "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548",
+        "https://mettisglobal.news/LOADS-profit-more-than-triples-to-Rs271m-in-FY26-63552",
+        "https://mettisglobal.news/LSE-Capital-signs-MoU-for-proposed-DCCL-stake-disposal-63560",
+        "https://mettisglobal.news/Loads-Limited-seeks-shareholder-nod-for-MAIL-loan-arrangements-at-AGM-63525",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63543",
+        "https://mettisglobal.news/Murree-Brewery-net-profit-jumps-16-to-around-Rs4bn-63562",
+        "https://mettisglobal.news/NBP-appeal-dismissed-clearing-path-for-pensioners-63524",
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Close-the-Loop-63529",
+        "https://mettisglobal.news/Pakistan-cotton-arrivals-surge-19-to-24m-bales-by-Sept-15-63556",
+        "https://mettisglobal.news/SBP-Governor-credits-remittances-for-reserve-buildup-lowest-current-account-deficit-63544",
+        "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
+        "https://mettisglobal.news/SECP-approves-Shariahcompliant-digital-financing-for-small-businesses-63555",
+        "https://mettisglobal.news/Senator-Aurangzeb-pitches-Pakistans-investment-case-at-JP-Morgan-Conference-63553",
+        "https://mettisglobal.news/Tax-relief-sparks-25-profit-jump-for-Pakistans-EP-sector-63559",
+        "https://mettisglobal.news/Weekly-SPI-increased-by-049-63558",
+        "https://propakistani.pk/2026/09/18/1-million-pakistanis-register-to-avail-cheap-petrol/",
+        "https://propakistani.pk/2026/09/18/bank-alfalah-funds-multi-partner-school-initiative-for-health-and-financial-literacy/",
+        "https://propakistani.pk/2026/09/18/burns-road-to-be-transformed-into-modern-food-street/",
+        "https://propakistani.pk/2026/09/18/faisalabads-water-supply-to-get-a-major-boost/",
+        "https://propakistani.pk/2026/09/18/govt-staff-told-not-to-tell-ai-everything/",
+        "https://propakistani.pk/2026/09/18/ipps-charge-12-times-more-than-dams-for-electricity-generation/",
+        "https://propakistani.pk/2026/09/18/new-borewell-fees-introduced-in-rawalpindi-cantonment-areas/",
+        "https://propakistani.pk/2026/09/18/new-wild-cat-species-discovered-in-bolivia-after-more-than-a-century/",
+        "https://propakistani.pk/2026/09/18/processors-make-up-nearly-half-of-flagship-phones-cost-now/",
+        "https://propakistani.pk/2026/09/18/solar-firm-set-to-make-pakistans-first-spac-listing-on-psx/",
+        "https://www.brecorder.com/news/40440105/gold-edges-higher-on-lower-oil-prices-subdued-dollar",
+        "https://www.brecorder.com/news/40440106/australian-shares-rise-as-rba-governor-warns-inflation-risks-materialising",
+        "https://www.brecorder.com/news/40440107/nishat-groups-nexgen-auto-launches-icaur-in-pakistan-with-the-v27-reev-priced-at-pkr-12499000",
+        "https://www.brecorder.com/news/40440108/chinas-offshore-yuan-hits-strongest-in-four-years-ahead-of-trump-xi-meeting",
+        "https://www.brecorder.com/news/40440109/qantas-ground-workers-to-strike-over-pay-and-conditions-next-week",
+        "https://www.brecorder.com/news/40440110/airasias-fernandes-says-travel-demand-remains-strong-current-crisis-far-less-severe-than-covid",
+        "https://www.brecorder.com/news/40440111/australian-dollar-lifted-by-rba-hawks-kiwi-belly-flops",
+        "https://www.brecorder.com/news/40440112/malaysias-august-exports-rise-455-yy-above-forecast",
+        "https://www.brecorder.com/news/40440113/liudmila-samsonova-upsets-top-seed-in-guadalajara",
+        "https://www.brecorder.com/news/40440114/china-stocks-on-track-for-best-day-in-a-month-ahead-of-trump-xi-meeting-hong-kong-rises",
+        "https://www.brecorder.com/news/40440115/thai-bahtus-dollar-stronger-on-friday",
+        "https://www.brecorder.com/news/40440116/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
+        "https://www.brecorder.com/news/40440117/india-bonds-little-changed-debt-auction-cutoff-to-guide",
+        "https://www.brecorder.com/news/40440118/palm-oil-tracks-rival-edible-oils-and-crude-lower-heads-for-weekly-gain",
+        "https://www.brecorder.com/news/40440119/malaysian-king-allows-jailed-ex-pm-najib-razak-to-serve-term-under-house-arrest",
+        "https://www.brecorder.com/news/40440120/copper-set-for-weekly-gain-as-china-demand-offsets-us-policy-pressure",
+        "https://www.brecorder.com/news/40440121/secp-approves-up-to-rs3mn-digital-financing-for-small-businesses",
+        "https://www.brecorder.com/news/40440122/vaibhav-sooryavanshi-has-to-be-patient-says-india-coach-gambhir",
+        "https://www.brecorder.com/news/40440123/moodys-raises-india-fiscal-2027-gdp-growth-forecast-to-7-on-middle-east-resilience",
+        "https://www.brecorder.com/news/40440124/chinas-august-refined-fuel-exports-exceed-pre-iran-war-levels-jet-fuel-exports-hit-record-high",
+        "https://www.brecorder.com/news/40440125/pakistan-will-go-to-any-length-to-defend-saudi-arabia-dg-ispr",
+        "https://www.brecorder.com/news/40440126/at-least-one-dead-four-injured-in-school-shooting-in-southern-philippines",
+        "https://www.brecorder.com/news/40440127/dada-partners-advises-qistbazaar-on-its-groundbreaking-pkr-500-million-sukuk",
+        "https://www.brecorder.com/news/40440128/ningbo-green-light-energy-set-to-be-pakistans-first-listing-via-spac-report",
+        "https://www.brecorder.com/news/40440129/iran-says-struck-oil-tanker-in-strait-of-hormuz",
+        "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs",
+        "https://www.brecorder.com/news/40440131/england-beat-sri-lanka-by-six-wickets-to-secure-t20-series-2-0",
+        "https://www.brecorder.com/news/40440132/abhishek-blazes-fastest-century-in-full-member-t20s-as-india-sweep-afghanistan",
+        "https://www.brecorder.com/news/40440133/mamps-makes-london-fashion-week-debut-to-boost-style-ambitions",
+        "https://www.brecorder.com/news/40440134/at-least-seven-dead-dozens-injured-in-kohat-blast-rescue-1122"
+      ],
+      "count": 4,
+      "ratings": {
+        "CPHL": {
+          "rating": "positive",
+          "horizon": "multi_session",
+          "causality": "causal",
+          "confidence": 0.45,
+          "reason": "EGM approved entry into cannabis/hemp business, pending CCRA licensing",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561"
+          ]
+        },
+        "LOADS": {
+          "rating": "highly_positive",
+          "horizon": "single_session",
+          "causality": "causal",
+          "confidence": 0.75,
+          "reason": "FY26 profit more than tripled to Rs271m, EPS Rs1.40 vs Rs0.97, revenue +26%",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/LOADS-profit-more-than-triples-to-Rs271m-in-FY26-63552",
+            "https://mettisglobal.news/Loads-Limited-seeks-shareholder-nod-for-MAIL-loan-arrangements-at-AGM-63525"
+          ]
+        },
+        "GHNI": {
+          "rating": "highly_positive",
+          "horizon": "single_session",
+          "causality": "causal",
+          "confidence": 0.85,
+          "reason": "FY26 profit +51% to Rs6.93bn, EPS Rs162.57, Rs12/sh final dividend declared",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527"
+          ]
+        },
+        "GAL": {
+          "rating": "positive",
+          "horizon": "long_term",
+          "causality": "causal",
+          "confidence": 0.45,
+          "reason": "Rs2.3bn Paint Shop expansion with robotics line, completion Q3 FY27",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/Ghandhara-Automobiles-to-invest-Rs23bn-in-Paint-Shop-expansion-63526"
+          ]
+        }
+      },
+      "sectors": {
+        "Oil & Gas Exploration": {
+          "rating": "positive",
+          "horizon": "single_session",
+          "causality": "causal",
+          "confidence": 0.55,
+          "reason": "E&P sector FY26 net profit +25% YoY to Rs461bn, tax relief offset cost pressure",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/Tax-relief-sparks-25-profit-jump-for-Pakistans-EP-sector-63559"
+          ]
+        },
+        "Technology/Telecom": {
+          "rating": "neutral",
+          "horizon": "multi_session",
+          "causality": "correlated",
+          "confidence": 0.3,
+          "reason": "Mixed: phone imports -8.85% YoY but telecom equipment imports +8.95%",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs"
+          ]
+        },
+        "Technology/Telecom Devices": {
+          "rating": "negative",
+          "horizon": "multi_session",
+          "causality": "causal",
+          "confidence": 0.4,
+          "reason": "Mobile phone import volumes fell 8.85% YoY, softer device demand channel",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs"
+          ]
+        },
+        "Logistics/Ports": {
+          "rating": "positive",
+          "horizon": "multi_session",
+          "causality": "causal",
+          "confidence": 0.35,
+          "reason": "Karachi Port liner shipping connectivity index hit record high in Q2CY26",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548",
+            "https://www.dawn.com/news/2030750/karachi-port-connectivity-hits-milestone"
+          ]
+        },
+        "Refinery": {
+          "rating": "neutral",
+          "horizon": "single_session",
+          "causality": "noise",
+          "confidence": 0.2,
+          "reason": "Routine fortnightly OGRA ex-depot price reset; regulated margins unchanged",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542"
+          ]
+        },
+        "Oil Marketing": {
+          "rating": "neutral",
+          "horizon": "single_session",
+          "causality": "noise",
+          "confidence": 0.2,
+          "reason": "Routine fortnightly OGRA ex-depot price reset; regulated OMC margin unchanged",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542"
+          ]
+        },
+        "Islamic Banking": {
+          "rating": "positive",
+          "horizon": "multi_session",
+          "causality": "correlated",
+          "confidence": 0.3,
+          "reason": "SBP reserves +$3.06bn on Eurobond proceeds, narrower current account deficit",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
+            "https://mettisglobal.news/SBP-Governor-credits-remittances-for-reserve-buildup-lowest-current-account-deficit-63544"
+          ]
+        },
+        "Power Generation": {
+          "rating": "negative",
+          "horizon": "multi_session",
+          "causality": "causal",
+          "confidence": 0.35,
+          "reason": "Senate data shows IPPs charge up to 12x dam cost, renewed capacity-charge scrutiny",
+          "text_depth": "full",
+          "sources": [
+            "https://propakistani.pk/2026/09/18/ipps-charge-12-times-more-than-dams-for-electricity-generation/"
+          ]
+        }
+      }
+    },
+    "news_codex_ratings.json": {
+      "as_of": "2026-09-18T10:51:00Z",
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "review_mode": "Scheduled cloud dual-review; independent Codex desk",
+      "input_fetched_at": "2026-09-18T10:36:22.954358+00:00",
+      "limitations": [
+        "Confidence values are subjective evidence confidence, not return probabilities. News remains unweighted in the trading score.",
+        "Only material new or materially changed evidence belonging to the current Friday session is added. Prior-session items are not caught up after close.",
+        "The linked Mettis Citi Pharma article was not accessible in this cloud reader. The event is therefore labelled headline-only. Citi Pharma identity and the pre-existing September 18 EOGM proposal were independently verified, but the article's exact publication clock time could not be independently verified.",
+        "The raw collector's Mettis timestamp for the Citi Pharma item is not used as an article clock because it is inconsistent with this run's fetch time.",
+        "The new LSE Capital DCCL headline was identity-checked: DCCL is Digital Custodian Company Limited, not Dewan Cement Limited (DCL), so it is irrelevant to tracked DCL.",
+        "Stories not reviewed are not Neutral ratings."
+      ],
+      "reviewed_stories": [
+        {
+          "title": "Citi Pharma gets shareholder nod to alter memorandum for cannabis business",
+          "assessment": "positive",
+          "linkage": "direct",
+          "linkage_detail": "Direct CPHL corporate action; shareholder approval advances the company's proposed cannabis and hemp expansion",
+          "reason": "The new headline says shareholders approved the memorandum change contemplated at Citi Pharma's September 18 EOGM. The earlier EOGM notice confirms the proposal covered cannabis, industrial hemp and medicinal-cannabis activities and required further regulatory approvals. This moves the proposal one formal step forward, but no revenue, capex or profit contribution is disclosed and licensing remains outstanding, so the assessment is positive with limited confidence.",
+          "source": "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561",
+          "sources": [
+            "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561",
+            "https://dps.psx.com.pk/company/CPHL",
+            "https://propakistani.pk/2026/08/28/citi-pharma-eyes-cannabis-and-hemp-market-in-pakistan-and-abroad/"
+          ],
+          "published": "2026-09-18; exact article clock time unavailable in this cloud session",
+          "text_depth": "headline-only",
+          "confidence": 0.45,
+          "provider": "OpenAI",
+          "model": "GPT-5.6 Sol",
+          "thread_key": "cphl-cannabis-business-expansion"
+        },
+        {
+          "title": "1 Million Pakistanis Register to Avail Cheap Petrol",
+          "assessment": "neutral",
+          "linkage": "sector",
+          "linkage_detail": "Sector context for oil marketing companies including PSO; no PSO-specific reimbursement, margin or earnings evidence",
+          "reason": "The fuel-relief scheme has passed one million registrations and generated more than 800,000 subsidy tokens, confirming operational uptake. The report does not show whether PSO is gaining volumes, when OMC reimbursements are received, or whether unsettled price-differential claims have improved. It therefore does not reverse the existing negative PSO working-capital assessment.",
+          "source": "https://propakistani.pk/2026/09/18/1-million-pakistanis-register-to-avail-cheap-petrol/",
+          "sources": [
+            "https://propakistani.pk/2026/09/18/1-million-pakistanis-register-to-avail-cheap-petrol/"
+          ],
+          "published": "2026-09-18T14:39:00+05:00",
+          "text_depth": "full",
+          "confidence": 0.8,
+          "provider": "OpenAI",
+          "model": "GPT-5.6 Sol",
+          "thread_key": "pakistan-fuel-relief-scheme"
+        },
+        {
+          "title": "LSE Capital signs MoU for proposed DCCL stake disposal",
+          "assessment": "neutral",
+          "linkage": "irrelevant",
+          "linkage_detail": "DCCL here is Digital Custodian Company Limited, not tracked Dewan Cement Limited (DCL)",
+          "reason": "Independent identity checks show LSE Capital's DCCL is Digital Custodian Company Limited, an LSE group company. The similarly named tracked symbol DCL is Dewan Cement Limited. The headline therefore creates no DCL or cement-sector evidence and no rating is assigned.",
+          "source": "https://mettisglobal.news/LSE-Capital-signs-MoU-for-proposed-DCCL-stake-disposal-63560",
+          "sources": [
+            "https://mettisglobal.news/LSE-Capital-signs-MoU-for-proposed-DCCL-stake-disposal-63560",
+            "https://capital.lse.com.pk/LSECapital-SubsAssoComp.php",
+            "https://www.investify.pk/announcements/LSECL/dps-pdf-277433"
+          ],
+          "published": "2026-09-18; exact article clock time unavailable in this cloud session",
+          "text_depth": "headline-only",
+          "confidence": 0.95,
+          "provider": "OpenAI",
+          "model": "GPT-5.6 Sol",
+          "thread_key": "lsecl-dccl-stake-disposal"
+        }
+      ],
+      "ratings": {
+        "CPHL": {
+          "rating": "positive",
+          "causality": "causal",
+          "confidence": 0.45,
+          "horizon": "multi_session",
+          "reason": "Shareholders approved the memorandum change for Citi Pharma's proposed cannabis and hemp expansion, advancing the plan beyond the August proposal. Further regulatory licensing is still required and no revenue or profit contribution is disclosed, so the direct positive assessment remains low confidence.",
+          "relevance": "Direct link: CPHL shareholder-approved strategic business expansion",
+          "text_depth": "headline-only",
+          "sources": [
+            "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561",
+            "https://dps.psx.com.pk/company/CPHL",
+            "https://propakistani.pk/2026/08/28/citi-pharma-eyes-cannabis-and-hemp-market-in-pakistan-and-abroad/"
+          ],
+          "thread_key": "cphl-cannabis-business-expansion"
+        },
+        "GHNI": {
+          "rating": "positive",
+          "causality": "causal",
+          "confidence": 0.95,
+          "horizon": "multi_session",
+          "reason": "Ghandhara Industries Limited reported FY26 profit of Rs6.93bn, up 51% year on year, with EPS of Rs162.57, sales up 62%, gross profit up 54%, lower finance costs and a Rs12 per share final dividend. This is direct company earnings evidence.",
+          "relevance": "Direct link: GHNI company earnings and dividend",
+          "text_depth": "full",
+          "sources": [
+            "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
+            "https://dps.psx.com.pk/company/GHNI"
+          ],
+          "source_published": [
+            "2026-09-17T15:35:00+05:00"
+          ],
+          "source_published_at": [
+            "2026-09-17T15:35:00+05:00"
+          ],
+          "thread_key": "ghni-fy26-results"
+        },
+        "OGDC": {
+          "rating": "positive",
+          "causality": "causal",
+          "confidence": 0.45,
+          "horizon": "multi_session",
+          "reason": "Hormuz tanker attack confirms transit risk, but Brent fell to about $102.68 as Saudi workarounds and inventories eased scarcity fears. Positive upstream view remains, without a confidence upgrade.",
+          "relevance": "Sector link: Oil & Gas Exploration Companies",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440129",
+            "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
+          ],
+          "source_published": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "source_published_at": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "thread_key": "middle-east-oil-supply-shock"
+        },
+        "PPL": {
+          "rating": "positive",
+          "causality": "causal",
+          "confidence": 0.45,
+          "horizon": "multi_session",
+          "reason": "Hormuz tanker attack confirms transit risk, but Brent fell to about $102.68 as Saudi workarounds and inventories eased scarcity fears. Positive upstream view remains, without a confidence upgrade.",
+          "relevance": "Sector link: Oil & Gas Exploration Companies",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440129",
+            "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
+          ],
+          "source_published": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "source_published_at": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "thread_key": "middle-east-oil-supply-shock"
+        },
+        "MARI": {
+          "rating": "positive",
+          "causality": "causal",
+          "confidence": 0.4,
+          "horizon": "multi_session",
+          "reason": "Hormuz tanker attack confirms transit risk, but Brent still fell near $102.68 as supply workarounds eased scarcity fears. MARI's gas-heavy mix keeps the positive crude linkage weaker.",
+          "relevance": "Sector link: Oil & Gas Exploration Companies",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440129",
+            "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/",
+            "https://dps.psx.com.pk/company/MARI"
+          ],
+          "source_published": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "source_published_at": [
+            "2026-09-18T14:04:00+05:00",
+            "2026-09-18T01:01:00+00:00"
+          ],
+          "thread_key": "middle-east-oil-supply-shock"
+        },
+        "PSO": {
+          "rating": "negative",
+          "causality": "causal",
+          "confidence": 0.7,
+          "horizon": "multi_session",
+          "reason": "OMC industry evidence still shows Rs66.7bn of price-differential claims unsettled, liquidity pressure while OMCs finance the supply chain, and an approved Rs1.22 per litre OMC margin increase not yet notified. Strong fuel-relief registration and token uptake confirms scheme operation but does not establish PSO reimbursement, margin relief or earnings benefit, so the negative working-capital view remains.",
+          "relevance": "Sector link to PSO as an oil marketing company; not a PSO-specific loss amount",
+          "text_depth": "full",
+          "sources": [
+            "https://www.dawn.com/news/2030654/pms-fuel-subsidy-scheme-faces-first-day-hurdles-at-petrol-pumps",
+            "https://www.brecorder.com/news/40439989",
+            "https://www.brecorder.com/news/40440079",
+            "https://propakistani.pk/2026/09/18/1-million-pakistanis-register-to-avail-cheap-petrol/"
+          ],
+          "source_published": [
+            "2026-09-17T23:43:00+05:00",
+            "2026-09-17T20:55:00+05:00",
+            "2026-09-18T06:37:00+05:00",
+            "2026-09-18T14:39:00+05:00"
+          ],
+          "source_published_at": [
+            "2026-09-17T23:43:00+05:00",
+            "2026-09-17T20:55:00+05:00",
+            "2026-09-18T06:37:00+05:00",
+            "2026-09-18T14:39:00+05:00"
+          ],
+          "thread_key": "pakistan-omc-liquidity-pdc"
+        }
+      },
+      "sectors": {
+        "Textile Composite": {
+          "rating": "positive",
+          "causality": "correlated",
+          "confidence": 0.7,
+          "horizon": "multi_session",
+          "reason": "Pakistan completed its fifth EU GSP+ review and is preparing for formal reapplication by December 2028. Continued preferential EU market access is constructive for export-oriented textile companies, but exposure and realised sales vary by company, so the linkage is sector-level and correlated rather than company-specific.",
+          "relevance": "Sector link: Textile Composite",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440089/formal-reapplication-by-dec-2028-pakistan-completes-fifth-gsp-review"
+          ],
+          "source_published": [
+            "2026-09-18T05:15:00+05:00"
+          ],
+          "source_published_at": [
+            "2026-09-18T05:15:00+05:00"
+          ],
+          "thread_key": "pakistan-eu-gsp-plus"
+        },
+        "Technology/Telecom Devices": {
+          "rating": "neutral",
+          "causality": "correlated",
+          "confidence": 0.75,
+          "horizon": "multi_session",
+          "reason": "Mobile-phone imports fell 8.85% while telecom-equipment imports rose 8.95%. The aggregate data do not identify AIRLINK sales, local assembly volumes or margins, so direction is ambiguous.",
+          "relevance": "Sector link to Technology and Telecom Devices, including AIRLINK",
+          "text_depth": "full",
+          "sources": [
+            "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs",
+            "https://dps.psx.com.pk/company/AIRLINK"
+          ],
+          "source_published": [
+            "2026-09-18T14:08:00+05:00"
+          ],
+          "source_published_at": [
+            "2026-09-18T14:08:00+05:00"
+          ],
+          "thread_key": "pakistan-mobile-phone-imports"
+        }
+      }
+    }
+  },
+  "run_id": "850509de09dd5c04dbda75d4562bfcfa6ea94f56181d30e2a0cff6b0777843f7",
+  "intraday_rules": {
+    "version": "intraday-observation-v1",
+    "window_minutes": 15,
+    "anchor_tolerance_seconds": 120,
+    "minimum_gain_percent": 1,
+    "minimum_recent_percent": 0.15,
+    "minimum_window_turnover": 1000000,
+    "fresh_seconds": 1200,
+    "confirm_gap_min_seconds": 600,
+    "confirm_gap_max_seconds": 1200
+  }
 }
