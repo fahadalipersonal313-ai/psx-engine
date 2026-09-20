@@ -182,6 +182,9 @@ class LivePricePanelRendersWhenMomentumIsStale(unittest.TestCase):
         def warning(self, t, **k): self.warns.append(t)
         def info(self, t, **k): self.infos.append(t)
         def dataframe(self, rows, **k): self.frames.append(rows)
+        def expander(self, *a, **k):
+            from contextlib import nullcontext
+            return nullcontext()
 
     def _write(self, tmp, checked_at, session, prices):
         import json, pathlib
@@ -210,7 +213,7 @@ class LivePricePanelRendersWhenMomentumIsStale(unittest.TestCase):
             st = self.FakeSt()
             with mock.patch.object(im, "PATH", p):
                 im.show(st, now)
-            self.assertTrue(any("Live prices" in m for m in st.md),
+            self.assertTrue(any("Last captured prices" in m for m in st.md),
                             "prices panel missing on a stale capture")
             self.assertTrue(st.frames, "no price table rendered")
             self.assertTrue(any("minutes ago" in w for w in st.warns),

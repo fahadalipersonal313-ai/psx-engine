@@ -11,6 +11,21 @@ import intraday_tracking as it
 from opportunity_cards import card_html
 
 
+class QuoteFreshnessTests(unittest.TestCase):
+    def test_saved_fresh_flag_does_not_survive_weekend(self):
+        from intraday_momentum import quote_is_current
+        quote = {'last_trade': '2026-09-18T06:00:00+00:00', 'stale': False}
+        self.assertFalse(quote_is_current(quote, datetime(2026, 9, 20, 6, tzinfo=timezone.utc)))
+
+    def test_live_quote_boundary_and_future(self):
+        from intraday_momentum import quote_is_current
+        now = datetime(2026, 9, 21, 6, tzinfo=timezone.utc)
+        for seconds, expected in [(0, True), (1200, True), (1201, False), (-1, False)]:
+            quote = {'last_trade': (now-timedelta(seconds=seconds)).isoformat()}
+            self.assertEqual(quote_is_current(quote, now), expected)
+        self.assertFalse(quote_is_current({'last_trade': 'broken'}, now))
+
+
 class TrackingTests(unittest.TestCase):
     def setUp(self):
         self.now = datetime(2026, 9, 21, 5, 30, tzinfo=timezone.utc)

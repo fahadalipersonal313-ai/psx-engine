@@ -208,7 +208,8 @@ def show(st, now=None):
         intraday_panel(st, data, now)
         return
     if data is not None:
-        show_prices(st, data, now, age)
+        with st.expander("Last captured prices · all stocks", expanded=False):
+            show_prices(st, data, now, age)
 
     st.markdown('### Intraday momentum · legacy capture')
     try:
@@ -233,6 +234,17 @@ def show(st, now=None):
         st.info('No freshly traded stocks passed these momentum checks.')
 
 
+def quote_is_current(quote, now):
+    """Judge freshness at page viewing time, never from a saved fresh flag."""
+    try:
+        at = datetime.fromisoformat(quote['last_trade'])
+        return (calendar.is_live(now)
+                and calendar.local_now(at).date() == calendar.local_now(now).date()
+                and 0 <= (now - at).total_seconds() <= 1200)
+    except (KeyError, TypeError, ValueError):
+        return False
+
+
 def show_prices(st, data, now, capture_age_s=None):
     """Today's price for every stock, whether or not it is a Watch idea.
 
@@ -249,7 +261,7 @@ def show_prices(st, data, now, capture_age_s=None):
     prices = data.get('prices') or []
     if not prices:
         return
-    st.markdown('### 💹 Live prices — current session')
+    st.markdown('### Last captured prices')
     # State the capture's own age first. A price from a session that is not
     # today is labelled as such rather than passed off as live.
     session = data.get('session')
@@ -261,28 +273,26 @@ def show_prices(st, data, now, capture_age_s=None):
         st.warning(f"Captured {capture_age_s / 60:.0f} minutes ago — the page is "
                    "behind the engine, or the loop has stopped. Prices below are "
                    "real but not current; reload before acting on them.")
-    fresh = [p for p in prices if not p.get('stale')]
+    fresh = [p for p in prices if quote_is_current(p, now)]
     moved = [p for p in fresh if p.get('change_pct') is not None]
     up = sum(1 for p in moved if p['change_pct'] > 0)
+    down = sum(1 for p in moved if p['change_pct'] < 0)
     st.caption(
-        f"{len(fresh)} of {len(prices)} stocks trading in the last 20 minutes · "
-        f"{up} up, {len(moved) - up} down versus the previous close. "
-        "Context only — these prices carry ZERO weight and do not move any "
-        "signal. Buy/Watch calls above use the last COMPLETED session, so they "
-        "will not follow these until after today's close.")
+        f"{len(fresh)} of {len(prices)} stocks have current quotes · "
+        f"{up} up, {down} down, {len(moved)-up-down} unchanged. "
+        "Swing calls use completed sessions; this table is price context.")
     rows = []
     for p in prices:
         change = p.get('change_pct')
         rows.append({
             'Stock': p['symbol'],
-            'Price now': round(p['price'], 2),
+            'Last price': round(p['price'], 2),
             'Change %': None if change is None else round(change, 2),
             'Previous close': None if p.get('prior_close') is None else round(p['prior_close'], 2),
-            'Trades today': p.get('trades'),
+            'Trades in captured session': p.get('trades'),
             'Last trade (PKT)': calendar.local_now(
                 datetime.fromisoformat(p['last_trade'])).strftime('%H:%M:%S'),
-            'Note': p.get('note') or ('stale — no trade for '
-                                      f"{p.get('age_minutes')} min" if p.get('stale') else ''),
+            'Note': p.get('note') or ('' if quote_is_current(p, now) else 'Not current'),
         })
     st.dataframe(rows, hide_index=True, height=420)
 

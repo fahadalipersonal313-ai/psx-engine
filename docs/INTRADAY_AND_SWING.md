@@ -41,3 +41,9 @@ Intraday states are research watches, not new validated Buy/Strong Buy recommend
 Run `python -m unittest test_intraday_tracking test_intraday_review -v` for timing, opening-price, stale/future-feed, Friday-break, duplicate-run, continuation, re-entry and HTML-escaping checks. The full suite is `python -m unittest discover -q`.
 
 The implementation remains on the isolated development branch until published. New-format intraday cards and the archive start with the first successful collector run after deployment; older JSON captures retain their explicitly labelled legacy display.
+
+## Dashboard readiness check — 2026-09-20
+
+Secondary news, price tables, change lists and rising-stock details are collapsed; Watchlist, News and History remain available. Quote freshness is recomputed when viewing, never taken from a saved fresh flag. Outside trading hours the engine status says market closed rather than implying a stopped loop. Swing cards retain their own analysis dates.
+
+The repository schedules pre-open attempts at 08:52, 09:05, 09:17 and 09:26 PKT, then waits for the configured regular session. GitHub scheduling and feed availability cannot guarantee exact update times. Claude’s external routine status is not verifiable from repository files.

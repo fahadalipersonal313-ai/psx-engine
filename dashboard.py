@@ -489,7 +489,9 @@ last_updated = _latest_pkt.strftime("%m-%d %H:%M") + " PKT"
 # Honest staleness flag: the cloud may pause runs (off-hours, weekends, paused
 # Action) — in that case signals here describe yesterday's market, not today's.
 # Compare against PKT now so the age matches the stored PKT run_time.
+import session_calendar as calendar
 _now_pkt = pd.Timestamp.now(tz="Asia/Karachi")
+_market_live = calendar.is_live(_now_pkt.to_pydatetime())
 _age_hours = (_now_pkt - _latest_pkt).total_seconds() / 3600
 _amber = getattr(config, "DATA_FRESHNESS_AMBER_HOURS", 4)
 _red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
@@ -529,10 +531,13 @@ elif _age_hours >= _amber:
     _stale_level, _stale_color, _stale_label = "amber", NEON["amber"], "aging"
 else:
     _stale_level, _stale_color, _stale_label = "fresh", NEON["green"], "fresh"
+if not _market_live:
+    _stale_color, _stale_label = NEON["amber"], "market closed"
 if _checked_age_h is not None:
     _ago = (f"{_checked_age_h * 60:.0f} min ago" if _checked_age_h < 1.5
             else f"{_checked_age_h:.1f}h ago")
-    _sess = _engine_state.get("cutoff_session") or "?"
+    _sessions = sorted(set(latest.get("decision_session", pd.Series(dtype=str)).dropna().astype(str)))
+    _sess = ", ".join(_sessions) or "unavailable"
     _last_updated_html = (
         f'<span style="color:{_stale_color}">engine checked {_ago}</span>'
         f' <span style="font-size:11px;opacity:.7">({_stale_label}) · '
@@ -558,16 +563,17 @@ st.sidebar.caption(news_feed.glm_status_line())
 
 # ----------------------------- header + status strip ----------------------
 st.title("📈 PSX Shariah Engine — Today")
-st.caption("⚠ " + config.DISCLAIMER)
-_news_wt = int((config.WEIGHTS.get("sentiment", 0)
-                + config.WEIGHTS.get("macro_news", 0)) * 100)
-if _news_wt == 0:
-    st.caption(f"📰 {news_feed.raw_status_line()} News carries **0% weight** — "
-               "headlines are shown per stock for manual cross-verification only, "
-               "never moved into the score.")
-else:
-    st.caption(f"📰 {news_feed.status_line()} News carries {_news_wt}% of the "
-               "final score.")
+with st.expander('How to read these signals', expanded=False):
+    st.caption("⚠ " + config.DISCLAIMER)
+    _news_wt = int((config.WEIGHTS.get("sentiment", 0)
+                    + config.WEIGHTS.get("macro_news", 0)) * 100)
+    if _news_wt == 0:
+        st.caption(f"📰 {news_feed.raw_status_line()} News carries **0% weight** — "
+                   "headlines are shown per stock for manual cross-verification only, "
+                   "never moved into the score.")
+    else:
+        st.caption(f"📰 {news_feed.status_line()} News carries {_news_wt}% of the "
+                   "final score.")
 
 
 def tile(col, label, value_html, sub=""):
@@ -610,7 +616,9 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Staleness banner — louder than the tile, only shown when data is past amber.
-if _stale_level != "fresh":
+if not _market_live:
+    st.caption("Market closed. Intraday checks resume during trading hours; swing cards show their analysis date.")
+elif _stale_level != "fresh":
     # Now a statement about the ENGINE, not about the numbers: it fires when no
     # cycle has completed recently, which is the condition that actually needs
     # acting on. Signals describing the previous session is the contract and
@@ -623,15 +631,6 @@ if _stale_level != "fresh":
     else:
         st.warning(f"⏳ {_what} for **{_age_hours:.1f} hours** — past the "
                    f"{_amber}h threshold. Verify quotes manually before acting.")
-elif _engine_state.get("changed_at"):
-    # Fresh: say when the signals last genuinely moved, so an unchanged board
-    # reads as "nothing has happened" rather than "nothing is working".
-    st.caption(
-        f"Signals last changed {str(_engine_state['changed_at'])[:16].replace('T', ' ')} "
-        f"UTC. The engine reads the last COMPLETED session, so they move once a "
-        f"session, not once a cycle — an unchanged board during a live session "
-        f"is the contract, not a stalled run.")
-
 # ----------------------------- news read (compact) -------------------------
 import news_review_panel
 with st.expander('News assessment desk · Claude and Codex', expanded=False):
@@ -646,48 +645,49 @@ short_horizon_panel.show(st)
 # ZERO SCORE WEIGHT, and that is enforced upstream rather than promised here:
 # config.WEIGHTS has sentiment and macro_news at 0.0, so a rating cannot move a
 # signal. It is shown for manual cross-verification only.
-_nr, _nmeta = news_feed.load_glm_ratings()
-if _nr and _nmeta.get("status") == "ok":
-    st.markdown(f"### 📰 News read — {len(_nr)} symbols")
-    st.caption(
-        f"From {_nmeta.get('provider','AI reviewer')}, "
-        f"{_nmeta.get('age_hours', 0):.0f}h old. **Zero score weight** — a rating "
-        "never moves a signal. Causal means the story plausibly drives the price; "
-        "correlated means it merely coincides. Confidence is the rater's own.")
-    _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
-              "negative": 3, "highly_negative": 4}
-    for _sym in sorted(_nr, key=lambda x: (_order.get(_nr[x].get("rating"), 9), x)):
-        _rv = _nr[_sym]
-        _why = (_rv.get("reason") or "")[:150]
-        # A running story, not a fresh one: some news develops over months, so
-        # say how many EARLIER reads this symbol has and what followed the last
-        # graded one. Silent when there is no prior read -- a first sighting
-        # must never be dressed up as a continuing story.
-        _run = ""
-        try:
-            import news_memory
-            _prior = [h for h in news_memory.history_for(_sym, limit=24)
-                      if str(h["as_of"]) != str(_nmeta.get("as_of"))]
-            if _prior:
-                _since = str(_prior[-1]["as_of"])[:10]
-                _run = (f' <span style="opacity:.65">· running story: '
-                        f'{len(_prior)} earlier read(s) since {_since}')
-                _g = next((h for h in _prior if h["outcome_5d"] is not None), None)
-                if _g:
-                    _run += (f", last graded {str(_g['as_of'])[:10]} "
-                             f"{_g['outcome_5d']:+.1f}% vs market at 5d")
-                _run += "</span>"
-        except Exception:
+with st.expander('Earlier news review · details', expanded=False):
+    _nr, _nmeta = news_feed.load_glm_ratings()
+    if _nr and _nmeta.get("status") == "ok":
+        st.markdown(f"### 📰 News read — {len(_nr)} symbols")
+        st.caption(
+            f"From {_nmeta.get('provider','AI reviewer')}, "
+            f"{_nmeta.get('age_hours', 0):.0f}h old. **Zero score weight** — a rating "
+            "never moves a signal. Causal means the story plausibly drives the price; "
+            "correlated means it merely coincides. Confidence is the rater's own.")
+        _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
+                  "negative": 3, "highly_negative": 4}
+        for _sym in sorted(_nr, key=lambda x: (_order.get(_nr[x].get("rating"), 9), x)):
+            _rv = _nr[_sym]
+            _why = (_rv.get("reason") or "")[:150]
+            # A running story, not a fresh one: some news develops over months, so
+            # say how many EARLIER reads this symbol has and what followed the last
+            # graded one. Silent when there is no prior read -- a first sighting
+            # must never be dressed up as a continuing story.
             _run = ""
-        st.markdown(
-            f'<div style="margin:2px 0;font-size:13px">'
-            f'<b>{_sym}</b> {glm_pill(_rv)} {analysis_pills(_rv)} '
-            f'<span style="opacity:.7">{_why}</span>{_run}</div>',
-            unsafe_allow_html=True)
-    st.divider()
-elif _nmeta.get("status") != "ok":
-    st.caption(f"📰 News read unavailable ({_nmeta.get('status')}) — "
-               "no rating is shown rather than an old one.")
+            try:
+                import news_memory
+                _prior = [h for h in news_memory.history_for(_sym, limit=24)
+                          if str(h["as_of"]) != str(_nmeta.get("as_of"))]
+                if _prior:
+                    _since = str(_prior[-1]["as_of"])[:10]
+                    _run = (f' <span style="opacity:.65">· running story: '
+                            f'{len(_prior)} earlier read(s) since {_since}')
+                    _g = next((h for h in _prior if h["outcome_5d"] is not None), None)
+                    if _g:
+                        _run += (f", last graded {str(_g['as_of'])[:10]} "
+                                 f"{_g['outcome_5d']:+.1f}% vs market at 5d")
+                    _run += "</span>"
+            except Exception:
+                _run = ""
+            st.markdown(
+                f'<div style="margin:2px 0;font-size:13px">'
+                f'<b>{_sym}</b> {glm_pill(_rv)} {analysis_pills(_rv)} '
+                f'<span style="opacity:.7">{_why}</span>{_run}</div>',
+                unsafe_allow_html=True)
+        st.divider()
+    elif _nmeta.get("status") != "ok":
+        st.caption(f"📰 News read unavailable ({_nmeta.get('status')}) — "
+                   "no rating is shown rather than an old one.")
 
 # --------------------------- momentum burst (top) --------------------------
 import intraday_momentum
@@ -753,34 +753,35 @@ with st.expander("Previous completed-session momentum · swing context"):
         st.divider()
 
 # ----------------------------- what changed -------------------------------
-ups, downs = changes_since_last()
-if ups or downs:
-    parts = []
-    for s, p, c in ups:
-        parts.append(f"🔼 **{s}** {p}→{c}")
-    for s, p, c in downs:
-        parts.append(f"🔽 **{s}** {p}→{c}")
-    st.markdown("**Since last run:** " + " · ".join(parts))
-else:
-    st.caption("No signal changes since the last run.")
+with st.expander('Changes since the previous run', expanded=False):
+    ups, downs = changes_since_last()
+    if ups or downs:
+        parts = []
+        for s, p, c in ups:
+            parts.append(f"🔼 **{s}** {p}→{c}")
+        for s, p, c in downs:
+            parts.append(f"🔽 **{s}** {p}→{c}")
+        st.markdown("**Since last run:** " + " · ".join(parts))
+    else:
+        st.caption("No signal changes since the last run.")
 
-# When the signals last actually MOVED, as a fact rather than an inference.
-# The engine writes this digest each cycle and the loop commits the database
-# only when it differs, so "unchanged" here means the engine compared and found
-# nothing new -- not that it stopped running. The news panel above has its own,
-# much faster clock: headlines refresh every cycle regardless.
-try:
-    with open(".engine-state.json", encoding="utf-8") as _sf:
-        _state = json.load(_sf)
-    _ch, _ck = _state.get("changed_at"), _state.get("checked_at")
-    if _ch:
-        st.caption(f"Signals last changed {str(_ch)[:16].replace('T', ' ')} UTC "
-                   f"(session {_state.get('cutoff_session', '?')}) · last checked "
-                   f"{str(_ck)[:16].replace('T', ' ')} UTC. The engine reads the "
-                   f"last COMPLETED session, so signals move once a session, not "
-                   f"once a cycle.")
-except (OSError, ValueError, KeyError):
-    pass
+    # When the signals last actually MOVED, as a fact rather than an inference.
+    # The engine writes this digest each cycle and the loop commits the database
+    # only when it differs, so "unchanged" here means the engine compared and found
+    # nothing new -- not that it stopped running. The news panel above has its own,
+    # much faster clock: headlines refresh every cycle regardless.
+    try:
+        with open(".engine-state.json", encoding="utf-8") as _sf:
+            _state = json.load(_sf)
+        _ch, _ck = _state.get("changed_at"), _state.get("checked_at")
+        if _ch:
+            st.caption(f"Signals last changed {str(_ch)[:16].replace('T', ' ')} UTC "
+                       f"(session {_state.get('cutoff_session', '?')}) · last checked "
+                       f"{str(_ck)[:16].replace('T', ' ')} UTC. The engine reads the "
+                       f"last COMPLETED session, so signals move once a session, not "
+                       f"once a cycle.")
+    except (OSError, ValueError, KeyError):
+        pass
 
 st.divider()
 
@@ -791,13 +792,14 @@ trading_review.show(st, rows)
 import depth_analysis
 depth_analysis.show(st)
 import upward_candidates
-st.subheader("Up to 10 stocks with a rising trend")
-_upward = upward_candidates.current()
-if _upward:
-    st.dataframe(pd.DataFrame(_upward), hide_index=True)
-else:
-    st.info("No stocks currently meet all the upward-trend and momentum checks.")
-st.caption("Only stocks with a rising price trend, positive momentum and buying activity qualify. Watch means wait for the Buy rules to pass. Fewer than 10 may qualify.")
+with st.expander('More stocks with a rising trend', expanded=False):
+    st.subheader("Up to 10 stocks with a rising trend")
+    _upward = upward_candidates.current()
+    if _upward:
+        st.dataframe(pd.DataFrame(_upward), hide_index=True)
+    else:
+        st.info("No stocks currently meet all the upward-trend and momentum checks.")
+    st.caption("Only stocks with a rising price trend, positive momentum and buying activity qualify. Watch means wait for the Buy rules to pass. Fewer than 10 may qualify.")
 if _whatif_active:
     st.info("🔀 **What-if: Assume risk-on** — the market is really risk-off, so "
             "the Buys below are technical signals the engine downgraded to Watch "
