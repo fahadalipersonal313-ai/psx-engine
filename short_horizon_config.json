@@ -1,0 +1,20 @@
+{
+  "method": "short-horizon-research-v1",
+  "sessions": 42,
+  "limit": 50,
+  "minimum_price": 5,
+  "minimum_market_cap": 1000000000,
+  "minimum_average_volume": 100000,
+  "minimum_volume": 25000,
+  "minimum_median_turnover": 5000000,
+  "minimum_adx": 20,
+  "maximum_rsi": 75,
+  "maximum_extension_atr": 2,
+  "maximum_atr_percent": 8,
+  "minimum_relative_volume": 1,
+  "universe_max_age_hours": 24,
+  "news_max_age_hours": 72,
+  "request_pause_seconds": 1,
+  "refresh_budget_seconds": 150,
+  "weights": {"trend": 30, "momentum": 30, "participation": 25, "strength": 15}
+}

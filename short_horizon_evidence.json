@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "instructions": "Add exact-symbol evidence with source URL, publication time, known_at review time, expiry, event date, linkage, quality, assessment and rationale. primary-full means the reviewer read the original document, not its title. Date-only publication is usable only after that PKT day ends. Never backdate known_at. Existing news desks remain supporting context until independently certified. No static ticker bonus points.",
+  "items": [],
+  "exclusions": {
+    "CPHL": {
+      "known_at": "2026-09-20T00:00:00+05:00",
+      "review_by": "2026-09-24T23:59:59+05:00",
+      "reason": "Inherited analyst precaution pending review of the cannabis/industrial-hemp resolution and authoritative Shariah guidance. This is not an official noncompliance ruling.",
+      "source": "https://dps.psx.com.pk/download/document/282963.pdf"
+    }
+  }
+}

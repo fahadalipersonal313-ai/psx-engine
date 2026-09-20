@@ -1,4 +1,4 @@
-"""Current-session Watch ideas. No writes to daily bars or decision history."""
+"""Current-session watch ideas, with a separate archive; never changes swing history."""
 import concurrent.futures
 import json
 import math
@@ -116,7 +116,17 @@ def collect(now=None):
     now = now or datetime.now(timezone.utc)
     day = calendar.local_now(now).date().isoformat()
     result = {'session': day, 'checked_at': now.isoformat(), 'source': 'PSX DPS intraday',
-              'checked': 0, 'fresh': 0, 'failed': [], 'items': [], 'prices': []}
+              'checked': 0, 'fresh': 0, 'failed': [], 'items': [], 'prices': [], 'observations': []}
+    import intraday_tracking
+    import psx_market_watch
+    market, market_meta = psx_market_watch.fetch() if calendar.is_live(now) else ({}, {'ok': False, 'error': 'Market closed'})
+    result['market_watch'] = market_meta
+    result['news_reviews'] = {}
+    for name in ('news_ai_ratings.json', 'news_codex_ratings.json'):
+        try:
+            result['news_reviews'][name] = json.loads((Path(config.BASE_DIR) / name).read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            result['news_reviews'][name] = {'status': 'unavailable'}
     with db.conn() as c:
         history = {s: [dict(x) for x in c.execute(
             'SELECT * FROM daily_ohlc WHERE symbol=? AND date<? ORDER BY date DESC LIMIT 20', (s, day))][::-1]
@@ -126,29 +136,54 @@ def collect(now=None):
         response.raise_for_status()
         ticks = response.json()['data']
         checked = datetime.now(timezone.utc)
-        candidate = detect(symbol, ticks, history[symbol], checked)
+        try:
+            candidate = detect(symbol, ticks, history[symbol], checked)
+        except (ValueError, TypeError, IndexError):
+            candidate = None
         live = quote(symbol, ticks, history[symbol], checked)
-        last = datetime.fromtimestamp(max(float(t[0]) for t in ticks), timezone.utc) if ticks else None
+        last = datetime.fromisoformat(live['last_trade']) if live else None
         fresh = bool(last and calendar.local_now(last).date().isoformat() == day
                      and 0 <= (checked-last).total_seconds() <= 1200)
-        return candidate, fresh, live
+        observation = None
+        if live:
+            prior_day = calendar.last_completed(datetime.combine(calendar.local_now(checked).date(), datetime.min.time(), calendar.PKT))
+            valid_prior = bool(history[symbol] and history[symbol][-1]['date'] == prior_day)
+            compliance = shariah_checker.check(symbol)
+            observation = intraday_tracking.assess(live, ticks, market.get(symbol), checked,
+                eligible=valid_prior and compliance['eligible_for_ranking'])
+            observation['compliance'] = compliance
+            observation['burst'] = bool(candidate)
+            observation['full_day_volume_multiple'] = candidate.get('vol_mult') if candidate else None
+        return candidate, fresh, live, observation
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         futures = {pool.submit(fetch, s): s for s in config.STOCKS}
         for future in concurrent.futures.as_completed(futures):
             symbol = futures[future]
             try:
-                row, fresh, live = future.result()
+                row, fresh, live, observation = future.result()
                 result['checked'] += 1
                 result['fresh'] += int(fresh)
                 if row:
                     result['items'].append(row)
                 if live:
                     result['prices'].append(live)
+                if observation:
+                    result['observations'].append(observation)
             except Exception:
                 result['failed'].append(symbol)
     result['items'].sort(key=lambda x: -x['gain_pct'])
     result['prices'].sort(key=lambda x: (x['change_pct'] is None, -(x['change_pct'] or 0)))
-    PATH.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    observed = {r['symbol'] for r in result['observations']}
+    for symbol in config.STOCKS:
+        if symbol not in observed:
+            result['observations'].append({'symbol': symbol, 'state': 'Unavailable', 'qualifies': False,
+                'version': intraday_tracking.RULES['version'], 'reason': 'No usable current-session observation',
+                'risk': 'Feed missing or failed; no entry assessment'})
+    result['checked_at'] = datetime.now(timezone.utc).isoformat()
+    result = intraday_tracking.archive(result)
+    temp = PATH.with_suffix('.json.tmp')
+    temp.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    temp.replace(PATH)
     print(f"Intraday scan {day}: {result['checked']}/{len(config.STOCKS)} checked; {len(result['items'])} candidates; {len(result['prices'])} live prices; {len(result['failed'])} failed")
     return result
 
@@ -168,10 +203,14 @@ def show(st, now=None):
         age = (now - datetime.fromisoformat(data['checked_at'])).total_seconds()
     except (OSError, ValueError, KeyError):
         data, age = None, None
+    if data is not None and 'observations' in data:
+        from opportunity_cards import intraday_panel
+        intraday_panel(st, data, now)
+        return
     if data is not None:
         show_prices(st, data, now, age)
 
-    st.markdown('### ⚡ Momentum now — current-session watch')
+    st.markdown('### Intraday momentum · legacy capture')
     try:
         if data is None:
             raise ValueError('No capture')

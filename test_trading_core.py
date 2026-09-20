@@ -245,7 +245,7 @@ class IntegrationTests(StorageTests):
             for b in bars:
                 db.save_hl_bar(symbol,b['date'],b['open'],b['high'],b['low'],b['close'],b['volume'],SOURCE)
         with patch.object(config,'STOCKS',['PSO','MARI']), patch('market_regime.fetch_index',return_value=(pd.DataFrame(ix),{})), patch('session_calendar.last_completed',return_value=bars[-1]['date']), patch('psx_historical.fetch_day',return_value=[]), patch('data_fetcher.fetch_news',side_effect=AssertionError('News on technical path')), patch('data_fetcher.latest_quote',side_effect=AssertionError('Live quote on completed path')), patch('reports.save_report'), patch('excel_export.export'), patch('notify.send_report') as notify, patch('portfolio_advisor.load_portfolio',return_value={'cash_pkr':1000000,'holdings':[]}), contextlib.redirect_stdout(io.StringIO()):
-            with patch('main.write_signal_state'):
+            with patch('main.write_signal_state'), patch('short_horizon_refresh.safe_refresh', return_value={'status': 'test', 'eligible_count': 0}):
                 result=main.full_run()
         self.assertEqual(len(result),2)
         with db.conn() as c:

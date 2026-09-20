@@ -545,7 +545,7 @@ good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
 st.sidebar.header("⚙ Settings")
-compact = st.sidebar.toggle("📱 Compact view", value=st.session_state.get("compact", False),
+compact = st.sidebar.toggle("📱 Compact view", value=st.session_state.get("compact", True),
                             help="Denser layout — smaller tiles, fewer clicks, "
                                  "collapsible secondary sections. Good for phones.")
 st.session_state["compact"] = compact
@@ -634,7 +634,10 @@ elif _engine_state.get("changed_at"):
 
 # ----------------------------- news read (compact) -------------------------
 import news_review_panel
-news_review_panel.show(st)
+with st.expander('News assessment desk · Claude and Codex', expanded=False):
+    news_review_panel.show(st)
+import short_horizon_panel
+short_horizon_panel.show(st)
 # The per-card pills only render on Buy/Strong Buy cards, and in a risk-off
 # market there are none -- so the Claude routine's ratings were invisible
 # exactly when the reader most wanted a second opinion. This is the compact
@@ -689,64 +692,65 @@ elif _nmeta.get("status") != "ok":
 # --------------------------- momentum burst (top) --------------------------
 import intraday_momentum
 intraday_momentum.show(st)
-# Highest-placed panel by request. A burst is one session breaking out of the
-# stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
-# built — 83% beat at 3d (n=42), 71% at 7d (n=35), independence OK on both.
-# A WATCH tier, never a Buy: findings get surfaced, not wired into the score.
-try:
-    _bursts = momentum.scan()
-except Exception:
-    _bursts = []
-if _bursts:
-    # Date the panel by the DATA, not the clock. daily_ohlc holds only COMPLETED
-    # sessions — the engine banks the cutoff session's bars and nothing intraday
-    # — so momentum.detect reads the last completed session all day. Labelling
-    # that "today" made a two-day-old burst read as live.
-    _bdate = max((b.get("date") or "") for b in _bursts)
-    st.markdown(f"### Completed-session momentum — {len(_bursts)} on {_bdate}")
-    _sess = momentum.session_fraction()
-    # Provisional is a property of the BARS, not of the wall clock: session_fraction
-    # is <1.0 before the open as well as during the session, so keying the "market
-    # open" banner off the clock printed "Market open, 0% traded" at 01:00.
-    _live = any(b.get("provisional") for b in _bursts)
-    _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
-    _cap = (f"One session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
-            f"its {momentum.LOOKBACK}-day average volume, min PKR "
-            f"{momentum.MIN_TURNOVER/1e6:.0f}M daily turnover. **Watch tier, not a Buy.**")
-    if _outside:
-        # Never print the beat rates beside a name the measurement never saw.
-        _cap += (f" &nbsp;·&nbsp; ⚠ {', '.join(_outside)} "
-                 f"{'is' if len(_outside) == 1 else 'are'} outside the measured "
-                 "cohort — no track record for these yet.")
-    else:
-        _cap += (" &nbsp;·&nbsp; Measured on the original 50 stocks: beat the market "
-                 "80% at 3d (n=66), 72% at 7d (n=53).")
-    if _live:
-        _cap += (f" &nbsp;·&nbsp; ⏳ Live session, {_sess * 100:.0f}% of typical "
-                 "volume traded — can still fade.")
-    st.caption(_cap)
-    _bcols = st.columns(min(len(_bursts), 4))
-    for _i, _b in enumerate(_bursts):
-        with _bcols[_i % len(_bcols)]:
-            _bb = st.container(border=True)
-            _bb.markdown(
-                f'<div style="display:flex;justify-content:space-between;'
-                f'align-items:center"><span style="font-size:17px;font-weight:700">'
-                f'{_b["symbol"]}</span>{sig_pill(_b["signal"])}</div>'
-                f'<div style="font-size:22px;font-weight:800;color:{NEON["green"]}">'
-                f'+{_b["gain_pct"]:.2f}%</div>'
-                f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume'
-                f'{" pace" if _b.get("provisional") else ""} · {fmt(_b["close"])}</div>'
-                + (f'<div style="font-size:11px;color:{NEON["amber"]}">provisional · '
-                   f'{_b["session_pct"]}% of session</div>'
-                   if _b.get("provisional") else '')
-                + f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
-                + (f'<div style="font-size:11px;color:{NEON["cyan"]};font-weight:700">'
-                   f'20-day high</div>' if _b["at_high"] else ''),
-                unsafe_allow_html=True)
-    st.caption("`20-day high` is a tag, not part of the trigger: it scored higher "
-               "at 3 days but its 7-day sample was 16 rows and 69% one sector.")
-    st.divider()
+with st.expander("Previous completed-session momentum · swing context"):
+    # Highest-placed panel by request. A burst is one session breaking out of the
+    # stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
+    # built — 83% beat at 3d (n=42), 71% at 7d (n=35), independence OK on both.
+    # A WATCH tier, never a Buy: findings get surfaced, not wired into the score.
+    try:
+        _bursts = momentum.scan()
+    except Exception:
+        _bursts = []
+    if _bursts:
+        # Date the panel by the DATA, not the clock. daily_ohlc holds only COMPLETED
+        # sessions — the engine banks the cutoff session's bars and nothing intraday
+        # — so momentum.detect reads the last completed session all day. Labelling
+        # that "today" made a two-day-old burst read as live.
+        _bdate = max((b.get("date") or "") for b in _bursts)
+        st.markdown(f"### Completed-session momentum — {len(_bursts)} on {_bdate}")
+        _sess = momentum.session_fraction()
+        # Provisional is a property of the BARS, not of the wall clock: session_fraction
+        # is <1.0 before the open as well as during the session, so keying the "market
+        # open" banner off the clock printed "Market open, 0% traded" at 01:00.
+        _live = any(b.get("provisional") for b in _bursts)
+        _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
+        _cap = (f"One session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
+                f"its {momentum.LOOKBACK}-day average volume, min PKR "
+                f"{momentum.MIN_TURNOVER/1e6:.0f}M daily turnover. **Watch tier, not a Buy.**")
+        if _outside:
+            # Never print the beat rates beside a name the measurement never saw.
+            _cap += (f" &nbsp;·&nbsp; ⚠ {', '.join(_outside)} "
+                     f"{'is' if len(_outside) == 1 else 'are'} outside the measured "
+                     "cohort — no track record for these yet.")
+        else:
+            _cap += (" &nbsp;·&nbsp; Measured on the original 50 stocks: beat the market "
+                     "80% at 3d (n=66), 72% at 7d (n=53).")
+        if _live:
+            _cap += (f" &nbsp;·&nbsp; ⏳ Live session, {_sess * 100:.0f}% of typical "
+                     "volume traded — can still fade.")
+        st.caption(_cap)
+        _bcols = st.columns(min(len(_bursts), 4))
+        for _i, _b in enumerate(_bursts):
+            with _bcols[_i % len(_bcols)]:
+                _bb = st.container(border=True)
+                _bb.markdown(
+                    f'<div style="display:flex;justify-content:space-between;'
+                    f'align-items:center"><span style="font-size:17px;font-weight:700">'
+                    f'{_b["symbol"]}</span>{sig_pill(_b["signal"])}</div>'
+                    f'<div style="font-size:22px;font-weight:800;color:{NEON["green"]}">'
+                    f'+{_b["gain_pct"]:.2f}%</div>'
+                    f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume'
+                    f'{" pace" if _b.get("provisional") else ""} · {fmt(_b["close"])}</div>'
+                    + (f'<div style="font-size:11px;color:{NEON["amber"]}">provisional · '
+                       f'{_b["session_pct"]}% of session</div>'
+                       if _b.get("provisional") else '')
+                    + f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
+                    + (f'<div style="font-size:11px;color:{NEON["cyan"]};font-weight:700">'
+                       f'20-day high</div>' if _b["at_high"] else ''),
+                    unsafe_allow_html=True)
+        st.caption("`20-day high` is a tag, not part of the trigger: it scored higher "
+                   "at 3 days but its 7-day sample was 16 rows and 69% one sector.")
+        st.divider()
 
 # ----------------------------- what changed -------------------------------
 ups, downs = changes_since_last()
@@ -781,7 +785,7 @@ except (OSError, ValueError, KeyError):
 st.divider()
 
 # ----------------------------- ACTION TODAY -------------------------------
-st.subheader("🎯 Action today")
+st.subheader("Swing opportunities · completed-session signals")
 import trading_review
 trading_review.show(st, rows)
 import depth_analysis
@@ -804,19 +808,8 @@ if action.empty:
     st.info(f"No Buy or Exit signals right now — nothing to act on. "
             f"(Market regime: {regime}.)")
 elif compact:
-    st.caption("Manual confirmation required before any order. Toggle off "
-               "**Compact view** for full trade-plan cards.")
-    act_show = action[["symbol", "display_signal", "price", "stop_loss", "target1",
-                       "confidence", "relative_strength"]].copy()
-    act_show["news"] = [news_cell(s) for s in action["symbol"]]
-    act_show.columns = ["Symbol", "Signal", "Price", "Stop", "Target", "Quality",
-                        "RS", "News"]
-    st.dataframe(
-        act_show.style
-        .map(lambda v: f"color:{NEON_SIG.get(v, '')};font-weight:700", subset=["Signal"])
-        .format({"Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}",
-                 "Quality": "{:.0f}", "RS": "{:.0f}"}, na_rep="—"),
-        width="stretch", hide_index=True)
+    import opportunity_cards
+    opportunity_cards.show_swing(st, action.to_dict("records"), on_detail=lambda r: _news_window(r["symbol"]))
 else:
     st.caption("Manual confirmation required before any order. Position sizing "
                "is yours to manage.")

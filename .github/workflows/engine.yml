@@ -192,6 +192,12 @@ jobs:
             PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
                    | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
             git add -A -- news_raw_24h.json .engine-state.json intraday_momentum.json
+            # Every successful intraday run is preserved independently of swing changes.
+            if [ -f intraday_observations.db ]; then git add -- intraday_observations.db; fi
+            # Research outputs are small text snapshots, separate from swing signals.
+            for research_file in short_horizon_inputs.json short_horizon_latest.json short_horizon_status.json; do
+              if [ -f "$research_file" ]; then git add -- "$research_file"; fi
+            done
             DB_AGE=$(( $(date +%s) - $(git log -1 --format=%ct -- psx_engine.db) ))
             if [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ] || [ "$DB_AGE" -ge 3600 ]; then
               # Unknown digest means the hint is missing or unreadable: commit
