@@ -188,7 +188,7 @@ def collect(now=None):
     return result
 
 
-def show(st, now=None):
+def show(st, now=None, details=True):
     now = now or datetime.now(timezone.utc)
     # Read ONCE, then decide per panel. The momentum trigger needs a capture
     # under 20 minutes old to mean anything; a price does not stop being the
@@ -205,9 +205,9 @@ def show(st, now=None):
         data, age = None, None
     if data is not None and 'observations' in data:
         from opportunity_cards import intraday_panel
-        intraday_panel(st, data, now)
+        intraday_panel(st, data, now, details=details)
         return
-    if data is not None:
+    if data is not None and details:
         with st.expander("Last captured prices · all stocks", expanded=False):
             show_prices(st, data, now, age)
 

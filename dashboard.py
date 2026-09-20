@@ -553,31 +553,24 @@ else:
 good = int((latest["data_quality"] == "good").sum())
 
 # ----------------------------- sidebar ------------------------------------
-st.sidebar.header("⚙ Settings")
-compact = st.sidebar.toggle("📱 Compact view", value=st.session_state.get("compact", True),
-                            help="Denser layout — smaller tiles, fewer clicks, "
-                                 "collapsible secondary sections. Good for phones.")
-st.session_state["compact"] = compact
-if compact:
-    _inject_compact_css()
-st.sidebar.caption(
-    f"Per-trade risk {config.RISK['max_risk_per_trade_pct']}% · max "
-    f"{config.RISK['max_position_pct']}% per stock.")
-st.sidebar.caption(news_feed.glm_status_line())
+compact = True
+st.session_state["compact"] = True
+st.sidebar.caption(config.DISCLAIMER)
+st.sidebar.caption(f"Per-trade risk {config.RISK['max_risk_per_trade_pct']}% · max {config.RISK['max_position_pct']}% per stock.")
 
 # ----------------------------- header + status strip ----------------------
-st.title("📈 PSX Shariah Engine — Today")
-with st.expander('How to read these signals', expanded=False):
-    st.caption("⚠ " + config.DISCLAIMER)
-    _news_wt = int((config.WEIGHTS.get("sentiment", 0)
-                    + config.WEIGHTS.get("macro_news", 0)) * 100)
-    if _news_wt == 0:
-        st.caption(f"📰 {news_feed.raw_status_line()} News carries **0% weight** — "
-                   "headlines are shown per stock for manual cross-verification only, "
-                   "never moved into the score.")
-    else:
-        st.caption(f"📰 {news_feed.status_line()} News carries {_news_wt}% of the "
-                   "final score.")
+st.markdown("""<style>
+.stApp{background:#08111e!important;background-image:none!important}
+.block-container{max-width:1220px;padding-top:2rem;padding-bottom:2rem}
+h1{font-size:27px!important;text-shadow:none!important;margin-bottom:0!important}
+h2,h3{font-size:18px!important;text-shadow:none!important}
+[data-testid="stCaptionContainer"]{color:#9db1ca}
+[data-testid="stTabs"] [data-baseweb="tab-list"]{gap:8px;margin:12px 0 20px}
+[data-testid="stTabs"] [data-baseweb="tab"]{background:#17263c;border-radius:6px;padding:8px 12px}
+.desk-note{padding:12px 16px;background:#111e30;border:1px solid #2b4058;border-radius:10px;color:#a9bfd4;font-size:13px}
+</style>""", unsafe_allow_html=True)
+st.title("PSX trading desk")
+st.caption("Intraday momentum and swing opportunities · prices, reasons and risk in one view")
 
 
 def tile(col, label, value_html, sub=""):
@@ -635,350 +628,37 @@ elif _stale_level != "fresh":
     else:
         st.warning(f"⏳ {_what} for **{_age_hours:.1f} hours** — past the "
                    f"{_amber}h threshold. Verify quotes manually before acting.")
-# ----------------------------- news read (compact) -------------------------
-import news_review_panel
-with st.expander('News assessment desk · Claude and Codex', expanded=False):
-    news_review_panel.show(st)
-import short_horizon_panel
-short_horizon_panel.show(st)
-# The per-card pills only render on Buy/Strong Buy cards, and in a risk-off
-# market there are none -- so the Claude routine's ratings were invisible
-# exactly when the reader most wanted a second opinion. This is the compact
-# always-on version: one line per rated symbol, no headline list.
-#
-# ZERO SCORE WEIGHT, and that is enforced upstream rather than promised here:
-# config.WEIGHTS has sentiment and macro_news at 0.0, so a rating cannot move a
-# signal. It is shown for manual cross-verification only.
-with st.expander('Earlier news review · details', expanded=False):
-    _nr, _nmeta = news_feed.load_glm_ratings()
-    if _nr and _nmeta.get("status") == "ok":
-        st.markdown(f"### 📰 News read — {len(_nr)} symbols")
-        st.caption(
-            f"From {_nmeta.get('provider','AI reviewer')}, "
-            f"{_nmeta.get('age_hours', 0):.0f}h old. **Zero score weight** — a rating "
-            "never moves a signal. Causal means the story plausibly drives the price; "
-            "correlated means it merely coincides. Confidence is the rater's own.")
-        _order = {"highly_positive": 0, "positive": 1, "neutral": 2,
-                  "negative": 3, "highly_negative": 4}
-        for _sym in sorted(_nr, key=lambda x: (_order.get(_nr[x].get("rating"), 9), x)):
-            _rv = _nr[_sym]
-            _why = (_rv.get("reason") or "")[:150]
-            # A running story, not a fresh one: some news develops over months, so
-            # say how many EARLIER reads this symbol has and what followed the last
-            # graded one. Silent when there is no prior read -- a first sighting
-            # must never be dressed up as a continuing story.
-            _run = ""
-            try:
-                import news_memory
-                _prior = [h for h in news_memory.history_for(_sym, limit=24)
-                          if str(h["as_of"]) != str(_nmeta.get("as_of"))]
-                if _prior:
-                    _since = str(_prior[-1]["as_of"])[:10]
-                    _run = (f' <span style="opacity:.65">· running story: '
-                            f'{len(_prior)} earlier read(s) since {_since}')
-                    _g = next((h for h in _prior if h["outcome_5d"] is not None), None)
-                    if _g:
-                        _run += (f", last graded {str(_g['as_of'])[:10]} "
-                                 f"{_g['outcome_5d']:+.1f}% vs market at 5d")
-                    _run += "</span>"
-            except Exception:
-                _run = ""
-            st.markdown(
-                f'<div style="margin:2px 0;font-size:13px">'
-                f'<b>{_sym}</b> {glm_pill(_rv)} {analysis_pills(_rv)} '
-                f'<span style="opacity:.7">{_why}</span>{_run}</div>',
-                unsafe_allow_html=True)
-        st.divider()
-    elif _nmeta.get("status") != "ok":
-        st.caption(f"📰 News read unavailable ({_nmeta.get('status')}) — "
-                   "no rating is shown rather than an old one.")
-
-# --------------------------- momentum burst (top) --------------------------
-import intraday_momentum
-intraday_momentum.show(st)
-with st.expander("Previous completed-session momentum · swing context"):
-    # Highest-placed panel by request. A burst is one session breaking out of the
-    # stock's own norm: >=3% on >=1.5x its 20-day volume. Measured before it was
-    # built — 83% beat at 3d (n=42), 71% at 7d (n=35), independence OK on both.
-    # A WATCH tier, never a Buy: findings get surfaced, not wired into the score.
-    try:
-        _bursts = momentum.scan()
-    except Exception:
-        _bursts = []
-    if _bursts:
-        # Date the panel by the DATA, not the clock. daily_ohlc holds only COMPLETED
-        # sessions — the engine banks the cutoff session's bars and nothing intraday
-        # — so momentum.detect reads the last completed session all day. Labelling
-        # that "today" made a two-day-old burst read as live.
-        _bdate = max((b.get("date") or "") for b in _bursts)
-        st.markdown(f"### Completed-session momentum — {len(_bursts)} on {_bdate}")
-        _sess = momentum.session_fraction()
-        # Provisional is a property of the BARS, not of the wall clock: session_fraction
-        # is <1.0 before the open as well as during the session, so keying the "market
-        # open" banner off the clock printed "Market open, 0% traded" at 01:00.
-        _live = any(b.get("provisional") for b in _bursts)
-        _outside = [b["symbol"] for b in _bursts if not b.get("in_measured_cohort", True)]
-        _cap = (f"One session ≥{momentum.MIN_GAIN_PCT:g}% on ≥{momentum.MIN_VOL_MULT:g}× "
-                f"its {momentum.LOOKBACK}-day average volume, min PKR "
-                f"{momentum.MIN_TURNOVER/1e6:.0f}M daily turnover. **Watch tier, not a Buy.**")
-        if _outside:
-            # Never print the beat rates beside a name the measurement never saw.
-            _cap += (f" &nbsp;·&nbsp; ⚠ {', '.join(_outside)} "
-                     f"{'is' if len(_outside) == 1 else 'are'} outside the measured "
-                     "cohort — no track record for these yet.")
-        else:
-            _cap += (" &nbsp;·&nbsp; Measured on the original 50 stocks: beat the market "
-                     "80% at 3d (n=66), 72% at 7d (n=53).")
-        if _live:
-            _cap += (f" &nbsp;·&nbsp; ⏳ Live session, {_sess * 100:.0f}% of typical "
-                     "volume traded — can still fade.")
-        st.caption(_cap)
-        _bcols = st.columns(min(len(_bursts), 4))
-        for _i, _b in enumerate(_bursts):
-            with _bcols[_i % len(_bcols)]:
-                _bb = st.container(border=True)
-                _bb.markdown(
-                    f'<div style="display:flex;justify-content:space-between;'
-                    f'align-items:center"><span style="font-size:17px;font-weight:700">'
-                    f'{_b["symbol"]}</span>{sig_pill(_b["signal"])}</div>'
-                    f'<div style="font-size:22px;font-weight:800;color:{NEON["green"]}">'
-                    f'+{_b["gain_pct"]:.2f}%</div>'
-                    f'<div style="font-size:12px;opacity:.7">{_b["vol_mult"]:.1f}× volume'
-                    f'{" pace" if _b.get("provisional") else ""} · {fmt(_b["close"])}</div>'
-                    + (f'<div style="font-size:11px;color:{NEON["amber"]}">provisional · '
-                       f'{_b["session_pct"]}% of session</div>'
-                       if _b.get("provisional") else '')
-                    + f'<div style="font-size:11px;opacity:.6">{_b["sector"]}</div>'
-                    + (f'<div style="font-size:11px;color:{NEON["cyan"]};font-weight:700">'
-                       f'20-day high</div>' if _b["at_high"] else ''),
-                    unsafe_allow_html=True)
-        st.caption("`20-day high` is a tag, not part of the trigger: it scored higher "
-                   "at 3 days but its 7-day sample was 16 rows and 69% one sector.")
-        st.divider()
-
-# ----------------------------- what changed -------------------------------
-with st.expander('Changes since the previous run', expanded=False):
-    ups, downs = changes_since_last()
-    if ups or downs:
-        parts = []
-        for s, p, c in ups:
-            parts.append(f"🔼 **{s}** {p}→{c}")
-        for s, p, c in downs:
-            parts.append(f"🔽 **{s}** {p}→{c}")
-        st.markdown("**Since last run:** " + " · ".join(parts))
-    else:
-        st.caption("No signal changes since the last run.")
-
-    # When the signals last actually MOVED, as a fact rather than an inference.
-    # The engine writes this digest each cycle and the loop commits the database
-    # only when it differs, so "unchanged" here means the engine compared and found
-    # nothing new -- not that it stopped running. The news panel above has its own,
-    # much faster clock: headlines refresh every cycle regardless.
-    try:
-        with open(".engine-state.json", encoding="utf-8") as _sf:
-            _state = json.load(_sf)
-        _ch, _ck = _state.get("changed_at"), _state.get("checked_at")
-        if _ch:
-            st.caption(f"Signals last changed {str(_ch)[:16].replace('T', ' ')} UTC "
-                       f"(session {_state.get('cutoff_session', '?')}) · last checked "
-                       f"{str(_ck)[:16].replace('T', ' ')} UTC. The engine reads the "
-                       f"last COMPLETED session, so signals move once a session, not "
-                       f"once a cycle.")
-    except (OSError, ValueError, KeyError):
-        pass
-
-st.divider()
-
-# ----------------------------- ACTION TODAY -------------------------------
-st.subheader("Swing opportunities · completed-session signals")
-import trading_review
-trading_review.show(st, rows)
-import depth_analysis
-depth_analysis.show(st)
-import upward_candidates
-with st.expander('More stocks with a rising trend', expanded=False):
-    st.subheader("Up to 10 stocks with a rising trend")
-    _upward = upward_candidates.current()
-    if _upward:
-        st.dataframe(pd.DataFrame(_upward), hide_index=True)
-    else:
-        st.info("No stocks currently meet all the upward-trend and momentum checks.")
-    st.caption("Only stocks with a rising price trend, positive momentum and buying activity qualify. Watch means wait for the Buy rules to pass. Fewer than 10 may qualify.")
-if _whatif_active:
-    st.info("🔀 **What-if: Assume risk-on** — the market is really risk-off, so "
-            "the Buys below are technical signals the engine downgraded to Watch "
-            "via the regime gate. Shown as Buys under the assumption only. "
-            "Approximation, not a re-run — verify manually before acting.")
-action = latest[latest["display_signal"].isin(["Strong Buy", "Buy", "Exit"])]
-if action.empty:
-    st.info(f"No Buy or Exit signals right now — nothing to act on. "
-            f"(Market regime: {regime}.)")
-elif compact:
-    import opportunity_cards
-    opportunity_cards.show_swing(st, action.to_dict("records"), on_detail=lambda r: _news_window(r["symbol"]))
-else:
-    st.caption("Manual confirmation required before any order. Position sizing "
-               "is yours to manage.")
-    cards = list(action.iterrows())
-    for i in range(0, len(cards), 2):
-        cols = st.columns(2)
-        for col, (_, r) in zip(cols, cards[i:i + 2]):
-            with col:
-                box = st.container(border=True)
-                disp = r["display_signal"]
-                sec = config.SECTORS.get(r["symbol"], "")
-                box.markdown(
-                    f'<div style="display:flex;justify-content:space-between;'
-                    f'align-items:center">'
-                    f'<div><span style="font-size:20px;font-weight:700">'
-                    f'{r["symbol"]}</span> '
-                    f'<span style="opacity:.6;font-size:13px">{sec}</span></div>'
-                    f'{sig_pill(disp)}</div>',
-                    unsafe_allow_html=True)
-                box.markdown(price_row([
-                    ("Entry", fmt(r["price"]), "#e8f0ff"),
-                    ("Stop", fmt(r["stop_loss"]), NEON["red"]),
-                    ("Target", fmt(r["target1"]), NEON["green"]),
-                ]), unsafe_allow_html=True)
-                # Structure the trade sits inside. Stop and target alone do not
-                # say whether the level beneath is one price has actually
-                # defended, which is what decides where the stop belongs.
-                _lv = [("Support", r.get("support")), ("Resistance", r.get("resistance")),
-                       ("Target 2", r.get("target2"))]
-                _lv = [(k, v) for k, v in _lv if pd.notna(v)]
-                if _lv:
-                    box.markdown(
-                        '<div style="display:flex;gap:18px;margin:2px 0 4px;'
-                        'font-size:12px;opacity:.72">'
-                        + "".join(f'<span>{k} <b style="opacity:.95">{fmt(v)}</b></span>'
-                                  for k, v in _lv)
-                        + '</div>', unsafe_allow_html=True)
-                # Measured, not projected. distance/ATR would read ~4 sessions
-                # for a target this name historically took 12 to reach, and
-                # would hide that it arrived under half the time.
-                try:
-                    _date = r.get('decision_session')
-                    _eta = (target_timing.estimate(r["symbol"], r["price"], r["target1"], cutoff=_date)
-                            if _date else None)
-                except Exception:
-                    _eta = None
-                if _eta and _eta["typical_sessions"]:
-                    _hr = _eta["hit_rate"] * 100
-                    _col = NEON["green"] if _hr >= 55 else (
-                        NEON["amber"] if _hr >= 40 else NEON["red"])
-                    box.markdown(
-                        f'<div style="font-size:12px;opacity:.8;margin-bottom:2px">'
-                        f'🕒 <b>~{_eta["typical_sessions"]} sessions</b> to target '
-                        f'<span style="opacity:.6">({_eta["distance_pct"]:+.1f}%,'
-                        f' {_eta["k_atr"]:.1f}×ATR)</span> · reached '
-                        f'<b style="color:{_col}">{_hr:.0f}%</b> of the time '
-                        f'<span style="opacity:.6">in {_eta["attempts"]:,} past '
-                        f'attempts, {_eta["horizon"]}-session limit</span></div>',
-                        unsafe_allow_html=True)
-                bzl, bzh = r.get("buy_zone_low"), r.get("buy_zone_high")
-                if pd.notna(bzl) and pd.notna(bzh):
-                    box.markdown(
-                        f'<span style="background:rgba(0,255,163,0.14);'
-                        f'color:{NEON["green"]};padding:2px 8px;border-radius:6px;'
-                        f'font-size:13px;font-weight:700">🎯 Buy-zone '
-                        f'{bzl:.2f}–{bzh:.2f}</span> '
-                        f'<span style="opacity:.6;font-size:12px">pullback to '
-                        f'{config.PULLBACK_EMA_SPAN}-EMA</span>', unsafe_allow_html=True)
-                rs = r.get("relative_strength")
-                rs_txt = f"RS {rs:.0f}" if pd.notna(rs) else "RS —"
-                box.markdown(
-                    f'{risk_pill(r["risk_level"])} &nbsp; '
-                    f'<span style="opacity:.75;font-size:13px">conf '
-                    f'{fmt(r["confidence"], 0)}/100 quality · {rs_txt} · '
-                    f'R:R {fmt((r["target1"] - r["price"]) / (r["price"] - r["stop_loss"]), 1) if r["price"] and r["stop_loss"] and r["price"] > r["stop_loss"] else "—"}'
-                    f'</span>',
-                    unsafe_allow_html=True)
-                nv = news_feed.get(r["symbol"])
-                gv = news_feed.glm_rating(r["symbol"])
-                box.markdown(news_pill(nv) + " " + glm_pill(gv) + " " +
-                             analysis_pills(gv) +
-                             (f' <span style="opacity:.75;font-size:12px">'
-                              f'{nv["summary"][:120]}</span>' if nv else ''),
-                             unsafe_allow_html=True)
-                if gv and gv.get("reason"):
-                    box.caption(f"🤖 AI: {gv['reason']}")
-                if disp != r["signal"]:
-                    box.warning("🔀 What-if (assume risk-on): engine's REAL signal "
-                                "is **Watch** — downgraded by the risk-off regime "
-                                "gate. Verify manually before acting.")
-                else:
-                    _wf = whatif_regime_note(regime, assumed_regime, r["signal"])
-                    if _wf:
-                        box.markdown(_wf)
-                box.caption(str(r["main_reason"])[:240])
-                with box.expander("📋 Full detail"):
-                    st.write("**Full reason:**", r["main_reason"])
-                    st.write("**Main risk:**", r["main_risk"])
-                    st.write("**Shariah:**", r["shariah_status"], " · "
-                             "**Market regime:**", r.get("market_regime") or "—")
-                    st.write("**Support / Resistance:**",
-                             f"{fmt(r.get('support'))} / {fmt(r.get('resistance'))}")
-                    bzl2, bzh2 = r.get("buy_zone_low"), r.get("buy_zone_high")
-                    if pd.notna(bzl2) and pd.notna(bzh2):
-                        st.write(f"**Buy-zone ({config.PULLBACK_EMA_SPAN}-EMA pullback):**",
-                                 f"{bzl2:.2f}–{bzh2:.2f}")
-                    _news_window(r["symbol"], nv)
-                    st.caption("For the price/volume chart and a per-stock "
-                               "backtest, open the 📈 Stock detail tab.")
-
-def _why_not_buy_section():
-    why = latest[(latest["final_score"] >= config.SIGNAL_THRESHOLDS["buy"]) &
-                 (~latest["signal"].isin(["Strong Buy", "Buy"]))]
-    if why.empty:
-        return
-    st.caption("These scored in Buy range but a safety rule held them back. "
-               "No need to dig — the reason is shown.")
-    for _, r in why.iterrows():
-        st.markdown(
-            f'{sig_pill(r["signal"])} &nbsp;**{r["symbol"]}** '
-            f'(score {r["final_score"]:.0f}) — '
-            f'<span style="opacity:.8">{why_not_buy(r["main_reason"])}</span>'
-            f'<br>{news_line(r["symbol"])}',
-            unsafe_allow_html=True)
-
-
-def _early_watch_section():
-    ew = latest[latest.get("early_watch").fillna(0) == 1] if "early_watch" in latest.columns \
-        else latest.iloc[0:0]
-    if ew.empty:
-        st.caption("No early-watch names right now. This tier only fires on real "
-                   "money-flow build-up (CMF) below the Buy band.")
-        return
-    st.caption("Lead-time tier: money flow building BEFORE the score confirms. "
-               "NOT a buy signal — it exists so a move can be prepared for "
-               "instead of chased. Graded on the 7-day horizon; treat as "
-               "unproven until that history accumulates.")
-    for _, r in ew.sort_values("cmf", ascending=False).iterrows():
-        st.markdown(
-            f'<span style="background:rgba(122,162,255,0.16);color:#7aa2ff;'
-            f'padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700">'
-            f'🔭 EARLY</span> &nbsp;**{r["symbol"]}** · price {fmt(r["price"])} · '
-            f'score {fmt(r["final_score"], 0)} · CMF {fmt(r.get("cmf"), 2)} · '
-            f'RS {fmt(r.get("relative_strength"), 0)}'
-            f'<br><span style="opacity:.75;font-size:13px">'
-            f'{r.get("early_reason") or ""}</span>'
-            f'<br>{news_line(r["symbol"])}',
-            unsafe_allow_html=True)
-
-
-
-
-# ----------------------------- tabs (drill-down) ---------------------------
-# Restored on request. They sit BELOW Action today and Momentum burst, which
-# stay where they are: the tabs are drill-down, not the front page.
-st.divider()
-
-(tab_watch, tab_edge, tab_stock, tab_hist,
+# The trading desk shows opportunities only. Supporting tools live in their own tabs.
+(tab_desk, tab_watch, tab_edge, tab_stock, tab_hist,
  tab_news, tab_reports) = st.tabs(
-    ["📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
+    ["Trading desk", "📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
      "📈 History", "📰 News", "📋 Reports"])
 
+with tab_desk:
+    import intraday_momentum
+    import opportunity_cards
+    intraday_momentum.show(st, details=False)
+    st.subheader("Swing opportunities")
+    action = latest[latest["display_signal"].isin(["Strong Buy", "Buy", "Exit"])]
+    if action.empty:
+        st.markdown('<div class="desk-note">No Buy or Exit signals currently qualify.</div>', unsafe_allow_html=True)
+    else:
+        opportunity_cards.show_swing(st, action.to_dict("records"), details=False)
+    st.caption("News badges show Claude and Codex separately. Full evidence is in News; trade details are in Stock detail.")
+
 with tab_watch:
+    st.subheader("Latest intraday observations")
+    try:
+        _capture = json.loads(intraday_momentum.PATH.read_text(encoding="utf-8"))
+        _observations = _capture.get("observations", [])
+        st.caption("Captured " + str(_capture.get("checked_at", "unknown")) + " · observations, not independent trade recommendations")
+        if _observations:
+            st.dataframe([{"Stock": r["symbol"], "Captured state": r.get("state"), "Last price": r.get("price"),
+                           "Since open %": r.get("since_open_pct"), "Last 15 min %": r.get("recent_pct"),
+                           "Why": r.get("reason"), "Last trade": r.get("last_trade")} for r in _observations], hide_index=True)
+    except (OSError, ValueError, TypeError):
+        st.caption("No intraday capture available.")
+    st.subheader("Swing watchlist")
     st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
     show = latest[["symbol", "final_score", "relative_strength", "signal",
                    "risk_level", "confidence", "price", "stop_loss", "target1",
@@ -1025,6 +705,8 @@ with tab_watch:
     _early_watch_section()
 
 with tab_edge:
+    import trading_review
+    trading_review.show(st, rows)
     st.subheader("How past Buy signals performed")
     st.caption("Checks all tracked stocks against verified daily prices. This "
                "measures software behaviour on past bars — it is not a forecast "
@@ -1036,6 +718,8 @@ with tab_edge:
         history_view.show(st, res)
 
 with tab_stock:
+    import depth_analysis
+    depth_analysis.show(st)
     sym = st.selectbox("Stock", config.STOCKS)
     r = db.last_run(sym)
     if r:
@@ -1133,6 +817,8 @@ with tab_hist:
         st.info("No run history stored for this stock yet.")
 
 with tab_news:
+    import news_review_panel
+    news_review_panel.show(st)
     st.caption("Every headline gathered from approved publishers, banked and "
                "kept. Unrated and unscored — the rated read is the panel at "
                "the top. This is the record a new story is judged against.")
@@ -1212,6 +898,15 @@ with tab_news:
             st.caption(f"Showing the newest 120 of {_total}.")
 
 with tab_reports:
+    import short_horizon_panel
+    short_horizon_panel.show(st)
+    import upward_candidates
+    st.subheader("Stocks with a rising trend")
+    _upward = upward_candidates.current()
+    if _upward:
+        st.dataframe(pd.DataFrame(_upward), hide_index=True)
+    else:
+        st.caption("No stocks currently meet every rising-trend check.")
     if os.path.isdir(config.REPORT_DIR):
         files = sorted(os.listdir(config.REPORT_DIR), reverse=True)[:10]
         pick = st.selectbox("Saved reports", files) if files else None

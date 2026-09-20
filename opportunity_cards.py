@@ -59,7 +59,7 @@ def news_tags(symbol, reviews):
     return tags
 
 
-def show_swing(st, rows, on_detail=None):
+def show_swing(st, rows, on_detail=None, details=True):
     st.markdown(CSS, unsafe_allow_html=True)
     reviews = reviewers()
     st.caption('Swing opportunities · completed-session analysis. Check the live price before entry; these levels are not guaranteed fills.')
@@ -86,6 +86,8 @@ def show_swing(st, rows, on_detail=None):
                     text(r.get('main_reason'))[:185], condition, text(r.get('main_risk'))[:150],
                     news_tags(symbol, reviews), 'Price session ' + text(r.get('decision_session')),
                     'Data: ' + text(r.get('data_quality')) + ' · Shariah: ' + text(r.get('shariah_status'))), unsafe_allow_html=True)
+                if not details:
+                    continue
                 with st.expander('Full reason, levels & news · ' + symbol):
                     st.write('Why:', text(r.get('main_reason')))
                     st.write('Main risk:', text(r.get('main_risk')))
@@ -102,21 +104,27 @@ def show_swing(st, rows, on_detail=None):
                         on_detail(r)
 
 
-def intraday_panel(st, capture, now):
+def intraday_panel(st, capture, now, details=True):
     st.markdown(CSS, unsafe_allow_html=True)
-    st.markdown('### Intraday momentum · updates each run')
+    st.subheader('Intraday momentum')
     checked = datetime.fromisoformat(capture['checked_at'])
     current = (cal.is_live(now) and capture['session'] == cal.local_now(now).date().isoformat()
                and 0 <= (now-checked).total_seconds() <= 1200)
     if not current:
-        st.warning('Historical intraday capture · ' + capture['session'] + '. No current entry assessment is available.')
-    st.caption('Opening gap, movement since open and the last 15 minutes are separate checks. Confirmed momentum is a research watch, not a validated Buy. Swing calls and news schedules remain separate.')
+        import html
+        message = ('Market closed · live momentum resumes next trading session.' if not cal.is_live(now)
+                   else 'Waiting for a fresh scan. Previous captures are not current trading opportunities.')
+        st.markdown('<div class="desk-note">' + html.escape(message) + '</div>', unsafe_allow_html=True)
+    else:
+        st.caption('Opening gap · movement since open · last 15 minutes · traded value')
     reviews = reviewers()
     rows = capture.get('observations', [])
     candidates = [r for r in rows if r.get('qualifies') and r.get('state') != 'Unavailable']
     candidates.sort(key=lambda r: (not bool(r.get('episode')), -(r.get('recent_pct') or 0), r['symbol']))
-    if not candidates:
-        st.info('No stocks currently pass all intraday checks. Missing opening prices or incomplete windows remain unavailable.')
+    if not current:
+        candidates = []
+    elif not candidates:
+        st.markdown('<div class="desk-note">No stocks pass all intraday checks yet. Waiting for sufficient live evidence.</div>', unsafe_allow_html=True)
     for offset in range(0, len(candidates), 2):
         for col, r in zip(st.columns(2), candidates[offset:offset+2]):
             row_fresh = current and 0 <= (now-datetime.fromisoformat(r['last_trade'])).total_seconds() <= 1200
@@ -126,6 +134,8 @@ def intraday_panel(st, capture, now):
                 text(r.get('reason')), 'Watch above ' + fmt(r.get('confirmation_reference')) + '; reassess below ' + fmt(r.get('failure_reference')) + '. References only; verify live spread.',
                 text(r.get('risk')), news_tags(r['symbol'], reviews), 'Last trade ' + cal.local_now(datetime.fromisoformat(r['last_trade'])).strftime('%H:%M:%S PKT'),
                 ('Daily-volume burst · ' if r.get('burst') else '') + '15-min traded value PKR ' + fmt(r.get('window_turnover'))), unsafe_allow_html=True)
+    if not details:
+        return
     with st.expander('All intraday observations · including weakening and unavailable stocks'):
         st.dataframe([{'Stock': r['symbol'], 'State': r['state'] if current else 'Historical: ' + r['state'],
                        'Price': r.get('price'), 'Opening gap %': r.get('gap_pct'), 'Since open %': r.get('since_open_pct'),
