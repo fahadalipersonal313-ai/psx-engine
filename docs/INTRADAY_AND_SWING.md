@@ -47,3 +47,5 @@ The implementation remains on the isolated development branch until published. N
 Secondary news, price tables, change lists and rising-stock details are collapsed; Watchlist, News and History remain available. Quote freshness is recomputed when viewing, never taken from a saved fresh flag. Outside trading hours the engine status says market closed rather than implying a stopped loop. Swing cards retain their own analysis dates.
 
 The repository schedules pre-open attempts at 08:52, 09:05, 09:17 and 09:26 PKT, then waits for the configured regular session. GitHub scheduling and feed availability cannot guarantee exact update times. Claude’s external routine status is not verifiable from repository files.
+
+An open, authenticated dashboard uses Streamlit’s native timer to refresh every five minutes by default. This reloads published local files; it does not fetch GitHub or replace cloud deployment. The one-hour login expiry remains enforced. Timer reference: https://docs.streamlit.io/develop/api-reference/execution-flow/st.fragment

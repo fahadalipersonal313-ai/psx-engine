@@ -401,14 +401,18 @@ def _password_configured():
 
 
 def _auto_refresh():
-    """Refresh the page; authentication remains in the server session only."""
+    """Refresh an open dashboard without discarding its authenticated session."""
     secs = int(getattr(config, "DASHBOARD_REFRESH_SECONDS", 300))
     if secs <= 0:
         return
-    st.markdown(
-        f"<script>setTimeout(function(){{window.parent.location.reload();}},"
-        f" {secs * 1000});</script>",
-        unsafe_allow_html=True)
+    st.session_state["_dashboard_refreshed_at"] = time.monotonic()
+
+    @st.fragment(run_every=secs)
+    def refresh_tick():
+        if time.monotonic() - st.session_state["_dashboard_refreshed_at"] >= secs:
+            st.rerun()
+
+    refresh_tick()
 
 
 def _require_password():
