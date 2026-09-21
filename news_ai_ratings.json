@@ -1,17 +1,20 @@
 {
-  "as_of": "2026-09-21T04:40:00Z",
+  "as_of": "2026-09-21T05:41:00Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 43,
+  "articles_read": 47,
   "read_urls": [
     "https://mettisglobal.news/Asian-markets-trade-mixed-amid-renewed-Middle-East-tensions-63581",
+    "https://mettisglobal.news/Gatron-FY26-loss-narrows-75-to-Rs496m-63584",
+    "https://mettisglobal.news/HTL-FY26-profit-nearly-5x-to-Rs473m-declares-Rs115-dividend-63583",
     "https://mettisglobal.news/Junaid-Iqbal-set-to-become-Engro-Corporation-CEO-in-April-2027-63580",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63579",
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63582",
+    "https://mettisglobal.news/Oil-prices-fall-towards-102-amid-Saudi-supply-recovery-USIran-uncertainty-63586",
+    "https://mettisglobal.news/Pakistans-cement-sector-enters-volumeled-upcycle-63585",
     "https://propakistani.pk/2026/09/20/did-yemen-damage-pakistan-air-force-figher-jet-in-saudi-arabia/",
     "https://propakistani.pk/2026/09/20/indian-man-makes-gravity-look-optional-video/",
-    "https://propakistani.pk/2026/09/20/pm-doesnt-listen-to-me-investment-minister/",
     "https://propakistani.pk/2026/09/20/psha-announces-date-for-upcoming-2026-ict-awards-in-karachi/",
     "https://propakistani.pk/2026/09/20/riphah-university-expands-global-footprint-through-strategic-agreements-with-leading-turkish-universities/",
     "https://propakistani.pk/2026/09/20/september-snids-inaugurated-at-the-rotary-community-centre-karachi/",
@@ -19,12 +22,11 @@
     "https://propakistani.pk/2026/09/20/zong-partners-with-isp-environmental-solutions-to-launch-pakistans-first-of-its-kind-smart-waste-management-stations/",
     "https://propakistani.pk/2026/09/21/engro-corporation-names-junaid-iqbal-as-next-president-and-ceo/",
     "https://propakistani.pk/2026/09/21/flour-millers-to-go-on-strike-across-punjab/",
+    "https://propakistani.pk/2026/09/21/how-the-new-electricity-market-will-work/",
     "https://www.brecorder.com/news/40440383/auto-industry-flags-flawed-fuel-consumption-data-in-climate-plan",
     "https://www.brecorder.com/news/40440384/campaign-to-begin-today-over-10m-children-targeted-for-polio-vaccination",
     "https://www.brecorder.com/news/40440386/world-cleanup-day-cm-calls-for-cleaner-greener-punjab",
     "https://www.brecorder.com/news/40440387/pibf-rejects-proposed-smart-lockdown",
-    "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders",
-    "https://www.brecorder.com/news/40440389/paps-2026-concludes-with-over-300000-visitors",
     "https://www.brecorder.com/news/40440442/govt-begins-to-move-out-of-power-business",
     "https://www.brecorder.com/news/40440443/university-road-project-glaring-failure-of-governance",
     "https://www.brecorder.com/news/40440444/47501-candidates-appear-in-punjab-mdcat",
@@ -47,7 +49,9 @@
     "https://www.brecorder.com/news/40440461/softbank-group-launches-over-10-billion-in-bonds-for-openai-investment-term-sheet-shows",
     "https://www.brecorder.com/news/40440462/vessels-trickle-through-strait-of-hormuz-as-mideast-tension-persists",
     "https://www.brecorder.com/news/40440465/south-koreas-lee-to-attend-un-general-assembly-visit-mexico-for-sheinbaum-summit",
-    "https://www.brecorder.com/news/40440466/metas-social-networks-down-for-thousands-of-users-in-us-downdetector-says"
+    "https://www.brecorder.com/news/40440466/metas-social-networks-down-for-thousands-of-users-in-us-downdetector-says",
+    "https://www.brecorder.com/news/40440467/former-careem-pay-head-junaid-iqbal-appointed-engro-corp-ceo-designate",
+    "https://www.brecorder.com/news/40440468/gold-slips-as-focus-remains-on-middle-east-rate-outlook"
   ],
   "count": 1,
   "ratings": {
@@ -55,61 +59,104 @@
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.55,
-      "reason": "Board approved Junaid Iqbal as CEO successor (Apr 2027), orderly transition, strong pedigree",
+      "confidence": 0.45,
+      "reason": "Board approved Junaid Iqbal (ex-Careem Pay) as CEO-designate for Apr 2027, orderly succession",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40440467/former-careem-pay-head-junaid-iqbal-appointed-engro-corp-ceo-designate",
         "https://mettisglobal.news/Junaid-Iqbal-set-to-become-Engro-Corporation-CEO-in-April-2027-63580",
         "https://propakistani.pk/2026/09/21/engro-corporation-names-junaid-iqbal-as-next-president-and-ceo/"
       ]
     }
   },
   "sectors": {
-    "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "PAPS 2026 auto show wrap-up, 300k visitors, no sales/order figures disclosed",
+    "Cement": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.55,
+      "reason": "KTrade: FY26 dispatches +10% YoY, best since FY21, volume-led upcycle on lower rates/fiscal incentives",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40440389/paps-2026-concludes-with-over-300000-visitors"
+        "https://mettisglobal.news/Pakistans-cement-sector-enters-volumeled-upcycle-63585"
       ]
     },
-    "Logistics/Ports": {
+    "Cement/Conglomerate": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.55,
+      "reason": "KTrade: FY26 dispatches +10% YoY, best since FY21, volume-led upcycle on lower rates/fiscal incentives",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Pakistans-cement-sector-enters-volumeled-upcycle-63585"
+      ]
+    },
+    "Real Estate": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Hormuz traffic down to a trickle on Gulf tensions, freight/tanker rate tailwind",
+      "confidence": 0.25,
+      "reason": "Cement dispatches +10% YoY signal construction-demand pickup, indirect read for real estate",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Pakistans-cement-sector-enters-volumeled-upcycle-63585"
+      ]
+    },
+    "Power Generation": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Govt launches 400MW CTBCM wheeling auction, exits single-buyer model, threatens IPP PPA-revenue certainty",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40440442/govt-begins-to-move-out-of-power-business",
+        "https://propakistani.pk/2026/09/21/how-the-new-electricity-market-will-work/"
+      ]
+    },
+    "Textile": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Experts urge cutting cotton-import approval from 7yrs to 12-24mo; advocacy stage, no govt commitment yet",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.dawn.com/news/2031409/experts-stress-need-for-reducing-cotton-import-regulatory-procedures"
+      ]
+    },
+    "Textile/Synthetic Fibre": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Experts urge cutting cotton-import approval from 7yrs to 12-24mo; advocacy stage, no govt commitment yet",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.dawn.com/news/2031409/experts-stress-need-for-reducing-cotton-import-regulatory-procedures"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Hormuz vessel transits down to a dozen from 35 on Gulf tension; freight-rate effect on PSX shippers unstated",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40440462/vessels-trickle-through-strait-of-hormuz-as-mideast-tension-persists"
       ]
     },
-    "Refinery": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent/WTI fell ~2.1% on Iran diplomacy hopes, inventory devaluation risk for refiners",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
-        "https://www.brecorder.com/news/40440460/tech-leads-shares-higher-in-asia-as-oil-slips"
-      ]
-    },
-    "Oil Marketing": {
+    "Food": {
       "rating": "neutral",
       "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Oil price pullback plus unresolved petrol-levy relief talks, no OMC-specific decision yet",
-      "text_depth": "full",
+      "causality": "noise",
+      "confidence": 0.15,
+      "reason": "Headline-only 'perennial' wheat/sugar price dilemma piece, body text unavailable, no fresh trigger",
+      "text_depth": "headline",
       "sources": [
-        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
-        "https://www.brecorder.com/news/40440449/further-talks-with-govt-meaningless-without-relief-package-baloch",
-        "https://propakistani.pk/2026/09/20/shortage-will-push-petrol-to-rs-1000-litre-ali-pervaiz-malik/"
+        "https://www.dawn.com/news/2031549/the-perennial-price-dilemma-of-wheat-and-sugar"
       ]
     },
     "Oil & Gas Exploration": {
@@ -117,44 +164,36 @@
       "horizon": "single_session",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Brent down 2.1% to $101.63, WTI down 2.1% to $98.15 on Iran diplomacy hopes, pressures E&P realizations",
+      "reason": "Brent/WTI down ~2% to ~$101.7/$98 on Iran diplomacy hopes and Saudi supply recovery, pressures E&P realizations",
       "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/Oil-prices-fall-towards-102-amid-Saudi-supply-recovery-USIran-uncertainty-63586",
         "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
         "https://www.brecorder.com/news/40440460/tech-leads-shares-higher-in-asia-as-oil-slips"
       ]
     },
-    "Power Generation": {
+    "Refinery": {
       "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Govt launches CTBCM wheeling auction, exiting single-buyer power procurement model, IPP revenue-model risk",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Crude down ~2% raises refiner inventory-devaluation risk even as feedstock cost falls",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40440442/govt-begins-to-move-out-of-power-business"
+        "https://mettisglobal.news/Oil-prices-fall-towards-102-amid-Saudi-supply-recovery-USIran-uncertainty-63586",
+        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war"
       ]
     },
-    "Textile": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "NEPRA Sep-2026 UoSC set at Rs9.46-12.32/kWh incl. subsidy surcharge, raises export cost base",
+    "Oil Marketing": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Crude pullback plus stalled petroleum-levy relief talks; no OMC-specific decision, effects offset",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders"
-      ]
-    },
-    "Textile/Synthetic Fibre": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "NEPRA Sep-2026 UoSC set at Rs9.46-12.32/kWh incl. subsidy surcharge, raises export cost base",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders"
+        "https://mettisglobal.news/Oil-prices-fall-towards-102-amid-Saudi-supply-recovery-USIran-uncertainty-63586",
+        "https://www.brecorder.com/news/40440449/further-talks-with-govt-meaningless-without-relief-package-baloch"
       ]
     }
   }
