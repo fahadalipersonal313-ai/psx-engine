@@ -1,211 +1,160 @@
 {
-  "as_of": "2026-09-18T10:41:23Z",
+  "as_of": "2026-09-21T04:40:00Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 63,
+  "articles_read": 43,
   "read_urls": [
-    "https://mettisglobal.news/Breakup-of-Pakistans-trade-data-in-August-PBS-63554",
-    "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561",
-    "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527",
-    "https://mettisglobal.news/Ghandhara-Automobiles-to-invest-Rs23bn-in-Paint-Shop-expansion-63526",
-    "https://mettisglobal.news/Gold-jumps-to-4366-as-oil-slips-dollar-weakens-63550",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3800-per-tola-63533",
-    "https://mettisglobal.news/Gold-rises-to-4307-amid-Fed-rate-hike-aftermath-63519",
-    "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542",
-    "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548",
-    "https://mettisglobal.news/LOADS-profit-more-than-triples-to-Rs271m-in-FY26-63552",
-    "https://mettisglobal.news/LSE-Capital-signs-MoU-for-proposed-DCCL-stake-disposal-63560",
-    "https://mettisglobal.news/Loads-Limited-seeks-shareholder-nod-for-MAIL-loan-arrangements-at-AGM-63525",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63543",
-    "https://mettisglobal.news/Murree-Brewery-net-profit-jumps-16-to-around-Rs4bn-63562",
-    "https://mettisglobal.news/NBP-appeal-dismissed-clearing-path-for-pensioners-63524",
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Close-the-Loop-63529",
-    "https://mettisglobal.news/Pakistan-cotton-arrivals-surge-19-to-24m-bales-by-Sept-15-63556",
-    "https://mettisglobal.news/SBP-Governor-credits-remittances-for-reserve-buildup-lowest-current-account-deficit-63544",
-    "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
-    "https://mettisglobal.news/SECP-approves-Shariahcompliant-digital-financing-for-small-businesses-63555",
-    "https://mettisglobal.news/Senator-Aurangzeb-pitches-Pakistans-investment-case-at-JP-Morgan-Conference-63553",
-    "https://mettisglobal.news/Tax-relief-sparks-25-profit-jump-for-Pakistans-EP-sector-63559",
-    "https://mettisglobal.news/Weekly-SPI-increased-by-049-63558",
-    "https://propakistani.pk/2026/09/18/1-million-pakistanis-register-to-avail-cheap-petrol/",
-    "https://propakistani.pk/2026/09/18/bank-alfalah-funds-multi-partner-school-initiative-for-health-and-financial-literacy/",
-    "https://propakistani.pk/2026/09/18/burns-road-to-be-transformed-into-modern-food-street/",
-    "https://propakistani.pk/2026/09/18/faisalabads-water-supply-to-get-a-major-boost/",
-    "https://propakistani.pk/2026/09/18/govt-staff-told-not-to-tell-ai-everything/",
-    "https://propakistani.pk/2026/09/18/ipps-charge-12-times-more-than-dams-for-electricity-generation/",
-    "https://propakistani.pk/2026/09/18/new-borewell-fees-introduced-in-rawalpindi-cantonment-areas/",
-    "https://propakistani.pk/2026/09/18/new-wild-cat-species-discovered-in-bolivia-after-more-than-a-century/",
-    "https://propakistani.pk/2026/09/18/processors-make-up-nearly-half-of-flagship-phones-cost-now/",
-    "https://propakistani.pk/2026/09/18/solar-firm-set-to-make-pakistans-first-spac-listing-on-psx/",
-    "https://www.brecorder.com/news/40440105/gold-edges-higher-on-lower-oil-prices-subdued-dollar",
-    "https://www.brecorder.com/news/40440106/australian-shares-rise-as-rba-governor-warns-inflation-risks-materialising",
-    "https://www.brecorder.com/news/40440107/nishat-groups-nexgen-auto-launches-icaur-in-pakistan-with-the-v27-reev-priced-at-pkr-12499000",
-    "https://www.brecorder.com/news/40440108/chinas-offshore-yuan-hits-strongest-in-four-years-ahead-of-trump-xi-meeting",
-    "https://www.brecorder.com/news/40440109/qantas-ground-workers-to-strike-over-pay-and-conditions-next-week",
-    "https://www.brecorder.com/news/40440110/airasias-fernandes-says-travel-demand-remains-strong-current-crisis-far-less-severe-than-covid",
-    "https://www.brecorder.com/news/40440111/australian-dollar-lifted-by-rba-hawks-kiwi-belly-flops",
-    "https://www.brecorder.com/news/40440112/malaysias-august-exports-rise-455-yy-above-forecast",
-    "https://www.brecorder.com/news/40440113/liudmila-samsonova-upsets-top-seed-in-guadalajara",
-    "https://www.brecorder.com/news/40440114/china-stocks-on-track-for-best-day-in-a-month-ahead-of-trump-xi-meeting-hong-kong-rises",
-    "https://www.brecorder.com/news/40440115/thai-bahtus-dollar-stronger-on-friday",
-    "https://www.brecorder.com/news/40440116/shipping-traffic-via-strait-of-hormuz-stays-below-10-day-average-data-shows",
-    "https://www.brecorder.com/news/40440117/india-bonds-little-changed-debt-auction-cutoff-to-guide",
-    "https://www.brecorder.com/news/40440118/palm-oil-tracks-rival-edible-oils-and-crude-lower-heads-for-weekly-gain",
-    "https://www.brecorder.com/news/40440119/malaysian-king-allows-jailed-ex-pm-najib-razak-to-serve-term-under-house-arrest",
-    "https://www.brecorder.com/news/40440120/copper-set-for-weekly-gain-as-china-demand-offsets-us-policy-pressure",
-    "https://www.brecorder.com/news/40440121/secp-approves-up-to-rs3mn-digital-financing-for-small-businesses",
-    "https://www.brecorder.com/news/40440122/vaibhav-sooryavanshi-has-to-be-patient-says-india-coach-gambhir",
-    "https://www.brecorder.com/news/40440123/moodys-raises-india-fiscal-2027-gdp-growth-forecast-to-7-on-middle-east-resilience",
-    "https://www.brecorder.com/news/40440124/chinas-august-refined-fuel-exports-exceed-pre-iran-war-levels-jet-fuel-exports-hit-record-high",
-    "https://www.brecorder.com/news/40440125/pakistan-will-go-to-any-length-to-defend-saudi-arabia-dg-ispr",
-    "https://www.brecorder.com/news/40440126/at-least-one-dead-four-injured-in-school-shooting-in-southern-philippines",
-    "https://www.brecorder.com/news/40440127/dada-partners-advises-qistbazaar-on-its-groundbreaking-pkr-500-million-sukuk",
-    "https://www.brecorder.com/news/40440128/ningbo-green-light-energy-set-to-be-pakistans-first-listing-via-spac-report",
-    "https://www.brecorder.com/news/40440129/iran-says-struck-oil-tanker-in-strait-of-hormuz",
-    "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs",
-    "https://www.brecorder.com/news/40440131/england-beat-sri-lanka-by-six-wickets-to-secure-t20-series-2-0",
-    "https://www.brecorder.com/news/40440132/abhishek-blazes-fastest-century-in-full-member-t20s-as-india-sweep-afghanistan",
-    "https://www.brecorder.com/news/40440133/mamps-makes-london-fashion-week-debut-to-boost-style-ambitions",
-    "https://www.brecorder.com/news/40440134/at-least-seven-dead-dozens-injured-in-kohat-blast-rescue-1122"
+    "https://mettisglobal.news/Asian-markets-trade-mixed-amid-renewed-Middle-East-tensions-63581",
+    "https://mettisglobal.news/Junaid-Iqbal-set-to-become-Engro-Corporation-CEO-in-April-2027-63580",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63579",
+    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63582",
+    "https://propakistani.pk/2026/09/20/did-yemen-damage-pakistan-air-force-figher-jet-in-saudi-arabia/",
+    "https://propakistani.pk/2026/09/20/indian-man-makes-gravity-look-optional-video/",
+    "https://propakistani.pk/2026/09/20/pm-doesnt-listen-to-me-investment-minister/",
+    "https://propakistani.pk/2026/09/20/psha-announces-date-for-upcoming-2026-ict-awards-in-karachi/",
+    "https://propakistani.pk/2026/09/20/riphah-university-expands-global-footprint-through-strategic-agreements-with-leading-turkish-universities/",
+    "https://propakistani.pk/2026/09/20/september-snids-inaugurated-at-the-rotary-community-centre-karachi/",
+    "https://propakistani.pk/2026/09/20/shortage-will-push-petrol-to-rs-1000-litre-ali-pervaiz-malik/",
+    "https://propakistani.pk/2026/09/20/zong-partners-with-isp-environmental-solutions-to-launch-pakistans-first-of-its-kind-smart-waste-management-stations/",
+    "https://propakistani.pk/2026/09/21/engro-corporation-names-junaid-iqbal-as-next-president-and-ceo/",
+    "https://propakistani.pk/2026/09/21/flour-millers-to-go-on-strike-across-punjab/",
+    "https://www.brecorder.com/news/40440383/auto-industry-flags-flawed-fuel-consumption-data-in-climate-plan",
+    "https://www.brecorder.com/news/40440384/campaign-to-begin-today-over-10m-children-targeted-for-polio-vaccination",
+    "https://www.brecorder.com/news/40440386/world-cleanup-day-cm-calls-for-cleaner-greener-punjab",
+    "https://www.brecorder.com/news/40440387/pibf-rejects-proposed-smart-lockdown",
+    "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders",
+    "https://www.brecorder.com/news/40440389/paps-2026-concludes-with-over-300000-visitors",
+    "https://www.brecorder.com/news/40440442/govt-begins-to-move-out-of-power-business",
+    "https://www.brecorder.com/news/40440443/university-road-project-glaring-failure-of-governance",
+    "https://www.brecorder.com/news/40440444/47501-candidates-appear-in-punjab-mdcat",
+    "https://www.brecorder.com/news/40440445/digital-assets-bilal-baker-discuss-evolving-regulatory-framework",
+    "https://www.brecorder.com/news/40440446/jamshoro-coal-power-plant-civil-society-activists-demand-early-retirement",
+    "https://www.brecorder.com/news/40440447/cm-sindh-orders-massive-enrolment-drive",
+    "https://www.brecorder.com/news/40440448/fao-epa-join-hands-for-one-health-environmental-surveillance",
+    "https://www.brecorder.com/news/40440449/further-talks-with-govt-meaningless-without-relief-package-baloch",
+    "https://www.brecorder.com/news/40440450/gilani-says-automotive-industry-contributes-beyond-vehicle-production",
+    "https://www.brecorder.com/news/40440451/governor-calls-for-collective-action-to-keep-environment-clean",
+    "https://www.brecorder.com/news/40440452/kp-govt-makes-budgetary-allocations-for-wccipd",
+    "https://www.brecorder.com/news/40440453/kwcci-malir-announces-new-leadership",
+    "https://www.brecorder.com/news/40440454/pms-message-on-international-day-of-peace",
+    "https://www.brecorder.com/news/40440455/ppp-leader-slams-purchase-of-aircraft-for-cm-punjab",
+    "https://www.brecorder.com/news/40440456/president-felicitates-armenia-on-35th-independence-day",
+    "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
+    "https://www.brecorder.com/news/40440458/volatile-yen-draws-intervention-watch-other-currencies-subdued",
+    "https://www.brecorder.com/news/40440459/indian-rupee-poised-for-subdued-start-as-traders-watch-oil-prices-ipo-linked-flows",
+    "https://www.brecorder.com/news/40440460/tech-leads-shares-higher-in-asia-as-oil-slips",
+    "https://www.brecorder.com/news/40440461/softbank-group-launches-over-10-billion-in-bonds-for-openai-investment-term-sheet-shows",
+    "https://www.brecorder.com/news/40440462/vessels-trickle-through-strait-of-hormuz-as-mideast-tension-persists",
+    "https://www.brecorder.com/news/40440465/south-koreas-lee-to-attend-un-general-assembly-visit-mexico-for-sheinbaum-summit",
+    "https://www.brecorder.com/news/40440466/metas-social-networks-down-for-thousands-of-users-in-us-downdetector-says"
   ],
-  "count": 4,
+  "count": 1,
   "ratings": {
-    "CPHL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "EGM approved entry into cannabis/hemp business, pending CCRA licensing",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Citi-Pharma-gets-shareholder-nod-to-alter-memorandum-for-cannabis-business-63561"
-      ]
-    },
-    "LOADS": {
-      "rating": "highly_positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.75,
-      "reason": "FY26 profit more than tripled to Rs271m, EPS Rs1.40 vs Rs0.97, revenue +26%",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/LOADS-profit-more-than-triples-to-Rs271m-in-FY26-63552",
-        "https://mettisglobal.news/Loads-Limited-seeks-shareholder-nod-for-MAIL-loan-arrangements-at-AGM-63525"
-      ]
-    },
-    "GHNI": {
-      "rating": "highly_positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 profit +51% to Rs6.93bn, EPS Rs162.57, Rs12/sh final dividend declared",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/GHNI-FY26-profit-jumps-51-63527"
-      ]
-    },
-    "GAL": {
+    "ENGROH": {
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Rs2.3bn Paint Shop expansion with robotics line, completion Q3 FY27",
+      "confidence": 0.55,
+      "reason": "Board approved Junaid Iqbal as CEO successor (Apr 2027), orderly transition, strong pedigree",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Ghandhara-Automobiles-to-invest-Rs23bn-in-Paint-Shop-expansion-63526"
+        "https://mettisglobal.news/Junaid-Iqbal-set-to-become-Engro-Corporation-CEO-in-April-2027-63580",
+        "https://propakistani.pk/2026/09/21/engro-corporation-names-junaid-iqbal-as-next-president-and-ceo/"
       ]
     }
   },
   "sectors": {
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "E&P sector FY26 net profit +25% YoY to Rs461bn, tax relief offset cost pressure",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Tax-relief-sparks-25-profit-jump-for-Pakistans-EP-sector-63559"
-      ]
-    },
-    "Technology/Telecom": {
+    "Auto Assembler": {
       "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Mixed: phone imports -8.85% YoY but telecom equipment imports +8.95%",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "PAPS 2026 auto show wrap-up, 300k visitors, no sales/order figures disclosed",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Mobile phone import volumes fell 8.85% YoY, softer device demand channel",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40440130/mobile-phone-imports-decline-885-in-july-august-pbs"
+        "https://www.brecorder.com/news/40440389/paps-2026-concludes-with-over-300000-visitors"
       ]
     },
     "Logistics/Ports": {
       "rating": "positive",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Karachi Port liner shipping connectivity index hit record high in Q2CY26",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Hormuz traffic down to a trickle on Gulf tensions, freight/tanker rate tailwind",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Karachi-Ports-liner-shipping-connectivity-hits-record-high-in-Q2CY26-63548",
-        "https://www.dawn.com/news/2030750/karachi-port-connectivity-hits-milestone"
+        "https://www.brecorder.com/news/40440462/vessels-trickle-through-strait-of-hormuz-as-mideast-tension-persists"
       ]
     },
     "Refinery": {
-      "rating": "neutral",
+      "rating": "negative",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Routine fortnightly OGRA ex-depot price reset; regulated margins unchanged",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "Brent/WTI fell ~2.1% on Iran diplomacy hopes, inventory devaluation risk for refiners",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542"
+        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
+        "https://www.brecorder.com/news/40440460/tech-leads-shares-higher-in-asia-as-oil-slips"
       ]
     },
     "Oil Marketing": {
       "rating": "neutral",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Routine fortnightly OGRA ex-depot price reset; regulated OMC margin unchanged",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Oil price pullback plus unresolved petrol-levy relief talks, no OMC-specific decision yet",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/HSD-price-rises-Rs347litre-petrol-falls-Rs043-63542"
+        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
+        "https://www.brecorder.com/news/40440449/further-talks-with-govt-meaningless-without-relief-package-baloch",
+        "https://propakistani.pk/2026/09/20/shortage-will-push-petrol-to-rs-1000-litre-ali-pervaiz-malik/"
       ]
     },
-    "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "SBP reserves +$3.06bn on Eurobond proceeds, narrower current account deficit",
+    "Oil & Gas Exploration": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Brent down 2.1% to $101.63, WTI down 2.1% to $98.15 on Iran diplomacy hopes, pressures E&P realizations",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/SBP-reserves-surge-306bn-to-2139bn-63541",
-        "https://mettisglobal.news/SBP-Governor-credits-remittances-for-reserve-buildup-lowest-current-account-deficit-63544"
+        "https://www.brecorder.com/news/40440457/oil-hits-over-1-week-low-on-hopes-of-boost-to-diplomacy-in-iran-war",
+        "https://www.brecorder.com/news/40440460/tech-leads-shares-higher-in-asia-as-oil-slips"
       ]
     },
     "Power Generation": {
       "rating": "negative",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Senate data shows IPPs charge up to 12x dam cost, renewed capacity-charge scrutiny",
+      "confidence": 0.45,
+      "reason": "Govt launches CTBCM wheeling auction, exiting single-buyer power procurement model, IPP revenue-model risk",
       "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/09/18/ipps-charge-12-times-more-than-dams-for-electricity-generation/"
+        "https://www.brecorder.com/news/40440442/govt-begins-to-move-out-of-power-business"
+      ]
+    },
+    "Textile": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "NEPRA Sep-2026 UoSC set at Rs9.46-12.32/kWh incl. subsidy surcharge, raises export cost base",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders"
+      ]
+    },
+    "Textile/Synthetic Fibre": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "NEPRA Sep-2026 UoSC set at Rs9.46-12.32/kWh incl. subsidy surcharge, raises export cost base",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40440388/textile-sector-a-power-market-reform-must-deliver-competitive-system-stakeholders"
       ]
     }
   }
