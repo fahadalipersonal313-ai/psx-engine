@@ -633,7 +633,26 @@
       "membership_effective_date": null,
       "money_flow": 0.020074904850712418,
       "news": {
-        "items": [],
+        "items": [
+          {
+            "assessment": "neutral",
+            "event_date": null,
+            "event_risk": "unreviewed",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
+            "linkage": "Direct link: FrieslandCampina Engro Pakistan Limited (FCEPL).",
+            "published_at": "2026-09-21T11:18:00+05:00",
+            "quality": "Existing analyst review; original event document not certified by this adapter",
+            "rationale": "CEO and director Kashan Hasan has resigned but remains through his notice period, and no successor, earnings, cash-flow or strategic change is disclosed. The direct governance event is therefore neutral on current evidence.",
+            "reviewer": "OpenAI",
+            "source": [
+              "https://www.brecorder.com/news/40440480/kashan-hasan-steps-down-as-ceo-of-frieslandcampina-engro-pakistan",
+              "https://dps.psx.com.pk/company/FCEPL"
+            ],
+            "source_file": "news_codex_ratings.json",
+            "symbol": "FCEPL"
+          }
+        ],
         "not_used": [],
         "status": "No current direct catalyst verified",
         "verified": []
@@ -974,8 +993,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-24T10:47:48+05:00",
-            "known_at": "2026-09-21T10:47:48+05:00",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL directly produces and sells hydrocarbons.",
             "published_at": "2026-09-21T08:14:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -1662,8 +1681,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-24T10:47:48+05:00",
-            "known_at": "2026-09-21T10:47:48+05:00",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; MARI produces and sells hydrocarbons.",
             "published_at": "2026-09-21T08:14:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -6358,8 +6377,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-24T10:47:48+05:00",
-            "known_at": "2026-09-21T10:47:48+05:00",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; OGDC directly sells produced hydrocarbons.",
             "published_at": "2026-09-21T08:14:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -8390,9 +8409,40 @@
       "symbol": "STL"
     }
   ],
-  "as_of": "2026-09-21T11:49:03.491161+05:00",
+  "as_of": "2026-09-21T12:05:46.705966+05:00",
   "changes": {
-    "changed": [],
+    "changed": [
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 10,
+        "rank": 10,
+        "symbol": "FCEPL"
+      },
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 25,
+        "rank": 25,
+        "symbol": "MARI"
+      },
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 15,
+        "rank": 15,
+        "symbol": "PPL"
+      }
+    ],
     "entries": [],
     "exits": []
   },
@@ -20188,7 +20238,7 @@
       "symbol": "ZUMA"
     }
   ],
-  "input_sha256": "4a945101ce2ad17cc3227b096d3b8b89d01c31f8a9ad930496c9c96b1dc0805b",
+  "input_sha256": "9074d0e9babe5f7c643b2362d51d405cc2f0478532a1f3596a7994a771baf8f6",
   "limitations": [
     "Heuristic scores are not probabilities. No performance claim or automatic trade.",
     "Observed index membership has no verified effective-date history; not suitable for historical membership backtests.",
@@ -20198,7 +20248,7 @@
   ],
   "market_session": "2026-09-18",
   "method": "short-horizon-research-v1",
-  "previous_input_sha256": "0a63ecd6ee8381db4e0455af5b7396c887b0afaa45355014d7bb1d8c18465623",
+  "previous_input_sha256": "4a945101ce2ad17cc3227b096d3b8b89d01c31f8a9ad930496c9c96b1dc0805b",
   "rows": [
     {
       "adx": 43.171370384040166,
@@ -20833,7 +20883,26 @@
       "membership_effective_date": null,
       "money_flow": 0.020074904850712418,
       "news": {
-        "items": [],
+        "items": [
+          {
+            "assessment": "neutral",
+            "event_date": null,
+            "event_risk": "unreviewed",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
+            "linkage": "Direct link: FrieslandCampina Engro Pakistan Limited (FCEPL).",
+            "published_at": "2026-09-21T11:18:00+05:00",
+            "quality": "Existing analyst review; original event document not certified by this adapter",
+            "rationale": "CEO and director Kashan Hasan has resigned but remains through his notice period, and no successor, earnings, cash-flow or strategic change is disclosed. The direct governance event is therefore neutral on current evidence.",
+            "reviewer": "OpenAI",
+            "source": [
+              "https://www.brecorder.com/news/40440480/kashan-hasan-steps-down-as-ceo-of-frieslandcampina-engro-pakistan",
+              "https://dps.psx.com.pk/company/FCEPL"
+            ],
+            "source_file": "news_codex_ratings.json",
+            "symbol": "FCEPL"
+          }
+        ],
         "not_used": [],
         "status": "No current direct catalyst verified",
         "verified": []
@@ -21174,8 +21243,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-24T10:47:48+05:00",
-            "known_at": "2026-09-21T10:47:48+05:00",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL directly produces and sells hydrocarbons.",
             "published_at": "2026-09-21T08:14:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -21862,8 +21931,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-24T10:47:48+05:00",
-            "known_at": "2026-09-21T10:47:48+05:00",
+            "expires_at": "2026-09-24T11:47:30+05:00",
+            "known_at": "2026-09-21T11:47:30+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; MARI produces and sells hydrocarbons.",
             "published_at": "2026-09-21T08:14:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
