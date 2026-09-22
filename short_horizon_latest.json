@@ -1012,8 +1012,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL directly sells produced hydrocarbons.",
             "published_at": "2026-09-22T10:10:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -1101,8 +1101,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Attock Refinery Limited (ATRL), verified as a PSX-listed refinery.",
             "published_at": "2026-09-21T16:55:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -2605,8 +2605,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Pakistan International Bulk Terminal Limited (PSX: PIBTL), verified on the official PSX company page.",
             "published_at": "2026-09-21T15:43:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -4445,8 +4445,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; MARI produces and sells hydrocarbons.",
             "published_at": "2026-09-22T10:10:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -5353,8 +5353,8 @@
             "assessment": "neutral",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Fauji Foods Limited (PSX: FFL), verified on the official PSX company page.",
             "published_at": "2026-09-21T19:23:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -6296,8 +6296,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; OGDC directly sells produced hydrocarbons.",
             "published_at": "2026-09-22T10:10:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -6450,8 +6450,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Fauji Cement Company Limited (PSX: FCCL), verified on the official PSX company page.",
             "published_at": "2026-09-22T13:26:05+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -8623,9 +8623,40 @@
       "symbol": "TISL"
     }
   ],
-  "as_of": "2026-09-22T14:49:30.913861+05:00",
+  "as_of": "2026-09-22T15:06:08.927994+05:00",
   "changes": {
-    "changed": [],
+    "changed": [
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 17,
+        "rank": 17,
+        "symbol": "ATRL"
+      },
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 40,
+        "rank": 40,
+        "symbol": "PIBTL"
+      },
+      {
+        "classification": "Confirmation required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Confirmation required",
+        "previous_rank": 16,
+        "rank": 16,
+        "symbol": "PPL"
+      }
+    ],
     "entries": [],
     "exits": []
   },
@@ -20363,7 +20394,7 @@
       "symbol": "ZUMA"
     }
   ],
-  "input_sha256": "b018c9468c97375fea41eb99469709accc851eb7279fce877bb233317a8aae03",
+  "input_sha256": "07d60b7956959e8408ce84e1b7233c7be061b598d2d2189a0769a1eb114555da",
   "limitations": [
     "Heuristic scores are not probabilities. No performance claim or automatic trade.",
     "Observed index membership has no verified effective-date history; not suitable for historical membership backtests.",
@@ -20373,7 +20404,7 @@
   ],
   "market_session": "2026-09-21",
   "method": "short-horizon-research-v1",
-  "previous_input_sha256": "1da58daac0108bf84208f297e75e03530b3862f9d5f015bc2b972b9a41ae3ba6",
+  "previous_input_sha256": "b018c9468c97375fea41eb99469709accc851eb7279fce877bb233317a8aae03",
   "rows": [
     {
       "adx": 49.8202147872836,
@@ -21387,8 +21418,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL directly sells produced hydrocarbons.",
             "published_at": "2026-09-22T10:10:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -21476,8 +21507,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Attock Refinery Limited (ATRL), verified as a PSX-listed refinery.",
             "published_at": "2026-09-21T16:55:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -22980,8 +23011,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-25T13:52:09+05:00",
-            "known_at": "2026-09-22T13:52:09+05:00",
+            "expires_at": "2026-09-25T14:43:22+05:00",
+            "known_at": "2026-09-22T14:43:22+05:00",
             "linkage": "Direct link: Pakistan International Bulk Terminal Limited (PSX: PIBTL), verified on the official PSX company page.",
             "published_at": "2026-09-21T15:43:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
