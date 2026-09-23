@@ -1,6 +1,6 @@
 {
   "actions": [],
-  "as_of": "2026-09-23T09:52:22.056757+05:00",
+  "as_of": "2026-09-23T10:08:55.656813+05:00",
   "bars": {
     "AGP": [
       {
@@ -58892,9 +58892,7 @@
       "trend": 30
     }
   },
-  "errors": [
-    "History refresh budget reached; missing symbols remain blocked"
-  ],
+  "errors": [],
   "evidence": [
     {
       "assessment": "positive",
@@ -63388,9 +63386,7 @@
   },
   "market_session": "2026-09-22",
   "provenance": {
-    "cached_sessions": [],
-    "database": "Read-only daily_ohlc and daily_eod; original retrieval timestamps unavailable",
-    "fetched_sessions": [
+    "cached_sessions": [
       {
         "date": "2026-09-22",
         "retrieved_at": "2026-09-23T09:49:53.874128+05:00"
@@ -63542,6 +63538,13 @@
       {
         "date": "2026-07-24",
         "retrieved_at": "2026-09-23T09:52:21.049585+05:00"
+      }
+    ],
+    "database": "Read-only daily_ohlc and daily_eod; original retrieval timestamps unavailable",
+    "fetched_sessions": [
+      {
+        "date": "2026-07-23",
+        "retrieved_at": "2026-09-23T10:08:54.649487+05:00"
       }
     ],
     "history_source": "https://dps.psx.com.pk/historical"
