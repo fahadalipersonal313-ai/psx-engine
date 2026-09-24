@@ -644,8 +644,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -2387,8 +2387,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Direct link: NML is Nishat Mills Limited, the company signing the energy project and selling the dairy stake.",
             "published_at": "2026-09-23T16:01:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -3301,8 +3301,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Direct link: DGKC is D.G. Khan Cement Company Limited and the project is at its cement plant.",
             "published_at": "2026-09-23T15:57:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -3582,8 +3582,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; MARI is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -4517,8 +4517,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; OGDC is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -4653,8 +4653,8 @@
             "assessment": "negative",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Direct link: KEL is K-Electric Limited, the regulated utility affected by the MYT decision.",
             "published_at": "2026-09-24T07:04:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -8608,9 +8608,30 @@
       "symbol": "STL"
     }
   ],
-  "as_of": "2026-09-24T10:58:37.585607+05:00",
+  "as_of": "2026-09-24T11:15:12.550974+05:00",
   "changes": {
-    "changed": [],
+    "changed": [
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 37,
+        "rank": 37,
+        "symbol": "NML"
+      },
+      {
+        "classification": "Confirmation required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Confirmation required",
+        "previous_rank": 10,
+        "rank": 10,
+        "symbol": "PPL"
+      }
+    ],
     "entries": [],
     "exits": []
   },
@@ -20368,7 +20389,7 @@
       "symbol": "ZUMA"
     }
   ],
-  "input_sha256": "8cf0de0b89f5244d02631c1116a87b8788a3b1c3c27d4a38d14d5384658b7e41",
+  "input_sha256": "2e50771f8e7185e496d534cb3fe33b302566cb6419c660a8745a8132f88fc3b8",
   "limitations": [
     "Heuristic scores are not probabilities. No performance claim or automatic trade.",
     "Observed index membership has no verified effective-date history; not suitable for historical membership backtests.",
@@ -20378,7 +20399,7 @@
   ],
   "market_session": "2026-09-23",
   "method": "short-horizon-research-v1",
-  "previous_input_sha256": "6e59e76be4a1607cc89dd397d7b603553800782250a7a63fa14ebd217d85f355",
+  "previous_input_sha256": "8cf0de0b89f5244d02631c1116a87b8788a3b1c3c27d4a38d14d5384658b7e41",
   "rows": [
     {
       "adx": 40.68060685232822,
@@ -21024,8 +21045,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -22767,8 +22788,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T09:55:22+05:00",
-            "known_at": "2026-09-24T09:55:22+05:00",
+            "expires_at": "2026-09-27T10:48:36+05:00",
+            "known_at": "2026-09-24T10:48:36+05:00",
             "linkage": "Direct link: NML is Nishat Mills Limited, the company signing the energy project and selling the dairy stake.",
             "published_at": "2026-09-23T16:01:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
