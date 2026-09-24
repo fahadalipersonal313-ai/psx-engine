@@ -503,7 +503,26 @@
       "membership_effective_date": null,
       "money_flow": -0.032556442060670786,
       "news": {
-        "items": [],
+        "items": [
+          {
+            "assessment": "positive",
+            "event_date": null,
+            "event_risk": "unreviewed",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
+            "linkage": "Direct link: ATRL is Attock Refinery Limited, the PSX-listed refinery that executed the agreement.",
+            "published_at": "2026-09-24T12:07:00+05:00",
+            "quality": "Existing analyst review; original event document not certified by this adapter",
+            "rationale": "ATRL executed its brownfield Upgrade Agreement with ISGS, converting the prior scheduled signing into a completed contractual milestone. The agreement supports refinery modernisation, efficiency and Euro-V fuel capability, but near-term earnings impact and project economics are not quantified.",
+            "reviewer": "OpenAI",
+            "source": [
+              "https://mettisglobal.news/Attock-Refinery-signs-upgrade-pact-to-modernize-infrastructure-63695",
+              "https://dps.psx.com.pk/company/ATRL"
+            ],
+            "source_file": "news_codex_ratings.json",
+            "symbol": "ATRL"
+          }
+        ],
         "not_used": [],
         "status": "No current direct catalyst verified",
         "verified": []
@@ -644,8 +663,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -2387,8 +2406,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Direct link: NML is Nishat Mills Limited, the company signing the energy project and selling the dairy stake.",
             "published_at": "2026-09-23T16:01:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -3301,8 +3320,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Direct link: DGKC is D.G. Khan Cement Company Limited and the project is at its cement plant.",
             "published_at": "2026-09-23T15:57:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -3582,8 +3601,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; MARI is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -4517,8 +4536,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; OGDC is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -4653,8 +4672,8 @@
             "assessment": "negative",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Direct link: KEL is K-Electric Limited, the regulated utility affected by the MYT decision.",
             "published_at": "2026-09-24T07:04:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -8608,9 +8627,40 @@
       "symbol": "STL"
     }
   ],
-  "as_of": "2026-09-24T12:54:20.478665+05:00",
+  "as_of": "2026-09-24T13:10:57.089676+05:00",
   "changes": {
-    "changed": [],
+    "changed": [
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 8,
+        "rank": 8,
+        "symbol": "ATRL"
+      },
+      {
+        "classification": "Reversal required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Reversal required",
+        "previous_rank": 37,
+        "rank": 37,
+        "symbol": "NML"
+      },
+      {
+        "classification": "Confirmation required",
+        "fields": [
+          "news"
+        ],
+        "previous_classification": "Confirmation required",
+        "previous_rank": 10,
+        "rank": 10,
+        "symbol": "PPL"
+      }
+    ],
     "entries": [],
     "exits": []
   },
@@ -20368,7 +20418,7 @@
       "symbol": "ZUMA"
     }
   ],
-  "input_sha256": "e4ef45e1733fb28c601b71ca7f9e2f1491d5a347d8d1b381d0c05e660ce7abdd",
+  "input_sha256": "2f63aa2288e9545eb4b743c181220f00ffce672dd5678e45e12adb6363c615cd",
   "limitations": [
     "Heuristic scores are not probabilities. No performance claim or automatic trade.",
     "Observed index membership has no verified effective-date history; not suitable for historical membership backtests.",
@@ -20378,7 +20428,7 @@
   ],
   "market_session": "2026-09-23",
   "method": "short-horizon-research-v1",
-  "previous_input_sha256": "c3ef508846f96e9352443e73b8bd02206131b1e960a6273944f1ebeaf30fed6f",
+  "previous_input_sha256": "e4ef45e1733fb28c601b71ca7f9e2f1491d5a347d8d1b381d0c05e660ce7abdd",
   "rows": [
     {
       "adx": 40.68060685232822,
@@ -20883,7 +20933,26 @@
       "membership_effective_date": null,
       "money_flow": -0.032556442060670786,
       "news": {
-        "items": [],
+        "items": [
+          {
+            "assessment": "positive",
+            "event_date": null,
+            "event_risk": "unreviewed",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
+            "linkage": "Direct link: ATRL is Attock Refinery Limited, the PSX-listed refinery that executed the agreement.",
+            "published_at": "2026-09-24T12:07:00+05:00",
+            "quality": "Existing analyst review; original event document not certified by this adapter",
+            "rationale": "ATRL executed its brownfield Upgrade Agreement with ISGS, converting the prior scheduled signing into a completed contractual milestone. The agreement supports refinery modernisation, efficiency and Euro-V fuel capability, but near-term earnings impact and project economics are not quantified.",
+            "reviewer": "OpenAI",
+            "source": [
+              "https://mettisglobal.news/Attock-Refinery-signs-upgrade-pact-to-modernize-infrastructure-63695",
+              "https://dps.psx.com.pk/company/ATRL"
+            ],
+            "source_file": "news_codex_ratings.json",
+            "symbol": "ATRL"
+          }
+        ],
         "not_used": [],
         "status": "No current direct catalyst verified",
         "verified": []
@@ -21024,8 +21093,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Sector link: Oil & Gas Exploration; PPL is a PSX-listed hydrocarbon producer.",
             "published_at": "2026-09-24T08:02:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
@@ -22767,8 +22836,8 @@
             "assessment": "positive",
             "event_date": null,
             "event_risk": "unreviewed",
-            "expires_at": "2026-09-27T11:50:13+05:00",
-            "known_at": "2026-09-24T11:50:13+05:00",
+            "expires_at": "2026-09-27T12:49:25+05:00",
+            "known_at": "2026-09-24T12:49:25+05:00",
             "linkage": "Direct link: NML is Nishat Mills Limited, the company signing the energy project and selling the dairy stake.",
             "published_at": "2026-09-23T16:01:00+05:00",
             "quality": "Existing analyst review; original event document not certified by this adapter",
