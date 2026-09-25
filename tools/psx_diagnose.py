@@ -68,5 +68,78 @@ def main():
         print(f"    body: {body}\n")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "--discover" not in sys.argv:
     main()
+
+
+# ---------------------------------------------------------------------------
+# Discovery: where did the data endpoints go?
+#
+# Reads PSX's PUBLIC pages exactly as a visitor's browser would, once each, and
+# lists the data-looking paths they reference -- in page links and in the
+# site's own JavaScript. These are PSX's published addresses; nothing is
+# guessed, brute-forced or submitted.
+#
+# For the historical form it GETs the page and reports the form's field NAMES
+# only, including whether a one-time token field exists. It never submits the
+# form. Whether to use such a token is the operator's decision under the
+# no-protection-bypass rule, not this tool's.
+# ---------------------------------------------------------------------------
+import re
+from urllib.parse import urljoin
+
+DATA_HINT = re.compile(
+    r"""["'`](/[A-Za-z0-9_\-./{}$:]*?(?:timeseries|historical|market|eod|intraday|"""
+    r"""trades?|quote|symbol|company|data|api|chart|index|indices|summary)"""
+    r"""[A-Za-z0-9_\-./{}$:?=&]*)["'`]""", re.I)
+MAX_SCRIPTS = 12
+
+
+def _paths(text):
+    return sorted({m.group(1) for m in DATA_HINT.finditer(text)
+                   if not m.group(1).endswith((".css", ".png", ".jpg", ".svg", ".woff", ".woff2"))})
+
+
+def discover():
+    base = config.PSX_DPS_BASE + "/"
+    print(f"=== DISCOVERY from {base}")
+    home = requests.get(base, headers=config.REQUEST_HEADERS, timeout=30)
+    print(f"home: {home.status_code}, {len(home.content)} bytes")
+    found = set(_paths(home.text))
+    nav = sorted({h for h in re.findall(r'href="(/[^"#?]+)"', home.text)
+                  if not h.endswith((".css", ".png", ".ico", ".svg"))})
+    print(f"\n-- {len(nav)} page links on the home page:")
+    for h in nav[:80]:
+        print(f"   {h}")
+    scripts = [urljoin(base, s) for s in re.findall(r'<script[^>]+src="([^"]+)"', home.text)]
+    scripts = [s for s in scripts if "psx.com.pk" in s][:MAX_SCRIPTS]
+    print(f"\n-- reading {len(scripts)} of the site's own scripts")
+    for src in scripts:
+        try:
+            r = requests.get(src, headers=config.REQUEST_HEADERS, timeout=30)
+            p = _paths(r.text)
+            print(f"   {r.status_code} {src.split('psx.com.pk')[-1][:70]}  ({len(p)} data paths)")
+            found.update(p)
+        except requests.RequestException as exc:
+            print(f"   ERROR {src}: {exc}")
+    print(f"\n-- {len(found)} data-looking paths referenced by PSX's own pages/scripts:")
+    for p in sorted(found)[:150]:
+        print(f"   {p}")
+
+    print("\n=== historical form (GET only, never submitted)")
+    r = requests.get(psx_historical.URL, headers=config.REQUEST_HEADERS, timeout=30)
+    print(f"GET {psx_historical.URL}: {r.status_code}, {len(r.content)} bytes")
+    for form in re.findall(r"<form\b.*?</form>", r.text, re.S | re.I)[:3]:
+        head = re.search(r"<form\b[^>]*>", form, re.I).group(0)
+        names = re.findall(r'name="([^"]+)"', form)
+        tokenish = [n for n in names if re.search(r"csrf|token|_token|nonce|captcha", n, re.I)]
+        print(f"   form: {head[:160]}")
+        print(f"   field names: {names}")
+        print(f"   token-like fields: {tokenish or 'none'}")
+    metas = re.findall(r'<meta[^>]+name="(csrf[^"]*)"', r.text, re.I)
+    if metas:
+        print(f"   page-level token meta tags: {metas}")
+
+
+if __name__ == "__main__" and "--discover" in sys.argv:
+    discover()
