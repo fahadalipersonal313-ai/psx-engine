@@ -35,7 +35,9 @@ jobs:
         run: pip install -r requirements-ci.txt
 
       - name: Evening report + outcome grading
-        run: python main.py evening
+        run: |
+          if [ -f .engine-paused ]; then echo "ENGINE PAUSED — .engine-paused is present, no PSX request made:"; cat .engine-paused; exit 0; fi
+          python main.py evening
 
       - name: Commit updated database
         # See engine.yml: binary SQLite DB can't be 3-way-merged, so keep this

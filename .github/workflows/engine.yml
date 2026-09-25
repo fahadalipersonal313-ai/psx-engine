@@ -110,6 +110,10 @@ jobs:
           MARKET_OPEN: '09:32'
           MARKET_CLOSE: '16:30'
         run: |
+          # Kill switch, checked before ANY request to PSX. Stops every trigger
+          # at once -- crons, the watchdog and the external pinger alike -- since
+          # they all land here. Delete .engine-paused to resume.
+          if [ -f .engine-paused ]; then echo "ENGINE PAUSED — .engine-paused is present, no PSX request made:"; cat .engine-paused; exit 0; fi
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
           # The FIRST cycle after the open runs in --fast mode: no news fetch,

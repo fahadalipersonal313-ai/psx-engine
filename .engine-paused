@@ -1,0 +1,16 @@
+Paused 2026-09-25 ~11:30 PKT at the user's request.
+
+Reason: since the morning of 2026-09-25 every engine run fails at its first
+PSX request. dps.psx.com.pk returns 403 Forbidden for /historical and 404 for
+/market-watch and /timeseries/eod/KMI30, and all 60 intraday fetches fail.
+The last good run was 2026-09-24 15:18 PKT.
+
+The watchdog and the external pinger were dispatching two runs every 15
+minutes, each sending ~60 requests to a server that was refusing us. Retrying
+at that rate from one datacenter is the pattern most likely to turn a
+temporary block into a longer one, so every PSX-touching workflow now exits
+before its first request while this file exists.
+
+Our rule is public permitted sources and no protection bypass, so the fix is
+NOT to disguise requests. Run the psx-diagnose workflow to see what PSX now
+returns, then delete this file to resume.

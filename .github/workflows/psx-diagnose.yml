@@ -1,0 +1,25 @@
+name: psx-diagnose
+
+# One-shot, read-only check of what PSX returns to a GitHub runner. Sends the
+# engine's own requests once each, never retries, never disguises itself.
+# Deliberately NOT gated by .engine-paused: it is how we find out whether it is
+# safe to remove that file.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.10'
+      - run: pip install -r requirements-ci.txt
+      - run: python tools/psx_diagnose.py

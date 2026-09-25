@@ -24,6 +24,8 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install requests
-      - run: python engine_watchdog.py
+      - run: |
+          if [ -f .engine-paused ]; then echo "ENGINE PAUSED — .engine-paused is present, no PSX request made:"; cat .engine-paused; exit 0; fi
+          python engine_watchdog.py
         env:
           GH_TOKEN: ${{ github.token }}
