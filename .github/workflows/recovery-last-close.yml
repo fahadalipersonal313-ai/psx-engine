@@ -47,4 +47,5 @@ jobs:
           git add -A -- psx_engine.db news_raw_24h.json .engine-state.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Recovery last-close run $(date -u +'%Y-%m-%dT%H:%MZ')"
-          python runtime_publish.py
+          git pull --rebase origin main
+          git push origin HEAD:main
