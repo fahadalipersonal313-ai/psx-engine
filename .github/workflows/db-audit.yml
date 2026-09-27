@@ -1,0 +1,42 @@
+name: One-shot DB audit
+
+on:
+  push:
+    branches: [main]
+    paths: ['.db-audit-kick']
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Audit SQLite tables
+        run: |
+          python - <<'PY'
+          import sqlite3, os, json
+          p='psx_engine.db'
+          con=sqlite3.connect(p)
+          con.row_factory=sqlite3.Row
+          print('FILE_BYTES', os.path.getsize(p))
+          print('PAGE_SIZE', con.execute('pragma page_size').fetchone()[0])
+          print('PAGE_COUNT', con.execute('pragma page_count').fetchone()[0])
+          print('FREELIST', con.execute('pragma freelist_count').fetchone()[0])
+          print('INTEGRITY', con.execute('pragma integrity_check').fetchone()[0])
+          tables=[r[0] for r in con.execute("select name from sqlite_master where type='table' and name not like 'sqlite_%' order by name")]
+          for t in tables:
+              try:
+                  n=con.execute(f'SELECT COUNT(*) FROM "{t}"').fetchone()[0]
+                  print('TABLE',t,'ROWS',n)
+              except Exception as e: print('TABLE',t,'ERROR',e)
+          try:
+              for r in con.execute("SELECT name, sum(pgsize) bytes FROM dbstat GROUP BY name ORDER BY bytes DESC"):
+                  print('DBSTAT',r['name'],r['bytes'])
+          except Exception as e: print('DBSTAT_UNAVAILABLE',e)
+          con.close()
+          PY
