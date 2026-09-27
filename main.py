@@ -239,6 +239,42 @@ def write_signal_state(sig, cutoff, path=SIGNAL_STATE_FILE):
     return changed
 
 
+
+def cached_run():
+    """Run decisions from the last completed bars already banked."""
+    log.info("=== Cached recovery run started ===")
+    db.init_db()
+    with db.conn() as c:
+        row = c.execute("SELECT MAX(date) AS d FROM daily_ohlc").fetchone()
+    cutoff = row["d"] if row and row["d"] else None
+    if not cutoff:
+        raise RuntimeError("No banked daily OHLC session available")
+    index_eod = None
+    regime = market_regime.assess_regime(index_eod)
+    account = portfolio_advisor.load_portfolio()
+    holdings = account.get("holdings", [])
+    with db.analysis_batch(len(config.STOCKS)) as batch_id:
+        results = [analyze_stock(symbol, [], index_eod, regime, holdings, cutoff, batch_id)
+                   for symbol in config.STOCKS]
+        portfolio = _assess_account(results, account, batch_id)
+    try:
+        import news_memory
+        log.info("news memory: raw %s | rated %s | codex %s | %s",
+                 news_memory.ingest_raw(), news_memory.remember(),
+                 news_memory.remember("news_codex_ratings.json"),
+                 news_memory.grade())
+    except Exception as exc:
+        log.warning("news memory failed: %s", exc)
+    report = reports.build_run_report(
+        results,
+        f"RECOVERY MODE: signals use finalized banked close {cutoff}; no live price claim.",
+        portfolio)
+    print("\n" + report)
+    reports.save_report(report, "run")
+    write_signal_state(signal_state(results), cutoff)
+    log.info("=== Cached recovery run finished at finalized session %s ===", cutoff)
+    return results
+
 def full_run(fast=False):
     """fast=True trims everything that does not affect TODAY'S signals, so the
     first cycle after the 09:32 open commits sooner. Safe because:
