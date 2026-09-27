@@ -36,7 +36,7 @@ def git(*args, capture=False):
                           env={**os.environ, 'GIT_EDITOR': 'true'})
 
 
-def publish(branch='runtime-data'):
+def publish(branch='main'):
     for attempt in range(4):
         if git('push', 'origin', f'HEAD:{branch}').returncode == 0:
             return
