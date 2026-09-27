@@ -118,7 +118,7 @@ def fetch(session=None, symbols=None):
     """Return current-day OHLCV from the licensed market-data provider."""
     try:
         import market_data_provider as market_data
-        bars = market_data.daily_market_summary()
+        bars = market_data.daily_market_summary(symbols or config.STOCKS)
         wanted = set(symbols or config.STOCKS)
         bars = {s: b for s, b in bars.items() if s in wanted}
         return bars, {"ok": True, "rows": len(bars), "matched": len(bars),
