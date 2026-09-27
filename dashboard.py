@@ -458,16 +458,25 @@ def _inject_compact_css():
 _inject_theme()
 _require_password()
 _auto_refresh()
-db.init_db()
-
+# Fast first paint: use a tiny latest-run snapshot before touching SQLite.
 rows = []
-for sym in config.STOCKS:
-    r = db.last_run(sym)
-    if r:
-        from history_view import explain_run
-        r = dict(r)
-        r['main_reason'], r['main_risk'] = explain_run(r)
-        rows.append(r)
+try:
+    with open("dashboard_snapshot.json", "r", encoding="utf-8") as _sf:
+        _snap = json.load(_sf)
+    rows = list(_snap.get("rows") or [])
+except Exception:
+    rows = []
+
+if not rows:
+    db.init_db()
+    for sym in config.STOCKS:
+        r = db.last_run(sym)
+        if r:
+            rows.append(dict(r))
+
+from history_view import explain_run
+for _r in rows:
+    _r['main_reason'], _r['main_risk'] = explain_run(_r)
 if not rows:
     st.title("PSX Shariah Engine")
     st.warning("No runs stored yet. Run `python main.py run` first.")
