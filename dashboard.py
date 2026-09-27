@@ -17,6 +17,7 @@ import os
 import json
 import hmac
 import time
+import requests
 
 import pandas as pd
 import streamlit as st
@@ -460,12 +461,21 @@ _require_password()
 _auto_refresh()
 # Fast first paint: use a tiny latest-run snapshot before touching SQLite.
 rows = []
+# dashboard-stable never redeploys for runtime engine commits. Pull the tiny
+# current snapshot from main instead, then fall back to the bundled snapshot.
 try:
-    with open("dashboard_snapshot.json", "r", encoding="utf-8") as _sf:
-        _snap = json.load(_sf)
+    _url = "https://raw.githubusercontent.com/fahadalipersonal313-ai/psx-engine/main/dashboard_snapshot.json"
+    _resp = requests.get(_url, timeout=3, headers={"Cache-Control": "no-cache"})
+    _resp.raise_for_status()
+    _snap = _resp.json()
     rows = list(_snap.get("rows") or [])
 except Exception:
-    rows = []
+    try:
+        with open("dashboard_snapshot.json", "r", encoding="utf-8") as _sf:
+            _snap = json.load(_sf)
+        rows = list(_snap.get("rows") or [])
+    except Exception:
+        rows = []
 
 if not rows:
     db.init_db()
