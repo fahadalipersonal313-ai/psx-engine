@@ -1,0 +1,63 @@
+name: One-shot DB prune
+
+on:
+  push:
+    branches: [main]
+    paths: ['.db-prune-kick']
+
+permissions:
+  contents: write
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Prune repetitive runtime history
+        run: |
+          test -f .engine-paused || { echo "Refusing prune while live engine is unpaused"; exit 1; }
+          cp psx_engine.db /tmp/psx_engine_before_prune.db
+          python - <<'PY'
+          import sqlite3, os
+          p='psx_engine.db'
+          before=os.path.getsize(p)
+          c=sqlite3.connect(p)
+          try:
+              assert c.execute('pragma integrity_check').fetchone()[0]=='ok'
+              # Keep all price history. Trim only repetitive runtime analysis:
+              # latest 25 runs per symbol is ample dashboard/debug history.
+              c.execute("""DELETE FROM runs WHERE id NOT IN (
+                  SELECT id FROM (
+                    SELECT id, ROW_NUMBER() OVER (PARTITION BY symbol ORDER BY run_time DESC) rn
+                    FROM runs
+                  ) WHERE rn <= 25
+              )""")
+              # Batch metadata older than retained runs has no operational value.
+              c.execute("""DELETE FROM run_batches
+                  WHERE id NOT IN (SELECT DISTINCT batch_id FROM runs WHERE batch_id IS NOT NULL)""")
+              # Rejected bars are diagnostics, not accepted market history.
+              c.execute("DELETE FROM quarantined_bars")
+              # Keep the most recent 60 focus briefs rather than hundreds of
+              # large repeated prose payloads.
+              c.execute("""DELETE FROM focus_brief WHERE rowid NOT IN (
+                  SELECT rowid FROM focus_brief ORDER BY rowid DESC LIMIT 60
+              )""")
+              c.commit()
+              c.execute('VACUUM')
+              assert c.execute('pragma integrity_check').fetchone()[0]=='ok'
+          finally:
+              c.close()
+          after=os.path.getsize(p)
+          print('SIZE',before,'->',after,'RECLAIMED',before-after)
+          PY
+      - name: Commit verified compact DB
+        run: |
+          git config user.name "psx-maintenance"
+          git config user.email "actions@users.noreply.github.com"
+          git add psx_engine.db
+          git commit -m "maintenance: prune repetitive DB runtime history"
+          git pull --rebase origin main
+          git push origin HEAD:main
