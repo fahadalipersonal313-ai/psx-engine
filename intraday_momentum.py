@@ -8,7 +8,6 @@ from pathlib import Path
 
 import requests
 import config
-import market_data_provider as market_data
 import database as db
 import momentum
 import session_calendar as calendar
@@ -133,7 +132,9 @@ def collect(now=None):
             'SELECT * FROM daily_ohlc WHERE symbol=? AND date<? ORDER BY date DESC LIMIT 20', (s, day))][::-1]
             for s in config.STOCKS}
     def fetch(symbol):
-        ticks = market_data.intraday_1m(symbol)
+        response = requests.get(config.PSX_INTRADAY_URL.format(symbol=symbol), timeout=15)
+        response.raise_for_status()
+        ticks = response.json()['data']
         checked = datetime.now(timezone.utc)
         try:
             candidate = detect(symbol, ticks, history[symbol], checked)
