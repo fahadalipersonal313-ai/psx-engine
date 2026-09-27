@@ -1,0 +1,45 @@
+name: One-shot decision prune
+on:
+  push:
+    branches: [main]
+    paths: ['.decision-prune-kick']
+permissions:
+  contents: write
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with: {ref: main, fetch-depth: 1}
+      - name: Retain recent reproducible decisions only
+        run: |
+          test -f .engine-paused || exit 1
+          python - <<'PY'
+          import sqlite3, os
+          p='psx_engine.db'; before=os.path.getsize(p)
+          c=sqlite3.connect(p)
+          try:
+              assert c.execute('pragma integrity_check').fetchone()[0]=='ok'
+              # 11 decision sessions exist. Keep the latest 5 complete sessions
+              # for exact reproducibility; older signal/run evidence remains in
+              # price history, outcomes and retained runs.
+              keep=[r[0] for r in c.execute('SELECT DISTINCT session FROM decisions ORDER BY session DESC LIMIT 5')]
+              q=','.join('?'*len(keep))
+              c.execute(f'DELETE FROM decisions WHERE session NOT IN ({q})', keep)
+              c.execute('DELETE FROM decision_snapshots WHERE hash NOT IN (SELECT snapshot_hash FROM decisions)')
+              c.commit(); c.execute('VACUUM')
+              assert c.execute('pragma integrity_check').fetchone()[0]=='ok'
+              print('KEEP_SESSIONS',keep)
+              print('DECISIONS',c.execute('select count(*) from decisions').fetchone()[0])
+              print('SNAPSHOTS',c.execute('select count(*) from decision_snapshots').fetchone()[0])
+          finally: c.close()
+          after=os.path.getsize(p); print('SIZE',before,'->',after,'RECLAIMED',before-after)
+          PY
+      - name: Commit compact DB
+        run: |
+          git config user.name "psx-maintenance"
+          git config user.email "actions@users.noreply.github.com"
+          git add psx_engine.db
+          git commit -m "maintenance: retain recent reproducible decision evidence"
+          git pull --rebase origin main
+          git push origin HEAD:main
