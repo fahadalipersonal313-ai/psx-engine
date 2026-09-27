@@ -1,0 +1,32 @@
+name: One-shot decision audit
+on:
+  push:
+    branches: [main]
+    paths: ['.decision-audit-kick']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with: {ref: main, fetch-depth: 1}
+      - run: |
+          python - <<'PY'
+          import sqlite3, json, statistics
+          c=sqlite3.connect('psx_engine.db'); c.row_factory=sqlite3.Row
+          for t in ('decisions','decision_snapshots'):
+              print('SCHEMA',t)
+              for r in c.execute(f'pragma table_info({t})'): print(tuple(r))
+          for t in ('decisions','decision_snapshots'):
+              cols=[r[1] for r in c.execute(f'pragma table_info({t})')]
+              print('COLS',t,cols)
+              for col in cols:
+                  typ=next(r[2] for r in c.execute(f'pragma table_info({t})') if r[1]==col)
+                  if str(typ).upper() in ('TEXT','BLOB',''):
+                      try:
+                          q=f'SELECT COUNT(*), COUNT(DISTINCT "{col}"), AVG(LENGTH("{col}")), MAX(LENGTH("{col}")) FROM "{t}"'
+                          print('STAT',t,col,tuple(c.execute(q).fetchone()))
+                      except Exception as e: pass
+          c.close()
+          PY
