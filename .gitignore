@@ -22,3 +22,7 @@ reports_out/
 # to 54 MB. The Routine regenerates it in-container each time it needs it.
 news_bodies.json
 private_depth/
+
+# Retired/runtime database archives do not belong in the source checkout.
+# Existing copies remain recoverable from Git history; future archives stay local/artifact-only.
+archive_*.db
