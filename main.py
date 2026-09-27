@@ -272,6 +272,11 @@ def cached_run():
     print("\n" + report)
     reports.save_report(report, "run")
     write_signal_state(signal_state(results), cutoff)
+    try:
+        import dashboard_snapshot
+        dashboard_snapshot.build()
+    except Exception as exc:
+        log.warning("dashboard snapshot failed: %s", exc)
     log.info("=== Cached recovery run finished at finalized session %s ===", cutoff)
     return results
 
@@ -364,6 +369,11 @@ def full_run(fast=False):
         except Exception as exc:
             log.warning("Short-horizon research failed; dashboard will show failure: %s", exc)
 
+    try:
+        import dashboard_snapshot
+        dashboard_snapshot.build()
+    except Exception as exc:
+        log.warning("dashboard snapshot failed: %s", exc)
     log.info("=== Engine run finished ===")
     return results
 
