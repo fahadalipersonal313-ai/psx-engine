@@ -17,6 +17,7 @@ import pandas as pd
 import config
 import database as db
 import ssl_compat
+import market_data_provider as market_data
 
 log = logging.getLogger("data_fetcher")
 
@@ -48,46 +49,23 @@ def _get(url):
 # PRICES
 # ---------------------------------------------------------------------------
 def fetch_intraday(symbol):
-    """PSX DPS intraday timeseries -> DataFrame[ts, price, volume].
-    Returns (df, meta). df may be None on failure."""
-    url = config.PSX_INTRADAY_URL.format(symbol=symbol)
+    """Licensed provider intraday -> DataFrame[ts, price, volume]."""
     try:
-        r = _get(url)
-        r.raise_for_status()
-        data = r.json().get("data", [])
+        data = market_data.intraday_1m(symbol)
         if not data:
             raise ValueError("empty payload")
-        # PSX DPS rows are [ts, price, volume, ...]; tolerate extra trailing
-        # fields the portal may append by keeping only the first three.
-        df = pd.DataFrame([row[:3] for row in data],
-                          columns=["ts", "price", "volume"])
+        df = pd.DataFrame(data, columns=["ts", "price", "volume"])
         df["ts"] = pd.to_datetime(df["ts"], unit="s")
         df = df.sort_values("ts").reset_index(drop=True)
-        meta = {"source": "PSX DPS intraday", "as_of": str(df["ts"].iloc[-1]),
+        meta = {"source": "Capital Stake licensed PSX feed", "as_of": str(df["ts"].iloc[-1]),
                 "live": True, "warning": None}
         last = df.iloc[-1]
         db.save_price(symbol, str(last["ts"]), float(last["price"]),
                       float(df["volume"].sum()), meta["source"])
-        # Option B: bank today's REAL high/low from the ticks. PSX EOD has no
-        # H/L, so over time this builds genuine daily OHLC history -> true
-        # ATR/ADX become possible once enough days accumulate.
-        try:
-            day = df.copy()
-            day["d"] = day["ts"].dt.date
-            for d, g in day.groupby("d"):
-                db.save_daily_ohlc(symbol, str(d),
-                                   float(g["price"].iloc[0]),    # open
-                                   float(g["price"].max()),      # high
-                                   float(g["price"].min()),      # low
-                                   float(g["price"].iloc[-1]),   # close
-                                   float(g["volume"].sum()),     # volume
-                                   meta["source"])
-        except Exception as e:
-            log.debug("Daily OHLC capture skipped for %s: %s", symbol, e)
         return df, meta
     except Exception as e:
         log.warning("Intraday fetch failed for %s: %s", symbol, e)
-        return None, {"source": "PSX DPS intraday", "as_of": None,
+        return None, {"source": "Capital Stake licensed PSX feed", "as_of": None,
                       "live": False,
                       "warning": f"Live fetch failed ({e}); using latest stored data."}
 
@@ -113,51 +91,36 @@ def _bank_eod_history(symbol, df):
 
 
 def fetch_eod(symbol):
-    """PSX DPS end-of-day history -> DataFrame[date, close, volume]."""
-    url = config.PSX_EOD_URL.format(symbol=symbol)
+    """Licensed provider adjusted end-of-day history."""
     try:
-        r = _get(url)
-        r.raise_for_status()
-        data = r.json().get("data", [])
+        data = market_data.eod_adjusted(symbol)
         if not data:
             raise ValueError("empty payload")
-        # PSX DPS EOD rows are [ts, close, volume, open]; older format had only
-        # three. Keep `open` when present (used for a gap/body-aware volatility
-        # estimate — PSX gives no High/Low). Missing open -> NaN, handled downstream.
-        recs = [(row[0], row[1], row[2], row[3] if len(row) > 3 else None)
-                for row in data]
-        df = pd.DataFrame(recs, columns=["ts", "close", "volume", "open"])
+        recs = []
+        for row in data:
+            recs.append((row["time"], row["open"], row["close"], row["volume"]))
+        df = pd.DataFrame(recs, columns=["ts", "open", "close", "volume"])
         df["date"] = pd.to_datetime(df["ts"], unit="s")
         df = df.sort_values("date").reset_index(drop=True)
-        meta = {"source": "PSX DPS end-of-day", "as_of": str(df["date"].iloc[-1].date()),
-                "live": True, "warning": None}
+        meta = {"source": "Capital Stake licensed PSX feed",
+                "as_of": str(df["date"].iloc[-1].date()), "live": True, "warning": None}
         out = df[["date", "open", "close", "volume"]]
         _bank_eod_history(symbol, out)
         return out, meta
     except Exception as e:
         log.warning("EOD fetch failed for %s: %s", symbol, e)
-        # Fall back to the daily bars already banked from earlier intraday polls.
-        # These are REAL captured prices, not a reconstruction — the same data the
-        # ATR/ADX path already trusts. Without this the engine sat on 48 stored
-        # bars and a cached quote and still reported "No data" for every symbol
-        # the moment DPS went unreachable (2026-08-27, all 50 tickers blank).
-        # latest_quote has always degraded this way; fetch_eod never did.
         bars = db.get_daily_ohlc(symbol, limit=400)
         if len(bars) >= 30:
             df = pd.DataFrame([{"date": pd.to_datetime(b["date"]),
                                 "open": b["open"], "close": b["close"],
                                 "volume": b["volume"]} for b in bars])
             as_of = bars[-1]["date"]
-            log.info("EOD for %s: using %d banked bars through %s",
-                     symbol, len(bars), as_of)
             return df[["date", "open", "close", "volume"]], {
                 "source": "banked daily OHLC (cached)", "as_of": as_of,
                 "live": False,
-                "warning": (f"EOD fetch failed ({e}); using {len(bars)} banked "
-                            f"daily bars through {as_of}.")}
-        return None, {"source": "PSX DPS end-of-day", "as_of": None,
-                      "live": False,
-                      "warning": f"EOD fetch failed ({e})."}
+                "warning": f"EOD fetch failed ({e}); using {len(bars)} banked daily bars through {as_of}."}
+        return None, {"source": "Capital Stake licensed PSX feed", "as_of": None,
+                      "live": False, "warning": f"EOD fetch failed ({e})."}
 
 
 def latest_quote(symbol):
