@@ -115,18 +115,18 @@ def to_bars(names, rows, symbols=None):
 
 
 def fetch(session=None, symbols=None):
-    """Return current-day OHLCV from the licensed market-data provider."""
+    """-> ({SYMBOL: bar}, meta). Never raises on network error: returns ({}, meta)
+    so a market-watch failure can never take the price path down with it."""
+    s = session or requests
     try:
-        import market_data_provider as market_data
-        bars = market_data.daily_market_summary(symbols or config.STOCKS)
-        wanted = set(symbols or config.STOCKS)
-        bars = {s: b for s, b in bars.items() if s in wanted}
-        return bars, {"ok": True, "rows": len(bars), "matched": len(bars),
-                      "error": None, "source": "Capital Stake licensed PSX feed"}
+        r = s.get(URL, headers=HEADERS, timeout=TIMEOUT)
+        r.raise_for_status()
+        names, rows = parse(r.text)
+        bars = to_bars(names, rows, symbols)
+        return bars, {"ok": True, "rows": len(rows), "matched": len(bars), "error": None}
     except Exception as e:
-        log.warning("market summary fetch failed: %s", e)
-        return {}, {"ok": False, "rows": 0, "matched": 0, "error": str(e),
-                    "source": "Capital Stake licensed PSX feed"}
+        log.warning("market-watch fetch failed: %s", e)
+        return {}, {"ok": False, "rows": 0, "matched": 0, "error": str(e)}
 
 
 def main():
