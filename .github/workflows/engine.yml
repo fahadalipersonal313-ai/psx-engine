@@ -85,7 +85,8 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
-          ref: main
+          ref: runtime-state
+          fetch-depth: 1
 
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
@@ -225,7 +226,7 @@ jobs:
               # different file) replays cleanly and we push; a genuine
               # DB-vs-DB conflict still aborts and fails loudly, which is the
               # visibility the bare push was reaching for.
-              python runtime_publish.py
+              python runtime_publish.py runtime-state
             else
               echo "No data changes to commit this cycle."
             fi
