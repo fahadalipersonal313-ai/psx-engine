@@ -80,3 +80,45 @@ class MktSummaryBackfill(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SessionGapFill(unittest.TestCase):
+    """main._fill_session_gap banks the sessions an outage skipped."""
+
+    def test_gap_between_last_banked_bar_and_cutoff_is_filled(self):
+        import tempfile, os, config, database, main
+        from unittest import mock
+        tmp = tempfile.mkdtemp()
+        with mock.patch.object(config, "DB_PATH", os.path.join(tmp, "t.db")), \
+             mock.patch.object(config, "STOCKS", ["OGDC"]):
+            database.init_db()
+            database.save_hl_bar("OGDC", "2026-09-23", 1, 2, 0.5, 1.5, 10, ms.SOURCE)
+            seen = {}
+            def fake_backfill(start, end, *a, **k):
+                seen["range"] = (start, end)
+                return {"banked": {}, "no_file": []}
+            with mock.patch.object(ms, "backfill", fake_backfill):
+                main._fill_session_gap("2026-09-29")
+        self.assertEqual(seen["range"], ("2026-09-24", "2026-09-28"))
+
+    def test_no_gap_means_no_request(self):
+        import tempfile, os, config, database, main
+        from unittest import mock
+        tmp = tempfile.mkdtemp()
+        with mock.patch.object(config, "DB_PATH", os.path.join(tmp, "t.db")), \
+             mock.patch.object(config, "STOCKS", ["OGDC"]):
+            database.init_db()
+            database.save_hl_bar("OGDC", "2026-09-28", 1, 2, 0.5, 1.5, 10, ms.SOURCE)
+            with mock.patch.object(ms, "backfill", side_effect=AssertionError("called")):
+                self.assertIsNone(main._fill_session_gap("2026-09-29"))
+
+    def test_an_implausibly_long_gap_is_refused_not_hammered(self):
+        import tempfile, os, config, database, main
+        from unittest import mock
+        tmp = tempfile.mkdtemp()
+        with mock.patch.object(config, "DB_PATH", os.path.join(tmp, "t.db")), \
+             mock.patch.object(config, "STOCKS", ["OGDC"]):
+            database.init_db()
+            database.save_hl_bar("OGDC", "2026-01-05", 1, 2, 0.5, 1.5, 10, ms.SOURCE)
+            with mock.patch.object(ms, "backfill", side_effect=AssertionError("called")):
+                self.assertIsNone(main._fill_session_gap("2026-09-29"))
