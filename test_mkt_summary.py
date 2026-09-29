@@ -34,6 +34,16 @@ class MktSummaryParse(unittest.TestCase):
     def test_empty_file_is_an_empty_session(self):
         self.assertEqual(ms.parse("", "2026-09-29"), [])
 
+    def test_the_real_download_is_a_zip_and_is_unpacked(self):
+        """PSX serves mkt_summary .Z as a ZIP holding closing11.lis."""
+        import io, zipfile
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr("closing11.lis", SAMPLE)
+        text = ms._body(buf.getvalue()).decode("latin-1")
+        bars = {b["symbol"] for b in ms.parse(text, "2026-09-29")}
+        self.assertEqual(bars, {"786", "AABS", "OGDC"})
+
     def test_lzw_compressed_file_is_refused_with_a_reason(self):
         with self.assertRaisesRegex(ValueError, "LZW"):
             ms._body(b"\x1f\x9d\x90abc")

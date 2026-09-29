@@ -20,8 +20,10 @@ disguise is involved. Same return contract as psx_historical.fetch_day: a list
 of {symbol, open, high, low, close, volume}, [] for a day with no file.
 """
 import gzip
+import io
 import logging
 import time
+import zipfile
 from datetime import date, datetime, timedelta
 
 import requests
@@ -50,6 +52,11 @@ def _num(text):
 
 
 def _body(raw):
+    # Despite the .Z name, PSX serves a ZIP archive holding one text member
+    # (closing11.lis). Confirmed by dumping the live bytes on 2026-09-29.
+    if raw[:4] == b"PK\x03\x04":
+        with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            return b"".join(z.read(n) for n in z.namelist())
     if raw[:2] == b"\x1f\x8b":
         return gzip.decompress(raw)
     if raw[:2] == b"\x1f\x9d":
