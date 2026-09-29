@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads | sources | reconcile | dump | index | index2'
+        description: 'probe | discover | downloads | sources | reconcile | dump | index | index2 | index3'
         default: 'probe'
 
 permissions:
@@ -33,5 +33,6 @@ jobs:
             dump)      python tools/dump_mkt_summary.py ;;
             index)     python tools/index_probe.py ;;
             index2)    pip install -q pypdf && python tools/index_probe2.py ;;
+            index3)    python tools/index_probe3.py ;;
             *)         python tools/psx_diagnose.py ;;
           esac
