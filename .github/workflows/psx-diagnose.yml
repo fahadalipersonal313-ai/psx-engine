@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads | sources | reconcile | dump'
+        description: 'probe | discover | downloads | sources | reconcile | dump | index'
         default: 'probe'
 
 permissions:
@@ -31,5 +31,6 @@ jobs:
             sources)   python tools/source_probe.py ;;
             reconcile) python tools/reconcile_mkt_summary.py ;;
             dump)      python tools/dump_mkt_summary.py ;;
+            index)     python tools/index_probe.py ;;
             *)         python tools/psx_diagnose.py ;;
           esac
