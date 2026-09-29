@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads'
+        description: 'probe | discover | downloads | sources'
         default: 'probe'
 
 permissions:
@@ -28,5 +28,6 @@ jobs:
           case "${{ inputs.mode || 'probe' }}" in
             discover)  python tools/psx_diagnose.py --discover ;;
             downloads) python tools/psx_diagnose.py --downloads ;;
+            sources)   python tools/source_probe.py ;;
             *)         python tools/psx_diagnose.py ;;
           esac
