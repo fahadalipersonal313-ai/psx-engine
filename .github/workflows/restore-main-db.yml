@@ -1,0 +1,31 @@
+name: Restore compact main DB
+on:
+  push:
+    branches: [main]
+    paths: ['.restore-db-kick']
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with: {ref: main, fetch-depth: 1}
+      - name: Restore verified compact DB from runtime-state
+        run: |
+          git fetch --depth=1 origin runtime-state
+          git show origin/runtime-state:psx_engine.db > psx_engine.db
+          python - <<'PY'
+          import sqlite3, os
+          c=sqlite3.connect('psx_engine.db')
+          print('size',os.path.getsize('psx_engine.db'))
+          print('integrity',c.execute('pragma integrity_check').fetchone()[0])
+          print('daily_ohlc',c.execute('select count(*) from daily_ohlc').fetchone()[0])
+          c.close()
+          PY
+          git config user.name "psx-maintenance"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f psx_engine.db
+          git commit -m "deploy: restore compact authoritative main DB"
+          git pull --rebase origin main
+          git push origin HEAD:main

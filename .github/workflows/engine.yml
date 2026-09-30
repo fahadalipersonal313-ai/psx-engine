@@ -147,7 +147,24 @@ jobs:
             fi
 
             echo "=== Cycle at $now PKT ==="
-            timeout 300 python intraday_momentum.py
+            # PSX outage backoff. Since 2026-09-25 PSX's data paths refuse our
+            # requests (404 on /timeseries and /market-watch, 403 on /historical)
+            # while its home pages load normally. The loop used to `exit 1` on
+            # that failure BEFORE fetching news, so a PSX outage silently took
+            # news down with it, and the watchdog kept restarting workers that
+            # fired ~60 rejected requests each. Now: after a PSX failure, skip
+            # PSX for an hour, keep news flowing every cycle, and retry PSX
+            # hourly with the cheap main.py call first -- intraday's 60
+            # requests only resume once PSX answers again.
+            run_ok=0
+            psx_try=1
+            if [ -f /tmp/psx_outage ] && [ $(( $(date +%s) - $(cat /tmp/psx_outage) )) -lt 3600 ]; then
+              psx_try=0
+              echo "PSX failed at $(date -u -d @$(cat /tmp/psx_outage) +%H:%MZ) — skipping PSX this cycle, retrying hourly; news continues"
+            fi
+            if [ "$psx_try" = "1" ] && [ ! -f /tmp/psx_outage ]; then
+              timeout 300 python intraday_momentum.py || echo "intraday scan failed (non-fatal)"
+            fi
             # The checkout and installed dependencies stay pinned for this worker.
             # A concurrent writer causes a visible push failure, never a binary merge.
 
@@ -158,14 +175,20 @@ jobs:
             # waiting for the 6h job to end and release its step log.
             if [ "$first_cycle" = "1" ]; then FAST="--fast"; else FAST=""; fi
             first_cycle=0
-            if timeout 600 python main.py run $FAST > /tmp/psx_run.log 2>&1; then
-              cat /tmp/psx_run.log
-              rm -f engine_last_error.log
-            else
-              cat /tmp/psx_run.log
-              { echo "main.py run FAILED at $(date -u +'%Y-%m-%dT%H:%M:%SZ')";
-                echo; tail -120 /tmp/psx_run.log; } > engine_last_error.log
-              exit 1
+            if [ "$psx_try" = "1" ]; then
+              if timeout 600 python main.py run $FAST > /tmp/psx_run.log 2>&1; then
+                cat /tmp/psx_run.log
+                rm -f engine_last_error.log /tmp/psx_outage
+                run_ok=1
+              else
+                cat /tmp/psx_run.log
+                { echo "main.py run FAILED at $(date -u +'%Y-%m-%dT%H:%M:%SZ')";
+                  echo; tail -120 /tmp/psx_run.log; } > engine_last_error.log
+                # Record the failure and CARRY ON: news is independent of PSX
+                # and must not die with it. The error log is still committed
+                # below so the failure stays visible.
+                date +%s > /tmp/psx_outage
+              fi
             fi
 
             # News every cycle, not hourly. news.yml's cron is `5 4-11 * * 1-5`
@@ -204,7 +227,11 @@ jobs:
               if [ -f "$research_file" ]; then git add -- "$research_file"; fi
             done
             DB_AGE=$(( $(date +%s) - $(git log -1 --format=%ct -- psx_engine.db) ))
-            if [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ] || [ "$DB_AGE" -ge 3600 ]; then
+            if [ "$run_ok" != "1" ]; then
+              # Never publish the database from a cycle whose engine run did not
+              # complete: it may hold a half-applied batch.
+              echo "engine run did not complete this cycle — database not committed"
+            elif [ "$CHANGED" = "unknown" ] || [ "$CHANGED" != "$PREV" ] || [ "$DB_AGE" -ge 3600 ]; then
               # Unknown digest means the hint is missing or unreadable: commit
               # the database rather than risk withholding a real change.
               echo "signals changed or hourly checkpoint due — committing the database"

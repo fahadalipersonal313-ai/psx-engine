@@ -388,7 +388,12 @@ PULLBACK_EMA_SPAN = 20
 # serves index EOD at the same /timeseries/eod/{symbol} endpoint as stocks.
 # KMI30 = the Shariah index matching this engine's universe (KSE100 = broad
 # market). Confirmed live 2026-06-14: KSE100, KMI30, KSE30, ALLSHR, KMIALLSHR.
-BENCHMARK_INDEX = "KMI30"
+# v8 (2026-09-30, user's decision): KSE100. PSX's index EOD path answers 404
+# since 2026-09-25 and KMI30 appears in no dated official file, so its
+# 2026-09-24..28 closes could not be recovered without fabrication. KSE100 is
+# printed on PSX's dated closing-rates PDF (psx_index_pdf). Relative strength
+# and the regime warning are now measured against the broad market.
+BENCHMARK_INDEX = "KSE100"
 REGIME_EMA_SPAN = 40           # fits the 42-session contract while retaining a slow trend filter
 REGIME_GATE_ENABLED = False    # market direction is a warning; stock-specific checks remain
 # Relative strength: stock return minus index return over these trading-day
@@ -919,7 +924,7 @@ NEWS_WINDOW = {
 PSX_HOLIDAYS = []
 
 # Versioned technical research contract. No calibrated probability is available.
-STRATEGY_VERSION = "technical_swing_short_v7"   # falling market warns but does not veto
+STRATEGY_VERSION = "technical_swing_short_v8"   # v7 rules, KSE100 benchmark (was KMI30)
 REPLAY_LOOKBACK = 21
 UNIVERSE_KNOWN_FROM = "2026-09-09"  # dated 60-name selection; earlier membership not inferred
 FEATURE_HISTORY_LIMIT = 42

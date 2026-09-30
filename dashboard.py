@@ -476,11 +476,12 @@ except Exception:
         rows = []
 
 if not rows:
-    db.init_db()
-    for sym in config.STOCKS:
-        r = db.last_run(sym)
-        if r:
-            rows.append(dict(r))
+    # Deployment main intentionally carries no large runtime DB. The bundled
+    # snapshot is the final startup fallback; never create an empty DB during
+    # first paint because that masks a runtime-state fetch problem.
+    st.title("PSX Shariah Engine")
+    st.error("Runtime snapshot is temporarily unavailable. Please refresh shortly.")
+    st.stop()
 
 from history_view import explain_run
 for _r in rows:
