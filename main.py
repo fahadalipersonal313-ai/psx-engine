@@ -316,6 +316,37 @@ def _fill_session_gap(cutoff, max_days=31):
         return None
 
 
+def _bank_benchmark(cutoff, first_days=150, max_days=200):
+    """Bank KSE100 closes from PSX's dated closing-rates PDF through `cutoff`.
+
+    First run fetches ~100 sessions (enough for the 42-session contract, the
+    40-session regime EMA and the 41-session RS lookback); later runs fetch
+    only the missing days. Logged, not raised: without the row decide()
+    refuses the symbols, which withholds signals but never corrupts one.
+    """
+    import psx_index_pdf
+    from datetime import date as _date, timedelta as _td
+    if config.BENCHMARK_INDEX != psx_index_pdf.SYMBOL:
+        return None
+    hist = db.get_eod_history(psx_index_pdf.SYMBOL, limit=1)
+    last = hist[-1] if hist else None
+    if last and last["date"] >= cutoff:
+        return None
+    start = (_date.fromisoformat(last["date"]) + _td(days=1) if last
+             else _date.fromisoformat(cutoff) - _td(days=first_days))
+    if (_date.fromisoformat(cutoff) - start).days > max_days:
+        log.error("KSE100 gap from %s exceeds %d days -- run "
+                  "`python psx_index_pdf.py START END` deliberately", start, max_days)
+        return None
+    try:
+        out = psx_index_pdf.backfill(start.isoformat(), cutoff, last=last)
+        log.info("banked KSE100 %s..%s: %s", start, cutoff, out)
+        return out
+    except Exception as exc:
+        log.warning("KSE100 banking %s..%s failed: %s", start, cutoff, exc)
+        return None
+
+
 def full_run(fast=False):
     """fast=True trims everything that does not affect TODAY'S signals, so the
     first cycle after the 09:32 open commits sooner. Safe because:
@@ -331,9 +362,7 @@ def full_run(fast=False):
     db.init_db()
     news_items = []
     # Technical strategy never fetches or waits on optional news adapters.
-    index_eod, index_meta = market_regime.fetch_index()
     cutoff = session_calendar.last_completed()
-    regime = market_regime.assess_regime(index_eod)
     # Daily bars come from PSX's official market-summary DOWNLOAD. The old
     # /historical view refuses automated requests since 2026-09-25 -- 403 even
     # with browser-style headers -- and our rule is no protection bypass.
@@ -342,6 +371,11 @@ def full_run(fast=False):
     import psx_mkt_summary
     cutoff, bars = _resolve_cutoff(cutoff, psx_mkt_summary.fetch_day)
     _fill_session_gap(cutoff)
+    # The benchmark must be banked through the cutoff BEFORE it is loaded, or
+    # decide() sees stock and index sessions that differ and refuses every name.
+    _bank_benchmark(cutoff)
+    index_eod, index_meta = market_regime.fetch_index()
+    regime = market_regime.assess_regime(index_eod)
     for bar in bars:
         if bar['symbol'] in config.STOCKS:
             db.save_hl_bar(bar['symbol'], cutoff, bar['open'], bar['high'], bar['low'],

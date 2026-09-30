@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads | sources | reconcile | dump | index | index2 | index3'
+        description: 'probe | discover | downloads | sources | reconcile | dump | index | index2 | index3 | kse100'
         default: 'probe'
 
 permissions:
@@ -34,5 +34,6 @@ jobs:
             index)     python tools/index_probe.py ;;
             index2)    pip install -q pypdf && python tools/index_probe2.py ;;
             index3)    python tools/index_probe3.py ;;
+            kse100)    pip install -q pypdf && cp psx_engine.db /tmp/probe.db && PSX_DB_PATH=/tmp/probe.db python psx_index_pdf.py 2026-05-02 2026-09-29 ;;
             *)         python tools/psx_diagnose.py ;;
           esac

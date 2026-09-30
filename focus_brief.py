@@ -30,7 +30,7 @@ FLAG_LABEL = {
     "obv": "OBV rising (volume confirms)",
     "momentum": "20-day momentum positive",
     "bb": "Bollinger position constructive",
-    "rs": "Outperforming KMI30",
+    "rs": f"Outperforming {config.BENCHMARK_INDEX}",
     "accumulation": "Accumulation footprint",
 }
 
