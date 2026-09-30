@@ -52,13 +52,17 @@ def parse(text, day):
     Raises ValueError if the header date differs from `day` or the KSE100
     lines are missing: a changed layout must fail loudly, never guess.
     """
-    want = datetime.strptime(day, "%Y-%m-%d")
-    stamp = f"{want.strftime('%B')} {want.day},{want.year}"
+    want = datetime.strptime(day, "%Y-%m-%d").date()
     flat = re.sub(r"\s+", " ", text)
-    if stamp not in flat:
-        found = re.search(r"(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day ([A-Za-z]+ \d{1,2},\d{4})", flat)
+    # PSX pads single-digit days on some files ("May 04,2026"), not others.
+    found = re.search(r"(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day ([A-Za-z]+) (\d{1,2}),(\d{4})", flat)
+    try:
+        stated = datetime.strptime(" ".join(found.groups()), "%B %d %Y").date() if found else None
+    except ValueError:
+        stated = None
+    if stated != want:
         raise ValueError(f"closing_rates for {day} is dated "
-                         f"{found.group(1) if found else 'unknown'}, not {stamp}")
+                         f"{stated or 'unknown'}, not {want}")
     cur = re.search(r"C\.\s*KSE100 Ind:\s*" + _NUM, flat)
     prev = re.search(r"P\.\s*KSE100 Ind:\s*" + _NUM, flat)
     vol = re.search(r"C\.\s*Vol\.:\s*" + _NUM, flat)

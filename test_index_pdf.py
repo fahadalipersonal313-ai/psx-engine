@@ -24,8 +24,12 @@ class ParseTests(unittest.TestCase):
         page = PAGE.replace("September 29,2026", "October 1,2026")
         self.assertEqual(ip.parse(page, "2026-10-01")["close"], 169600.41)
 
+    def test_zero_padded_day_matches(self):
+        page = PAGE.replace("Tuesday September 29,2026", "Monday May 04,2026")
+        self.assertEqual(ip.parse(page, "2026-05-04")["close"], 169600.41)
+
     def test_wrong_date_is_refused(self):
-        with self.assertRaisesRegex(ValueError, "September 29,2026"):
+        with self.assertRaisesRegex(ValueError, "2026-09-29"):
             ip.parse(PAGE, "2026-09-28")
 
     def test_missing_index_line_is_refused(self):
