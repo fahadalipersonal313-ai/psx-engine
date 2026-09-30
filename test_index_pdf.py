@@ -71,7 +71,7 @@ class BankBenchmarkTests(unittest.TestCase):
         with patch("database.get_eod_history", return_value=[]), \
              patch("psx_index_pdf.backfill", return_value={"banked": [], "no_file": []}) as bf:
             main._bank_benchmark("2026-09-29")
-        self.assertEqual(bf.call_args[0][:2], ("2026-05-02", "2026-09-29"))
+        self.assertEqual(bf.call_args[0][:2], ("2026-07-11", "2026-09-29"))
 
     def test_failure_is_logged_not_raised(self):
         with patch("database.get_eod_history", return_value=[{"date": "2026-09-24", "close": 1}]), \

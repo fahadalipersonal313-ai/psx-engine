@@ -316,10 +316,10 @@ def _fill_session_gap(cutoff, max_days=31):
         return None
 
 
-def _bank_benchmark(cutoff, first_days=150, max_days=200):
+def _bank_benchmark(cutoff, first_days=80, max_days=200):
     """Bank KSE100 closes from PSX's dated closing-rates PDF through `cutoff`.
 
-    First run fetches ~100 sessions (enough for the 42-session contract, the
+    First run fetches ~55 sessions (enough for the 42-session contract, the
     40-session regime EMA and the 41-session RS lookback); later runs fetch
     only the missing days. Logged, not raised: without the row decide()
     refuses the symbols, which withholds signals but never corrupts one.

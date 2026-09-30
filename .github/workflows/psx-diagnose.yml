@@ -15,7 +15,7 @@ permissions:
 jobs:
   diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
         with:
@@ -34,6 +34,6 @@ jobs:
             index)     python tools/index_probe.py ;;
             index2)    pip install -q pypdf && python tools/index_probe2.py ;;
             index3)    python tools/index_probe3.py ;;
-            kse100)    pip install -q pypdf && cp psx_engine.db /tmp/probe.db && PSX_DB_PATH=/tmp/probe.db python psx_index_pdf.py 2026-05-02 2026-09-29 ;;
+            kse100)    pip install -q pypdf && cp psx_engine.db /tmp/probe.db && PSX_DB_PATH=/tmp/probe.db python psx_index_pdf.py 2026-07-13 2026-09-29 ;;
             *)         python tools/psx_diagnose.py ;;
           esac

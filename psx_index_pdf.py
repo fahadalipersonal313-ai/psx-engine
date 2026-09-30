@@ -35,8 +35,8 @@ log = logging.getLogger("psx_index_pdf")
 URL = "https://dps.psx.com.pk/download/closing_rates/{day}.pdf"
 SOURCE = "PSX closing_rates PDF (official download)"
 SYMBOL = "KSE100"
-TIMEOUT = 60
-PAUSE = 1.0
+TIMEOUT = 30
+PAUSE = 0.3
 TOLERANCE = 0.011   # the PDF prints two decimals
 
 _NUM = r"([0-9][0-9,]*\.?[0-9]*)"
@@ -116,7 +116,10 @@ def backfill(start, end, fetch=fetch_day, save=None, last=None, pause=PAUSE):
     while d <= stop:
         day = d.isoformat()
         if d.weekday() < 5:
+            t0 = time.monotonic()
             row = fetch(day)
+            log.info("KSE100 %s: %s (%.1fs)", day,
+                     "no file" if row is None else row["close"], time.monotonic() - t0)
             if row is None:
                 no_file.append(day)
             else:
