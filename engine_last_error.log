@@ -1,9 +1,9 @@
-main.py run FAILED at 2026-09-29T20:27:18Z
+main.py run FAILED at 2026-09-30T02:56:15Z
 
-2026-09-30 01:27:15,819 INFO database: Database initialised at /home/runner/work/psx-engine/psx-engine/psx_engine.db
-2026-09-30 01:27:15,819 INFO main: === Engine run started ===
-2026-09-30 01:27:15,820 INFO database: Database initialised at /home/runner/work/psx-engine/psx-engine/psx_engine.db
-2026-09-30 01:27:17,155 WARNING data_fetcher: EOD fetch failed for KMI30: 404 Client Error: Not Found for url: https://dps.psx.com.pk/timeseries/eod/KMI30
+2026-09-30 07:56:12,270 INFO database: Database initialised at /home/runner/work/psx-engine/psx-engine/psx_engine.db
+2026-09-30 07:56:12,271 INFO main: === Engine run started ===
+2026-09-30 07:56:12,272 INFO database: Database initialised at /home/runner/work/psx-engine/psx-engine/psx_engine.db
+2026-09-30 07:56:13,720 WARNING data_fetcher: EOD fetch failed for KMI30: 404 Client Error: Not Found for url: https://dps.psx.com.pk/timeseries/eod/KMI30
 Traceback (most recent call last):
   File "/home/runner/work/psx-engine/psx-engine/main.py", line 742, in <module>
     main()
