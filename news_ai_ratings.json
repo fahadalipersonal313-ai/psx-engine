@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-01T08:38:39Z",
+ "as_of": "2026-10-01T09:38:14Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 33,
+ "articles_read": 17,
  "read_urls": [
   "https://mettisglobal.news/Attock-Cement-to-install-20MWh-battery-storage-5MW-solar-at-plant-site-63866",
   "https://mettisglobal.news/FBR-busts-wealth-statement-fraud-involving-Rs94bn-63888",
@@ -21,23 +21,23 @@
   "https://mettisglobal.news/PSX-Closing-Bell-A-Little-Lift-63865",
   "https://mettisglobal.news/PSX-adds-record-25281-new-investors-in-September-63890",
   "https://mettisglobal.news/RTO-Hyderabad-collects-Rs29bn-in-first-quarter-of-FY27-63885",
-  "https://mettisglobal.news/SBP-maintains-remuneration-rate-on-Special-Cash-Reserve-Account-for-October-63875",
   "https://mettisglobal.news/SGPL-loss-narrows-2-in-FY26-63887",
   "https://mettisglobal.news/SOYASUP-Closed-Period-Gets-Violated-by-an-Insider-63869",
   "https://mettisglobal.news/SOYASUP-FY26-profit-skyrockets-57-63893",
   "https://mettisglobal.news/Senator-Aurangzeb-stresses-govt-focus-on-private-sectorled-growth-63891",
   "https://mettisglobal.news/September-CPI-seen-at-1039-63892",
+  "https://mettisglobal.news/September-inflation-rises-to-103-63894",
   "https://mettisglobal.news/Treet-Corporation-FY26-profit-jumps-40-to-Rs779m-63863",
-  "https://propakistani.pk/2026/10/01/108-pakistani-universities-feature-in-world-university-rankings-2027/",
   "https://propakistani.pk/2026/10/01/cm-kp-inaugurates-new-rs-1-6-billion-underpass-in-peshawar/",
   "https://propakistani.pk/2026/10/01/fc-balochistan-announces-jobs/",
+  "https://propakistani.pk/2026/10/01/gemini-4-argon-beats-gpt-6-astra-at-40-the-cost/",
   "https://propakistani.pk/2026/10/01/government-issues-e-filing-rules-2026-for-overseas-pakistanis/",
+  "https://propakistani.pk/2026/10/01/govt-seeks-parliaments-nod-for-174-soe-law-amendments-under-imf-program/",
   "https://propakistani.pk/2026/10/01/hec-announces-jobs-with-6-figure-salaries/",
-  "https://propakistani.pk/2026/10/01/karachi-traffic-police-issues-diversion-plan-for-sir-syed-flyover-closure/",
-  "https://propakistani.pk/2026/10/01/minority-students-to-receive-support-for-css-and-pms-exams/",
-  "https://propakistani.pk/2026/10/01/paa-elects-new-central-executive-committee-for-2026-2028/",
-  "https://propakistani.pk/2026/10/01/pakistani-shooter-books-place-in-asian-games-final/",
-  "https://propakistani.pk/2026/10/01/police-arrests-suspect-for-forgery-and-impersonating-government-officer/"
+  "https://propakistani.pk/2026/10/01/ncert-hec-join-hands-to-boost-cybersecurity-in-universities/",
+  "https://propakistani.pk/2026/10/01/road-prince-raises-prices-of-70cc-and-100cc-motorcycles/",
+  "https://propakistani.pk/2026/10/01/senate-panel-recommends-cashless-health-insurance-for-employees/",
+  "https://propakistani.pk/2026/10/01/sindh-records-pakistans-lowest-rainfall-this-monsoon-season/"
  ],
  "count": 2,
  "ratings": {
@@ -45,8 +45,8 @@
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "FY26 profit -9% to Rs5.48bn; Rs2 final dividend only partly offsets",
+   "confidence": 0.7,
+   "reason": "FY26 profit down 9%, EPS 15.59 vs 17.10; Rs2 final dividend only partial offset",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NML-FY26-profit-softens-9-63862"
@@ -54,10 +54,10 @@
   },
   "TREET": {
    "rating": "positive",
-   "horizon": "single_session",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 consolidated profit +40% to Rs779m, EPS Rs2.02 vs 1.36",
+   "confidence": 0.75,
+   "reason": "FY26 profit +40% on lower finance cost and better margin; EPS 2.02 vs 1.36",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Treet-Corporation-FY26-profit-jumps-40-to-Rs779m-63863"
@@ -67,10 +67,10 @@
  "sectors": {
   "Power Generation": {
    "rating": "negative",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Solar boom cuts grid demand, strains repayment of coal IPPs (Bloomberg)",
+   "reason": "Solar boom cuts grid demand, strains repayment economics of coal IPPs (Bloomberg via BR)",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40442166/pakistans-solar-boom-adds-pressure-on-chinese-backed-coal-plants-report"
@@ -80,8 +80,8 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "IHC questions 7-yr OMC licence moratorium; entry barrier may be lifted",
+   "confidence": 0.25,
+   "reason": "IHC seeks Ogra report on 7-yr OMC licence moratorium; possible new entrants, early stage",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2033867/ihc-questions-7-year-moratorium-on-omcs"
@@ -92,7 +92,7 @@
    "horizon": "multi_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "T-bill cut-offs up to 75bp above 11.5% policy rate lift asset yields",
+   "reason": "T-bill cut-offs up to 75bp above 11.5% policy rate; rate-hike speculation lifts asset yields",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2033864/t-bill-yields-jump-beyond-policy-rate"
