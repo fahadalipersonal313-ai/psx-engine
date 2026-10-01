@@ -85,7 +85,8 @@ def fetch_day(day, session=None):
     """KSE100 row for `day`, or None when PSX publishes no file (holiday or
     not yet published). Any other failure raises."""
     s = session or requests
-    r = s.get(URL.format(day=day), headers=config.REQUEST_HEADERS, timeout=TIMEOUT)
+    from psx_mkt_summary import get_with_retry
+    r = get_with_retry(s, URL.format(day=day), headers=config.REQUEST_HEADERS, timeout=TIMEOUT)
     if r.status_code == 404:
         return None
     r.raise_for_status()

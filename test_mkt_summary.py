@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 
 import psx_mkt_summary as ms
 
@@ -122,3 +123,39 @@ class SessionGapFill(unittest.TestCase):
             database.save_hl_bar("OGDC", "2026-01-05", 1, 2, 0.5, 1.5, 10, ms.SOURCE)
             with mock.patch.object(ms, "backfill", side_effect=AssertionError("called")):
                 self.assertIsNone(main._fill_session_gap("2026-09-29"))
+
+
+class RetryTests(unittest.TestCase):
+    def _session(self, outcomes):
+        calls = []
+        class S:
+            def get(self, url, **kw):
+                calls.append(url)
+                o = outcomes.pop(0)
+                if isinstance(o, Exception):
+                    raise o
+                return o
+        return S(), calls
+
+    def test_dropped_connection_is_retried_once(self):
+        import requests, psx_mkt_summary as m
+        s, calls = self._session([requests.ConnectionError("closed"), "ok"])
+        with mock.patch("psx_mkt_summary.time.sleep") as sl:
+            self.assertEqual(m.get_with_retry(s, "u"), "ok")
+        self.assertEqual(len(calls), 2)
+        sl.assert_called_once()
+
+    def test_second_failure_raises(self):
+        import requests, psx_mkt_summary as m
+        s, calls = self._session([requests.Timeout("t"), requests.ConnectionError("c")])
+        with mock.patch("psx_mkt_summary.time.sleep"), self.assertRaises(requests.ConnectionError):
+            m.get_with_retry(s, "u")
+        self.assertEqual(len(calls), 2)
+
+    def test_http_refusal_is_not_retried(self):
+        import psx_mkt_summary as m
+        class R:
+            status_code = 403
+        s, calls = self._session([R()])
+        self.assertEqual(m.get_with_retry(s, "u").status_code, 403)
+        self.assertEqual(len(calls), 1)

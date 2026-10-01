@@ -39,6 +39,23 @@ SOURCE = "PSX mkt_summary historical (official download)"
 TIMEOUT = 30
 PAUSE = 1.0
 MIN_FIELDS = 9
+RETRY_WAIT = 5.0
+
+
+def get_with_retry(s, url, **kw):
+    """GET with ONE retry on a dropped connection or timeout.
+
+    On 2026-10-01 a cycle was lost to a single "Remote end closed connection"
+    from PSX. Only transport failures are retried: an HTTP refusal (403 and
+    the like) is a real answer and still fails at once, and one retry is
+    the limit so a sustained outage is never hammered.
+    """
+    try:
+        return s.get(url, **kw)
+    except (requests.ConnectionError, requests.Timeout) as exc:
+        log.warning("PSX request failed (%s); retrying once in %.0fs", exc, RETRY_WAIT)
+        time.sleep(RETRY_WAIT)
+        return s.get(url, **kw)
 
 
 def _num(text):
@@ -108,7 +125,7 @@ def fetch_day(date_str, session=None):
     """One session's full-market OHLCV. [] when PSX publishes no file for the
     day (a holiday, or not yet published). Any other failure raises."""
     s = session or requests
-    r = s.get(URL.format(day=date_str), headers=config.REQUEST_HEADERS, timeout=TIMEOUT)
+    r = get_with_retry(s, URL.format(day=date_str), headers=config.REQUEST_HEADERS, timeout=TIMEOUT)
     if r.status_code == 404:
         return []
     r.raise_for_status()
