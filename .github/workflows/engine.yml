@@ -239,6 +239,12 @@ jobs:
             else
               echo "signals unchanged ($CHANGED) — database not committed this cycle"
             fi
+            # The dashboard paints first from this snapshot on runtime-state.
+            # main.py rebuilds it every run but it was never staged, so the
+            # dashboard showed 2026-09-27 rows while the database was current.
+            if [ "$run_ok" = "1" ] && [ -f dashboard_snapshot.json ]; then
+              git add -- dashboard_snapshot.json
+            fi
             git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
               # A push race is NOT the same thing as a database conflict, and

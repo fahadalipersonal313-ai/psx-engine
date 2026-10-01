@@ -1,309 +1,102 @@
 {
-  "as_of": "2026-09-25T10:40Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 65,
-  "read_urls": [
-    "https://mettisglobal.news/BBFL-FY26-profit-jumps-4-63726",
-    "https://mettisglobal.news/BYD-marks-fastest-NEV-rampup-in-Pakistans-auto-history-63743",
-    "https://mettisglobal.news/Biafo-Industries-FY26-profit-stays-flat-at-Rs389m-63713",
-    "https://mettisglobal.news/CDA-seals-offices-of-illegal-Itifaq-Residencia-scheme-63744",
-    "https://mettisglobal.news/Gold-drops-to-4282-on-US-Fed-hike-expectations-63692",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs5600-per-tola-63707",
-    "https://mettisglobal.news/Gold-steady-at-4267-set-for-weekly-loss-on-firm-dollar-63729",
-    "https://mettisglobal.news/Insurance-companies-pay-over-1m-claims-worth-Rs542bn-in-2025-SECP-63735",
-    "https://mettisglobal.news/LSE-SPACII-acquires-269000-MPIL-shares-for-Rs180m-63728",
-    "https://mettisglobal.news/Living-Abroad-Taxable-in-Pakistan-63699",
-    "https://mettisglobal.news/Macter-introduces-Hepanox-anticoagulant-in-PFS-format-63741",
-    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs108tr-63745",
-    "https://mettisglobal.news/PM-Shehbaz-Prince-Rahim-Aga-Khan-reaffirm-commitment-to-PakistanAKDN-partnership-63748",
-    "https://mettisglobal.news/PM-highlights-investment-opportunities-for-US-investors-in-manufacturing-IT-AI-sectors-63739",
-    "https://mettisglobal.news/PRL-enters-upgrade-agreement-with-govt-to-modernize-refinery-63727",
-    "https://mettisglobal.news/PSO-FY26-Profit-Surges-22x-63740",
-    "https://mettisglobal.news/Pak-Datacom-Limited-raises-satellite-bandwidth-utilisation-eightfold-in-one-year-63717",
-    "https://mettisglobal.news/Pakistan-Saudi-Arabia-Turkiye-review-Makkah-Defence-Pact-progress-63737",
-    "https://mettisglobal.news/SAZEW-to-bring-ARCFOX-EVs-to-Pakistan-63738",
-    "https://mettisglobal.news/SBP-launches-Pasban-Remittance-Rewards-63747",
-    "https://mettisglobal.news/SBP-reserves-increase-11m-to-21bn-total-holdings-reach-268bn-63720",
-    "https://mettisglobal.news/Service-Industries-retains-AA-longterm-rating-outlook-stable-63736",
-    "https://mettisglobal.news/Treet-Battery-approves-Rs2bn-debttoequity-conversion-63716",
-    "https://mettisglobal.news/Vanaspati-manufacturers-invited-to-set-up-industrial-city-at-Port-Qasim-63746",
-    "https://mettisglobal.news/Weekly-SPI-increased-by-099-63742",
-    "https://propakistani.pk/2026/09/25/citizens-with-criminal-record-banned-from-driving-in-lahore/",
-    "https://propakistani.pk/2026/09/25/iran-embarasses-israel-in-unique-stunt/",
-    "https://propakistani.pk/2026/09/25/kp-imposes-monthly-sanitation-fee/",
-    "https://propakistani.pk/2026/09/25/pakistan-misses-asian-games-kabaddi-semifinals-for-first-time-in-history/",
-    "https://propakistani.pk/2026/09/25/pso-delivers-resilient-fy26-performance-as-core-business-grows-strongly-through-hormuz-crisis/",
-    "https://propakistani.pk/2026/09/25/punjab-launches-safe-city-project-expansion-for-rs-16-billion/",
-    "https://propakistani.pk/2026/09/25/refineries-swing-to-massive-rs-54-8-billion-profits-in-fy26-after-prior-year-loss/",
-    "https://propakistani.pk/2026/09/25/samsung-s26-fe-5g-launches-in-pakistan-with-early-bird-discount/",
-    "https://propakistani.pk/2026/09/25/sindh-launches-fake-news-monitoring-cell-with-nccia/",
-    "https://propakistani.pk/2026/09/25/sindh-launches-new-digital-system-for-environmental-monitoring/",
-    "https://www.brecorder.com/news/40441031/can-ai-bring-pakistans-small-retail-investors-into-the-capital-markets",
-    "https://www.brecorder.com/news/40441192/copper-nudges-up-set-for-weekly-gain-on-china-tightness",
-    "https://www.brecorder.com/news/40441193/climate-commitments-must-translate-into-tangible-results-says-aurangzeb",
-    "https://www.brecorder.com/news/40441194/thai-august-exports-rise-243-on-year-close-to-forecast",
-    "https://www.brecorder.com/news/40441195/hormuz-commodity-ship-transits-fall-to-nine-shiptracking-data-shows",
-    "https://www.brecorder.com/news/40441196/wheat-heads-for-4th-straight-weekly-loss-on-black-sea-export-hopes",
-    "https://www.brecorder.com/news/40441197/japan-says-trump-voiced-concern-over-weak-yen-in-summit-with-pm-takaichi",
-    "https://www.brecorder.com/news/40441198/scaloni-says-he-did-his-best-to-convince-messi-to-return-for-argentina-farewell",
-    "https://www.brecorder.com/news/40441199/japanese-shares-rise-on-ai-shares-rally-dividend-hunt",
-    "https://www.brecorder.com/news/40441200/palm-opens-over-2-lower-on-weaker-crude-and-chicago-soyoil-set-for-weekly-loss",
-    "https://www.brecorder.com/news/40441201/india-bonds-set-for-yet-another-selloff-as-treasury-rout-deepens",
-    "https://www.brecorder.com/news/40441202/australia-and-nz-dollars-are-on-the-ropes-bonds-show-some-grit",
-    "https://www.brecorder.com/news/40441203/suzuki-aims-to-halve-vehicle-development-time-by-2030",
-    "https://www.brecorder.com/news/40441204/australian-shares-head-for-fourth-weekly-loss-on-oil-driven-inflation-fears",
-    "https://www.brecorder.com/news/40441205/hunan-resources-resumes-dhabeji-factory-operations-after-seven-month-closure",
-    "https://www.brecorder.com/news/40441206/dakota-johnson-says-thriller-verity-puts-truth-and-trust-to-the-test-much-like-real-life",
-    "https://www.brecorder.com/news/40441207/russian-iranian-foreign-ministers-say-only-diplomatic-solution-to-conflict-around-iran",
-    "https://www.brecorder.com/news/40441208/south-african-rand-softens-as-markets-absorb-central-bank-rate-hike",
-    "https://www.brecorder.com/news/40441209/pakistan-ksa-turkiye-review-institutionalisation-of-makkah-defence-pact",
-    "https://www.brecorder.com/news/40441210/sazgar-to-introduce-baics-arcfox-evs-in-pakistan",
-    "https://www.brecorder.com/news/40441211/civil-military-leadership-working-in-tandem-to-revitalise-pakistans-economy-pm-shehbaz",
-    "https://www.brecorder.com/news/40441212/pakistans-insurers-settle-over-1mn-claims-in-2025-secp",
-    "https://www.brecorder.com/news/40441214/sri-lanka-grab-dramatic-win-over-england-to-square-series",
-    "https://www.brecorder.com/news/40441215/turkish-parliament-speaker-expects-pakistan-saudi-arabia-defence-pact-to-be-submitted-for-approval-next-month",
-    "https://www.brecorder.com/news/40441216/ifc-wb-reaffirm-cooperation-with-pakistan-on-key-development-priorities",
-    "https://www.brecorder.com/news/40441217/indian-rupee-soothed-by-intervention-surge-in-forward-premiums-tipped-to-cool",
-    "https://www.brecorder.com/news/40441218/heavy-rains-may-trigger-flash-floods-in-northern-areas-through-sept-30-ndma",
-    "https://www.brecorder.com/news/40441219/india-shares-log-longest-weekly-losing-run-since-2020-as-oil-prices-bite",
-    "https://www.brecorder.com/news/40441220/pso-reports-over-rs15bn-profit-in-fy2026",
-    "https://www.brecorder.com/news/40441221/palm-slides-to-over-7-week-low-on-stock-fears"
-  ],
-  "count": 6,
-  "ratings": {
-    "PSO": {
-      "rating": "highly_positive",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.85,
-      "reason": "FY26 results out: PAT up sharply, EPS higher, Rs10/share final dividend declared",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441220/pso-reports-over-rs15bn-profit-in-fy2026",
-        "https://mettisglobal.news/PSO-FY26-Profit-Surges-22x-63740",
-        "https://propakistani.pk/2026/09/25/pso-delivers-resilient-fy26-performance-as-core-business-grows-strongly-through-hormuz-crisis/"
-      ]
-    },
-    "NRL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Signed refinery upgrade agreement with govt under Brownfield Refining Policy",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PRL-enters-upgrade-agreement-with-govt-to-modernize-refinery-63727"
-      ]
-    },
-    "PRL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Signed refinery upgrade agreement with govt under Brownfield Refining Policy",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PRL-enters-upgrade-agreement-with-govt-to-modernize-refinery-63727"
-      ]
-    },
-    "ATRL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "Signed refinery upgrade agreement with govt under Brownfield Refining Policy",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PRL-enters-upgrade-agreement-with-govt-to-modernize-refinery-63727"
-      ]
-    },
-    "SAZEW": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Intends to introduce BAIC ARCFOX premium EV brand, expanding NEV portfolio",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441210/sazgar-to-introduce-baics-arcfox-evs-in-pakistan",
-        "https://mettisglobal.news/SAZEW-to-bring-ARCFOX-EVs-to-Pakistan-63738"
-      ]
-    },
-    "TREET": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Board approved Rs2bn debt-to-equity conversion, subject to SECP/shareholder approval",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Treet-Battery-approves-Rs2bn-debttoequity-conversion-63716"
-      ]
-    }
+ "as_of": "2026-10-01T09:38:14Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 17,
+ "read_urls": [
+  "https://mettisglobal.news/Attock-Cement-to-install-20MWh-battery-storage-5MW-solar-at-plant-site-63866",
+  "https://mettisglobal.news/FBR-busts-wealth-statement-fraud-involving-Rs94bn-63888",
+  "https://mettisglobal.news/FBR-extends-deadline-for-filing-Tax-Year-2026-returns-till-Oct-15-63877",
+  "https://mettisglobal.news/FBR-tax-collection-reaches-over-Rs3tr-in-JulySeptember-63886",
+  "https://mettisglobal.news/Gold-flat-on-firm-dollar-63889",
+  "https://mettisglobal.news/Gold-holds-steady-near-4175-ahead-of-US-inflation-data-63843",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs4300-per-tola-63860",
+  "https://mettisglobal.news/IGI-Holdings-completes-acquisition-of-98-stake-in-Akzo-Nobel-Pakistan-63867",
+  "https://mettisglobal.news/Inflation-projected-at-11-in-September-FY27-63876",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63874",
+  "https://mettisglobal.news/NML-FY26-profit-softens-9-63862",
+  "https://mettisglobal.news/Naya-Nazimabad-Apartment-REIT-gong-ceremony-set-for-Oct-1-at-PSX-63871",
+  "https://mettisglobal.news/OGRA-sets-LPG-maximum-consumer-price-at-Rs27934-per-kg-from-October-1-63880",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Little-Lift-63865",
+  "https://mettisglobal.news/PSX-adds-record-25281-new-investors-in-September-63890",
+  "https://mettisglobal.news/RTO-Hyderabad-collects-Rs29bn-in-first-quarter-of-FY27-63885",
+  "https://mettisglobal.news/SGPL-loss-narrows-2-in-FY26-63887",
+  "https://mettisglobal.news/SOYASUP-Closed-Period-Gets-Violated-by-an-Insider-63869",
+  "https://mettisglobal.news/SOYASUP-FY26-profit-skyrockets-57-63893",
+  "https://mettisglobal.news/Senator-Aurangzeb-stresses-govt-focus-on-private-sectorled-growth-63891",
+  "https://mettisglobal.news/September-CPI-seen-at-1039-63892",
+  "https://mettisglobal.news/September-inflation-rises-to-103-63894",
+  "https://mettisglobal.news/Treet-Corporation-FY26-profit-jumps-40-to-Rs779m-63863",
+  "https://propakistani.pk/2026/10/01/cm-kp-inaugurates-new-rs-1-6-billion-underpass-in-peshawar/",
+  "https://propakistani.pk/2026/10/01/fc-balochistan-announces-jobs/",
+  "https://propakistani.pk/2026/10/01/gemini-4-argon-beats-gpt-6-astra-at-40-the-cost/",
+  "https://propakistani.pk/2026/10/01/government-issues-e-filing-rules-2026-for-overseas-pakistanis/",
+  "https://propakistani.pk/2026/10/01/govt-seeks-parliaments-nod-for-174-soe-law-amendments-under-imf-program/",
+  "https://propakistani.pk/2026/10/01/hec-announces-jobs-with-6-figure-salaries/",
+  "https://propakistani.pk/2026/10/01/ncert-hec-join-hands-to-boost-cybersecurity-in-universities/",
+  "https://propakistani.pk/2026/10/01/road-prince-raises-prices-of-70cc-and-100cc-motorcycles/",
+  "https://propakistani.pk/2026/10/01/senate-panel-recommends-cashless-health-insurance-for-employees/",
+  "https://propakistani.pk/2026/10/01/sindh-records-pakistans-lowest-rainfall-this-monsoon-season/"
+ ],
+ "count": 2,
+ "ratings": {
+  "NML": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "FY26 profit down 9%, EPS 15.59 vs 17.10; Rs2 final dividend only partial offset",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/NML-FY26-profit-softens-9-63862"
+   ]
   },
-  "sectors": {
-    "Refinery": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent ~$105 on Hormuz strain typically supports PSX refining/inventory margins",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441195/hormuz-commodity-ship-transits-fall-to-nine-shiptracking-data-shows",
-        "https://www.brecorder.com/news/40441219/india-shares-log-longest-weekly-losing-run-since-2020-as-oil-prices-bite"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "PSO's strong FY26 profit signals resilient OMC margins despite Hormuz disruption risk",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441220/pso-reports-over-rs15bn-profit-in-fy2026",
-        "https://mettisglobal.news/PSO-FY26-Profit-Surges-22x-63740",
-        "https://propakistani.pk/2026/09/25/pso-delivers-resilient-fy26-performance-as-core-business-grows-strongly-through-hormuz-crisis/"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Brent near $105 on Hormuz strain directly lifts E&P realized crude/gas prices",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441195/hormuz-commodity-ship-transits-fall-to-nine-shiptracking-data-shows"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Routine SBP liquidity injection and FX reserve updates; no bank-specific mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/OMO-Result-SBP-injects-Rs108tr-63745",
-        "https://mettisglobal.news/SBP-reserves-increase-11m-to-21bn-total-holdings-reach-268bn-63720"
-      ]
-    },
-    "Food": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Govt invites vanaspati/ghee manufacturers to new Port Qasim industrial city",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Vanaspati-manufacturers-invited-to-set-up-industrial-city-at-Port-Qasim-63746"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "New industrial city invitation at Port Qasim could lift port-linked logistics activity",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Vanaspati-manufacturers-invited-to-set-up-industrial-city-at-Port-Qasim-63746"
-      ]
-    },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "CDA enforcement on unlicensed housing scheme; no listed real-estate mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/CDA-seals-offices-of-illegal-Itifaq-Residencia-scheme-63744"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "SAZEW-specific EV announcement; does not reprice the whole assembler sector",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441210/sazgar-to-introduce-baics-arcfox-evs-in-pakistan",
-        "https://mettisglobal.news/SAZEW-to-bring-ARCFOX-EVs-to-Pakistan-63738"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "No fertilizer-specific mechanism; PM investment remarks and global wheat prices are indirect",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PM-highlights-investment-opportunities-for-US-investors-in-manufacturing-IT-AI-sectors-63739"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "PSO cites supply-chain/distribution resilience in FY26 results; PSO itself is not a logistics name",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40441220/pso-reports-over-rs15bn-profit-in-fy2026",
-        "https://mettisglobal.news/PSO-FY26-Profit-Surges-22x-63740",
-        "https://propakistani.pk/2026/09/25/pso-delivers-resilient-fy26-performance-as-core-business-grows-strongly-through-hormuz-crisis/"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Senate body probing telco overcharging raises regulatory/margin risk; headline-only detail",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2032477/senate-body-orders-probe-into-overcharging-by-telco"
-      ]
-    },
-    "Technology/Telecom Devices": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Telco overcharging probe concerns service providers, not device makers",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2032477/senate-body-orders-probe-into-overcharging-by-telco"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "RLNG price cut may ease circular debt/payment risk; margin impact unclear from headline",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2032523/ogra-cuts-rlng-prices-by-20pc-owing-to-cheaper-qatar-cargoes"
-      ]
-    },
-    "Power Generation": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Headline concerns an oil pipeline's investor returns, not power generation; content blocked",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2032468/high-dollar-returns-on-faisalabad-peshawar-oil-pipeline-raise-eyebrows"
-      ]
-    }
+  "TREET": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.75,
+   "reason": "FY26 profit +40% on lower finance cost and better margin; EPS 2.02 vs 1.36",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Treet-Corporation-FY26-profit-jumps-40-to-Rs779m-63863"
+   ]
   }
+ },
+ "sectors": {
+  "Power Generation": {
+   "rating": "negative",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Solar boom cuts grid demand, strains repayment economics of coal IPPs (Bloomberg via BR)",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442166/pakistans-solar-boom-adds-pressure-on-chinese-backed-coal-plants-report"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "IHC seeks Ogra report on 7-yr OMC licence moratorium; possible new entrants, early stage",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2033867/ihc-questions-7-year-moratorium-on-omcs"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "T-bill cut-offs up to 75bp above 11.5% policy rate; rate-hike speculation lifts asset yields",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2033864/t-bill-yields-jump-beyond-policy-rate"
+   ]
+  }
+ }
 }
