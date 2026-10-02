@@ -94,7 +94,11 @@ class LivePriceQuoteTests(unittest.TestCase):
     def setUp(self):
         from datetime import datetime, timezone
         import session_calendar as calendar
-        self.now = datetime.now(timezone.utc)
+        # Mid-session on the current Karachi date. The real clock made the
+        # 45-minutes-ago tick fall on the previous day between 00:00 and
+        # 00:45 PKT, failing the stale-price test for reasons unrelated to it.
+        today = calendar.local_now(datetime.now(timezone.utc)).date()
+        self.now = datetime(today.year, today.month, today.day, 6, 0, tzinfo=timezone.utc)  # 11:00 PKT
         self.today = calendar.local_now(self.now).date().isoformat()
         self.prior_day = "2000-01-03"
 

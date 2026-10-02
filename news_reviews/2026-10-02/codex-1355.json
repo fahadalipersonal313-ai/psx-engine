@@ -1,0 +1,208 @@
+{
+  "as_of": "2026-10-02T08:55:00Z",
+  "provider": "OpenAI",
+  "model": "GPT-5.6 Sol",
+  "depth": "mixed-full-and-headline",
+  "articles_read": 5,
+  "notes": [
+    "One-time manual Friday lunch-break review authorized by the user. Normal session-gated routine remains unchanged.",
+    "Fresh committed raw input fetched 2026-10-02T08:36:27.899185Z.",
+    "Only evidence-backed current findings are rated; absence of a reviewed story is not Neutral."
+  ],
+  "reviewed_stories": [
+    {
+      "title": "Honda Atlas discontinues BR-V model",
+      "assessment": "negative",
+      "linkage": "direct",
+      "linkage_detail": "HCAR is Honda Atlas Cars (Pakistan) Limited and the article explicitly identifies PSX:HCAR.",
+      "reason": "Honda Atlas discontinued production of the BR-V. This removes a model from HCAR's active production lineup; the source does not quantify the BR-V's revenue or profit contribution, so magnitude is uncertain.",
+      "source": "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
+      "sources": [
+        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+      ],
+      "published": "2026-10-01T15:04:00+05:00",
+      "publication_time_status": "Full article verified; Mettis page states October 1, 2026 at 3:04 PM PKT.",
+      "text_depth": "full",
+      "confidence": 0.85,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "hcar-brv-discontinuation"
+    },
+    {
+      "title": "Local mobile phone assembly down 57% MoM in August",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector evidence for locally assembled mobile devices, relevant to AIRLINK through its configured Technology/Telecom Devices exposure; not a company-specific AIRLINK result.",
+      "reason": "Pakistan local mobile phone manufacturing and assembly fell 57% month on month in August to 1.66 million units. This is a negative industry activity signal, but it does not establish AIRLINK-specific volumes, margins, or market share.",
+      "source": "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916",
+      "sources": [
+        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+      ],
+      "published": "2026-10-02T10:39:00+05:00",
+      "publication_time_status": "Full article verified; Mettis page states October 2, 2026 at 10:39 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.7,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-mobile-assembly"
+    },
+    {
+      "title": "Pakistan petroleum sales fall 2% YoY in September",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector evidence for Oil Marketing, including PSO; the accessible committed snippet does not establish a company-specific PSO volume change.",
+      "reason": "Committed source snippet reports September petroleum sales down 2% year on year to 1.35 million tons and OMC sales excluding furnace oil down 8% year on year. The linked article body was not accessible in this run, so this is snippet-level evidence only.",
+      "source": "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september",
+      "sources": [
+        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
+      ],
+      "published": "2026-10-02T12:39:36+05:00",
+      "publication_time_status": "Timestamp from the committed raw feed; article body inaccessible during this review.",
+      "text_depth": "headline_snippet",
+      "confidence": 0.65,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-omc-september-sales"
+    },
+    {
+      "title": "Oil jumps 4pc after China suspends fuel exports",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "Sector evidence for PSX Oil & Gas Exploration names OGDC, PPL and MARI; not a company-specific operational disclosure.",
+      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter refined-product supply and renewed Middle East risk. Higher crude prices are directionally supportive for upstream producers, but geopolitical volatility and company-specific production mixes limit confidence.",
+      "source": "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports",
+      "sources": [
+        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+      ],
+      "published": "2026-10-02T07:40:00+05:00",
+      "publication_time_status": "Full Dawn article verified; published October 2, 2026 at 7:40 AM PKT.",
+      "text_depth": "full_secondary",
+      "confidence": 0.7,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    {
+      "title": "Pakistan-IMF Auto Policy Talks Stall Over Draft Objections",
+      "assessment": "negative",
+      "linkage": "sector",
+      "linkage_detail": "Sector policy evidence for configured Auto Assembler names HCAR and SAZEW; not a company-specific disclosure.",
+      "reason": "The committed feed reports that Pakistan-IMF talks on Auto Policy 2026-31 ended without agreement after IMF objections. The article body was inaccessible in this run, so the assessment is based only on the committed headline and snippet and reflects policy uncertainty rather than a quantified earnings effect.",
+      "source": "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/",
+      "sources": [
+        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
+      ],
+      "published": "2026-10-02T12:51:58+05:00",
+      "publication_time_status": "Timestamp converted from the committed raw feed; article body inaccessible during this review.",
+      "text_depth": "headline_snippet",
+      "confidence": 0.55,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-auto-policy-2026-31"
+    }
+  ],
+  "ratings": {
+    "HCAR": {
+      "rating": "negative",
+      "causality": "causal",
+      "confidence": 0.85,
+      "horizon": "multi_session",
+      "linkage": "direct",
+      "reason": "Honda Atlas discontinued BR-V production. This is a direct HCAR product-line change, although the source does not quantify BR-V earnings contribution.",
+      "relevance": "Direct link: HCAR is Honda Atlas Cars (Pakistan) Limited.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+      ],
+      "source_published": [
+        "2026-10-01T15:04:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-01T15:04:00+05:00"
+      ],
+      "thread_key": "hcar-brv-discontinuation"
+    }
+  },
+  "sectors": {
+    "Technology/Telecom Devices": {
+      "rating": "negative",
+      "causality": "correlated",
+      "confidence": 0.7,
+      "horizon": "single_session",
+      "linkage": "sector",
+      "reason": "Local mobile phone manufacturing and assembly fell 57% MoM in August to 1.66m units. This is an industry activity signal, not an AIRLINK-specific volume or margin disclosure.",
+      "relevance": "Sector link to AIRLINK through the repository's Technology/Telecom Devices classification.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+      ],
+      "source_published": [
+        "2026-10-02T10:39:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-02T10:39:00+05:00"
+      ],
+      "thread_key": "pakistan-mobile-assembly"
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "causality": "causal",
+      "confidence": 0.65,
+      "horizon": "single_session",
+      "linkage": "sector",
+      "reason": "September petroleum sales fell 2% YoY to 1.35m tons and OMC sales excluding furnace oil fell 8% YoY. Evidence was limited to the committed source snippet in this run.",
+      "relevance": "Sector link to Oil Marketing, including PSO; no company-specific PSO change is asserted.",
+      "text_depth": "headline_snippet",
+      "sources": [
+        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
+      ],
+      "source_published": [
+        "2026-10-02T12:39:36+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-02T12:39:36+05:00"
+      ],
+      "thread_key": "pakistan-omc-september-sales"
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.7,
+      "horizon": "multi_session",
+      "linkage": "sector",
+      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter product supply and renewed Middle East risk, a directional upstream tailwind subject to geopolitical volatility.",
+      "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
+      "text_depth": "full_secondary",
+      "sources": [
+        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+      ],
+      "source_published": [
+        "2026-10-02T07:40:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-02T07:40:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    },
+    "Auto Assembler": {
+      "rating": "negative",
+      "causality": "correlated",
+      "confidence": 0.55,
+      "horizon": "multi_session",
+      "linkage": "sector",
+      "reason": "Pakistan-IMF talks on Auto Policy 2026-31 reportedly ended without agreement after draft objections, adding policy uncertainty. Evidence is headline/snippet only.",
+      "relevance": "Sector link to configured Auto Assembler names HCAR and SAZEW.",
+      "text_depth": "headline_snippet",
+      "sources": [
+        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
+      ],
+      "source_published": [
+        "2026-10-02T12:51:58+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-02T12:51:58+05:00"
+      ],
+      "thread_key": "pakistan-auto-policy-2026-31"
+    }
+  }
+}

@@ -68,7 +68,7 @@ def main():
         print(f"    body: {body}\n")
 
 
-if __name__ == "__main__" and "--discover" not in sys.argv:
+if __name__ == "__main__" and not ({"--discover","--downloads"} & set(sys.argv)):
     main()
 
 
@@ -143,3 +143,31 @@ def discover():
 
 if __name__ == "__main__" and "--discover" in sys.argv:
     discover()
+
+
+def downloads():
+    """List what PSX's official download pages publish. Read-only: fetches
+    each page once and prints its links; downloads nothing."""
+    for path in ("/historical-downloads", "/downloads", "/daily-market-analysis"):
+        url = config.PSX_DPS_BASE + path
+        try:
+            r = requests.get(url, headers=config.REQUEST_HEADERS, timeout=30)
+        except requests.RequestException as exc:
+            print(f"=== {path}: ERROR {exc}")
+            continue
+        links = sorted(set(re.findall(r'(?:href|data-url|data-href|src)="([^"#]+)"', r.text)))
+        links = [l for l in links if not l.endswith((".css", ".png", ".ico", ".svg", ".js"))
+                 and "announcements" not in l]
+        print(f"\n=== {path}: {r.status_code}, {len(r.content)} bytes, {len(links)} links")
+        for l in links[:60]:
+            print(f"   {l}")
+        # dates / file patterns mentioned in inline scripts or text
+        pats = sorted(set(re.findall(r'["\'](/download/[^"\']+)["\']', r.text)))
+        if pats:
+            print("   download-path patterns:", pats[:20])
+        for m in re.findall(r'<select[^>]*name="([^"]+)"', r.text):
+            print(f"   select field: {m}")
+
+
+if __name__ == "__main__" and "--downloads" in sys.argv:
+    downloads()

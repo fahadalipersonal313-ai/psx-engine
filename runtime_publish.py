@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 import time
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -60,4 +61,4 @@ def publish(branch='main'):
 
 
 if __name__ == '__main__':
-    publish()
+    publish(sys.argv[1] if len(sys.argv) > 1 else 'main')
