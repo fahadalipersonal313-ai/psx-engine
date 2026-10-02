@@ -627,6 +627,20 @@ COMPANY_NEWS_ANCHORS = {
     # changes book-level risk limits. Fix that separately and deliberately.
     "GHNI": ["ghandhara industries"],
     "GAL": ["ghandhara automobiles"],
+    # 2026-10-02: the ten CURATED_ADDITIONS had no anchors and fell back to the
+    # bare ticker, so "power station" tagged POWER and "loadshedding"-style
+    # wording risked LOADS. Phrases come from PSX's own company names in the
+    # official mkt_summary file (e.g. "Power Cement", "Int. Packaging").
+    "ASL": ["aisha steel"],
+    "CNERGY": ["cnergyico"],
+    "DCR": ["dolmen city"],
+    "EPCL": ["engro polymer"],
+    "FIBLM": ["ibl modaraba", "i.b.l. modaraba"],
+    "FTSM": ["tri-star modaraba", "first tri-star modaraba"],
+    "GHGL": ["ghani glass"],
+    "IPAK": ["international packaging"],
+    "LOADS": ["loads limited", "loads ltd"],
+    "POWER": ["power cement"],
 }
 
 
