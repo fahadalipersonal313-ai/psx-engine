@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-02T08:39:00Z",
+ "as_of": "2026-10-02T10:38:23Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 26,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/BFAGRO-FY26-profit-softens-16-63920",
   "https://mettisglobal.news/Finance-Minister-NBP-president-discuss-banking-sectors-role-in-economic-priorities-63922",
@@ -12,132 +12,125 @@
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-63901",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs2000-per-tola-63923",
   "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
+  "https://mettisglobal.news/KOHE-FY26-profit-edges-Up-3-63927",
   "https://mettisglobal.news/Khaadi-plans-to-raise-up-to-Rs83bn-through-preIPO-IPO-63907",
   "https://mettisglobal.news/Kohinoor-Energy-Juhang-Energy-sign-MoU-on-battery-joint-venture-63898",
   "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916",
   "https://mettisglobal.news/MFFL-FY26-profit-doubles-63899",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63912",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63924",
   "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915",
+  "https://mettisglobal.news/OMO-Result-SBP-injects-over-Rs3tr-63926",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Climb-63900",
-  "https://mettisglobal.news/PSX-adds-record-25281-new-investors-in-September-63890",
-  "https://mettisglobal.news/PSX-in-September-63918",
+  "https://mettisglobal.news/Pace-Pakistan-approves-Rs15bn-investment-in-Ever-Green-Water-Valley-63930",
   "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
-  "https://mettisglobal.news/Petrol-price-up-Rs326-diesel-down-Rs101-per-litre-63911",
-  "https://mettisglobal.news/SBP-reserves-rise-39m-to-2144bn-63910",
+  "https://mettisglobal.news/Pakistan-World-Bank-review-reform-progress-growth-and-jobs-operation-63929",
   "https://mettisglobal.news/SCRA-balance-rises-to-over-Rs28bn-63908",
   "https://mettisglobal.news/SECP-proposes-professional-qualification-framework-for-official-liquidators-63921",
-  "https://mettisglobal.news/SGPL-loss-narrows-2-in-FY26-63887",
   "https://mettisglobal.news/SOYASUP-FY26-profit-skyrockets-57-63893",
   "https://mettisglobal.news/September-inflation-rises-to-103-63894",
+  "https://mettisglobal.news/UK-eyes-role-in-Pakistans-PPP-investment-reforms-63928",
   "https://mettisglobal.news/Weekly-SPI-increases-by-021-63925"
  ],
- "count": 3,
+ "count": 2,
  "ratings": {
-  "PPL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Sep petroleum sales -2% YoY is OMC-side; limited E&P link, oil near $102 offsets",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-   ]
-  },
   "HCAR": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "BR-V production discontinued per material notice; model revenue loss amid auto policy uncertainty",
+   "confidence": 0.35,
+   "reason": "BR-V production discontinued per material notice; lost model volume, no replacement stated",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
    ]
   },
-  "POWER": {
+  "PPL": {
    "rating": "neutral",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Only IMF power-sector remarks mention it loosely; no direct company mechanism",
+   "reason": "Sector-wide Sept petroleum sales -2% YoY; no E&P-specific mechanism",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2034157/imf-praises-oil-crisis-handling-urges-gas-sector-reforms"
+    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
    ]
   }
  },
  "sectors": {
-  "Oil Marketing": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Sep offtake -2% YoY (ex-FO -8%) though +7% MoM",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915",
-    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent $102 on China fuel export halt; IMF gas subsidy reform pending",
-   "text_depth": "full",
-   "sources": [
-    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports",
-    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919"
-   ]
-  },
-  "Refinery": {
+  "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Tight oil product supply helps margins vs weak demand; mixed",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports",
-    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-   ]
-  },
-  "Power Generation": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "IMF cites better recoveries; cash-subsidy shift may slow circular debt",
+   "confidence": 0.3,
+   "reason": "SBP Shariah-compliant OMO liquidity injection and FinMin-NBP banking push support sector sentiment",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
-    "https://www.dawn.com/news/2034157/imf-praises-oil-crisis-handling-urges-gas-sector-reforms"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "IMF presses targeted gas subsidies and Rs3.6tr circular debt reform; pending",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2034157/imf-praises-oil-crisis-handling-urges-gas-sector-reforms"
+    "https://mettisglobal.news/OMO-Result-SBP-injects-over-Rs3tr-63926",
+    "https://mettisglobal.news/Finance-Minister-NBP-president-discuss-banking-sectors-role-in-economic-priorities-63922",
+    "https://mettisglobal.news/SCRA-balance-rises-to-over-Rs28bn-63908"
    ]
   },
   "Auto Assembler": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Auto Policy 2026-31 stalled with IMF; BR-V discontinued; sector selling",
+   "confidence": 0.3,
+   "reason": "HCAR discontinues BR-V model; weak market tone adds pressure",
    "text_depth": "full",
    "sources": [
-    "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/",
+    "https://www.brecorder.com/news/40442322/psx-kse-100-sheds-over-700-points",
     "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Sept offtake +7% MoM, 1QFY27 +6% YoY; YoY dip on high prices; oil jump adds inventory-gain angle",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september",
+    "https://www.brecorder.com/news/40442321/hong-kong-stocks-fall-as-surging-bond-yields-higher-oil-prices-weigh",
+    "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915"
+   ]
+  },
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Oil up $4 after China halts fuel exports and Middle East escalation; supports product margins",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september",
+    "https://www.brecorder.com/news/40442321/hong-kong-stocks-fall-as-surging-bond-yields-higher-oil-prices-weigh",
+    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Oil +4% on Middle East escalation lifts E&P realisations; IMF subsidy/circular-debt reform pending",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
+    "https://www.brecorder.com/news/40442321/hong-kong-stocks-fall-as-surging-bond-yields-higher-oil-prices-weigh",
+    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+   ]
+  },
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "IMF-Pakistan weigh BISP route for energy subsidies; circular debt reform early-stage",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
+    "https://www.dawn.com/news/2034157/imf-praises-oil-crisis-handling-urges-gas-sector-reforms"
    ]
   },
   "Technology/Telecom": {
@@ -145,7 +138,18 @@
    "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Local mobile assembly -57% MoM, -14% YoY in Aug per PTA",
+   "reason": "Local mobile phone assembly -57% MoM in August to 1.66m units",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+   ]
+  },
+  "Technology/Telecom Devices": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Local mobile phone assembly -57% MoM in August to 1.66m units",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
@@ -156,10 +160,36 @@
    "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "APTMA chief sees $3bn extra exports if environment predictable; conditional",
+   "reason": "APTMA chairman sees extra USD3bn exports potential; early-stage, no policy number",
    "text_depth": "headline",
    "sources": [
+    "https://www.brecorder.com/news/40442341/swedish-nordic-firms-pakistani-textile-makers-explore-green-solutions",
     "https://www.brecorder.com/news/40442310/textile-industry-could-earn-additional-usd3bn-exports-aptma"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "APTMA sees extra USD3bn exports; intention only",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442341/swedish-nordic-firms-pakistani-textile-makers-explore-green-solutions",
+    "https://www.brecorder.com/news/40442310/textile-industry-could-earn-additional-usd3bn-exports-aptma"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Farm AI and wheat support price talk; no direct fertilizer cash-flow mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442308/punjab-plans-ai-integration-to-boost-farm-productivity",
+    "https://www.dawn.com/news/2034133/aurangzeb-sees-growing-foreign-investor-interest",
+    "https://www.dawn.com/news/2034136/na-body-seeks-rs5000-wheat-support-price-for-rabi-season"
    ]
   }
  }
