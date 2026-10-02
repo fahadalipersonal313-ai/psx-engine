@@ -1,12 +1,13 @@
 {
- "as_of": "2026-10-02T05:38:23Z",
+ "as_of": "2026-10-02T06:38:24Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 23,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/Allnew-KIA-Stonic-introduced-in-Pakistan-with-two-variants-63906",
   "https://mettisglobal.news/Asian-stocks-mixed-as-investors-await-US-jobs-data-63913",
+  "https://mettisglobal.news/BFAGRO-FY26-profit-softens-16-63920",
   "https://mettisglobal.news/Finance-Minister-outlines-six-economic-priorities-at-OICCI-63914",
   "https://mettisglobal.news/Gold-flat-on-firm-dollar-63889",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-63901",
@@ -14,13 +15,14 @@
   "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
   "https://mettisglobal.news/Khaadi-plans-to-raise-up-to-Rs83bn-through-preIPO-IPO-63907",
   "https://mettisglobal.news/Kohinoor-Energy-Juhang-Energy-sign-MoU-on-battery-joint-venture-63898",
+  "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916",
   "https://mettisglobal.news/MFFL-FY26-profit-doubles-63899",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63912",
   "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915",
-  "https://mettisglobal.news/OMO-Result-SBP-injects-Rs729bn-63897",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Climb-63900",
   "https://mettisglobal.news/PSX-adds-record-25281-new-investors-in-September-63890",
-  "https://mettisglobal.news/Pakistan-invites-Saudi-to-invest-across-key-sectors-63902",
+  "https://mettisglobal.news/PSX-in-September-63918",
+  "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
   "https://mettisglobal.news/Petrol-price-up-Rs326-diesel-down-Rs101-per-litre-63911",
   "https://mettisglobal.news/SBP-reserves-rise-39m-to-2144bn-63910",
   "https://mettisglobal.news/SCRA-balance-rises-to-over-Rs28bn-63908",
@@ -33,10 +35,10 @@
  "ratings": {
   "HCAR": {
    "rating": "negative",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "BR-V production discontinued per PSX notice; loses a model line, volume effect small",
+   "confidence": 0.4,
+   "reason": "BR-V production discontinued per material notice; lost model volume, no replacement stated",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
@@ -48,56 +50,121 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Sept OMC offtake +7% MoM to 1.35mt, 1QFY27 +6% YoY; oil prices firming",
+   "confidence": 0.55,
+   "reason": "Sep OMC offtake +7% MoM to 1.35mt; YoY -2%, mixed but momentum up",
    "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/Asian-stocks-mixed-as-investors-await-US-jobs-data-63913",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63912",
     "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Oil +4% after China suspends fuel exports; supports realised prices",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
    ]
   },
   "Refinery": {
    "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Oil +4% on China fuel export halt; supports product margins/inventory gains",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Asian-stocks-mixed-as-investors-await-US-jobs-data-63913",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63912",
+    "https://mettisglobal.news/PSX-in-September-63918"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Oil +4% after China suspends fuel exports; IMF subsidy reform eyes gas circular debt",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Asian-stocks-mixed-as-investors-await-US-jobs-data-63913",
+    "https://mettisglobal.news/PSX-in-September-63918",
+    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919"
+   ]
+  },
+  "Power Generation": {
+   "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Oil jump on China fuel-export halt tightens product supply, supportive of margins",
-   "text_depth": "headline",
+   "reason": "IMF/Pakistan weigh BISP cash route for subsidies to curb circular debt; early-stage",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+    "https://mettisglobal.news/Pakistan-IMF-eye-BISP-route-for-gas-electricity-subsidies-63919",
+    "https://www.dawn.com/news/2034157/imf-praises-oil-crisis-handling-urges-gas-sector-reforms"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Petrol +Rs3.26/diesel -Rs1.01 pricing has no gas distribution mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-up-Rs326-diesel-down-Rs101-per-litre-63911"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Reserves +$39m and SCRA inflow small; banks unwound in Sept, no new driver",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63912",
+    "https://mettisglobal.news/SBP-reserves-rise-39m-to-2144bn-63910",
+    "https://mettisglobal.news/SCRA-balance-rises-to-over-Rs28bn-63908"
+   ]
+  },
+  "Technology/Telecom Devices": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Mobile assembly -57% MoM, -14% YoY in Aug per PTA data",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+   ]
+  },
+  "Technology/Telecom": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Local handset assembly -57% MoM; sector read-through is indirect",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
    ]
   },
   "Real Estate": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "SECP revamping REIT rules to widen access; early-stage regulatory intention",
+   "confidence": 0.35,
+   "reason": "SECP revamping REIT rules to widen investor access; draft stage",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SECP-moves-to-revamp-REIT-rules-to-widen-public-access-63909"
    ]
   },
-  "Islamic Banking": {
-   "rating": "positive",
+  "Auto Assembler": {
+   "rating": "neutral",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Inflation easing to 10.3% and SBP reserves/SCRA inflows support rate-cut and flow sentiment",
+   "confidence": 0.25,
+   "reason": "PAMA seeks draft auto policy sight; HCAR model exit is company-specific",
    "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2033980/consumer-inflation-eases-to-103pc-in-september-from-111pc-in-august-official-data-shows",
-    "https://mettisglobal.news/SCRA-balance-rises-to-over-Rs28bn-63908"
+    "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
+    "https://www.brecorder.com/news/40442306/proposed-auto-policy-pama-asks-secy-iampp-to-share-draft-before-finalisation",
+    "https://www.brecorder.com/news/40442322/psx-kse-100-sheds-over-300-points-in-early-trade"
    ]
   }
  }
