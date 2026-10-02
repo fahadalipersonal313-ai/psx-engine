@@ -1,0 +1,72 @@
+name: KSE100 history backfill
+
+# The v8 benchmark (KSE100) is banked from PSX's dated closing-rates PDF. The
+# first engine run fetched ~55 sessions, enough for today's 42-session
+# decision but not for replays: on 2026-10-02 the dashboard's past-results
+# check marked 5 of 21 days "No data" (needs 42 benchmark sessions BEFORE
+# each tested day). This banks a deeper history into one branch's database.
+#
+# The range runs THROUGH the earliest already-banked session, so the chain
+# check (each file's stated previous close == the banked close) verifies the
+# join too. Any failure aborts before commit: no partial history, no gap.
+#
+# main and runtime-state hold separate databases (evening job vs engine
+# loop). Run for runtime-state only outside the trading session, or the
+# loop's own database push will conflict -- runtime_publish refuses that
+# rather than pick a side.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'main | runtime-state'
+        default: main
+      start:
+        description: 'First day to bank (YYYY-MM-DD)'
+        default: '2025-09-01'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kse100-backfill-${{ inputs.branch }}
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: ${{ inputs.branch }}
+          fetch-depth: 1
+
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.10'
+          cache: pip
+
+      - run: pip install -r requirements-ci.txt
+
+      - name: Bank KSE100 and verify the join
+        run: |
+          set -e
+          END=$(python -c "import database as db; h=db.get_eod_history('KSE100', 100000); print(h[0]['date'] if h else '')")
+          test -n "$END" || { echo "::error::no KSE100 banked yet; let the engine bank it first"; exit 1; }
+          echo "banking ${{ inputs.start }} .. $END (earliest banked)"
+          python psx_index_pdf.py "${{ inputs.start }}" "$END" 2>&1 | grep -v "^INFO:psx_index_pdf:KSE100 20" | tail -5
+          test "${PIPESTATUS[0]}" -eq 0
+          python - <<'PY'
+          import database as db
+          h = db.get_eod_history('KSE100', 100000)
+          print(f"KSE100 now {len(h)} sessions, {h[0]['date']} .. {h[-1]['date']}")
+          PY
+
+      - name: Publish
+        run: |
+          git config user.name "psx-maintenance"
+          git config user.email "actions@users.noreply.github.com"
+          git add psx_engine.db
+          git commit -m "Bank KSE100 history from ${{ inputs.start }} (closing-rates PDF, chain-checked)"
+          python runtime_publish.py ${{ inputs.branch }}
