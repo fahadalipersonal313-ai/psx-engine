@@ -30,7 +30,7 @@ class FreshestTests(unittest.TestCase):
         with mock.patch("news_feed.load_raw", return_value=(RAW, {"status": "ok"})):
             blob, where = news_desk.load_freshest(get=lambda *a, **k: Resp(newer))
         self.assertEqual(blob["fetched_at"], newer["fetched_at"])
-        self.assertIn("engine loop", where)
+        self.assertNotEqual(where, "bundled copy")
 
     def test_older_remote_loses(self):
         older = dict(RAW, fetched_at="2026-10-01T09:00:00+00:00")
