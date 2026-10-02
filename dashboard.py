@@ -718,7 +718,10 @@ def live_database():
     return remote_data.refresh_db()
 
 
-_db_path, _db_from = live_database()
+# A deployment that bootstraps its own runtime database (psx-dashboard's
+# runtime_bootstrap sets PSX_DB_PATH) already has fresh data: skip the second
+# download.
+_db_path, _db_from = (None, "bootstrapped") if os.environ.get("PSX_DB_PATH") else live_database()
 if _db_path:
     config.DB_PATH = _db_path   # cache hit on a rerun: re-point this process too
 
