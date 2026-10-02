@@ -30,20 +30,25 @@ def _stamp(blob):
 
 
 def load_freshest(get=None, timeout=3):
-    """-> (payload, where). The newer of runtime-state's and the local file."""
+    """-> (payload, where). The newest of: the bundled file, main's live copy
+    (news.yml, hourly) and runtime-state's (engine loop, every cycle). The
+    dashboard deploys from a frozen branch, so the bundled copy goes stale."""
+    import remote_data
     local, meta = news_feed.load_raw()
-    best, where = (local, "main (hourly)") if meta.get("status") == "ok" else ({}, "none")
-    try:
-        import requests
-        r = (get or requests.get)(RUNTIME_RAW_URL, timeout=timeout,
-                                  headers={"Cache-Control": "no-cache"})
-        r.raise_for_status()
-        remote = r.json()
-        if _stamp(remote) and (not _stamp(best) or _stamp(remote) > _stamp(best)):
-            best, where = remote, "engine loop (15-minute)"
-    except Exception:
-        pass
-    return best, where
+    candidates = [(local if meta.get("status") == "ok" else {}, "bundled copy")]
+    for branch, label in (("main", "main (hourly)"), ("runtime-state", "engine loop (15-minute)")):
+        if get is None:
+            blob = remote_data.fetch_json("news_raw_24h.json", branch, timeout=timeout)
+        else:
+            try:
+                r = get(RUNTIME_RAW_URL.replace("/runtime-state/", f"/{branch}/"), timeout=timeout)
+                r.raise_for_status()
+                blob = r.json()
+            except Exception:
+                blob = None
+        candidates.append((blob or {}, label))
+    best, where = max(candidates, key=lambda c: _stamp(c[0]) or datetime.min.replace(tzinfo=timezone.utc))
+    return (best, where) if best else ({}, "none")
 
 
 def _published(item):

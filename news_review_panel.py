@@ -9,9 +9,22 @@ LABELS = {'highly_positive': 'Very positive', 'positive': 'Positive',
           'neutral': 'Neutral', 'negative': 'Negative', 'highly_negative': 'Very negative'}
 
 
+def _read(name):
+    """The newer of the bundled file and main's live copy. The dashboard runs
+    from a frozen deploy branch, so the bundled copy alone goes stale."""
+    import remote_data
+    try:
+        local = json.loads((Path(config.BASE_DIR) / name).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        local = None
+    return remote_data.newer(local, remote_data.fetch_json(name, 'main'))
+
+
 def load(name):
     try:
-        data = json.loads((Path(config.BASE_DIR) / name).read_text(encoding='utf-8'))
+        data = _read(name)
+        if data is None:
+            raise ValueError('No ratings file')
         stamp, age = news_feed._fresh_as_of(data)
         if stamp is None:
             return {}, {'status': age}

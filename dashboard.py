@@ -710,6 +710,18 @@ def _early_watch_section():
 
 
 # The trading desk shows opportunities only. Supporting tools live in their own tabs.
+@st.cache_resource(ttl=3600, show_spinner="Loading the latest engine data...")
+def live_database():
+    """Swap in the engine's current database (see remote_data). Cached per
+    server for an hour; on any failure the bundled database is kept."""
+    import remote_data
+    return remote_data.refresh_db()
+
+
+_db_path, _db_from = live_database()
+if _db_path:
+    config.DB_PATH = _db_path   # cache hit on a rerun: re-point this process too
+
 (tab_desk, tab_watch, tab_edge, tab_stock, tab_hist,
  tab_news, tab_reports) = st.tabs(
     ["Trading desk", "📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
