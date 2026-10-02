@@ -383,6 +383,27 @@ def changes_since_last():
 # ----------------------------- cached backtests ---------------------------
 # fetch_eod hits the network with no cache, so backtests are expensive. Cache
 # hard and only run the universe-wide one behind a button.
+@st.cache_data(ttl=300, show_spinner=False)
+def freshest_news():
+    import news_desk
+    return news_desk.load_freshest()
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def runtime_engine_state():
+    """.engine-state.json as the engine loop last published it. The loop
+    commits it to runtime-state; main's copy froze when the engine moved
+    there, which is why the header read 'engine checked 190h ago'."""
+    try:
+        r = requests.get("https://raw.githubusercontent.com/fahadalipersonal313-ai/"
+                         "psx-engine/runtime-state/.engine-state.json", timeout=3,
+                         headers={"Cache-Control": "no-cache"})
+        r.raise_for_status()
+        return r.json()
+    except Exception:
+        return None
+
+
 @st.cache_data(ttl=3600, show_spinner=False)
 def bt_symbol(sym, data_version=None):
     return backtester.backtest(sym)
@@ -534,8 +555,10 @@ _red = getattr(config, "DATA_FRESHNESS_RED_HOURS", 24)
 # is the completed-session contract working, not a fault.
 _engine_state, _checked_age_h = {}, None
 try:
-    with open(".engine-state.json", encoding="utf-8") as _esf:
-        _engine_state = json.load(_esf)
+    _engine_state = runtime_engine_state()
+    if _engine_state is None:
+        with open(".engine-state.json", encoding="utf-8") as _esf:
+            _engine_state = json.load(_esf)
     _ck = pd.to_datetime(_engine_state.get("checked_at"))
     if _ck is not None and not pd.isna(_ck):
         _ck = _ck.tz_localize("UTC") if _ck.tzinfo is None else _ck
@@ -695,14 +718,18 @@ def _early_watch_section():
 with tab_desk:
     import intraday_momentum
     import opportunity_cards
+    import news_desk
+    _raw_news, _raw_where = freshest_news()
+    st.markdown(news_desk.desk_html(_raw_news, _raw_where, opportunity_cards.reviewers()),
+                unsafe_allow_html=True)
     intraday_momentum.show(st, details=False)
     st.subheader("Swing opportunities")
     action = latest[latest["display_signal"].isin(["Strong Buy", "Buy", "Exit"])]
     if action.empty:
         st.markdown('<div class="desk-note">No Buy or Exit signals currently qualify.</div>', unsafe_allow_html=True)
     else:
-        opportunity_cards.show_swing(st, action.to_dict("records"), details=False)
-    st.caption("News badges show Claude and Codex separately. Full evidence is in News; trade details are in Stock detail.")
+        opportunity_cards.show_swing(st, action.to_dict("records"), details=False, raw=_raw_news)
+    st.caption("Each card lists that stock's own latest headlines (unrated) and the Claude and Codex reviews. Full evidence is in News; trade details are in Stock detail.")
 
 with tab_watch:
     st.subheader("Latest intraday observations")
@@ -894,8 +921,9 @@ with tab_news:
     if _win == "live":
         _items = []
         try:
-            with open("news_raw_24h.json", encoding="utf-8") as _fh:
-                _blob = json.load(_fh)
+            _blob, _where = freshest_news()
+            if not _blob:
+                raise ValueError("no news file available")
             _fetched = _blob.get("fetched_at") or ""
             for _it in _blob.get("items") or []:
                 _sym = _it.get("symbol") or ""
@@ -919,8 +947,8 @@ with tab_news:
                 _agetxt = (f" · fetched {_mins:.0f} min ago" if _mins < 90
                            else f" · fetched {_mins/60:.1f}h ago — the loop may "
                                 f"not be running")
-            st.caption(f"Straight from the live fetch file, refreshed every "
-                       f"engine cycle · collected {str(_fetched)[:16]}{_agetxt}")
+            st.caption(f"Straight from the live fetch file ({_where}) · "
+                       f"collected {str(_fetched)[:16]}{_agetxt}")
         except (OSError, ValueError) as _exc:
             st.warning(f"Live news file unreadable ({_exc}). Falling back to the "
                        "banked record — pick a day window above.")
