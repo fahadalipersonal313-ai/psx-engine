@@ -96,5 +96,16 @@ class CardTests(unittest.TestCase):
 
 
 
+class AnchorTests(unittest.TestCase):
+    def test_every_tracked_stock_has_name_anchors(self):
+        missing = [s for s in news_desk.config.STOCKS if s not in news_desk.config.COMPANY_NEWS_ANCHORS]
+        self.assertEqual(missing, [])
+
+    def test_generic_power_news_is_not_power_cement(self):
+        m = news_desk.config.headline_matches_company
+        self.assertFalse(m("POWER", "Houthi attack on Madinah power station"))
+        self.assertTrue(m("POWER", "Power Cement posts quarterly profit"))
+
+
 if __name__ == "__main__":
     unittest.main()
