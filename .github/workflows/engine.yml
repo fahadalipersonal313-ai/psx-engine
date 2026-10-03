@@ -146,6 +146,7 @@ jobs:
               if [ "$state" = "wait" ]; then sleep 60; continue; fi
             fi
 
+            CYCLE_STARTED=$(date +%s)
             echo "=== Cycle at $now PKT ==="
             # PSX outage backoff. Since 2026-09-25 PSX's data paths refuse our
             # requests (404 on /timeseries and /market-watch, 403 on /historical)
@@ -162,9 +163,9 @@ jobs:
               psx_try=0
               echo "PSX failed at $(date -u -d @$(cat /tmp/psx_outage) +%H:%MZ) — skipping PSX this cycle, retrying hourly; news continues"
             fi
-            if [ "$psx_try" = "1" ] && [ ! -f /tmp/psx_outage ]; then
-              timeout 300 python intraday_momentum.py || echo "intraday scan failed (non-fatal)"
-            fi
+            # Public company REG quotes are independently available while old tick endpoints fail.
+            # Only the approved 15 research symbols; no fabricated tick tape.
+            timeout 180 python research_runtime.py --quotes-only || echo "delayed quote snapshot failed (non-fatal)"
             # The checkout and installed dependencies stay pinned for this worker.
             # A concurrent writer causes a visible push failure, never a binary merge.
 
@@ -216,9 +217,13 @@ jobs:
             #     signal set instead. Measured on 2026-09-10: 27 of 28 cycles
             #     were identical, so this drops ~48 MB of push per cycle without
             #     delaying a single real change.
+            timeout 45 python research_runtime.py || echo "research journal failed (non-fatal)"
             CHANGED=$(python -c "import json;print(json.load(open('.engine-state.json'))['signal_digest'])" 2>/dev/null || echo "unknown")
             PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
                    | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
+            for f in research_quotes.json research_quote_history.json research_status.json research_decisions; do
+              if [ -e "$f" ]; then git add -- "$f"; fi
+            done
             git add -A -- news_raw_24h.json .engine-state.json intraday_momentum.json
             # Every successful intraday run is preserved independently of swing changes.
             if [ -f intraday_observations.db ]; then git add -- intraday_observations.db; fi
@@ -271,5 +276,8 @@ jobs:
             echo "Sleeping ${RUN_INTERVAL_MINUTES}m before next cycle..."
             if [ "$FORCE_NOW" = "true" ]; then
               echo "Forced single cycle done — exiting."; exit 0; fi
-            sleep "$((RUN_INTERVAL_MINUTES * 60))"
+            # Start-to-start cadence: processing time must not stretch a 15m confirmation past 20m.
+            elapsed=$(( $(date +%s) - CYCLE_STARTED ))
+            wait_seconds=$(( RUN_INTERVAL_MINUTES * 60 - elapsed ))
+            if [ "$wait_seconds" -gt 0 ]; then sleep "$wait_seconds"; fi
           done

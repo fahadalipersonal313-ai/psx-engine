@@ -25,6 +25,9 @@ jobs:
       EMAIL_MODE: "off"           # email disabled (2026-07-12) — dashboard only
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          ref: runtime-state
+          fetch-depth: 1
 
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
@@ -37,7 +40,9 @@ jobs:
       - name: Evening report + outcome grading
         run: |
           if [ -f .engine-paused ]; then echo "ENGINE PAUSED — .engine-paused is present, no PSX request made:"; cat .engine-paused; exit 0; fi
+          python main.py run --fast
           python main.py evening
+          python dashboard_snapshot.py
 
       - name: Commit updated database
         # See engine.yml: binary SQLite DB can't be 3-way-merged, so keep this
@@ -46,7 +51,7 @@ jobs:
         run: |
           git config user.name "psx-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add psx_engine.db
+          git add psx_engine.db dashboard_snapshot.json .engine-state.json
           git commit -m "Evening grading $(date -u +'%Y-%m-%dT%H:%MZ')" \
             || { echo "No data changes to commit."; exit 0; }
-          python runtime_publish.py
+          python runtime_publish.py runtime-state
