@@ -194,7 +194,8 @@ def collect(symbols=None, now=None, *, workers=2, fetcher=fetch):
             return row, None
         except Exception as exc:
             return None, {'symbol': symbol, 'source_url': BASE + symbol,
-                          'error': type(exc).__name__ + ': ' + str(exc)}
+                          'error': type(exc).__name__ + ': ' + str(exc),
+                          'http_status': getattr(exc, 'code', None)}
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         results = list(pool.map(one, symbols))
