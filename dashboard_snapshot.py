@@ -17,6 +17,11 @@ def build():
     for sym in config.STOCKS:
         r = db.last_run(sym)
         if r:
+            import research_guard
+            try:
+                r["research_guard"] = research_guard.check(r)
+            except Exception as exc:
+                r["research_guard"] = {"valid": False, "checks": ["Research input audit failed: " + type(exc).__name__]}
             rows.append(r)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
