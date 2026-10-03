@@ -249,7 +249,11 @@ def cached_run():
     cutoff = row["d"] if row and row["d"] else None
     if not cutoff:
         raise RuntimeError("No banked daily OHLC session available")
-    index_eod = None
+    expected = session_calendar.last_completed()
+    if cutoff != expected:
+        raise RuntimeError(f"Cached bars end {cutoff}; expected completed session {expected}. Refusing stale recovery.")
+    import pandas as pd
+    index_eod = pd.DataFrame(db.get_eod_history(config.BENCHMARK_INDEX, limit=config.FEATURE_HISTORY_LIMIT))
     regime = market_regime.assess_regime(index_eod)
     account = portfolio_advisor.load_portfolio()
     holdings = account.get("holdings", [])
@@ -511,6 +515,8 @@ def main():
     db.init_db()
     if cmd == "run":
         full_run(fast="--fast" in sys.argv)
+    elif cmd == "cached-run":
+        cached_run()
     elif cmd == "schedule":
         import scheduler
         scheduler.start()
@@ -812,6 +818,7 @@ def main():
                   f"outcome={r['outcome']}")
     else:
         print(__doc__)
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":
