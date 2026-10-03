@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "version": "intraday-point-observations-v1",
+  "capture_id": "9d43bb9edb9a49436e4d3e3240065e4df5a9844c1c59b3f07221d5b6e8692e08",
+  "collected_at": "2026-10-03T19:47:40.561571+00:00",
+  "scheduled_at": null,
+  "cadence_target_seconds": 300,
+  "dataset_kind": "delayed_REG_point_observations",
+  "source_delayed": true,
+  "ohlcv_status": "unavailable",
+  "paper_strategy_status": "collection_only_no_fills",
+  "observations": [
+    {
+      "symbol": "PRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/PRL",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:27.304931+00:00",
+      "price": 90.35,
+      "cumulative_session_volume": 17786560,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 91.3,
+        "high": 92.7,
+        "low": 88.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "00f8e9e4dba2dbc3e51804d15b28983a49fa31603aebce38105ff9c0854fe088",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "MEBL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/MEBL",
+      "source_as_of": "2026-10-02T16:47:00+05:00",
+      "fetched_at": "2026-10-03T19:47:27.738941+00:00",
+      "price": 548.79,
+      "cumulative_session_volume": 546614,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 554.0,
+        "high": 556.0,
+        "low": 545.11
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "ab9a06407eca3457b1db3230f7bb3bc1b4a10d5a1de74d91d2f458efccb2088d",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "SYS",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/SYS",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:29.061724+00:00",
+      "price": 115.84,
+      "cumulative_session_volume": 2647042,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 118.34,
+        "high": 118.5,
+        "low": 114.4
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "79a36fde11d24b75ecc0a04582e608f77b485c4f57fab6be37d99d19991085e2",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "PSO",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/PSO",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:29.705916+00:00",
+      "price": 347.1,
+      "cumulative_session_volume": 1021651,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 348.0,
+        "high": 349.5,
+        "low": 343.2
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "8b35dc11988b070e128a92916211fc2cf25e689f005ea37b5e68df0217120c65",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "GAL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/GAL",
+      "source_as_of": "2026-10-02T16:48:00+05:00",
+      "fetched_at": "2026-10-03T19:47:30.822312+00:00",
+      "price": 526.94,
+      "cumulative_session_volume": 588114,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 539.06,
+        "high": 541.0,
+        "low": 520.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "eebe5b1c7b4f6ff07c5b93a45e74f7117d0e8fb19012739f6caa59232d73021e",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "EFERT",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/EFERT",
+      "source_as_of": "2026-10-02T16:45:00+05:00",
+      "fetched_at": "2026-10-03T19:47:31.797097+00:00",
+      "price": 193.92,
+      "cumulative_session_volume": 380985,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 194.3,
+        "high": 194.75,
+        "low": 192.16
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "be74909acdafead429956fe5fa5b54df9fdf44b2e02877191c68da3c9ee35490",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "ATRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/ATRL",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:32.806582+00:00",
+      "price": 1189.43,
+      "cumulative_session_volume": 261399,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 1178.0,
+        "high": 1195.0,
+        "low": 1174.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "5f83a44622df19e4cdfc70d2fc1086c47c2acb64d85b6bec6d4605e25c700dde",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "NRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/NRL",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:33.822787+00:00",
+      "price": 596.68,
+      "cumulative_session_volume": 2619431,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 601.5,
+        "high": 603.0,
+        "low": 576.11
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "f6f3c9dbff237b8ca1e891f1c1a94b7d7dbec742831666b47f29da63cf243c90",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "ASL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/ASL",
+      "source_as_of": "2026-10-02T16:48:00+05:00",
+      "fetched_at": "2026-10-03T19:47:34.800292+00:00",
+      "price": 16.63,
+      "cumulative_session_volume": 2728919,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 17.25,
+        "high": 17.27,
+        "low": 16.6
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "474cddfdc67d5e39db7e9f2a0fb3fca142a806178956316935ddafa7ebf0372b",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "FCL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FCL",
+      "source_as_of": "2026-10-02T16:48:00+05:00",
+      "fetched_at": "2026-10-03T19:47:36.070332+00:00",
+      "price": 27.07,
+      "cumulative_session_volume": 510686,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 26.91,
+        "high": 27.24,
+        "low": 26.9
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "c37b8084f43f4e81efbf96783369ad64521ba98096da0c58f353422c5110113b",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "FCEPL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FCEPL",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:36.764660+00:00",
+      "price": 134.55,
+      "cumulative_session_volume": 203645,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 134.94,
+        "high": 136.5,
+        "low": 133.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "6dd893ff5d08f85bedfd4574f103e42afd4514e6240f9ea884907860d415cc5f",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "CNERGY",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/CNERGY",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:38.075124+00:00",
+      "price": 12.72,
+      "cumulative_session_volume": 20891792,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 12.98,
+        "high": 12.99,
+        "low": 12.6
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "c5283b274855107bddbb058be2475653ad8c16ad54d15a695eb30c92f7b42bcb",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "THCCL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/THCCL",
+      "source_as_of": "2026-10-02T16:49:00+05:00",
+      "fetched_at": "2026-10-03T19:47:38.848921+00:00",
+      "price": 71.49,
+      "cumulative_session_volume": 1167875,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 72.31,
+        "high": 73.2,
+        "low": 70.61
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "e284cd82268386a8ffe7ee61c6c1626fca25f28d03ce6149ca6168aab421a52e",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "FABL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FABL",
+      "source_as_of": "2026-10-02T16:46:00+05:00",
+      "fetched_at": "2026-10-03T19:47:40.073581+00:00",
+      "price": 93.18,
+      "cumulative_session_volume": 209966,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 93.71,
+        "high": 94.1,
+        "low": 92.8
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "a05b1518d408324054a372fe52e9678779fa4626889b0d8f61048119f6699c0c",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    },
+    {
+      "symbol": "OGDC",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/OGDC",
+      "source_as_of": "2026-10-02T16:48:00+05:00",
+      "fetched_at": "2026-10-03T19:47:40.548372+00:00",
+      "price": 314.62,
+      "cumulative_session_volume": 1836867,
+      "previous_observation_id": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time",
+        "collection_outside_regular_session",
+        "source_preopen_break_or_after_close",
+        "stale_source"
+      ],
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 313.01,
+        "high": 315.95,
+        "low": 311.8
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "4bff302cf10117c2d46db6220e81e422c2ebc8cee89f4ace57e21cd7f9bfb02e",
+      "collected_at": "2026-10-03T19:47:40.561571+00:00"
+    }
+  ]
+}
