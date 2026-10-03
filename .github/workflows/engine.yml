@@ -131,9 +131,14 @@ jobs:
           FORCE_NOW="${{ inputs.force_now }}"
           # An explicit last-line refresh request publishes changed rules once,
           # even after close. Later ordinary kicks append a different last line.
-          if [ "${{ github.event_name }}" = "push" ] && tail -n 1 .engine-kick | grep -q '^refresh_once:'; then
-            FORCE_NOW=true
-            export EMAIL_MODE=off
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # The worker checks out runtime-state, while the kick is pushed to main.
+            # Read the triggering commit, never an older runtime checkout marker.
+            git fetch --depth=1 origin "$GITHUB_SHA"
+            if git show "$GITHUB_SHA:.engine-kick" | tail -n 1 | grep -q '^refresh_once:'; then
+              FORCE_NOW=true
+              export EMAIL_MODE=off
+            fi
           fi
           # A forced cycle takes the FULL path, not --fast: the point of it is
           # to exercise the news fetch and grading, which --fast skips.
