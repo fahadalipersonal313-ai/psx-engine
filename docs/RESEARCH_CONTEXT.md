@@ -49,3 +49,22 @@ No credentials are created, account access expanded, app audience changed, or or
 ## Calendar and artifact maintenance
 
 Review the 2027 exchange calendar by 2026-12-01. The current manifest ends 2026-12-31, and uncovered feature windows fail closed rather than inventing January session coverage. `research_status.json` surfaces this maintenance date. Reconcile new official exceptional-closure notices promptly. Keep each model artifact under 256 KB by removing unreferenced old news sources; retain sources needed by still-current financial reviews. Do not duplicate headlines by alternate URLs or count syndicated copies as independent evidence.
+
+
+## Five-minute observation collection (forward data only)
+
+The same engine worker now samples the 15 approved company REG pages at the start of each 15-minute analysis cycle and at its +5/+10-minute slots. It publishes the first observations before slower analysis/news work. Delayed/overrun slots are skipped, never backfilled or stamped as if sampled on time. Regular exchange hours, Friday recess, noticed holidays, and the local pause flag are checked before batches. The legacy tick feed is not substituted with invented candles.
+
+`intraday_samples/YYYY-MM-DD/HHMMSS-id.json` contains immutable capture records with actual source_as_of, fetched_at, collection time, price, cumulative session volume, original running daily OHLC context, previous observation ID, and quality flags. Every document says `ohlcv_status: unavailable` and `source_delayed: true`. The running daily high/low are not five-minute extremes. Interval volume is differenced only across increasing source times within the same regular trading segment; duplicate/conflicting/regressing times, resets, overnight/lunch boundaries and source gaps withhold it. Irregular intervals retain their actual seconds. A known counter reset anywhere inside the research watch window invalidates that watch.
+
+The latest convenience view is `intraday_collection_status.json`; it shows configured cadence, actual capture/source times, observed scheduled five-minute windows, missed windows (60-second grace), and per-symbol quality. Counts are through the last capture, not claims of candle completeness. `intraday_collection_state.json` is a mutable index. A local write-ahead transaction recovers interrupted capture/state/status writes exactly once before further requests/publication. Invalid state fails closed instead of silently resetting. Immutable capture files are never rewritten.
+
+Requests use at most two workers and 12-second per-request timeouts inside the 180-second collection budget. Failed symbols receive exponential backoff; HTTP 401/403/404/429 receives one hour. No credentials, paid feeds, or access bypass are introduced. The existing `runtime-state` single-writer publisher remains responsible for all small data commits. No second scheduler/database writer is created.
+
+Paper-model status remains collection-only: no orders, assumed fills, complete 1/5-minute OHLCV, or implemented numeric intraday entry/stop/target model. Sufficient representative session coverage, a frozen prospective strategy, explicit costs/spread/fill assumptions, and independently resolved outcomes are prerequisites. Ambiguous intervals must remain unresolved. Existing candle studies use completed daily bars and are separate.
+
+## Source-verification identity and known events
+
+Keep a source ID tied to one immutable verification record. When a dynamic company page is rechecked for fresh news, create a new source ID and change only relevant news/sector/macro references. Preserve the old verification record used by a cached monthly financial review; do not replace its verified_at in place. Financial-source verification must remain within 24 hours of its preserved reviewed_at, while current-context sources must be verified within one hour of as_of. Prune only unreferenced old sources to keep the artifact below 256 KB.
+
+Record every known verified date in `fundamentals.events`; missing/empty arrays do not establish complete event-calendar coverage. Earnings, AGMs, dividends and actual effective corporate actions remain distinct. Never infer an ex-dividend or price-adjustment date from a book/register closure. Source publication known only to a date uses `published_at: null`, `published_date: YYYY-MM-DD`, `publication_precision: date`; do not invent midnight timestamps. Existing reviews/as-of times must not be refreshed merely to make old facts look current.
