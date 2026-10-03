@@ -56,11 +56,23 @@ def observe(quote, previous, now):
                 and contract.stamp(research_desk.source_time(p)) < at]
         points.sort(key=lambda p:contract.stamp(research_desk.source_time(p)))
         if len(points)<2: return out
-        anchor=points[-1]
-        gap=(at-contract.stamp(research_desk.source_time(anchor))).total_seconds()
-        earlier=(contract.stamp(research_desk.source_time(anchor))-contract.stamp(research_desk.source_time(points[-2]))).total_seconds()
+        anchors=[p for p in points if 600 <= (at-contract.stamp(research_desk.source_time(p))).total_seconds() <= 1200]
+        if not anchors: return out
+        anchor=min(anchors,key=lambda p:abs((at-contract.stamp(research_desk.source_time(p))).total_seconds()-900))
+        before=contract.stamp(research_desk.source_time(anchor))
+        older=[p for p in points if 600 <= (before-contract.stamp(research_desk.source_time(p))).total_seconds() <= 1200]
+        if not older:return out
+        predecessor=min(older,key=lambda p:abs((before-contract.stamp(research_desk.source_time(p))).total_seconds()-900))
+        gap=(at-before).total_seconds()
+        earlier=(before-contract.stamp(research_desk.source_time(predecessor))).total_seconds()
         if not (600 <= gap <= 1200 and 600 <= earlier <= 1200):
             out['state']='Warming up: source-time sampling gap';return out
+        # An intervening counter reset invalidates the whole selected window,
+        # even if the current total has subsequently exceeded the old anchor.
+        start=contract.stamp(research_desk.source_time(predecessor))
+        chain=[p for p in points if start <= contract.stamp(research_desk.source_time(p)) < at]+[quote]
+        if any(b['day_volume']<a['day_volume'] for a,b in zip(chain,chain[1:])):
+            out['state']='Unavailable: cumulative volume reset inside observation window';return out
         delta=quote['day_volume']-anchor['day_volume']
         if delta<0:
             out['state']='Unavailable: cumulative volume reset';return out
@@ -76,12 +88,13 @@ def observe(quote, previous, now):
         out['state']='Unavailable: malformed source observation';return out
 
 
-def collect_quotes(now=None):
-    import psx_company_quotes
+def collect_quotes(now=None, scheduled_at=None):
+    import intraday_capture
     fixed_now=now
     now=now or datetime.now(timezone.utc)
-    capture=psx_company_quotes.collect(symbols=list(contract.UNIVERSE),now=fixed_now)
+    capture=intraday_capture.collect(now=fixed_now,scheduled_at=scheduled_at)
     now=fixed_now or datetime.now(timezone.utc)
+    if capture.get('paused'):return capture
     previous=read('research_quote_history.json',{})
     observations=[]
     for quote in capture.get('prices',[]):
@@ -99,6 +112,8 @@ def collect_quotes(now=None):
 
 def checkpoint(now=None):
     import requests
+    import intraday_capture
+    intraday_capture.recover()
     now=now or datetime.now(timezone.utc)
     context=None;error=None
     try:
