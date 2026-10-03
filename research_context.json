@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-03T18:35:27Z",
+  "as_of": "2026-10-03T18:35:27Z",
+  "expires_at": "2026-10-05T03:00:00Z",
+  "universe": [
+    "PRL",
+    "MEBL",
+    "SYS",
+    "PSO",
+    "GAL",
+    "EFERT",
+    "ATRL",
+    "NRL",
+    "ASL",
+    "FCL",
+    "FCEPL",
+    "CNERGY",
+    "THCCL",
+    "FABL",
+    "OGDC"
+  ],
+  "sources": [
+    {
+      "id": "src_001",
+      "title": "SBP policy-rate banner, economic indicators and release calendar",
+      "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+      "kind": "official_macro",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_002",
+      "title": "PBS September 2026 CPI release (published October 1)",
+      "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+      "kind": "official_macro",
+      "published_at": "2026-10-01T00:00:00Z",
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_003",
+      "title": "PSO FY2026 performance press release",
+      "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+      "kind": "news",
+      "published_at": "2026-09-25T00:00:00Z",
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_004",
+      "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+      "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+      "kind": "news",
+      "published_at": "2026-09-25T00:00:00Z",
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_005",
+      "title": "Refinery projects still await detailed ISGS submission",
+      "url": "https://www.thenews.pk/print/1440286-four-refineries-sign-upgrade-deals-but-projects-still-await-isgs-submission",
+      "kind": "news",
+      "published_at": "2026-09-30T00:00:00Z",
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_006",
+      "title": "IMF completes third EFF and second RSF review (historical baseline)",
+      "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+      "kind": "official_macro",
+      "published_at": "2026-05-08T00:00:00Z",
+      "verified_at": "2026-10-03T18:30:28Z"
+    },
+    {
+      "id": "src_007",
+      "title": "PRL FY2026 annual report, issuer filing mirrored by FinancialFilings",
+      "url": "https://financialfilings.com/filings/pakistan-refinery-limited/annual-report/2026/60024744/",
+      "kind": "issuer_filing_mirror",
+      "published_at": "2026-09-15T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_008",
+      "title": "PRL company announcement or reported development 2026-09-29",
+      "url": "https://dps.psx.com.pk/download/document/283785.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-29T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_009",
+      "title": "Meezan Bank half-year report ended June 30, 2026",
+      "url": "https://dps.psx.com.pk/download/document/281668.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-25T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_010",
+      "title": "Meezan Bank announces half-year financial results",
+      "url": "https://www.meezanbank.com/financial-results-half-year-ended-june-2026/",
+      "kind": "news",
+      "published_at": "2026-08-07T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_011",
+      "title": "MEBL company announcement or reported development 2026-09-02",
+      "url": "https://dps.psx.com.pk/company/MEBL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_012",
+      "title": "Systems Limited half-year report ended June 30, 2026",
+      "url": "https://dps.psx.com.pk/download/document/281936.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-28T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_013",
+      "title": "SYS company announcement or reported development 2026-06-15",
+      "url": "https://dps.psx.com.pk/download/document/278567.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-06-15T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_014",
+      "title": "PSO FY2026 financial results",
+      "url": "https://dps.psx.com.pk/download/document/283440.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-25T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_015",
+      "title": "Ghandhara Automobiles Annual Report 2026",
+      "url": "https://www.ghandharaautomobiles.com.pk/uploads/files/Reports/Annual/June_2026.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-29T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_016",
+      "title": "PSX GAL announcements and latest reporting period",
+      "url": "https://dps.psx.com.pk/company/GAL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_017",
+      "title": "Financial results for six months ended June 30, 2026",
+      "url": "https://dps.psx.com.pk/download/document/280512.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-07-30T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_018",
+      "title": "PSX EFERT financial table and report transmission listing",
+      "url": "https://dps.psx.com.pk/company/EFERT",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_019",
+      "title": "EFERT company announcement or reported development 2026-09-21",
+      "url": "https://dps.psx.com.pk/download/document/283091.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-21T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_020",
+      "title": "EFERT company announcement or reported development 2026-10-02",
+      "url": "https://dps.psx.com.pk/download/document/284264.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-10-02T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_021",
+      "title": "ATRL FY2026 results, issuer filing mirrored by FinancialFilings",
+      "url": "https://financialfilings.com/filings/attock-refinery-limited/earnings-release/2026/57646147/",
+      "kind": "issuer_filing_mirror",
+      "published_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_022",
+      "title": "ATRL original FY2026 results filing, scanned",
+      "url": "https://dps.psx.com.pk/download/document/281722.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_023",
+      "title": "ATRL company announcement or reported development 2026-09-24",
+      "url": "https://pakistancompanynews.com/attock-refinery-limited-executes-upgrade-agreement-to-enhance-refinery-infrastructure/",
+      "kind": "news",
+      "published_at": "2026-09-24T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_024",
+      "title": "NRL PSX company financial summary and announcement index",
+      "url": "https://dps.psx.com.pk/company/NRL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_025",
+      "title": "NRL company announcement or reported development 2026-09-23",
+      "url": "https://dps.psx.com.pk/download/document/283230.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-23T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_026",
+      "title": "Aisha Steel Annual Report 2026",
+      "url": "https://www.aishasteel.com/wp-content/uploads/2022/08/Aisha-Steel-Annual-Report-2026.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-10-02T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_027",
+      "title": "PSX ASL latest report and announcement listing",
+      "url": "https://dps.psx.com.pk/company/ASL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_028",
+      "title": "ASL company announcement or reported development 2026-10-01",
+      "url": "https://dps.psx.com.pk/download/document/284191.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-10-01T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_029",
+      "title": "Fast Cables FY26 financial results",
+      "url": "https://dps.psx.com.pk/download/document/281284.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-18T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_030",
+      "title": "Fast Cables Annual Report FY2026",
+      "url": "https://fast-cables.com/wp-content/uploads/2026/09/FAST-FINANCIAL-REPORT-FY-2026.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-10-01T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_031",
+      "title": "PSX FCL report and announcement listing",
+      "url": "https://dps.psx.com.pk/company/FCL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_032",
+      "title": "FCL company announcement or reported development 2026-09-21",
+      "url": "https://propakistani.pk/2026/09/21/fast-cables-seeks-approval-for-rs-1-billion-capital/",
+      "kind": "news",
+      "published_at": "2026-09-21T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_033",
+      "title": "FCL event notice",
+      "url": "https://financialfilings.com/filings/fast-cables-limited/annual-report/2026/64556790/",
+      "kind": "issuer_filing_mirror",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_034",
+      "title": "FrieslandCampina Engro Pakistan H1 2026 report",
+      "url": "https://dps.psx.com.pk/download/document/281890.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-28T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_035",
+      "title": "FCEPL company announcement or reported development 2026-10-02",
+      "url": "https://dps.psx.com.pk/download/document/284274.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-10-02T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_036",
+      "title": "FCEPL company announcement or reported development 2026-09-22",
+      "url": "https://dps.psx.com.pk/download/document/283191.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-22T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_037",
+      "title": "FCEPL company announcement or reported development 2026-09-21",
+      "url": "https://dps.psx.com.pk/download/document/283031.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-21T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_038",
+      "title": "CNERGY FY2026 financial statements",
+      "url": "https://dps.psx.com.pk/download/document/283383.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-24T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_039",
+      "title": "CNERGY PSX quarterly financial summary",
+      "url": "https://dps.psx.com.pk/company/CNERGY",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_040",
+      "title": "Thatta Cement March 2026 quarterly report",
+      "url": "https://dps.psx.com.pk/download/document/275943.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-04-30T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_041",
+      "title": "PSX THCCL latest financial report and AGM-extension filing listing",
+      "url": "https://dps.psx.com.pk/company/THCCL",
+      "kind": "exchange_profile",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_042",
+      "title": "THCCL company announcement or reported development 2026-09-10",
+      "url": "https://profit.pakistantoday.com.pk/2026/09/10/thatta-cement-reaches-in-principle-understanding-for-restructuring-of-pakistan-services-limited",
+      "kind": "news",
+      "published_at": "2026-09-10T00:00:00Z",
+      "verified_at": "2026-10-03T18:32:00Z"
+    },
+    {
+      "id": "src_043",
+      "title": "Faysal Bank half-year report ended June 30, 2026",
+      "url": "https://dps.psx.com.pk/download/document/281725.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-27T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_044",
+      "title": "FABL company announcement or reported development 2026-09-01",
+      "url": "https://dps.psx.com.pk/download/document/282081.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-01T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_045",
+      "title": "FABL company announcement or reported development 2026-08-06",
+      "url": "https://dps.psx.com.pk/download/document/280856.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-08-06T00:00:00Z",
+      "verified_at": "2026-10-03T18:29:00Z"
+    },
+    {
+      "id": "src_046",
+      "title": "OGDCL FY2026 audited results and operating review",
+      "url": "https://www.rns-pdf.londonstockexchange.com/rns/4602T_3-2026-9-4.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-04T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_047",
+      "title": "OGDC company announcement or reported development 2026-09-09",
+      "url": "https://dps.psx.com.pk/download/document/282420.pdf",
+      "kind": "issuer_filing",
+      "published_at": "2026-09-09T00:00:00Z",
+      "verified_at": "2026-10-03T18:33:00Z"
+    },
+    {
+      "id": "src_048",
+      "title": "OGDC event notice",
+      "url": "https://dps.psx.com.pk/download/document/283329.pdf",
+      "kind": "issuer_filing",
+      "published_at": null,
+      "verified_at": "2026-10-03T18:33:00Z"
+    }
+  ],
+  "market_context": [
+    {
+      "category": "macro",
+      "status": "available",
+      "summary": "Fact: SBP's latest displayed policy decision is September 14, retaining an 11.5% rate. PBS reports September national CPI at 10.26% year-on-year and 1.27% month-on-month. Inference: Price pressure limits a simple rate-cut narrative; financing-sensitive companies and consumer demand remain exposed. SBP's calendar lists the September Inflation Monitor no later than October 5, without a verified release time.",
+      "bias": "mixed",
+      "source_ids": [
+        "src_001",
+        "src_002"
+      ]
+    },
+    {
+      "category": "geopolitical",
+      "status": "available",
+      "summary": "Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+      "bias": "adverse",
+      "source_ids": [
+        "src_003",
+        "src_004"
+      ]
+    },
+    {
+      "category": "geopolitical",
+      "status": "unavailable",
+      "summary": "Coverage gap: No sufficiently current primary confirmation of ceasefire, shipping-route normalisation or live oil prices was verified in this pass. Recheck before Monday's session; do not infer de-escalation from last week's stock-market tone.",
+      "bias": "unknown",
+      "source_ids": []
+    },
+    {
+      "category": "sector",
+      "status": "available",
+      "summary": "Fact: PRL, ATRL, NRL and CNERGY signed refinery-upgrade agreements on September 24. September 30 reporting says engineering, feasibility and financing work remains. Inference: The policy step supports a long-term product-quality and import-substitution case, but is not proof of near-term commissioned capacity or incremental earnings.",
+      "bias": "mixed",
+      "source_ids": [
+        "src_004",
+        "src_005"
+      ]
+    },
+    {
+      "category": "macro",
+      "status": "unavailable",
+      "summary": "Coverage gap: A new official IMF review conclusion or disbursement authorisation was not verified. May's completed review is historical background, not confirmation that the September/October review is complete. Treat any new staff agreement, Board decision or conditions as a fresh event requiring review.",
+      "bias": "unknown",
+      "source_ids": [
+        "src_006"
+      ]
+    }
+  ],
+  "stocks": [
+    {
+      "symbol": "PRL",
+      "thesis": "Inference: Recovery in refining earnings and cash generation provides a better starting point for a long-term upgrade case; funding close and sustained margins are the meaningful milestones.",
+      "countercase": "Inference: Crude supply, crack spreads, inventory losses, financing cost and project funding can overwhelm headline upgrade optimism. Invalidation: Reassess if cash conversion reverses, margins deteriorate, financing does not close, or official project scope and timing weaken.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-25: Fact: PRL is among the four refiners reported to have signed ISGS upgrade agreements on September 24. Official PSX listing records a September 25 material-information filing. 2026-09-29: Fact: Latest revised AGM is October 21, 2026. This supersedes the older October 7 date. Scheduled 2026-10-15: Revised share-transfer book closure begins; closed October 15–21 inclusive. Transfer cutoff October 14 close of business. Scheduled 2026-10-21: Revised AGM at 11:00 Pakistan time, company premises on Korangi Creek Road, Karachi and video link.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_008",
+          "src_005"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Signed upgrades support a long-term product-quality case, but funding, engineering and execution remain unfinished; refining spreads and inventories still drive near-term results.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_005"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: FY26 returned to profit and positive operating cash flow; no dividend was proposed. Management identifies financial close and execution as prerequisites for REUP, with a target measured from notice to proceed rather than an immediate commissioning date. Full annual-report content was reviewed through a filing mirror because the issuer PDF exceeded retrieval limits.",
+        "bias": "supportive",
+        "source_ids": [
+          "src_007"
+        ],
+        "report_period": "FY ended 2026-06-30",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-15: Revised share-transfer book closure begins; closed October 15–21 inclusive. Transfer cutoff October 14 close of business.",
+          "2026-10-21: Revised AGM at 11:00 Pakistan time, company premises on Korangi Creek Road, Karachi and video link.",
+          "Financial close, notice to proceed or revised REUP scope/timetable."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_007",
+            "src_004",
+            "src_008",
+            "src_005"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_007"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "MEBL",
+      "thesis": "Inference: deposit growth, fee generation and the capital buffer support a durable Islamic-banking franchise if expansion translates into recurring earnings.",
+      "countercase": "Inference: funding repricing, rising operating costs, weaker financing demand and credit losses can outweigh balance-sheet growth; H1 already showed limited pretax progress. Invalidation: Watch for sustained deterioration in deposit mix, spreads, asset quality or capital strength, or expenses repeatedly outgrowing recurring income.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-02: PSX posted publication of the interim cash-dividend credit notice. This concerns an already-declared distribution, not a forthcoming entitlement. 2026-08-06: The board approved H1 results and a PKR 8 per-share second-quarter interim dividend. 2026-08-17: PSX posted cessation of Tariq Mahmood Pasha's non-executive directorship; no reason is inferred here.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_011",
+          "src_010"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Stable policy rates may support repricing visibility, while inflation, deposit competition and credit costs can offset it.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_009",
+          "src_010",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: H1 profit after tax rose 6% to PKR 48.88 billion; EPS was PKR 27.15. Deposits grew 13% from December, while gross financing declined 3%. Net spread grew only 2%; non-funded income helped offset expenses rising 26%. Pretax profit was essentially flat, making the after-tax improvement less broad-based than the headline. The bank reported capital adequacy above 19% and non-performing financing of about 1.8%. Coverage gaps: No exact forthcoming company results or meeting date verified in the current PSX announcements reviewed.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_009",
+          "src_010"
+        ],
+        "report_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "reviewed_at": "2026-10-03T18:29:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_009",
+            "src_010",
+            "src_011"
+          ]
+        },
+        "investment": {
+          "stance": "supportive",
+          "rationale": "Inference: Conditional franchise/cash-quality support; require fresh valuation, new disclosures and price/liquidity evidence before any action.",
+          "source_ids": [
+            "src_009",
+            "src_010"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "SYS",
+      "thesis": "Inference: international enterprise exposure and acquisition cross-selling provide growth opportunities if execution produces cash-generating, per-share gains.",
+      "countercase": "Inference: receivables and contract-asset conversion, FX appreciation, wage inflation, integration costs and dilution could weaken returns despite sales growth. Invalidation: Watch for persistently poor cash conversion, weakening organic demand or margins, or acquisitions failing to produce earnings growth per share.",
+      "news": {
+        "status": "available",
+        "summary": "2026-08-28: The H1 report was transmitted; management expected acquisition cross-selling and integration benefits during the second half, an outlook rather than a confirmed dated event. 2026-06-15: The board disclosed consideration of another IT-services acquisition, conditional on commercial negotiations, due diligence, definitive agreements and regulatory approvals. No completed deal is assumed.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_012",
+          "src_013"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: International IT demand and acquired capacity offer opportunity; FX, wages, customer spending and integration affect realisable margins.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_012",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: consolidated revenue grew 35.3% and profit 17.4%; consolidated EPS was PKR 3.95. Confiz and BAT shared-services operations contributed to growth. Standalone profit declined with FX losses and lower related-party interest income. Wage inflation pressured margins. Consolidated operating cash flow was negative PKR 649.5 million despite accounting profit. The report includes share consideration for Confiz, so per-share dilution and acquisition integration matter. Coverage gaps: No exact forthcoming results, meeting or acquisition-completion date verified in current official announcements. Management's second-half synergy outlook is not a confirmed calendar date. Consolidated and standalone results differ materially; PSX quote-page ratios use unconsolidated data and should not be mixed with consolidated EPS.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_012"
+        ],
+        "report_period": "Six months ended 2026-06-30; consolidated and unconsolidated interim statements",
+        "reviewed_at": "2026-10-03T18:29:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "Definitive acquisition terms, completion, share consideration or cash-conversion change."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_012",
+            "src_013"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_012"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "PSO",
+      "thesis": "Inference: Core distribution scale and better receivable collections could support recovery if operating cash generation follows accounting earnings.",
+      "countercase": "Inference: Negative operating cash flow, LNG exposure, circular debt and funding needs limit the quality of the earnings recovery. Invalidation: Reassess on renewed receivable accumulation, persistent negative operating cash flow, rising financing strain or impaired fuel availability.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-25: Fact: FY26 results include a proposed final cash dividend. Management's supply-continuity claims are issuer statements, not independent verification of present shipping conditions. Scheduled 2026-10-20: Register-of-members deadline for proposed final-dividend entitlement; this is not a verified exchange ex-dividend trading date. Scheduled 2026-10-28: AGM scheduled; books closed October 21–28 inclusive.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_014"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Fuel demand and regulated margins interact with LNG exposure, circular-debt collections and supply-chain funding.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_014",
+          "src_003",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+        "bias": "adverse",
+        "source_ids": [
+          "src_014",
+          "src_003"
+        ],
+        "report_period": "FY ended 2026-06-30 (standalone and consolidated kept distinct)",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-20: Register-of-members deadline for proposed final-dividend entitlement; this is not a verified exchange ex-dividend trading date.",
+          "2026-10-28: AGM scheduled; books closed October 21–28 inclusive."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_014",
+            "src_003"
+          ]
+        },
+        "investment": {
+          "stance": "cautious",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_014",
+            "src_003"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "GAL",
+      "thesis": "Inference: stronger vehicle sales and manufacturing upgrades support operating momentum, provided demand and execution remain sound.",
+      "countercase": "Inference: cash outflow despite profit, reduced customer advances, expansion spending and vehicle-demand cyclicality deserve attention. Invalidation: sustained volume or margin deterioration, delayed upgrades, or continuing cash consumption would weaken the recovery case.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-17: Board recommended a Rs12 final cash dividend, subject to shareholder approval. The annual report also describes a paint-shop expansion and robotic top-coat line targeted for FY27 Q3; this is a management timetable, not an exact confirmed event date. 2026-09-29: Replacement annual-report transmission is listed on PSX; the September 22 transmission is marked revoked. Scheduled 2026-10-06: Share-transfer books close October 6–13, inclusive. Scheduled 2026-10-13: AGM at 11:00 a.m. Pakistan time; final-dividend proposal awaits approval.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_015",
+          "src_016"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Auto demand is sensitive to financing affordability, FX and import/input costs; new product plans require execution.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_015",
+          "src_016",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: standalone revenue was Rs28.83bn and profit Rs3.465bn, versus Rs23.17bn and Rs2.390bn in FY25. Consolidated profit was Rs6.418bn. Cash conversion weakened: operating cash outflow was Rs2.920bn standalone and Rs3.326bn consolidated. Management attributes sales improvement partly to JAC pickups and commercial vehicles. Coverage gaps: No exact next earnings-release date verified. Project quarters are not treated as dated near-term catalysts.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_015",
+          "src_016"
+        ],
+        "report_period": "Year ended 2026-06-30",
+        "reviewed_at": "2026-10-03T18:32:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-06: Share-transfer books close October 6–13, inclusive.",
+          "2026-10-13: AGM at 11:00 a.m. Pakistan time; final-dividend proposal awaits approval."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_015",
+            "src_016"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_015",
+            "src_016"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "EFERT",
+      "thesis": "Inference: EnVen's restart removes an immediate operational interruption; the next report can establish whether earnings stabilize after a weaker Q2.",
+      "countercase": "Inference: renewed outages, input-gas availability/cost and fertilizer demand or pricing pressure could constrain earnings and distributions. Invalidation: prolonged renewed shutdown or further earnings and cash-generation deterioration would undermine an operating-normalization case.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-21: Issuer disclosed that the EnVen plant resumed operations September 19 after maintenance completion. 2026-10-02: Board meeting announced to consider nine-month results and any entitlement; no outcome or dividend is yet declared for that meeting. Scheduled 2026-10-19: Board meeting at 9:30 a.m. Pakistan time to consider results for nine months ended September 30, 2026 and any entitlement.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_019",
+          "src_020"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Gas availability, plant uptime, farm economics and tax policy shape fertilizer volumes and margins.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_017",
+          "src_018",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: PSX shows Q2 revenue Rs25.896bn and profit Rs3.111bn, below Rs37.824bn and Rs5.244bn a year earlier; Q2 EPS was Rs2.33 versus Rs3.93. The July 30 filing declared a Rs1.75 second interim dividend in addition to Rs2.00 already paid. The half-year report was transmitted August 28. Coverage gaps: PSX financial-table numbers are unconsolidated standardized data; full half-year note tables were not independently re-extracted in this refresh. September results remain unreported as of this check.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_017",
+          "src_018"
+        ],
+        "report_period": "Six months ended 2026-06-30; latest quarter Q2 2026",
+        "reviewed_at": "2026-10-03T18:32:00Z",
+        "next_review_at": "2026-10-19T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-19: Board meeting at 9:30 a.m. Pakistan time to consider results for nine months ended September 30, 2026 and any entitlement.",
+          "2026-10-19: scheduled results board meeting; review the released accounts before reusing H1 fundamentals."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_017",
+            "src_018",
+            "src_019",
+            "src_020"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_017",
+            "src_018"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "ATRL",
+      "thesis": "Inference: Stronger operating cash generation and liquid resources improve funding flexibility relative to an earnings-only recovery.",
+      "countercase": "Inference: Refining economics remain cyclical; product offtake, crude availability, inventories and upgrade execution can erode returns. Invalidation: Reassess if operating cash conversion weakens, sustained margin pressure emerges, or project commitments materially reduce liquidity without operating progress.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-24: Fact: ATRL signed an ISGS refinery-upgrade agreement. Subsequent reporting still describes engineering and financing work rather than completed capacity. Scheduled 2026-10-12: Register-of-members deadline for proposed final-dividend entitlement; not asserted as an exchange ex-dividend trading date. Scheduled 2026-10-19: AGM scheduled; books closed October 13–19 inclusive.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_023",
+          "src_021",
+          "src_004",
+          "src_005"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Signed upgrades support a long-term product-quality case, but funding, engineering and execution remain unfinished; refining spreads and inventories still drive near-term results.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_005"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: FY26 standalone profit and operating cash inflow improved. The balance sheet contains substantial cash and short-term investments. A final dividend was proposed in addition to the interim payout. Original PSX results are scanned; the detailed issuer filing was read through a financial-filings mirror. Coverage gaps: No independent current crack-spread or refinery-utilisation series verified.",
+        "bias": "supportive",
+        "source_ids": [
+          "src_021",
+          "src_022"
+        ],
+        "report_period": "FY ended 2026-06-30 (standalone and consolidated)",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-12: Register-of-members deadline for proposed final-dividend entitlement; not asserted as an exchange ex-dividend trading date.",
+          "2026-10-19: AGM scheduled; books closed October 13–19 inclusive."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_021",
+            "src_022",
+            "src_023",
+            "src_004",
+            "src_005"
+          ]
+        },
+        "investment": {
+          "stance": "supportive",
+          "rationale": "Inference: Conditional franchise/cash-quality support; require fresh valuation, new disclosures and price/liquidity evidence before any action.",
+          "source_ids": [
+            "src_021",
+            "src_022"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "NRL",
+      "thesis": "Inference: The annual turnaround and upgrade pathway are worth following, but a sustainable quarterly recovery needs confirmation.",
+      "countercase": "Inference: Implied late-year weakness, financing needs and unfinished upgrade scope reduce confidence in extrapolating annual profit. Invalidation: Reassess if subsequent results fail to sustain profitability or if funding and upgrade obligations weaken liquidity.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-24: Fact: NRL was among four refiners signing ISGS upgrade agreements. September 30 reporting says NRL was still evaluating project configuration; financing and technical scope remain follow-through items. 2026-09-23: Fact: Latest revised AGM is October 21, 2026. This supersedes the September 30 date. Scheduled 2026-10-14: Revised share-transfer book closure begins; closed October 14–21 inclusive. Transfer cutoff October 13 close of business. Scheduled 2026-10-21: Rescheduled AGM at 10:00 Pakistan time, Beach Luxury Hotel, Karachi and electronic attendance.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_025",
+          "src_005"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Signed upgrades support a long-term product-quality case, but funding, engineering and execution remain unfinished; refining spreads and inventories still drive near-term results.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_005"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: The PSX FY26 summary reports a return to profit after FY25's loss, with higher sales. Summing the displayed first three quarterly profits and comparing with the annual total implies a loss in the final quarter; this is an arithmetic inference, not a separately verified Q4 release. Full cash-flow and debt-note review remains incomplete. Coverage gaps: Full primary annual cash-flow/debt notes not reviewed; PSX table may standardise issuer data.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_024"
+        ],
+        "report_period": "FY ended 2026-06-30 (exchange summary only)",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-14: Revised share-transfer book closure begins; closed October 14–21 inclusive. Transfer cutoff October 13 close of business.",
+          "2026-10-21: Rescheduled AGM at 10:00 Pakistan time, Beach Luxury Hotel, Karachi and electronic attendance."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_024",
+            "src_004",
+            "src_025",
+            "src_005"
+          ]
+        },
+        "investment": {
+          "stance": "cautious",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_024"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "ASL",
+      "thesis": "Inference: improving volumes and utilization create operating-leverage potential after the reported turnaround.",
+      "countercase": "Inference: weak cash conversion, import competition, steel-price spreads, borrowing costs and proposed share issuance can limit benefits to ordinary shareholders. Invalidation: renewed margin losses, stalled utilization or persistently negative operating cash flow would weaken the turnaround case.",
+      "news": {
+        "status": "available",
+        "summary": "2026-10-01: AGM notice proposes settling accumulated preference dividends partly through up to approximately 34.6m ordinary shares, subject to approvals, conversions and taxes; ordinary-share dilution is therefore a watch item. PSX posting date is October 1; enclosed notice is dated October 2. 2026-10-02: FY26 annual report transmitted, providing audited evidence of the return to profitability alongside continuing negative operating cash flow. Scheduled 2026-10-16: Book closure starts; books remain closed through October 23, inclusive. Scheduled 2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_028",
+          "src_026"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Steel demand follows construction and industrial activity; energy, scrap imports and working-capital costs can pressure margins.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_026",
+          "src_027",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: FY26 revenue reached Rs54.24bn and profit Rs981m, reversing FY25's Rs1.352bn loss. Higher sales volumes, improved margins and lower finance costs supported recovery; capacity utilization rose to 38% from 23%. Operating cash outflow nevertheless widened to Rs2.954bn as working-capital and cash financing/tax demands continued. Coverage gaps: No exact next quarterly-results date verified.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_026",
+          "src_027"
+        ],
+        "report_period": "Year ended 2026-06-30",
+        "reviewed_at": "2026-10-03T18:32:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-16: Book closure starts; books remain closed through October 23, inclusive.",
+          "2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_026",
+            "src_027",
+            "src_028"
+          ]
+        },
+        "investment": {
+          "stance": "cautious",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_026",
+            "src_027"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "FCL",
+      "thesis": "Inference: completed capacity expansion and better earnings offer operating leverage if receivable collection catches up with sales.",
+      "countercase": "Inference: cash tied up in receivables, reliance on short-term borrowing and conditional diversification/related-party proposals complicate the growth case. Invalidation: worsening collections, persistent cash outflows or margin deterioration would weaken confidence in self-funded expansion.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_032",
+          "src_030",
+          "src_033"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Cable demand follows construction and power investment; copper/aluminium inputs, FX, borrowing and customer collections determine cash returns.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_029",
+          "src_030",
+          "src_031",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: revenue increased to Rs38.715bn and profit to Rs2.111bn from Rs31.859bn and Rs1.271bn. Operating cash outflow remained Rs1.139bn; trade debts rose to Rs12.604bn from Rs7.835bn and short-term borrowings increased. Management says IPO-funded expansion is operational and focus is shifting toward utilization and cash conversion. Coverage gaps: AGM particulars were verified using a reproduction of the issuer notice and corroborating reporting; the direct PSX notice body was inaccessible during this check. No exact next quarterly-results date verified.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_029",
+          "src_030",
+          "src_031"
+        ],
+        "report_period": "Year ended 2026-06-30",
+        "reviewed_at": "2026-10-03T18:32:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice.",
+          "2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_029",
+            "src_030",
+            "src_031",
+            "src_032",
+            "src_033"
+          ]
+        },
+        "investment": {
+          "stance": "cautious",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_029",
+            "src_030",
+            "src_031"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "FCEPL",
+      "thesis": "Inference: mix improvement and operating efficiencies could sustain a healthier earnings base if volumes and cash conversion follow.",
+      "countercase": "Inference: UHT affordability, tax disadvantage versus loose milk, freight/input-cost volatility and management transition could interrupt the margin recovery. Invalidation: Watch for persistent volume weakness, margin gains reversing, or profits repeatedly failing to translate into operating cash.",
+      "news": {
+        "status": "available",
+        "summary": "2026-10-02: CFO Imran Husain resigned effective September 29, continuing CFO duties through his notice period and remaining Deputy Managing Director. Zahid Zuberi was appointed CFO effective November 2. 2026-09-22: The board approved Usman Zaheer Ahmad as CEO; the filing explicitly leaves his joining date to a later announcement. 2026-09-21: PSX published the September 18 letter announcing Kashan Hasan's resignation as CEO and director. Scheduled 2026-11-02: Confirmed effective date of Zahid Zuberi's appointment as Chief Financial Officer, announced October 2, 2026.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_035",
+          "src_036",
+          "src_037"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Consumer purchasing power, packaged-milk taxation and input-cost pass-through determine whether margin gains can persist.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_034",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: H1 revenue grew 12.1%, operating profit 53.9%, and EPS reached PKR 5.74 versus PKR 1.72. Management attributed improvement to portfolio mix and operating efficiencies. Dairy and frozen desserts both grew. Operating cash inflow improved to PKR 1.089 billion but remained well below PKR 4.398 billion accounting profit. Management says packaged-milk volumes remain below pre-tax levels under the 18% UHT sales tax. Coverage gaps: No CEO joining date was confirmed in the September 22 filing; do not equate appointment approval with joining. No exact forthcoming financial-results or AGM date verified in the current PSX announcements reviewed.",
+        "bias": "supportive",
+        "source_ids": [
+          "src_034"
+        ],
+        "report_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "reviewed_at": "2026-10-03T18:29:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-11-02: Confirmed effective date of Zahid Zuberi's appointment as Chief Financial Officer, announced October 2, 2026."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_034",
+            "src_035",
+            "src_036",
+            "src_037"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_034"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "CNERGY",
+      "thesis": "Inference: Upgrades may improve product mix over time if completed and funded; the annual turnaround alone does not establish stable earnings.",
+      "countercase": "Inference: Quarter-to-quarter volatility, working capital, funding, asset revaluation and execution risk can outweigh apparent balance-sheet discounts. Invalidation: Reassess on persistent operating losses, poor cash conversion, adverse financing terms or major upgrade delays.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-24: Fact: CNERGY signed an ISGS upgrade agreement. Project studies and execution remain ongoing according to subsequent reporting; signing is not commissioning.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_005"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Signed upgrades support a long-term product-quality case, but funding, engineering and execution remain unfinished; refining spreads and inventories still drive near-term results.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_004",
+          "src_005"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: FY26 standalone earnings turned positive. Fixed-asset revaluation surplus is a large component of equity and is not cash. Comparing the annual profit with PSX's displayed first-three-quarter profits implies a final-quarter loss, an arithmetic inference rather than a separately verified Q4 announcement. Coverage gaps: No future results/AGM date verified from readable latest official notice.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_038",
+          "src_039"
+        ],
+        "report_period": "FY ended 2026-06-30 (unconsolidated)",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "cautious",
+          "rationale": "Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "source_ids": [
+            "src_038",
+            "src_039",
+            "src_004",
+            "src_005"
+          ]
+        },
+        "investment": {
+          "stance": "cautious",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_038",
+            "src_039"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "THCCL",
+      "thesis": "Inference: renewable power and investment-related developments may help, but core cement margins and delayed annual reporting require clearer evidence.",
+      "countercase": "Inference: weaker dispatches, higher financing costs, reliance on other income and uncertain restructuring outcomes reduce visibility. Invalidation: continuing core-margin decline, disappointing investment outcomes or further reporting delays would weaken the improvement case.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-30: PSX lists an application for extension of time to hold the FY26 AGM. No confirmed new AGM or FY26 results date was verified. 2026-09-10: Company reached an in-principle understanding concerning Pakistan Services restructuring, subject to definitive agreements. Reported terms do not establish a completed transaction or a dated catalyst.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_041",
+          "src_042"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Cement depends on dispatch volumes, pricing, fuel/energy costs and construction demand; company-specific reporting gaps dominate this baseline.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_040",
+          "src_041",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "unavailable",
+        "summary": "Coverage limitation: FY26 annual results are not verified; the latest available interim report is historical and cannot substitute for the missing annual assessment. Reported: nine-month standalone revenue and gross profit declined to Rs5.152bn and Rs1.292bn, while profit after tax rose to Rs1.898bn. Other income was Rs1.799bn and finance costs increased substantially. Cement dispatches fell; management reported higher electricity costs despite commissioned solar and wind capacity. Earnings growth therefore does not establish a stronger core cement business. Coverage gaps: Latest retrieved financial period remains March 2026; do not substitute a fabricated FY26 result. Direct scanned AGM-extension and restructuring PDFs had no readable text in this refresh; no extension approval or future date is inferred. Per-share historical comparability was not reconciled to corporate actions; no valuation multiple is inferred.",
+        "bias": "unknown",
+        "source_ids": [
+          "src_040",
+          "src_041"
+        ],
+        "report_period": "Nine months ended 2026-03-31; FY26 annual results not verified as published",
+        "reviewed_at": null,
+        "next_review_at": null,
+        "event_review_required": true,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "FY26 annual results and revised AGM/extension announcements must be obtained before investment assessment."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "unavailable",
+          "rationale": "Inference: Missing current annual results prevent a defensible event-driven assessment.",
+          "source_ids": [
+            "src_040",
+            "src_041",
+            "src_042"
+          ]
+        },
+        "investment": {
+          "stance": "unavailable",
+          "rationale": "Inference: The unresolved annual-results gap prevents a defensible investment assessment.",
+          "source_ids": [
+            "src_040",
+            "src_041"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "FABL",
+      "thesis": "Inference: better current-account mix and fee growth could strengthen recurring earnings as the Islamic-banking network expands.",
+      "countercase": "Inference: weaker spreads, rising costs, reduced credit reversals and dependence on securities gains make headline revenue growth an incomplete earnings signal; capital headroom deserves monitoring. Invalidation: Watch for a reversal in low-cost deposit growth, further contraction in recurring profitability, worsening credit quality or erosion of regulatory capital buffers.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-01: PSX posted the credit-of-interim-dividend notice for the second quarter; the H1 report approved PKR 1.50 per share for that quarter. 2026-08-06: The issuer explained that its earlier H1 announcement was revoked because the consolidated cash-flow annexure mistakenly labeled the period June 2025 instead of June 2026. This was a period-label correction; use the subsequently transmitted H1 report.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_044",
+          "src_045"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Islamic-banking growth must be tested against deposit cost, credit quality and regulatory capital needs.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_043",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Reported: unconsolidated H1 earnings were essentially flat at PKR 10.01 billion and EPS PKR 6.60 despite higher revenue. Current-account and fee growth helped, but margin compression, higher expenses and smaller provision reversals weighed on pretax profit. Securities gains also supported income. Deposits grew while financing declined from December. Capital adequacy was 14.84%; the bank completed a PKR 7 billion Tier-II Sukuk during H1. Coverage gaps: No exact forthcoming results or meeting date verified in the current PSX announcements reviewed.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_043"
+        ],
+        "report_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "reviewed_at": "2026-10-03T18:29:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_043",
+            "src_044",
+            "src_045"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_043"
+          ]
+        }
+      }
+    },
+    {
+      "symbol": "OGDC",
+      "thesis": "Inference: Producing-asset additions and better collections can support cash durability if sustained; the KPD-TAY December target is a management target, not delivered output.",
+      "countercase": "Inference: Production curtailment, oil-price exposure, receivables, costs and tax one-offs make headline earnings growth unreliable as a stand-alone guide. Invalidation: Reassess if collections reverse, curtailment worsens, project targets slip or underlying pretax earnings continue weakening.",
+      "news": {
+        "status": "available",
+        "summary": "2026-09-09: Fact: OGDCL announced first gas at Lundali-1 on September 6 as a working-interest partner. This is achieved production, distinct from project targets. Scheduled 2026-10-08: Register cutoff preceding October 9–16 book closure; do not infer an exchange ex-dividend trading date. Scheduled 2026-10-16: AGM scheduled.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_047",
+          "src_048"
+        ]
+      },
+      "sector": {
+        "status": "available",
+        "summary": "Inference: Realised oil/gas prices, saleable production and collections matter more than discoveries or tax-assisted earnings alone.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_046",
+          "src_001",
+          "src_002"
+        ]
+      },
+      "fundamentals": {
+        "status": "available",
+        "summary": "Fact: FY26 sales and production increased, but pretax profit fell while after-tax profit benefited from lower taxation, including a super-tax provision reversal. Management reported improved receivable collections and one-off circular-debt receipts. Headline net-profit growth is not equivalent to recurring operating growth. Coverage gaps: Uch compression's September target and KPD-TAY December target are not verified completion events.",
+        "bias": "mixed",
+        "source_ids": [
+          "src_046"
+        ],
+        "report_period": "FY ended 2026-06-30",
+        "reviewed_at": "2026-10-03T18:33:00Z",
+        "next_review_at": "2026-11-02T03:00:00Z",
+        "event_review_required": false,
+        "event_triggers": [
+          "Any new interim/annual result, profit warning, material acquisition, financing or corporate-action disclosure; review immediately rather than wait for the monthly cache.",
+          "2026-10-08: Register cutoff preceding October 9–16 book closure; do not infer an exchange ex-dividend trading date.",
+          "2026-10-16: AGM scheduled.",
+          "Verified Uch compression completion or change to KPD-TAY December 2026 target."
+        ]
+      },
+      "public_sentiment": {
+        "status": "unavailable",
+        "summary": "No independently attributable, current and sufficiently representative public-positioning sample was verified. News tone, issuer statements and price changes are not treated as crowd sentiment.",
+        "bias": "unknown",
+        "source_ids": []
+      },
+      "horizons": {
+        "intraday": {
+          "stance": "unavailable",
+          "rationale": "No live Monday-session tape, spread, depth or execution evidence exists in this weekend research baseline.",
+          "source_ids": []
+        },
+        "swing": {
+          "stance": "watch",
+          "rationale": "Inference: Follow verified company events and the countercase; no short-term directional edge is established by this baseline.",
+          "source_ids": [
+            "src_046",
+            "src_047",
+            "src_048"
+          ]
+        },
+        "investment": {
+          "stance": "watch",
+          "rationale": "Inference: Cash quality, recurring earnings and stated invalidation conditions require monitoring; this is qualitative context, not a buy/sell instruction.",
+          "source_ids": [
+            "src_046"
+          ]
+        }
+      }
+    }
+  ]
+}
