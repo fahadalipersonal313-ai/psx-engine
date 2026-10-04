@@ -1,0 +1,1786 @@
+{
+  "schema_version": 1,
+  "version": "combined-signal-v1",
+  "evaluated_at": "2026-10-04T14:08:36.672975+00:00",
+  "market_open": false,
+  "research_current": true,
+  "context_as_of": "2026-10-03T18:35:27Z",
+  "context_expires_at": "2026-10-05T03:00:00Z",
+  "counts": {
+    "Ready for review": 0,
+    "Watching": 0,
+    "Blocked": 15
+  },
+  "signals": [
+    {
+      "symbol": "PRL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Original technical entry screen: Watch",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 90.35,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:21.833992+00:00",
+        "source_url": "https://dps.psx.com.pk/company/PRL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Watch",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "45ed30861fb8a6ec4be446c977c476f7186e6477578c4c262f2f4c2309e419d5",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.842240+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 62.9 in Watch band 60-70"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Refinery projects still await detailed ISGS submission",
+          "url": "https://www.thenews.pk/print/1440286-four-refineries-sign-upgrade-deals-but-projects-still-await-isgs-submission",
+          "source_id": "src_005",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PRL FY2026 annual report, issuer filing mirrored by FinancialFilings",
+          "url": "https://financialfilings.com/filings/pakistan-refinery-limited/annual-report/2026/60024744/",
+          "source_id": "src_007",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-15",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PRL company announcement or reported development 2026-09-29",
+          "url": "https://dps.psx.com.pk/download/document/283785.pdf",
+          "source_id": "src_008",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-29",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "MEBL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: supportive",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 548.79,
+        "source_as_of": "2026-10-02T16:47:00+05:00",
+        "fetched_at": "2026-10-04T14:08:21.850215+00:00",
+        "source_url": "https://dps.psx.com.pk/company/MEBL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "7de602dc1f3bce6303035fc8eacb21e608e46db32e34e32f43457717de68cf22",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.550565+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 40.6 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Meezan Bank half-year report ended June 30, 2026",
+          "url": "https://dps.psx.com.pk/download/document/281668.pdf",
+          "source_id": "src_009",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Meezan Bank announces half-year financial results",
+          "url": "https://www.meezanbank.com/financial-results-half-year-ended-june-2026/",
+          "source_id": "src_010",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-07",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MEBL company announcement or reported development 2026-09-02",
+          "url": "https://dps.psx.com.pk/company/MEBL",
+          "source_id": "src_011",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        }
+      ]
+    },
+    {
+      "symbol": "SYS",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 115.84,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:25.004231+00:00",
+        "source_url": "https://dps.psx.com.pk/company/SYS",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "f4679c13f90431fc32995258e7659b81047c35b34e12a529df7dbb2e6604ba6c",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.566890+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Systems Limited half-year report ended June 30, 2026",
+          "url": "https://dps.psx.com.pk/download/document/281936.pdf",
+          "source_id": "src_012",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-28",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SYS company announcement or reported development 2026-06-15",
+          "url": "https://dps.psx.com.pk/download/document/278567.pdf",
+          "source_id": "src_013",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-06-15",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "PSO",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: cautious",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 347.1,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:23.974734+00:00",
+        "source_url": "https://dps.psx.com.pk/company/PSO",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "51397b8a2f15ef6daf8fd7891a226b95c9e5df3d475bdc905076a576c7b2e8e5",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.484655+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.8 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 financial results",
+          "url": "https://dps.psx.com.pk/download/document/283440.pdf",
+          "source_id": "src_014",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "GAL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 526.94,
+        "source_as_of": "2026-10-02T16:48:00+05:00",
+        "fetched_at": "2026-10-04T14:08:25.785357+00:00",
+        "source_url": "https://dps.psx.com.pk/company/GAL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "c8dfe615ff505a258ee646609d5f9bc09b707c953722777e463e69d4c722ecdf",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.970361+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Ghandhara Automobiles Annual Report 2026",
+          "url": "https://www.ghandharaautomobiles.com.pk/uploads/files/Reports/Annual/June_2026.pdf",
+          "source_id": "src_015",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-09-29",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX GAL announcements and latest reporting period",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "src_016",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        }
+      ]
+    },
+    {
+      "symbol": "EFERT",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 193.92,
+        "source_as_of": "2026-10-02T16:45:00+05:00",
+        "fetched_at": "2026-10-04T14:08:26.760623+00:00",
+        "source_url": "https://dps.psx.com.pk/company/EFERT",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Buy",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "eb987ea644cf8763a13972d47f7f325b696e16a67c4edb393cbb89d8a07384cc",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.728859+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 76.3 meets Buy threshold 75; Manual confirmation REQUIRED before placing any order"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Financial results for six months ended June 30, 2026",
+          "url": "https://dps.psx.com.pk/download/document/280512.pdf",
+          "source_id": "src_017",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-07-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX EFERT financial table and report transmission listing",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "src_018",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "EFERT company announcement or reported development 2026-09-21",
+          "url": "https://dps.psx.com.pk/download/document/283091.pdf",
+          "source_id": "src_019",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-09-21",
+          "publication_precision": "date"
+        },
+        {
+          "title": "EFERT company announcement or reported development 2026-10-02",
+          "url": "https://dps.psx.com.pk/download/document/284264.pdf",
+          "source_id": "src_020",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "ATRL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: supportive",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 1189.43,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:28.196843+00:00",
+        "source_url": "https://dps.psx.com.pk/company/ATRL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Buy",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "a3bf5073c621fbab19980fe24b1b66b7655363c23b9e318e46c009b27457b550",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.858196+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.1 ≥ 80 with technical Strong bullish; Downgraded Strong Buy→Buy: first completed session at this level — needs one more consecutive confirmation; Manual confirmation REQUIRED before placing any order"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Refinery projects still await detailed ISGS submission",
+          "url": "https://www.thenews.pk/print/1440286-four-refineries-sign-upgrade-deals-but-projects-still-await-isgs-submission",
+          "source_id": "src_005",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "ATRL FY2026 results, issuer filing mirrored by FinancialFilings",
+          "url": "https://financialfilings.com/filings/attock-refinery-limited/earnings-release/2026/57646147/",
+          "source_id": "src_021",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-08-27",
+          "publication_precision": "date"
+        },
+        {
+          "title": "ATRL original FY2026 results filing, scanned",
+          "url": "https://dps.psx.com.pk/download/document/281722.pdf",
+          "source_id": "src_022",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-08-27",
+          "publication_precision": "date"
+        },
+        {
+          "title": "ATRL company announcement or reported development 2026-09-24",
+          "url": "https://pakistancompanynews.com/attock-refinery-limited-executes-upgrade-agreement-to-enhance-refinery-infrastructure/",
+          "source_id": "src_023",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "NRL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: cautious",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 596.68,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:29.065105+00:00",
+        "source_url": "https://dps.psx.com.pk/company/NRL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Buy",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "f305896fdd6d875597395e1589af98ee2b0a3ae53d58f735f43c24ab8cb857ea",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.615894+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.6 ≥ 80 with technical Strong bullish; Hysteresis: score 80.6 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Refinery projects still await detailed ISGS submission",
+          "url": "https://www.thenews.pk/print/1440286-four-refineries-sign-upgrade-deals-but-projects-still-await-isgs-submission",
+          "source_id": "src_005",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "NRL PSX company financial summary and announcement index",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "src_024",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "NRL company announcement or reported development 2026-09-23",
+          "url": "https://dps.psx.com.pk/download/document/283230.pdf",
+          "source_id": "src_025",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-23",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "ASL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Original technical entry screen: Watch",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: cautious",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 16.63,
+        "source_as_of": "2026-10-02T16:48:00+05:00",
+        "fetched_at": "2026-10-04T14:08:30.005513+00:00",
+        "source_url": "https://dps.psx.com.pk/company/ASL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Watch",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "9ebdd74bddacd1b6ca1307489e477f630e804a94dadcd3952372eec6788f61e4",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:23.306289+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 63.9 in Watch band 60-70"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aisha Steel Annual Report 2026",
+          "url": "https://www.aishasteel.com/wp-content/uploads/2022/08/Aisha-Steel-Annual-Report-2026.pdf",
+          "source_id": "src_026",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX ASL latest report and announcement listing",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "src_027",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "ASL company announcement or reported development 2026-10-01",
+          "url": "https://dps.psx.com.pk/download/document/284191.pdf",
+          "source_id": "src_028",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "FCL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: cautious",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 27.07,
+        "source_as_of": "2026-10-02T16:48:00+05:00",
+        "fetched_at": "2026-10-04T14:08:31.152661+00:00",
+        "source_url": "https://dps.psx.com.pk/company/FCL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "a362679ac66e17ca567fb36c2e6527d7822edf6fed67a5427c4e6c6dbb809e28",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:23.099374+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 44.1 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Fast Cables FY26 financial results",
+          "url": "https://dps.psx.com.pk/download/document/281284.pdf",
+          "source_id": "src_029",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-08-18",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Fast Cables Annual Report FY2026",
+          "url": "https://fast-cables.com/wp-content/uploads/2026/09/FAST-FINANCIAL-REPORT-FY-2026.pdf",
+          "source_id": "src_030",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX FCL report and announcement listing",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "src_031",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "FCL company announcement or reported development 2026-09-21",
+          "url": "https://propakistani.pk/2026/09/21/fast-cables-seeks-approval-for-rs-1-billion-capital/",
+          "source_id": "src_032",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-09-21",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FCL event notice",
+          "url": "https://financialfilings.com/filings/fast-cables-limited/annual-report/2026/64556790/",
+          "source_id": "src_033",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        }
+      ]
+    },
+    {
+      "symbol": "FCEPL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 134.55,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:32.069005+00:00",
+        "source_url": "https://dps.psx.com.pk/company/FCEPL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "9deea93642a1e448fe72b1fd4514cdb9ef595b1f1cf3bf5f0af97acf085c8bab",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:23.210709+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 42.5 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FrieslandCampina Engro Pakistan H1 2026 report",
+          "url": "https://dps.psx.com.pk/download/document/281890.pdf",
+          "source_id": "src_034",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-28",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FCEPL company announcement or reported development 2026-10-02",
+          "url": "https://dps.psx.com.pk/download/document/284274.pdf",
+          "source_id": "src_035",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FCEPL company announcement or reported development 2026-09-22",
+          "url": "https://dps.psx.com.pk/download/document/283191.pdf",
+          "source_id": "src_036",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-09-22",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FCEPL company announcement or reported development 2026-09-21",
+          "url": "https://dps.psx.com.pk/download/document/283031.pdf",
+          "source_id": "src_037",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-09-21",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "CNERGY",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: cautious",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 12.72,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:33.352627+00:00",
+        "source_url": "https://dps.psx.com.pk/company/CNERGY",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "3d0a751e760c4ab2dffdc0dd62154f02a467d04694c2b35ffde40aa318d534e8",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:23.369756+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 32.5 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Refinery projects still await detailed ISGS submission",
+          "url": "https://www.thenews.pk/print/1440286-four-refineries-sign-upgrade-deals-but-projects-still-await-isgs-submission",
+          "source_id": "src_005",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "CNERGY FY2026 financial statements",
+          "url": "https://dps.psx.com.pk/download/document/283383.pdf",
+          "source_id": "src_038",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "CNERGY PSX quarterly financial summary",
+          "url": "https://dps.psx.com.pk/company/CNERGY",
+          "source_id": "src_039",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        }
+      ]
+    },
+    {
+      "symbol": "THCCL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Material company event requires a new financial review",
+        "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
+        "Original technical entry screen: Avoid",
+        "Current financial review unavailable or due",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Unavailable: current financial review required",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 71.49,
+        "source_as_of": "2026-10-02T16:49:00+05:00",
+        "fetched_at": "2026-10-04T14:08:34.319791+00:00",
+        "source_url": "https://dps.psx.com.pk/company/THCCL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "eb0a29fabf35d9f35552591263fa03b02167bd742890c47f40a68a0128e42275",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:23.274399+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 24.7 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Thatta Cement March 2026 quarterly report",
+          "url": "https://dps.psx.com.pk/download/document/275943.pdf",
+          "source_id": "src_040",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-04-30",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX THCCL latest financial report and AGM-extension filing listing",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "src_041",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "THCCL company announcement or reported development 2026-09-10",
+          "url": "https://profit.pakistantoday.com.pk/2026/09/10/thatta-cement-reaches-in-principle-understanding-for-restructuring-of-pakistan-services-limited",
+          "source_id": "src_042",
+          "verified_at": "2026-10-03T18:32:00Z",
+          "published_at": null,
+          "published_date": "2026-09-10",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "FABL",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 93.18,
+        "source_as_of": "2026-10-02T16:46:00+05:00",
+        "fetched_at": "2026-10-04T14:08:35.489488+00:00",
+        "source_url": "https://dps.psx.com.pk/company/FABL",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "407dc6335e6be8ae825b05797870be270ef30cf83dd7a3e67f863d4d48f21eb7",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.518125+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 39.7 below 50"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Faysal Bank half-year report ended June 30, 2026",
+          "url": "https://dps.psx.com.pk/download/document/281725.pdf",
+          "source_id": "src_043",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-27",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FABL company announcement or reported development 2026-09-01",
+          "url": "https://dps.psx.com.pk/download/document/282081.pdf",
+          "source_id": "src_044",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-09-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "FABL company announcement or reported development 2026-08-06",
+          "url": "https://dps.psx.com.pk/download/document/280856.pdf",
+          "source_id": "src_045",
+          "verified_at": "2026-10-03T18:29:00Z",
+          "published_at": null,
+          "published_date": "2026-08-06",
+          "publication_precision": "date"
+        }
+      ]
+    },
+    {
+      "symbol": "OGDC",
+      "status": "Blocked",
+      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reasons": [
+        "Market closed; a new session review is required",
+        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Original technical entry screen: Avoid",
+        "Caution: material research risk"
+      ],
+      "swing_state": "Caution: material research risk",
+      "intraday_state": "Market closed",
+      "investment_state": "Long-term research: watch",
+      "plan": null,
+      "expires_at": null,
+      "quote": {
+        "price": 314.62,
+        "source_as_of": "2026-10-02T16:48:00+05:00",
+        "fetched_at": "2026-10-04T14:08:36.564502+00:00",
+        "source_url": "https://dps.psx.com.pk/company/OGDC",
+        "market": "REG",
+        "quality_flags": [
+          "partial_point_observation_not_ohlcv",
+          "source_time_is_quote_update_not_verified_trade_time",
+          "collection_outside_regular_session",
+          "source_preopen_break_or_after_close",
+          "stale_source"
+        ],
+        "fresh": false
+      },
+      "technical": {
+        "signal": "Avoid",
+        "strategy_version": "technical_swing_short_v8",
+        "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
+        "snapshot_hash": "d03bbd0c4f9982d5bc9e13d7045b779d6e158bbc742ae0e0b61072b98a0e57c3",
+        "decision_session": "2026-10-02",
+        "run_time": "2026-10-04T16:15:22.648598+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+      },
+      "research_as_of": "2026-10-03T18:35:27Z",
+      "research_expires_at": "2026-10-05T03:00:00Z",
+      "source_links": [
+        {
+          "title": "SBP policy-rate banner, economic indicators and release calendar",
+          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
+          "source_id": "src_001",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September 2026 CPI release (published October 1)",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "src_002",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSO FY2026 performance press release",
+          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
+          "source_id": "src_003",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
+          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
+          "source_id": "src_004",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-09-25",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IMF completes third EFF and second RSF review (historical baseline)",
+          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
+          "source_id": "src_006",
+          "verified_at": "2026-10-03T18:30:28Z",
+          "published_at": null,
+          "published_date": "2026-05-08",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OGDCL FY2026 audited results and operating review",
+          "url": "https://www.rns-pdf.londonstockexchange.com/rns/4602T_3-2026-9-4.pdf",
+          "source_id": "src_046",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OGDC company announcement or reported development 2026-09-09",
+          "url": "https://dps.psx.com.pk/download/document/282420.pdf",
+          "source_id": "src_047",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": "2026-09-09",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OGDC event notice",
+          "url": "https://dps.psx.com.pk/download/document/283329.pdf",
+          "source_id": "src_048",
+          "verified_at": "2026-10-03T18:33:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "source_hashes": {
+    "context_sha256": "0b7829e059896cd5edf9206d8b458c89e6d182c76c531307c732dbda213bdf62",
+    "technical_sha256": "6aca79608650a93ed8decb303f26b3462cda7d29fdfb86de0d98c8598348de67",
+    "quotes_sha256": "b77d2109576efca7984842e1d12dbc92564be0bb1ad669d333b3ec2a5a0d1ff7"
+  },
+  "checkpoint_id": "5370da02a2fdf68e31d15410956fc011823d11f19d962c14da830ab6a6725ddc",
+  "checkpoint": "research_decisions/2026-10-04/140836-5370da02a2fd.json",
+  "recorded_at": "2026-10-04T14:08:36.672975+00:00",
+  "context_error": null,
+  "context_sha256": "0b7829e059896cd5edf9206d8b458c89e6d182c76c531307c732dbda213bdf62",
+  "technical_sha256": "6aca79608650a93ed8decb303f26b3462cda7d29fdfb86de0d98c8598348de67",
+  "quotes_sha256": "b77d2109576efca7984842e1d12dbc92564be0bb1ad669d333b3ec2a5a0d1ff7",
+  "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
+}
