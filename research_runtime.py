@@ -113,6 +113,7 @@ def collect_quotes(now=None, scheduled_at=None):
 def checkpoint(now=None):
     import requests
     import intraday_capture
+    import research_signals
     intraday_capture.recover()
     now=now or datetime.now(timezone.utc)
     context=None;error=None
@@ -123,13 +124,24 @@ def checkpoint(now=None):
         error=type(exc).__name__+': '+str(exc)[:200]
     snapshot=read('dashboard_snapshot.json',{})
     quotes=read('research_quotes.json',{})
-    desk=research_desk.build(context,snapshot,quotes,now)
+    # Freeze one canonical evaluation with its original inputs. The compact
+    # publication is recorded attribution, never permission to reuse a Ready
+    # state at a later viewing time.
+    evaluated=research_signals.evaluate(context,snapshot,quotes,now=now)
+    desk=evaluated['desk']
+    combined={key:value for key,value in evaluated.items() if key!='desk'}
+    signal_version=combined['version']
+    by_symbol={signal['symbol']:signal for signal in combined['signals']}
     record={'schema_version':1,'version':VERSION,'recorded_at':now.isoformat(),
+            'signal_version':signal_version,'decision_version':signal_version,'combined_signals':combined,
             'context_sha256':digest(context),'technical_sha256':digest(snapshot),'quotes_sha256':digest(quotes),
             'context_error':error,'research':context,'technical_snapshot':snapshot,'quote_snapshot':quotes,
             'decisions':[{'symbol':r['symbol'],'intraday':r['intraday_state'],'swing':r['swing_state'],
-                          'investment':r['investment_state'],'plan':r['plan'],'missing':r['missing'],
-                          'activation':'research_candidate' if r['swing_state']=='Swing setup for review' else 'watch_or_blocked',
+                          'investment':r['investment_state'],
+                          'plan':by_symbol[r['symbol']].get('plan') if by_symbol[r['symbol']]['status']=='Ready for review' else None,
+                          'missing':r['missing'],'status':by_symbol[r['symbol']]['status'],
+                          'reason':by_symbol[r['symbol']]['reason'],'signal_version':signal_version,
+                          'activation':'research_candidate' if by_symbol[r['symbol']]['status']=='Ready for review' else 'watch_or_blocked',
                           'execution_status':'not_entered','outcome':'pending_execution_evidence'} for r in desk['rows']],
             'evaluation_policy':{'order_execution':'No orders placed; candidate is not an entered trade',
                                  'entry':'Next observation must independently satisfy frozen entry conditions; no retrospective entry',
@@ -141,15 +153,26 @@ def checkpoint(now=None):
     if path.exists() and read(path)!=record:raise RuntimeError('Immutable checkpoint conflict')
     if not path.exists():write(path,record)
     status={'schema_version':1,'checked_at':now.isoformat(),'version':VERSION,'checkpoint':str(path),'id':rid,
+            'signal_version':signal_version,'decision_version':signal_version,'signal_counts':combined['counts'],
+            'signals_path':'research_signals.json',
             'research_current':desk['research_current'],'context_error':error,
             'calendar_verified_through':'2026-12-31','calendar_maintenance_due':'2026-11-01',
-            'quotes_as_of':quotes.get('checked_at'),'decision_count':len(desk['rows']),
+            'quotes_as_of':quotes.get('checked_at') if isinstance(quotes,dict) else None,'decision_count':len(desk['rows']),
             'execution_status':'No orders or assumed fills','outcomes':'Pending independently verified evaluation'}
     import research_paper, research_actions
     paper=research_paper.update(desk,rid,now=now)
-    research_actions.update_activity(desk,rid,now=now)
+    research_actions.update_activity(desk,rid,now=now,combined=combined)
     status['paper_ledger_version']=paper['version']
     status['paper_candidate_count']=paper['candidate_count']
+    artifact={**combined,'schema_version':1,'checkpoint_id':rid,'checkpoint':str(path),
+              'recorded_at':record['recorded_at'],'context_error':error,
+              **{key:record[key] for key in ('context_sha256','technical_sha256','quotes_sha256')},
+              'usage':'Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan'}
+    # Both files use atomic replacement. Advance the status manifest only once
+    # the referenced immutable journal and its compact artifact are durable.
+    # A failed artifact write leaves the prior manifest and journal intact;
+    # retrying the same checkpoint does not duplicate or rewrite history.
+    write('research_signals.json',artifact)
     write('research_status.json',status)
     return status
 

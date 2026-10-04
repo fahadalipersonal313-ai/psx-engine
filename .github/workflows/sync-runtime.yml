@@ -56,7 +56,7 @@ jobs:
             intraday_observations.db intraday_momentum.json .engine-state.json
             short_horizon_inputs.json short_horizon_latest.json
             short_horizon_status.json engine_last_error.log
-            research_quotes.json research_quote_history.json research_status.json research_decisions
+            research_quotes.json research_quote_history.json research_status.json research_signals.json research_decisions
             intraday_collection_state.json intraday_collection_status.json intraday_samples
             research_comparisons.json research_paper_summary.json paper_events research_activity.json
         run: |
