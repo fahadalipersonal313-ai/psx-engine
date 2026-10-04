@@ -30,6 +30,13 @@ def build():
     tmp = PATH.with_suffix(".tmp")
     tmp.write_text(json.dumps(payload, default=str, separators=(",", ":")), encoding="utf-8")
     tmp.replace(PATH)
+    # Small read-only measurements use the same banked completed-session data.
+    import research_comparisons
+    comparisons=research_comparisons.build()
+    measured=Path("research_comparisons.json")
+    pending=measured.with_suffix(".tmp")
+    pending.write_text(json.dumps(comparisons,allow_nan=False,ensure_ascii=False),encoding="utf-8")
+    pending.replace(measured)
     return payload
 
 if __name__ == "__main__":

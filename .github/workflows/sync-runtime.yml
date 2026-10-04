@@ -56,6 +56,9 @@ jobs:
             intraday_observations.db intraday_momentum.json .engine-state.json
             short_horizon_inputs.json short_horizon_latest.json
             short_horizon_status.json engine_last_error.log
+            research_quotes.json research_quote_history.json research_status.json research_decisions
+            intraday_collection_state.json intraday_collection_status.json intraday_samples
+            research_comparisons.json research_paper_summary.json paper_events research_activity.json
         run: |
           git config user.name "psx-sync"
           git config user.email "actions@users.noreply.github.com"
@@ -80,7 +83,9 @@ jobs:
             # Tests may rewrite the snapshot; restore it before committing.
             python -m unittest discover -q 2>&1 | tail -3
             test "${PIPESTATUS[0]}" -eq 0 || { echo "::error::tests failed on the merged tree"; exit 1; }
-            git checkout origin/runtime-state -- dashboard_snapshot.json 2>/dev/null || true
+            for f in dashboard_snapshot.json research_comparisons.json; do
+              git checkout origin/runtime-state -- "$f" 2>/dev/null || true
+            done
             git commit -q -m "Sync main $(git rev-parse --short origin/main) into runtime-state" \
                           -m "Code from main; runtime data kept as runtime-state has it."
             if git push origin HEAD:runtime-state; then
