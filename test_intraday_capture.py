@@ -100,6 +100,18 @@ class ObservationTests(unittest.TestCase):
             second=c.collect(now=NOW+timedelta(minutes=5),fetcher=denied,**kw)
             self.assertEqual(len(calls),15);self.assertEqual(len(second['skipped']),15)
             self.assertEqual(first['network_state']['PRL']['next_retry_at'],(NOW+timedelta(hours=1)).isoformat())
+    def test_source_quality_is_carried_into_quote_consumers(self):
+        import research_desk
+        with tempfile.TemporaryDirectory() as tmp:
+            kw={'state_path':Path(tmp)/'s.json','status_path':Path(tmp)/'v.json','root':Path(tmp)/'samples'}
+            first=c.collect(now=NOW+timedelta(minutes=5),fetcher=lambda s:quote(symbol=s),**kw)
+            self.assertTrue(first['prices'][0]['usable_point'])
+            second=c.collect(now=NOW+timedelta(minutes=10),fetcher=lambda s:quote(price=100.5,symbol=s),**kw)
+            for q in second['prices']:
+                self.assertIn('conflicting_source_timestamp',q['quality_flags'])
+                self.assertFalse(q['usable_point'])
+                self.assertFalse(research_desk.fresh_quote(q,NOW+timedelta(minutes=10)))
+
     def test_expected_poll_windows_and_misses_are_explicit(self):
         self.assertEqual(len(c.poll_slots(datetime(2026,10,5,4,43,tzinfo=timezone.utc),60)),3)
         self.assertEqual(c.poll_slots(datetime(2026,10,4,5,tzinfo=timezone.utc)),set())

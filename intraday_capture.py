@@ -262,4 +262,9 @@ def collect(*, now=None, scheduled_at=None, fetcher=None, state_path=STATE_PATH,
                    network_state=network,coverage='partial_point_observations_not_ohlcv')
     document=record(capture,state_path=state_path,status_path=status_path,root=root)
     capture['observation_capture_id']=document['capture_id']
+    quality={row['symbol']:row for row in document['observations']}
+    for quote in capture['prices']:
+        row=quality[quote['symbol']]
+        quote.update(quality_flags=row['quality_flags'],usable_point=row['usable_point'],
+                     observation_id=row.get('observation_id'),collection_capture_id=document['capture_id'])
     return capture

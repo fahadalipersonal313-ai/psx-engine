@@ -233,7 +233,7 @@ jobs:
             CHANGED=$(python -c "import json;print(json.load(open('.engine-state.json'))['signal_digest'])" 2>/dev/null || echo "unknown")
             PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
                    | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
-            for f in research_quotes.json research_quote_history.json research_status.json research_decisions intraday_collection_state.json intraday_collection_status.json intraday_samples; do
+            for f in research_quotes.json research_quote_history.json research_status.json research_decisions intraday_collection_state.json intraday_collection_status.json intraday_samples research_paper_summary.json paper_events research_activity.json research_comparisons.json; do
               if [ -e "$f" ]; then git add -- "$f"; fi
             done
             git add -A -- news_raw_24h.json .engine-state.json intraday_momentum.json
