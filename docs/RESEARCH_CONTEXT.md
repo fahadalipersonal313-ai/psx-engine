@@ -48,7 +48,7 @@ No credentials are created, account access expanded, app audience changed, or or
 
 ## Calendar and artifact maintenance
 
-Review the 2027 exchange calendar by 2026-12-01. The current manifest ends 2026-12-31, and uncovered feature windows fail closed rather than inventing January session coverage. `research_status.json` surfaces this maintenance date. Reconcile new official exceptional-closure notices promptly. Keep each model artifact under 256 KB by removing unreferenced old news sources; retain sources needed by still-current financial reviews. Do not duplicate headlines by alternate URLs or count syndicated copies as independent evidence.
+Review the 2027 exchange calendar by 2026-11-01. The current manifest ends 2026-12-31, and uncovered feature windows fail closed rather than inventing January session coverage. `research_status.json` surfaces this maintenance date. Reconcile new official exceptional-closure notices promptly. Keep each model artifact under 256 KB by removing unreferenced old news sources; retain sources needed by still-current financial reviews. Do not duplicate headlines by alternate URLs or count syndicated copies as independent evidence.
 
 
 ## Five-minute observation collection (forward data only)
@@ -68,3 +68,76 @@ Paper-model status remains collection-only: no orders, assumed fills, complete 1
 Keep a source ID tied to one immutable verification record. When a dynamic company page is rechecked for fresh news, create a new source ID and change only relevant news/sector/macro references. Preserve the old verification record used by a cached monthly financial review; do not replace its verified_at in place. Financial-source verification must remain within 24 hours of its preserved reviewed_at, while current-context sources must be verified within one hour of as_of. Prune only unreferenced old sources to keep the artifact below 256 KB.
 
 Record every known verified date in `fundamentals.events`; missing/empty arrays do not establish complete event-calendar coverage. Earnings, AGMs, dividends and actual effective corporate actions remain distinct. Never infer an ex-dividend or price-adjustment date from a book/register closure. Source publication known only to a date uses `published_at: null`, `published_date: YYYY-MM-DD`, `publication_precision: date`; do not invent midnight timestamps. Existing reviews/as-of times must not be refreshed merely to make old facts look current.
+
+## Action board, prospective scorecard and scenarios (2026-10-04)
+
+The Research tab now leads with **What can I do now?** and separates Ready for
+review, Watching and Blocked. This is a display of the existing guarded combined
+research; it does not alter v8 decisions, eligibility, ranking weights or source
+freshness gates. Conditional reference levels, maximum holding sessions and a
+recheck deadline are shown only when their evidence is valid. The deadline is
+bounded by the current quote, reviewed context and regular trading segment.
+Ready for review is not an executable order or a suitability recommendation.
+
+`research_paper.py` records immutable, causally sequenced `paper_events/*.json`
+and rebuilds `research_paper_summary.json`. Only new current candidates are
+enrolled after installation; old journals are not retrospectively converted to
+trades. A bound technical snapshot can create at most one opportunity, and only
+one unresolved active opportunity per symbol is observed at a time. Each
+candidate freezes its plan, version, source hashes, entry rule, 15-minute-or-less
+expiry and 30-session observation deadline. Source update and fetch times must
+both be strictly after candidate recording for the first observed entry
+condition; the original decision quote cannot activate its own call. Known
+collector-quality failures are propagated into the quote and block activation.
+Causal event sequence and predecessor hashes make exact retries and recovery
+from an interrupted summary write idempotent.
+
+Recording time is the engine's local checkpoint timestamp, **not** a verified
+Git publication or dashboard-visibility time. Point samples support observed
+conditions only: neither a fill nor the order of possible stop/target touches
+between samples is known. Subsequent level touches are unresolved, rather than
+wins/losses. Expired, cancelled, research-invalidated and unresolved candidates
+remain counted. Verified fills, resolved-trade count, win rate, net gain/loss and
+drawdown are deliberately unavailable/zero as appropriate. A future execution
+model requires a new version, frozen costs and sufficient independent evidence;
+it must not relabel these old observation cohorts as executed trades.
+
+`research_sizing.py` is a separate session-local scenario calculator. Users
+explicitly supply capital, available cash, modeled loss budget, fee/slippage,
+fixed costs, lot size, position cap and daily-volume participation. Decimal
+arithmetic rounds quantity down to satisfy every constraint. Adverse entry/exit
+slippage and fees are applied on both sides; fixed round-trip costs reserve cash
+and consume risk budget. Quantity requires current validated median volume that
+matches the plan and completed-session cutoff. Unverified/older liquidity
+withholds sizing. Modeled stop loss is not a guaranteed maximum: gaps, circuit
+limits and unavailable liquidity can be worse. Zero assumptions require explicit
+acknowledgment. Tax, spread and execution assumptions must be included by the
+user; the tool does not claim verified broker charges. No inputs enter Git,
+research artifacts, a broker, or the actual portfolio. A separate hypothetical
+basket shows sector concentration from user-entered proposed values.
+
+`research_comparisons.json` is rebuilt with the successful completed-session
+snapshot by the existing single writer. It measures 5/20-session raw stock price
+changes, reported KSE100 index-level changes and their percentage-point
+difference. These are not like-for-like total returns or alpha. Exact independent
+session sequences, source quality, corporate-action and discontinuity gates
+apply. The selected-15 peer mean excludes the stock, requires two or more other
+same-sector members and all peer coverage, and discloses its membership. It is
+not an official sector index. Presently only the four refiners have enough
+selected peers. The 20-session close-times-volume statistic is a turnover proxy,
+not actual traded value or instant order capacity.
+
+`research_activity.json` keeps the latest 200 before/after research-condition
+changes, deduplicated by the single writer; first load establishes a baseline.
+Original inputs remain in immutable research decisions. In-dashboard health
+alerts also highlight expired reviews, stale/missing collection and checkpoints,
+missed polls, financial reviews and listed near-term events. These alerts do not
+subscribe the user to external notifications or claim that every changed review
+is a new material announcement. All new runtime files are staged by the existing
+writer and retain hard publication-conflict failures.
+
+The paper ledger's future 30-session window requires extending the calendar
+**before 19 November 2026**, earlier than the technical lookback alone required.
+Maintenance warning now begins 1 November. If a complete holding window cannot
+be verified, the summary explicitly reports an enrollment blocker; no candidate
+is silently added with a guessed deadline.

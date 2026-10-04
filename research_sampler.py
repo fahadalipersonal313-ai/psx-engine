@@ -12,7 +12,8 @@ import time
 import session_calendar as cal
 
 FILES=('research_quotes.json','research_quote_history.json','research_status.json','research_decisions',
-       'intraday_collection_state.json','intraday_collection_status.json','intraday_samples')
+       'intraday_collection_state.json','intraday_collection_status.json','intraday_samples',
+       'research_paper_summary.json','paper_events','research_activity.json','research_comparisons.json')
 
 
 def due_targets(cycle_started,cycle_seconds=900,now=None):

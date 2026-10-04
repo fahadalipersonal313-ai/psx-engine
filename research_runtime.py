@@ -142,9 +142,14 @@ def checkpoint(now=None):
     if not path.exists():write(path,record)
     status={'schema_version':1,'checked_at':now.isoformat(),'version':VERSION,'checkpoint':str(path),'id':rid,
             'research_current':desk['research_current'],'context_error':error,
-            'calendar_verified_through':'2026-12-31','calendar_maintenance_due':'2026-12-01',
+            'calendar_verified_through':'2026-12-31','calendar_maintenance_due':'2026-11-01',
             'quotes_as_of':quotes.get('checked_at'),'decision_count':len(desk['rows']),
             'execution_status':'No orders or assumed fills','outcomes':'Pending independently verified evaluation'}
+    import research_paper, research_actions
+    paper=research_paper.update(desk,rid,now=now)
+    research_actions.update_activity(desk,rid,now=now)
+    status['paper_ledger_version']=paper['version']
+    status['paper_candidate_count']=paper['candidate_count']
     write('research_status.json',status)
     return status
 
