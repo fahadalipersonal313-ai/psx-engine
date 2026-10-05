@@ -1,16 +1,17 @@
 {
- "as_of": "2026-10-05T08:38:29Z",
+ "as_of": "2026-10-05T09:38:03Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 14,
+ "articles_read": 15,
  "read_urls": [
+  "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963",
   "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960",
   "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
   "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
   "https://mettisglobal.news/Gold-hovers-near-4132-as-Fed-hike-bets-dip-63954",
+  "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63947",
-  "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
   "https://mettisglobal.news/PIA-to-resume-weekly-IslamabadBeijing-flights-from-October-30-63956",
   "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
   "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
@@ -20,14 +21,14 @@
   "https://mettisglobal.news/US-South-Korea-at-odds-over-Alaska-LNG-63958",
   "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962"
  ],
- "count": 3,
+ "count": 4,
  "ratings": {
   "DGKC": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Mgmt sees durable FY27 dispatch recovery on lower rates, rebuilding demand; outlook, no numbers",
+   "confidence": 0.5,
+   "reason": "Mgmt sees durable FY27 dispatch recovery on lower rates, reconstruction demand",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
@@ -37,22 +38,33 @@
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 profit down 11% to Rs790m on higher marketing and finance costs; EPS 3.46 vs 3.90",
+   "confidence": 0.6,
+   "reason": "FY26 consolidated profit down 11% to Rs790m; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
    ]
   },
   "TOMCL": {
-   "rating": "highly_negative",
+   "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.75,
-   "reason": "FY26 profit down 74% to Rs112m; EPS 0.57 vs 2.50 restated",
+   "confidence": 0.7,
+   "reason": "FY26 consolidated profit down 74% to Rs112m; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
+   ]
+  },
+  "FABL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Charity sponsorship; no cash-flow mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/05/pedalling-for-a-cause-faysal-bank-and-patients-aid-foundation-unite-against-breast-cancer/"
    ]
   }
  },
@@ -61,11 +73,12 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Lower borrowing costs and rebuilding demand support dispatch recovery; one producer's outlook",
+   "confidence": 0.45,
+   "reason": "DGKC sees demand recovery; M-6 motorway groundbreaking set for Nov",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
+    "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
+    "https://propakistani.pk/2026/10/05/sukkur-hyderabad-m-6-motorway-finally-set-for-construction-after-30-years/"
    ]
   },
   "Oil & Gas Exploration": {
@@ -73,10 +86,32 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent easing to ~$101 on G7 stock release and rising Gulf exports trims price support",
+   "reason": "Saudi cuts Asia crude prices to 6-yr lows; weaker oil price bearish for E&Ps",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Lower Saudi crude OSP to Asia eases import cost outlook",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+   ]
+  },
+  "Textile": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Pakistan-Bangladesh talks on lower trade barriers and garment MoU; early stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953"
+    "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
    ]
   }
  }
