@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-05T05:38:23Z",
+ "as_of": "2026-10-05T06:39:13Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 11,
+ "articles_read": 14,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-gain-on-improving-oil-flows-easing-yield-concerns-63949",
   "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
@@ -11,19 +11,23 @@
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63947",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-63950",
   "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
+  "https://mettisglobal.news/PIA-to-resume-weekly-IslamabadBeijing-flights-from-October-30-63956",
+  "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
   "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946",
   "https://mettisglobal.news/SBP-opens-applications-for-second-cohort-of-Regulatory-Sandbox-63945",
   "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952",
   "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948",
-  "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955"
+  "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955",
+  "https://mettisglobal.news/US-South-Korea-at-odds-over-Alaska-LNG-63958"
  ],
+ "count": 2,
  "ratings": {
   "CPHL": {
    "rating": "negative",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.7,
-   "reason": "FY26 profit -11% on higher marketing, finance and opex costs despite 7% sales growth",
+   "reason": "FY26 consolidated net profit down 11% to Rs790m; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
@@ -33,8 +37,8 @@
    "rating": "highly_negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.8,
-   "reason": "FY26 profit -74%, sales -12%, margin squeeze and higher credit-loss provisions",
+   "confidence": 0.75,
+   "reason": "FY26 consolidated net profit down 74% to Rs112m; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
@@ -42,52 +46,50 @@
   }
  },
  "sectors": {
+  "Food": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "SBP guidelines clear export of 200,000 MT sugar; opens export revenue for sugar mills",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946"
+   ]
+  },
+  "Textile": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "Pakistan-Bangladesh early talks to lower textile trade barriers; no numbers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
+   ]
+  },
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.4,
-   "reason": "Brent eased on G7 stock release and higher Gulf exports; still ~$101, so mild realisation drag",
+   "confidence": 0.3,
+   "reason": "Brent slipping toward 01 on G7 stock release and Saudi Asia price cut",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-    "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks"
+    "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
    ]
   },
   "Refinery": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Crude easing offsets elevated price volatility; no refining-margin or policy mechanism stated",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-    "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Lower crude eases import bill but no OMC margin or pricing change announced",
+   "confidence": 0.2,
+   "reason": "Lower crude/Saudi Asia OSP cut eases input cost but moves with oil, no direct mechanism",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953"
    ]
-  },
-  "Food": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Cabinet-ratified export of 200,000 MT sugar cleared with SBP guidelines issued; supports sugar mills",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946"
-   ]
   }
- },
- "count": 2
+ }
 }
