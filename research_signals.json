@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-05T06:07:44.751490+00:00",
+  "evaluated_at": "2026-10-05T06:12:45.302898+00:00",
   "market_open": true,
   "research_current": true,
-  "context_as_of": "2026-10-05T05:40:55Z",
-  "context_expires_at": "2026-10-05T06:40:55Z",
+  "context_as_of": "2026-10-05T06:03:50Z",
+  "context_expires_at": "2026-10-05T07:03:50Z",
   "counts": {
     "Ready for review": 0,
     "Watching": 0,
@@ -15,9 +15,9 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
@@ -28,9 +28,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 88.47,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:28.142264+00:00",
+        "price": 88.55,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:29.230853+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
@@ -48,8 +48,8 @@
         "run_time": "2026-10-05T11:02:51.573281+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 62.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -103,15 +103,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -266,16 +257,72 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX PRL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/PRL",
+          "source_id": "eleven_20261005_1103_PRL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research unavailable: Current issuer-news coverage could not be renewed from the stale fallback. Monthly fundamental conclusions are unchanged, but a new entry review needs usable current coverage alongside broader market gates.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
+        "Swing research unavailable: Current issuer-news coverage could not be renewed from the stale fallback. Monthly fundamental conclusions are unchanged, but a new entry review needs usable current coverage alongside broader market gates.",
         "Original technical entry screen: Avoid",
+        "News review unavailable",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
@@ -284,9 +331,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 550.37,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:29.521709+00:00",
+        "price": 550.5,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:29.292506+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
@@ -304,8 +351,8 @@
         "run_time": "2026-10-05T11:02:51.374535+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 40.6 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -353,15 +400,6 @@
           "publication_precision": null
         },
         {
-          "title": "PSX MEBL current announcement coverage and profile, Monday pre-open",
-          "url": "https://dps.psx.com.pk/company/MEBL",
-          "source_id": "mon_20261005_MEBL",
-          "verified_at": "2026-10-05T04:12:47Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "SBP September 14 monetary-policy statement",
           "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
           "source_id": "mon_20261005_sbp",
@@ -398,15 +436,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
-          "url": "https://www.ukmto.org/?trk=public_post-text",
-          "source_id": "mon_20261005_ukmto",
-          "verified_at": "2026-10-05T04:12:24Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "SBP policy and indicators rechecked after PSX open",
           "url": "https://www.sbp.org.pk/",
           "source_id": "open_20261005_0936_sbp",
@@ -432,15 +461,6 @@
           "published_at": null,
           "published_date": "2026-10-03",
           "publication_precision": "date"
-        },
-        {
-          "title": "PSX MEBL company announcement coverage rechecked at midmorning",
-          "url": "https://dps.psx.com.pk/company/MEBL",
-          "source_id": "mid_20261005_1007_MEBL",
-          "verified_at": "2026-10-05T05:05:01Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
         },
         {
           "title": "SBP policy-rate and indicators current recheck",
@@ -504,15 +524,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "Meezan readable fallback remains an older session snapshot",
+          "url": "https://dps.psx.com.pk/company/MEBL/",
+          "source_id": "eleven_20261005_1103_MEBL",
+          "verified_at": "2026-10-05T06:01:48Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -522,9 +596,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 113.26,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:30.310675+00:00",
+        "price": 113.44,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:32.379127+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
@@ -542,8 +616,8 @@
         "run_time": "2026-10-05T11:02:51.385502+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -742,15 +816,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX SYS announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/SYS",
+          "source_id": "eleven_20261005_1103_SYS",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
@@ -763,8 +891,8 @@
       "expires_at": null,
       "quote": {
         "price": 342.5,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:31.375543+00:00",
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:32.393820+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
@@ -782,8 +910,8 @@
         "run_time": "2026-10-05T11:02:51.329854+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.8 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "PSO FY2026 performance press release",
@@ -819,15 +947,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -964,19 +1083,72 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX PSO announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/PSO",
+          "source_id": "eleven_20261005_1103_PSO",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; News review unavailable; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
         "Original technical entry screen: Avoid",
-        "News review unavailable",
         "Current financial review unavailable or due",
         "Caution: material research risk"
       ],
@@ -986,9 +1158,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 508.31,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:32.582250+00:00",
+        "price": 508.99,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:34.836176+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
@@ -1006,8 +1178,8 @@
         "run_time": "2026-10-05T11:02:51.661197+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1091,15 +1263,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "PSX GAL announcement snapshot rechecked after Monday open",
-          "url": "https://dps.psx.com.pk/company/GAL",
-          "source_id": "open_20261005_0936_GAL",
-          "verified_at": "2026-10-05T04:34:21Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "SBP policy and indicators rechecked after PSX open",
           "url": "https://www.sbp.org.pk/",
           "source_id": "open_20261005_0936_sbp",
@@ -1179,15 +1342,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX GAL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "eleven_20261005_1103_GAL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
@@ -1196,9 +1413,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 192.19,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:33.224623+00:00",
+        "price": 192.21,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:35.626837+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
@@ -1216,8 +1433,8 @@
         "run_time": "2026-10-05T11:02:51.496285+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 76.3 meets Buy threshold 75; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1434,15 +1651,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX EFERT announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "eleven_20261005_1103_EFERT",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -1452,9 +1723,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 1187.5,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:34.438192+00:00",
+        "price": 1187.38,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:36.936421+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
@@ -1472,8 +1743,8 @@
         "run_time": "2026-10-05T11:02:51.584239+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.1 ≥ 80 with technical Strong bullish; Downgraded Strong Buy→Buy: first completed session at this level — needs one more consecutive confirmation; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1536,15 +1807,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -1708,15 +1970,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX ATRL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/ATRL",
+          "source_id": "eleven_20261005_1103_ATRL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -1726,9 +2042,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 593.02,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:36.193008+00:00",
+        "price": 595.0,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:37.495898+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
@@ -1746,8 +2062,8 @@
         "run_time": "2026-10-05T11:02:51.418950+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.6 ≥ 80 with technical Strong bullish; Hysteresis: score 80.6 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1801,15 +2117,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -1964,15 +2271,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX NRL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "eleven_20261005_1103_NRL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
@@ -1983,9 +2344,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 16.0,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:36.509016+00:00",
+        "price": 16.1,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:39.250682+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
@@ -2003,8 +2364,8 @@
         "run_time": "2026-10-05T11:02:51.893013+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 63.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2203,15 +2564,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX ASL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "eleven_20261005_1103_ASL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -2223,8 +2638,8 @@
       "expires_at": null,
       "quote": {
         "price": 27.0,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:39.126593+00:00",
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:40.616150+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
@@ -2242,8 +2657,8 @@
         "run_time": "2026-10-05T11:02:51.750026+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 44.1 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2460,15 +2875,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX FCL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "eleven_20261005_1103_FCL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -2478,9 +2947,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 132.0,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:38.603273+00:00",
+        "price": 131.9,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:41.103436+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
@@ -2498,8 +2967,8 @@
         "run_time": "2026-10-05T11:02:51.826997+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 42.5 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2707,15 +3176,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX FCEPL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/FCEPL",
+          "source_id": "eleven_20261005_1103_FCEPL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -2726,9 +3249,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 12.4,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:40.670810+00:00",
+        "price": 12.44,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:42.680155+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
@@ -2746,8 +3269,8 @@
         "run_time": "2026-10-05T11:02:51.937008+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 32.5 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -2801,15 +3324,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -2964,15 +3478,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX CNERGY announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/CNERGY",
+          "source_id": "eleven_20261005_1103_CNERGY",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
         "Original technical entry screen: Avoid",
@@ -2985,9 +3553,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 70.44,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:41.439505+00:00",
+        "price": 70.31,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:43.397314+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
@@ -3005,8 +3573,8 @@
         "run_time": "2026-10-05T11:02:51.871058+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 24.7 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "Thatta Cement March 2026 quarterly report",
@@ -3196,15 +3764,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX THCCL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "eleven_20261005_1103_THCCL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -3215,8 +3837,8 @@
       "expires_at": null,
       "quote": {
         "price": 92.19,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:43.586439+00:00",
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:44.797398+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
@@ -3234,8 +3856,8 @@
         "run_time": "2026-10-05T11:02:51.352475+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 39.7 below 50"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -3407,15 +4029,69 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX FABL announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/FABL",
+          "source_id": "eleven_20261005_1103_FABL",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Late-morning verification still finds indexed UKMTO October 4 warnings 150/151: the Hormuz strike report has incident time TBC, while the Al Mukha report concerns nearby explosions, not a confirmed vessel hit. Direct dynamic coverage remains incomplete and no all-clear was verified. The now-readable 10:01 PKT oil report reiterates supply recovery/G7 relief while retaining infrastructure risks. Inference: the counterweight improves supply context but does not resolve adverse maritime, freight and insurance risk; no total closure or live oil-price claim.",
+        "Geopolitical risk: Rechecked indexed UKMTO warning 150 remains an October 4 issue with incident time TBC; previously reviewed warning 151 concerns nearby explosions rather than a confirmed hit. Direct dynamic listings remain incomplete and no shipping all-clear was verified. Previously reported emergency-stock releases, recovered exports and better-supported diplomatic travel are constructive counterweights. Inference: residual maritime/freight/insurance risk remains adverse, with uncertainty and offsets explicitly retained; this is not a prediction that every selected stock will fall.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -3425,9 +4101,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 313.39,
-        "source_as_of": "2026-10-05T11:03:00+05:00",
-        "fetched_at": "2026-10-05T06:07:44.676956+00:00",
+        "price": 313.0,
+        "source_as_of": "2026-10-05T11:08:00+05:00",
+        "fetched_at": "2026-10-05T06:12:45.270201+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
@@ -3445,8 +4121,8 @@
         "run_time": "2026-10-05T11:02:51.441299+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T05:40:55Z",
-      "research_expires_at": "2026-10-05T06:40:55Z",
+      "research_as_of": "2026-10-05T06:03:50Z",
+      "research_expires_at": "2026-10-05T07:03:50Z",
       "source_links": [
         {
           "title": "OGDCL FY2026 audited results and operating review",
@@ -3491,15 +4167,6 @@
           "verified_at": "2026-10-05T04:10:53Z",
           "published_at": null,
           "published_date": "2026-09-14",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PBS September 2026 CPI release, dated October 1",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "mon_20261005_cpi",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
           "publication_precision": "date"
         },
         {
@@ -3636,22 +4303,76 @@
           "published_at": "2026-10-05T05:01:00Z",
           "published_date": null,
           "publication_precision": "minute"
+        },
+        {
+          "title": "PSX OGDC announcement coverage reviewed near 11:02 PKT",
+          "url": "https://dps.psx.com.pk/company/OGDC",
+          "source_id": "eleven_20261005_1103_OGDC",
+          "verified_at": "2026-10-05T06:02:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PBS September CPI report reread at 11:03 PKT",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "eleven_20261005_1103_cpi",
+          "verified_at": "2026-10-05T06:03:21Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP 2026 Inflation Monitor official publication listing",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "eleven_20261005_1103_monitor",
+          "verified_at": "2026-10-05T06:02:19Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UN official listing of October 4 Secretary-General travel-to-Pakistan note",
+          "url": "https://www.un.org/sg/en?ysclid=mu92z70zcp987772011",
+          "source_id": "eleven_20261005_1103_un",
+          "verified_at": "2026-10-05T06:01:37Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed warnings rechecked near 11:02 PKT",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "eleven_20261005_1103_ukmto",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan official current-review confirmation search",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "eleven_20261005_1103_imf",
+          "verified_at": "2026-10-05T06:03:50Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     }
   ],
   "errors": [],
   "source_hashes": {
-    "context_sha256": "cf1cede42499e2ca7a605825c5063b857566284505bec30c578cd53c6accf4e9",
+    "context_sha256": "278b9de6b319cf8314b6338c79d13508a3d38ab6bf42f3457e1b0ff076ada829",
     "technical_sha256": "60d9aee067cbee004f5c8f0f29fcc21668845eac025c568d72e56df1e3a14a25",
-    "quotes_sha256": "57b83de241cc1e6b67509399c3d43ff4d53dd939219b3fad8e08f473bf3b0af7"
+    "quotes_sha256": "a01341131762c1b33ce4dd34fea4ae0b727ef133ad3e5ff953dc0978547f3ca5"
   },
-  "checkpoint_id": "9442861c505e2fb7920dbc97e39c754b3296535b00f73c7e258969a08797db62",
-  "checkpoint": "research_decisions/2026-10-05/060744-9442861c505e.json",
-  "recorded_at": "2026-10-05T06:07:44.751490+00:00",
+  "checkpoint_id": "bb814a8c4f035ebd55e6b5e67c96e3dff831ca8c887d6d856ce22c146fde85c5",
+  "checkpoint": "research_decisions/2026-10-05/061245-bb814a8c4f03.json",
+  "recorded_at": "2026-10-05T06:12:45.302898+00:00",
   "context_error": null,
-  "context_sha256": "cf1cede42499e2ca7a605825c5063b857566284505bec30c578cd53c6accf4e9",
+  "context_sha256": "278b9de6b319cf8314b6338c79d13508a3d38ab6bf42f3457e1b0ff076ada829",
   "technical_sha256": "60d9aee067cbee004f5c8f0f29fcc21668845eac025c568d72e56df1e3a14a25",
-  "quotes_sha256": "57b83de241cc1e6b67509399c3d43ff4d53dd939219b3fad8e08f473bf3b0af7",
+  "quotes_sha256": "a01341131762c1b33ce4dd34fea4ae0b727ef133ad3e5ff953dc0978547f3ca5",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
