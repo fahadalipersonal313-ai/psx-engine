@@ -1,203 +1,188 @@
 {
   "schema_version": 1,
   "version": "intraday-point-observations-v1",
-  "checked_at": "2026-10-05T10:02:29.572257+00:00",
-  "capture_id": "f71dc19b84a7c478217d5a1c0521ae8100f09caeb5f11a6049dad847dd12a0c3",
-  "capture_path": "intraday_samples/2026-10-05/100229-f71dc19b84a7c478.json",
+  "checked_at": "2026-10-05T10:07:28.847495+00:00",
+  "capture_id": "2ff7e597c8ab27e828bc6c3c68c63656f8fb420501ee7dd3d92dae13b6c63995",
+  "capture_path": "intraday_samples/2026-10-05/100728-2ff7e597c8ab27e8.json",
   "dataset_kind": "delayed_REG_point_observations",
   "ohlcv_status": "unavailable",
   "target_minutes": 5,
   "collection_session": "2026-10-05",
-  "capture_count_this_date": 67,
-  "regular_poll_windows_elapsed": 66,
-  "regular_poll_windows_observed": 67,
+  "capture_count_this_date": 68,
+  "regular_poll_windows_elapsed": 67,
+  "regular_poll_windows_observed": 68,
   "missed_poll_windows": 0,
   "missed_poll_window_ids": [],
   "poll_count_note": "Expected exchange-session five-minute windows, with 60-second grace; counts are as of this capture, not candle completeness.",
   "usable_points_this_date": {
-    "PRL": 66,
-    "MEBL": 66,
-    "SYS": 66,
-    "PSO": 66,
-    "GAL": 66,
-    "EFERT": 66,
-    "ATRL": 66,
-    "NRL": 66,
-    "ASL": 66,
-    "FCL": 66,
-    "FCEPL": 66,
-    "CNERGY": 66,
-    "THCCL": 66,
-    "FABL": 66,
-    "OGDC": 66
+    "PRL": 67,
+    "MEBL": 67,
+    "SYS": 67,
+    "PSO": 67,
+    "GAL": 67,
+    "EFERT": 67,
+    "ATRL": 67,
+    "NRL": 67,
+    "ASL": 67,
+    "FCL": 67,
+    "FCEPL": 67,
+    "CNERGY": 67,
+    "THCCL": 67,
+    "FABL": 67,
+    "OGDC": 67
   },
   "current_usable_points": 15,
   "coverage": "partial observations; no complete 1-minute or 5-minute candles",
   "rows": [
     {
       "symbol": "PRL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 132903,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 63196,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "MEBL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 9772,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 4390,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "SYS",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 94961,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 19113,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "PSO",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 7621,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 2676,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "GAL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 14096,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 5469,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "EFERT",
-      "source_as_of": "2026-10-05T15:00:00+05:00",
+      "source_as_of": "2026-10-05T15:05:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 1243,
-      "volume_interval_seconds": 420.0
+      "observed_volume_delta": 1593,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "ATRL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 8190,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 571,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "NRL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 25983,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 22572,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "ASL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 291764,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 19282,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "FCL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 74110,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 17880,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "FCEPL",
-      "source_as_of": "2026-10-05T15:00:00+05:00",
+      "source_as_of": "2026-10-05T15:05:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 548,
-      "volume_interval_seconds": 420.0
+      "observed_volume_delta": 4755,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "CNERGY",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 245269,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 199359,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "THCCL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:05:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 15257,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 11898,
+      "volume_interval_seconds": 240.0
     },
     {
       "symbol": "FABL",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 8739,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 857,
+      "volume_interval_seconds": 300.0
     },
     {
       "symbol": "OGDC",
-      "source_as_of": "2026-10-05T15:01:00+05:00",
+      "source_as_of": "2026-10-05T15:06:00+05:00",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time",
-        "irregular_source_interval_not_five_minutes"
+        "source_time_is_quote_update_not_verified_trade_time"
       ],
-      "observed_volume_delta": 67399,
-      "volume_interval_seconds": 480.0
+      "observed_volume_delta": 34294,
+      "volume_interval_seconds": 300.0
     }
   ],
   "paper_strategy_status": "Collection only; strategy, costs and executable-fill assumptions not yet frozen",
