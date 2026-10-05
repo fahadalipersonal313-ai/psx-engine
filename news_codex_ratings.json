@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-10-05T07:52:32Z",
+  "as_of": "2026-10-05T09:46:39Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "depth": "full-text",
-  "articles_read": 6,
+  "articles_read": 5,
   "notes": [
     "Scheduled in-session Codex review. Monday regular PSX session is 09:32-15:30 PKT; 2026-10-05 is not in the configured exchange or research closure lists and has no session override.",
-    "Fresh committed raw input fetched at 2026-10-05T07:37:23.809071Z.",
-    "Existing current-session findings are retained only where still supported. New material stories were checked against prior thread history. Absence of a reviewed story is not treated as Neutral."
+    "Fresh committed raw input fetched at 2026-10-05T09:35:45.439415Z.",
+    "Current-session findings are retained where still supported. New material stories were checked against the current Codex story history. Absence of a reviewed story is not treated as Neutral."
   ],
   "reviewed_stories": [
     {
@@ -176,19 +176,91 @@
       "thread_key": "pakistan-sugar-export-quota"
     },
     {
-      "title": "PSX selloff deepens beyond 1,600 points intraday",
+      "title": "DGKC sees durable FY27 cement recovery on lower rates, reconstruction demand",
+      "assessment": "positive",
+      "linkage": "direct",
+      "linkage_detail": "D.G. Khan Cement Company Limited is explicitly identified as PSX: DGKC and DGKC is in the configured tracked universe.",
+      "reason": "Management expects a measured FY27 domestic cement recovery supported by lower borrowing costs and reconstruction demand, with projected FY27 sales of Rs87.35bn and profit before tax of Rs17.12bn. Higher royalty and input costs, stronger competition and a full year of financing cost on the Rafhan Maize facility temper the outlook, so this is positive guidance rather than a realized earnings result.",
+      "source": "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
+      "sources": [
+        "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
+      ],
+      "published": "2026-10-05T12:45:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:45 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.72,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "dgkc-fy27-outlook"
+    },
+    {
+      "title": "ZUMA clears acquisition of sim.market eSIM brand through UK subsidiary",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "Zuma Resources Limited is explicitly identified as PSX: ZUMA, but ZUMA is outside the repository's configured tracked universe.",
+      "reason": "The board approved acquisition of the sim.market brand and associated rights through its UK subsidiary, but purchase consideration and final commercial terms remain under negotiation. The strategic direction is clear, while the financial effect is not yet measurable.",
+      "source": "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962",
+      "sources": [
+        "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962"
+      ],
+      "published": "2026-10-05T13:16:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 01:16 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "zuma-sim-market-acquisition"
+    },
+    {
+      "title": "Attock Cement board recommends name change to Falcon Cement Limited",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "Attock Cement Pakistan Limited is explicitly identified as PSX: ACPL, but ACPL is outside the repository's configured tracked universe.",
+      "reason": "The board recommended changing the company name to Falcon Cement Limited, subject to shareholder and regulatory approvals. The announcement changes corporate identity but does not establish an earnings, cash-flow or operating impact.",
+      "source": "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963",
+      "sources": [
+        "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963"
+      ],
+      "published": "2026-10-05T14:07:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 02:07 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.98,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "acpl-falcon-name-change"
+    },
+    {
+      "title": "KOHP incurs Rs3.5m FY26 loss",
+      "assessment": "negative",
+      "linkage": "irrelevant",
+      "linkage_detail": "Kohinoor Power Company Limited is explicitly identified as PSX: KOHP, but KOHP is outside the repository's configured tracked universe.",
+      "reason": "FY26 swung to a Rs3.47m after-tax loss from a Rs10.92m profit, with LPS of Rs0.28. Core operating profit improved, but the prior year's tax reversal became a tax charge and drove the bottom-line loss. No tracked rating is created.",
+      "source": "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964",
+      "sources": [
+        "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964"
+      ],
+      "published": "2026-10-05T14:32:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 02:32 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.97,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "kohp-fy26-results"
+    },
+    {
+      "title": "KSE-100 intraday decline deepens beyond 2,300 points",
       "assessment": "neutral",
       "linkage": "irrelevant",
       "linkage_detail": "This is a contemporaneous market-price outcome, not independent causal evidence about a tracked company's fundamentals or a sector mechanism.",
-      "reason": "The KSE-100 was down more than 1,600 points around 11:45 AM, with analysts citing domestic political uncertainty and elevated oil prices. This continues the intraday-selloff thread, but using the market's own price move as causal news for the same stocks would be circular, so it remains excluded from ratings.",
-      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1600-points-on-political-uncertainty-higher-oil-prices",
+      "reason": "The KSE-100 decline deepened to 2,312 points by 12:45 PM. This materially updates the earlier intraday-selloff thread, but using the market's own price move as causal news for the same stocks would be circular, so it remains excluded from ratings.",
+      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-2300-points-on-political-uncertainty-higher-oil-prices",
       "sources": [
-        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1600-points-on-political-uncertainty-higher-oil-prices"
+        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-2300-points-on-political-uncertainty-higher-oil-prices"
       ],
       "published": null,
-      "publication_time_status": "Business Recorder confirms publication on October 5 and an 11:57 AM PKT update, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
+      "publication_time_status": "Business Recorder confirms publication on October 5 and an update at 12:53 PM PKT, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
       "text_depth": "full",
-      "confidence": 0.98,
+      "confidence": 0.99,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "kse100-intraday-selloff"
@@ -234,6 +306,26 @@
         "2026-10-05T09:14:00+05:00"
       ],
       "thread_key": "tomcl-fy26-results"
+    },
+    "DGKC": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.72,
+      "horizon": "multi_session",
+      "linkage": "direct",
+      "reason": "Management expects a measured FY27 domestic cement recovery and projects higher sales and profit before tax, supported by lower borrowing costs and reconstruction demand. Cost pressure, competition and higher financing costs temper the outlook.",
+      "relevance": "Direct link: DGKC is D.G. Khan Cement Company Limited, the PSX-listed company providing the FY27 outlook.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
+      ],
+      "source_published": [
+        "2026-10-05T12:45:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-05T12:45:00+05:00"
+      ],
+      "thread_key": "dgkc-fy27-outlook"
     }
   },
   "sectors": {
