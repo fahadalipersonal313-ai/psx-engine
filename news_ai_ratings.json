@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-05T07:39:50Z",
+ "as_of": "2026-10-05T08:38:29Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -7,26 +7,38 @@
  "read_urls": [
   "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960",
   "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
+  "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
   "https://mettisglobal.news/Gold-hovers-near-4132-as-Fed-hike-bets-dip-63954",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63947",
   "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
   "https://mettisglobal.news/PIA-to-resume-weekly-IslamabadBeijing-flights-from-October-30-63956",
   "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
   "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
-  "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946",
-  "https://mettisglobal.news/SBP-opens-applications-for-second-cohort-of-Regulatory-Sandbox-63945",
   "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952",
   "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948",
   "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955",
-  "https://mettisglobal.news/US-South-Korea-at-odds-over-Alaska-LNG-63958"
+  "https://mettisglobal.news/US-South-Korea-at-odds-over-Alaska-LNG-63958",
+  "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962"
  ],
+ "count": 3,
  "ratings": {
+  "DGKC": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Mgmt sees durable FY27 dispatch recovery on lower rates, rebuilding demand; outlook, no numbers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
+   ]
+  },
   "CPHL": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "FY26 consolidated profit down 11% to Rs790m; earnings decline reported",
+   "confidence": 0.7,
+   "reason": "FY26 profit down 11% to Rs790m on higher marketing and finance costs; EPS 3.46 vs 3.90",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
@@ -34,10 +46,10 @@
   },
   "TOMCL": {
    "rating": "highly_negative",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 consolidated profit down 74% to Rs112m; sharp earnings collapse",
+   "confidence": 0.75,
+   "reason": "FY26 profit down 74% to Rs112m; EPS 0.57 vs 2.50 restated",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
@@ -45,29 +57,27 @@
   }
  },
  "sectors": {
+  "Cement": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Lower borrowing costs and rebuilding demand support dispatch recovery; one producer's outlook",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
+   ]
+  },
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent slipping from ~$101 on G7 stock release, rising Gulf exports; E&P realisations pressured",
+   "confidence": 0.3,
+   "reason": "Brent easing to ~$101 on G7 stock release and rising Gulf exports trims price support",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks",
     "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953"
    ]
-  },
-  "Textile": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Pakistan-Bangladesh talks on lowering textile trade barriers, early-stage intention",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
-   ]
   }
- },
- "count": 2
+ }
 }
