@@ -1,14 +1,13 @@
 {
-  "as_of": "2026-10-05T06:50:00Z",
+  "as_of": "2026-10-05T07:52:32Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
-  "depth": "full-text-and-verified-article-extracts",
-  "articles_read": 10,
+  "depth": "full-text",
+  "articles_read": 6,
   "notes": [
-    "Current-session review using fresh committed raw input and existing Codex story history.",
-    "The prior Oil & Gas Exploration positive thread is updated to neutral because near-term supply relief has increased while conflict-related infrastructure risk remains.",
-    "No broad Food-sector rating is created from the sugar-export policy because the tracked Food names are not identified as eligible sugar mills.",
-    "Absence of a reviewed story is not treated as Neutral."
+    "Scheduled in-session Codex review. Monday regular PSX session is 09:32-15:30 PKT; 2026-10-05 is not in the configured exchange or research closure lists and has no session override.",
+    "Fresh committed raw input fetched at 2026-10-05T07:37:23.809071Z.",
+    "Existing current-session findings are retained only where still supported. New material stories were checked against prior thread history. Absence of a reviewed story is not treated as Neutral."
   ],
   "reviewed_stories": [
     {
@@ -22,7 +21,7 @@
         "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
       ],
       "published": "2026-10-05T09:32:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:32 AM GMT+05:00.",
+      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:32 AM GMT+05:00.",
       "text_depth": "full",
       "confidence": 0.82,
       "provider": "OpenAI",
@@ -40,7 +39,7 @@
         "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
       ],
       "published": "2026-10-05T09:14:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:14 AM GMT+05:00. It falls after the previous trading-session close and therefore belongs to the current session window under news_window.session_anchor().",
+      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:14 AM GMT+05:00.",
       "text_depth": "full",
       "confidence": 0.95,
       "provider": "OpenAI",
@@ -48,21 +47,22 @@
       "thread_key": "tomcl-fy26-results"
     },
     {
-      "title": "Oil supply relief tempers the prior Middle East price shock",
+      "title": "Middle East supply relief strengthens, but tanker risk remains",
       "assessment": "neutral",
       "linkage": "sector",
       "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is not a company-specific operational disclosure.",
-      "reason": "Brent eased to about $101 as G7 countries planned a 100m-barrel strategic-stock release and Middle East exports recovered above pre-war levels on several recent days. OPEC+ kept November targets steady and diplomatic talks are active, but attacks and Gulf infrastructure risk remain. This materially softens the prior positive supply-shock thread without establishing a clean negative oil-price regime.",
+      "reason": "This continues the middle-east-oil-supply-shock thread. Brent was around $101.6 as G7 emergency releases and Middle East exports above pre-war levels eased immediate supply stress. Saudi pricing also points to restored flows, while repeated tanker attacks and Gulf infrastructure risk remain. The newer evidence reinforces a mixed, rather than clearly bullish or bearish, upstream backdrop.",
       "source": "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
       "sources": [
         "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-        "https://www.brecorder.com/news/40442669/opec-agrees-to-keep-nov-oil-output-targets-steady",
-        "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955"
+        "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks",
+        "https://www.brecorder.com/news/40442700/middle-east-crude-oil-exports-exceed-pre-war-levels-but-tanker-attacks-increase",
+        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
       ],
       "published": "2026-10-05T10:01:00+05:00",
-      "publication_time_status": "Primary Mettis article verified at 10:01 AM PKT. Supporting OPEC+ article was published at 05:09 AM PKT and the UN mediation article at 10:33 AM PKT.",
+      "publication_time_status": "Primary Mettis article was previously verified at 10:01 AM PKT. Supporting Business Recorder pages confirm October 5 updates at 11:29 AM, 11:36 AM and 11:54 AM PKT; those update times are not substituted for unknown original publication times.",
       "text_depth": "full",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "middle-east-oil-supply-shock"
@@ -78,12 +78,66 @@
         "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
       ],
       "published": "2026-10-05T10:57:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 10:57 AM GMT+05:00.",
+      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 10:57 AM GMT+05:00.",
       "text_depth": "full",
       "confidence": 0.75,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "pakistan-bangladesh-textile-trade"
+    },
+    {
+      "title": "Pakistan, IMF near deal on review, $1.2bn disbursement in sight",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "This is material broad-market macro news but does not establish a direct or sector-specific earnings mechanism for a configured tracked stock.",
+      "reason": "Pakistan and the IMF are reported to be near completion of the program review, with about $1.2bn potentially proceeding to formal approval and first-quarter tax collection meeting target. That is directionally supportive for external financing and reduces near-term mini-budget risk, but the disbursement is not yet approved. The article also continues the earlier auto-policy thread: the proposed EV sales-tax change remains under discussion, so no Auto Assembler sector rating is upgraded.",
+      "source": "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
+      "sources": [
+        "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959"
+      ],
+      "published": "2026-10-05T12:35:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:35 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-imf-review-2026"
+    },
+    {
+      "title": "BBFL bets on capacity, margins and the Gulf for its next growth chapter",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Big Bird Foods Limited is explicitly identified as PSX: BBFL, but BBFL is outside the repository's configured tracked universe.",
+      "reason": "BBFL reports a secured Gulf halal-food export order expected to roughly double current export volumes, alongside plans to deepen capacity utilization and higher-value products. The company identity and article body are verified, but no tracked rating is created because BBFL is outside the configured universe.",
+      "source": "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960",
+      "sources": [
+        "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960"
+      ],
+      "published": "2026-10-05T12:34:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:34 PM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.88,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "bbfl-gulf-export-growth"
+    },
+    {
+      "title": "Saudi Arabia cuts November crude prices to Asia to six-year lows",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Potential sector linkage to configured refineries NRL, PRL, ATRL and CNERGY through crude acquisition costs, but the article does not establish their specific landed feedstock cost or refining margins.",
+      "reason": "Saudi Aramco cut November Asia OSPs sharply, but the article says the discounts are intended in part to offset exceptionally high freight and routing costs. Without Pakistan refinery crude slates, freight terms and product crack spreads, the net earnings effect cannot be signed confidently.",
+      "source": "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows",
+      "sources": [
+        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+      ],
+      "published": null,
+      "publication_time_status": "Business Recorder confirms publication on October 5 and an 11:29 AM PKT update, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "saudi-asia-osp-november-2026"
     },
     {
       "title": "Sitara Energy FY26 profit plunges 49% to Rs59m",
@@ -96,7 +150,7 @@
         "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952"
       ],
       "published": "2026-10-05T09:36:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:36 AM GMT+05:00.",
+      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:36 AM GMT+05:00.",
       "text_depth": "full",
       "confidence": 0.98,
       "provider": "OpenAI",
@@ -114,7 +168,7 @@
         "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946"
       ],
       "published": "2026-10-04T08:00:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 4, 2026 at 08:00 AM GMT+05:00.",
+      "publication_time_status": "Full article previously verified. Mettis Global states October 4, 2026 at 08:00 AM GMT+05:00.",
       "text_depth": "full",
       "confidence": 0.95,
       "provider": "OpenAI",
@@ -122,17 +176,17 @@
       "thread_key": "pakistan-sugar-export-quota"
     },
     {
-      "title": "PSX selling at bourse, KSE-100 down over 1,300 points",
+      "title": "PSX selloff deepens beyond 1,600 points intraday",
       "assessment": "neutral",
       "linkage": "irrelevant",
-      "linkage_detail": "This is a contemporaneous market-price outcome, not causal evidence about a tracked company's fundamentals or a sector mechanism.",
-      "reason": "The KSE-100 was down about 1,304 points around 10:01 AM. Using the market's own price move as causal news for the same stocks would be circular, so it is reviewed but excluded from company and sector ratings.",
-      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1300-points",
+      "linkage_detail": "This is a contemporaneous market-price outcome, not independent causal evidence about a tracked company's fundamentals or a sector mechanism.",
+      "reason": "The KSE-100 was down more than 1,600 points around 11:45 AM, with analysts citing domestic political uncertainty and elevated oil prices. This continues the intraday-selloff thread, but using the market's own price move as causal news for the same stocks would be circular, so it remains excluded from ratings.",
+      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1600-points-on-political-uncertainty-higher-oil-prices",
       "sources": [
-        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1300-points"
+        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1600-points-on-political-uncertainty-higher-oil-prices"
       ],
-      "published": "2026-10-05T10:04:00+05:00",
-      "publication_time_status": "Article verified from Business Recorder's current report.",
+      "published": null,
+      "publication_time_status": "Business Recorder confirms publication on October 5 and an 11:57 AM PKT update, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
       "text_depth": "full",
       "confidence": 0.98,
       "provider": "OpenAI",
@@ -186,26 +240,23 @@
     "Oil & Gas Exploration": {
       "rating": "neutral",
       "causality": "causal",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "horizon": "single_session",
       "linkage": "sector",
-      "reason": "G7 stock releases and recovering Middle East exports have eased near-term supply stress and Brent slipped toward $101, while Gulf infrastructure risk and the Iran conflict remain unresolved. This softens the prior bullish supply-shock thread without a clean directional reversal.",
+      "reason": "G7 emergency releases and Middle East exports above pre-war levels have eased immediate supply stress and Brent is near $101.6, while tanker attacks and Gulf infrastructure risk remain. New evidence reinforces the mixed state rather than a clean directional reversal.",
       "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-        "https://www.brecorder.com/news/40442669/opec-agrees-to-keep-nov-oil-output-targets-steady",
-        "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955"
+        "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks",
+        "https://www.brecorder.com/news/40442700/middle-east-crude-oil-exports-exceed-pre-war-levels-but-tanker-attacks-increase",
+        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
       ],
       "source_published": [
-        "2026-10-05T10:01:00+05:00",
-        "2026-10-05T05:09:00+05:00",
-        "2026-10-05T10:33:00+05:00"
+        "2026-10-05T10:01:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-05T10:01:00+05:00",
-        "2026-10-05T05:09:00+05:00",
-        "2026-10-05T10:33:00+05:00"
+        "2026-10-05T10:01:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
