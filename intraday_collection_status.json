@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "version": "intraday-point-observations-v1",
-  "checked_at": "2026-10-04T14:08:36.575749+00:00",
-  "capture_id": "5f88e6c2762da2c7518a4b5e4565bccf7616dcb69cf4e73059a9a6456c096b8a",
-  "capture_path": "intraday_samples/2026-10-04/140836-5f88e6c2762da2c7.json",
+  "checked_at": "2026-10-05T04:32:44.612563+00:00",
+  "capture_id": "a7babbdd68eab71c923206f2224f307dcd9352395900edc8fa8187658370e71d",
+  "capture_path": "intraday_samples/2026-10-05/043244-a7babbdd68eab71c.json",
   "dataset_kind": "delayed_REG_point_observations",
   "ohlcv_status": "unavailable",
   "target_minutes": 5,
-  "collection_session": "2026-10-04",
-  "capture_count_this_date": 3,
+  "collection_session": "2026-10-05",
+  "capture_count_this_date": 1,
   "regular_poll_windows_elapsed": 0,
-  "regular_poll_windows_observed": 0,
+  "regular_poll_windows_observed": 1,
   "missed_poll_windows": 0,
   "missed_poll_window_ids": [],
   "poll_count_note": "Expected exchange-session five-minute windows, with 60-second grace; counts are as of this capture, not candle completeness.",
@@ -24,8 +24,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -37,8 +37,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -50,8 +50,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -63,8 +63,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -76,8 +76,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -89,8 +89,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -102,8 +102,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -115,8 +115,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -128,8 +128,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -141,8 +141,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -154,8 +154,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -167,8 +167,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -180,8 +180,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -193,8 +193,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,
@@ -206,8 +206,8 @@
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
         "source_time_is_quote_update_not_verified_trade_time",
-        "collection_outside_regular_session",
         "source_preopen_break_or_after_close",
+        "source_not_current_trading_segment",
         "stale_source"
       ],
       "observed_volume_delta": null,

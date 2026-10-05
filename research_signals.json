@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-04T14:10:36.664918+00:00",
-  "market_open": false,
+  "evaluated_at": "2026-10-05T04:32:44.789573+00:00",
+  "market_open": true,
   "research_current": true,
-  "context_as_of": "2026-10-03T18:35:27Z",
-  "context_expires_at": "2026-10-05T03:00:00Z",
+  "context_as_of": "2026-10-05T04:13:37Z",
+  "context_expires_at": "2026-10-05T05:13:37Z",
   "counts": {
     "Ready for review": 0,
     "Watching": 0,
@@ -15,30 +15,29 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
-        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 90.35,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:21.833992+00:00",
+        "fetched_at": "2026-10-05T04:32:28.366319+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -52,36 +51,9 @@
         "run_time": "2026-10-04T19:08:43.209121+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 62.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
           "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
@@ -101,15 +73,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
-        {
           "title": "PRL FY2026 annual report, issuer filing mirrored by FinancialFilings",
           "url": "https://financialfilings.com/filings/pakistan-refinery-limited/annual-report/2026/60024744/",
           "source_id": "src_007",
@@ -126,35 +89,133 @@
           "published_at": null,
           "published_date": "2026-09-29",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX PRL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/PRL",
+          "source_id": "mon_20261005_PRL",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Platts reports Ministry letter capping domestic diesel cracks",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "mon_20261005_hsd_cap",
+          "verified_at": "2026-10-05T04:12:53Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "The News reports estimated refinery margin forgone under HSD cap",
+          "url": "https://www.thenews.pk/print/1440499-refineries-contribute-around-rs22bn-to-govt-s-diesel-price-relief-since-august-20",
+          "source_id": "mon_20261005_refiner_impact",
+          "verified_at": "2026-10-05T04:10:29Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Cnergyico September 24 signed-upgrade disclosure",
+          "url": "https://dps.psx.com.pk/download/document/283348.pdf",
+          "source_id": "mon_20261005_cnergy_upgrade",
+          "verified_at": "2026-10-05T04:10:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: supportive",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 548.79,
         "source_as_of": "2026-10-02T16:47:00+05:00",
-        "fetched_at": "2026-10-04T14:08:21.850215+00:00",
+        "fetched_at": "2026-10-05T04:32:28.623136+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -168,8 +229,8 @@
         "run_time": "2026-10-04T19:08:43.060125+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 40.6 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -187,33 +248,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -242,35 +276,106 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX MEBL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/MEBL",
+          "source_id": "mon_20261005_MEBL",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 115.84,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:25.004231+00:00",
+        "fetched_at": "2026-10-05T04:32:30.682524+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -284,8 +389,8 @@
         "run_time": "2026-10-04T19:08:43.068503+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -303,33 +408,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -349,37 +427,117 @@
           "published_at": null,
           "published_date": "2026-06-15",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX SYS current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/SYS",
+          "source_id": "mon_20261005_SYS",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Systems October 2 senior-management interest disclosure; letter October 1",
+          "url": "https://dps.psx.com.pk/download/document/284216.pdf",
+          "source_id": "mon_20261005_sys_sale",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: cautious",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 347.1,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:23.974734+00:00",
+        "fetched_at": "2026-10-05T04:32:30.646441+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -393,27 +551,9 @@
         "run_time": "2026-10-04T19:08:43.024566+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.8 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
         {
           "title": "PSO FY2026 performance press release",
           "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
@@ -424,24 +564,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
-        {
           "title": "PSO FY2026 financial results",
           "url": "https://dps.psx.com.pk/download/document/283440.pdf",
           "source_id": "src_014",
@@ -449,35 +571,118 @@
           "published_at": null,
           "published_date": "2026-09-25",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX PSO current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/PSO",
+          "source_id": "mon_20261005_PSO",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "September 2026 OMC volume data attributed to AHL/OCAC",
+          "url": "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915",
+          "source_id": "mon_20261005_omc",
+          "verified_at": "2026-10-05T04:10:29Z",
+          "published_at": "2026-10-02T05:14:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Material company event requires a new financial review",
+        "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
         "Original technical entry screen: Avoid",
+        "Current financial review unavailable or due",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
-      "investment_state": "Long-term research: watch",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 526.94,
         "source_as_of": "2026-10-02T16:48:00+05:00",
-        "fetched_at": "2026-10-04T14:08:25.785357+00:00",
+        "fetched_at": "2026-10-05T04:32:32.647541+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -491,8 +696,8 @@
         "run_time": "2026-10-04T19:08:43.279622+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -510,33 +715,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -556,34 +734,105 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX GAL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "mon_20261005_GAL",
+          "verified_at": "2026-10-05T04:11:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 193.92,
         "source_as_of": "2026-10-02T16:45:00+05:00",
-        "fetched_at": "2026-10-04T14:08:26.760623+00:00",
+        "fetched_at": "2026-10-05T04:32:33.719567+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -597,8 +846,8 @@
         "run_time": "2026-10-04T19:08:43.151422+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 76.3 meets Buy threshold 75; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -616,33 +865,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -680,34 +902,115 @@
           "published_at": null,
           "published_date": "2026-10-02",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX EFERT current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "mon_20261005_EFERT",
+          "verified_at": "2026-10-05T04:11:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Engro Fertilizers October 2 board meeting and closed-period notice",
+          "url": "https://dps.psx.com.pk/download/document/284264.pdf",
+          "source_id": "mon_20261005_efert_board",
+          "verified_at": "2026-10-05T04:11:00Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: supportive",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 1189.43,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:28.196843+00:00",
+        "fetched_at": "2026-10-05T04:32:36.081005+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -721,36 +1024,9 @@
         "run_time": "2026-10-04T19:08:43.218069+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.1 ≥ 80 with technical Strong bullish; Downgraded Strong Buy→Buy: first completed session at this level — needs one more consecutive confirmation; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
           "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
@@ -767,15 +1043,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-09-30",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -804,35 +1071,142 @@
           "published_at": null,
           "published_date": "2026-09-24",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX ATRL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/ATRL",
+          "source_id": "mon_20261005_ATRL",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Platts reports Ministry letter capping domestic diesel cracks",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "mon_20261005_hsd_cap",
+          "verified_at": "2026-10-05T04:12:53Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "The News reports estimated refinery margin forgone under HSD cap",
+          "url": "https://www.thenews.pk/print/1440499-refineries-contribute-around-rs22bn-to-govt-s-diesel-price-relief-since-august-20",
+          "source_id": "mon_20261005_refiner_impact",
+          "verified_at": "2026-10-05T04:10:29Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Cnergyico September 24 signed-upgrade disclosure",
+          "url": "https://dps.psx.com.pk/download/document/283348.pdf",
+          "source_id": "mon_20261005_cnergy_upgrade",
+          "verified_at": "2026-10-05T04:10:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Attock Refinery September 28 AGM notice",
+          "url": "https://dps.psx.com.pk/download/document/283521.pdf",
+          "source_id": "mon_20261005_atrl_agm",
+          "verified_at": "2026-10-05T04:11:59Z",
+          "published_at": null,
+          "published_date": "2026-09-28",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
-        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: cautious",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 596.68,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:29.065105+00:00",
+        "fetched_at": "2026-10-05T04:32:35.745410+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -846,36 +1220,9 @@
         "run_time": "2026-10-04T19:08:43.093721+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.6 ≥ 80 with technical Strong bullish; Hysteresis: score 80.6 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
           "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
@@ -895,15 +1242,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
-        {
           "title": "NRL PSX company financial summary and announcement index",
           "url": "https://dps.psx.com.pk/company/NRL",
           "source_id": "src_024",
@@ -920,36 +1258,134 @@
           "published_at": null,
           "published_date": "2026-09-23",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX NRL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "mon_20261005_NRL",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Platts reports Ministry letter capping domestic diesel cracks",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "mon_20261005_hsd_cap",
+          "verified_at": "2026-10-05T04:12:53Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "The News reports estimated refinery margin forgone under HSD cap",
+          "url": "https://www.thenews.pk/print/1440499-refineries-contribute-around-rs22bn-to-govt-s-diesel-price-relief-since-august-20",
+          "source_id": "mon_20261005_refiner_impact",
+          "verified_at": "2026-10-05T04:10:29Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Cnergyico September 24 signed-upgrade disclosure",
+          "url": "https://dps.psx.com.pk/download/document/283348.pdf",
+          "source_id": "mon_20261005_cnergy_upgrade",
+          "verified_at": "2026-10-05T04:10:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: cautious",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 16.63,
         "source_as_of": "2026-10-02T16:48:00+05:00",
-        "fetched_at": "2026-10-04T14:08:30.005513+00:00",
+        "fetched_at": "2026-10-05T04:32:37.733059+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -963,8 +1399,8 @@
         "run_time": "2026-10-04T19:08:43.461441+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 63.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -982,33 +1418,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -1037,36 +1446,107 @@
           "published_at": null,
           "published_date": "2026-10-01",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX ASL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "mon_20261005_ASL",
+          "verified_at": "2026-10-05T04:11:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: cautious",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 27.07,
         "source_as_of": "2026-10-02T16:48:00+05:00",
-        "fetched_at": "2026-10-04T14:08:31.152661+00:00",
+        "fetched_at": "2026-10-05T04:32:38.091118+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1080,8 +1560,8 @@
         "run_time": "2026-10-04T19:08:43.348779+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 44.1 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1099,33 +1579,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -1172,35 +1625,106 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX FCL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "mon_20261005_FCL",
+          "verified_at": "2026-10-05T04:11:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 134.55,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:32.069005+00:00",
+        "fetched_at": "2026-10-05T04:32:40.840127+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1214,8 +1738,8 @@
         "run_time": "2026-10-04T19:08:43.409670+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 42.5 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1233,33 +1757,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -1297,36 +1794,107 @@
           "published_at": null,
           "published_date": "2026-09-21",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX FCEPL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/FCEPL",
+          "source_id": "mon_20261005_FCEPL",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
-        "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: cautious",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 12.72,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:33.352627+00:00",
+        "fetched_at": "2026-10-05T04:32:40.109978+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1340,36 +1908,9 @@
         "run_time": "2026-10-04T19:08:43.494745+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 32.5 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
           "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
@@ -1389,15 +1930,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
-        {
           "title": "CNERGY FY2026 financial statements",
           "url": "https://dps.psx.com.pk/download/document/283383.pdf",
           "source_id": "src_038",
@@ -1414,16 +1946,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX CNERGY current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/CNERGY",
+          "source_id": "mon_20261005_CNERGY",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Platts reports Ministry letter capping domestic diesel cracks",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "mon_20261005_hsd_cap",
+          "verified_at": "2026-10-05T04:12:53Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "The News reports estimated refinery margin forgone under HSD cap",
+          "url": "https://www.thenews.pk/print/1440499-refineries-contribute-around-rs22bn-to-govt-s-diesel-price-relief-since-august-20",
+          "source_id": "mon_20261005_refiner_impact",
+          "verified_at": "2026-10-05T04:10:29Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Cnergyico September 24 signed-upgrade disclosure",
+          "url": "https://dps.psx.com.pk/download/document/283348.pdf",
+          "source_id": "mon_20261005_cnergy_upgrade",
+          "verified_at": "2026-10-05T04:10:00Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
         "Original technical entry screen: Avoid",
@@ -1431,21 +2061,21 @@
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 71.49,
         "source_as_of": "2026-10-02T16:49:00+05:00",
-        "fetched_at": "2026-10-04T14:08:34.319791+00:00",
+        "fetched_at": "2026-10-05T04:32:42.204790+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1459,54 +2089,9 @@
         "run_time": "2026-10-04T19:08:43.444607+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 24.7 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
         {
           "title": "Thatta Cement March 2026 quarterly report",
           "url": "https://dps.psx.com.pk/download/document/275943.pdf",
@@ -1533,35 +2118,117 @@
           "published_at": null,
           "published_date": "2026-09-10",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX THCCL current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "mon_20261005_THCCL",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "September cement dispatches, reported October 3 with APCMA attribution",
+          "url": "https://www.brecorder.com/news/40442407",
+          "source_id": "mon_20261005_cement",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research unavailable: Current issuer-announcement access is incomplete; do not interpret missing news as neutral or a cleared entry.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Swing research unavailable: Current issuer-announcement access is incomplete; do not interpret missing news as neutral or a cleared entry.",
         "Original technical entry screen: Avoid",
+        "News review unavailable",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 93.18,
         "source_as_of": "2026-10-02T16:46:00+05:00",
-        "fetched_at": "2026-10-04T14:08:35.489488+00:00",
+        "fetched_at": "2026-10-05T04:32:42.853471+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1575,8 +2242,8 @@
         "run_time": "2026-10-04T19:08:43.042792+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 39.7 below 50"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1594,33 +2261,6 @@
           "verified_at": "2026-10-03T18:30:28Z",
           "published_at": null,
           "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
           "publication_precision": "date"
         },
         {
@@ -1649,35 +2289,106 @@
           "published_at": null,
           "published_date": "2026-08-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Faysal Bank media centre, displayed last update September 9; incomplete announcement coverage",
+          "url": "https://www.faysalbank.com/media-center",
+          "source_id": "mon_20261005_fabl_media",
+          "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Market closed; a new session review is required; Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Market closed; a new session review is required",
-        "Geopolitical risk: Fact: PSO's September 25 release describes FY26 regional supply-chain disruption; September 25 reporting describes continuing Gulf/Red Sea shipping risks. Inference: Energy import cost, freight, insurance and supply interruption remain relevant downside channels, while higher realised oil prices can help E&P revenue. These dated sources do not establish the exact October 3 conflict status or Monday oil price.",
+        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
-      "intraday_state": "Market closed",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Long-term research: watch",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 314.62,
         "source_as_of": "2026-10-02T16:48:00+05:00",
-        "fetched_at": "2026-10-04T14:08:36.564502+00:00",
+        "fetched_at": "2026-10-05T04:32:44.597916+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
           "source_time_is_quote_update_not_verified_trade_time",
-          "collection_outside_regular_session",
           "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
           "stale_source"
         ],
         "fresh": false
@@ -1691,54 +2402,9 @@
         "run_time": "2026-10-04T19:08:43.110626+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-03T18:35:27Z",
-      "research_expires_at": "2026-10-05T03:00:00Z",
+      "research_as_of": "2026-10-05T04:13:37Z",
+      "research_expires_at": "2026-10-05T05:13:37Z",
       "source_links": [
-        {
-          "title": "SBP policy-rate banner, economic indicators and release calendar",
-          "url": "https://www.sbp.org.pk/DFMD/pr.asp",
-          "source_id": "src_001",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "PBS September 2026 CPI release (published October 1)",
-          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
-          "source_id": "src_002",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-10-01",
-          "publication_precision": "date"
-        },
-        {
-          "title": "PSO FY2026 performance press release",
-          "url": "https://psopk.com/ur/media/press-releases/pso-delivers-resilient-fy2026-performance-as-core-business-grows-strongly-through-the-strait-of-hormuz-crisis",
-          "source_id": "src_003",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
-          "url": "https://www.arabnews.pk/pakistan/pakistan-refinery-chief-says-upgrades-could-all-but-eliminate-diesel-imports-3002342",
-          "source_id": "src_004",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-09-25",
-          "publication_precision": "date"
-        },
-        {
-          "title": "IMF completes third EFF and second RSF review (historical baseline)",
-          "url": "https://www.imf.org/en/news/articles/2026/05/08/pr-26147-pakistan-imf-completes-3rd-rev-of-extended-arrangement-under-eff-and-2nd-rev-arrang-rsf",
-          "source_id": "src_006",
-          "verified_at": "2026-10-03T18:30:28Z",
-          "published_at": null,
-          "published_date": "2026-05-08",
-          "publication_precision": "date"
-        },
         {
           "title": "OGDCL FY2026 audited results and operating review",
           "url": "https://www.rns-pdf.londonstockexchange.com/rns/4602T_3-2026-9-4.pdf",
@@ -1765,22 +2431,103 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX OGDC current announcement coverage and profile, Monday pre-open",
+          "url": "https://dps.psx.com.pk/company/OGDC",
+          "source_id": "mon_20261005_OGDC",
+          "verified_at": "2026-10-05T04:09:44Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP September 14 monetary-policy statement",
+          "url": "https://www.sbp.org.pk/assets/documents/press-release/PR-14-Sep-2026.pdf",
+          "source_id": "mon_20261005_sbp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-09-14",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PBS September 2026 CPI release, dated October 1",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "mon_20261005_cpi",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP dated reserves and foreign-exchange indicators",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "mon_20261005_indicators",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Pakistan program and announcement coverage",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "mon_20261005_imf",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF first MEFP draft shared while current review talks continue",
+          "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
+          "source_id": "mon_20261005_mefp",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": null,
+          "published_date": "2026-10-04",
+          "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "mon_20261005_ukmto",
+          "verified_at": "2026-10-05T04:12:24Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
+          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
+          "source_id": "mon_20261005_shipping",
+          "verified_at": "2026-10-05T04:10:53Z",
+          "published_at": "2026-10-05T01:13:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OGDCL September 24 AGM notice",
+          "url": "https://dps.psx.com.pk/download/document/283329.pdf",
+          "source_id": "mon_20261005_ogdc_agm",
+          "verified_at": "2026-10-05T04:10:42Z",
+          "published_at": null,
+          "published_date": "2026-09-24",
+          "publication_precision": "date"
         }
       ]
     }
   ],
   "errors": [],
   "source_hashes": {
-    "context_sha256": "0b7829e059896cd5edf9206d8b458c89e6d182c76c531307c732dbda213bdf62",
+    "context_sha256": "38a595fea1e6ec375eef400575e4c46d52b7a269fda475e4fe5820d0c80f6506",
     "technical_sha256": "103872b68af519a90230a9b43c39169f61bac35862f09d62105bd4d8a775766f",
-    "quotes_sha256": "b77d2109576efca7984842e1d12dbc92564be0bb1ad669d333b3ec2a5a0d1ff7"
+    "quotes_sha256": "e4c642c7e11427f86338cc04a30ed6cf7cfe76231c2a6d7822e087b9949585d0"
   },
-  "checkpoint_id": "fdd59b2290def5718d9345977a4ae0e7bb7edad301e110ecb036da65a3f87dfe",
-  "checkpoint": "research_decisions/2026-10-04/141036-fdd59b2290de.json",
-  "recorded_at": "2026-10-04T14:10:36.664918+00:00",
+  "checkpoint_id": "b3c6fa0e74415733e1d6d067ac007a2057db5c9ae6e148559dbc7aef5f32eac4",
+  "checkpoint": "research_decisions/2026-10-05/043244-b3c6fa0e7441.json",
+  "recorded_at": "2026-10-05T04:32:44.789573+00:00",
   "context_error": null,
-  "context_sha256": "0b7829e059896cd5edf9206d8b458c89e6d182c76c531307c732dbda213bdf62",
+  "context_sha256": "38a595fea1e6ec375eef400575e4c46d52b7a269fda475e4fe5820d0c80f6506",
   "technical_sha256": "103872b68af519a90230a9b43c39169f61bac35862f09d62105bd4d8a775766f",
-  "quotes_sha256": "b77d2109576efca7984842e1d12dbc92564be0bb1ad669d333b3ec2a5a0d1ff7",
+  "quotes_sha256": "e4c642c7e11427f86338cc04a30ed6cf7cfe76231c2a6d7822e087b9949585d0",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
