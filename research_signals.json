@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-05T04:37:43.706550+00:00",
+  "evaluated_at": "2026-10-05T04:42:42.695129+00:00",
   "market_open": true,
   "research_current": true,
-  "context_as_of": "2026-10-05T04:13:37Z",
-  "context_expires_at": "2026-10-05T05:13:37Z",
+  "context_as_of": "2026-10-05T04:36:15Z",
+  "context_expires_at": "2026-10-05T05:36:15Z",
   "counts": {
     "Ready for review": 0,
     "Watching": 0,
@@ -15,9 +15,9 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
@@ -28,15 +28,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 90.07,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:28.187171+00:00",
+        "price": 90.1,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:28.481956+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -49,8 +48,8 @@
         "run_time": "2026-10-05T09:32:50.411879+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 62.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -125,15 +124,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -148,15 +138,6 @@
           "source_id": "mon_20261005_ukmto",
           "verified_at": "2026-10-05T04:12:24Z",
           "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
           "published_date": null,
           "publication_precision": null
         },
@@ -186,15 +167,69 @@
           "published_at": null,
           "published_date": "2026-09-24",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX PRL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/PRL",
+          "source_id": "open_20261005_0936_PRL",
+          "verified_at": "2026-10-05T04:35:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -204,15 +239,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 548.0,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:28.205318+00:00",
+        "price": 547.0,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:29.204837+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -225,8 +259,8 @@
         "run_time": "2026-10-05T09:32:50.210585+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 40.6 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -310,15 +344,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -337,22 +362,67 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
+          "title": "PSX MEBL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/MEBL",
+          "source_id": "open_20261005_0936_MEBL",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -362,15 +432,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 115.0,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:30.294842+00:00",
+        "price": 113.55,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:30.506070+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -383,8 +452,8 @@
         "run_time": "2026-10-05T09:32:50.222246+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -459,15 +528,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -486,15 +546,6 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "Systems October 2 senior-management interest disclosure; letter October 1",
           "url": "https://dps.psx.com.pk/download/document/284216.pdf",
           "source_id": "mon_20261005_sys_sale",
@@ -502,15 +553,69 @@
           "published_at": null,
           "published_date": "2026-10-02",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX SYS announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/SYS",
+          "source_id": "open_20261005_0936_SYS",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
@@ -522,15 +627,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 344.01,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:31.360594+00:00",
+        "price": 346.49,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:31.219396+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -543,8 +647,8 @@
         "run_time": "2026-10-05T09:32:50.165174+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.8 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "PSO FY2026 performance press release",
@@ -601,15 +705,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -628,15 +723,6 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "September 2026 OMC volume data attributed to AHL/OCAC",
           "url": "https://mettisglobal.news/OMC-sales-jumps-7-MoM-in-September-2026-63915",
           "source_id": "mon_20261005_omc",
@@ -644,15 +730,69 @@
           "published_at": "2026-10-02T05:14:00Z",
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "PSX PSO announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/PSO",
+          "source_id": "open_20261005_0936_PSO",
+          "verified_at": "2026-10-05T04:35:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
         "Original technical entry screen: Avoid",
@@ -665,15 +805,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 513.0,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:32.332042+00:00",
+        "price": 513.5,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:32.317666+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -686,8 +825,8 @@
         "run_time": "2026-10-05T09:32:50.499992+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -762,15 +901,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -780,31 +910,67 @@
           "publication_precision": "date"
         },
         {
-          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
-          "url": "https://www.ukmto.org/?trk=public_post-text",
-          "source_id": "mon_20261005_ukmto",
-          "verified_at": "2026-10-05T04:12:24Z",
+          "title": "PSX GAL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "open_20261005_0936_GAL",
+          "verified_at": "2026-10-05T04:34:21Z",
           "published_at": null,
           "published_date": null,
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
@@ -813,15 +979,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 192.2,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:33.385447+00:00",
+        "price": 193.5,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:33.390705+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -834,8 +999,8 @@
         "run_time": "2026-10-05T09:32:50.334672+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 76.3 meets Buy threshold 75; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -928,15 +1093,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -955,15 +1111,6 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "Engro Fertilizers October 2 board meeting and closed-period notice",
           "url": "https://dps.psx.com.pk/download/document/284264.pdf",
           "source_id": "mon_20261005_efert_board",
@@ -971,15 +1118,69 @@
           "published_at": null,
           "published_date": "2026-10-02",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX EFERT announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "open_20261005_0936_EFERT",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -989,15 +1190,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 1190.01,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:34.344820+00:00",
+        "price": 1193.0,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:34.403214+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1010,8 +1210,8 @@
         "run_time": "2026-10-05T09:32:50.422952+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.1 ≥ 80 with technical Strong bullish; Downgraded Strong Buy→Buy: first completed session at this level — needs one more consecutive confirmation; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1095,15 +1295,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1118,15 +1309,6 @@
           "source_id": "mon_20261005_ukmto",
           "verified_at": "2026-10-05T04:12:24Z",
           "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
           "published_date": null,
           "publication_precision": null
         },
@@ -1165,15 +1347,69 @@
           "published_at": null,
           "published_date": "2026-09-28",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX ATRL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/ATRL",
+          "source_id": "open_20261005_0936_ATRL",
+          "verified_at": "2026-10-05T04:35:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -1183,15 +1419,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 596.0,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:35.426315+00:00",
+        "price": 599.05,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:35.696459+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1204,8 +1439,8 @@
         "run_time": "2026-10-05T09:32:50.256626+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.6 ≥ 80 with technical Strong bullish; Hysteresis: score 80.6 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1280,15 +1515,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1303,15 +1529,6 @@
           "source_id": "mon_20261005_ukmto",
           "verified_at": "2026-10-05T04:12:24Z",
           "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
           "published_date": null,
           "publication_precision": null
         },
@@ -1341,15 +1558,69 @@
           "published_at": null,
           "published_date": "2026-09-24",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX NRL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "open_20261005_0936_NRL",
+          "verified_at": "2026-10-05T04:35:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
@@ -1360,15 +1631,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 16.45,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:37.318428+00:00",
+        "price": 16.4,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:36.666698+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1381,8 +1651,8 @@
         "run_time": "2026-10-05T09:32:50.731578+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 63.9 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1466,15 +1736,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1493,22 +1754,67 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
+          "title": "PSX ASL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "open_20261005_0936_ASL",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -1519,15 +1825,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 26.95,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:37.456998+00:00",
+        "price": 27.0,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:37.711391+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1540,8 +1845,8 @@
         "run_time": "2026-10-05T09:32:50.588810+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 44.1 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1643,15 +1948,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1670,22 +1966,67 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
+          "title": "PSX FCL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "open_20261005_0936_FCL",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -1695,15 +2036,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 132.32,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:39.374781+00:00",
+        "price": 133.1,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:38.677446+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1716,8 +2056,8 @@
         "run_time": "2026-10-05T09:32:50.665597+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 42.5 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1810,15 +2150,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1837,24 +2168,70 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
+          "title": "PSX FCEPL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/FCEPL",
+          "source_id": "open_20261005_0936_FCEPL",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Avoid",
+        "News review unavailable",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
@@ -1863,15 +2240,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 12.55,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:39.358075+00:00",
+        "price": 12.61,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:39.733996+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -1884,8 +2260,8 @@
         "run_time": "2026-10-05T09:32:50.776539+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 32.5 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1960,15 +2336,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -1983,15 +2350,6 @@
           "source_id": "mon_20261005_ukmto",
           "verified_at": "2026-10-05T04:12:24Z",
           "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
           "published_date": null,
           "publication_precision": null
         },
@@ -2021,15 +2379,60 @@
           "published_at": null,
           "published_date": "2026-09-24",
           "publication_precision": "date"
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
         "Original technical entry screen: Avoid",
@@ -2042,15 +2445,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 70.07,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:41.357788+00:00",
+        "price": 70.48,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:40.854338+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -2063,8 +2465,8 @@
         "run_time": "2026-10-05T09:32:50.709805+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 24.7 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "Thatta Cement March 2026 quarterly report",
@@ -2130,15 +2532,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -2157,19 +2550,64 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "September cement dispatches, reported October 3 with APCMA attribution",
           "url": "https://www.brecorder.com/news/40442407",
           "source_id": "mon_20261005_cement",
           "verified_at": "2026-10-05T04:12:47Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX THCCL announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "open_20261005_0936_THCCL",
+          "verified_at": "2026-10-05T04:34:21Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
           "published_at": null,
           "published_date": "2026-10-03",
           "publication_precision": "date"
@@ -2179,9 +2617,9 @@
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Swing research unavailable: Current issuer-announcement access is incomplete; do not interpret missing news as neutral or a cleared entry.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Swing research unavailable: Current issuer-announcement access is incomplete; do not interpret missing news as neutral or a cleared entry.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Swing research unavailable: Current issuer-announcement access is incomplete; do not interpret missing news as neutral or a cleared entry.",
         "Original technical entry screen: Avoid",
         "News review unavailable",
@@ -2193,15 +2631,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 93.49,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:41.377541+00:00",
+        "price": 92.0,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:42.029896+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -2214,8 +2651,8 @@
         "run_time": "2026-10-05T09:32:50.188426+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 39.7 below 50"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2290,15 +2727,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -2308,24 +2736,6 @@
           "publication_precision": "date"
         },
         {
-          "title": "UKMTO October 2-4 incident listings, including October 4-issued warning 150-26",
-          "url": "https://www.ukmto.org/?trk=public_post-text",
-          "source_id": "mon_20261005_ukmto",
-          "verified_at": "2026-10-05T04:12:24Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "Faysal Bank media centre, displayed last update September 9; incomplete announcement coverage",
           "url": "https://www.faysalbank.com/media-center",
           "source_id": "mon_20261005_fabl_media",
@@ -2333,15 +2743,60 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
+        "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -2351,15 +2806,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 314.48,
-        "source_as_of": "2026-10-05T09:33:00+05:00",
-        "fetched_at": "2026-10-05T04:37:43.643885+00:00",
+        "price": 313.95,
+        "source_as_of": "2026-10-05T09:38:00+05:00",
+        "fetched_at": "2026-10-05T04:42:42.672603+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "first_point_no_volume_interval"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -2372,8 +2826,8 @@
         "run_time": "2026-10-05T09:32:50.279488+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-05T04:13:37Z",
-      "research_expires_at": "2026-10-05T05:13:37Z",
+      "research_as_of": "2026-10-05T04:36:15Z",
+      "research_expires_at": "2026-10-05T05:36:15Z",
       "source_links": [
         {
           "title": "OGDCL FY2026 audited results and operating review",
@@ -2439,15 +2893,6 @@
           "publication_precision": null
         },
         {
-          "title": "IMF Pakistan program and announcement coverage",
-          "url": "https://www.imf.org/en/countries/pak",
-          "source_id": "mon_20261005_imf",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": null,
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "IMF first MEFP draft shared while current review talks continue",
           "url": "https://dailytimes.com.pk/1562217/imf-shares-first-mefp-draft-with-pakistan-ahead-of-staff-level-talks/",
           "source_id": "mon_20261005_mefp",
@@ -2466,15 +2911,6 @@
           "publication_precision": null
         },
         {
-          "title": "WSJ reporting syndicated by Mint on renewed Hormuz shipping attacks",
-          "url": "https://www.livemint.com/global/oil-was-pouring-through-the-strait-of-hormuz-again-then-attacks-on-shipping-resurged-11791162726157.html",
-          "source_id": "mon_20261005_shipping",
-          "verified_at": "2026-10-05T04:10:53Z",
-          "published_at": "2026-10-05T01:13:00Z",
-          "published_date": null,
-          "publication_precision": null
-        },
-        {
           "title": "OGDCL September 24 AGM notice",
           "url": "https://dps.psx.com.pk/download/document/283329.pdf",
           "source_id": "mon_20261005_ogdc_agm",
@@ -2482,22 +2918,76 @@
           "published_at": null,
           "published_date": "2026-09-24",
           "publication_precision": "date"
+        },
+        {
+          "title": "PSX OGDC announcement snapshot rechecked after Monday open",
+          "url": "https://dps.psx.com.pk/company/OGDC",
+          "source_id": "open_20261005_0936_OGDC",
+          "verified_at": "2026-10-05T04:35:53Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed maritime incidents rechecked after PSX open",
+          "url": "https://www.ukmto.org/?trk=public_post-text",
+          "source_id": "open_20261005_0936_ukmto",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "SBP policy and indicators rechecked after PSX open",
+          "url": "https://www.sbp.org.pk/",
+          "source_id": "open_20261005_0936_sbp",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "IMF Board archive and Pakistan completed-review coverage",
+          "url": "https://www.imf.org/en/about/executive-board/ebc-archive/country",
+          "source_id": "open_20261005_0936_imf",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Reuters: Gulf exports and G7 stock release ease supply pressure despite attacks",
+          "url": "https://finance.yahoo.com/energy/articles/oil-slips-middle-east-crude-013514252.html",
+          "source_id": "open_20261005_0936_reuters_exports",
+          "verified_at": "2026-10-05T04:35:36Z",
+          "published_at": "2026-10-05T01:35:00Z",
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "The News original October 3 draft-MEFP report",
+          "url": "https://www.thenews.pk/print/1440786-imf-shares-draft-mefp-with-pakistan",
+          "source_id": "open_20261005_0936_mefp_original",
+          "verified_at": "2026-10-05T04:34:00Z",
+          "published_at": null,
+          "published_date": "2026-10-03",
+          "publication_precision": "date"
         }
       ]
     }
   ],
   "errors": [],
   "source_hashes": {
-    "context_sha256": "38a595fea1e6ec375eef400575e4c46d52b7a269fda475e4fe5820d0c80f6506",
+    "context_sha256": "701bdb4c843f350dca94ebc3e7a08f6dc796cb82f87e8d234456641859c7516b",
     "technical_sha256": "e00c8faaa6f006438b8ee0bdb32a174dbf9d6bb1cf21de7f12ad7fd9316f11a1",
-    "quotes_sha256": "2e338009d39e48a2ec75b87ee29dfda259b9d1bbc19a232c79ca6207b587db09"
+    "quotes_sha256": "9449c1e355d04e9f406f230f38e2c784eabbc4750efe23b8dfaaee772bc71421"
   },
-  "checkpoint_id": "d9dcedef72fc05e1828d5b8d931e96491461d967c49859827cdd6fe39cf296fe",
-  "checkpoint": "research_decisions/2026-10-05/043743-d9dcedef72fc.json",
-  "recorded_at": "2026-10-05T04:37:43.706550+00:00",
+  "checkpoint_id": "986968bbc5bdf303e7505709add097f1975f719524b083121d3b226cfac510be",
+  "checkpoint": "research_decisions/2026-10-05/044242-986968bbc5bd.json",
+  "recorded_at": "2026-10-05T04:42:42.695129+00:00",
   "context_error": null,
-  "context_sha256": "38a595fea1e6ec375eef400575e4c46d52b7a269fda475e4fe5820d0c80f6506",
+  "context_sha256": "701bdb4c843f350dca94ebc3e7a08f6dc796cb82f87e8d234456641859c7516b",
   "technical_sha256": "e00c8faaa6f006438b8ee0bdb32a174dbf9d6bb1cf21de7f12ad7fd9316f11a1",
-  "quotes_sha256": "2e338009d39e48a2ec75b87ee29dfda259b9d1bbc19a232c79ca6207b587db09",
+  "quotes_sha256": "9449c1e355d04e9f406f230f38e2c784eabbc4750efe23b8dfaaee772bc71421",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
