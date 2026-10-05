@@ -1,208 +1,233 @@
 {
-  "as_of": "2026-10-02T08:55:00Z",
+  "as_of": "2026-10-05T06:50:00Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
-  "depth": "mixed-full-and-headline",
-  "articles_read": 5,
+  "depth": "full-text-and-verified-article-extracts",
+  "articles_read": 10,
   "notes": [
-    "One-time manual Friday lunch-break review authorized by the user. Normal session-gated routine remains unchanged.",
-    "Fresh committed raw input fetched 2026-10-02T08:36:27.899185Z.",
-    "Only evidence-backed current findings are rated; absence of a reviewed story is not Neutral."
+    "Current-session review using fresh committed raw input and existing Codex story history.",
+    "The prior Oil & Gas Exploration positive thread is updated to neutral because near-term supply relief has increased while conflict-related infrastructure risk remains.",
+    "No broad Food-sector rating is created from the sugar-export policy because the tracked Food names are not identified as eligible sugar mills.",
+    "Absence of a reviewed story is not treated as Neutral."
   ],
   "reviewed_stories": [
     {
-      "title": "Honda Atlas discontinues BR-V model",
+      "title": "CPHL FY26 profit softens 11%",
       "assessment": "negative",
       "linkage": "direct",
-      "linkage_detail": "HCAR is Honda Atlas Cars (Pakistan) Limited and the article explicitly identifies PSX:HCAR.",
-      "reason": "Honda Atlas discontinued production of the BR-V. This removes a model from HCAR's active production lineup; the source does not quantify the BR-V's revenue or profit contribution, so magnitude is uncertain.",
-      "source": "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
+      "linkage_detail": "Citi Pharma Limited is explicitly identified as PSX: CPHL and CPHL is in the configured tracked universe.",
+      "reason": "FY26 consolidated net profit fell 11.4% to Rs790.33m and EPS fell 11.3% to Rs3.46. Sales rose 7%, gross profit rose 22.6% and operating profit rose 21%, so the result is negative at the bottom line but partly offset by stronger core operations.",
+      "source": "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
       "sources": [
-        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+        "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
       ],
-      "published": "2026-10-01T15:04:00+05:00",
-      "publication_time_status": "Full article verified; Mettis page states October 1, 2026 at 3:04 PM PKT.",
+      "published": "2026-10-05T09:32:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:32 AM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.82,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "cphl-fy26-results"
+    },
+    {
+      "title": "TOMCL FY26 profit drops 74%",
+      "assessment": "negative",
+      "linkage": "direct",
+      "linkage_detail": "The Organic Meat Company Limited is explicitly identified as PSX: TOMCL and TOMCL is in the configured tracked universe.",
+      "reason": "FY26 consolidated net profit fell 74% to Rs112.35m, EPS fell 77% to Rs0.57, sales fell 12%, gross profit fell 24% and operating profit fell 62%. Lower finance costs did not offset the operating deterioration.",
+      "source": "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948",
+      "sources": [
+        "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
+      ],
+      "published": "2026-10-05T09:14:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:14 AM GMT+05:00. It falls after the previous trading-session close and therefore belongs to the current session window under news_window.session_anchor().",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "tomcl-fy26-results"
+    },
+    {
+      "title": "Oil supply relief tempers the prior Middle East price shock",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is not a company-specific operational disclosure.",
+      "reason": "Brent eased to about $101 as G7 countries planned a 100m-barrel strategic-stock release and Middle East exports recovered above pre-war levels on several recent days. OPEC+ kept November targets steady and diplomatic talks are active, but attacks and Gulf infrastructure risk remain. This materially softens the prior positive supply-shock thread without establishing a clean negative oil-price regime.",
+      "source": "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
+      "sources": [
+        "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
+        "https://www.brecorder.com/news/40442669/opec-agrees-to-keep-nov-oil-output-targets-steady",
+        "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955"
+      ],
+      "published": "2026-10-05T10:01:00+05:00",
+      "publication_time_status": "Primary Mettis article verified at 10:01 AM PKT. Supporting OPEC+ article was published at 05:09 AM PKT and the UN mediation article at 10:33 AM PKT.",
       "text_depth": "full",
       "confidence": 0.85,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "hcar-brv-discontinuation"
-    },
-    {
-      "title": "Local mobile phone assembly down 57% MoM in August",
-      "assessment": "negative",
-      "linkage": "sector",
-      "linkage_detail": "Sector evidence for locally assembled mobile devices, relevant to AIRLINK through its configured Technology/Telecom Devices exposure; not a company-specific AIRLINK result.",
-      "reason": "Pakistan local mobile phone manufacturing and assembly fell 57% month on month in August to 1.66 million units. This is a negative industry activity signal, but it does not establish AIRLINK-specific volumes, margins, or market share.",
-      "source": "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916",
-      "sources": [
-        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
-      ],
-      "published": "2026-10-02T10:39:00+05:00",
-      "publication_time_status": "Full article verified; Mettis page states October 2, 2026 at 10:39 AM PKT.",
-      "text_depth": "full",
-      "confidence": 0.7,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-mobile-assembly"
-    },
-    {
-      "title": "Pakistan petroleum sales fall 2% YoY in September",
-      "assessment": "negative",
-      "linkage": "sector",
-      "linkage_detail": "Sector evidence for Oil Marketing, including PSO; the accessible committed snippet does not establish a company-specific PSO volume change.",
-      "reason": "Committed source snippet reports September petroleum sales down 2% year on year to 1.35 million tons and OMC sales excluding furnace oil down 8% year on year. The linked article body was not accessible in this run, so this is snippet-level evidence only.",
-      "source": "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september",
-      "sources": [
-        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-      ],
-      "published": "2026-10-02T12:39:36+05:00",
-      "publication_time_status": "Timestamp from the committed raw feed; article body inaccessible during this review.",
-      "text_depth": "headline_snippet",
-      "confidence": 0.65,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-omc-september-sales"
-    },
-    {
-      "title": "Oil jumps 4pc after China suspends fuel exports",
-      "assessment": "positive",
-      "linkage": "sector",
-      "linkage_detail": "Sector evidence for PSX Oil & Gas Exploration names OGDC, PPL and MARI; not a company-specific operational disclosure.",
-      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter refined-product supply and renewed Middle East risk. Higher crude prices are directionally supportive for upstream producers, but geopolitical volatility and company-specific production mixes limit confidence.",
-      "source": "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports",
-      "sources": [
-        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
-      ],
-      "published": "2026-10-02T07:40:00+05:00",
-      "publication_time_status": "Full Dawn article verified; published October 2, 2026 at 7:40 AM PKT.",
-      "text_depth": "full_secondary",
-      "confidence": 0.7,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "middle-east-oil-supply-shock"
     },
     {
-      "title": "Pakistan-IMF Auto Policy Talks Stall Over Draft Objections",
-      "assessment": "negative",
+      "title": "Pakistan, Bangladesh explore higher textile trade",
+      "assessment": "neutral",
       "linkage": "sector",
-      "linkage_detail": "Sector policy evidence for configured Auto Assembler names HCAR and SAZEW; not a company-specific disclosure.",
-      "reason": "The committed feed reports that Pakistan-IMF talks on Auto Policy 2026-31 ended without agreement after IMF objections. The article body was inaccessible in this run, so the assessment is based only on the committed headline and snippet and reflects policy uncertainty rather than a quantified earnings effect.",
-      "source": "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/",
+      "linkage_detail": "Potential sector linkage to configured textile names, but the article reports discussions and an existing industry MoU rather than implemented tariff changes or orders.",
+      "reason": "The two sides discussed lowering trade barriers and joint activity under an existing garment-industry MoU. No binding barrier reduction, contract value, order flow or earnings impact is reported, so the evidence is not yet directional enough for a positive sector call.",
+      "source": "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
       "sources": [
-        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
+        "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
       ],
-      "published": "2026-10-02T12:51:58+05:00",
-      "publication_time_status": "Timestamp converted from the committed raw feed; article body inaccessible during this review.",
-      "text_depth": "headline_snippet",
-      "confidence": 0.55,
+      "published": "2026-10-05T10:57:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 10:57 AM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.75,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-auto-policy-2026-31"
+      "thread_key": "pakistan-bangladesh-textile-trade"
+    },
+    {
+      "title": "Sitara Energy FY26 profit plunges 49% to Rs59m",
+      "assessment": "negative",
+      "linkage": "irrelevant",
+      "linkage_detail": "Sitara Energy Limited is PSX: SEL, but SEL is outside the repository's configured tracked universe.",
+      "reason": "FY26 profit fell 49.2% and net sales fell 55.3%. The company identity is verified, but no tracked-stock or tracked-sector rating is created because SEL is outside the configured universe.",
+      "source": "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952",
+      "sources": [
+        "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952"
+      ],
+      "published": "2026-10-05T09:36:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 09:36 AM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.98,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "sel-fy26-results"
+    },
+    {
+      "title": "SBP issues guidelines for export of 200,000 MT sugar",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "The policy is potentially positive for eligible sugar mills, but none of the configured tracked Food names is identified in the article as an eligible sugar mill.",
+      "reason": "SBP instructed banks to process export requests for a 200,000-ton sugar quota under specified payment and shipment conditions. Applying this to the repository's broad Food sector would overstate linkage, so no tracked rating is created.",
+      "source": "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946",
+      "sources": [
+        "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946"
+      ],
+      "published": "2026-10-04T08:00:00+05:00",
+      "publication_time_status": "Full article verified. Mettis Global states October 4, 2026 at 08:00 AM GMT+05:00.",
+      "text_depth": "full",
+      "confidence": 0.95,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-sugar-export-quota"
+    },
+    {
+      "title": "PSX selling at bourse, KSE-100 down over 1,300 points",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "This is a contemporaneous market-price outcome, not causal evidence about a tracked company's fundamentals or a sector mechanism.",
+      "reason": "The KSE-100 was down about 1,304 points around 10:01 AM. Using the market's own price move as causal news for the same stocks would be circular, so it is reviewed but excluded from company and sector ratings.",
+      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1300-points",
+      "sources": [
+        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-1300-points"
+      ],
+      "published": "2026-10-05T10:04:00+05:00",
+      "publication_time_status": "Article verified from Business Recorder's current report.",
+      "text_depth": "full",
+      "confidence": 0.98,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "kse100-intraday-selloff"
     }
   ],
   "ratings": {
-    "HCAR": {
+    "CPHL": {
       "rating": "negative",
       "causality": "causal",
-      "confidence": 0.85,
+      "confidence": 0.82,
       "horizon": "multi_session",
       "linkage": "direct",
-      "reason": "Honda Atlas discontinued BR-V production. This is a direct HCAR product-line change, although the source does not quantify BR-V earnings contribution.",
-      "relevance": "Direct link: HCAR is Honda Atlas Cars (Pakistan) Limited.",
+      "reason": "FY26 net profit fell 11.4% and EPS fell 11.3%, despite stronger sales, gross profit and operating profit. Higher finance, operating and tax costs weakened the bottom line.",
+      "relevance": "Direct link: CPHL is Citi Pharma Limited, the PSX-listed company reporting the result.",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+        "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
       ],
       "source_published": [
-        "2026-10-01T15:04:00+05:00"
+        "2026-10-05T09:32:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-01T15:04:00+05:00"
+        "2026-10-05T09:32:00+05:00"
       ],
-      "thread_key": "hcar-brv-discontinuation"
+      "thread_key": "cphl-fy26-results"
+    },
+    "TOMCL": {
+      "rating": "negative",
+      "causality": "causal",
+      "confidence": 0.95,
+      "horizon": "multi_session",
+      "linkage": "direct",
+      "reason": "FY26 net profit fell 74%, EPS fell 77%, sales fell 12% and operating profit fell 62%; lower finance costs did not offset the operating deterioration.",
+      "relevance": "Direct link: TOMCL is The Organic Meat Company Limited, the PSX-listed company reporting the result.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
+      ],
+      "source_published": [
+        "2026-10-05T09:14:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-05T09:14:00+05:00"
+      ],
+      "thread_key": "tomcl-fy26-results"
     }
   },
   "sectors": {
-    "Technology/Telecom Devices": {
-      "rating": "negative",
-      "causality": "correlated",
-      "confidence": 0.7,
+    "Oil & Gas Exploration": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.85,
       "horizon": "single_session",
       "linkage": "sector",
-      "reason": "Local mobile phone manufacturing and assembly fell 57% MoM in August to 1.66m units. This is an industry activity signal, not an AIRLINK-specific volume or margin disclosure.",
-      "relevance": "Sector link to AIRLINK through the repository's Technology/Telecom Devices classification.",
+      "reason": "G7 stock releases and recovering Middle East exports have eased near-term supply stress and Brent slipped toward $101, while Gulf infrastructure risk and the Iran conflict remain unresolved. This softens the prior bullish supply-shock thread without a clean directional reversal.",
+      "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+        "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
+        "https://www.brecorder.com/news/40442669/opec-agrees-to-keep-nov-oil-output-targets-steady",
+        "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955"
       ],
       "source_published": [
-        "2026-10-02T10:39:00+05:00"
+        "2026-10-05T10:01:00+05:00",
+        "2026-10-05T05:09:00+05:00",
+        "2026-10-05T10:33:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-02T10:39:00+05:00"
-      ],
-      "thread_key": "pakistan-mobile-assembly"
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "causality": "causal",
-      "confidence": 0.65,
-      "horizon": "single_session",
-      "linkage": "sector",
-      "reason": "September petroleum sales fell 2% YoY to 1.35m tons and OMC sales excluding furnace oil fell 8% YoY. Evidence was limited to the committed source snippet in this run.",
-      "relevance": "Sector link to Oil Marketing, including PSO; no company-specific PSO change is asserted.",
-      "text_depth": "headline_snippet",
-      "sources": [
-        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-      ],
-      "source_published": [
-        "2026-10-02T12:39:36+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-02T12:39:36+05:00"
-      ],
-      "thread_key": "pakistan-omc-september-sales"
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.7,
-      "horizon": "multi_session",
-      "linkage": "sector",
-      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter product supply and renewed Middle East risk, a directional upstream tailwind subject to geopolitical volatility.",
-      "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
-      "text_depth": "full_secondary",
-      "sources": [
-        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
-      ],
-      "source_published": [
-        "2026-10-02T07:40:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-02T07:40:00+05:00"
+        "2026-10-05T10:01:00+05:00",
+        "2026-10-05T05:09:00+05:00",
+        "2026-10-05T10:33:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
     },
-    "Auto Assembler": {
-      "rating": "negative",
+    "Textile": {
+      "rating": "neutral",
       "causality": "correlated",
-      "confidence": 0.55,
+      "confidence": 0.75,
       "horizon": "multi_session",
       "linkage": "sector",
-      "reason": "Pakistan-IMF talks on Auto Policy 2026-31 reportedly ended without agreement after draft objections, adding policy uncertainty. Evidence is headline/snippet only.",
-      "relevance": "Sector link to configured Auto Assembler names HCAR and SAZEW.",
-      "text_depth": "headline_snippet",
+      "reason": "Pakistan and Bangladesh discussed lower textile trade barriers and implementation of an existing industry MoU, but no binding tariff change, order flow or quantified earnings impact was announced.",
+      "relevance": "Sector link to configured textile names; the evidence is sector-level and preliminary.",
+      "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
+        "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
       ],
       "source_published": [
-        "2026-10-02T12:51:58+05:00"
+        "2026-10-05T10:57:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-02T12:51:58+05:00"
+        "2026-10-05T10:57:00+05:00"
       ],
-      "thread_key": "pakistan-auto-policy-2026-31"
+      "thread_key": "pakistan-bangladesh-textile-trade"
     }
   }
 }
