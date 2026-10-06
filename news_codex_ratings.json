@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-10-06T05:49:07Z",
+  "as_of": "2026-10-06T06:46:21Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
-  "depth": "full-text",
-  "articles_read": 9,
+  "depth": "mixed-full-and-headline",
+  "articles_read": 12,
   "notes": [
-    "Scheduled Codex review executed during the valid 2026-10-06 PSX session. Fresh committed raw input was fetched at 2026-10-06T05:36:22.355438Z.",
-    "Only current-session, schema-valid tracked ratings are placed in ratings/sectors. Material pre-open or prior-session stories remain in reviewed_stories for context and are not converted into neutral ratings.",
+    "Scheduled Codex review executed during the valid 2026-10-06 PSX session. Fresh committed raw input was fetched at 2026-10-06T06:36:07.043008Z.",
+    "Existing story history was reconciled before publication. Current-session article-page timestamps are used for score-bearing ratings; pre-open or timestamp-unverified items remain reviewed context only.",
     "Market-price moves themselves are not used as causal news evidence."
   ],
   "reviewed_stories": [
@@ -67,17 +67,18 @@
       "thread_key": "pakistan-services-it-exports"
     },
     {
-      "title": "Oil prices slip as traders weigh strong Mideast exports against Gulf tensions",
+      "title": "Oil stays above $100 as Gulf risk offsets strong Middle East exports and emergency stock releases",
       "assessment": "neutral",
       "linkage": "sector",
-      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is not a company-specific operating disclosure.",
-      "reason": "This continues the middle-east-oil-supply-shock thread. Brent was near $100.28 as Middle East exports above pre-war levels and a G7 emergency reserve release eased supply stress, while Houthi attacks on Saudi targets kept disruption risk elevated. The newer evidence remains mixed rather than clearly bullish or bearish.",
-      "source": "https://www.brecorder.com/news/40442853/oil-prices-slip-as-traders-weigh-strong-mideast-exports-against-gulf-tensions",
+      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is a commodity-price and supply-risk story, not a company-specific operating disclosure.",
+      "reason": "This materially updates the existing middle-east-oil-supply-shock thread during the live PSX session. Brent was around $100.47-$100.59. Strong regional exports and G7 emergency stock releases eased immediate scarcity, while continuing Hormuz and Saudi infrastructure risks preserved a geopolitical premium. The balance remains mixed rather than clearly bullish or bearish for upstream producers.",
+      "source": "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
       "sources": [
-        "https://www.brecorder.com/news/40442853/oil-prices-slip-as-traders-weigh-strong-mideast-exports-against-gulf-tensions"
+        "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
+        "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
       ],
-      "published": "2026-10-06T07:58:00+05:00",
-      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 07:58 AM PKT, before the regular PSX session open.",
+      "published": "2026-10-06T10:59:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified at October 6, 2026 10:59 AM PKT. Full Mettis Global article verified at October 6, 2026 11:18 AM PKT.",
       "text_depth": "full",
       "confidence": 0.9,
       "provider": "OpenAI",
@@ -173,6 +174,61 @@
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "pil-crescent-star-foods-merger"
+    },
+    {
+      "title": "Thar Block-II Phase III expands coal supply for Lucky Electric",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "Lucky Electric Power Company is a wholly owned subsidiary of tracked PSX company Lucky Cement Limited (LUCK).",
+      "reason": "Thar Block-II capacity rose from 7.6m to 11.2m tonnes annually and the additional 3.6m tonnes is intended to supply Lucky Electric's 660MW plant, reducing reliance on imported coal. The operational and FX exposure improvement is real, but the shareholder earnings effect is not quantified and fuel-cost pass-through can limit margin benefit, so the stock assessment remains neutral.",
+      "source": "https://www.brecorder.com/news/40442841/thar-coal-phase-iii-expansion-project-inaugurated",
+      "sources": [
+        "https://www.brecorder.com/news/40442841/thar-coal-phase-iii-expansion-project-inaugurated",
+        "https://luckyelectricpower.com/profile/"
+      ],
+      "published": "2026-10-06T05:18:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified at October 6, 2026 05:18 AM PKT. Lucky Electric's official profile verifies it is a subsidiary of Lucky Cement Limited. The raw-linked ProPakistani body was inaccessible, so its exact page timestamp was not used.",
+      "text_depth": "full",
+      "confidence": 0.85,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "luck-thar-coal-substitution"
+    },
+    {
+      "title": "K-Electric withdraws expression of interest for GEPCO privatisation",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "K-Electric is tracked PSX symbol KEL and the article explicitly states that K-Electric withdrew its GEPCO expression of interest.",
+      "reason": "K-Electric formally withdrew from the GEPCO privatisation process. The decision is strategically material, but the source gives no reason, purchase economics or expected earnings effect, so a positive or negative shareholder impact cannot be signed responsibly.",
+      "source": "https://www.brecorder.com/news/40442843/gepco-sell-off-nine-parties-pre-qualified-by-pc-board",
+      "sources": [
+        "https://www.brecorder.com/news/40442843/gepco-sell-off-nine-parties-pre-qualified-by-pc-board"
+      ],
+      "published": "2026-10-06T05:18:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 05:18 AM PKT, before the regular 09:32 PSX session open.",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "kel-gepco-privatisation"
+    },
+    {
+      "title": "VEON raises Pakistan investment plan to $1.5bn from $1bn",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "VEON/Jazz is not a configured tracked PSX company. No direct earnings mechanism is established for TELE, SYS or another tracked name.",
+      "reason": "The committed feed reports that VEON increased its planned Pakistan investment over three years to $1.5bn from $1bn, a positive signal for national digital infrastructure and foreign investment. The linked article body was inaccessible in this run, so no tracked-company rating is created from this headline-and-snippet evidence.",
+      "source": "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb",
+      "sources": [
+        "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb"
+      ],
+      "published": "2026-10-06T11:10:50+05:00",
+      "publication_time_status": "Timestamp comes from the fresh committed raw feed. The linked Business Recorder article body was inaccessible, so the page timestamp could not be independently verified.",
+      "text_depth": "headline_snippet",
+      "confidence": 0.7,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "veon-pakistan-investment-2026"
     }
   ],
   "ratings": {
@@ -198,5 +254,29 @@
       "thread_key": "image-fy26-results"
     }
   },
-  "sectors": {}
+  "sectors": {
+    "Oil & Gas Exploration": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.9,
+      "horizon": "multi_session",
+      "linkage": "sector",
+      "reason": "Brent remains above $100, but strong Middle East exports and G7 stock releases offset continuing Hormuz and Saudi infrastructure risks; current-session evidence is mixed.",
+      "relevance": "Sector link to configured OGDC, PPL and MARI upstream producers.",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
+        "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
+      ],
+      "source_published": [
+        "2026-10-06T10:59:00+05:00",
+        "2026-10-06T11:18:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-06T10:59:00+05:00",
+        "2026-10-06T11:18:00+05:00"
+      ],
+      "thread_key": "middle-east-oil-supply-shock"
+    }
+  }
 }
