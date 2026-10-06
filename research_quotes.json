@@ -1,8 +1,8 @@
 {
   "source": "PSX public company pages",
-  "started_at": "2026-10-06T05:57:56.097186+00:00",
-  "fetched_at": "2026-10-06T05:58:16.183838+00:00",
-  "checked_at": "2026-10-06T05:58:16.183872+00:00",
+  "started_at": "2026-10-06T06:02:56.245031+00:00",
+  "fetched_at": "2026-10-06T06:03:16.226916+00:00",
+  "checked_at": "2026-10-06T06:03:16.226955+00:00",
   "universe": [
     "PRL",
     "MEBL",
@@ -40,20 +40,21 @@
       "source_url": "https://dps.psx.com.pk/company/PRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:57:58.110861+00:00",
+      "fetched_at": "2026-10-06T06:02:58.282400+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 298.110861,
+      "source_age_seconds": 598.2824,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "252b4ad29844d99d2b8d494ceb7426d1dd854ef825d4a6c3349c8bb67640a02f",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "a53c4db77c8398a7eb8517e476f9b554315610659b45142b505b29ff776f7406",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "MEBL",
@@ -72,20 +73,21 @@
       "source_url": "https://dps.psx.com.pk/company/MEBL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:57:59.187448+00:00",
+      "fetched_at": "2026-10-06T06:02:58.258329+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 299.187448,
+      "source_age_seconds": 598.258329,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "d8c14a02ff5fb77a937715eb6520d046468f8ab04385b1279dacf3c98f270e2f",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "345e839d67f7802bb80e5851bd0da21ce8e6ea6ade7321e98601e6fc1d033906",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "SYS",
@@ -104,20 +106,21 @@
       "source_url": "https://dps.psx.com.pk/company/SYS",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:00.199037+00:00",
+      "fetched_at": "2026-10-06T06:03:00.734199+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 300.199037,
+      "source_age_seconds": 600.734199,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "92d247e9f4685843cb5b975a803374266f30cf689835ba90425007b7da765d28",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "74c0d5d1f47e1942ea32ed355472686552d9b202d48e5b5dc43fa133cd7415f2",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "PSO",
@@ -136,20 +139,21 @@
       "source_url": "https://dps.psx.com.pk/company/PSO",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:01.256943+00:00",
+      "fetched_at": "2026-10-06T06:03:03.419017+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 301.256943,
+      "source_age_seconds": 603.419017,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "06cf71465582cc9cbcb58bef1806e5395c6f95772b5b344201a5f0d908a7e973",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "b95c1b0c54cd2db5a2eadb09da136ebedc92d027a9459e850c7589037e984e6d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "GAL",
@@ -168,20 +172,21 @@
       "source_url": "https://dps.psx.com.pk/company/GAL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:03.305709+00:00",
+      "fetched_at": "2026-10-06T06:03:02.756758+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 303.305709,
+      "source_age_seconds": 602.756758,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "1a56b33dd779abd06b149f9187e7288734be64fec0a2adbca4aad186e102bcdf",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "21f73e80dcf0ab943bd4fc1903709f228732d694b9a67c19c95b10fdbc38eede",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "EFERT",
@@ -200,20 +205,21 @@
       "source_url": "https://dps.psx.com.pk/company/EFERT",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:03.328004+00:00",
+      "fetched_at": "2026-10-06T06:03:06.110519+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 303.328004,
+      "source_age_seconds": 606.110519,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "45ad2255d811face051a5f7bb9612243c155a9df6023483b3d3ab9948e57f265",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "62f79fb67d7d65620714e890fec632a72e384548309e739ad70d0da923df7d32",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "ATRL",
@@ -232,20 +238,21 @@
       "source_url": "https://dps.psx.com.pk/company/ATRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:05.356438+00:00",
+      "fetched_at": "2026-10-06T06:03:05.880721+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 305.356438,
+      "source_age_seconds": 605.880721,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "2f1578626c04e3ac3525d490928b7f74f49f5a0e2be2faee1e30c326128db56b",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "089b4e0e130eff6089a1ddff0309b74188deb219cca73f62a2b7fc3f4f681f4d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "NRL",
@@ -264,20 +271,21 @@
       "source_url": "https://dps.psx.com.pk/company/NRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:05.398028+00:00",
+      "fetched_at": "2026-10-06T06:03:09.007306+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 305.398028,
+      "source_age_seconds": 609.007306,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "06d7ec554da553eeb9674e0673064a1b38be2662cc18c74f7aca0d9dfb47a087",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "e0f2c8dbeb8c8bdfbf67d84f89ac666ad5275be4ba68509a33988c4596b2412e",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "ASL",
@@ -296,20 +304,21 @@
       "source_url": "https://dps.psx.com.pk/company/ASL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:07.675111+00:00",
+      "fetched_at": "2026-10-06T06:03:08.143675+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 307.675111,
+      "source_age_seconds": 608.143675,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "6703c26717f86f4a94f8a9f6965c03d4a42659626d0e7a5a321a2580dcba9bff",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "eafe456c15859cc20d6af4d8e8fb5d295dd734c1a81ceba6df0d8a250eaf14e5",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "FCL",
@@ -328,20 +337,21 @@
       "source_url": "https://dps.psx.com.pk/company/FCL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:10.489468+00:00",
+      "fetched_at": "2026-10-06T06:03:12.091764+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 310.489468,
+      "source_age_seconds": 612.091764,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "9f4cba5320491b789fe5ffd570145b42da7d6073f7e83a9a187facb08a53133a",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "1692d8980f5faddf2ff6334be2c92b1091523dfd87eaa28c85dcd11496ca881c",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "FCEPL",
@@ -360,20 +370,21 @@
       "source_url": "https://dps.psx.com.pk/company/FCEPL",
       "source_as_of": "2026-10-06T10:52:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:09.699079+00:00",
+      "fetched_at": "2026-10-06T06:03:11.129491+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 369.699079,
+      "source_age_seconds": 671.129491,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "1c714d568e00a3bce70ed5d61b458d2506bf9b21b4cbea6e1609b82103167f47",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "c3d7e64ebd10250008ff8d72f3fb5e0d3bb343c63754fa634546d7d980ca1ece",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "CNERGY",
@@ -392,20 +403,21 @@
       "source_url": "https://dps.psx.com.pk/company/CNERGY",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:13.020558+00:00",
+      "fetched_at": "2026-10-06T06:03:13.994551+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 313.020558,
+      "source_age_seconds": 613.994551,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "13e2d8178d045a72733a3d87e778804123588d4d3f98cfa449df9acffa64782d",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "6797c63789128daff629c3d2d04bf89f088b57f7858cebfa3a96ec9819c9f04d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "THCCL",
@@ -424,20 +436,21 @@
       "source_url": "https://dps.psx.com.pk/company/THCCL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:13.738578+00:00",
+      "fetched_at": "2026-10-06T06:03:14.205116+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 313.738578,
+      "source_age_seconds": 614.205116,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "4bd4d5417eb1e902e217809731b26a48890d53b7ba0f1a9ab338a6ea33bcb58b",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "c0de2501969c1f53cd9ca072de995ccc0c6f2052b25b5364f24b5ef74daa964b",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "FABL",
@@ -456,20 +469,21 @@
       "source_url": "https://dps.psx.com.pk/company/FABL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:16.162891+00:00",
+      "fetched_at": "2026-10-06T06:03:16.134294+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 316.162891,
+      "source_age_seconds": 616.134294,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "c94f6585fee51d45628cf5d74be33f5569ad48a1a7a5e0539b4f5e19eaf43d5e",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "1fd4ad24bf3a73f47762a32edccfa4013b9df27668d0485ff2764e1b01896a58",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     },
     {
       "symbol": "OGDC",
@@ -488,20 +502,21 @@
       "source_url": "https://dps.psx.com.pk/company/OGDC",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:15.787830+00:00",
+      "fetched_at": "2026-10-06T06:03:16.206234+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 315.78783,
+      "source_age_seconds": 616.206234,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "ea3dbfd9fd44d21c1db6cb4c2f994722dd119a3fb688cefe221500fb647b1b02",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c"
+      "usable_point": false,
+      "observation_id": "e5eb434b04a59ca075467d93fa4054ccb5708b8cb158524d5eab1a19e13d834f",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e"
     }
   ],
   "failed": [],
@@ -511,10 +526,10 @@
   "note": "Availability is not freshness. Use each source_as_of and session; no synthesized intraday candles.",
   "attempted": 15,
   "skipped": [],
-  "scheduled_at": "2026-10-06T05:57:56+00:00",
+  "scheduled_at": null,
   "network_state": {},
   "coverage": "partial_point_observations_not_ohlcv",
-  "observation_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
+  "observation_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
   "observations": [
     {
       "symbol": "PRL",
@@ -533,30 +548,27 @@
       "source_url": "https://dps.psx.com.pk/company/PRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:57:58.110861+00:00",
+      "fetched_at": "2026-10-06T06:02:58.282400+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 298.110861,
+      "source_age_seconds": 598.2824,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "252b4ad29844d99d2b8d494ceb7426d1dd854ef825d4a6c3349c8bb67640a02f",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "a53c4db77c8398a7eb8517e476f9b554315610659b45142b505b29ff776f7406",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.244,
-      "window_volume": 268308,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "MEBL",
@@ -575,30 +587,27 @@
       "source_url": "https://dps.psx.com.pk/company/MEBL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:57:59.187448+00:00",
+      "fetched_at": "2026-10-06T06:02:58.258329+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 299.187448,
+      "source_age_seconds": 598.258329,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "d8c14a02ff5fb77a937715eb6520d046468f8ab04385b1279dacf3c98f270e2f",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "345e839d67f7802bb80e5851bd0da21ce8e6ea6ade7321e98601e6fc1d033906",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.182,
-      "window_volume": 8367,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "SYS",
@@ -617,30 +626,27 @@
       "source_url": "https://dps.psx.com.pk/company/SYS",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:00.199037+00:00",
+      "fetched_at": "2026-10-06T06:03:00.734199+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 300.199037,
+      "source_age_seconds": 600.734199,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "92d247e9f4685843cb5b975a803374266f30cf689835ba90425007b7da765d28",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "74c0d5d1f47e1942ea32ed355472686552d9b202d48e5b5dc43fa133cd7415f2",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.707,
-      "window_volume": 17615,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "PSO",
@@ -659,30 +665,27 @@
       "source_url": "https://dps.psx.com.pk/company/PSO",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:01.256943+00:00",
+      "fetched_at": "2026-10-06T06:03:03.419017+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 301.256943,
+      "source_age_seconds": 603.419017,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "06cf71465582cc9cbcb58bef1806e5395c6f95772b5b344201a5f0d908a7e973",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "b95c1b0c54cd2db5a2eadb09da136ebedc92d027a9459e850c7589037e984e6d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.349,
-      "window_volume": 34200,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "GAL",
@@ -701,30 +704,27 @@
       "source_url": "https://dps.psx.com.pk/company/GAL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:03.305709+00:00",
+      "fetched_at": "2026-10-06T06:03:02.756758+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 303.305709,
+      "source_age_seconds": 602.756758,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "1a56b33dd779abd06b149f9187e7288734be64fec0a2adbca4aad186e102bcdf",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "21f73e80dcf0ab943bd4fc1903709f228732d694b9a67c19c95b10fdbc38eede",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.193,
-      "window_volume": 46325,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "EFERT",
@@ -743,30 +743,27 @@
       "source_url": "https://dps.psx.com.pk/company/EFERT",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:03.328004+00:00",
+      "fetched_at": "2026-10-06T06:03:06.110519+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 303.328004,
+      "source_age_seconds": 606.110519,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "45ad2255d811face051a5f7bb9612243c155a9df6023483b3d3ab9948e57f265",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "62f79fb67d7d65620714e890fec632a72e384548309e739ad70d0da923df7d32",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.0,
-      "window_volume": 70130,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "ATRL",
@@ -785,30 +782,27 @@
       "source_url": "https://dps.psx.com.pk/company/ATRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:05.356438+00:00",
+      "fetched_at": "2026-10-06T06:03:05.880721+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 305.356438,
+      "source_age_seconds": 605.880721,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "2f1578626c04e3ac3525d490928b7f74f49f5a0e2be2faee1e30c326128db56b",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "089b4e0e130eff6089a1ddff0309b74188deb219cca73f62a2b7fc3f4f681f4d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.103,
-      "window_volume": 1094,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "NRL",
@@ -827,30 +821,27 @@
       "source_url": "https://dps.psx.com.pk/company/NRL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:05.398028+00:00",
+      "fetched_at": "2026-10-06T06:03:09.007306+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 305.398028,
+      "source_age_seconds": 609.007306,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "06d7ec554da553eeb9674e0673064a1b38be2662cc18c74f7aca0d9dfb47a087",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "e0f2c8dbeb8c8bdfbf67d84f89ac666ad5275be4ba68509a33988c4596b2412e",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": -0.15,
-      "window_volume": 3055,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "ASL",
@@ -869,30 +860,27 @@
       "source_url": "https://dps.psx.com.pk/company/ASL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:07.675111+00:00",
+      "fetched_at": "2026-10-06T06:03:08.143675+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 307.675111,
+      "source_age_seconds": 608.143675,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "6703c26717f86f4a94f8a9f6965c03d4a42659626d0e7a5a321a2580dcba9bff",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "eafe456c15859cc20d6af4d8e8fb5d295dd734c1a81ceba6df0d8a250eaf14e5",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.0,
-      "window_volume": 29340,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 16.0,
-      "window_start": "2026-10-06T10:37:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "FCL",
@@ -911,30 +899,27 @@
       "source_url": "https://dps.psx.com.pk/company/FCL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:10.489468+00:00",
+      "fetched_at": "2026-10-06T06:03:12.091764+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 310.489468,
+      "source_age_seconds": 612.091764,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "9f4cba5320491b789fe5ffd570145b42da7d6073f7e83a9a187facb08a53133a",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "1692d8980f5faddf2ff6334be2c92b1091523dfd87eaa28c85dcd11496ca881c",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.113,
-      "window_volume": 30492,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "FCEPL",
@@ -953,30 +938,27 @@
       "source_url": "https://dps.psx.com.pk/company/FCEPL",
       "source_as_of": "2026-10-06T10:52:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:09.699079+00:00",
+      "fetched_at": "2026-10-06T06:03:11.129491+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 369.699079,
+      "source_age_seconds": 671.129491,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "1c714d568e00a3bce70ed5d61b458d2506bf9b21b4cbea6e1609b82103167f47",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "c3d7e64ebd10250008ff8d72f3fb5e0d3bb343c63754fa634546d7d980ca1ece",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.192,
-      "window_volume": 725,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 14.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:52:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "CNERGY",
@@ -995,30 +977,27 @@
       "source_url": "https://dps.psx.com.pk/company/CNERGY",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:13.020558+00:00",
+      "fetched_at": "2026-10-06T06:03:13.994551+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 313.020558,
+      "source_age_seconds": 613.994551,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "13e2d8178d045a72733a3d87e778804123588d4d3f98cfa449df9acffa64782d",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "6797c63789128daff629c3d2d04bf89f088b57f7858cebfa3a96ec9819c9f04d",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": -0.082,
-      "window_volume": 428959,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "THCCL",
@@ -1037,30 +1016,27 @@
       "source_url": "https://dps.psx.com.pk/company/THCCL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:13.738578+00:00",
+      "fetched_at": "2026-10-06T06:03:14.205116+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 313.738578,
+      "source_age_seconds": 614.205116,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "4bd4d5417eb1e902e217809731b26a48890d53b7ba0f1a9ab338a6ea33bcb58b",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "c0de2501969c1f53cd9ca072de995ccc0c6f2052b25b5364f24b5ef74daa964b",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": -0.072,
-      "window_volume": 62791,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "FABL",
@@ -1079,30 +1055,27 @@
       "source_url": "https://dps.psx.com.pk/company/FABL",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:16.162891+00:00",
+      "fetched_at": "2026-10-06T06:03:16.134294+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 316.162891,
+      "source_age_seconds": 616.134294,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "c94f6585fee51d45628cf5d74be33f5569ad48a1a7a5e0539b4f5e19eaf43d5e",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "1fd4ad24bf3a73f47762a32edccfa4013b9df27668d0485ff2764e1b01896a58",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": -0.065,
-      "window_volume": 636,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     },
     {
       "symbol": "OGDC",
@@ -1121,30 +1094,27 @@
       "source_url": "https://dps.psx.com.pk/company/OGDC",
       "source_as_of": "2026-10-06T10:53:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-06T05:58:15.787830+00:00",
+      "fetched_at": "2026-10-06T06:03:16.206234+00:00",
       "session": "2026-10-06",
-      "source_age_seconds": 315.78783,
+      "source_age_seconds": 616.206234,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "duplicate_source_timestamp"
       ],
-      "usable_point": true,
-      "observation_id": "ea3dbfd9fd44d21c1db6cb4c2f994722dd119a3fb688cefe221500fb647b1b02",
-      "collection_capture_id": "3966296f61b18d3705fc099b0781f3ee6bd7dd74fb7aafcce6db74185d59c05c",
-      "state": "Watching: observed snapshot move",
+      "usable_point": false,
+      "observation_id": "e5eb434b04a59ca075467d93fa4054ccb5708b8cb158524d5eab1a19e13d834f",
+      "collection_capture_id": "ce225d9a972fd4db2af358b93bdcc81ec99e7cd76b17e9f2365362b651c1f39e",
+      "state": "Warming up: unchanged or regressing source timestamp",
       "qualifies": false,
       "observation_type": "delayed public REG snapshot",
-      "recent_pct": 0.209,
-      "window_volume": 49995,
-      "risk": "No tick tape, spread, depth or executable fill verified. Watch only.",
-      "window_minutes": 15.0,
-      "window_start": "2026-10-06T10:38:00+05:00",
-      "window_end": "2026-10-06T10:53:00+05:00",
-      "volume_rule": "Experimental: at least 10,000 additional shares; no measured window turnover or same-time baseline"
+      "recent_pct": null,
+      "window_volume": null,
+      "risk": "No tick tape, spread, depth or executable fill verified. Watch only."
     }
   ]
 }
