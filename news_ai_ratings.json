@@ -1,70 +1,55 @@
 {
- "as_of": "2026-10-05T09:38:03Z",
+ "as_of": "2026-10-06T04:38:28Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 15,
+ "articles_read": 22,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-mostly-higher-Nikkei-rises-on-Wall-Street-gains-63977",
   "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963",
-  "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960",
-  "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
   "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
+  "https://mettisglobal.news/Exports-outrun-imports-in-September-as-agri-and-food-shipments-surge-62-63966",
+  "https://mettisglobal.news/Flying-Cement-FY26-profit-slips-to-Rs486m-63968",
+  "https://mettisglobal.news/GCILs-G3-Oil-Gas-LLP-incorporated-with-SECP-63967",
   "https://mettisglobal.news/Gold-hovers-near-4132-as-Fed-hike-bets-dip-63954",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs1200-per-tola-63973",
+  "https://mettisglobal.news/HSD-Price-cut-by-Rs188-petrol-up-Rs088-from-Oct-6-63974",
   "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63947",
+  "https://mettisglobal.news/Lotte-Chemical-Pakistan-changes-name-to-Noventra-Limited-63976",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63975",
   "https://mettisglobal.news/PIA-to-resume-weekly-IslamabadBeijing-flights-from-October-30-63956",
+  "https://mettisglobal.news/PKR-gains-marginally-settles-at-27706USD-63970",
+  "https://mettisglobal.news/PSX-Closing-Bell-Bears-Run-Riot-63969",
   "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
   "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
-  "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952",
-  "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948",
+  "https://mettisglobal.news/RPL-FY26-profit-edges-up-4-63972",
+  "https://mettisglobal.news/SECP-sees-strong-potential-for-inclusive-insurance-in-Pakistan-63971",
+  "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965",
   "https://mettisglobal.news/UN-Chief-Guterres-heads-to-Pakistan-for-USIran-mediation-talks-63955",
-  "https://mettisglobal.news/US-South-Korea-at-odds-over-Alaska-LNG-63958",
   "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962"
  ],
- "count": 4,
+ "count": 2,
  "ratings": {
   "DGKC": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Mgmt sees durable FY27 dispatch recovery on lower rates, reconstruction demand",
+   "confidence": 0.55,
+   "reason": "Mgmt guides durable FY27 cement demand recovery: lower rates, reconstruction, flood rehab",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
    ]
   },
-  "CPHL": {
-   "rating": "negative",
-   "horizon": "single_session",
+  "SAZEW": {
+   "rating": "positive",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "FY26 consolidated profit down 11% to Rs790m; results out",
+   "confidence": 0.35,
+   "reason": "Launch of ARCFOX T5 REEV at Rs10.2m, bookings open; new EV revenue line, early stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
-   ]
-  },
-  "TOMCL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 consolidated profit down 74% to Rs112m; results out",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
-   ]
-  },
-  "FABL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Charity sponsorship; no cash-flow mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/05/pedalling-for-a-cause-faysal-bank-and-patients-aid-foundation-unite-against-breast-cancer/"
+    "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965"
    ]
   }
  },
@@ -73,42 +58,54 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "DGKC sees demand recovery; M-6 motorway groundbreaking set for Nov",
+   "confidence": 0.4,
+   "reason": "DGKC sees durable FY27 dispatch recovery on lower rates; Flying Cement FY26 profit -25% tempers",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
-    "https://propakistani.pk/2026/10/05/sukkur-hyderabad-m-6-motorway-finally-set-for-construction-after-30-years/"
+    "https://mettisglobal.news/Flying-Cement-FY26-profit-slips-to-Rs486m-63968"
    ]
   },
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Saudi cuts Asia crude prices to 6-yr lows; weaker oil price bearish for E&Ps",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
-   ]
-  },
-  "Oil Marketing": {
+  "Cement/Conglomerate": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Lower Saudi crude OSP to Asia eases import cost outlook",
-   "text_depth": "headline",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "DGKC sees durable FY27 dispatch recovery on lower rates; Flying Cement FY26 profit -25% tempers",
+   "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+    "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
+    "https://mettisglobal.news/Flying-Cement-FY26-profit-slips-to-Rs486m-63968"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "New range-extended EV launch widens premium offering; early-stage, single company",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965"
    ]
   },
   "Textile": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Pakistan-Bangladesh talks on lower trade barriers and garment MoU; early stage",
+   "confidence": 0.25,
+   "reason": "Pakistan-Bangladesh talks on lower trade barriers; early-stage intention, no numbers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.2,
+   "reason": "Pakistan-Bangladesh textile trade talks; early-stage, no numbers",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
