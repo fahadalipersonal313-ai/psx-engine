@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-06T04:38:14.284721+00:00",
-  "checkpoint_id": "6f6a3102d71e86198bbb6e44c4712f36d8697b126ff31ffe7ca2dd876dd6500c",
+  "checked_at": "2026-10-06T04:43:14.257559+00:00",
+  "checkpoint_id": "7a33918d8e23752aeba69afb61026b54399cefdef77244031b0c5a63bbd8d1f9",
   "state": {
     "PRL": {
       "swing": "No current setup",
@@ -347,7 +347,7 @@
         "No current setup"
       ],
       "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "quote_fresh": true,
       "research_current": false
     },
     "CNERGY": {
@@ -461,85 +461,6 @@
     }
   },
   "items": [
-    {
-      "symbol": "FCL",
-      "recorded_at": "2026-10-05T04:42:42.695129+00:00",
-      "checkpoint_id": "986968bbc5bdf303e7505709add097f1975f719524b083121d3b226cfac510be",
-      "changed_fields": [
-        "company_review",
-        "blocked_reasons",
-        "primary_reasons"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: cautious",
-        "company_review": "No October 3-5 announcement was found. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. The large documents could not be compared in this pass, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-22",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_033"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
-          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: New evidence: UKMTO's indexed official incident listing includes October 2 tanker incidents and warning 150-26 issued October 4 reporting a tanker hit in Hormuz with engine-room damage. The latter's incident date/time remain TBC and attribution is unknown. Direct extraction omits dynamic bulletins, so the primary text is search-index verified. Indexed October 5 WSJ/Mint reporting (direct article unavailable) describes renewed shipping attacks alongside September export recovery. Inference: renewed route risk supports an adverse energy-import, freight and insurance-risk assessment. It does not establish full route closure, a quantified Pakistani supply loss or a current oil price.",
-          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
-          "Original technical entry screen: Avoid",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: cautious",
-        "company_review": "In-session delta check: the retrieved PSX snapshot displays a 08:47 PKT pre-open page header and no newly visible October 3-5 issuer filing. This does not establish absence of post-open news; cached-page lag remains a coverage limitation. No October 3-5 announcement was found. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. The large documents could not be compared in this pass, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-22",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_033"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
-          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Current-session check found no newer verified incident publication. The indexed UKMTO listing retains October 4-issued warning 150-26 about a Hormuz tanker hit; its incident date/time remain TBC. An additional October 4 listing, 151, concerns nearby explosions south of Al Mukha, with crew safe; it is not a confirmed vessel hit. Direct dynamic bulletin extraction remains incomplete. Earlier-Monday Reuters reporting describes recovered Gulf exports and a G7 stock release alongside continuing attacks. Inference: supply recovery is a counterweight, but does not clear adverse maritime, freight and insurance risk. No total route closure, attribution or live oil-price claim.",
-          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
-          "Original technical entry screen: Avoid",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "title": "FCL: research conditions changed",
-      "detail": "Changed company review, blocked reasons, primary reasons. Review the evidence before acting.",
-      "id": "0d786ac6967fd3aa781a1957570397d1c2b3cad1135be46913df02ff7c63ce08"
-    },
     {
       "symbol": "FCEPL",
       "recorded_at": "2026-10-05T04:42:42.695129+00:00",
@@ -14892,6 +14813,69 @@
       "title": "OGDC: research conditions changed",
       "detail": "Changed quote fresh. Review the evidence before acting.",
       "id": "57de65a09cce9e2f253469ecee0915a26ed5eda056400591c86335d6fce88c03"
+    },
+    {
+      "symbol": "FCEPL",
+      "recorded_at": "2026-10-06T04:43:14.257559+00:00",
+      "checkpoint_id": "7a33918d8e23752aeba69afb61026b54399cefdef77244031b0c5a63bbd8d1f9",
+      "changed_fields": [
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "No current setup",
+        "investment": "Unavailable: current financial review required",
+        "company_review": "FCEPL remains on the stale 10:32 page header. The existing October 2 CFO transition is historical context; current issuer-announcement coverage remains unavailable.",
+        "company_bias": "unknown",
+        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
+          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
+          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage.",
+          "Research review missing, invalid or expired",
+          "Original technical entry screen: Avoid",
+          "News review unavailable",
+          "No current setup"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": false
+      },
+      "after": {
+        "swing": "No current setup",
+        "investment": "Unavailable: current financial review required",
+        "company_review": "FCEPL remains on the stale 10:32 page header. The existing October 2 CFO transition is historical context; current issuer-announcement coverage remains unavailable.",
+        "company_bias": "unknown",
+        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
+          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
+          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage.",
+          "Research review missing, invalid or expired",
+          "Original technical entry screen: Avoid",
+          "News review unavailable",
+          "No current setup"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": true,
+        "research_current": false
+      },
+      "title": "FCEPL: research conditions changed",
+      "detail": "Changed quote fresh. Review the evidence before acting.",
+      "id": "1ba292e66d246e6083841517f5d39204d4f77736e49a1fa1ec77bd79949af459"
     }
   ],
   "retention": "Latest 200 changes. Original research decisions remain immutable in research_decisions."
