@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "version": "intraday-point-observations-v1",
+  "capture_id": "4de218b0b6fe6a706bfe7187da47a24e568a998df0b50ee01606876c82a7cfdc",
+  "collected_at": "2026-10-06T06:28:08.889677+00:00",
+  "scheduled_at": "2026-10-06T06:27:56+00:00",
+  "cadence_target_seconds": 300,
+  "dataset_kind": "delayed_REG_point_observations",
+  "source_delayed": true,
+  "ohlcv_status": "unavailable",
+  "paper_strategy_status": "collection_only_no_fills",
+  "observations": [
+    {
+      "symbol": "PRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/PRL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "06065de471cc978dc8af0a58fd347cf155bf710b5c85f409f45078c10f065e3d",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "160e5be0d55732152a1b6f7afae170bf5ee549af58e9e3daf802eadecf4152e3",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "MEBL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/MEBL",
+      "source_as_of": "2026-10-06T11:23:00+05:00",
+      "fetched_at": "2026-10-06T06:27:59.343103+00:00",
+      "price": 550.0,
+      "cumulative_session_volume": 58270,
+      "previous_observation_id": "9920b92636ec9b2485d588caa957a4a0536a6770bd63918543052976a8d47112",
+      "observed_volume_delta": 1818,
+      "volume_interval_seconds": 300.0,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 546.26,
+        "high": 552.4,
+        "low": 546.26
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "51cce39b70263612baedf2cccd1325811e6649726295a8770d2107714e9d89cd",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "SYS",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/SYS",
+      "source_as_of": "2026-10-06T11:23:00+05:00",
+      "fetched_at": "2026-10-06T06:28:00.343241+00:00",
+      "price": 113.63,
+      "cumulative_session_volume": 326833,
+      "previous_observation_id": "d890130984214279c95e2f3c81fd8beb9072d8e322bfa815354edc5e95acf871",
+      "observed_volume_delta": 7217,
+      "volume_interval_seconds": 300.0,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 114.35,
+        "high": 115.0,
+        "low": 113.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "aaf67b02b400c8dc8a1e12a908df12fe21ca62296f72420a09c4a68d095d93d6",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "PSO",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/PSO",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "7173d7dcb5962f8c616fcc950d0396316428722eca4cc0bfc56eafdb6ce0696b",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "c75dc64348828878ad5ef3834c8f85aa5acc5088cef3e99ab9df7b9f414ecdb9",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "GAL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/GAL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "0fb63cf756d391711fe4de998e27565675acd736e3a6c068711595c0d050fa77",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "52ee3914940bd348ea3bac368f680aeca64f55afe770e19a80bb146406853dd5",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "EFERT",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/EFERT",
+      "source_as_of": "2026-10-06T11:23:00+05:00",
+      "fetched_at": "2026-10-06T06:28:02.560105+00:00",
+      "price": 190.52,
+      "cumulative_session_volume": 148539,
+      "previous_observation_id": "42fda932f21c05712f175173b0176c29349bf81e2ece2e40975e8c03d5362747",
+      "observed_volume_delta": 31909,
+      "volume_interval_seconds": 300.0,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 192.95,
+        "high": 192.95,
+        "low": 190.5
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "40fd1d94ed7fe95177c49048584a0a8f8083a14101e8b73e61546051af520f2c",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "ATRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/ATRL",
+      "source_as_of": "2026-10-06T11:23:00+05:00",
+      "fetched_at": "2026-10-06T06:28:03.747282+00:00",
+      "price": 1170.26,
+      "cumulative_session_volume": 27497,
+      "previous_observation_id": "4b6ade093a8f57f5ba673dbe46c0c00a00de773d8a8da33d1f72b01bdc4c92ed",
+      "observed_volume_delta": 25,
+      "volume_interval_seconds": 300.0,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 1175.0,
+        "high": 1182.09,
+        "low": 1165.0
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "358b70c62f4300cb65b79b65a7e429cde67c917a49bea407259c0b86da6d5fda",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "NRL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/NRL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "872c81095d0517261b4534851842723b3b8d2b1707556d2e2bd467d54f9bd4ee",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "5651c2dfdfb9b8f333cb31ebe37b4936fd8fe3388aa10b9a015219b8ceefbd51",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "ASL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/ASL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "652b71d85a3fc63a7459a9fed0c80b96a7ed7e4e9ebb96f7c4ca209e9164fd86",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "a66310de3090ab11df4f0747737d8e56ad86543ca049d89f855b1e333159b713",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "FCL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FCL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "956cfe9f9cefc502f9746412ed7eb703886baa4fa98b9217b18133137058412c",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "e39784503cd7c25db0013a8da7ddf9ee8a1f8569df1548662b2c360c1cd186a0",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "FCEPL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FCEPL",
+      "source_as_of": "2026-10-06T11:23:00+05:00",
+      "fetched_at": "2026-10-06T06:28:07.414796+00:00",
+      "price": 131.0,
+      "cumulative_session_volume": 109009,
+      "previous_observation_id": "236cc9c9fb53ccbddc994431575e7f32a5bb43c7bed20cd4ff894833b11032a0",
+      "observed_volume_delta": 2,
+      "volume_interval_seconds": 300.0,
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "ohlcv_bar": false,
+      "source_running_daily_ohlc": {
+        "open": 133.0,
+        "high": 133.0,
+        "low": 129.62
+      },
+      "running_ohlc_scope": "Official running session values, not interval extremes",
+      "observation_id": "6686217f6f6a1323b32e5ab7be53e323f9f7c5c1ea6b8811415727ad45cc75e3",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "CNERGY",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/CNERGY",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "94cc8133c530049ce7a96b02d5943b76ee16f6a75c9b3f46b11fee34a27dafd0",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "35b387173f2414583f5d202cf15889f9079726087383b557d99ecf35b7513d70",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "THCCL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/THCCL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "ca764721b002149a8a83abb443790b4949d2d5904b867c6044435d9d1f34fac2",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "b5cca496c756a4810f9e9814f97bf647fe69c44d6b10b69c53650c5e2a6e8d69",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "FABL",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/FABL",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "08ae0e646088450ca125fbfa0569161d580017dd6d60d5ffd8155ab1d9b01fe4",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "9786de3c42bdf681c82b37b2f2afed3bad86dad7b2cbd843b5d0a8c975fa928e",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    },
+    {
+      "symbol": "OGDC",
+      "market": "REG",
+      "source_url": "https://dps.psx.com.pk/company/OGDC",
+      "source_as_of": null,
+      "fetched_at": null,
+      "price": null,
+      "cumulative_session_volume": null,
+      "observed_volume_delta": null,
+      "volume_interval_seconds": null,
+      "usable_point": false,
+      "ohlcv_bar": false,
+      "previous_observation_id": "441d280ce742b2273e4d3cb8b743da8c6553dee974feb127bb0e50ffd7cdcafe",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_fetch_failed"
+      ],
+      "error": "HTTPError: HTTP Error 502: Bad Gateway",
+      "observation_id": "f60a74b5c12f363864947deefd03f6ccdefcea07f2f5708714a8b7871eb98e66",
+      "collected_at": "2026-10-06T06:28:08.889677+00:00"
+    }
+  ]
+}
