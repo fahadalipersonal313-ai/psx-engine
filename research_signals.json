@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-06T06:38:14.835695+00:00",
+  "evaluated_at": "2026-10-06T06:43:14.497506+00:00",
   "market_open": true,
   "research_current": true,
-  "context_as_of": "2026-10-06T06:08:39Z",
-  "context_expires_at": "2026-10-06T07:08:39Z",
+  "context_as_of": "2026-10-06T06:38:39Z",
+  "context_expires_at": "2026-10-06T07:38:39Z",
   "counts": {
     "Ready for review": 0,
     "Watching": 0,
@@ -15,9 +15,9 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Hold; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Hold; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Hold",
         "Caution: material research risk"
@@ -28,15 +28,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 86.3,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:37:58.271181+00:00",
+        "price": 86.5,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:42:58.204157+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -49,8 +48,8 @@
         "run_time": "2026-10-06T11:33:12.047720+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 52.9 in Hold band 50-60"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -753,15 +752,141 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical Platts diesel-cap report rechecked",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1132_hsd",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 fuel-revision article body rechecked",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1132_fuel",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX PRL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/PRL",
+          "source_id": "tue_20261006_1132_PRL",
+          "verified_at": "2026-10-06T06:35:06.994Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -771,9 +896,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 550.36,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:37:58.297364+00:00",
+        "price": 550.0,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:42:58.226981+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
@@ -791,8 +916,8 @@
         "run_time": "2026-10-06T11:33:11.760280+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -1378,15 +1503,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX MEBL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/MEBL",
+          "source_id": "tue_20261006_1132_MEBL",
+          "verified_at": "2026-10-06T06:35:07.270Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -1396,9 +1629,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 113.7,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:00.485501+00:00",
+        "price": 113.8,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:00.979220+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
@@ -1416,8 +1649,8 @@
         "run_time": "2026-10-06T11:33:11.776303+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2030,15 +2263,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX SYS disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/SYS",
+          "source_id": "tue_20261006_1132_SYS",
+          "verified_at": "2026-10-06T06:35:14.497Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
@@ -2050,15 +2391,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 344.88,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:01.506218+00:00",
+        "price": 345.25,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:00.418155+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -2071,8 +2411,8 @@
         "run_time": "2026-10-06T11:33:11.695173+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.9 below 50"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "PSO FY2026 performance press release",
@@ -2703,15 +3043,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX PSO disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/PSO",
+          "source_id": "tue_20261006_1132_PSO",
+          "verified_at": "2026-10-06T06:35:15.090Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
         "Original technical entry screen: Avoid",
@@ -2725,14 +3173,13 @@
       "expires_at": null,
       "quote": {
         "price": 495.48,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:02.640626+00:00",
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:02.614109+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -2745,8 +3192,8 @@
         "run_time": "2026-10-06T11:33:12.174854+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -3314,15 +3761,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX GAL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "tue_20261006_1132_GAL",
+          "verified_at": "2026-10-06T06:35:23.196Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
       ],
@@ -3332,9 +3887,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 190.72,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:04.788410+00:00",
+        "price": 190.79,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:03.079788+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
@@ -3352,8 +3907,8 @@
         "run_time": "2026-10-06T11:33:11.936470+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 69.3 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -4002,16 +4557,142 @@
           "published_at": null,
           "published_date": "2026-10-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX EFERT disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "tue_20261006_1132_EFERT",
+          "verified_at": "2026-10-06T06:35:23.232Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "LNG request and force-majeure report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1132_lng",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "NEPRA hearing-notice coverage directly rechecked",
+          "url": "https://nepra.org.pk/",
+          "source_id": "tue_20261006_1132_power",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: Issuer disclosure access recovered to an 11:04 PKT page header. Funding, refining-margin and shipping countercases remain; recovered visibility does not override existing research or technical gates.; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
-        "Swing research cautious: Issuer disclosure access recovered to an 11:04 PKT page header. Funding, refining-margin and shipping countercases remain; recovered visibility does not override existing research or technical gates.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
+        "Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.",
         "Caution: material research risk"
       ],
       "swing_state": "Caution: material research risk",
@@ -4020,9 +4701,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 1170.99,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:04.816528+00:00",
+        "price": 1169.0,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:05.873240+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
@@ -4040,8 +4721,8 @@
         "run_time": "2026-10-06T11:33:12.063563+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.4 ≥ 80 with technical Strong bullish; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -4735,15 +5416,141 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical Platts diesel-cap report rechecked",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1132_hsd",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 fuel-revision article body rechecked",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1132_fuel",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX ATRL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/ATRL",
+          "source_id": "tue_20261006_1132_ATRL",
+          "verified_at": "2026-10-06T06:35:30.319Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -4753,15 +5560,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 593.0,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:08.094269+00:00",
+        "price": 592.05,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:05.361529+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -4774,8 +5580,8 @@
         "run_time": "2026-10-06T11:33:11.824507+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.7 ≥ 80 with technical Strong bullish; Hysteresis: score 80.7 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -5478,15 +6284,141 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical Platts diesel-cap report rechecked",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1132_hsd",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 fuel-revision article body rechecked",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1132_fuel",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX NRL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "tue_20261006_1132_NRL",
+          "verified_at": "2026-10-06T06:35:30.925Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -5497,15 +6429,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 15.28,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:07.888997+00:00",
+        "price": 15.35,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:07.543771+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -5518,8 +6449,8 @@
         "run_time": "2026-10-06T11:33:12.509433+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 36.7 below 50"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -6159,15 +7090,141 @@
           "published_at": null,
           "published_date": "2026-10-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX ASL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "tue_20261006_1132_ASL",
+          "verified_at": "2026-10-06T06:35:39.449Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "LNG request and force-majeure report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1132_lng",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "NEPRA hearing-notice coverage directly rechecked",
+          "url": "https://nepra.org.pk/",
+          "source_id": "tue_20261006_1132_power",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -6178,15 +7235,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 26.49,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:10.091867+00:00",
+        "price": 26.36,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:07.784060+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -6199,8 +7255,8 @@
         "run_time": "2026-10-06T11:33:12.303014+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 34.2 below 50"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -6885,15 +7941,150 @@
           "published_at": null,
           "published_date": "2026-10-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX FCL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "tue_20261006_1132_FCL",
+          "verified_at": "2026-10-06T06:35:38.613Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "LNG request and force-majeure report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1132_lng",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "NEPRA hearing-notice coverage directly rechecked",
+          "url": "https://nepra.org.pk/",
+          "source_id": "tue_20261006_1132_power",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official GEPCO prequalification stage directly rechecked",
+          "url": "https://privatisation.gov.pk/NewsDetail/M2E1ZGE5NGQtMWMxZC00ZWE5LWIxNzgtYzVlODlmMmRiZGMy",
+          "source_id": "tue_20261006_1132_gepco",
+          "verified_at": "2026-10-06T06:36:33.866Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -6904,8 +8095,8 @@
       "expires_at": null,
       "quote": {
         "price": 131.1,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:10.070726+00:00",
+        "source_as_of": "2026-10-06T11:37:00+05:00",
+        "fetched_at": "2026-10-06T06:43:09.727193+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
@@ -6923,8 +8114,8 @@
         "run_time": "2026-10-06T11:33:12.414379+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 27.6 below 50"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -7510,15 +8701,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX FCEPL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/FCEPL",
+          "source_id": "tue_20261006_1132_FCEPL",
+          "verified_at": "2026-10-06T06:35:49.105Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -7530,14 +8829,13 @@
       "expires_at": null,
       "quote": {
         "price": 12.1,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:12.254918+00:00",
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:10.812447+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -7550,8 +8848,8 @@
         "run_time": "2026-10-06T11:33:12.572511+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -8245,15 +9543,141 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical Platts diesel-cap report rechecked",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1132_hsd",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 fuel-revision article body rechecked",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1132_fuel",
+          "verified_at": "2026-10-06T06:35:22Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX CNERGY disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/CNERGY",
+          "source_id": "tue_20261006_1132_CNERGY",
+          "verified_at": "2026-10-06T06:35:47.978Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
         "Original technical entry screen: Avoid",
@@ -8266,15 +9690,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 68.76,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:12.277506+00:00",
+        "price": 68.9,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:12.143670+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -8287,8 +9710,8 @@
         "run_time": "2026-10-06T11:33:12.477782+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "Thatta Cement March 2026 quarterly report",
@@ -8928,15 +10351,141 @@
           "published_at": null,
           "published_date": "2026-10-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX THCCL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "tue_20261006_1132_THCCL",
+          "verified_at": "2026-10-06T06:35:56.284Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "LNG request and force-majeure report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1132_lng",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "NEPRA hearing-notice coverage directly rechecked",
+          "url": "https://nepra.org.pk/",
+          "source_id": "tue_20261006_1132_power",
+          "verified_at": "2026-10-06T06:36:09Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -8946,15 +10495,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 92.76,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:14.434217+00:00",
+        "price": 92.74,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:12.997138+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -8967,8 +10515,8 @@
         "run_time": "2026-10-06T11:33:11.727820+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 37.9 below 50"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -9527,15 +11075,123 @@
           "published_at": null,
           "published_date": "2026-10-05",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX FABL disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/FABL",
+          "source_id": "tue_20261006_1132_FABL",
+          "verified_at": "2026-10-06T06:35:56.854Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     },
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed coverage still reports UKMTO 156's October 5 strike/fire at reporting time, without verified resolution. Existing anonymous Reuters uninterrupted-flow and AFP halt accounts remain conflicting; an additional Anadolu relay of Bloomberg's anonymous operating-normal account concerns the same earlier dispute and is not operator confirmation. No present pipeline state or restart is established. Phased G7 supply mitigation, historical softer oil and disputed coastal gains remain offsets. Inference: transit/LNG uncertainty remains adverse without a uniform stock-price forecast.",
+        "Geopolitical risk: Fresh official UKMTO indexed reporting still describes the October 5 tanker strike/fire at report time, with no verified resolution. Anonymous Saudi pipeline flow and halt accounts remain conflicting; no new operator confirmation establishes present operation or restart. A later Reuters observation around 03:30 GMT shows modest oil gains and supersedes the earlier softer-price snapshot for that report, without becoming a live quote. Phased G7 supply commitments and reported strong September exports remain offsets. Inference: unresolved transit/LNG risks remain adverse, without a uniform stock-price forecast.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -9545,15 +11201,14 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 310.77,
-        "source_as_of": "2026-10-06T11:33:00+05:00",
-        "fetched_at": "2026-10-06T06:38:14.682000+00:00",
+        "price": 311.0,
+        "source_as_of": "2026-10-06T11:38:00+05:00",
+        "fetched_at": "2026-10-06T06:43:14.399025+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time",
-          "source_gap_volume_interval_withheld"
+          "source_time_is_quote_update_not_verified_trade_time"
         ],
         "fresh": true
       },
@@ -9566,8 +11221,8 @@
         "run_time": "2026-10-06T11:33:11.856697+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T06:08:39Z",
-      "research_expires_at": "2026-10-06T07:08:39Z",
+      "research_as_of": "2026-10-06T06:38:39Z",
+      "research_expires_at": "2026-10-06T07:38:39Z",
       "source_links": [
         {
           "title": "OGDCL FY2026 audited results and operating review",
@@ -10189,22 +11844,130 @@
           "published_at": null,
           "published_date": "2026-10-06",
           "publication_precision": "date"
+        },
+        {
+          "title": "PBS September CPI directly rechecked",
+          "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Press-Release-September-2026.pdf",
+          "source_id": "tue_20261006_1132_cpi",
+          "verified_at": "2026-10-06T06:34:39Z",
+          "published_at": null,
+          "published_date": "2026-10-01",
+          "publication_precision": "date"
+        },
+        {
+          "title": "SBP September Monitor listing and download check",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1132_monitor",
+          "verified_at": "2026-10-06T06:35:38Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX OGDC disclosure list directly rechecked",
+          "url": "https://dps.psx.com.pk/company/OGDC",
+          "source_id": "tue_20261006_1132_OGDC",
+          "verified_at": "2026-10-06T06:36:04.279Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO incident index and rendering check",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1132_ukmto",
+          "verified_at": "2026-10-06T06:34:28Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Reuters pipeline report indexed recheck",
+          "url": "https://www.devdiscourse.com/article/international/3986946-saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "source_id": "tue_20261006_1132_pipeline_reuters",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "AFP pipeline interruption report indexed recheck",
+          "url": "https://www.brecorder.com/news/40442740/east-west-oil-pipeline-pumping-halted-after-new-attack-saudi-energy-sector-source",
+          "source_id": "tue_20261006_1132_pipeline_afp",
+          "verified_at": "2026-10-06T06:35:44Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Later historical Reuters oil quotation in indexed syndication",
+          "url": "https://dunyanews.tv/en/Business/976363-oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-export",
+          "source_id": "tue_20261006_1132_oil_reuters",
+          "verified_at": "2026-10-06T06:35:11Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "G7 official energy statement directly reread",
+          "url": "https://www.elysee.fr/en/emmanuel-macron/2026/10/02/g7-leaders-statement-on-global-energy-security-and-market-stability",
+          "source_id": "tue_20261006_1132_g7",
+          "verified_at": "2026-10-06T06:35:34Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1132_arrival",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA SPDC statement indexed recheck",
+          "url": "https://mofa.gov.pk/press-releases/joint-statementemergency-meeting-of-the-strategic-political-and-defense-committee-of-the-makkah-alliance-for-defense-riyadh-5-october-2026",
+          "source_id": "tue_20261006_1132_spdc",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official IMF Pakistan review-status recheck",
+          "url": "https://www.imf.org/en/Countries/PAK",
+          "source_id": "tue_20261006_1132_imf",
+          "verified_at": "2026-10-06T06:36:02Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC October5 alert directly rechecked",
+          "url": "https://ofac.treasury.gov/media/937091/download?inline=",
+          "source_id": "tue_20261006_1132_ofac",
+          "verified_at": "2026-10-06T06:34:43Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
         }
       ]
     }
   ],
   "errors": [],
   "source_hashes": {
-    "context_sha256": "768d63362ea7f76e82bd6792b786e0dba423e58e3350fcd51b4656f4091343e9",
+    "context_sha256": "250cb71552757460b31c7a7626589d8ce720f265f00e363373b8d555db25da23",
     "technical_sha256": "a69be3588d383fd09064cbab70299543fb9dbdf9ee097b2bb7296bc7adecc3aa",
-    "quotes_sha256": "6fd564b9d20ac4c0bba3a68011b723ebd293dc9dfefb7492f5be9d9adcddcbfd"
+    "quotes_sha256": "14a853a98776793d893574b6beb01c790ff5f4f5f6f55c9a92471ee138033070"
   },
-  "checkpoint_id": "67d6f54715ddeb3a7b23c12e5b02950f1f5047c8398b408d661d53ecad392e75",
-  "checkpoint": "research_decisions/2026-10-06/063814-67d6f54715dd.json",
-  "recorded_at": "2026-10-06T06:38:14.835695+00:00",
+  "checkpoint_id": "3243b893b837ef5656d8ce0e9bc1b733b897a90d97fafe075037b132c07def0c",
+  "checkpoint": "research_decisions/2026-10-06/064314-3243b893b837.json",
+  "recorded_at": "2026-10-06T06:43:14.497506+00:00",
   "context_error": null,
-  "context_sha256": "768d63362ea7f76e82bd6792b786e0dba423e58e3350fcd51b4656f4091343e9",
+  "context_sha256": "250cb71552757460b31c7a7626589d8ce720f265f00e363373b8d555db25da23",
   "technical_sha256": "a69be3588d383fd09064cbab70299543fb9dbdf9ee097b2bb7296bc7adecc3aa",
-  "quotes_sha256": "6fd564b9d20ac4c0bba3a68011b723ebd293dc9dfefb7492f5be9d9adcddcbfd",
+  "quotes_sha256": "14a853a98776793d893574b6beb01c790ff5f4f5f6f55c9a92471ee138033070",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
