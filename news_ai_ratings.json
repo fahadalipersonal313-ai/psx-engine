@@ -1,11 +1,12 @@
 {
- "as_of": "2026-10-06T07:38:52Z",
+ "as_of": "2026-10-06T08:38:17Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/Exports-outrun-imports-in-September-as-agri-and-food-shipments-surge-62-63966",
+  "https://mettisglobal.news/FM-says-Pakistan-has-fundamentals-to-attract-investment-63991",
   "https://mettisglobal.news/Flying-Cement-FY26-profit-slips-to-Rs486m-63968",
   "https://mettisglobal.news/Gold-dips-to-4122-on-firm-dollar-63985",
   "https://mettisglobal.news/Gold-hovers-near-4132-as-Fed-hike-bets-dip-63954",
@@ -15,9 +16,9 @@
   "https://mettisglobal.news/HUMNL-profit-plunges-78-to-Rs267m-in-FY26-63980",
   "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
   "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982",
+  "https://mettisglobal.news/Lotte-Chemical-Pakistan-changes-name-to-Noventra-Limited-63976",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63975",
   "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984",
-  "https://mettisglobal.news/PIA-to-resume-weekly-IslamabadBeijing-flights-from-October-30-63956",
   "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981",
   "https://mettisglobal.news/PSX-Closing-Bell-Bears-Run-Riot-63969",
   "https://mettisglobal.news/Pakistan-Achieved-Economic-Stability-Now-Government-Must-Deliver-Growth-63983",
@@ -37,7 +38,7 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "Aug-Sep 4W sales 2,474 vs output 1,622 (destocking) plus Rs868m land for expansion",
+   "reason": "Aug-Sep four-wheeler sales 2,474 vs output 1,622; Rs868m land buy for expansion",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
@@ -49,7 +50,7 @@
    "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "FY26 profit -13%, revenue -5%, selling costs +14%; dividend only 10%",
+   "reason": "FY26 consolidated profit down 13% to Rs660m; 10% cash dividend only partly offsets",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979"
@@ -61,8 +62,8 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent holding ~$100 on Middle East supply risk supports realisations, but fell $2 overnight",
+   "confidence": 0.4,
+   "reason": "Brent holds above $100 on Middle East supply risk, supportive of E&P realisations",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
@@ -72,8 +73,8 @@
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "VEON lifts planned 3-yr Pakistan investment to $1.5bn from $1bn, per finance minister",
+   "confidence": 0.45,
+   "reason": "VEON lifts Pakistan investment plan to $1.5bn from $1bn, per finance minister",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb"
@@ -82,9 +83,9 @@
   "Textile": {
    "rating": "positive",
    "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Pakistan-Bangladesh talks on lower barriers for textile trade; early intention only",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Pakistan-Bangladesh talks on lowering textile trade barriers; early-stage, no number",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
