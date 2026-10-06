@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-06T07:35:05.022813+00:00",
-  "checkpoint_id": "b01c7c255fb24fb2be2f67985cbd758515fac13f910ca97a8666b0da2bc9a65a",
+  "checked_at": "2026-10-06T07:38:16.198550+00:00",
+  "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
   "state": {
     "PRL": {
       "swing": "Caution: material research risk",
@@ -54,8 +54,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "SYS": {
@@ -76,8 +76,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "PSO": {
@@ -111,8 +111,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "GAL": {
@@ -147,8 +147,8 @@
         "Current financial review unavailable or due",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "EFERT": {
@@ -178,8 +178,8 @@
         "Original technical entry screen: Watch",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "ATRL": {
@@ -276,8 +276,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "FCL": {
@@ -309,8 +309,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "FCEPL": {
@@ -364,8 +364,8 @@
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
-      "intraday": "Unavailable: no fresh current-session observation",
-      "quote_fresh": false,
+      "intraday": "Unavailable: intraday research not reviewed",
+      "quote_fresh": true,
       "research_current": true
     },
     "THCCL": {
@@ -450,595 +450,6 @@
     }
   },
   "items": [
-    {
-      "symbol": "ASL",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: cautious",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:10 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-10-01: AGM notice proposes settling accumulated preference dividends partly through up to approximately 34.6m ordinary shares, subject to approvals, conversions and taxes; ordinary-share dilution is therefore a watch item. PSX posting date is October 1; enclosed notice is dated October 2. 2026-10-02: FY26 annual report transmitted, providing audited evidence of the return to profitability alongside continuing negative operating cash flow. Scheduled 2026-10-16: Book closure starts; books remain closed through October 23, inclusive. Scheduled 2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-23",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_028"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
-          "Original technical entry screen: Watch",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:10 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-10-01: AGM notice proposes settling accumulated preference dividends partly through up to approximately 34.6m ordinary shares, subject to approvals, conversions and taxes; ordinary-share dilution is therefore a watch item. PSX posting date is October 1; enclosed notice is dated October 2. 2026-10-02: FY26 annual report transmitted, providing audited evidence of the return to profitability alongside continuing negative operating cash flow. Scheduled 2026-10-16: Book closure starts; books remain closed through October 23, inclusive. Scheduled 2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-23",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_028"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "ASL: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "6b1d3ecd51af01729f66a35b8982928a319f83bdb71ac51ad33f5d09213d66fb"
-    },
-    {
-      "symbol": "FCL",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: cautious",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:39 PKT). This is bounded cached coverage, not a real-time clearance. No October 3-5 announcement was found. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. Content comparison of the large reports remains unavailable, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-22",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_033"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
-          "Original technical entry screen: Avoid",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:39 PKT). This is bounded cached coverage, not a real-time clearance. No October 3-5 announcement was found. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. Content comparison of the large reports remains unavailable, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
-        "company_bias": "mixed",
-        "financial_period": "Year ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-22",
-            "known_at": "2026-10-03T18:32:00Z",
-            "source_ids": [
-              "src_033"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "FCL: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "6a92b35af3536ac8f3073a4b444c0936e6c8012377657edbc5aaeb5545028783"
-    },
-    {
-      "symbol": "FCEPL",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: watch",
-        "company_review": "FCEPL remains on the stale 10:32 page header. The existing October 2 CFO transition is historical context; current issuer-announcement coverage remains unavailable.",
-        "company_bias": "unknown",
-        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage.",
-          "Original technical entry screen: Avoid",
-          "News review unavailable",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "FCEPL remains on the stale 10:32 page header. The existing October 2 CFO transition is historical context; current issuer-announcement coverage remains unavailable.",
-        "company_bias": "unknown",
-        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research unavailable: Fresh issuer-news coverage could not be renewed from the stale response. The monthly financial view remains cached, but current entry assessment needs usable current coverage.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "News review unavailable",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "FCEPL: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "aa04e201aa11e2ede906cbbfc37121d6951909e4ec9748f1445adeef4d162991"
-    },
-    {
-      "symbol": "CNERGY",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: cautious",
-        "company_review": "Current CNERGY announcement requests failed twice. Previously verified filings remain background, but no current no-news clearance is asserted. This is a source-access gap rather than a newly adverse issuer event.",
-        "company_bias": "unknown",
-        "financial_period": "FY ended 2026-06-30 (unconsolidated)",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-          "Original technical entry screen: Avoid",
-          "News review unavailable",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Current CNERGY announcement requests failed twice. Previously verified filings remain background, but no current no-news clearance is asserted. This is a source-access gap rather than a newly adverse issuer event.",
-        "company_bias": "unknown",
-        "financial_period": "FY ended 2026-06-30 (unconsolidated)",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "News review unavailable",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "CNERGY: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "6eea19502fe5802f0c07cbefa61ebb113a89418eb5a3068d5dd4099833cad526"
-    },
-    {
-      "symbol": "THCCL",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:22 PKT). This is bounded cached coverage, not a real-time clearance. No October 3-5 listing was found. Current PSX index also lists an October 1 Company Secretary notice; its image-only details were not re-extracted, so no identity or effective-date change is inferred. 2026-09-30: PSX lists an application for extension of time to hold the FY26 AGM. No confirmed new AGM or FY26 results date was verified. 2026-09-10: Company reached an in-principle understanding concerning Pakistan Services restructuring, subject to definitive agreements. Reported terms do not establish a completed transaction or a dated catalyst.",
-        "company_bias": "mixed",
-        "financial_period": "Nine months ended 2026-03-31; FY26 annual results not verified as published",
-        "event_review_required": true,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Material company event requires a new financial review",
-          "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Material company event requires a new financial review",
-          "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
-          "Original technical entry screen: Avoid",
-          "Current financial review unavailable or due",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:22 PKT). This is bounded cached coverage, not a real-time clearance. No October 3-5 listing was found. Current PSX index also lists an October 1 Company Secretary notice; its image-only details were not re-extracted, so no identity or effective-date change is inferred. 2026-09-30: PSX lists an application for extension of time to hold the FY26 AGM. No confirmed new AGM or FY26 results date was verified. 2026-09-10: Company reached an in-principle understanding concerning Pakistan Services restructuring, subject to definitive agreements. Reported terms do not establish a completed transaction or a dated catalyst.",
-        "company_bias": "mixed",
-        "financial_period": "Nine months ended 2026-03-31; FY26 annual results not verified as published",
-        "event_review_required": true,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Material company event requires a new financial review",
-          "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Material company event requires a new financial review",
-          "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "Current financial review unavailable or due",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "THCCL: research conditions changed",
-      "detail": "Changed swing, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "2d7399815ba1239bfda8a44950ba20247d6e3eea9e39e05e6bff82f8134e3f1d"
-    },
-    {
-      "symbol": "FABL",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: watch",
-        "company_review": "FABL again returns the 14:30 header. The September 1 dividend-credit item remains the latest visible financial-table row; no October filing is present within this bounded cached coverage. Previously reviewed H1 period-label correction remains historical background.",
-        "company_bias": "mixed",
-        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Original technical entry screen: Avoid",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "FABL again returns the 14:30 header. The September 1 dividend-credit item remains the latest visible financial-table row; no October filing is present within this bounded cached coverage. Previously reviewed H1 period-label correction remains historical background.",
-        "company_bias": "mixed",
-        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
-        "event_review_required": false,
-        "events": [],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "FABL: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "430bf6d9c8bc582f09a370f8861f8ab100890c002fe3ea1f1b805e0ced7f8001"
-    },
-    {
-      "symbol": "OGDC",
-      "recorded_at": "2026-10-06T04:33:13.200033+00:00",
-      "checkpoint_id": "e11228fe951ca8abb0f40e4549c870f38a2fc0f2a414ef82a0543330c1cc3f39",
-      "changed_fields": [
-        "swing",
-        "investment",
-        "primary_reasons",
-        "intraday",
-        "quote_fresh",
-        "research_current"
-      ],
-      "before": {
-        "swing": "Caution: material research risk",
-        "investment": "Long-term research: watch",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:53 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-09-09: Fact: OGDCL announced first gas at Lundali-1 on September 6 as a working-interest partner. This is achieved production, distinct from project targets. Scheduled 2026-10-08: Register cutoff preceding October 9–16 book closure; do not infer an exchange ex-dividend trading date. Scheduled 2026-10-16: AGM scheduled.",
-        "company_bias": "mixed",
-        "financial_period": "FY ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-16",
-            "known_at": "2026-10-03T18:33:00Z",
-            "source_ids": [
-              "src_048"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Original technical entry screen: Avoid",
-          "Caution: material research risk"
-        ],
-        "intraday": "Unavailable: intraday research not reviewed",
-        "quote_fresh": true,
-        "research_current": true
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:53 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-09-09: Fact: OGDCL announced first gas at Lundali-1 on September 6 as a working-interest partner. This is achieved production, distinct from project targets. Scheduled 2026-10-08: Register cutoff preceding October 9–16 book closure; do not infer an exchange ex-dividend trading date. Scheduled 2026-10-16: AGM scheduled.",
-        "company_bias": "mixed",
-        "financial_period": "FY ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-16",
-            "known_at": "2026-10-03T18:33:00Z",
-            "source_ids": [
-              "src_048"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Avoid",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "title": "OGDC: research conditions changed",
-      "detail": "Changed swing, investment, primary reasons, intraday, quote fresh, research current. Review the evidence before acting.",
-      "id": "731b4b139c7d818fefd7d1d326b4bcaa6410bd58d43280542be77003476c1256"
-    },
-    {
-      "symbol": "PRL",
-      "recorded_at": "2026-10-06T04:38:14.284721+00:00",
-      "checkpoint_id": "6f6a3102d71e86198bbb6e44c4712f36d8697b126ff31ffe7ca2dd876dd6500c",
-      "changed_fields": [
-        "quote_fresh"
-      ],
-      "before": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:36 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-09-25: Fact: PRL is among the four refiners reported to have signed ISGS upgrade agreements on September 24. Official PSX listing records a September 25 material-information filing. 2026-09-29: Fact: Latest revised AGM is October 21, 2026. This supersedes the older October 7 date. Scheduled 2026-10-15: Revised share-transfer book closure begins; closed October 15–21 inclusive. Transfer cutoff October 14 close of business. Scheduled 2026-10-21: Revised AGM at 11:00 Pakistan time, company premises on Korangi Creek Road, Karachi and video link.",
-        "company_bias": "mixed",
-        "financial_period": "FY ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-21",
-            "known_at": "2026-10-03T18:33:00Z",
-            "source_ids": [
-              "src_008"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Hold",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": false,
-        "research_current": false
-      },
-      "after": {
-        "swing": "No current setup",
-        "investment": "Unavailable: current financial review required",
-        "company_review": "Final in-session review: no October 3-5 issuer filing visible in the returned announcement table (header 14:36 PKT). This is bounded cached coverage, not a real-time clearance. Previously verified dated context: 2026-09-25: Fact: PRL is among the four refiners reported to have signed ISGS upgrade agreements on September 24. Official PSX listing records a September 25 material-information filing. 2026-09-29: Fact: Latest revised AGM is October 21, 2026. This supersedes the older October 7 date. Scheduled 2026-10-15: Revised share-transfer book closure begins; closed October 15–21 inclusive. Transfer cutoff October 14 close of business. Scheduled 2026-10-21: Revised AGM at 11:00 Pakistan time, company premises on Korangi Creek Road, Karachi and video link.",
-        "company_bias": "mixed",
-        "financial_period": "FY ended 2026-06-30",
-        "event_review_required": false,
-        "events": [
-          {
-            "kind": "agm",
-            "date": "2026-10-21",
-            "known_at": "2026-10-03T18:33:00Z",
-            "source_ids": [
-              "src_008"
-            ]
-          }
-        ],
-        "blocked_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
-        ],
-        "primary_status": "Blocked",
-        "signal_version": "combined-signal-v1",
-        "primary_reasons": [
-          "Geopolitical risk: Fresh official indexed UKMTO coverage again reproduces the October 4 tanker and nearby-explosion warnings; empty direct incident pages cannot establish current safety. A direct G7 statement reread confirms phased reserve release over four months, frontloaded diesel and accounting for earlier commitments. Prior export recovery and November Saudi pricing relief remain counterweights with their original verification clocks. Inference: unresolved maritime/freight risk remains adverse, tempered by prospective supply support; neither automatic clearance nor uniform stock-price direction is inferred.",
-          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-          "Research review missing, invalid or expired",
-          "Original technical entry screen: Hold",
-          "No current setup"
-        ],
-        "intraday": "Unavailable: no fresh current-session observation",
-        "quote_fresh": true,
-        "research_current": false
-      },
-      "title": "PRL: research conditions changed",
-      "detail": "Changed quote fresh. Review the evidence before acting.",
-      "id": "1f46616b02821c0a4cc44c71c26ad5c38cfbd7ac87d805fa5c97fd7548bfe6cc"
-    },
     {
       "symbol": "MEBL",
       "recorded_at": "2026-10-06T04:38:14.284721+00:00",
@@ -15041,6 +14452,592 @@
       "title": "CNERGY: research conditions changed",
       "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
       "id": "1d04c94090e3cb8381253e33cf56a1d78b2bf2efaf1078bb229dd71803ba485f"
+    },
+    {
+      "symbol": "MEBL",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: supportive",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-09-02: PSX posted publication of the interim cash-dividend credit notice. This concerns an already-declared distribution, not a forthcoming entitlement. 2026-08-06: The board approved H1 results and a PKR 8 per-share second-quarter interim dividend. 2026-08-17: PSX posted cessation of Tariq Mahmood Pasha's non-executive directorship; no reason is inferred here.",
+        "company_bias": "mixed",
+        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: supportive",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-09-02: PSX posted publication of the interim cash-dividend credit notice. This concerns an already-declared distribution, not a forthcoming entitlement. 2026-08-06: The board approved H1 results and a PKR 8 per-share second-quarter interim dividend. 2026-08-17: PSX posted cessation of Tariq Mahmood Pasha's non-executive directorship; no reason is inferred here.",
+        "company_bias": "mixed",
+        "financial_period": "Half year ended 2026-06-30; unaudited interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "MEBL: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "111d977845c2b43bcf5f04a4f8804696f4db2c9812fc52ce4cf90a9e3d72b0c4"
+    },
+    {
+      "symbol": "SYS",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: watch",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Baseline coverage addition: the October 2 senior-management interest disclosure, letter dated October 1, reports Ammara Masood's September 11-23 sales totaling 1,150,500 shares. This is historical disclosed trading; no motive, operating deterioration or fresh Monday sale is inferred. 2026-08-28: The H1 report was transmitted; management expected acquisition cross-selling and integration benefits during the second half, an outlook rather than a confirmed dated event. 2026-06-15: The board disclosed consideration of another IT-services acquisition, conditional on commercial negotiations, due diligence, definitive agreements and regulatory approvals. No completed deal is assumed.",
+        "company_bias": "mixed",
+        "financial_period": "Six months ended 2026-06-30; consolidated and unconsolidated interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: watch",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Baseline coverage addition: the October 2 senior-management interest disclosure, letter dated October 1, reports Ammara Masood's September 11-23 sales totaling 1,150,500 shares. This is historical disclosed trading; no motive, operating deterioration or fresh Monday sale is inferred. 2026-08-28: The H1 report was transmitted; management expected acquisition cross-selling and integration benefits during the second half, an outlook rather than a confirmed dated event. 2026-06-15: The board disclosed consideration of another IT-services acquisition, conditional on commercial negotiations, due diligence, definitive agreements and regulatory approvals. No completed deal is assumed.",
+        "company_bias": "mixed",
+        "financial_period": "Six months ended 2026-06-30; consolidated and unconsolidated interim statements",
+        "event_review_required": false,
+        "events": [],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "SYS: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "b0e04fecbe75c00837385a2c4fd4a31a50fea58c238500d3842474f678dade1f"
+    },
+    {
+      "symbol": "PSO",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Baseline coverage addition, not new Monday news: October 2 AHL/OCAC-attributed reporting puts PSO September volumes near 0.64mt, up 12% year-on-year, against industry volumes down 2%. Volume growth does not establish profit or cash collection. 2026-09-25: Fact: FY26 results include a proposed final cash dividend. Management's supply-continuity claims are issuer statements, not independent verification of present shipping conditions. Scheduled 2026-10-20: Register-of-members deadline for proposed final-dividend entitlement; this is not a verified exchange ex-dividend trading date. Scheduled 2026-10-28: AGM scheduled; books closed October 21–28 inclusive.",
+        "company_bias": "mixed",
+        "financial_period": "FY ended 2026-06-30 (standalone and consolidated kept distinct)",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-28",
+            "known_at": "2026-10-03T18:33:00Z",
+            "source_ids": [
+              "src_014"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Baseline coverage addition, not new Monday news: October 2 AHL/OCAC-attributed reporting puts PSO September volumes near 0.64mt, up 12% year-on-year, against industry volumes down 2%. Volume growth does not establish profit or cash collection. 2026-09-25: Fact: FY26 results include a proposed final cash dividend. Management's supply-continuity claims are issuer statements, not independent verification of present shipping conditions. Scheduled 2026-10-20: Register-of-members deadline for proposed final-dividend entitlement; this is not a verified exchange ex-dividend trading date. Scheduled 2026-10-28: AGM scheduled; books closed October 21–28 inclusive.",
+        "company_bias": "mixed",
+        "financial_period": "FY ended 2026-06-30 (standalone and consolidated kept distinct)",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-28",
+            "known_at": "2026-10-03T18:33:00Z",
+            "source_ids": [
+              "src_014"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
+          "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "PSO: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "f57627d06377e547a34ff3ee289a4f8cc07b04cc7a3366d74a5417f8c5c4970e"
+    },
+    {
+      "symbol": "GAL",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Unavailable: current financial review required",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Tuesday DPS still displays XD. The pre-open LDCP field has rolled to Monday's close; that rollover does not audit the earlier Friday-to-Monday dividend/reference-price adjustment. No explicit exchange effective-date and comparable historical/current basis record was verified, so the hold remains. Books are scheduled closed October 6–13; this is not an inferred ex-date. Monday pre-open DPS marks GAL XD. Its Friday October 2 trade is displayed at Rs526.94 while LDCP is Rs514.94, a Rs12 reference difference consistent with the proposed dividend. These are source-observation facts, not a Monday return or live quote. Exact action effective date and comparable price basis remain unaudited. No October 3-5 filing was found. 2026-09-17: Board recommended a Rs12 final cash dividend, subject to shareholder approval. The annual report also describes a paint-shop expansion and robotic top-coat line targeted for FY27 Q3; this is a management timetable, not an exact confirmed event date. 2026-09-29: Replacement annual-report transmission is listed on PSX; the September 22 transmission is marked revoked. Scheduled 2026-10-06: Share-transfer books close October 6–13, inclusive. Scheduled 2026-10-13: AGM at 11:00 a.m. Pakistan time; final-dividend proposal awaits approval.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": true,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-13",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_015"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Material company event requires a new financial review",
+          "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Material company event requires a new financial review",
+          "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
+          "Original technical entry screen: Avoid",
+          "Current financial review unavailable or due",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Unavailable: current financial review required",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Tuesday DPS still displays XD. The pre-open LDCP field has rolled to Monday's close; that rollover does not audit the earlier Friday-to-Monday dividend/reference-price adjustment. No explicit exchange effective-date and comparable historical/current basis record was verified, so the hold remains. Books are scheduled closed October 6–13; this is not an inferred ex-date. Monday pre-open DPS marks GAL XD. Its Friday October 2 trade is displayed at Rs526.94 while LDCP is Rs514.94, a Rs12 reference difference consistent with the proposed dividend. These are source-observation facts, not a Monday return or live quote. Exact action effective date and comparable price basis remain unaudited. No October 3-5 filing was found. 2026-09-17: Board recommended a Rs12 final cash dividend, subject to shareholder approval. The annual report also describes a paint-shop expansion and robotic top-coat line targeted for FY27 Q3; this is a management timetable, not an exact confirmed event date. 2026-09-29: Replacement annual-report transmission is listed on PSX; the September 22 transmission is marked revoked. Scheduled 2026-10-06: Share-transfer books close October 6–13, inclusive. Scheduled 2026-10-13: AGM at 11:00 a.m. Pakistan time; final-dividend proposal awaits approval.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": true,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-13",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_015"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Material company event requires a new financial review",
+          "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Material company event requires a new financial review",
+          "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
+          "Original technical entry screen: Avoid",
+          "Current financial review unavailable or due",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "GAL: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "462ccb666fe14a6a291240bb4ae044607989153ed6d4430270fc4c7dc6568be2"
+    },
+    {
+      "symbol": "EFERT",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: watch",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-09-21: Issuer disclosed that the EnVen plant resumed operations September 19 after maintenance completion. 2026-10-02: Board meeting announced to consider nine-month results and any entitlement; no outcome or dividend is yet declared for that meeting. Scheduled 2026-10-19: Board meeting at 9:30 a.m. Pakistan time to consider results for nine months ended September 30, 2026 and any entitlement. The October 2 notice also specifies an October 5-19 closed period for directors/CEO/executives; this is not an exchange trading closure.",
+        "company_bias": "mixed",
+        "financial_period": "Six months ended 2026-06-30; latest quarter Q2 2026",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "earnings",
+            "date": "2026-10-19",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_020"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Watch",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: watch",
+        "company_review": "Noon review: issuer page header is 11:59 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-09-21: Issuer disclosed that the EnVen plant resumed operations September 19 after maintenance completion. 2026-10-02: Board meeting announced to consider nine-month results and any entitlement; no outcome or dividend is yet declared for that meeting. Scheduled 2026-10-19: Board meeting at 9:30 a.m. Pakistan time to consider results for nine months ended September 30, 2026 and any entitlement. The October 2 notice also specifies an October 5-19 closed period for directors/CEO/executives; this is not an exchange trading closure.",
+        "company_bias": "mixed",
+        "financial_period": "Six months ended 2026-06-30; latest quarter Q2 2026",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "earnings",
+            "date": "2026-10-19",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_020"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Original technical entry screen: Watch",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "EFERT: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "f0acec94aa6d9379be8f47b139911789723ba885cd8278167aab3d173600c0dc"
+    },
+    {
+      "symbol": "ASL",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-10-01: AGM notice proposes settling accumulated preference dividends partly through up to approximately 34.6m ordinary shares, subject to approvals, conversions and taxes; ordinary-share dilution is therefore a watch item. PSX posting date is October 1; enclosed notice is dated October 2. 2026-10-02: FY26 annual report transmitted, providing audited evidence of the return to profitability alongside continuing negative operating cash flow. Scheduled 2026-10-16: Book closure starts; books remain closed through October 23, inclusive. Scheduled 2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-23",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_028"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. Previously verified dated context: 2026-10-01: AGM notice proposes settling accumulated preference dividends partly through up to approximately 34.6m ordinary shares, subject to approvals, conversions and taxes; ordinary-share dilution is therefore a watch item. PSX posting date is October 1; enclosed notice is dated October 2. 2026-10-02: FY26 annual report transmitted, providing audited evidence of the return to profitability alongside continuing negative operating cash flow. Scheduled 2026-10-16: Book closure starts; books remain closed through October 23, inclusive. Scheduled 2026-10-23: AGM at 11:30 a.m. Pakistan time, including preference-dividend/share-issuance proposals and director election.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-23",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_028"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "ASL: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "58d7647976524f8b0c6437ccc30c647dccf27dd37023e293f12f6cb990320589"
+    },
+    {
+      "symbol": "FCL",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. Overnight process development: the official Privatisation Commission release names AKD Securities Consortium among nine GEPCO prequalified parties progressing to VDR due diligence. An earlier official list included Fast Cable with AKD and Mughal Steel; the latest release does not reconfirm members. No acquisition award, binding FCL funding commitment or earnings uplift is established. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. The large reports remain uncomparable due to access/size limits, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-22",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_033"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. Overnight process development: the official Privatisation Commission release names AKD Securities Consortium among nine GEPCO prequalified parties progressing to VDR due diligence. An earlier official list included Fast Cable with AKD and Mughal Steel; the latest release does not reconfirm members. No acquisition award, binding FCL funding commitment or earnings uplift is established. Coverage correction: PSX lists an October 2 annual-report transmission in addition to October 1. The large reports remain uncomparable due to access/size limits, so duplication or an unchanged report is not established. This predates the weekend financial review and does not by itself establish a substantive revision. 2026-09-21: Board sought shareholder approval to use surplus IPO funds for working capital and sell a Lahore factory building to a director/related party. These are proposals, not completed transactions. 2026-08-24: Company disclosed participation in a consortium concerning potential GEPCO privatization; annual report confirms the initiative remains conditional and is not a completed acquisition. Scheduled 2026-10-16: Book closure starts and runs through October 22, inclusive, according to the reproduced issuer AGM notice. Scheduled 2026-10-22: AGM at 11:00 a.m. Pakistan time; working-capital and related-party asset-sale proposals are scheduled for shareholder consideration.",
+        "company_bias": "mixed",
+        "financial_period": "Year ended 2026-06-30",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-22",
+            "known_at": "2026-10-03T18:32:00Z",
+            "source_ids": [
+              "src_033"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "FCL: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "ac09f63a994afe3a2a21333f43f3874f8b60c7b0ad1e7667cbd26eb862648fc8"
+    },
+    {
+      "symbol": "CNERGY",
+      "recorded_at": "2026-10-06T07:38:16.198550+00:00",
+      "checkpoint_id": "c5a393d42d0259ea8ec19c9775d06463528dfe571c82628e879344e605aa508a",
+      "changed_fields": [
+        "intraday",
+        "quote_fresh"
+      ],
+      "before": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. New official October 5 pre-publication notice confirms AGM October 28 at 10:00 PKT, Karachi Marriott and video link, books closed October 21–28 and transfer cutoff October 20. The enclosed notice is dated October 6. Ordinary agenda covers existing FY26 statements and auditor appointment; no new financial result or special financing/distribution proposal is established by this notice. Upgrade execution and funding remain separate risks.",
+        "company_bias": "mixed",
+        "financial_period": "FY ended 2026-06-30 (unconsolidated)",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-28",
+            "known_at": "2026-10-06T04:34:46Z",
+            "source_ids": [
+              "tue_20261006_open_cnergy_agm"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: no fresh current-session observation",
+        "quote_fresh": false,
+        "research_current": true
+      },
+      "after": {
+        "swing": "Caution: material research risk",
+        "investment": "Long-term research: cautious",
+        "company_review": "Noon review: issuer page header is 12:00 PKT; no later filing appears in the returned announcement list. New official October 5 pre-publication notice confirms AGM October 28 at 10:00 PKT, Karachi Marriott and video link, books closed October 21–28 and transfer cutoff October 20. The enclosed notice is dated October 6. Ordinary agenda covers existing FY26 statements and auditor appointment; no new financial result or special financing/distribution proposal is established by this notice. Upgrade execution and funding remain separate risks.",
+        "company_bias": "mixed",
+        "financial_period": "FY ended 2026-06-30 (unconsolidated)",
+        "event_review_required": false,
+        "events": [
+          {
+            "kind": "agm",
+            "date": "2026-10-28",
+            "known_at": "2026-10-06T04:34:46Z",
+            "source_ids": [
+              "tue_20261006_open_cnergy_agm"
+            ]
+          }
+        ],
+        "blocked_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone."
+        ],
+        "primary_status": "Blocked",
+        "signal_version": "combined-signal-v1",
+        "primary_reasons": [
+          "Geopolitical risk: Official indexed UKMTO reporting still describes the October 5 strike/fire at reporting time; no resolution is verified, and the fire is not asserted to be ongoing now. Anonymous Saudi pipeline operating and halt accounts remain contested. Newly reviewed October 5 OPIS reporting says Nasser did not directly answer whether East-West was intact; general customer-supply remarks using multiple routes and inventory do not settle that question. Phased G7 commitments and historical export/price observations remain offsets. Inference: unresolved transit/LNG risk remains adverse without a uniform stock-price forecast.",
+          "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
+          "Original technical entry screen: Avoid",
+          "Caution: material research risk"
+        ],
+        "intraday": "Unavailable: intraday research not reviewed",
+        "quote_fresh": true,
+        "research_current": true
+      },
+      "title": "CNERGY: research conditions changed",
+      "detail": "Changed intraday, quote fresh. Review the evidence before acting.",
+      "id": "db0ea8713cc45e173b60e20db626b9fa6c405d72ce04da1cb42a2ad95b794e46"
     }
   ],
   "retention": "Latest 200 changes. Original research decisions remain immutable in research_decisions."
