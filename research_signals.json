@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-06T08:38:15.058674+00:00",
+  "evaluated_at": "2026-10-06T08:43:17.199546+00:00",
   "market_open": true,
   "research_current": true,
-  "context_as_of": "2026-10-06T08:09:58Z",
-  "context_expires_at": "2026-10-06T09:09:58Z",
+  "context_as_of": "2026-10-06T08:34:53Z",
+  "context_expires_at": "2026-10-06T09:34:53Z",
   "counts": {
     "Ready for review": 0,
     "Watching": 0,
@@ -15,9 +15,9 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Hold; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Hold; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Hold",
         "Caution: material research risk"
@@ -28,9 +28,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 87.23,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:37:58.420344+00:00",
+        "price": 87.5,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:42:59.340809+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
@@ -48,8 +48,8 @@
         "run_time": "2026-10-06T13:33:22.248417+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 52.9 in Hold band 50-60"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -1130,15 +1130,132 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical HSD pricing-mechanism report reread",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1332_hsd",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 regulated-fuel report body reread",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1332_fuel",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX PRL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/PRL",
+          "source_id": "tue_20261006_1332_PRL",
+          "verified_at": "2026-10-06T08:30:31.002077Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -1149,8 +1266,8 @@
       "expires_at": null,
       "quote": {
         "price": 551.0,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:37:58.446045+00:00",
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:42:59.320553+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
@@ -1168,8 +1285,8 @@
         "run_time": "2026-10-06T13:33:21.961708+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -2070,15 +2187,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX MEBL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/MEBL",
+          "source_id": "tue_20261006_1332_MEBL",
+          "verified_at": "2026-10-06T08:30:31.081314Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -2088,9 +2304,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 114.72,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:00.591325+00:00",
+        "price": 114.6,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:02.348324+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
@@ -2108,8 +2324,8 @@
         "run_time": "2026-10-06T13:33:21.977719+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -3028,15 +3244,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX SYS direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/SYS",
+          "source_id": "tue_20261006_1332_SYS",
+          "verified_at": "2026-10-06T08:30:38.881614Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research cautious: Inference: Catalyst timing and earnings quality require caution; refresh disclosures and price/liquidity evidence before any setup.",
         "Original technical entry screen: Avoid",
@@ -3048,9 +3363,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 346.95,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:00.861922+00:00",
+        "price": 346.9,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:01.516601+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
@@ -3068,8 +3383,8 @@
         "run_time": "2026-10-06T13:33:21.896575+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.9 below 50"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "PSO FY2026 performance press release",
@@ -4060,15 +4375,123 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX PSO direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/PSO",
+          "source_id": "tue_20261006_1332_PSO",
+          "verified_at": "2026-10-06T08:30:38.940199Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "October6 LNG request report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1332_lng",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
         "Original technical entry screen: Avoid",
@@ -4082,8 +4505,8 @@
       "expires_at": null,
       "quote": {
         "price": 499.0,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:03.917854+00:00",
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:04.766422+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
@@ -4101,8 +4524,8 @@
         "run_time": "2026-10-06T13:33:22.375656+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -5003,15 +5426,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX GAL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/GAL",
+          "source_id": "tue_20261006_1332_GAL",
+          "verified_at": "2026-10-06T08:30:47.832395Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Watch; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Watch",
         "Caution: material research risk"
       ],
@@ -5022,8 +5544,8 @@
       "expires_at": null,
       "quote": {
         "price": 190.4,
-        "source_as_of": "2026-10-06T13:32:00+05:00",
-        "fetched_at": "2026-10-06T08:38:03.853907+00:00",
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:04.497944+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
@@ -5041,8 +5563,8 @@
         "run_time": "2026-10-06T13:33:22.137348+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 69.3 in Watch band 60-70"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -6060,15 +6582,123 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX EFERT direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/EFERT",
+          "source_id": "tue_20261006_1332_EFERT",
+          "verified_at": "2026-10-06T08:30:47.942303Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "October6 LNG request report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1332_lng",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.",
         "Caution: material research risk"
       ],
@@ -6078,9 +6708,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 1177.98,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:06.109113+00:00",
+        "price": 1177.0,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:06.688531+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
@@ -6098,8 +6728,8 @@
         "run_time": "2026-10-06T13:33:22.264217+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.4 ≥ 80 with technical Strong bullish; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -7198,15 +7828,132 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical HSD pricing-mechanism report reread",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1332_hsd",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 regulated-fuel report body reread",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1332_fuel",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX ATRL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/ATRL",
+          "source_id": "tue_20261006_1332_ATRL",
+          "verified_at": "2026-10-06T08:30:57.246187Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Caution: material research risk"
       ],
@@ -7216,9 +7963,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 593.61,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:06.340028+00:00",
+        "price": 595.99,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:06.710167+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
@@ -7236,8 +7983,8 @@
         "run_time": "2026-10-06T13:33:22.025487+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.7 ≥ 80 with technical Strong bullish; Hysteresis: score 80.7 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -8318,15 +9065,132 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical HSD pricing-mechanism report reread",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1332_hsd",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 regulated-fuel report body reread",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1332_fuel",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX NRL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/NRL",
+          "source_id": "tue_20261006_1332_NRL",
+          "verified_at": "2026-10-06T08:30:56.954444Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -8337,9 +9201,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 15.69,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:08.405053+00:00",
+        "price": 15.74,
+        "source_as_of": "2026-10-06T13:37:00+05:00",
+        "fetched_at": "2026-10-06T08:43:09.969127+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
@@ -8357,8 +9221,8 @@
         "run_time": "2026-10-06T13:33:22.708961+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 36.7 below 50"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -9367,15 +10231,123 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX ASL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/ASL",
+          "source_id": "tue_20261006_1332_ASL",
+          "verified_at": "2026-10-06T08:31:07.180048Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "October6 LNG request report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1332_lng",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -9387,8 +10359,8 @@
       "expires_at": null,
       "quote": {
         "price": 26.7,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:08.425258+00:00",
+        "source_as_of": "2026-10-06T13:37:00+05:00",
+        "fetched_at": "2026-10-06T08:43:09.948095+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
@@ -9406,8 +10378,8 @@
         "run_time": "2026-10-06T13:33:22.503719+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 34.2 below 50"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -10497,15 +11469,132 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "GEPCO official due-diligence stage recheck",
+          "url": "https://privatisation.gov.pk/NewsDetail/M2E1ZGE5NGQtMWMxZC00ZWE5LWIxNzgtYzVlODlmMmRiZGMy",
+          "source_id": "tue_20261006_1332_gepco",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "PSX FCL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/FCL",
+          "source_id": "tue_20261006_1332_FCL",
+          "verified_at": "2026-10-06T08:31:07.294280Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "October6 LNG request report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1332_lng",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -10515,14 +11604,15 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 133.45,
-        "source_as_of": "2026-10-06T13:32:00+05:00",
-        "fetched_at": "2026-10-06T08:38:10.320071+00:00",
+        "price": 133.1,
+        "source_as_of": "2026-10-06T13:35:00+05:00",
+        "fetched_at": "2026-10-06T08:43:12.200800+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "irregular_source_interval_not_five_minutes"
         ],
         "fresh": true
       },
@@ -10535,8 +11625,8 @@
         "run_time": "2026-10-06T13:33:22.614073+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 27.6 below 50"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -11464,15 +12554,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX FCEPL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/FCEPL",
+          "source_id": "tue_20261006_1332_FCEPL",
+          "verified_at": "2026-10-06T08:31:16.399057Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
@@ -11483,9 +12672,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 12.33,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:10.528613+00:00",
+        "price": 12.42,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:13.294966+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
@@ -11503,8 +12692,8 @@
         "run_time": "2026-10-06T13:33:22.772067+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "Arab News interview on signed refinery upgrades and energy-security backdrop",
@@ -12594,15 +13783,132 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Historical HSD pricing-mechanism report reread",
+          "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/082426-pakistan-caps-diesel-crack-adopts-platts-dubai-benchmark-to-set-fuel-prices",
+          "source_id": "tue_20261006_1332_hsd",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-08-24",
+          "publication_precision": "date"
+        },
+        {
+          "title": "October6 regulated-fuel report body reread",
+          "url": "https://www.brecorder.com/news/40442748/govt-hikes-petrol-price-by-re088-cuts-diesel-by-rs188-per-litre",
+          "source_id": "tue_20261006_1332_fuel",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX CNERGY direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/CNERGY",
+          "source_id": "tue_20261006_1332_CNERGY",
+          "verified_at": "2026-10-06T08:31:16.408817Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
         "Original technical entry screen: Avoid",
@@ -12615,9 +13921,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 69.76,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:13.866435+00:00",
+        "price": 70.17,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:15.185160+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
@@ -12635,8 +13941,8 @@
         "run_time": "2026-10-06T13:33:22.677188+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "Thatta Cement March 2026 quarterly report",
@@ -13672,15 +14978,123 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX THCCL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/THCCL",
+          "source_id": "tue_20261006_1332_THCCL",
+          "verified_at": "2026-10-06T08:31:27.822977Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "October6 LNG request report indexed recheck",
+          "url": "https://www.thenews.pk/print/1441324-3-qatar-lng-cargoes-this-month",
+          "source_id": "tue_20261006_1332_lng",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -13691,8 +15105,8 @@
       "expires_at": null,
       "quote": {
         "price": 92.79,
-        "source_as_of": "2026-10-06T13:32:00+05:00",
-        "fetched_at": "2026-10-06T08:38:12.594869+00:00",
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:15.207746+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
@@ -13710,8 +15124,8 @@
         "run_time": "2026-10-06T13:33:21.929838+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 37.9 below 50"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "SBP policy-rate banner, economic indicators and release calendar",
@@ -14603,15 +16017,114 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX FABL direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/FABL",
+          "source_id": "tue_20261006_1332_FABL",
+          "verified_at": "2026-10-06T08:31:28.139841Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     },
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.; Original technical entry screen: Avoid; Caution: material research risk",
       "reasons": [
-        "Geopolitical risk: Official indexed UKMTO reporting still records the October 5 strike/fire at reporting time; present fire status and resolution remain unverified. Pipeline operation remains contested; OPIS confirms general Aramco supply remarks did not answer intactness. IEA's October 2 tally of approximately 325m barrels released belongs to the earlier March programme, while the G7's phased 100m commitment takes fulfilled commitments into account. The amounts are not presumed additive or newly delivered. Inference: supply mitigation qualifies, but does not resolve, adverse transit/LNG uncertainty.",
+        "Geopolitical risk: UKMTO indexed warnings still concern October 5 events; no current fire status or shipping clearance is established. Aramco's directly read October 5 speech describes transport disruption and depleted buffers without settling East-West throughput. An accessible Energy Intelligence introduction attributes intact 12m b/d maximum sustainable capacity to Nasser: a favorable capacity claim, distinct from actual production, exports or pipeline flows. Historical IEA releases and phased G7 commitments remain mitigating factors without double counting. Inference: unresolved transit/LNG risk remains adverse; capacity resilience does not independently settle it.",
         "Original technical entry screen: Avoid",
         "Caution: material research risk"
       ],
@@ -14621,9 +16134,9 @@
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 314.21,
-        "source_as_of": "2026-10-06T13:33:00+05:00",
-        "fetched_at": "2026-10-06T08:38:14.897025+00:00",
+        "price": 314.28,
+        "source_as_of": "2026-10-06T13:38:00+05:00",
+        "fetched_at": "2026-10-06T08:43:17.095687+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
@@ -14641,8 +16154,8 @@
         "run_time": "2026-10-06T13:33:22.057843+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
-      "research_as_of": "2026-10-06T08:09:58Z",
-      "research_expires_at": "2026-10-06T09:09:58Z",
+      "research_as_of": "2026-10-06T08:34:53Z",
+      "research_expires_at": "2026-10-06T09:34:53Z",
       "source_links": [
         {
           "title": "OGDCL FY2026 audited results and operating review",
@@ -15588,22 +17101,121 @@
           "published_at": null,
           "published_date": null,
           "publication_precision": null
+        },
+        {
+          "title": "SBP September Monitor listing recheck",
+          "url": "https://www.sbp.org.pk/our-operations/publications/inflation-monitor/369/inflation-monitor-2026",
+          "source_id": "tue_20261006_1332_monitor",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Radio Pakistan report of minister's growth outlook",
+          "url": "https://radio.gov.pk/06-10-2026/pakistan-has-basic-fundamentals-for-investment-aurangzeb",
+          "source_id": "tue_20261006_1332_growth_forecast",
+          "verified_at": "2026-10-06T08:31:10Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "PSX OGDC direct announcement coverage check",
+          "url": "https://dps.psx.com.pk/company/OGDC",
+          "source_id": "tue_20261006_1332_OGDC",
+          "verified_at": "2026-10-06T08:31:37.600818Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "UKMTO indexed official warnings rechecked",
+          "url": "https://www.ukmto.org/",
+          "source_id": "tue_20261006_1332_ukmto",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Aramco October5 operator speech directly read",
+          "url": "https://www.aramco.com/en/news-media/speeches/2026/remarks-by-amin-h-nasser-at-energy-intelligence-2026",
+          "source_id": "tue_20261006_1332_aramco",
+          "verified_at": "2026-10-06T08:30:57Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Energy Intelligence introductory capacity report",
+          "url": "https://www.energyintel.com/000001a1-0bcf-d167-a1a3-6fcfd25a0000",
+          "source_id": "tue_20261006_1332_capacity",
+          "verified_at": "2026-10-06T08:31:23Z",
+          "published_at": null,
+          "published_date": "2026-10-05",
+          "publication_precision": "date"
+        },
+        {
+          "title": "IEA historical collective-release tally reread",
+          "url": "https://www.iea.org/news/executive-director-participates-in-g7-leaders-meeting-on-energy-security-and-markets",
+          "source_id": "tue_20261006_1332_iea",
+          "verified_at": "2026-10-06T08:31:09Z",
+          "published_at": null,
+          "published_date": "2026-10-02",
+          "publication_precision": "date"
+        },
+        {
+          "title": "Official UN arrival report indexed recheck",
+          "url": "https://radio.gov.pk/06-10-2026/un-chief-arrives-in-islamabad-on-three-day-visit",
+          "source_id": "tue_20261006_1332_arrival",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": "2026-10-06",
+          "publication_precision": "date"
+        },
+        {
+          "title": "MOFA official press-release listing indexed check",
+          "url": "https://www.mofa.gov.pk/press-releases?page=1",
+          "source_id": "tue_20261006_1332_mofa_listing",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "Official IMF Pakistan current status check",
+          "url": "https://www.imf.org/en/countries/pak",
+          "source_id": "tue_20261006_1332_imf",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
+        },
+        {
+          "title": "OFAC current recent-actions index read",
+          "url": "https://ofac.treasury.gov/recent-actions",
+          "source_id": "tue_20261006_1332_ofac_actions",
+          "verified_at": "2026-10-06T08:32:00Z",
+          "published_at": null,
+          "published_date": null,
+          "publication_precision": null
         }
       ]
     }
   ],
   "errors": [],
   "source_hashes": {
-    "context_sha256": "7783a62d6849edc25e5d561ad1e9724aa5246f0b2da0a985d9de2f4d27d5ea97",
+    "context_sha256": "5e65d897adedad9e0d9cfb25b685d79d571f5e8fb234b40a187f2ef8de77bf9f",
     "technical_sha256": "5559a0f3479c1c93cffc4f96854e434fea4a70e04a360a6005f95a62f27e6d2f",
-    "quotes_sha256": "5e32166c596dd11757a03301bea8a1f0b6f0570b0adef6f745382760dd76c697"
+    "quotes_sha256": "6ec6fc1b798e192b2f6c3c8c29f92cc808c56418565783484a76dc48235d1244"
   },
-  "checkpoint_id": "d50a4a70edf08ca0595866f9b5adfdd4b81b8b791f81320271c5ad85b4bb618c",
-  "checkpoint": "research_decisions/2026-10-06/083815-d50a4a70edf0.json",
-  "recorded_at": "2026-10-06T08:38:15.058674+00:00",
+  "checkpoint_id": "04601ef63d677afc8ece36791f423efc3eccb00e4590d6abbb7455d4250f3f29",
+  "checkpoint": "research_decisions/2026-10-06/084317-04601ef63d67.json",
+  "recorded_at": "2026-10-06T08:43:17.199546+00:00",
   "context_error": null,
-  "context_sha256": "7783a62d6849edc25e5d561ad1e9724aa5246f0b2da0a985d9de2f4d27d5ea97",
+  "context_sha256": "5e65d897adedad9e0d9cfb25b685d79d571f5e8fb234b40a187f2ef8de77bf9f",
   "technical_sha256": "5559a0f3479c1c93cffc4f96854e434fea4a70e04a360a6005f95a62f27e6d2f",
-  "quotes_sha256": "5e32166c596dd11757a03301bea8a1f0b6f0570b0adef6f745382760dd76c697",
+  "quotes_sha256": "6ec6fc1b798e192b2f6c3c8c29f92cc808c56418565783484a76dc48235d1244",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
