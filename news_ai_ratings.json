@@ -1,44 +1,41 @@
 {
- "as_of": "2026-10-06T08:38:17Z",
+ "as_of": "2026-10-06T09:39:07Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 23,
  "read_urls": [
-  "https://mettisglobal.news/Exports-outrun-imports-in-September-as-agri-and-food-shipments-surge-62-63966",
   "https://mettisglobal.news/FM-says-Pakistan-has-fundamentals-to-attract-investment-63991",
   "https://mettisglobal.news/Flying-Cement-FY26-profit-slips-to-Rs486m-63968",
   "https://mettisglobal.news/Gold-dips-to-4122-on-firm-dollar-63985",
   "https://mettisglobal.news/Gold-hovers-near-4132-as-Fed-hike-bets-dip-63954",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs1200-per-tola-63973",
   "https://mettisglobal.news/Govt-gives-nod-to-special-livestock-farms-for-export-push-63990",
+  "https://mettisglobal.news/Govt-launches-National-Housing-Policy-2025-63992",
   "https://mettisglobal.news/HSD-Price-cut-by-Rs188-petrol-up-Rs088-from-Oct-6-63974",
   "https://mettisglobal.news/HUMNL-profit-plunges-78-to-Rs267m-in-FY26-63980",
   "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
   "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982",
   "https://mettisglobal.news/Lotte-Chemical-Pakistan-changes-name-to-Noventra-Limited-63976",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-63975",
-  "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984",
   "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981",
   "https://mettisglobal.news/PSX-Closing-Bell-Bears-Run-Riot-63969",
-  "https://mettisglobal.news/Pakistan-Achieved-Economic-Stability-Now-Government-Must-Deliver-Growth-63983",
-  "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
-  "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
+  "https://mettisglobal.news/Pakistan-IFC-eye-wider-privatesector-financing-investment-63993",
   "https://mettisglobal.news/Pakistans-fish-exports-ride-a-wave-of-growth-in-1QFY27-63987",
   "https://mettisglobal.news/RPL-FY26-profit-edges-up-4-63972",
+  "https://mettisglobal.news/SBP-to-launch-Pakistan-Express-Clearing-System-63994",
   "https://mettisglobal.news/SECP-sees-strong-potential-for-inclusive-insurance-in-Pakistan-63971",
   "https://mettisglobal.news/SECP-sets-October-28-AGM-deadline-for-June-2026-yearend-companies-63986",
   "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988",
   "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989"
  ],
- "count": 2,
  "ratings": {
   "SAZEW": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Aug-Sep four-wheeler sales 2,474 vs output 1,622; Rs868m land buy for expansion",
+   "confidence": 0.55,
+   "reason": "Aug-Sep 4W sales 2,474 vs output 1,622 plus Rs868m land buy for expansion",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
@@ -50,7 +47,7 @@
    "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "FY26 consolidated profit down 13% to Rs660m; 10% cash dividend only partly offsets",
+   "reason": "FY26 consolidated profit down 13% to Rs659.6m, EPS 2.86 vs 3.30; Rs1 dividend",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979"
@@ -58,38 +55,39 @@
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
+  "Real Estate": {
    "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.4,
-   "reason": "Brent holds above $100 on Middle East supply risk, supportive of E&P realisations",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "National Housing Policy launched as draft framework; early-stage, no funding figure",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
+    "https://mettisglobal.news/Govt-launches-National-Housing-Policy-2025-63992"
    ]
   },
   "Technology/Telecom": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "VEON lifts Pakistan investment plan to $1.5bn from $1bn, per finance minister",
+   "confidence": 0.35,
+   "reason": "VEON raises Pakistan investment plan to $1.5bn from $1bn, per finance minister",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb"
    ]
   },
-  "Textile": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
+  "Oil & Gas Exploration": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Pakistan-Bangladesh talks on lowering textile trade barriers; early-stage, no number",
+   "reason": "KSE-100 fell 1.36% on politics and oil worries; market-wide, no sector mechanism",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
+    "https://mettisglobal.news/PSX-Closing-Bell-Bears-Run-Riot-63969"
    ]
   }
- }
+ },
+ "count": 2
 }
