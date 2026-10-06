@@ -1,66 +1,83 @@
 {
-  "as_of": "2026-10-05T09:46:39Z",
+  "as_of": "2026-10-06T05:49:07Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "depth": "full-text",
-  "articles_read": 5,
+  "articles_read": 9,
   "notes": [
-    "Scheduled in-session Codex review. Monday regular PSX session is 09:32-15:30 PKT; 2026-10-05 is not in the configured exchange or research closure lists and has no session override.",
-    "Fresh committed raw input fetched at 2026-10-05T09:35:45.439415Z.",
-    "Current-session findings are retained where still supported. New material stories were checked against the current Codex story history. Absence of a reviewed story is not treated as Neutral."
+    "Scheduled Codex review executed during the valid 2026-10-06 PSX session. Fresh committed raw input was fetched at 2026-10-06T05:36:22.355438Z.",
+    "Only current-session, schema-valid tracked ratings are placed in ratings/sectors. Material pre-open or prior-session stories remain in reviewed_stories for context and are not converted into neutral ratings.",
+    "Market-price moves themselves are not used as causal news evidence."
   ],
   "reviewed_stories": [
     {
-      "title": "CPHL FY26 profit softens 11%",
+      "title": "IMAGE FY26 profit softens 13%",
       "assessment": "negative",
       "linkage": "direct",
-      "linkage_detail": "Citi Pharma Limited is explicitly identified as PSX: CPHL and CPHL is in the configured tracked universe.",
-      "reason": "FY26 consolidated net profit fell 11.4% to Rs790.33m and EPS fell 11.3% to Rs3.46. Sales rose 7%, gross profit rose 22.6% and operating profit rose 21%, so the result is negative at the bottom line but partly offset by stronger core operations.",
-      "source": "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951",
+      "linkage_detail": "Image Pakistan Limited is explicitly identified as PSX: IMAGE and IMAGE is in the configured tracked universe.",
+      "reason": "FY26 consolidated net profit fell 13% to Rs659.59m, EPS fell to Rs2.86, revenue fell 5%, operating profit fell 12% and finance cost rose 42%. The Rs1 per share cash dividend is a cushion but does not offset the operating and financing deterioration.",
+      "source": "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
       "sources": [
-        "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
+        "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
+        "https://dps.psx.com.pk/company/IMAGE"
       ],
-      "published": "2026-10-05T09:32:00+05:00",
-      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:32 AM GMT+05:00.",
+      "published": "2026-10-06T09:47:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 09:47 AM PKT. PSX company profile independently verifies IMAGE as Image Pakistan Limited.",
       "text_depth": "full",
-      "confidence": 0.82,
+      "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "cphl-fy26-results"
+      "thread_key": "image-fy26-results"
     },
     {
-      "title": "TOMCL FY26 profit drops 74%",
-      "assessment": "negative",
+      "title": "Sazgar brings ARCFOX T5 REEV to Pakistan at Rs10.2m",
+      "assessment": "positive",
       "linkage": "direct",
-      "linkage_detail": "The Organic Meat Company Limited is explicitly identified as PSX: TOMCL and TOMCL is in the configured tracked universe.",
-      "reason": "FY26 consolidated net profit fell 74% to Rs112.35m, EPS fell 77% to Rs0.57, sales fell 12%, gross profit fell 24% and operating profit fell 62%. Lower finance costs did not offset the operating deterioration.",
-      "source": "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948",
+      "linkage_detail": "Sazgar Engineering Works Limited is PSX: SAZEW and SAZEW is in the configured tracked universe.",
+      "reason": "Sazgar launched the ARCFOX T5 REEV with bookings open at Rs10.195m and Rs10.495m and expected delivery in three to four months. The new model broadens SAZEW's premium vehicle offering, but volumes, local-content economics and earnings contribution are not quantified.",
+      "source": "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965",
       "sources": [
-        "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
+        "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965",
+        "https://dps.psx.com.pk/company/SAZEW"
       ],
-      "published": "2026-10-05T09:14:00+05:00",
-      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:14 AM GMT+05:00.",
+      "published": "2026-10-05T14:56:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 5, 2026 02:56 PM PKT. PSX company profile independently verifies SAZEW as Sazgar Engineering Works Limited. The publication was in the prior PSX session, so it is reviewed for context but not placed in the current-session ratings block.",
       "text_depth": "full",
-      "confidence": 0.95,
+      "confidence": 0.55,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "tomcl-fy26-results"
+      "thread_key": "sazew-arcfox-t5-launch"
     },
     {
-      "title": "Middle East supply relief strengthens, but tanker risk remains",
+      "title": "Services exports surge 29pc",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "Sector linkage to configured Technology/IT Exports names, including SYS; the article reports national services and IT export data rather than company-specific SYS results.",
+      "reason": "Pakistan's services exports rose 28.89% year on year in July-August FY27 to $1.81bn, while telecommunications, computer and information services exports rose 17.36% to $811m. This is supportive sector evidence for IT exporters but does not quantify any tracked company's share.",
+      "source": "https://www.dawn.com/news/2035044/services-exports-surge-29pc",
+      "sources": [
+        "https://www.dawn.com/news/2035044/services-exports-surge-29pc"
+      ],
+      "published": "2026-10-06T06:59:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 06:59 AM PKT, before the regular 09:32 PSX session open.",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-services-it-exports"
+    },
+    {
+      "title": "Oil prices slip as traders weigh strong Mideast exports against Gulf tensions",
       "assessment": "neutral",
       "linkage": "sector",
-      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is not a company-specific operational disclosure.",
-      "reason": "This continues the middle-east-oil-supply-shock thread. Brent was around $101.6 as G7 emergency releases and Middle East exports above pre-war levels eased immediate supply stress. Saudi pricing also points to restored flows, while repeated tanker attacks and Gulf infrastructure risk remain. The newer evidence reinforces a mixed, rather than clearly bullish or bearish, upstream backdrop.",
-      "source": "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
+      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is not a company-specific operating disclosure.",
+      "reason": "This continues the middle-east-oil-supply-shock thread. Brent was near $100.28 as Middle East exports above pre-war levels and a G7 emergency reserve release eased supply stress, while Houthi attacks on Saudi targets kept disruption risk elevated. The newer evidence remains mixed rather than clearly bullish or bearish.",
+      "source": "https://www.brecorder.com/news/40442853/oil-prices-slip-as-traders-weigh-strong-mideast-exports-against-gulf-tensions",
       "sources": [
-        "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-        "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks",
-        "https://www.brecorder.com/news/40442700/middle-east-crude-oil-exports-exceed-pre-war-levels-but-tanker-attacks-increase",
-        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+        "https://www.brecorder.com/news/40442853/oil-prices-slip-as-traders-weigh-strong-mideast-exports-against-gulf-tensions"
       ],
-      "published": "2026-10-05T10:01:00+05:00",
-      "publication_time_status": "Primary Mettis article was previously verified at 10:01 AM PKT. Supporting Business Recorder pages confirm October 5 updates at 11:29 AM, 11:36 AM and 11:54 AM PKT; those update times are not substituted for unknown original publication times.",
+      "published": "2026-10-06T07:58:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 07:58 AM PKT, before the regular PSX session open.",
       "text_depth": "full",
       "confidence": 0.9,
       "provider": "OpenAI",
@@ -68,309 +85,118 @@
       "thread_key": "middle-east-oil-supply-shock"
     },
     {
-      "title": "Pakistan, Bangladesh explore higher textile trade",
-      "assessment": "neutral",
+      "title": "Power sector losses drag state-owned entities' profits",
+      "assessment": "negative",
       "linkage": "sector",
-      "linkage_detail": "Potential sector linkage to configured textile names, but the article reports discussions and an existing industry MoU rather than implemented tariff changes or orders.",
-      "reason": "The two sides discussed lowering trade barriers and joint activity under an existing garment-industry MoU. No binding barrier reduction, contract value, order flow or earnings impact is reported, so the evidence is not yet directional enough for a positive sector call.",
-      "source": "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957",
+      "linkage_detail": "Sector linkage through the reported Rs374bn increase in power-sector circular debt. The tracked HUBC and KEL are not identified as the loss-making SOEs, so no direct company claim is made.",
+      "reason": "The Ministry of Finance's SOE report says power-sector circular debt increased by Rs374bn because of inefficiencies and poor recoveries, adding system-level financing stress. The evidence is negative for the power-sector backdrop but does not quantify company-specific receivables or earnings for HUBC or KEL.",
+      "source": "https://www.dawn.com/news/2035050/power-sector-losses-drag-state-owned-entities-profits",
       "sources": [
-        "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
+        "https://www.dawn.com/news/2035050/power-sector-losses-drag-state-owned-entities-profits"
       ],
-      "published": "2026-10-05T10:57:00+05:00",
-      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 10:57 AM GMT+05:00.",
+      "published": "2026-10-06T07:57:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 07:57 AM PKT, before the regular PSX session open.",
       "text_depth": "full",
-      "confidence": 0.75,
+      "confidence": 0.65,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-bangladesh-textile-trade"
+      "thread_key": "pakistan-power-circular-debt"
     },
     {
-      "title": "Pakistan, IMF near deal on review, $1.2bn disbursement in sight",
+      "title": "IMF talks likely to clear way for $1.2bn disbursement",
       "assessment": "positive",
       "linkage": "irrelevant",
-      "linkage_detail": "This is material broad-market macro news but does not establish a direct or sector-specific earnings mechanism for a configured tracked stock.",
-      "reason": "Pakistan and the IMF are reported to be near completion of the program review, with about $1.2bn potentially proceeding to formal approval and first-quarter tax collection meeting target. That is directionally supportive for external financing and reduces near-term mini-budget risk, but the disbursement is not yet approved. The article also continues the earlier auto-policy thread: the proposed EV sales-tax change remains under discussion, so no Auto Assembler sector rating is upgraded.",
-      "source": "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959",
+      "linkage_detail": "Material broad-market macro news, but no direct or sector-specific earnings mechanism is established for a configured tracked stock.",
+      "reason": "This continues the pakistan-imf-review-2026 thread. Pakistan and the IMF are finalising the MEFP after covering substantive review parameters, with no new Fund demands reported beyond makeup adjustments and about $1.2bn potentially moving toward disbursement. Formal completion and Board processing are still pending.",
+      "source": "https://www.dawn.com/news/2035070/imf-talks-likely-to-clear-way-for-12bn-disbursement",
       "sources": [
-        "https://mettisglobal.news/Pakistan-IMF-near-deal-on-review-12bn-disbursement-in-sight-63959"
+        "https://www.dawn.com/news/2035070/imf-talks-likely-to-clear-way-for-12bn-disbursement"
       ],
-      "published": "2026-10-05T12:35:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:35 PM GMT+05:00.",
+      "published": "2026-10-06T07:22:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 07:22 AM PKT.",
       "text_depth": "full",
-      "confidence": 0.8,
+      "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "pakistan-imf-review-2026"
     },
     {
-      "title": "BBFL bets on capacity, margins and the Gulf for its next growth chapter",
-      "assessment": "positive",
-      "linkage": "irrelevant",
-      "linkage_detail": "Big Bird Foods Limited is explicitly identified as PSX: BBFL, but BBFL is outside the repository's configured tracked universe.",
-      "reason": "BBFL reports a secured Gulf halal-food export order expected to roughly double current export volumes, alongside plans to deepen capacity utilization and higher-value products. The company identity and article body are verified, but no tracked rating is created because BBFL is outside the configured universe.",
-      "source": "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960",
-      "sources": [
-        "https://mettisglobal.news/BBFL-bets-on-capacity-margins-and-the-Gulf-for-its-next-growth-chapter-63960"
-      ],
-      "published": "2026-10-05T12:34:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:34 PM GMT+05:00.",
-      "text_depth": "full",
-      "confidence": 0.88,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "bbfl-gulf-export-growth"
-    },
-    {
-      "title": "Saudi Arabia cuts November crude prices to Asia to six-year lows",
+      "title": "Petrol price up 88 paise, HSD down Rs1.88",
       "assessment": "neutral",
       "linkage": "sector",
-      "linkage_detail": "Potential sector linkage to configured refineries NRL, PRL, ATRL and CNERGY through crude acquisition costs, but the article does not establish their specific landed feedstock cost or refining margins.",
-      "reason": "Saudi Aramco cut November Asia OSPs sharply, but the article says the discounts are intended in part to offset exceptionally high freight and routing costs. Without Pakistan refinery crude slates, freight terms and product crack spreads, the net earnings effect cannot be signed confidently.",
-      "source": "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows",
+      "linkage_detail": "Sector linkage to Oil Marketing, including PSO. The article states OMC profit margins remain unchanged and does not quantify company-specific inventory effects.",
+      "reason": "Petrol rose by Rs0.88 per litre while HSD fell by Rs1.88. OMC margins remained unchanged at Rs7.87 per litre, so the routine mixed price revision does not establish a directional earnings change for PSO.",
+      "source": "https://www.brecorder.com/news/40442838/petrol-price-up-88-paise-hsds-down-rs188",
       "sources": [
-        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
+        "https://www.brecorder.com/news/40442838/petrol-price-up-88-paise-hsds-down-rs188"
       ],
-      "published": null,
-      "publication_time_status": "Business Recorder confirms publication on October 5 and an 11:29 AM PKT update, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
+      "published": "2026-10-06T06:25:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 06:25 AM PKT.",
       "text_depth": "full",
-      "confidence": 0.8,
+      "confidence": 0.92,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "saudi-asia-osp-november-2026"
+      "thread_key": "pakistan-fuel-price-revision"
     },
     {
-      "title": "Sitara Energy FY26 profit plunges 49% to Rs59m",
+      "title": "Khyber Tobacco swings to Rs1bn loss in FY26",
       "assessment": "negative",
       "linkage": "irrelevant",
-      "linkage_detail": "Sitara Energy Limited is PSX: SEL, but SEL is outside the repository's configured tracked universe.",
-      "reason": "FY26 profit fell 49.2% and net sales fell 55.3%. The company identity is verified, but no tracked-stock or tracked-sector rating is created because SEL is outside the configured universe.",
-      "source": "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952",
+      "linkage_detail": "Khyber Tobacco Company Limited is PSX: KHTC, but KHTC is outside the repository's configured tracked universe.",
+      "reason": "FY26 swung to a Rs1.02bn net loss from Rs274.65m profit as gross profit collapsed 92.61% and operating profit turned into a Rs729.63m loss. No tracked rating is created because KHTC is outside the configured universe.",
+      "source": "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982",
       "sources": [
-        "https://mettisglobal.news/Sitara-Energy-FY26-profit-plunges-49-to-Rs59m-63952"
+        "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982"
       ],
-      "published": "2026-10-05T09:36:00+05:00",
-      "publication_time_status": "Full article previously verified in the current session. Mettis Global states October 5, 2026 at 09:36 AM GMT+05:00.",
+      "published": "2026-10-06T10:21:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 10:21 AM PKT.",
       "text_depth": "full",
       "confidence": 0.98,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "sel-fy26-results"
+      "thread_key": "khtc-fy26-results"
     },
     {
-      "title": "SBP issues guidelines for export of 200,000 MT sugar",
-      "assessment": "positive",
-      "linkage": "irrelevant",
-      "linkage_detail": "The policy is potentially positive for eligible sugar mills, but none of the configured tracked Food names is identified in the article as an eligible sugar mill.",
-      "reason": "SBP instructed banks to process export requests for a 200,000-ton sugar quota under specified payment and shipment conditions. Applying this to the repository's broad Food sector would overstate linkage, so no tracked rating is created.",
-      "source": "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946",
-      "sources": [
-        "https://mettisglobal.news/SBP-issues-guidelines-for-export-of-200000-MT-sugar-63946"
-      ],
-      "published": "2026-10-04T08:00:00+05:00",
-      "publication_time_status": "Full article previously verified. Mettis Global states October 4, 2026 at 08:00 AM GMT+05:00.",
-      "text_depth": "full",
-      "confidence": 0.95,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-sugar-export-quota"
-    },
-    {
-      "title": "DGKC sees durable FY27 cement recovery on lower rates, reconstruction demand",
-      "assessment": "positive",
-      "linkage": "direct",
-      "linkage_detail": "D.G. Khan Cement Company Limited is explicitly identified as PSX: DGKC and DGKC is in the configured tracked universe.",
-      "reason": "Management expects a measured FY27 domestic cement recovery supported by lower borrowing costs and reconstruction demand, with projected FY27 sales of Rs87.35bn and profit before tax of Rs17.12bn. Higher royalty and input costs, stronger competition and a full year of financing cost on the Rafhan Maize facility temper the outlook, so this is positive guidance rather than a realized earnings result.",
-      "source": "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961",
-      "sources": [
-        "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
-      ],
-      "published": "2026-10-05T12:45:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 12:45 PM GMT+05:00.",
-      "text_depth": "full",
-      "confidence": 0.72,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "dgkc-fy27-outlook"
-    },
-    {
-      "title": "ZUMA clears acquisition of sim.market eSIM brand through UK subsidiary",
+      "title": "PIL moves to implement Crescent Star Foods merger, plans issuance of 7.9bn new shares",
       "assessment": "neutral",
       "linkage": "irrelevant",
-      "linkage_detail": "Zuma Resources Limited is explicitly identified as PSX: ZUMA, but ZUMA is outside the repository's configured tracked universe.",
-      "reason": "The board approved acquisition of the sim.market brand and associated rights through its UK subsidiary, but purchase consideration and final commercial terms remain under negotiation. The strategic direction is clear, while the financial effect is not yet measurable.",
-      "source": "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962",
+      "linkage_detail": "PICIC Insurance Limited is PSX: PIL, but PIL is outside the repository's configured tracked universe.",
+      "reason": "PIL is implementing the court-sanctioned merger of Crescent Star Foods and plans issuance of about 7.9bn new shares. The corporate action is material, but the exchange ratio economics and post-merger earnings impact are not quantified here, so direction cannot be signed confidently.",
+      "source": "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981",
       "sources": [
-        "https://mettisglobal.news/Zuma-clears-acquisition-of-simmarket-eSIM-brand-and-platform-rights-through-UK-subsidiary-63962"
+        "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981"
       ],
-      "published": "2026-10-05T13:16:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 01:16 PM GMT+05:00.",
+      "published": "2026-10-06T10:17:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 10:17 AM PKT.",
       "text_depth": "full",
       "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "zuma-sim-market-acquisition"
-    },
-    {
-      "title": "Attock Cement board recommends name change to Falcon Cement Limited",
-      "assessment": "neutral",
-      "linkage": "irrelevant",
-      "linkage_detail": "Attock Cement Pakistan Limited is explicitly identified as PSX: ACPL, but ACPL is outside the repository's configured tracked universe.",
-      "reason": "The board recommended changing the company name to Falcon Cement Limited, subject to shareholder and regulatory approvals. The announcement changes corporate identity but does not establish an earnings, cash-flow or operating impact.",
-      "source": "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963",
-      "sources": [
-        "https://mettisglobal.news/Attock-Cement-board-recommends-name-change-to-Falcon-Cement-Limited-63963"
-      ],
-      "published": "2026-10-05T14:07:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 02:07 PM GMT+05:00.",
-      "text_depth": "full",
-      "confidence": 0.98,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "acpl-falcon-name-change"
-    },
-    {
-      "title": "KOHP incurs Rs3.5m FY26 loss",
-      "assessment": "negative",
-      "linkage": "irrelevant",
-      "linkage_detail": "Kohinoor Power Company Limited is explicitly identified as PSX: KOHP, but KOHP is outside the repository's configured tracked universe.",
-      "reason": "FY26 swung to a Rs3.47m after-tax loss from a Rs10.92m profit, with LPS of Rs0.28. Core operating profit improved, but the prior year's tax reversal became a tax charge and drove the bottom-line loss. No tracked rating is created.",
-      "source": "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964",
-      "sources": [
-        "https://mettisglobal.news/KOHP-Incurs-Rs35m-FY26-loss-63964"
-      ],
-      "published": "2026-10-05T14:32:00+05:00",
-      "publication_time_status": "Full article verified. Mettis Global states October 5, 2026 at 02:32 PM GMT+05:00.",
-      "text_depth": "full",
-      "confidence": 0.97,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "kohp-fy26-results"
-    },
-    {
-      "title": "KSE-100 intraday decline deepens beyond 2,300 points",
-      "assessment": "neutral",
-      "linkage": "irrelevant",
-      "linkage_detail": "This is a contemporaneous market-price outcome, not independent causal evidence about a tracked company's fundamentals or a sector mechanism.",
-      "reason": "The KSE-100 decline deepened to 2,312 points by 12:45 PM. This materially updates the earlier intraday-selloff thread, but using the market's own price move as causal news for the same stocks would be circular, so it remains excluded from ratings.",
-      "source": "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-2300-points-on-political-uncertainty-higher-oil-prices",
-      "sources": [
-        "https://www.brecorder.com/news/40442684/psx-selling-at-bourse-kse-100-down-over-2300-points-on-political-uncertainty-higher-oil-prices"
-      ],
-      "published": null,
-      "publication_time_status": "Business Recorder confirms publication on October 5 and an update at 12:53 PM PKT, but the page does not expose the original publication time. The raw-feed timestamp is not substituted.",
-      "text_depth": "full",
-      "confidence": 0.99,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "kse100-intraday-selloff"
+      "thread_key": "pil-crescent-star-foods-merger"
     }
   ],
   "ratings": {
-    "CPHL": {
+    "IMAGE": {
       "rating": "negative",
-      "causality": "causal",
-      "confidence": 0.82,
-      "horizon": "multi_session",
-      "linkage": "direct",
-      "reason": "FY26 net profit fell 11.4% and EPS fell 11.3%, despite stronger sales, gross profit and operating profit. Higher finance, operating and tax costs weakened the bottom line.",
-      "relevance": "Direct link: CPHL is Citi Pharma Limited, the PSX-listed company reporting the result.",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/CPHL-FY26-profit-softens-11-63951"
-      ],
-      "source_published": [
-        "2026-10-05T09:32:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-05T09:32:00+05:00"
-      ],
-      "thread_key": "cphl-fy26-results"
-    },
-    "TOMCL": {
-      "rating": "negative",
-      "causality": "causal",
-      "confidence": 0.95,
-      "horizon": "multi_session",
-      "linkage": "direct",
-      "reason": "FY26 net profit fell 74%, EPS fell 77%, sales fell 12% and operating profit fell 62%; lower finance costs did not offset the operating deterioration.",
-      "relevance": "Direct link: TOMCL is The Organic Meat Company Limited, the PSX-listed company reporting the result.",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/TOMCL-FY26-profit-drops-74-63948"
-      ],
-      "source_published": [
-        "2026-10-05T09:14:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-05T09:14:00+05:00"
-      ],
-      "thread_key": "tomcl-fy26-results"
-    },
-    "DGKC": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.72,
-      "horizon": "multi_session",
-      "linkage": "direct",
-      "reason": "Management expects a measured FY27 domestic cement recovery and projects higher sales and profit before tax, supported by lower borrowing costs and reconstruction demand. Cost pressure, competition and higher financing costs temper the outlook.",
-      "relevance": "Direct link: DGKC is D.G. Khan Cement Company Limited, the PSX-listed company providing the FY27 outlook.",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/DGKC-bets-on-domestic-cement-demand-recovery-in-FY27-63961"
-      ],
-      "source_published": [
-        "2026-10-05T12:45:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-05T12:45:00+05:00"
-      ],
-      "thread_key": "dgkc-fy27-outlook"
-    }
-  },
-  "sectors": {
-    "Oil & Gas Exploration": {
-      "rating": "neutral",
       "causality": "causal",
       "confidence": 0.9,
-      "horizon": "single_session",
-      "linkage": "sector",
-      "reason": "G7 emergency releases and Middle East exports above pre-war levels have eased immediate supply stress and Brent is near $101.6, while tanker attacks and Gulf infrastructure risk remain. New evidence reinforces the mixed state rather than a clean directional reversal.",
-      "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-prices-slip-to-101-amid-G7-stock-release-rising-Middle-East-exports-63953",
-        "https://www.brecorder.com/news/40442678/oil-slips-as-middle-east-crude-exports-rise-g7-to-release-stocks",
-        "https://www.brecorder.com/news/40442700/middle-east-crude-oil-exports-exceed-pre-war-levels-but-tanker-attacks-increase",
-        "https://www.brecorder.com/news/40442694/saudi-arabia-unexpectedly-cuts-november-oil-prices-to-asia-to-6-year-lows"
-      ],
-      "source_published": [
-        "2026-10-05T10:01:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-05T10:01:00+05:00"
-      ],
-      "thread_key": "middle-east-oil-supply-shock"
-    },
-    "Textile": {
-      "rating": "neutral",
-      "causality": "correlated",
-      "confidence": 0.75,
       "horizon": "multi_session",
-      "linkage": "sector",
-      "reason": "Pakistan and Bangladesh discussed lower textile trade barriers and implementation of an existing industry MoU, but no binding tariff change, order flow or quantified earnings impact was announced.",
-      "relevance": "Sector link to configured textile names; the evidence is sector-level and preliminary.",
+      "linkage": "direct",
+      "reason": "FY26 net profit and EPS fell 13%, revenue fell 5%, operating profit fell 12% and finance cost rose 42%; the Rs1 per share dividend only partly cushions the deterioration.",
+      "relevance": "Direct link: IMAGE is Image Pakistan Limited, the PSX-listed company reporting the FY26 result.",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Pakistan-Bangladesh-explore-higher-textile-trade-63957"
+        "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
+        "https://dps.psx.com.pk/company/IMAGE"
       ],
       "source_published": [
-        "2026-10-05T10:57:00+05:00"
+        "2026-10-06T09:47:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-05T10:57:00+05:00"
+        "2026-10-06T09:47:00+05:00"
       ],
-      "thread_key": "pakistan-bangladesh-textile-trade"
+      "thread_key": "image-fy26-results"
     }
-  }
+  },
+  "sectors": {}
 }
