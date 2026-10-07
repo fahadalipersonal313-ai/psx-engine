@@ -3,38 +3,6 @@
     {
       "symbol": "PRL",
       "market": "REG",
-      "price": 87.15,
-      "open": 89.93,
-      "high": 90.48,
-      "low": 86.85,
-      "ldcp": 90.35,
-      "prior_close": 90.35,
-      "day_volume": 6483158,
-      "change_pct": -3.541781959048129,
-      "volume_kind": "cumulative_session",
-      "ohlc_kind": "running_session",
-      "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/PRL",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
-      "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:29.484228+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 269.484228,
-      "declared_delay_minutes": 5,
-      "data_status": "delayed_snapshot",
-      "delay_source_url": "https://dps.psx.com.pk/",
-      "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
-      "quality_flags": [
-        "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
-      ],
-      "usable_point": true,
-      "observation_id": "24b3b26483237745b0932424a88452c6025379d6b2828b8d8643acb8b4a9848d",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
-    {
-      "symbol": "PRL",
-      "market": "REG",
       "price": 87.3,
       "open": 89.93,
       "high": 90.48,
@@ -3212,41 +3180,42 @@
       "usable_point": true,
       "observation_id": "84e31583aaebb0c317c703e1661181337ba7522eb08b589036f6a69f3c8c0056",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "MEBL": [
+    },
     {
-      "symbol": "MEBL",
+      "symbol": "PRL",
       "market": "REG",
-      "price": 548.0,
-      "open": 548.79,
-      "high": 553.94,
-      "low": 546.0,
-      "ldcp": 548.79,
-      "prior_close": 548.79,
-      "day_volume": 224070,
-      "change_pct": -0.143953060369173,
+      "price": 94.4,
+      "open": 94.74,
+      "high": 94.98,
+      "low": 93.7,
+      "ldcp": 94.38,
+      "prior_close": 94.38,
+      "day_volume": 2039265,
+      "change_pct": 0.021190930281855813,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/MEBL",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/PRL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:28.441781+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 268.441781,
+      "fetched_at": "2026-10-07T04:42:36.090756+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 276.090756,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
       "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
       "quality_flags": [
         "partial_point_observation_not_ohlcv",
-        "source_time_is_quote_update_not_verified_trade_time"
+        "source_time_is_quote_update_not_verified_trade_time",
+        "irregular_source_interval_not_five_minutes"
       ],
       "usable_point": true,
-      "observation_id": "3bd33636dd1d32a272a8c475105f4b0ae82633841ae1e7c213124f13d26fef57",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "880ee60196ee4f3c376993212e4dede7f5ffe0e8cd146d8c17d1c21b3d798561",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "MEBL": [
     {
       "symbol": "MEBL",
       "market": "REG",
@@ -6427,29 +6396,27 @@
       "usable_point": true,
       "observation_id": "6befa677e033cc6797872b465ed7dc54ea7a2175771b9fa7e6c8c2b082a186e1",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "SYS": [
+    },
     {
-      "symbol": "SYS",
+      "symbol": "MEBL",
       "market": "REG",
-      "price": 112.7,
-      "open": 115.84,
-      "high": 115.84,
-      "low": 112.16,
-      "ldcp": 115.84,
-      "prior_close": 115.84,
-      "day_volume": 1081503,
-      "change_pct": -2.7106353591160204,
+      "price": 553.79,
+      "open": 553.9,
+      "high": 554.5,
+      "low": 553.0,
+      "ldcp": 552.3,
+      "prior_close": 552.3,
+      "day_volume": 4495,
+      "change_pct": 0.2697809161687603,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/SYS",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/MEBL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:30.525122+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 270.525122,
+      "fetched_at": "2026-10-07T04:42:35.152311+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 275.152311,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -6459,9 +6426,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "206bc925523e27bcd877fe3b30751d689d7804b6c2d34d9bd07ef743d27b934b",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "4f9db050ddaa945a4da541d157beb251c53efc7ea2e344df89af08a8b6a3740f",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "SYS": [
     {
       "symbol": "SYS",
       "market": "REG",
@@ -9642,29 +9611,27 @@
       "usable_point": true,
       "observation_id": "a3307ab62bdf95eac9d053675f12669944cdcc69c068738e327d8b1692791186",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "PSO": [
+    },
     {
-      "symbol": "PSO",
+      "symbol": "SYS",
       "market": "REG",
-      "price": 340.9,
-      "open": 345.01,
-      "high": 346.9,
-      "low": 340.23,
-      "ldcp": 347.1,
-      "prior_close": 347.1,
-      "day_volume": 353899,
-      "change_pct": -1.786228752520902,
+      "price": 115.63,
+      "open": 116.11,
+      "high": 116.2,
+      "low": 115.0,
+      "ldcp": 116.04,
+      "prior_close": 116.04,
+      "day_volume": 31493,
+      "change_pct": -0.3533264391589186,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/PSO",
-      "source_as_of": "2026-10-05T12:48:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/SYS",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T07:52:30.233132+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 270.233132,
+      "fetched_at": "2026-10-07T04:42:37.341453+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 277.341453,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -9674,9 +9641,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "aa9bb3afc1be54862eb56ded17b0b208634c892228f03544c079e91f0e51c4ea",
-      "collection_capture_id": "5c315a273d648987bd7f09cdf71c95c75e706e0ca0369c739d367a8ce82bd015"
-    },
+      "observation_id": "ebdeccf4cb239df1f872bed1842fadb7f157980faceba341acb14ddae005e73d",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "PSO": [
     {
       "symbol": "PSO",
       "market": "REG",
@@ -12858,29 +12827,27 @@
       "usable_point": true,
       "observation_id": "71c65e30379af53526a41f8d56a6eb1db311e30069940edf559b7d25d16fd53e",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "GAL": [
+    },
     {
-      "symbol": "GAL",
+      "symbol": "PSO",
       "market": "REG",
-      "price": 509.0,
-      "open": 516.0,
-      "high": 518.79,
-      "low": 506.0,
-      "ldcp": 514.94,
-      "prior_close": 514.94,
-      "day_volume": 335322,
-      "change_pct": -1.1535324503825772,
+      "price": 349.55,
+      "open": 351.24,
+      "high": 351.24,
+      "low": 349.55,
+      "ldcp": 350.03,
+      "prior_close": 350.03,
+      "day_volume": 23637,
+      "change_pct": -0.13713110304829357,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/GAL",
-      "source_as_of": "2026-10-05T12:48:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/PSO",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T07:52:33.500461+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 273.500461,
+      "fetched_at": "2026-10-07T04:42:38.114611+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 278.114611,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -12890,9 +12857,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "082b093d81e52d9239985c2ecc8862e495cbffc5e88dac5981286930d5679553",
-      "collection_capture_id": "5c315a273d648987bd7f09cdf71c95c75e706e0ca0369c739d367a8ce82bd015"
-    },
+      "observation_id": "6c2d5e19c997faf5c69c30dd97936393395fd3be4156f49199e12303e842f01b",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "GAL": [
     {
       "symbol": "GAL",
       "market": "REG",
@@ -16074,29 +16043,27 @@
       "usable_point": true,
       "observation_id": "0f46adfbf4933a7105e1f72b6c362b13eb42fc2b50ff9cae9f21e1dc8a619270",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "EFERT": [
+    },
     {
-      "symbol": "EFERT",
+      "symbol": "GAL",
       "market": "REG",
-      "price": 191.53,
-      "open": 194.0,
-      "high": 194.0,
-      "low": 191.51,
-      "ldcp": 193.92,
-      "prior_close": 193.92,
-      "day_volume": 184967,
-      "change_pct": -1.232466996699666,
+      "price": 501.0,
+      "open": 503.0,
+      "high": 503.01,
+      "low": 495.0,
+      "ldcp": 500.26,
+      "prior_close": 500.26,
+      "day_volume": 12479,
+      "change_pct": 0.14792307999840215,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/EFERT",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/GAL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:34.748027+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 274.748027,
+      "fetched_at": "2026-10-07T04:42:39.354524+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 279.354524,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -16106,9 +16073,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "cb16f07532546d92df028fd4e4a17bc6d5276d78625f21cdd1a7acd3d48bd132",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "2cb00da449e08bd01401a8dca1f3441473a644cf940f319e571e886764107736",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "EFERT": [
     {
       "symbol": "EFERT",
       "market": "REG",
@@ -19289,29 +19258,27 @@
       "usable_point": true,
       "observation_id": "e5d3ad5debf45526c5e0d3c7e44284af1cb52eeaa994737b04f7955a94d8749c",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "ATRL": [
+    },
     {
-      "symbol": "ATRL",
+      "symbol": "EFERT",
       "market": "REG",
-      "price": 1177.0,
-      "open": 1192.0,
-      "high": 1194.75,
-      "low": 1175.0,
-      "ldcp": 1189.43,
-      "prior_close": 1189.43,
-      "day_volume": 116246,
-      "change_pct": -1.0450383797281138,
+      "price": 193.3,
+      "open": 193.9,
+      "high": 193.9,
+      "low": 193.01,
+      "ldcp": 194.03,
+      "prior_close": 194.03,
+      "day_volume": 1675,
+      "change_pct": -0.3762304798227034,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/ATRL",
-      "source_as_of": "2026-10-05T13:08:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/EFERT",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:12:35.238596+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 275.238596,
+      "fetched_at": "2026-10-07T04:42:39.803327+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 279.803327,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -19321,9 +19288,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "a86ed5ef55ad8ca272fbcd2b8aca4be9adef263b1eb81fae1aec7523337871f6",
-      "collection_capture_id": "7a67bbac379c81ec9c918210fb08a04106b5f04ad1acd15590705ae664d9965f"
-    },
+      "observation_id": "096e13772b4954177a3d4f4e4754e9d47e4e9301b5da34073e052c631add964e",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "ATRL": [
     {
       "symbol": "ATRL",
       "market": "REG",
@@ -22503,29 +22472,27 @@
       "usable_point": true,
       "observation_id": "303ca679fb235e2af17fc90a55f3063ad262ac1484fb864ea1c0fcd1dfde7e2e",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "NRL": [
+    },
     {
-      "symbol": "NRL",
+      "symbol": "ATRL",
       "market": "REG",
-      "price": 593.0,
-      "open": 594.09,
-      "high": 600.97,
-      "low": 591.0,
-      "ldcp": 596.68,
-      "prior_close": 596.68,
-      "day_volume": 690927,
-      "change_pct": -0.6167459945029097,
+      "price": 1205.0,
+      "open": 1210.0,
+      "high": 1217.01,
+      "low": 1203.0,
+      "ldcp": 1203.92,
+      "prior_close": 1203.92,
+      "day_volume": 35190,
+      "change_pct": 0.0897069572729059,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/NRL",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/ATRL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:37.734207+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 277.734207,
+      "fetched_at": "2026-10-07T04:42:41.509334+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 281.509334,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -22535,9 +22502,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "4694a1ce0a9ae37774d0ed40a666190f553449416b52aa02b54011b58cad70b5",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "92633008dac64d254addc0ef863cd038df83085e00bad93658e1f777daeca95d",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "NRL": [
     {
       "symbol": "NRL",
       "market": "REG",
@@ -25718,29 +25687,27 @@
       "usable_point": true,
       "observation_id": "05a602acfb689ace630c94b87ad709944e7f32ee4565045a5e0d677697eae251",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "ASL": [
+    },
     {
-      "symbol": "ASL",
+      "symbol": "NRL",
       "market": "REG",
-      "price": 15.8,
-      "open": 16.5,
-      "high": 16.59,
-      "low": 15.75,
-      "ldcp": 16.63,
-      "prior_close": 16.63,
-      "day_volume": 2682864,
-      "change_pct": -4.99098015634395,
+      "price": 627.01,
+      "open": 624.99,
+      "high": 629.9,
+      "low": 622.11,
+      "ldcp": 616.89,
+      "prior_close": 616.89,
+      "day_volume": 125482,
+      "change_pct": 1.6404869587770987,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/ASL",
-      "source_as_of": "2026-10-05T12:48:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/NRL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T07:52:36.444244+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 276.444244,
+      "fetched_at": "2026-10-07T04:42:42.965377+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 282.965377,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -25750,9 +25717,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "592e133c248b1131305103c789ddfb45a8f6336abdc34b87f77aeaddaa721e7d",
-      "collection_capture_id": "5c315a273d648987bd7f09cdf71c95c75e706e0ca0369c739d367a8ce82bd015"
-    },
+      "observation_id": "fb0875502ac77deb9eb3a61e390cbef9abf2919abc0dbc78dd01805da8b39b51",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "ASL": [
     {
       "symbol": "ASL",
       "market": "REG",
@@ -28934,29 +28903,27 @@
       "usable_point": true,
       "observation_id": "654c13e5d653fa2d94856a571667b1995404d4d55f085658dd41a3b9dc352abc",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "FCL": [
+    },
     {
-      "symbol": "FCL",
+      "symbol": "ASL",
       "market": "REG",
-      "price": 26.68,
-      "open": 26.85,
-      "high": 27.2,
-      "low": 26.68,
-      "ldcp": 27.07,
-      "prior_close": 27.07,
-      "day_volume": 573756,
-      "change_pct": -1.4407092722571124,
+      "price": 16.05,
+      "open": 16.19,
+      "high": 16.25,
+      "low": 16.05,
+      "ldcp": 16.09,
+      "prior_close": 16.09,
+      "day_volume": 78141,
+      "change_pct": -0.24860161591049312,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/FCL",
-      "source_as_of": "2026-10-05T12:48:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/ASL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T07:52:38.976596+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 278.976596,
+      "fetched_at": "2026-10-07T04:42:43.461928+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 283.461928,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -28966,9 +28933,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "ad43410e82b4203f87eef97a7062fc321152daebe2e2e0a0f1a575fd29cc4bfc",
-      "collection_capture_id": "5c315a273d648987bd7f09cdf71c95c75e706e0ca0369c739d367a8ce82bd015"
-    },
+      "observation_id": "65cdec26077e890deefee46803a51b9aeb70ac4f5673411b951f741abf65ad72",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "FCL": [
     {
       "symbol": "FCL",
       "market": "REG",
@@ -32154,29 +32123,27 @@
       "usable_point": true,
       "observation_id": "05224a330366c31335a86c11a811eeddd537c72869d229acbf412b23834fce57",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "FCEPL": [
+    },
     {
-      "symbol": "FCEPL",
+      "symbol": "FCL",
       "market": "REG",
-      "price": 130.96,
-      "open": 132.3,
-      "high": 135.0,
-      "low": 130.01,
-      "ldcp": 134.55,
-      "prior_close": 134.55,
-      "day_volume": 573961,
-      "change_pct": -2.668153102935711,
+      "price": 27.02,
+      "open": 27.2,
+      "high": 27.2,
+      "low": 27.01,
+      "ldcp": 26.99,
+      "prior_close": 26.99,
+      "day_volume": 32944,
+      "change_pct": 0.11115227862170673,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/FCEPL",
-      "source_as_of": "2026-10-05T13:02:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/FCL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:07:39.791832+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 339.791832,
+      "fetched_at": "2026-10-07T04:42:44.751861+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 284.751861,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -32186,9 +32153,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "7e51090383d40ab858285ee53f7d0fa65ba713c36d73ced26b2194fe1a43ec42",
-      "collection_capture_id": "cf0e94899d1785bc429e8e5628b1a32f6e7c3b54edd20d0483dcce559d3f4257"
-    },
+      "observation_id": "5d0a8f4ae2bde65a48777ce5f8d0e99a85fc27e9bf91bd36cc561f377770b519",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "FCEPL": [
     {
       "symbol": "FCEPL",
       "market": "REG",
@@ -35370,29 +35339,27 @@
       "usable_point": true,
       "observation_id": "4fab9de1cda1802ceadefa2b4a9d944892448229d24c4a51c9d25a62f3abd1fa",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "CNERGY": [
+    },
     {
-      "symbol": "CNERGY",
+      "symbol": "FCEPL",
       "market": "REG",
-      "price": 12.15,
-      "open": 12.61,
-      "high": 12.64,
-      "low": 12.06,
-      "ldcp": 12.72,
-      "prior_close": 12.72,
-      "day_volume": 17763979,
-      "change_pct": -4.481132075471706,
+      "price": 134.65,
+      "open": 135.0,
+      "high": 135.0,
+      "low": 134.65,
+      "ldcp": 135.03,
+      "prior_close": 135.03,
+      "day_volume": 1475,
+      "change_pct": -0.28141894393838296,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/CNERGY",
-      "source_as_of": "2026-10-05T12:48:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/FCEPL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T07:52:40.331321+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 280.331321,
+      "fetched_at": "2026-10-07T04:42:45.473913+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 285.473913,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -35402,9 +35369,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "83f7d04c5b950ae6a64cb1882410a75ee4da74553388f00a2881739b6528df38",
-      "collection_capture_id": "5c315a273d648987bd7f09cdf71c95c75e706e0ca0369c739d367a8ce82bd015"
-    },
+      "observation_id": "598df7c274548948eb13a947f5551884b3a73a3876f44695b30b2a9a54f13304",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "CNERGY": [
     {
       "symbol": "CNERGY",
       "market": "REG",
@@ -38586,29 +38555,27 @@
       "usable_point": true,
       "observation_id": "f13e1d83ab7a019a3702ef61cc9934d192532e57e77e6f930d27c901a447ce74",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "THCCL": [
+    },
     {
-      "symbol": "THCCL",
+      "symbol": "CNERGY",
       "market": "REG",
-      "price": 69.7,
-      "open": 71.49,
-      "high": 71.49,
-      "low": 68.06,
-      "ldcp": 71.49,
-      "prior_close": 71.49,
-      "day_volume": 742737,
-      "change_pct": -2.503846691845002,
+      "price": 12.78,
+      "open": 12.92,
+      "high": 12.92,
+      "low": 12.72,
+      "ldcp": 12.93,
+      "prior_close": 12.93,
+      "day_volume": 2432999,
+      "change_pct": -1.1600928074245953,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/THCCL",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/CNERGY",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:43.818472+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 283.818472,
+      "fetched_at": "2026-10-07T04:42:46.441444+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 286.441444,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -38618,9 +38585,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "ac8e5abbe916f828559913396d2f908d540a537f7201c8373bb641b058eda293",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "5ad32f0f2d6dc7a5842a6fbee61fd0c3486f462b61543ce022fae6271755883c",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "THCCL": [
     {
       "symbol": "THCCL",
       "market": "REG",
@@ -41803,29 +41772,27 @@
       "usable_point": true,
       "observation_id": "37166100e978a78626d5da09c95ca0a8dfe78e052b8ddd4331eeb878f7e2e609",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "FABL": [
+    },
     {
-      "symbol": "FABL",
+      "symbol": "THCCL",
       "market": "REG",
-      "price": 91.58,
-      "open": 93.19,
-      "high": 93.97,
-      "low": 90.5,
-      "ldcp": 93.18,
-      "prior_close": 93.18,
-      "day_volume": 214948,
-      "change_pct": -1.7171066752522113,
+      "price": 69.55,
+      "open": 70.51,
+      "high": 70.96,
+      "low": 69.06,
+      "ldcp": 70.51,
+      "prior_close": 70.51,
+      "day_volume": 35826,
+      "change_pct": -1.3615090058147872,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/FABL",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/THCCL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:45.531333+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 285.531333,
+      "fetched_at": "2026-10-07T04:42:47.454343+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 287.454343,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -41835,9 +41802,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "5a5eacee36bb0c5729cce8d6ca1141725c3a70c42a871317000d393116dfae17",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "b2798973477f507cf71427fb2701ae470c8dfd4c4b2f60f2ed2ece090c402486",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "FABL": [
     {
       "symbol": "FABL",
       "market": "REG",
@@ -45018,29 +44987,27 @@
       "usable_point": true,
       "observation_id": "aef4a3883a81d3378b39eb4fffe031b6b380b4b5c84dc382754eb66eb7d03786",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
-    }
-  ],
-  "OGDC": [
+    },
     {
-      "symbol": "OGDC",
+      "symbol": "FABL",
       "market": "REG",
-      "price": 309.75,
-      "open": 313.89,
-      "high": 314.75,
-      "low": 308.36,
-      "ldcp": 314.62,
-      "prior_close": 314.62,
-      "day_volume": 821389,
-      "change_pct": -1.5478990528256298,
+      "price": 92.99,
+      "open": 93.53,
+      "high": 93.96,
+      "low": 92.9,
+      "ldcp": 93.53,
+      "prior_close": 93.53,
+      "day_volume": 3937,
+      "change_pct": -0.5773548594034117,
       "volume_kind": "cumulative_session",
       "ohlc_kind": "running_session",
       "source": "PSX public company page",
-      "source_url": "https://dps.psx.com.pk/company/OGDC",
-      "source_as_of": "2026-10-05T12:58:00+05:00",
+      "source_url": "https://dps.psx.com.pk/company/FABL",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
       "timestamp_kind": "displayed_quote_as_of",
-      "fetched_at": "2026-10-05T08:02:45.732939+00:00",
-      "session": "2026-10-05",
-      "source_age_seconds": 285.732939,
+      "fetched_at": "2026-10-07T04:42:48.362450+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 288.36245,
       "declared_delay_minutes": 5,
       "data_status": "delayed_snapshot",
       "delay_source_url": "https://dps.psx.com.pk/",
@@ -45050,9 +45017,11 @@
         "source_time_is_quote_update_not_verified_trade_time"
       ],
       "usable_point": true,
-      "observation_id": "af338b106f8f6902fe4a19db4998ace50137cd866b626726f88de3f2ac515638",
-      "collection_capture_id": "8ac76f5836901462e8d65b124b5bb2bf2df73fbcd6d59cb2eb1ba1a5b538724a"
-    },
+      "observation_id": "559c7694295afd7c27dbb1c5f90d81b4c6fdc07bc17789b0f3a8b96874a662cc",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
+    }
+  ],
+  "OGDC": [
     {
       "symbol": "OGDC",
       "market": "REG",
@@ -48235,6 +48204,38 @@
       "usable_point": true,
       "observation_id": "230279e2bb38f8322856d6ef17c6e86171cbc289d1f456bf98762993994a375b",
       "collection_capture_id": "17e5fba967d35605699997f017e5801b11c51d2eb234e291a9d7a1d88a25a282"
+    },
+    {
+      "symbol": "OGDC",
+      "market": "REG",
+      "price": 316.07,
+      "open": 318.0,
+      "high": 318.0,
+      "low": 315.16,
+      "ldcp": 317.05,
+      "prior_close": 317.05,
+      "day_volume": 26610,
+      "change_pct": -0.30909951111812717,
+      "volume_kind": "cumulative_session",
+      "ohlc_kind": "running_session",
+      "source": "PSX public company page",
+      "source_url": "https://dps.psx.com.pk/company/OGDC",
+      "source_as_of": "2026-10-07T09:38:00+05:00",
+      "timestamp_kind": "displayed_quote_as_of",
+      "fetched_at": "2026-10-07T04:42:49.501240+00:00",
+      "session": "2026-10-07",
+      "source_age_seconds": 289.50124,
+      "declared_delay_minutes": 5,
+      "data_status": "delayed_snapshot",
+      "delay_source_url": "https://dps.psx.com.pk/",
+      "limitations": "Running-session snapshot, not ticks or intraday candles; source timestamp is displayed quote time. No verified execution price or fill.",
+      "quality_flags": [
+        "partial_point_observation_not_ohlcv",
+        "source_time_is_quote_update_not_verified_trade_time"
+      ],
+      "usable_point": true,
+      "observation_id": "3bca4efb8085f5823313ca31ae1690711bcb5b244fbf02d092cf6e3f6b8f9a8a",
+      "collection_capture_id": "69713ed1b5c577431c432ccc43c74ce041eac853da6bffab88f2d67682ce8bb7"
     }
   ]
 }
