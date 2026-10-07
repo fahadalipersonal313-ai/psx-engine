@@ -1,6 +1,16 @@
 {
-  "by_symbol": {
-    "PRL": {
+  "schema_version": 1,
+  "version": "intraday-point-observations-v1",
+  "capture_id": "3345b473d7251b3a3e3e9f22643306c2a8e7859cf0c0cfc99f9bd07d62f7b62b",
+  "collected_at": "2026-10-07T05:27:50.585547+00:00",
+  "scheduled_at": "2026-10-07T05:27:33+00:00",
+  "cadence_target_seconds": 300,
+  "dataset_kind": "delayed_REG_point_observations",
+  "source_delayed": true,
+  "ohlcv_status": "unavailable",
+  "paper_strategy_status": "collection_only_no_fills",
+  "observations": [
+    {
       "symbol": "PRL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/PRL",
@@ -26,7 +36,7 @@
       "observation_id": "3f42b12412356741edaeb0ed50090c0cc9e0d2d0f12e022c931e69b58aa27d34",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "MEBL": {
+    {
       "symbol": "MEBL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/MEBL",
@@ -52,7 +62,7 @@
       "observation_id": "80fe3411bf790e941f26c9b8999f9973b8639e578b96eaed16d55104e70b070f",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "SYS": {
+    {
       "symbol": "SYS",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/SYS",
@@ -78,7 +88,7 @@
       "observation_id": "e253c4c2bd59572cf05d485bffd50d0757275898d1252afcf166008ef6bb4207",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "PSO": {
+    {
       "symbol": "PSO",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/PSO",
@@ -104,7 +114,7 @@
       "observation_id": "4d09f3cf1c5aeff20f53e11d89e90741f88215130be29a6b88740c6080efffb7",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "GAL": {
+    {
       "symbol": "GAL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/GAL",
@@ -130,7 +140,7 @@
       "observation_id": "ba2951ca3a5cf3edb06c418c3da0551db3f667092b98d8a8402e68650cabb72b",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "EFERT": {
+    {
       "symbol": "EFERT",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/EFERT",
@@ -156,7 +166,7 @@
       "observation_id": "efeb34017aff9cc1b8a554ce9f3274c582b5bc941bc8bdd00965381409386619",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "ATRL": {
+    {
       "symbol": "ATRL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/ATRL",
@@ -182,7 +192,7 @@
       "observation_id": "6894a717ae3a95010d541d5030321ebd87735a1d050eab49a9743326c27efe6b",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "NRL": {
+    {
       "symbol": "NRL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/NRL",
@@ -208,7 +218,7 @@
       "observation_id": "867e00938a69f90428d1d5672dfc63a27b77147a6ee8a2bb5752b32c57cc9bb5",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "ASL": {
+    {
       "symbol": "ASL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/ASL",
@@ -234,7 +244,7 @@
       "observation_id": "f2f9d977fd8a57e6fa7921a88d5e4de6c5a37f71e2e29046c85d9f0403f22ceb",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "FCL": {
+    {
       "symbol": "FCL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/FCL",
@@ -260,7 +270,7 @@
       "observation_id": "386d8ecf5f509648cdea085cf33f2bfcedb4c4887be37657ca13b4fe0469de21",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "FCEPL": {
+    {
       "symbol": "FCEPL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/FCEPL",
@@ -286,7 +296,7 @@
       "observation_id": "9b170ca7dc8e076db31849f4c1601761802afbbeb96f5e9d8ba56a0b9c1a3e42",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "CNERGY": {
+    {
       "symbol": "CNERGY",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/CNERGY",
@@ -312,7 +322,7 @@
       "observation_id": "e6a290e71e33df65f0ce44ed9cad590907696b7bdecfd0b05974e96e3fdf8085",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "THCCL": {
+    {
       "symbol": "THCCL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/THCCL",
@@ -338,7 +348,7 @@
       "observation_id": "40b28addc0d260fff53f822b8b6ed291361cf654967ba14c806fedeb437683da",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "FABL": {
+    {
       "symbol": "FABL",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/FABL",
@@ -364,7 +374,7 @@
       "observation_id": "db98a3b520364448c64d41477bcef90bc6f900f2cfa0ca7327ced5820658d8d8",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     },
-    "OGDC": {
+    {
       "symbol": "OGDC",
       "market": "REG",
       "source_url": "https://dps.psx.com.pk/company/OGDC",
@@ -390,245 +400,5 @@
       "observation_id": "059344d6556bc55c923672f5ca7a36bcea22c79126df58ac5a0a058c33619fc6",
       "collected_at": "2026-10-07T05:27:50.585547+00:00"
     }
-  },
-  "sessions": {
-    "2026-10-04": {
-      "captures": 3,
-      "usable_points": {},
-      "errors": 0,
-      "duplicates": 0,
-      "collected_poll_slots": []
-    },
-    "2026-10-05": {
-      "captures": 72,
-      "usable_points": {
-        "PRL": 71,
-        "MEBL": 71,
-        "SYS": 71,
-        "PSO": 71,
-        "GAL": 71,
-        "EFERT": 71,
-        "ATRL": 71,
-        "NRL": 71,
-        "ASL": 71,
-        "FCL": 71,
-        "FCEPL": 71,
-        "CNERGY": 71,
-        "THCCL": 71,
-        "FABL": 71,
-        "OGDC": 71
-      },
-      "errors": 0,
-      "duplicates": 0,
-      "collected_poll_slots": [
-        "09:32/0",
-        "09:32/1",
-        "09:32/10",
-        "09:32/11",
-        "09:32/12",
-        "09:32/13",
-        "09:32/14",
-        "09:32/15",
-        "09:32/16",
-        "09:32/17",
-        "09:32/18",
-        "09:32/19",
-        "09:32/2",
-        "09:32/20",
-        "09:32/21",
-        "09:32/22",
-        "09:32/23",
-        "09:32/24",
-        "09:32/25",
-        "09:32/26",
-        "09:32/27",
-        "09:32/28",
-        "09:32/29",
-        "09:32/3",
-        "09:32/30",
-        "09:32/31",
-        "09:32/32",
-        "09:32/33",
-        "09:32/34",
-        "09:32/35",
-        "09:32/36",
-        "09:32/37",
-        "09:32/38",
-        "09:32/39",
-        "09:32/4",
-        "09:32/40",
-        "09:32/41",
-        "09:32/42",
-        "09:32/43",
-        "09:32/44",
-        "09:32/45",
-        "09:32/46",
-        "09:32/47",
-        "09:32/48",
-        "09:32/49",
-        "09:32/5",
-        "09:32/50",
-        "09:32/51",
-        "09:32/52",
-        "09:32/53",
-        "09:32/54",
-        "09:32/55",
-        "09:32/56",
-        "09:32/57",
-        "09:32/58",
-        "09:32/59",
-        "09:32/6",
-        "09:32/60",
-        "09:32/61",
-        "09:32/62",
-        "09:32/63",
-        "09:32/64",
-        "09:32/65",
-        "09:32/66",
-        "09:32/67",
-        "09:32/68",
-        "09:32/69",
-        "09:32/7",
-        "09:32/70",
-        "09:32/71",
-        "09:32/8",
-        "09:32/9"
-      ]
-    },
-    "2026-10-06": {
-      "captures": 72,
-      "usable_points": {
-        "PRL": 67,
-        "MEBL": 67,
-        "SYS": 67,
-        "PSO": 65,
-        "GAL": 65,
-        "EFERT": 67,
-        "ATRL": 69,
-        "NRL": 67,
-        "ASL": 65,
-        "FCL": 65,
-        "CNERGY": 65,
-        "THCCL": 67,
-        "FABL": 67,
-        "OGDC": 67,
-        "FCEPL": 68
-      },
-      "errors": 36,
-      "duplicates": 30,
-      "collected_poll_slots": [
-        "09:32/0",
-        "09:32/1",
-        "09:32/10",
-        "09:32/11",
-        "09:32/12",
-        "09:32/13",
-        "09:32/14",
-        "09:32/15",
-        "09:32/16",
-        "09:32/17",
-        "09:32/18",
-        "09:32/19",
-        "09:32/2",
-        "09:32/20",
-        "09:32/21",
-        "09:32/22",
-        "09:32/23",
-        "09:32/24",
-        "09:32/25",
-        "09:32/26",
-        "09:32/27",
-        "09:32/28",
-        "09:32/29",
-        "09:32/3",
-        "09:32/30",
-        "09:32/31",
-        "09:32/32",
-        "09:32/33",
-        "09:32/34",
-        "09:32/35",
-        "09:32/36",
-        "09:32/37",
-        "09:32/38",
-        "09:32/39",
-        "09:32/4",
-        "09:32/40",
-        "09:32/41",
-        "09:32/42",
-        "09:32/43",
-        "09:32/44",
-        "09:32/45",
-        "09:32/46",
-        "09:32/47",
-        "09:32/48",
-        "09:32/49",
-        "09:32/5",
-        "09:32/50",
-        "09:32/51",
-        "09:32/52",
-        "09:32/53",
-        "09:32/54",
-        "09:32/55",
-        "09:32/56",
-        "09:32/57",
-        "09:32/58",
-        "09:32/59",
-        "09:32/6",
-        "09:32/60",
-        "09:32/61",
-        "09:32/62",
-        "09:32/63",
-        "09:32/64",
-        "09:32/65",
-        "09:32/66",
-        "09:32/67",
-        "09:32/68",
-        "09:32/69",
-        "09:32/7",
-        "09:32/70",
-        "09:32/71",
-        "09:32/8",
-        "09:32/9"
-      ]
-    },
-    "2026-10-07": {
-      "captures": 12,
-      "usable_points": {
-        "PRL": 11,
-        "MEBL": 11,
-        "SYS": 11,
-        "PSO": 11,
-        "GAL": 11,
-        "EFERT": 11,
-        "ATRL": 11,
-        "NRL": 11,
-        "ASL": 11,
-        "FCL": 11,
-        "FCEPL": 11,
-        "CNERGY": 11,
-        "THCCL": 11,
-        "FABL": 11,
-        "OGDC": 11
-      },
-      "errors": 0,
-      "duplicates": 0,
-      "collected_poll_slots": [
-        "09:32/0",
-        "09:32/1",
-        "09:32/10",
-        "09:32/11",
-        "09:32/2",
-        "09:32/3",
-        "09:32/4",
-        "09:32/5",
-        "09:32/6",
-        "09:32/7",
-        "09:32/8",
-        "09:32/9"
-      ]
-    }
-  },
-  "network": {},
-  "last_collection": "2026-10-07T05:27:50.585547+00:00",
-  "last_capture_id": "3345b473d7251b3a3e3e9f22643306c2a8e7859cf0c0cfc99f9bd07d62f7b62b"
+  ]
 }
