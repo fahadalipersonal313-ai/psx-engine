@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-07T04:39:14Z",
+ "as_of": "2026-10-07T05:39:24Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -10,196 +10,263 @@
   "https://mettisglobal.news/Central-govt-debt-surges-by-7-YoY-in-August-64004",
   "https://mettisglobal.news/Cnergyico-refines-its-future-with-cleaner-fuels-new-products-and-a-wider-reach-64001",
   "https://mettisglobal.news/Digital-payments-dominate-Pakistans-retail-transactions-with-92-share-64003",
+  "https://mettisglobal.news/FM-condemns-DI-Khan-firing-after-2-FBR-personnel-martyred-64014",
   "https://mettisglobal.news/Fateh-Sports-Wear-eyes-restart-after-2m-funds-release-63998",
   "https://mettisglobal.news/Gold-dips-to-4122-on-firm-dollar-63985",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-63997",
   "https://mettisglobal.news/Govt-domestic-debt-liabilities-rise-85-YoY-in-August-64006",
-  "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982",
+  "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64009",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64011",
   "https://mettisglobal.news/NSS-net-mobilization-rises-12-YoY-64005",
   "https://mettisglobal.news/Oil-jumps-above-101-Houthi-attacks-fuel-supply-concerns-64012",
-  "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981",
   "https://mettisglobal.news/PM-Shehbaz-rules-out-letting-protest-politics-harm-economy-63995",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Hit-the-Gas-63999",
+  "https://mettisglobal.news/PSX-rebalances-Alfalah-Consumer-Index-64015",
   "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013",
-  "https://mettisglobal.news/Pakistan-IFC-eye-wider-privatesector-financing-investment-63993",
+  "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016",
   "https://mettisglobal.news/Pakistans-IT-exports-to-UAE-jump-42-amid-growing-tech-ties-64002",
   "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007",
-  "https://mettisglobal.news/SBP-to-launch-Pakistan-Express-Clearing-System-63994",
-  "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988",
+  "https://mettisglobal.news/RPL-charts-a-path-of-backward-integration-supplychain-resilience-for-the-road-ahead-64018",
   "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
   "https://mettisglobal.news/Service-Industries-Textiles-loss-widens-53-to-Rs111m-in-FY26-63996"
  ],
- "count": 12,
+ "count": 16,
  "ratings": {
-  "MARI": {
+  "LUCK": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Added to JSMFI in 7 Oct re-composition; small passive flow only",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Consortium shortlisted for GEPCO 51% stake due diligence; early-stage privatisation step",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   },
-  "ENGROH": {
+  "HUBC": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Added to JSMFI in 7 Oct re-composition; small passive flow only",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Consortium shortlisted for GEPCO 51% stake due diligence; early-stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   },
-  "JVDC": {
+  "KOHC": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Added to JSMFI in 7 Oct re-composition; small passive flow only",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Consortium shortlisted for GEPCO stake; small partner, early-stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "PRL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "MLCF": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "PSO": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "PPL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "GAL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "THCCL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
-   ]
-  },
-  "SSGC": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dropped from JSMFI in 7 Oct re-composition; small passive selling only",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   },
   "CNERGY": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "$1bn+ refinery upgrade now has first reactors in Karachi; dropped from JSMFI is minor",
+   "confidence": 0.35,
+   "reason": "Refinery upgrade, marine fuel and petrochemical plan; no figures or timeline",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Cnergyico-refines-its-future-with-cleaner-fuels-new-products-and-a-wider-reach-64001",
-    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+    "https://mettisglobal.news/Cnergyico-refines-its-future-with-cleaner-fuels-new-products-and-a-wider-reach-64001"
    ]
   },
   "SAZEW": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Aug-Sep sales 2,474 vs output 1,622 and Rs868m land bought for expansion",
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.25,
+   "reason": "Aug-Sep sales 2,474 vs production 1,622 units; no prior comparison given",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
-    "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988"
+    "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989"
+   ]
+  },
+  "PSO": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Index weight rebalance only; passive flow, no cash-flow mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-rebalances-Alfalah-Consumer-Index-64015",
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "MARI": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Index inclusion and routine aircraft import permit; no earnings mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013",
+    "https://propakistani.pk/2026/10/07/mari-energies-allowed-to-temporarily-import-aircraft-for-surveys/"
+   ]
+  },
+  "FCCL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Index rebalance only; passive flow",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-rebalances-Alfalah-Consumer-Index-64015"
+   ]
+  },
+  "GAL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "JVDC": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "SSGC": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "THCCL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "PPL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "PRL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "MLCF": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
+   ]
+  },
+  "ENGROH": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "JSMFI re-composition listing; passive index flow, no mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013"
    ]
   }
  },
  "sectors": {
   "Oil & Gas Exploration": {
    "rating": "positive",
-   "horizon": "single_session",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Brent up ~2% to $101.5 on Saudi-Houthi escalation lifts E&P realisations",
+   "confidence": 0.5,
+   "reason": "Brent above $101 on Houthi-Saudi escalation lifts realised prices for E&Ps",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-jumps-above-101-Houthi-attacks-fuel-supply-concerns-64012"
    ]
   },
   "Refinery": {
-   "rating": "positive",
-   "horizon": "single_session",
+   "rating": "neutral",
+   "horizon": "multi_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Higher crude brings inventory gains; margins unchanged by story",
+   "reason": "Higher crude raises inventory gains but supply risk; mixed for margins",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-jumps-above-101-Houthi-attacks-fuel-supply-concerns-64012"
    ]
   },
-  "Technology/IT Exports": {
-   "rating": "positive",
-   "horizon": "long_term",
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "IT exports to UAE up 42% to $536m in FY26",
+   "reason": "Petrol +Rs1.19, diesel -Rs1.91; margins unchanged while crude rises adds working-capital cost",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistans-IT-exports-to-UAE-jump-42-amid-growing-tech-ties-64002"
+    "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Petroleum price revision, no gas tariff change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "CCP clears Fatima-Agritech deal; 22% Rabi water shortage may tighten crop output",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/CCP-approves-Fatima-FertilizerAgritech-transaction-64008",
+    "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016"
    ]
   },
   "Technology/IT": {
@@ -207,10 +274,43 @@
    "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "IT exports to UAE up 42% to $536m in FY26",
+   "reason": "IT exports to UAE up 42% to $536m in FY26; backward-looking, trend support",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistans-IT-exports-to-UAE-jump-42-amid-growing-tech-ties-64002"
+   ]
+  },
+  "Technology/IT Exports": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "IT exports to UAE up 42% to $536m in FY26; backward-looking",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistans-IT-exports-to-UAE-jump-42-amid-growing-tech-ties-64002"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Govt debt +8.5% YoY, NSS inflows up; no rate or margin change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Govt-domestic-debt-liabilities-rise-85-YoY-in-August-64006"
+   ]
+  },
+  "Textile": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Single small-cap loss widening; not sector-wide",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Service-Industries-Textiles-loss-widens-53-to-Rs111m-in-FY26-63996"
    ]
   }
  }
