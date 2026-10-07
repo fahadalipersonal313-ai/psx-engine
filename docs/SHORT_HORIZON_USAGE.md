@@ -1,3 +1,5 @@
+> **Retired 2026-10-07** — see docs/SIMPLIFICATION_2026-10-07.md. Kept as a historical record.
+
 # Refresh the 1–5-day research view
 
 This adds a research panel to the existing engine. It does not change Buy/Strong Buy scoring or execute orders. The method is experimental, not backtested or a profit forecast.

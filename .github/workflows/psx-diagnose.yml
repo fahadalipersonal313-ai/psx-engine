@@ -2,11 +2,14 @@ name: psx-diagnose
 
 # One-shot, read-only check of what PSX returns to a GitHub runner. Sends the
 # engine's own requests once each, never retries, never disguises itself.
+# `reconcile` re-checks the official mkt_summary download against banked bars.
+# (The one-off index/source probes used during the 2026-09-25 outage were
+# retired on 2026-10-07; they are in git history.)
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads | sources | reconcile | dump | index | index2 | index3 | kse100'
+        description: 'probe | discover | downloads | reconcile'
         default: 'probe'
 
 permissions:
@@ -28,13 +31,6 @@ jobs:
           case "${{ inputs.mode || 'probe' }}" in
             discover)  python tools/psx_diagnose.py --discover ;;
             downloads) python tools/psx_diagnose.py --downloads ;;
-            sources)   python tools/source_probe.py ;;
             reconcile) python tools/reconcile_mkt_summary.py ;;
-            dump)      python tools/dump_mkt_summary.py ;;
-            index)     python tools/index_probe.py ;;
-            index2)    pip install -q pypdf && python tools/index_probe2.py ;;
-            index3)    python tools/index_probe3.py ;;
-            names)     python tools/company_names.py ;;
-            kse100)    pip install -q pypdf && cp psx_engine.db /tmp/probe.db && PSX_DB_PATH=/tmp/probe.db python psx_index_pdf.py 2026-07-13 2026-09-29 ;;
             *)         python tools/psx_diagnose.py ;;
           esac

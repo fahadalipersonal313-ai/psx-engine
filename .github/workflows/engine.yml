@@ -152,7 +152,6 @@ jobs:
               if [ "$state" = "wait" ]; then sleep 60; continue; fi
             fi
 
-            CYCLE_STARTED=$(date +%s)
             echo "=== Cycle at $now PKT ==="
             # PSX outage backoff. Since 2026-09-25 PSX's data paths refuse our
             # requests (404 on /timeseries and /market-watch, 403 on /historical)
@@ -161,24 +160,18 @@ jobs:
             # news down with it, and the watchdog kept restarting workers that
             # fired ~60 rejected requests each. Now: after a PSX failure, skip
             # PSX for an hour, keep news flowing every cycle, and retry PSX
-            # hourly with the cheap main.py call first -- intraday's 60
-            # requests only resume once PSX answers again.
+            # hourly.
+            #
+            # 2026-10-07: the loop is technical analysis + news only. The
+            # intraday scan, the 15-stock research quotes/checkpoints and the
+            # five-minute sampler were retired (code in git history; their data
+            # stays on runtime-state). The plain sleep below is restored.
             run_ok=0
             psx_try=1
             if [ -f /tmp/psx_outage ] && [ $(( $(date +%s) - $(cat /tmp/psx_outage) )) -lt 3600 ]; then
               psx_try=0
               echo "PSX failed at $(date -u -d @$(cat /tmp/psx_outage) +%H:%MZ) — skipping PSX this cycle, retrying hourly; news continues"
             fi
-            # Public company REG quotes are independently available while old tick endpoints fail.
-            # Only the approved 15 research symbols; no fabricated tick tape.
-            timeout 180 python research_runtime.py --quotes-only || echo "delayed quote snapshot failed (non-fatal)"
-            if [ -f .engine-paused ]; then echo "ENGINE PAUSED; stopping after in-flight capture"; exit 0; fi
-            # Flush the observation checkpoint before slower analysis/news work.
-            timeout 45 python research_runtime.py || echo "early research checkpoint failed (non-fatal)"
-            python -c "import research_sampler; research_sampler.publish_small()"
-            if [ -f .engine-paused ]; then echo "ENGINE PAUSED; stopping before analysis"; exit 0; fi
-            # The checkout and installed dependencies stay pinned for this worker.
-            # A concurrent writer causes a visible push failure, never a binary merge.
 
             # Capture the traceback. `|| echo` used to swallow it: the loop kept
             # committing (the news table still grew, so the commit succeeded) while
@@ -229,20 +222,10 @@ jobs:
             #     signal set instead. Measured on 2026-09-10: 27 of 28 cycles
             #     were identical, so this drops ~48 MB of push per cycle without
             #     delaying a single real change.
-            timeout 45 python research_runtime.py || echo "research journal failed (non-fatal)"
             CHANGED=$(python -c "import json;print(json.load(open('.engine-state.json'))['signal_digest'])" 2>/dev/null || echo "unknown")
             PREV=$(git show HEAD:.engine-state.json 2>/dev/null \
                    | python -c "import json,sys;print(json.load(sys.stdin)['signal_digest'])" 2>/dev/null || echo "none")
-            for f in research_quotes.json research_quote_history.json research_status.json research_signals.json research_decisions intraday_collection_state.json intraday_collection_status.json intraday_samples research_paper_summary.json paper_events research_activity.json research_comparisons.json; do
-              if [ -e "$f" ]; then git add -- "$f"; fi
-            done
-            git add -A -- news_raw_24h.json .engine-state.json intraday_momentum.json
-            # Every successful intraday run is preserved independently of swing changes.
-            if [ -f intraday_observations.db ]; then git add -- intraday_observations.db; fi
-            # Research outputs are small text snapshots, separate from swing signals.
-            for research_file in short_horizon_inputs.json short_horizon_latest.json short_horizon_status.json; do
-              if [ -f "$research_file" ]; then git add -- "$research_file"; fi
-            done
+            git add -A -- news_raw_24h.json .engine-state.json
             DB_AGE=$(( $(date +%s) - $(git log -1 --format=%ct -- psx_engine.db) ))
             if [ "$run_ok" != "1" ]; then
               # Never publish the database from a cycle whose engine run did not
@@ -288,7 +271,5 @@ jobs:
             echo "Sleeping ${RUN_INTERVAL_MINUTES}m before next cycle..."
             if [ "$FORCE_NOW" = "true" ]; then
               echo "Forced single cycle done — exiting."; exit 0; fi
-            # Same writer collects durable point observations at +5m and +10m.
-            # Overrun slots are not backfilled; source times and gaps stay explicit.
-            python research_sampler.py --cycle-start "$CYCLE_STARTED" --cycle-minutes "$RUN_INTERVAL_MINUTES"
+            sleep "$((RUN_INTERVAL_MINUTES * 60))"
           done

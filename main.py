@@ -441,14 +441,6 @@ def full_run(fast=False):
         # loop fall back to committing, which is the safe direction.
         log.warning("signal state failed: %s", exc)
 
-    if not fast:
-        try:
-            import short_horizon_refresh
-            research = short_horizon_refresh.safe_refresh()
-            log.info("Short-horizon research: %s; %s eligible", research['status'], research['eligible_count'])
-        except Exception as exc:
-            log.warning("Short-horizon research failed; dashboard will show failure: %s", exc)
-
     try:
         import dashboard_snapshot
         dashboard_snapshot.build()
