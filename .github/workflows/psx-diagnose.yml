@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'probe | discover | downloads | reconcile'
+        description: 'probe | discover | downloads | reconcile | quotes'
         default: 'probe'
 
 permissions:
@@ -32,5 +32,6 @@ jobs:
             discover)  python tools/psx_diagnose.py --discover ;;
             downloads) python tools/psx_diagnose.py --downloads ;;
             reconcile) python tools/reconcile_mkt_summary.py ;;
+            quotes)    python tools/fetch_quotes.py PSO SYS PRL MEBL NRL ATRL EFERT FFC HUBC ENGROH ;;
             *)         python tools/psx_diagnose.py ;;
           esac
