@@ -1,3 +1,5 @@
+> **Retired 2026-10-07** — see docs/SIMPLIFICATION_2026-10-07.md. Kept as a historical record.
+
 # Combined research contract v1
 
 The original versioned technical strategy remains separate. New research is experimental decision support, not a probability, order service, calibrated prediction, or demonstrated edge.

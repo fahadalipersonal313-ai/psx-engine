@@ -107,5 +107,40 @@ class AnchorTests(unittest.TestCase):
         self.assertTrue(m("POWER", "Power Cement posts quarterly profit"))
 
 
+class LiveRatingsTests(unittest.TestCase):
+    """news_feed reads the newer ratings copy only when the dashboard asks."""
+    STALE = {"as_of": "2026-10-01T09:00:00Z", "provider": "p", "model": "m", "ratings": {"PSO": {}}}
+    FRESH = {"as_of": "2026-10-07T09:00:00Z", "provider": "p", "model": "m", "ratings": {"HUBC": {}}}
+
+    def setUp(self):
+        import json, os, tempfile
+        import news_feed
+        self.news_feed = news_feed
+        self.dir = tempfile.mkdtemp()
+        with open(os.path.join(self.dir, "news_ai_ratings.json"), "w") as fh:
+            json.dump(self.STALE, fh)
+        for patcher in (mock.patch.object(news_feed.config, "BASE_DIR", self.dir),
+                        mock.patch.object(news_feed, "PREFER_LIVE_RATINGS", False)):
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def test_engine_default_never_fetches(self):
+        with mock.patch("remote_data.fetch_json", side_effect=AssertionError("network")):
+            raw = self.news_feed._read_rating_json("news_ai_ratings.json")
+        self.assertEqual(raw["as_of"], self.STALE["as_of"])
+
+    def test_dashboard_uses_newer_main_copy(self):
+        self.news_feed.PREFER_LIVE_RATINGS = True
+        with mock.patch("remote_data.fetch_json", return_value=self.FRESH):
+            raw = self.news_feed._read_rating_json("news_ai_ratings.json")
+        self.assertEqual(raw["as_of"], self.FRESH["as_of"])
+
+    def test_dashboard_keeps_local_when_main_unreachable(self):
+        self.news_feed.PREFER_LIVE_RATINGS = True
+        with mock.patch("remote_data.fetch_json", return_value=None):
+            raw = self.news_feed._read_rating_json("news_ai_ratings.json")
+        self.assertEqual(raw["as_of"], self.STALE["as_of"])
+
+
 if __name__ == "__main__":
     unittest.main()

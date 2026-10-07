@@ -1,208 +1,365 @@
 {
-  "as_of": "2026-10-02T08:55:00Z",
+  "as_of": "2026-10-06T07:45:37Z",
   "provider": "OpenAI",
   "model": "GPT-5.6 Sol",
   "depth": "mixed-full-and-headline",
-  "articles_read": 5,
+  "articles_read": 15,
   "notes": [
-    "One-time manual Friday lunch-break review authorized by the user. Normal session-gated routine remains unchanged.",
-    "Fresh committed raw input fetched 2026-10-02T08:36:27.899185Z.",
-    "Only evidence-backed current findings are rated; absence of a reviewed story is not Neutral."
+    "Scheduled Codex review executed during the valid 2026-10-06 PSX session. Fresh committed raw input was fetched at 2026-10-06T07:36:22.460578Z.",
+    "Existing story history was reconciled before publication. Current-session article-page timestamps are used for score-bearing ratings; pre-open or timestamp-unverified items remain reviewed context only.",
+    "This run adds two direct SAZEW developments. The livestock export policy is reviewed as positive sector context for meat exporters, but it is not score-routed to the repository's broad Food sector because the configured anchors do not safely identify that narrower exposure.",
+    "Market-price moves themselves are not used as causal news evidence."
   ],
   "reviewed_stories": [
     {
-      "title": "Honda Atlas discontinues BR-V model",
+      "title": "IMAGE FY26 profit softens 13%",
       "assessment": "negative",
       "linkage": "direct",
-      "linkage_detail": "HCAR is Honda Atlas Cars (Pakistan) Limited and the article explicitly identifies PSX:HCAR.",
-      "reason": "Honda Atlas discontinued production of the BR-V. This removes a model from HCAR's active production lineup; the source does not quantify the BR-V's revenue or profit contribution, so magnitude is uncertain.",
-      "source": "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896",
+      "linkage_detail": "Image Pakistan Limited is explicitly identified as PSX: IMAGE and IMAGE is in the configured tracked universe.",
+      "reason": "FY26 consolidated net profit fell 13% to Rs659.59m, EPS fell to Rs2.86, revenue fell 5%, operating profit fell 12% and finance cost rose 42%. The Rs1 per share cash dividend is a cushion but does not offset the operating and financing deterioration.",
+      "source": "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
       "sources": [
-        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+        "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
+        "https://dps.psx.com.pk/company/IMAGE"
       ],
-      "published": "2026-10-01T15:04:00+05:00",
-      "publication_time_status": "Full article verified; Mettis page states October 1, 2026 at 3:04 PM PKT.",
+      "published": "2026-10-06T09:47:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 09:47 AM PKT. PSX company profile independently verifies IMAGE as Image Pakistan Limited.",
       "text_depth": "full",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "hcar-brv-discontinuation"
+      "thread_key": "image-fy26-results"
     },
     {
-      "title": "Local mobile phone assembly down 57% MoM in August",
-      "assessment": "negative",
-      "linkage": "sector",
-      "linkage_detail": "Sector evidence for locally assembled mobile devices, relevant to AIRLINK through its configured Technology/Telecom Devices exposure; not a company-specific AIRLINK result.",
-      "reason": "Pakistan local mobile phone manufacturing and assembly fell 57% month on month in August to 1.66 million units. This is a negative industry activity signal, but it does not establish AIRLINK-specific volumes, margins, or market share.",
-      "source": "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916",
+      "title": "Sazgar brings ARCFOX T5 REEV to Pakistan at Rs10.2m",
+      "assessment": "positive",
+      "linkage": "direct",
+      "linkage_detail": "Sazgar Engineering Works Limited is PSX: SAZEW and SAZEW is in the configured tracked universe.",
+      "reason": "Sazgar launched the ARCFOX T5 REEV with bookings open at Rs10.195m and Rs10.495m and expected delivery in three to four months. The new model broadens SAZEW's premium vehicle offering, but volumes, local-content economics and earnings contribution are not quantified.",
+      "source": "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965",
       "sources": [
-        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+        "https://mettisglobal.news/Sazgar-brings-ARCFOX-T5-REEV-to-Pakistan-at-Rs102m-63965",
+        "https://dps.psx.com.pk/company/SAZEW"
       ],
-      "published": "2026-10-02T10:39:00+05:00",
-      "publication_time_status": "Full article verified; Mettis page states October 2, 2026 at 10:39 AM PKT.",
+      "published": "2026-10-05T14:56:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 5, 2026 02:56 PM PKT. PSX company profile independently verifies SAZEW as Sazgar Engineering Works Limited. The publication was in the prior PSX session, so it is reviewed for context but not placed in the current-session ratings block.",
       "text_depth": "full",
-      "confidence": 0.7,
+      "confidence": 0.55,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-mobile-assembly"
+      "thread_key": "sazew-arcfox-t5-launch"
     },
     {
-      "title": "Pakistan petroleum sales fall 2% YoY in September",
-      "assessment": "negative",
-      "linkage": "sector",
-      "linkage_detail": "Sector evidence for Oil Marketing, including PSO; the accessible committed snippet does not establish a company-specific PSO volume change.",
-      "reason": "Committed source snippet reports September petroleum sales down 2% year on year to 1.35 million tons and OMC sales excluding furnace oil down 8% year on year. The linked article body was not accessible in this run, so this is snippet-level evidence only.",
-      "source": "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september",
-      "sources": [
-        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-      ],
-      "published": "2026-10-02T12:39:36+05:00",
-      "publication_time_status": "Timestamp from the committed raw feed; article body inaccessible during this review.",
-      "text_depth": "headline_snippet",
-      "confidence": 0.65,
-      "provider": "OpenAI",
-      "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-omc-september-sales"
-    },
-    {
-      "title": "Oil jumps 4pc after China suspends fuel exports",
+      "title": "Services exports surge 29pc",
       "assessment": "positive",
       "linkage": "sector",
-      "linkage_detail": "Sector evidence for PSX Oil & Gas Exploration names OGDC, PPL and MARI; not a company-specific operational disclosure.",
-      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter refined-product supply and renewed Middle East risk. Higher crude prices are directionally supportive for upstream producers, but geopolitical volatility and company-specific production mixes limit confidence.",
-      "source": "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports",
+      "linkage_detail": "Sector linkage to configured Technology/IT Exports names, including SYS; the article reports national services and IT export data rather than company-specific SYS results.",
+      "reason": "Pakistan's services exports rose 28.89% year on year in July-August FY27 to $1.81bn, while telecommunications, computer and information services exports rose 17.36% to $811m. This is supportive sector evidence for IT exporters but does not quantify any tracked company's share.",
+      "source": "https://www.dawn.com/news/2035044/services-exports-surge-29pc",
       "sources": [
-        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
+        "https://www.dawn.com/news/2035044/services-exports-surge-29pc"
       ],
-      "published": "2026-10-02T07:40:00+05:00",
-      "publication_time_status": "Full Dawn article verified; published October 2, 2026 at 7:40 AM PKT.",
-      "text_depth": "full_secondary",
-      "confidence": 0.7,
+      "published": "2026-10-06T06:59:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 06:59 AM PKT, before the regular 09:32 PSX session open.",
+      "text_depth": "full",
+      "confidence": 0.8,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-services-it-exports"
+    },
+    {
+      "title": "Oil stays above $100 as Gulf risk offsets strong Middle East exports and emergency stock releases",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Sector linkage to configured Oil & Gas Exploration names OGDC, PPL and MARI; this is a commodity-price and supply-risk story, not a company-specific operating disclosure.",
+      "reason": "This materially updates the existing middle-east-oil-supply-shock thread during the live PSX session. Brent was around $100.47-$100.59. Strong regional exports and G7 emergency stock releases eased immediate scarcity, while continuing Hormuz and Saudi infrastructure risks preserved a geopolitical premium. The balance remains mixed rather than clearly bullish or bearish for upstream producers.",
+      "source": "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
+      "sources": [
+        "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
+        "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
+      ],
+      "published": "2026-10-06T10:59:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified at October 6, 2026 10:59 AM PKT. Full Mettis Global article verified at October 6, 2026 11:18 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.9,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
       "thread_key": "middle-east-oil-supply-shock"
     },
     {
-      "title": "Pakistan-IMF Auto Policy Talks Stall Over Draft Objections",
+      "title": "Power sector losses drag state-owned entities' profits",
       "assessment": "negative",
       "linkage": "sector",
-      "linkage_detail": "Sector policy evidence for configured Auto Assembler names HCAR and SAZEW; not a company-specific disclosure.",
-      "reason": "The committed feed reports that Pakistan-IMF talks on Auto Policy 2026-31 ended without agreement after IMF objections. The article body was inaccessible in this run, so the assessment is based only on the committed headline and snippet and reflects policy uncertainty rather than a quantified earnings effect.",
-      "source": "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/",
+      "linkage_detail": "Sector linkage through the reported Rs374bn increase in power-sector circular debt. The tracked HUBC and KEL are not identified as the loss-making SOEs, so no direct company claim is made.",
+      "reason": "The Ministry of Finance's SOE report says power-sector circular debt increased by Rs374bn because of inefficiencies and poor recoveries, adding system-level financing stress. The evidence is negative for the power-sector backdrop but does not quantify company-specific receivables or earnings for HUBC or KEL.",
+      "source": "https://www.dawn.com/news/2035050/power-sector-losses-drag-state-owned-entities-profits",
       "sources": [
-        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
+        "https://www.dawn.com/news/2035050/power-sector-losses-drag-state-owned-entities-profits"
       ],
-      "published": "2026-10-02T12:51:58+05:00",
-      "publication_time_status": "Timestamp converted from the committed raw feed; article body inaccessible during this review.",
-      "text_depth": "headline_snippet",
-      "confidence": 0.55,
+      "published": "2026-10-06T07:57:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 07:57 AM PKT, before the regular PSX session open.",
+      "text_depth": "full",
+      "confidence": 0.65,
       "provider": "OpenAI",
       "model": "GPT-5.6 Sol",
-      "thread_key": "pakistan-auto-policy-2026-31"
+      "thread_key": "pakistan-power-circular-debt"
+    },
+    {
+      "title": "IMF talks likely to clear way for $1.2bn disbursement",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "Material broad-market macro news, but no direct or sector-specific earnings mechanism is established for a configured tracked stock.",
+      "reason": "This continues the pakistan-imf-review-2026 thread. Pakistan and the IMF are finalising the MEFP after covering substantive review parameters, with no new Fund demands reported beyond makeup adjustments and about $1.2bn potentially moving toward disbursement. Formal completion and Board processing are still pending.",
+      "source": "https://www.dawn.com/news/2035070/imf-talks-likely-to-clear-way-for-12bn-disbursement",
+      "sources": [
+        "https://www.dawn.com/news/2035070/imf-talks-likely-to-clear-way-for-12bn-disbursement"
+      ],
+      "published": "2026-10-06T07:22:00+05:00",
+      "publication_time_status": "Full Dawn article verified. Published October 6, 2026 at 07:22 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-imf-review-2026"
+    },
+    {
+      "title": "Petrol price up 88 paise, HSD down Rs1.88",
+      "assessment": "neutral",
+      "linkage": "sector",
+      "linkage_detail": "Sector linkage to Oil Marketing, including PSO. The article states OMC profit margins remain unchanged and does not quantify company-specific inventory effects.",
+      "reason": "Petrol rose by Rs0.88 per litre while HSD fell by Rs1.88. OMC margins remained unchanged at Rs7.87 per litre, so the routine mixed price revision does not establish a directional earnings change for PSO.",
+      "source": "https://www.brecorder.com/news/40442838/petrol-price-up-88-paise-hsds-down-rs188",
+      "sources": [
+        "https://www.brecorder.com/news/40442838/petrol-price-up-88-paise-hsds-down-rs188"
+      ],
+      "published": "2026-10-06T06:25:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 06:25 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.92,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-fuel-price-revision"
+    },
+    {
+      "title": "Khyber Tobacco swings to Rs1bn loss in FY26",
+      "assessment": "negative",
+      "linkage": "irrelevant",
+      "linkage_detail": "Khyber Tobacco Company Limited is PSX: KHTC, but KHTC is outside the repository's configured tracked universe.",
+      "reason": "FY26 swung to a Rs1.02bn net loss from Rs274.65m profit as gross profit collapsed 92.61% and operating profit turned into a Rs729.63m loss. No tracked rating is created because KHTC is outside the configured universe.",
+      "source": "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982",
+      "sources": [
+        "https://mettisglobal.news/Khyber-Tobacco-swings-to-Rs1bn-loss-in-FY26-63982"
+      ],
+      "published": "2026-10-06T10:21:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 10:21 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.98,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "khtc-fy26-results"
+    },
+    {
+      "title": "PIL moves to implement Crescent Star Foods merger, plans issuance of 7.9bn new shares",
+      "assessment": "neutral",
+      "linkage": "irrelevant",
+      "linkage_detail": "PICIC Insurance Limited is PSX: PIL, but PIL is outside the repository's configured tracked universe.",
+      "reason": "PIL is implementing the court-sanctioned merger of Crescent Star Foods and plans issuance of about 7.9bn new shares. The corporate action is material, but the exchange ratio economics and post-merger earnings impact are not quantified here, so direction cannot be signed confidently.",
+      "source": "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981",
+      "sources": [
+        "https://mettisglobal.news/PIL-moves-to-implement-Crescent-Star-Foods-merger-plans-issuance-of-79bn-new-shares-63981"
+      ],
+      "published": "2026-10-06T10:17:00+05:00",
+      "publication_time_status": "Full Mettis Global article verified at October 6, 2026 10:17 AM PKT.",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pil-crescent-star-foods-merger"
+    },
+    {
+      "title": "Thar Block-II Phase III expands coal supply for Lucky Electric",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "Lucky Electric Power Company is a wholly owned subsidiary of tracked PSX company Lucky Cement Limited (LUCK).",
+      "reason": "Thar Block-II capacity rose from 7.6m to 11.2m tonnes annually and the additional 3.6m tonnes is intended to supply Lucky Electric's 660MW plant, reducing reliance on imported coal. The operational and FX exposure improvement is real, but the shareholder earnings effect is not quantified and fuel-cost pass-through can limit margin benefit, so the stock assessment remains neutral.",
+      "source": "https://www.brecorder.com/news/40442841/thar-coal-phase-iii-expansion-project-inaugurated",
+      "sources": [
+        "https://www.brecorder.com/news/40442841/thar-coal-phase-iii-expansion-project-inaugurated",
+        "https://luckyelectricpower.com/profile/"
+      ],
+      "published": "2026-10-06T05:18:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified at October 6, 2026 05:18 AM PKT. Lucky Electric's official profile verifies it is a subsidiary of Lucky Cement Limited. The raw-linked ProPakistani body was inaccessible, so its exact page timestamp was not used.",
+      "text_depth": "full",
+      "confidence": 0.85,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "luck-thar-coal-substitution"
+    },
+    {
+      "title": "K-Electric withdraws expression of interest for GEPCO privatisation",
+      "assessment": "neutral",
+      "linkage": "direct",
+      "linkage_detail": "K-Electric is tracked PSX symbol KEL and the article explicitly states that K-Electric withdrew its GEPCO expression of interest.",
+      "reason": "K-Electric formally withdrew from the GEPCO privatisation process. The decision is strategically material, but the source gives no reason, purchase economics or expected earnings effect, so a positive or negative shareholder impact cannot be signed responsibly.",
+      "source": "https://www.brecorder.com/news/40442843/gepco-sell-off-nine-parties-pre-qualified-by-pc-board",
+      "sources": [
+        "https://www.brecorder.com/news/40442843/gepco-sell-off-nine-parties-pre-qualified-by-pc-board"
+      ],
+      "published": "2026-10-06T05:18:00+05:00",
+      "publication_time_status": "Full Business Recorder article verified. Published October 6, 2026 at 05:18 AM PKT, before the regular 09:32 PSX session open.",
+      "text_depth": "full",
+      "confidence": 0.9,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "kel-gepco-privatisation"
+    },
+    {
+      "title": "VEON raises Pakistan investment plan to $1.5bn from $1bn",
+      "assessment": "positive",
+      "linkage": "irrelevant",
+      "linkage_detail": "VEON/Jazz is not a configured tracked PSX company. No direct earnings mechanism is established for TELE, SYS or another tracked name.",
+      "reason": "The committed feed reports that VEON increased its planned Pakistan investment over three years to $1.5bn from $1bn, a positive signal for national digital infrastructure and foreign investment. The linked article body was inaccessible in this run, so no tracked-company rating is created from this headline-and-snippet evidence.",
+      "source": "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb",
+      "sources": [
+        "https://www.brecorder.com/news/40442868/global-telecom-operator-veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb"
+      ],
+      "published": "2026-10-06T11:10:50+05:00",
+      "publication_time_status": "Timestamp comes from the fresh committed raw feed. The linked Business Recorder article body was inaccessible, so the page timestamp could not be independently verified.",
+      "text_depth": "headline_snippet",
+      "confidence": 0.7,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "veon-pakistan-investment-2026"
+    },
+    {
+      "title": "Sazgar four-wheeler sales hit 2,474 units in Aug-Sep",
+      "assessment": "positive",
+      "linkage": "direct",
+      "linkage_detail": "The article explicitly identifies Sazgar Engineering Works Limited as PSX: SAZEW and reports company production and sales data filed with PSX.",
+      "reason": "SAZEW sold 2,474 four-wheelers against production of 1,622 units across August and September, indicating inventory absorption and healthy sell-through. The filing does not provide a month-wise split, so the exact sales trend inside the two-month period cannot be established.",
+      "source": "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
+      "sources": [
+        "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
+        "https://dps.psx.com.pk/company/SAZEW"
+      ],
+      "published": "2026-10-06T12:02:00+05:00",
+      "publication_time_status": "Full Mettis article verified; page states October 6, 2026 at 12:02 PM PKT. PSX company page lists the corresponding October 6 production and sales filing.",
+      "text_depth": "full",
+      "confidence": 0.78,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "sazew-vehicle-sales-2026"
+    },
+    {
+      "title": "Sazgar Engineering acquires Rs868m land for future expansion",
+      "assessment": "positive",
+      "linkage": "direct",
+      "linkage_detail": "The article explicitly identifies Sazgar Engineering Works Limited as PSX: SAZEW and describes a company land purchase adjacent to its Three Wheelers Unit.",
+      "reason": "SAZEW purchased about 26.7 kanals of land for roughly Rs867.75 million to meet future business requirements. The acquisition adds expansion optionality, but no project timetable, capacity addition or return estimate is disclosed, so conviction is moderate.",
+      "source": "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988",
+      "sources": [
+        "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988",
+        "https://dps.psx.com.pk/company/SAZEW"
+      ],
+      "published": "2026-10-06T11:52:00+05:00",
+      "publication_time_status": "Full Mettis article verified; page states October 6, 2026 at 11:52 AM PKT. PSX company page lists an October 6 material-information filing.",
+      "text_depth": "full",
+      "confidence": 0.65,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "sazew-capacity-expansion-2026"
+    },
+    {
+      "title": "Govt gives nod to special livestock farms for export push",
+      "assessment": "positive",
+      "linkage": "sector",
+      "linkage_detail": "The policy is relevant to Pakistan meat and livestock exporters. TOMCL is a tracked PSX-listed halal meat processor and exporter, but the story does not name TOMCL and the repository's broad Food sector anchors do not safely route livestock policy to all Food names.",
+      "reason": "The government approved export-oriented livestock farms and directed work on disease control, traceability, internationally certified slaughterhouses and export infrastructure. These measures are supportive for meat exporters if implemented, but no binding company-level benefit or near-term export target is disclosed.",
+      "source": "https://mettisglobal.news/Govt-gives-nod-to-special-livestock-farms-for-export-push-63990",
+      "sources": [
+        "https://mettisglobal.news/Govt-gives-nod-to-special-livestock-farms-for-export-push-63990",
+        "https://tomcl.net/company-profile/",
+        "https://dps.psx.com.pk/company/TOMCL"
+      ],
+      "published": "2026-10-06T12:13:00+05:00",
+      "publication_time_status": "Full Mettis article verified; page states October 6, 2026 at 12:13 PM PKT. TOMCL company and PSX profiles verify its listed meat-processing and export business.",
+      "text_depth": "full",
+      "confidence": 0.65,
+      "provider": "OpenAI",
+      "model": "GPT-5.6 Sol",
+      "thread_key": "pakistan-livestock-meat-export-policy"
     }
   ],
   "ratings": {
-    "HCAR": {
+    "IMAGE": {
       "rating": "negative",
       "causality": "causal",
-      "confidence": 0.85,
+      "confidence": 0.9,
       "horizon": "multi_session",
       "linkage": "direct",
-      "reason": "Honda Atlas discontinued BR-V production. This is a direct HCAR product-line change, although the source does not quantify BR-V earnings contribution.",
-      "relevance": "Direct link: HCAR is Honda Atlas Cars (Pakistan) Limited.",
+      "reason": "FY26 net profit and EPS fell 13%, revenue fell 5%, operating profit fell 12% and finance cost rose 42%; the Rs1 per share dividend only partly cushions the deterioration.",
+      "relevance": "Direct link: IMAGE is Image Pakistan Limited, the PSX-listed company reporting the FY26 result.",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Honda-Atlas-discontinues-BRV-model-63896"
+        "https://mettisglobal.news/IMAGE-FY26-profit-softens-13-63979",
+        "https://dps.psx.com.pk/company/IMAGE"
       ],
       "source_published": [
-        "2026-10-01T15:04:00+05:00"
+        "2026-10-06T09:47:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-01T15:04:00+05:00"
+        "2026-10-06T09:47:00+05:00"
       ],
-      "thread_key": "hcar-brv-discontinuation"
+      "thread_key": "image-fy26-results"
+    },
+    "SAZEW": {
+      "rating": "positive",
+      "causality": "causal",
+      "confidence": 0.75,
+      "horizon": "multi_session",
+      "linkage": "direct",
+      "reason": "SAZEW reported 2,474 four-wheeler sales against 1,622 production across Aug-Sep, showing inventory absorption, and separately bought Rs867.75m of adjacent land for future business needs. The month-wise sales split and expansion returns are not disclosed, limiting conviction.",
+      "relevance": "Direct company evidence: both current-session articles explicitly identify Sazgar Engineering Works Limited as PSX: SAZEW and are tied to PSX filings.",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Sazgar-fourwheeler-sales-hit-2474-units-in-AugSep-63989",
+        "https://mettisglobal.news/Sazgar-Engineering-acquires-Rs868m-land-for-future-expansion-63988",
+        "https://dps.psx.com.pk/company/SAZEW"
+      ],
+      "source_published": [
+        "2026-10-06T12:02:00+05:00",
+        "2026-10-06T11:52:00+05:00"
+      ],
+      "source_published_at": [
+        "2026-10-06T12:02:00+05:00",
+        "2026-10-06T11:52:00+05:00"
+      ],
+      "thread_key": "sazew-current-session-2026-10-06"
     }
   },
   "sectors": {
-    "Technology/Telecom Devices": {
-      "rating": "negative",
-      "causality": "correlated",
-      "confidence": 0.7,
-      "horizon": "single_session",
+    "Oil & Gas Exploration": {
+      "rating": "neutral",
+      "causality": "causal",
+      "confidence": 0.9,
+      "horizon": "multi_session",
       "linkage": "sector",
-      "reason": "Local mobile phone manufacturing and assembly fell 57% MoM in August to 1.66m units. This is an industry activity signal, not an AIRLINK-specific volume or margin disclosure.",
-      "relevance": "Sector link to AIRLINK through the repository's Technology/Telecom Devices classification.",
+      "reason": "Brent remains above $100, but strong Middle East exports and G7 stock releases offset continuing Hormuz and Saudi infrastructure risks; current-session evidence is mixed.",
+      "relevance": "Sector link to configured OGDC, PPL and MARI upstream producers.",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Local-mobile-phone-assembly-down-57-MoM-in-August-63916"
+        "https://www.brecorder.com/news/40442853/oil-gains-as-traders-weigh-gulf-tensions-against-strong-mideast-exports",
+        "https://mettisglobal.news/Oil-stays-above-100-amid-Middle-East-supply-concerns-63984"
       ],
       "source_published": [
-        "2026-10-02T10:39:00+05:00"
+        "2026-10-06T10:59:00+05:00",
+        "2026-10-06T11:18:00+05:00"
       ],
       "source_published_at": [
-        "2026-10-02T10:39:00+05:00"
-      ],
-      "thread_key": "pakistan-mobile-assembly"
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "causality": "causal",
-      "confidence": 0.65,
-      "horizon": "single_session",
-      "linkage": "sector",
-      "reason": "September petroleum sales fell 2% YoY to 1.35m tons and OMC sales excluding furnace oil fell 8% YoY. Evidence was limited to the committed source snippet in this run.",
-      "relevance": "Sector link to Oil Marketing, including PSO; no company-specific PSO change is asserted.",
-      "text_depth": "headline_snippet",
-      "sources": [
-        "https://www.brecorder.com/news/40442339/pakistan-petroleum-sales-fall-2-yoy-in-september"
-      ],
-      "source_published": [
-        "2026-10-02T12:39:36+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-02T12:39:36+05:00"
-      ],
-      "thread_key": "pakistan-omc-september-sales"
-    },
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "causality": "causal",
-      "confidence": 0.7,
-      "horizon": "multi_session",
-      "linkage": "sector",
-      "reason": "December Brent settled at $102.31, up 4.37%, amid tighter product supply and renewed Middle East risk, a directional upstream tailwind subject to geopolitical volatility.",
-      "relevance": "Sector link to OGDC, PPL and MARI as configured PSX hydrocarbon producers.",
-      "text_depth": "full_secondary",
-      "sources": [
-        "https://www.dawn.com/news/2034131/oil-jumps-4pc-after-china-suspends-fuel-exports"
-      ],
-      "source_published": [
-        "2026-10-02T07:40:00+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-02T07:40:00+05:00"
+        "2026-10-06T10:59:00+05:00",
+        "2026-10-06T11:18:00+05:00"
       ],
       "thread_key": "middle-east-oil-supply-shock"
-    },
-    "Auto Assembler": {
-      "rating": "negative",
-      "causality": "correlated",
-      "confidence": 0.55,
-      "horizon": "multi_session",
-      "linkage": "sector",
-      "reason": "Pakistan-IMF talks on Auto Policy 2026-31 reportedly ended without agreement after draft objections, adding policy uncertainty. Evidence is headline/snippet only.",
-      "relevance": "Sector link to configured Auto Assembler names HCAR and SAZEW.",
-      "text_depth": "headline_snippet",
-      "sources": [
-        "https://propakistani.pk/2026/10/02/pakistan-imf-auto-policy-talks-stall-over-draft-objections/"
-      ],
-      "source_published": [
-        "2026-10-02T12:51:58+05:00"
-      ],
-      "source_published_at": [
-        "2026-10-02T12:51:58+05:00"
-      ],
-      "thread_key": "pakistan-auto-policy-2026-31"
     }
   }
 }

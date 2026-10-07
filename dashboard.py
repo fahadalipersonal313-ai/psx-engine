@@ -28,6 +28,7 @@ import database as db
 import data_fetcher
 import backtester
 import news_feed
+news_feed.PREFER_LIVE_RATINGS = True   # see news_feed._read_rating_json
 import momentum
 import target_timing
 
@@ -243,33 +244,6 @@ def analysis_pills(rating_dict):
     if isinstance(conf, (int, float)):
         bits.append(_pill(f"conf {conf:.0%}", "#8aa0c0"))
     return " ".join(bits)
-
-
-_RATING_TEXT = {"highly_positive": "▲▲ highly +ve", "positive": "▲ +ve",
-                "neutral": "● neutral", "negative": "▼ -ve",
-                "highly_negative": "▼▼ highly -ve"}
-_CAUSAL_TEXT = {"causal": "⛓", "correlated": "≈", "noise": "·"}
-
-
-def news_cell(symbol):
-    """Plain-text news read for a dataframe column: rating + causality mark.
-
-    Tables cannot carry HTML, so the pills are compressed to text. "—" means no
-    rating for this symbol, which is NOT the same as neutral news — it means the
-    analyser had nothing in window to judge.
-    """
-    rv = news_feed.glm_rating(symbol)
-    tag = ""
-    if not rv:
-        # Fall back to the SECTOR call, which moves this symbol's score just as
-        # a company call does. Without it a card shows "—" beside a score that
-        # visibly moved. Marked (sec) so it is never read as company news.
-        rv, tag = news_feed.sector_rating(symbol), " (sec)"
-    if not rv:
-        return "—"
-    txt = _RATING_TEXT.get(rv.get("rating"), "?")
-    mark = _CAUSAL_TEXT.get(rv.get("causality"))
-    return f"{txt} {mark}{tag}" if mark else f"{txt}{tag}"
 
 
 def news_line(symbol, reason=True):
@@ -611,7 +585,7 @@ h2,h3{font-size:18px!important;text-shadow:none!important}
 .desk-note{padding:12px 16px;background:#111e30;border:1px solid #2b4058;border-radius:10px;color:#a9bfd4;font-size:13px}
 </style>""", unsafe_allow_html=True)
 st.title("PSX trading desk")
-st.caption("Intraday momentum and swing opportunities · prices, reasons and risk in one view")
+st.caption("Technical swing signals and reviewed news · prices, levels and risk in one view")
 
 
 def tile(col, label, value_html, sub=""):
@@ -655,7 +629,7 @@ st.markdown(
 
 # Staleness banner — louder than the tile, only shown when data is past amber.
 if not _market_live:
-    st.caption("Market closed. Intraday checks resume during trading hours; swing cards show their analysis date.")
+    st.caption("Market closed. Signals always use the last completed session; each card shows its analysis date.")
 elif _stale_level != "fresh":
     # Now a statement about the ENGINE, not about the numbers: it fires when no
     # cycle has completed recently, which is the condition that actually needs
@@ -725,19 +699,17 @@ _db_path, _db_from = (None, "bootstrapped") if os.environ.get("PSX_DB_PATH") els
 if _db_path:
     config.DB_PATH = _db_path   # cache hit on a rerun: re-point this process too
 
-(tab_desk, tab_watch, tab_edge, tab_stock, tab_hist,
- tab_news, tab_reports) = st.tabs(
-    ["Trading desk", "📋 Watchlist", "🧪 Past results", "🔍 Stock detail",
-     "📈 History", "📰 News", "📋 Reports"])
+# 2026-10-07: technical analysis + news review only. The intraday panels, the
+# History and Reports tabs and the short-horizon research panel were retired.
+(tab_desk, tab_watch, tab_edge, tab_stock, tab_news) = st.tabs(
+    ["Trading desk", "📋 Watchlist", "🧪 Past results", "🔍 Stock detail", "📰 News"])
 
 with tab_desk:
-    import intraday_momentum
     import opportunity_cards
     import news_desk
     _raw_news, _raw_where = freshest_news()
     st.markdown(news_desk.desk_html(_raw_news, _raw_where, opportunity_cards.reviewers()),
                 unsafe_allow_html=True)
-    intraday_momentum.show(st, details=False)
     st.subheader("Swing opportunities")
     action = latest[latest["display_signal"].isin(["Strong Buy", "Buy", "Exit"])]
     if action.empty:
@@ -747,30 +719,54 @@ with tab_desk:
     st.caption("Each card lists that stock's own latest headlines (unrated) and the Claude and Codex reviews. Full evidence is in News; trade details are in Stock detail.")
 
 with tab_watch:
-    st.subheader("Latest intraday observations")
-    try:
-        _capture = json.loads(intraday_momentum.PATH.read_text(encoding="utf-8"))
-        _observations = _capture.get("observations", [])
-        st.caption("Captured " + str(_capture.get("checked_at", "unknown")) + " · observations, not independent trade recommendations")
-        if _observations:
-            st.dataframe([{"Stock": r["symbol"], "Captured state": r.get("state"), "Last price": r.get("price"),
-                           "Since open %": r.get("since_open_pct"), "Last 15 min %": r.get("recent_pct"),
-                           "Why": r.get("reason"), "Last trade": r.get("last_trade")} for r in _observations], hide_index=True)
-    except (OSError, ValueError, TypeError):
-        st.caption("No intraday capture available.")
-    st.subheader("Swing watchlist")
-    st.caption("Full ranking — colour-coded. Sort by clicking a column header.")
-    show = latest[["symbol", "final_score", "relative_strength", "signal",
-                   "risk_level", "confidence", "price", "stop_loss", "target1",
-                   "buy_zone_low", "buy_zone_high",
-                   "data_quality", "shariah_status"]].copy()
-    show["buy_zone"] = [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
-                        for lo, hi in zip(show["buy_zone_low"], show["buy_zone_high"])]
-    show = show.drop(columns=["buy_zone_low", "buy_zone_high"])
-    show["news"] = [news_cell(s) for s in show["symbol"]]
-    show.columns = ["Symbol", "Score", "Market strength", "Signal", "Risk", "Quality",
-                    "Price", "Stop", "Target", "Data", "Shariah", "Buy-zone",
-                    "News"]
+    import opportunity_cards
+    import upward_candidates
+    from news_review_panel import LABELS as _NEWS_LABELS
+
+    _reviews = opportunity_cards.reviewers()
+
+    def news_rating_cell(symbol):
+        """Plain-word news rating for the table. Company reviews from Claude
+        and Codex; a reviewer whose file is stale contributes nothing (load()
+        drops it). "Not reviewed" is NOT the same as Neutral news."""
+        said = {}
+        for label, ratings, _meta in _reviews:
+            r = ratings.get(symbol)
+            if r:
+                said.setdefault(_NEWS_LABELS.get(r.get("rating"), "Unrated"), []).append(label)
+        if said:
+            return " / ".join(f"{text} ({' & '.join(who)})" for text, who in said.items())
+        sec = news_feed.sector_rating(symbol)
+        if sec and sec.get("rating") in _NEWS_LABELS:
+            return f"{_NEWS_LABELS[sec['rating']]} (sector)"
+        return "Not reviewed"
+
+    def _col(name, numeric=False):
+        col = latest[name] if name in latest.columns else pd.Series([None] * len(latest), index=latest.index)
+        # Mixed None/float columns would print "None"; coerce so they show "—".
+        return pd.to_numeric(col, errors="coerce") if numeric else col
+
+    st.subheader("Watchlist")
+    st.caption("Every tracked stock from the last completed session. Levels are the engine's "
+               "own technical references, not guaranteed fills. News is for review only and "
+               "never changes the signal. Click a column header to sort.")
+    show = pd.DataFrame({
+        "Stock": latest["symbol"],
+        "Signal": latest["display_signal"],
+        "Last close": _col("price", numeric=True),
+        "Support": _col("support", numeric=True),
+        "Resistance": _col("resistance", numeric=True),
+        "Stop": _col("stop_loss", numeric=True),
+        "Target 1": _col("target1", numeric=True),
+        # Often absent (no second level above resistance). Text, so a missing
+        # value reads "—"; Streamlit draws empty numbers as "None".
+        "Target 2": [f"{v:.2f}" if pd.notna(v) else "—" for v in _col("target2", numeric=True)],
+        "Buy zone": [f"{lo:.2f}–{hi:.2f}" if pd.notna(lo) and pd.notna(hi) else "—"
+                     for lo, hi in zip(_col("buy_zone_low"), _col("buy_zone_high"))],
+        "Score": _col("final_score", numeric=True),
+        "Risk": _col("risk_level"),
+        "News rating": [news_rating_cell(sym) for sym in latest["symbol"]],
+    })
 
     def _sig_css(v):
         c = NEON_SIG.get(v)
@@ -786,23 +782,37 @@ with tab_watch:
         r, g, b = _hex_rgb(c)
         return f"background-color:rgba({r},{g},{b},0.16);color:{c};font-weight:700"
 
+    def _news_css(v):
+        v = str(v)
+        if v.startswith(("Very positive", "Positive")):
+            return f"color:{NEON['green']};font-weight:600"
+        if v.startswith(("Very negative", "Negative")):
+            return f"color:{NEON['red']};font-weight:600"
+        return ""
+
     styled = (show.style
               .map(_sig_css, subset=["Signal"])
               .map(_risk_css, subset=["Risk"])
-              .format({"Score": "{:.1f}", "Market strength": "{:.0f}", "Quality": "{:.0f}",
-                       "Price": "{:.2f}", "Stop": "{:.2f}", "Target": "{:.2f}"},
+              .map(_news_css, subset=["News rating"])
+              .format({c: "{:.2f}" for c in ("Last close", "Support", "Resistance", "Stop",
+                                             "Target 1")} | {"Score": "{:.1f}"},
                       na_rep="—"))
     st.dataframe(styled, width="stretch", hide_index=True, height=560)
 
-    # The two panels the trim orphaned: their functions survived with no caller,
-    # so they rendered nowhere. They belong with the full ranking rather than on
-    # the front page, which is what pushed them off it.
-    st.divider()
-    st.subheader("⚠ High score, but NOT a Buy — here's why")
-    _why_not_buy_section()
-    st.divider()
-    st.subheader("🔭 Early watch — building before the Buy band")
-    _early_watch_section()
+    st.subheader("Stocks with a rising trend")
+    st.caption("Rising 10/20/40-session trends, positive momentum and buying flow, adequate "
+               "volume, valid levels and verified eligibility. Fewer than ten are shown when "
+               "fewer qualify.")
+    _upward = upward_candidates.current()
+    if _upward:
+        st.dataframe(pd.DataFrame(_upward), hide_index=True)
+    else:
+        st.caption("No stocks currently meet every rising-trend check.")
+
+    with st.expander("High score, but not a Buy — why"):
+        _why_not_buy_section()
+    with st.expander("Early watch — money flow building before the Buy band"):
+        _early_watch_section()
 
 with tab_edge:
     import trading_review
@@ -818,8 +828,6 @@ with tab_edge:
         history_view.show(st, res)
 
 with tab_stock:
-    import depth_analysis
-    depth_analysis.show(st)
     sym = st.selectbox("Stock", config.STOCKS)
     r = db.last_run(sym)
     if r:
@@ -838,7 +846,21 @@ with tab_stock:
                  {'risk-on': 'Rising', 'risk-off': 'Falling'}.get(r.get("market_regime"), 'Unknown'))
         # The news read for this symbol, including the story so far when there
         # is one -- silent when this is a first sighting.
-        st.markdown(news_line(sym), unsafe_allow_html=True)
+        # News review: plain ratings from each reviewer. Review only -- news
+        # never changes the signal, and a stale reviewer is named, not shown.
+        import opportunity_cards
+        from news_review_panel import LABELS as _NEWS_LABELS
+        st.markdown("**News review** — for review only; it never changes the signal")
+        for _label, _ratings, _meta in opportunity_cards.reviewers():
+            _r = _ratings.get(sym)
+            if _meta.get("status") != "ok":
+                st.caption(f"{_label}: review out of date")
+            elif not _r:
+                st.caption(f"{_label}: not reviewed")
+            else:
+                _src = next((u for u in _r.get("sources", []) if str(u).startswith("https://")), "")
+                st.markdown(f"**{_label}: {_NEWS_LABELS.get(_r.get('rating'), 'Unrated')}** — "
+                            f"{_r.get('reason', '')}" + (f" · [source]({_src})" if _src else ""))
         try:
             import news_memory
             _thread = news_memory.thread_summary(sym)
@@ -899,22 +921,6 @@ with tab_stock:
             res = bt_symbol(sym, os.stat(config.DB_PATH).st_mtime_ns)
             import history_view
             history_view.show(st, res)
-
-with tab_hist:
-    sym = st.selectbox("Stock ", config.STOCKS, key="hist")
-    hist = pd.DataFrame(db.run_history(sym, 300))
-    if len(hist):
-        hist["run_time"] = pd.to_datetime(hist["run_time"], utc=True, format="mixed")
-        cols = [c for c in ["final_score", "technical_score", "relative_strength"]
-                if c in hist.columns]
-        st.line_chart(hist.set_index("run_time")[cols])
-        st.caption("The score is a guide, not a chance of profit. Older results "
-                   "compare the stock with the market.")
-        st.subheader("Signal history")
-        st.dataframe(hist[["run_time", "signal", "confidence", "price", "outcome"]],
-                     width="stretch", hide_index=True)
-    else:
-        st.info("No run history stored for this stock yet.")
 
 with tab_news:
     import news_review_panel
@@ -997,24 +1003,3 @@ with tab_news:
                         f"{_title}{tag}")
         if _total > 120:
             st.caption(f"Showing the newest 120 of {_total}.")
-
-with tab_reports:
-    import short_horizon_panel
-    short_horizon_panel.show(st)
-    import upward_candidates
-    st.subheader("Stocks with a rising trend")
-    _upward = upward_candidates.current()
-    if _upward:
-        st.dataframe(pd.DataFrame(_upward), hide_index=True)
-    else:
-        st.caption("No stocks currently meet every rising-trend check.")
-    if os.path.isdir(config.REPORT_DIR):
-        files = sorted(os.listdir(config.REPORT_DIR), reverse=True)[:10]
-        pick = st.selectbox("Saved reports", files) if files else None
-        if pick:
-            with open(os.path.join(config.REPORT_DIR, pick), encoding="utf-8") as f:
-                st.markdown(f.read())
-        elif not files:
-            st.info("No reports saved yet.")
-    else:
-        st.info("No reports saved yet.")
