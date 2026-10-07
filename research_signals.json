@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "version": "combined-signal-v1",
-  "evaluated_at": "2026-10-06T10:27:56.330175+00:00",
+  "evaluated_at": "2026-10-07T04:32:51.146959+00:00",
   "market_open": true,
-  "research_current": true,
+  "research_current": false,
   "context_as_of": "2026-10-06T10:05:44Z",
   "context_expires_at": "2026-10-06T11:05:44Z",
   "counts": {
@@ -15,38 +15,42 @@
     {
       "symbol": "PRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Hold; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Research review missing, invalid or expired; Original technical entry screen: Watch; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-        "Original technical entry screen: Hold",
-        "Caution: material research risk"
+        "Research review missing, invalid or expired",
+        "Original technical entry screen: Watch",
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 95.3,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:41.200194+00:00",
+        "price": 94.38,
+        "source_as_of": "2026-10-06T15:49:00+05:00",
+        "fetched_at": "2026-10-07T04:32:35.738733+00:00",
         "source_url": "https://dps.psx.com.pk/company/PRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
-        "signal": "Hold",
+        "signal": "Watch",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "e1b0ae87e6e2b609f82a2d7c037fe8a65f9963280014039c0af620ebfa3feb3d",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.878467+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 52.9 in Hold band 50-60"
+        "snapshot_hash": "b213ef81a24f2f970b7694821892a5f3490cb12f0511e1c90ad7c7d727e6f54d",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.472110+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 70.9 in Watch band 60-70"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -1568,37 +1572,41 @@
     {
       "symbol": "MEBL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: supportive",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 551.6,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:41.216376+00:00",
+        "price": 552.3,
+        "source_as_of": "2026-10-06T15:49:00+05:00",
+        "fetched_at": "2026-10-07T04:32:35.750875+00:00",
         "source_url": "https://dps.psx.com.pk/company/MEBL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "7cdb72e544d3feeca1d03c4ee47eeea8db428f847922b00919cdb66fec7f13ee",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.681486+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+        "snapshot_hash": "efa7ac45c023ca628e35a0f1e7e6fb74cafc16346422aef2a0faef3260b606d0",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.179040+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 51.8 in Hold band 50-60; Hysteresis: score 51.8 only just clears the Hold threshold (50) — held at Avoid until it breaks 52+"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -2913,36 +2921,40 @@
     {
       "symbol": "SYS",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 116.35,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:43.361073+00:00",
+        "price": 116.04,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:38.593982+00:00",
         "source_url": "https://dps.psx.com.pk/company/SYS",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "ac51555ba0aae2126544ded9dcecbd630f1257bf2a1d3f68cc9714c0be75ed97",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.692472+05:00",
+        "snapshot_hash": "44611a0fc2048bf73e9bf4d1b5f047d126906c774d56e8d6bc2ebc095759ef74",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.195579+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
@@ -4231,40 +4243,44 @@
     {
       "symbol": "PSO",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research unavailable: New October 6 AGM notice is listed but its document body is unavailable. Verify current agenda, meeting and entitlement details before a swing assessment; older financial review and calendar evidence are preserved without pretending the new notice was read.; Original technical entry screen: Avoid; News review unavailable; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.; Swing research unavailable: New October 6 AGM notice is listed but its document body is unavailable. Verify current agenda, meeting and entitlement details before a swing assessment; older financial review and calendar evidence are preserved without pretending the new notice was read.; Research review missing, invalid or expired; Original technical entry screen: Hold; News review unavailable; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Fundamentals risk: Fact: FY26 standalone earnings fell while profit attributable to the holding company's owners in consolidated accounts rose. Standalone operating cash flow was negative. Management reported lower trade receivables and finance costs, but circular-debt resolution remains an objective. Group profit must not be substituted into a standalone valuation denominator. Coverage gaps: No verified current LNG settlement timetable or Monday fuel/shipping update.",
         "Swing research unavailable: New October 6 AGM notice is listed but its document body is unavailable. Verify current agenda, meeting and entitlement details before a swing assessment; older financial review and calendar evidence are preserved without pretending the new notice was read.",
-        "Original technical entry screen: Avoid",
+        "Research review missing, invalid or expired",
+        "Original technical entry screen: Hold",
         "News review unavailable",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: cautious",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 351.0,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:43.407403+00:00",
+        "price": 350.03,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:38.760774+00:00",
         "source_url": "https://dps.psx.com.pk/company/PSO",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
-        "signal": "Avoid",
+        "signal": "Hold",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "48c63c8e436ddd4e18a821659fc4f9f9a0dd25f38e80527d1aec3a52d97ff0d1",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.637195+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.9 below 50"
+        "snapshot_hash": "4d0991a2858a3c3a1fbba02dbc115d0b71f2f50497eabbeb68543dbf08fbd68f",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.112533+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 57.9 in Hold band 50-60"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -5669,39 +5685,43 @@
     {
       "symbol": "GAL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Material company event requires a new financial review; Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.; Research review missing, invalid or expired; Original technical entry screen: Avoid; Current financial review unavailable or due; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Unresolved XD/reference-price basis requires a corporate-action audit before a numerical or directional entry assessment. No ex-dividend date is inferred from book closure.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
         "Current financial review unavailable or due",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 499.0,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:45.852134+00:00",
+        "price": 500.26,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:40.382109+00:00",
         "source_url": "https://dps.psx.com.pk/company/GAL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "870711e4b282d488479674e2ad89f9486422b4ed99efc4aa78ba3a6e2cca13f0",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.965753+05:00",
+        "snapshot_hash": "8b95e48a9ddbfc7932d33d6cb87e148298af079337244cada4accd0c85a070e2",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.601005+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
@@ -6972,37 +6992,40 @@
     {
       "symbol": "EFERT",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Watch; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
-        "Original technical entry screen: Watch",
-        "Caution: material research risk"
+        "Research review missing, invalid or expired",
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 193.51,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:45.411226+00:00",
+        "price": 194.03,
+        "source_as_of": "2026-10-06T15:49:00+05:00",
+        "fetched_at": "2026-10-07T04:32:40.746191+00:00",
         "source_url": "https://dps.psx.com.pk/company/EFERT",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
-        "signal": "Watch",
+        "signal": "Buy",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "ecc514c71d8561952eae98a834585f5b628715258bbeba9c3055a27d718c6ba2",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.802172+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 69.3 in Watch band 60-70"
+        "snapshot_hash": "70d2bc2921318ce4fdf3edbf7318eccba6461bf95a133c73a0072b74b2abb584",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.359362+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 85.8 ≥ 80 with technical Strong bullish; Downgraded Strong Buy→Buy: first completed session at this level — needs one more consecutive confirmation; Manual confirmation REQUIRED before placing any order"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -8434,37 +8457,41 @@
     {
       "symbol": "ATRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.; Research review missing, invalid or expired; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: Issuer disclosure coverage remains available. Funding, refining-margin and shipping countercases remain; page access does not override current research or technical gates.",
-        "Caution: material research risk"
+        "Research review missing, invalid or expired",
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: supportive",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 1209.99,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:47.543202+00:00",
+        "price": 1203.92,
+        "source_as_of": "2026-10-06T15:44:00+05:00",
+        "fetched_at": "2026-10-07T04:32:43.451642+00:00",
         "source_url": "https://dps.psx.com.pk/company/ATRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Strong Buy",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "b6b65a4f099e8172a026787ecdf4b50b47e16550c7aea768762a8afe4dd9b3d5",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.889431+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 83.4 ≥ 80 with technical Strong bullish; Manual confirmation REQUIRED before placing any order"
+        "snapshot_hash": "065fdd7d8fbf279de55b9800c2c118fe43b454dc37ba1118ac54157f16e59d0b",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.488230+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 84.2 ≥ 80 with technical Strong bullish; Manual confirmation REQUIRED before placing any order"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -10004,37 +10031,41 @@
     {
       "symbol": "NRL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Research review missing, invalid or expired; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
-        "Caution: material research risk"
+        "Research review missing, invalid or expired",
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: cautious",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 633.0,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:48.009245+00:00",
+        "price": 616.89,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:42.647806+00:00",
         "source_url": "https://dps.psx.com.pk/company/NRL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Buy",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "4da04da8a76ece361a3c16143f44c6e1141080f4b4a7a893ec8327ab8e4f40f6",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.725299+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.7 ≥ 80 with technical Strong bullish; Hysteresis: score 80.7 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
+        "snapshot_hash": "879c5dbaf2bf373f6d502397f7d80b65c460d0408e34193f379a507f1cfb204b",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.244910+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Final score 80.9 ≥ 80 with technical Strong bullish; Hysteresis: score 80.9 only just clears the Strong Buy threshold (80) — held at Buy until it breaks 82+; Manual confirmation REQUIRED before placing any order"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -11556,38 +11587,42 @@
     {
       "symbol": "ASL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: ASL announcement access recovered to a newer session snapshot. Cached issuer risks and wider research gates remain; recovered access is not a new affirmative entry signal.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: cautious",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 16.15,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:49.725584+00:00",
+        "price": 16.09,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:45.520047+00:00",
         "source_url": "https://dps.psx.com.pk/company/ASL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "bc6a0065f8752b340545e6fc414f599d0fb7945368003cbf1db0318246eb1636",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:04.195947+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 36.7 below 50"
+        "snapshot_hash": "7808ebd209dd14c3fc3ee7c53374a1eb51945c3189c2e6bdbb87d4528c48a9cb",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.946332+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 48.3 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -13028,38 +13063,42 @@
     {
       "symbol": "FCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: FCL announcement access recovered to a newer session snapshot. The annual-report comparison gap and proposal/earnings-quality countercase remain; recovered access is not an affirmative entry signal.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: cautious",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 27.09,
-        "source_as_of": "2026-10-06T15:25:00+05:00",
-        "fetched_at": "2026-10-06T10:27:50.581048+00:00",
+        "price": 26.99,
+        "source_as_of": "2026-10-06T15:49:00+05:00",
+        "fetched_at": "2026-10-07T04:32:45.118445+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "1bf2806bf75e3f91a05c09cbbdd600f38a691edb284a18e1154492a9238c73a2",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:04.054200+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 34.2 below 50"
+        "snapshot_hash": "d7c2ba7aa058a09190493da2f8fb14db136b4edab5450959af5109febbaa6ef8",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.733574+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 43.2 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -14617,37 +14656,41 @@
     {
       "symbol": "FCEPL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 135.0,
-        "source_as_of": "2026-10-06T15:25:00+05:00",
-        "fetched_at": "2026-10-06T10:27:51.474462+00:00",
+        "price": 135.03,
+        "source_as_of": "2026-10-06T15:43:00+05:00",
+        "fetched_at": "2026-10-07T04:32:47.109856+00:00",
         "source_url": "https://dps.psx.com.pk/company/FCEPL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "1e613913d156870613836a12ce8b1346238155ebd14996758bc43c46413f6014",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:04.130671+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 27.6 below 50"
+        "snapshot_hash": "4649f3e84a9c1f5979f885684e0d96ff0ffab961a1e3d3a4bbe5f29425745cc9",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.849283+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 42.3 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -15944,38 +15987,42 @@
     {
       "symbol": "CNERGY",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Swing research cautious: Inference: Margin-cap and shipping risks qualify the upgrade catalyst and historical earnings recovery. No current entry clearance or executable plan follows from the technical label alone.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: cautious",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 12.92,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:53.075783+00:00",
+        "price": 12.93,
+        "source_as_of": "2026-10-06T15:49:00+05:00",
+        "fetched_at": "2026-10-07T04:32:47.193720+00:00",
         "source_url": "https://dps.psx.com.pk/company/CNERGY",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "662413b168e3b027eedf3a9b839480248c44da9b2c674f6247fd321ac0bb3b3c",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:04.239468+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+        "snapshot_hash": "10da97896db30860ce1204dc0b3bf6ea1f1d494566128210a1015c99564a472d",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:18.010642+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 35.7 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -17506,39 +17553,43 @@
     {
       "symbol": "THCCL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Original technical entry screen: Avoid; Current financial review unavailable or due; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Material company event requires a new financial review; Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.; Research review missing, invalid or expired; Original technical entry screen: Avoid; Current financial review unavailable or due; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
         "Material company event requires a new financial review",
         "Swing research unavailable: Inference: Missing current annual results prevent a defensible event-driven assessment.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
         "Current financial review unavailable or due",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
       "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
         "price": 70.51,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:53.650023+00:00",
+        "source_as_of": "2026-10-06T15:47:00+05:00",
+        "fetched_at": "2026-10-07T04:32:50.192866+00:00",
         "source_url": "https://dps.psx.com.pk/company/THCCL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "4ed9e321389ee341a33ef5262520dff86f7eefd56962dc18ceaa114bcb546f6f",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:04.174076+05:00",
+        "snapshot_hash": "780344af93d58150b77c0a81d25ff215c8abd247f5f5d35a71e51535c8d13999",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.914080+05:00",
         "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
@@ -19007,37 +19058,41 @@
     {
       "symbol": "FABL",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 93.94,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:55.154798+00:00",
+        "price": 93.53,
+        "source_as_of": "2026-10-06T15:47:00+05:00",
+        "fetched_at": "2026-10-07T04:32:49.066403+00:00",
         "source_url": "https://dps.psx.com.pk/company/FABL",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "70fba86644836451c31811d2cc65b66a020115dd93b270925a92a5ee87f4cf79",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.659552+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 37.9 below 50"
+        "snapshot_hash": "42c23b99510f6b6a2896282642bde38e1d41cdde5ce3ef67de8009420bc8aab0",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.145937+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 49.1 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -20343,37 +20398,41 @@
     {
       "symbol": "OGDC",
       "status": "Blocked",
-      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Original technical entry screen: Avoid; Caution: material research risk",
+      "reason": "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.; Research review missing, invalid or expired; Original technical entry screen: Avoid; No current setup",
       "reasons": [
         "Geopolitical risk: UKMTO warnings and disputed pipeline accounts remain unresolved; present fire status and East-West throughput are not verified. New-to-feed GACA-attributed Reuters reporting describes Monday October 5 airport attacks, not a new Tuesday incident, and does not establish separate refinery/pipeline damage. Intact production-capacity claims and historical/phased IEA-G7 mitigation remain counterpoints, without equating capacity or commitments with actual product flows. Inference: transport/LNG uncertainty remains adverse despite diplomatic engagement. A later Reuters report quotes easing oil at 11:50 PKT, an earlier observation rather than a live final-session price or verified supply delivery.",
+        "Research review missing, invalid or expired",
         "Original technical entry screen: Avoid",
-        "Caution: material research risk"
+        "No current setup"
       ],
-      "swing_state": "Caution: material research risk",
-      "intraday_state": "Unavailable: intraday research not reviewed",
-      "investment_state": "Long-term research: watch",
+      "swing_state": "No current setup",
+      "intraday_state": "Unavailable: no fresh current-session observation",
+      "investment_state": "Unavailable: current financial review required",
       "plan": null,
       "expires_at": null,
       "quote": {
-        "price": 317.37,
-        "source_as_of": "2026-10-06T15:26:00+05:00",
-        "fetched_at": "2026-10-06T10:27:56.207376+00:00",
+        "price": 317.05,
+        "source_as_of": "2026-10-06T15:48:00+05:00",
+        "fetched_at": "2026-10-07T04:32:51.004923+00:00",
         "source_url": "https://dps.psx.com.pk/company/OGDC",
         "market": "REG",
         "quality_flags": [
           "partial_point_observation_not_ohlcv",
-          "source_time_is_quote_update_not_verified_trade_time"
+          "source_time_is_quote_update_not_verified_trade_time",
+          "source_preopen_break_or_after_close",
+          "source_not_current_trading_segment",
+          "stale_source"
         ],
-        "fresh": true
+        "fresh": false
       },
       "technical": {
         "signal": "Avoid",
         "strategy_version": "technical_swing_short_v8",
         "config_hash": "2ddb3360ca67fe8ddd8d33e29849c6a51fcd3e9162d36c992a5096024734f1df",
-        "snapshot_hash": "ffaa1d5924a3976412e0dd3cd3f27f8e525afdebdac58cde9861c9fb93255575",
-        "decision_session": "2026-10-05",
-        "run_time": "2026-10-06T15:18:03.747597+05:00",
-        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Technical breakdown below support"
+        "snapshot_hash": "df9d47ae9043a98bea5bc10ac634bbb456e9f3053f36cc9402b101afc341ffb4",
+        "decision_session": "2026-10-06",
+        "run_time": "2026-10-07T01:45:17.278145+05:00",
+        "reason": "The wider market is falling. This is a warning, not a buying block. Check the stock and your total exposure before adding.; Score 41.5 below 50"
       },
       "research_as_of": "2026-10-06T10:05:44Z",
       "research_expires_at": "2026-10-06T11:05:44Z",
@@ -21689,15 +21748,15 @@
   "errors": [],
   "source_hashes": {
     "context_sha256": "0b9bc0d45b074225a7c6caa8e1a44aa9121277836aac2b84241e0109c2dfc9e9",
-    "technical_sha256": "a7d75da95f77f845feed11550cd91c6748249e0d7079364bd33fd8ae3c7b5616",
-    "quotes_sha256": "dea2f8565854751440c73430e429994de836830883f9a6355fc0a3f06c57313d"
+    "technical_sha256": "54fe35ae6e896d471ee2a7990cc4eb3b02490bf41ee1fd078f36ac940f548ba3",
+    "quotes_sha256": "b510128c5ee823ac4820988abc39d6f9e78ba7c5077d3778e0e75e481c457a27"
   },
-  "checkpoint_id": "e88729f643c132061593d4876bcdbd093577c4df738cfc23ea928ba2d426f6b7",
-  "checkpoint": "research_decisions/2026-10-06/102756-e88729f643c1.json",
-  "recorded_at": "2026-10-06T10:27:56.330175+00:00",
+  "checkpoint_id": "a5cbd45d9d6e15e7635a0f5166686f848b35221f0d4e80af5d7dde51067a0c09",
+  "checkpoint": "research_decisions/2026-10-07/043251-a5cbd45d9d6e.json",
+  "recorded_at": "2026-10-07T04:32:51.146959+00:00",
   "context_error": null,
   "context_sha256": "0b9bc0d45b074225a7c6caa8e1a44aa9121277836aac2b84241e0109c2dfc9e9",
-  "technical_sha256": "a7d75da95f77f845feed11550cd91c6748249e0d7079364bd33fd8ae3c7b5616",
-  "quotes_sha256": "dea2f8565854751440c73430e429994de836830883f9a6355fc0a3f06c57313d",
+  "technical_sha256": "54fe35ae6e896d471ee2a7990cc4eb3b02490bf41ee1fd078f36ac940f548ba3",
+  "quotes_sha256": "b510128c5ee823ac4820988abc39d6f9e78ba7c5077d3778e0e75e481c457a27",
   "usage": "Recorded checkpoint attribution only; recompute current gating from original inputs before showing an active plan"
 }
