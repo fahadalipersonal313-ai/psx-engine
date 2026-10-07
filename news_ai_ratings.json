@@ -1,23 +1,25 @@
 {
- "as_of": "2026-10-07T08:39:03Z",
+ "as_of": "2026-10-07T09:39:47Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 23,
+ "articles_read": 25,
  "read_urls": [
+  "https://mettisglobal.news/Central-govt-debt-surges-by-7-YoY-in-August-64004",
   "https://mettisglobal.news/FM-condemns-DI-Khan-firing-after-2-FBR-personnel-martyred-64014",
   "https://mettisglobal.news/Gold-dips-to-4122-on-firm-dollar-63985",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-63997",
   "https://mettisglobal.news/Gold-slides-ahead-of-US-Fed-minutes-64023",
-  "https://mettisglobal.news/Govt-domestic-debt-liabilities-rise-85-YoY-in-August-64006",
   "https://mettisglobal.news/Govt-retires-Rs261bn-debt-in-a-week-64022",
   "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
   "https://mettisglobal.news/M2-rises-by-Rs120bn-in-a-week-64021",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64009",
+  "https://mettisglobal.news/Muhammad-Aurangzeb-expects-Pakistans-current-account-deficit-at-01-this-year-64032",
   "https://mettisglobal.news/NSS-net-mobilization-rises-12-YoY-64005",
   "https://mettisglobal.news/PSX-rebalances-Alfalah-Consumer-Index-64015",
   "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013",
   "https://mettisglobal.news/Pakistan-Germany-review-GSP-Plus-trade-and-investment-cooperation-64029",
+  "https://mettisglobal.news/Pakistan-breaks-into-worlds-top-five-digital-services-suppliers-World-Bank-64031",
   "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016",
   "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007",
   "https://mettisglobal.news/Qatari-LNG-shipment-heads-to-Pakistan-after-safe-Hormuz-passage-64020",
@@ -35,8 +37,8 @@
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Growth plan: revenue diversification and AI demand; strategy, no numbers",
+   "confidence": 0.4,
+   "reason": "H1 report: backlog, acquisitions performing, AI demand; growth plan, no new number",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SYS-positions-for-future-growth-as-AI-reshapes-demand-64025"
@@ -46,53 +48,68 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Consortium pre-qualified for GEPCO due diligence; early stage, no price",
+   "confidence": 0.35,
+   "reason": "Consortium pre-qualified for GEPCO due diligence; bidding later, early stage",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
-    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   },
   "HUBC": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Consortium pre-qualified for GEPCO due diligence; early stage, no price",
+   "confidence": 0.3,
+   "reason": "Consortium member pre-qualified for GEPCO due diligence; early stage",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
-    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   },
   "KOHC": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Junior partner in GEPCO bid consortium; early stage, no price",
+   "confidence": 0.3,
+   "reason": "Consortium member pre-qualified for GEPCO due diligence; early stage",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
-    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
+    "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017"
    ]
   }
  },
  "sectors": {
-  "Fertilizer": {
+  "Logistics/Ports": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Qatari LNG cargo cleared Hormuz; Pakistan seeking more Oct cargoes, supports port throughput",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Qatari-LNG-shipment-heads-to-Pakistan-after-safe-Hormuz-passage-64020"
+   ]
+  },
+  "Textile": {
    "rating": "negative",
    "horizon": "long_term",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Irsa: 22% lower Rabi water share may dent crop-input demand; indirect",
+   "confidence": 0.3,
+   "reason": "Power loom closures, job losses from cheap Chinese yarn/cloth imports; sector stress",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2035310/power-loom-sector-reels-under-imports-rising-costs"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Routine fortnightly price revision: petrol +Rs1.19, HSD -Rs1.91, offsetting",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016",
-    "https://www.dawn.com/news/2035296/irsa-okays-22pc-lower-water-share-for-rabi"
+    "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007"
    ]
   }
  }
