@@ -14,6 +14,7 @@ import shutil
 import sqlite3
 import tempfile
 import time
+from contextlib import closing
 
 import config
 
@@ -21,17 +22,24 @@ log = logging.getLogger("remote_data")
 
 RAW = "https://raw.githubusercontent.com/fahadalipersonal313-ai/psx-engine/{branch}/{name}"
 _cache = {}
+_cache_nonce = 0
 
 
 def fetch_json(name, branch="main", ttl=300, get=None, timeout=4):
     """Parsed JSON file from `branch`, cached for `ttl` seconds; None on failure."""
     key = (branch, name)
+    now = time.time()
     hit = _cache.get(key)
-    if hit and time.time() - hit[0] < ttl:
+    if hit and 0 <= now - hit[0] < ttl:
         return hit[1]
     try:
         import requests
-        r = (get or requests.get)(RAW.format(branch=branch, name=name), timeout=timeout,
+        # Raw branch URLs can remain cached by intermediaries despite no-cache.
+        # One URL per bounded refresh window retains normal caching while
+        # preventing an older generation from sticking indefinitely.
+        bucket = int(now // max(60, ttl))
+        url = RAW.format(branch=branch, name=name) + f"?psx_refresh={bucket}-{_cache_nonce}"
+        r = (get or requests.get)(url, timeout=timeout,
                                   headers={"Cache-Control": "no-cache"})
         r.raise_for_status()
         data = r.json()
@@ -42,9 +50,16 @@ def fetch_json(name, branch="main", ttl=300, get=None, timeout=4):
     return data
 
 
+def clear_json_cache():
+    """Explicit user refresh; does not alter source timestamps or runtime data."""
+    global _cache_nonce
+    _cache.clear()
+    _cache_nonce = time.time_ns()
+
+
 def _valid_db(path):
     try:
-        with sqlite3.connect(path) as c:
+        with closing(sqlite3.connect(path)) as c:
             ok = c.execute("PRAGMA quick_check").fetchone()[0] == "ok"
             runs = c.execute("SELECT MAX(run_time) FROM runs").fetchone()[0]
         return ok and runs is not None
@@ -54,7 +69,7 @@ def _valid_db(path):
 
 def _latest_run(path):
     try:
-        with sqlite3.connect(path) as c:
+        with closing(sqlite3.connect(path)) as c:
             return c.execute("SELECT MAX(run_time) FROM runs").fetchone()[0] or ""
     except sqlite3.Error:
         return ""
