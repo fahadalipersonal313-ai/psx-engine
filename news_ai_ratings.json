@@ -1,13 +1,10 @@
 {
- "as_of": "2026-10-07T07:39:10Z",
+ "as_of": "2026-10-07T08:39:03Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 23,
  "read_urls": [
-  "https://mettisglobal.news/CCP-approves-Fatima-FertilizerAgritech-transaction-64008",
-  "https://mettisglobal.news/Central-govt-debt-surges-by-7-YoY-in-August-64004",
-  "https://mettisglobal.news/Cnergyico-refines-its-future-with-cleaner-fuels-new-products-and-a-wider-reach-64001",
   "https://mettisglobal.news/FM-condemns-DI-Khan-firing-after-2-FBR-personnel-martyred-64014",
   "https://mettisglobal.news/Gold-dips-to-4122-on-firm-dollar-63985",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-63997",
@@ -18,42 +15,57 @@
   "https://mettisglobal.news/M2-rises-by-Rs120bn-in-a-week-64021",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64009",
   "https://mettisglobal.news/NSS-net-mobilization-rises-12-YoY-64005",
-  "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Hit-the-Gas-63999",
   "https://mettisglobal.news/PSX-rebalances-Alfalah-Consumer-Index-64015",
   "https://mettisglobal.news/PSX-replaces-8-of-10-JS-Momentum-Factor-Index-constituents-in-recomposition-64013",
+  "https://mettisglobal.news/Pakistan-Germany-review-GSP-Plus-trade-and-investment-cooperation-64029",
   "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016",
   "https://mettisglobal.news/Petrol-price-rises-Rs119-diesel-falls-Rs191-from-Oct-7-64007",
   "https://mettisglobal.news/Qatari-LNG-shipment-heads-to-Pakistan-after-safe-Hormuz-passage-64020",
-  "https://mettisglobal.news/RBI-raises-repo-rate-by-25bps-to-55-64019",
   "https://mettisglobal.news/RPL-charts-a-path-of-backward-integration-supplychain-resilience-for-the-road-ahead-64018",
   "https://mettisglobal.news/SE-Fruits-IPO-Will-Underwriters-Have-to-Pick-Up-the-Retail-Gap-64024",
+  "https://mettisglobal.news/SLYT-remains-inactive-with-operations-suspended-since-2018-64028",
   "https://mettisglobal.news/SYS-positions-for-future-growth-as-AI-reshapes-demand-64025",
-  "https://mettisglobal.news/Sitara-Peroxide-eyes-plant-restart-after-debt-repayment-64026"
+  "https://mettisglobal.news/Security-Leasing-Corporation-eyes-revival-as-creditor-talks-near-completion-64027",
+  "https://mettisglobal.news/Sitara-Peroxide-eyes-plant-restart-after-debt-repayment-64026",
+  "https://mettisglobal.news/UBL-targets-sustained-growth-with-branch-digital-and-Islamic-banking-expansion-64030"
  ],
- "count": 5,
+ "count": 4,
  "ratings": {
+  "SYS": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Growth plan: revenue diversification and AI demand; strategy, no numbers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SYS-positions-for-future-growth-as-AI-reshapes-demand-64025"
+   ]
+  },
   "LUCK": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Consortium pre-qualified for GEPCO 51% stake; diversification, early stage",
+   "confidence": 0.4,
+   "reason": "Consortium pre-qualified for GEPCO due diligence; early stage, no price",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
     "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified"
+    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
    ]
   },
   "HUBC": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Consortium pre-qualified for GEPCO 51% stake; power distribution entry, early stage",
+   "confidence": 0.4,
+   "reason": "Consortium pre-qualified for GEPCO due diligence; early stage, no price",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
     "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified"
+    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
    ]
   },
   "KOHC": {
@@ -61,46 +73,26 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Minor consortium partner pre-qualified for GEPCO bid; small relative to size",
+   "reason": "Junior partner in GEPCO bid consortium; early stage, no price",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified",
     "https://mettisglobal.news/Lucky-Cement-consortium-shortlisted-for-GEPCO-privatization-due-diligence-64017",
-    "https://www.brecorder.com/news/40443076/gepco-privatisation-lucky-cement-consortium-pre-qualified"
-   ]
-  },
-  "SYS": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Global revenue diversification, acquisitions and AI-led demand growth plan",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/SYS-positions-for-future-growth-as-AI-reshapes-demand-64025"
-   ]
-  },
-  "CNERGY": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Refinery upgrade, marine fuel/petrochemical diversification plan; no figures",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Cnergyico-refines-its-future-with-cleaner-fuels-new-products-and-a-wider-reach-64001"
+    "https://propakistani.pk/2026/10/07/lucky-cement-hubco-kohat-cement-form-consortium-to-acquire-gepco/"
    ]
   }
  },
  "sectors": {
   "Fertilizer": {
    "rating": "negative",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "IRSA sees 22% Rabi water shortfall, a mild risk to crop and fertilizer demand",
+   "reason": "Irsa: 22% lower Rabi water share may dent crop-input demand; indirect",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016"
+    "https://mettisglobal.news/Pakistan-faces-22-water-shortage-in-upcoming-Rabi-season-64016",
+    "https://www.dawn.com/news/2035296/irsa-okays-22pc-lower-water-share-for-rabi"
    ]
   }
  }
