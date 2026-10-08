@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-08T06:38:40Z",
+ "as_of": "2026-10-08T07:39:23Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -26,11 +26,11 @@
   "https://mettisglobal.news/PSX-Closing-Bell-A-Nudge-in-Green-64041",
   "https://mettisglobal.news/Pakistan-IMF-seal-12bn-stafflevel-deal-64048",
   "https://mettisglobal.news/Pakistan-Poland-agree-to-step-up-cooperation-on-security-intelligence-sharing-64044",
-  "https://mettisglobal.news/Pakistan-Russia-explore-cooperation-in-seeds-crop-protection-64034",
+  "https://mettisglobal.news/Pakistan-UK-eye-investment-partnership-across-healthcare-IT-livestock-minerals-aviation-64060",
   "https://mettisglobal.news/Pakistans-financial-inclusion-index-rises-to-595-in-CY25-64049",
   "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046",
   "https://mettisglobal.news/SE-Fruits-IPO-Will-Underwriters-Have-to-Pick-Up-the-Retail-Gap-64024",
-  "https://mettisglobal.news/SLYT-remains-inactive-with-operations-suspended-since-2018-64028",
+  "https://mettisglobal.news/Suhail-Jute-Mills-struggles-to-sell-land-amid-KP-uncertainties-64061",
   "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053",
   "https://mettisglobal.news/UBL-targets-sustained-growth-with-branch-digital-and-Islamic-banking-expansion-64030"
  ],
@@ -40,8 +40,8 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.3,
-   "reason": "71% stake moves within group (Mauritius to Singapore parent); no control change",
+   "confidence": 0.2,
+   "reason": "Intra-group transfer of 70.73% stake to parent; no change in control or cash flows",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Cnergyico-PKs-70-stake-moves-to-Singapore-entity-64039"
@@ -49,10 +49,10 @@
   },
   "GGL": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Subsidiary G3 REIT Management gets SECP licence; early-stage new fee business",
+   "confidence": 0.4,
+   "reason": "SECP licence for G3 REIT Management opens new fee-income line; early stage, no numbers",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/G3-REIT-Management-secures-SECP-licence-for-REIT-services-64037"
@@ -60,26 +60,19 @@
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Brent above $102 on Iran tensions lifts realisations and E&P earnings outlook",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056"
-   ]
-  },
   "Refinery": {
-   "rating": "neutral",
+   "rating": "positive",
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Higher crude with mixed petrol/HSD price changes; margin effect unclear",
+   "reason": "Brent above $102 and petrol price hike support margins/inventory gains; indirect",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443261/south-korea-shares-on-track-for-second-weekly-decline-as-chipmakers-drag",
+    "https://www.brecorder.com/news/40443252/soybeans-corn-rebound-on-higher-oil-prices-us-harvest-caps-upside",
     "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
+    "https://www.brecorder.com/news/40443233/asia-shares-subdued-bonds-swamped-by-ai-debt-wave",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64047",
     "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
    ]
   },
@@ -87,33 +80,114 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Petrol +Rs1.82, HSD -Rs0.91; offsetting, margin impact unclear",
+   "confidence": 0.25,
+   "reason": "Petrol +Rs1.82, HSD -Rs0.91: mixed pricing, high crude a cost pressure",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443261/south-korea-shares-on-track-for-second-weekly-decline-as-chipmakers-drag",
+    "https://www.brecorder.com/news/40443252/soybeans-corn-rebound-on-higher-oil-prices-us-harvest-caps-upside",
+    "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
+    "https://www.brecorder.com/news/40443233/asia-shares-subdued-bonds-swamped-by-ai-debt-wave",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64047",
     "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.55,
+   "reason": "Brent above $102 on Iran tensions lifts realisations for E&Ps",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40443261/south-korea-shares-on-track-for-second-weekly-decline-as-chipmakers-drag",
+    "https://www.brecorder.com/news/40443252/soybeans-corn-rebound-on-higher-oil-prices-us-harvest-caps-upside",
+    "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
+    "https://www.brecorder.com/news/40443233/asia-shares-subdued-bonds-swamped-by-ai-debt-wave"
    ]
   },
   "Cement": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "PM orders ML-1 upgrade fast-tracked with land approval; distant construction demand",
+   "reason": "PM fast-tracks ML-1 upgrade and construction role in export push; demand plan, early stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042"
+    "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043",
+    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
+    "https://mettisglobal.news/PSX-Closing-Bell-A-Nudge-in-Green-64041",
+    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
    ]
   },
   "Cement/Conglomerate": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "PM orders ML-1 upgrade fast-tracked with land approval; distant construction demand",
+   "reason": "PM fast-tracks ML-1 upgrade and construction role in export push; demand plan, early stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042"
+    "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043",
+    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
+    "https://mettisglobal.news/PSX-Closing-Bell-A-Nudge-in-Green-64041",
+    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
+   ]
+  },
+  "Real Estate": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Housing finance growth and construction named in export vision; policy direction only",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
+    "https://mettisglobal.news/Govt-eyes-Rs2tr-SME-financing-by-2028-64050",
+    "https://www.dawn.com/news/2035521/outstanding-sme-loans-hit-rs1137tr",
+    "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043",
+    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
+    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Financial inclusion index and one bank's growth outlook; no sector-wide repricing",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistans-financial-inclusion-index-rises-to-595-in-CY25-64049",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64047",
+    "https://mettisglobal.news/UBL-targets-sustained-growth-with-branch-digital-and-Islamic-banking-expansion-64030"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Agri finance data and delayed wheat targets; no direct fertilizer mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-UK-eye-investment-partnership-across-healthcare-IT-livestock-minerals-aviation-64060",
+    "https://www.brecorder.com/news/40443252/soybeans-corn-rebound-on-higher-oil-prices-us-harvest-caps-upside",
+    "https://mettisglobal.news/Govt-eyes-Rs2tr-SME-financing-by-2028-64050",
+    "https://www.dawn.com/news/2035523/wheat-output-targets-delayed-till-finalisation-of-price",
+    "https://www.dawn.com/news/2035521/outstanding-sme-loans-hit-rs1137tr",
+    "https://mettisglobal.news/PSX-Closing-Bell-A-Nudge-in-Green-64041"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Petroleum price revision only; no gas tariff or distribution mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
    ]
   },
   "Logistics/Ports": {
@@ -121,11 +195,12 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "MSC reinstates Karachi-Europe direct service; cuts transit time, supports port volumes",
+   "reason": "MSC reinstates direct Karachi-Europe service, supporting port volumes",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Karachi-regains-direct-Europe-shipping-link-64059",
-    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs"
+    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs",
+    "https://www.brecorder.com/news/40443245/qatarenergy-offers-naphtha-for-loading-inside-hormuz-via-tender-traders-say"
    ]
   },
   "Logistics/Transport": {
@@ -133,11 +208,23 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "MSC reinstates Karachi-Europe direct service; eases freight and transit burden",
+   "reason": "Direct Karachi-Europe link restored, easing freight; benefit mostly to ports/shippers",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Karachi-regains-direct-Europe-shipping-link-64059",
-    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs"
+    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs",
+    "https://mettisglobal.news/Cordoba-Logistics-restructures-loan-doubles-CFSL-investment-limit-to-Rs2bn-64038"
+   ]
+  },
+  "Power Generation": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "Disco privatisation push with risk guarantees considered; headline only, distant",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2035520/discos-sell-off-faces-investor-trust-deficit"
    ]
   }
  }
