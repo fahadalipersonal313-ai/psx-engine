@@ -1,21 +1,24 @@
 {
- "as_of": "2026-10-08T05:38:49Z",
+ "as_of": "2026-10-08T06:38:40Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 27,
+ "articles_read": 28,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-fall-as-Fed-rate-hike-signals-lift-yields-64052",
   "https://mettisglobal.news/Cnergyico-PKs-70-stake-moves-to-Singapore-entity-64039",
   "https://mettisglobal.news/Cordoba-Logistics-restructures-loan-doubles-CFSL-investment-limit-to-Rs2bn-64038",
   "https://mettisglobal.news/FNEL-board-asks-consultants-for-implementation-plan-within-a-month-64051",
+  "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
   "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036",
   "https://mettisglobal.news/G3-REIT-Management-secures-SECP-licence-for-REIT-services-64037",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3100-per-tola-64035",
   "https://mettisglobal.news/Gold-slides-ahead-of-US-Fed-minutes-64023",
   "https://mettisglobal.news/Gold-steady-as-dollar-eases-from-18month-high-64055",
   "https://mettisglobal.news/Govt-eyes-Rs2tr-SME-financing-by-2028-64050",
+  "https://mettisglobal.news/Govt-raises-Rs753bn-in-Hybrid-Sukuk-auction-64057",
   "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043",
+  "https://mettisglobal.news/Karachi-regains-direct-Europe-shipping-link-64059",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64047",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64054",
   "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
@@ -27,19 +30,18 @@
   "https://mettisglobal.news/Pakistans-financial-inclusion-index-rises-to-595-in-CY25-64049",
   "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046",
   "https://mettisglobal.news/SE-Fruits-IPO-Will-Underwriters-Have-to-Pick-Up-the-Retail-Gap-64024",
-  "https://mettisglobal.news/SECP-introduces-Passive-Equity-SubFund-under-VPS-from-Jan-2027-64033",
   "https://mettisglobal.news/SLYT-remains-inactive-with-operations-suspended-since-2018-64028",
-  "https://mettisglobal.news/Security-Leasing-Corporation-eyes-revival-as-creditor-talks-near-completion-64027",
   "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053",
   "https://mettisglobal.news/UBL-targets-sustained-growth-with-branch-digital-and-Islamic-banking-expansion-64030"
  ],
+ "count": 2,
  "ratings": {
   "CNERGY": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.3,
-   "reason": "Intra-group transfer of 70.73% stake to Singapore parent; no control change",
+   "reason": "71% stake moves within group (Mauritius to Singapore parent); no control change",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Cnergyico-PKs-70-stake-moves-to-Singapore-entity-64039"
@@ -47,10 +49,10 @@
   },
   "GGL": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Subsidiary G3 REIT Management gets SECP licence; new REIT fee line, early stage",
+   "reason": "Subsidiary G3 REIT Management gets SECP licence; early-stage new fee business",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/G3-REIT-Management-secures-SECP-licence-for-REIT-services-64037"
@@ -62,36 +64,81 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Brent above $102 on Iran/Hormuz supply fears lifts E&P realisations",
+   "confidence": 0.55,
+   "reason": "Brent above $102 on Iran tensions lifts realisations and E&P earnings outlook",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056"
    ]
   },
-  "Cement": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
    "confidence": 0.3,
-   "reason": "ML-1 fast-track, export/construction push and Flying Cement Line-II COD support demand outlook",
+   "reason": "Higher crude with mixed petrol/HSD price changes; margin effect unclear",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
-    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
+    "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
+    "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
    ]
   },
   "Oil Marketing": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Petrol +Rs1.82, HSD -Rs0.91 mixed pricing; high crude adds inventory/working-capital strain",
+   "confidence": 0.3,
+   "reason": "Petrol +Rs1.82, HSD -Rs0.91; offsetting, margin impact unclear",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
    ]
+  },
+  "Cement": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "PM orders ML-1 upgrade fast-tracked with land approval; distant construction demand",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "PM orders ML-1 upgrade fast-tracked with land approval; distant construction demand",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "MSC reinstates Karachi-Europe direct service; cuts transit time, supports port volumes",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Karachi-regains-direct-Europe-shipping-link-64059",
+    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs"
+   ]
+  },
+  "Logistics/Transport": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "MSC reinstates Karachi-Europe direct service; eases freight and transit burden",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Karachi-regains-direct-Europe-shipping-link-64059",
+    "https://www.brecorder.com/news/40443247/msc-restores-karachi-europe-shipping-link-amid-exporter-concerns-over-freight-costs"
+   ]
   }
- },
- "count": 2
+ }
 }
