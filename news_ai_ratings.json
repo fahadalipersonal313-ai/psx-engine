@@ -1,10 +1,11 @@
 {
- "as_of": "2026-10-08T04:39:03Z",
+ "as_of": "2026-10-08T05:38:49Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 27,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-fall-as-Fed-rate-hike-signals-lift-yields-64052",
   "https://mettisglobal.news/Cnergyico-PKs-70-stake-moves-to-Singapore-entity-64039",
   "https://mettisglobal.news/Cordoba-Logistics-restructures-loan-doubles-CFSL-investment-limit-to-Rs2bn-64038",
   "https://mettisglobal.news/FNEL-board-asks-consultants-for-implementation-plan-within-a-month-64051",
@@ -12,9 +13,12 @@
   "https://mettisglobal.news/G3-REIT-Management-secures-SECP-licence-for-REIT-services-64037",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3100-per-tola-64035",
   "https://mettisglobal.news/Gold-slides-ahead-of-US-Fed-minutes-64023",
+  "https://mettisglobal.news/Gold-steady-as-dollar-eases-from-18month-high-64055",
   "https://mettisglobal.news/Govt-eyes-Rs2tr-SME-financing-by-2028-64050",
   "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64047",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64054",
+  "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056",
   "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Nudge-in-Green-64041",
   "https://mettisglobal.news/Pakistan-IMF-seal-12bn-stafflevel-deal-64048",
@@ -22,22 +26,20 @@
   "https://mettisglobal.news/Pakistan-Russia-explore-cooperation-in-seeds-crop-protection-64034",
   "https://mettisglobal.news/Pakistans-financial-inclusion-index-rises-to-595-in-CY25-64049",
   "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046",
-  "https://mettisglobal.news/SBP-raises-Rs377bn-through-PIB-auction-3year-bonds-lead-64045",
   "https://mettisglobal.news/SE-Fruits-IPO-Will-Underwriters-Have-to-Pick-Up-the-Retail-Gap-64024",
   "https://mettisglobal.news/SECP-introduces-Passive-Equity-SubFund-under-VPS-from-Jan-2027-64033",
   "https://mettisglobal.news/SLYT-remains-inactive-with-operations-suspended-since-2018-64028",
   "https://mettisglobal.news/Security-Leasing-Corporation-eyes-revival-as-creditor-talks-near-completion-64027",
-  "https://mettisglobal.news/Sitara-Peroxide-eyes-plant-restart-after-debt-repayment-64026",
+  "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053",
   "https://mettisglobal.news/UBL-targets-sustained-growth-with-branch-digital-and-Islamic-banking-expansion-64030"
  ],
- "count": 2,
  "ratings": {
   "CNERGY": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.3,
-   "reason": "Internal shareholding transfer to Singapore parent; no cash-flow mechanism",
+   "reason": "Intra-group transfer of 70.73% stake to Singapore parent; no control change",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Cnergyico-PKs-70-stake-moves-to-Singapore-entity-64039"
@@ -45,10 +47,10 @@
   },
   "GGL": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Subsidiary G3 REIT Management gets SECP NBFC licence to 2029; early-stage revenue option",
+   "reason": "Subsidiary G3 REIT Management gets SECP licence; new REIT fee line, early stage",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/G3-REIT-Management-secures-SECP-licence-for-REIT-services-64037"
@@ -56,40 +58,27 @@
   }
  },
  "sectors": {
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Brent above $102 on Iran/Hormuz supply fears lifts E&P realisations",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-rises-above-102-as-Iran-tensions-stoke-supply-fears-64056"
+   ]
+  },
   "Cement": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "PM fast-tracks ML-1 with land-backed funding; Flying Cement Line-II COD, dispatches volatile",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
-    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
-   ]
-  },
-  "Cement/Conglomerate": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.45,
-   "reason": "PM fast-tracks ML-1 with land-backed funding; Flying Cement Line-II COD, dispatches volatile",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
-    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
-   ]
-  },
-  "Real Estate": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
    "confidence": 0.3,
-   "reason": "ML-1 land monetisation via commercial projects; exports/construction push, early stage",
+   "reason": "ML-1 fast-track, export/construction push and Flying Cement Line-II COD support demand outlook",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PM-Shehbaz-directs-fasttracking-of-ML1-upgrade-64042",
-    "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-drive-1tr-economy-64043"
+    "https://mettisglobal.news/Flying-Cement-achieves-COD-for-new-LineII-64036"
    ]
   },
   "Oil Marketing": {
@@ -97,22 +86,12 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.35,
-   "reason": "Petrol +Rs1.82, diesel -Rs0.91 from Oct 8; mixed, offsetting price revision",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Mixed product price revision; crude firming on Middle East supply worries",
+   "reason": "Petrol +Rs1.82, HSD -Rs0.91 mixed pricing; high crude adds inventory/working-capital strain",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Petrol-price-rises-Rs182-HSD-falls-Rs091-from-Oct-8-64046"
    ]
   }
- }
+ },
+ "count": 2
 }
