@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-09T06:39:09Z",
+ "as_of": "2026-10-09T07:38:35Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -12,14 +12,14 @@
   "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
   "https://mettisglobal.news/Gold-inches-towards-4180-on-softer-dollar-64084",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs600-per-tola-64066",
+  "https://mettisglobal.news/Gold-steady-as-dollar-eases-from-18month-high-64055",
   "https://mettisglobal.news/Haji-Mohammad-Ismail-Mills-signs-MoU-for-reverse-merger-with-SEGO-Pakistan-64068",
+  "https://mettisglobal.news/Jam-Kamal-pushes-EXIM-Bank-on-exporter-support-64091",
   "https://mettisglobal.news/Khaadi-heads-to-PSX-at-992x-face-value-64070",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64079",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64080",
   "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
   "https://mettisglobal.news/Pakistan-Bahrain-look-to-turn-political-warmth-into-business-64081",
-  "https://mettisglobal.news/Pakistan-Bangladesh-agree-to-deepen-ties-through-parliamentary-engagement-64073",
   "https://mettisglobal.news/Pakistan-Romania-eye-twinning-of-Constanta-and-Karachi-ports-64088",
   "https://mettisglobal.news/Pakistan-seeks-deeper-trade-investment-and-defense-ties-with-Germany-64083",
   "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
@@ -40,58 +40,70 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "SHC ad-interim suspends Nepra tribunal orders on KE MYT FY24-30 review; interim relief, hearing pending",
+   "reason": "SHC ad-interim stay of Nepra tribunal orders on KE multi-year tariff review; relief pending final hearing",
    "text_depth": "full",
    "sources": [
     "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
     "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063"
    ]
   },
-  "DCR": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.6,
-   "reason": "FY26 profit +58.8% to Rs12.69bn, EPU Rs5.70 vs 3.60; reported earnings",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
-   ]
-  },
   "MEBL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
    "confidence": 0.3,
-   "reason": "Routine housing-finance scheme progress update; no new earnings mechanism",
+   "reason": "Rs49bn GHTA housing finance approvals; financing growth, modest earnings effect",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme"
    ]
+  },
+  "DCR": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "FY26 profit +58.8% to Rs12.69bn, EPU +58%; results out",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
+   ]
   }
  },
  "sectors": {
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "KE tariff stay offset by Rs1.11/unit fuel cost pass-through; mostly pass-through",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
+    "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063"
+   ]
+  },
   "Tyre Manufacturing": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "ECC raised additional customs duty on imported tyres; shields local makers' margins, headline only",
+   "reason": "ECC raised additional customs duty on tyre and bike-part imports; protects local producers",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import"
    ]
   },
-  "Oil & Gas Exploration": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
+  "Real Estate": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
    "confidence": 0.3,
-   "reason": "Brent ~$103 easing on US-Iran talk hopes; offsetting weekly gain, no company mechanism",
+   "reason": "Housing finance scheme approvals and REIT profit growth support sentiment",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40443405/oil-falls-over-1-as-trump-comments-on-iran-talks-ease-supply-concerns",
-    "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085"
+    "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme",
+    "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
    ]
   }
  }
