@@ -1,11 +1,10 @@
 {
- "as_of": "2026-10-09T07:38:35Z",
+ "as_of": "2026-10-09T08:38:37Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 27,
+ "articles_read": 26,
  "read_urls": [
-  "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082",
   "https://mettisglobal.news/Bitcoin-finds-its-footing-at-82000-as-Iran-fears-ease-64090",
   "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069",
   "https://mettisglobal.news/ECC-approves-over-Rs39bn-in-supplementary-grants-64077",
@@ -17,6 +16,7 @@
   "https://mettisglobal.news/Jam-Kamal-pushes-EXIM-Bank-on-exporter-support-64091",
   "https://mettisglobal.news/Khaadi-heads-to-PSX-at-992x-face-value-64070",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64079",
+  "https://mettisglobal.news/OMO-Result-SBP-injects-around-Rs11tr-into-Market-64093",
   "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
   "https://mettisglobal.news/Pakistan-Bahrain-look-to-turn-political-warmth-into-business-64081",
@@ -24,14 +24,13 @@
   "https://mettisglobal.news/Pakistan-seeks-deeper-trade-investment-and-defense-ties-with-Germany-64083",
   "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
   "https://mettisglobal.news/QTECH-clears-banking-debt-settles-liabilities-with-BOP-HMB-64064",
-  "https://mettisglobal.news/SBP-reserves-rise-15m-to-21bn-64076",
   "https://mettisglobal.news/SCRA-balance-climbs-Rs2bn-to-nearly-Rs30bn-64075",
-  "https://mettisglobal.news/SECP-CCRA-finalize-regulatory-framework-for-cannabis-sector-64074",
   "https://mettisglobal.news/SECP-registers-5241-new-companies-in-September-total-tops-317000-64089",
   "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
   "https://mettisglobal.news/Suhail-Jute-Mills-struggles-to-sell-land-amid-KP-uncertainties-64061",
   "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053",
-  "https://mettisglobal.news/Trumps-trading-stays-on-the-launchpad-in-August-64087"
+  "https://mettisglobal.news/Trumps-trading-stays-on-the-launchpad-in-August-64087",
+  "https://mettisglobal.news/Weekly-SPI-increases-by-057-64092"
  ],
  "count": 3,
  "ratings": {
@@ -40,22 +39,11 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "SHC ad-interim stay of Nepra tribunal orders on KE multi-year tariff review; relief pending final hearing",
+   "reason": "SHC ad-interim stay of Nepra MYT review orders; relief on tariff, litigation pending",
    "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
-    "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063"
-   ]
-  },
-  "MEBL": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Rs49bn GHTA housing finance approvals; financing growth, modest earnings effect",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme"
+    "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
+    "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review"
    ]
   },
   "DCR": {
@@ -63,47 +51,45 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.7,
-   "reason": "FY26 profit +58.8% to Rs12.69bn, EPU +58%; results out",
+   "reason": "FY26 profit +59% to Rs12.69bn on higher rental income; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
    ]
+  },
+  "MEBL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Rs49bn financing approved under govt GHTA scheme; asset growth, headline only",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme"
+   ]
   }
  },
  "sectors": {
-  "Power Generation": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "KE tariff stay offset by Rs1.11/unit fuel cost pass-through; mostly pass-through",
-   "text_depth": "full",
-   "sources": [
-    "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
-    "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063"
-   ]
-  },
   "Tyre Manufacturing": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "ECC raised additional customs duty on tyre and bike-part imports; protects local producers",
+   "confidence": 0.4,
+   "reason": "ECC raises import duty on tyres/bike parts; protects local makers, headline only",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import"
    ]
   },
-  "Real Estate": {
+  "Logistics/Ports": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Housing finance scheme approvals and REIT profit growth support sentiment",
-   "text_depth": "full",
+   "reason": "Direct Karachi-Europe shipping restored; port volume tailwind, early stage",
+   "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme",
-    "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
+    "https://www.dawn.com/news/2035853/direct-shipping-between-karachi-and-major-european-ports-restored"
    ]
   }
  }
