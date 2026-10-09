@@ -1,20 +1,18 @@
 {
- "as_of": "2026-10-09T05:38:31Z",
+ "as_of": "2026-10-09T06:39:09Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 26,
+ "articles_read": 27,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082",
+  "https://mettisglobal.news/Bitcoin-finds-its-footing-at-82000-as-Iran-fears-ease-64090",
   "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069",
   "https://mettisglobal.news/ECC-approves-over-Rs39bn-in-supplementary-grants-64077",
   "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
   "https://mettisglobal.news/Gold-inches-towards-4180-on-softer-dollar-64084",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs600-per-tola-64066",
-  "https://mettisglobal.news/Gold-steady-as-dollar-eases-from-18month-high-64055",
-  "https://mettisglobal.news/Govt-directs-all-federal-ministries-to-provide-data-on-national-digital-platform-within-stipulated-timeframe-64065",
   "https://mettisglobal.news/Haji-Mohammad-Ismail-Mills-signs-MoU-for-reverse-merger-with-SEGO-Pakistan-64068",
-  "https://mettisglobal.news/IMF-says-phase-out-fuel-relief-promptly-64067",
   "https://mettisglobal.news/Khaadi-heads-to-PSX-at-992x-face-value-64070",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64079",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64080",
@@ -22,23 +20,27 @@
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
   "https://mettisglobal.news/Pakistan-Bahrain-look-to-turn-political-warmth-into-business-64081",
   "https://mettisglobal.news/Pakistan-Bangladesh-agree-to-deepen-ties-through-parliamentary-engagement-64073",
+  "https://mettisglobal.news/Pakistan-Romania-eye-twinning-of-Constanta-and-Karachi-ports-64088",
   "https://mettisglobal.news/Pakistan-seeks-deeper-trade-investment-and-defense-ties-with-Germany-64083",
   "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
   "https://mettisglobal.news/QTECH-clears-banking-debt-settles-liabilities-with-BOP-HMB-64064",
   "https://mettisglobal.news/SBP-reserves-rise-15m-to-21bn-64076",
   "https://mettisglobal.news/SCRA-balance-climbs-Rs2bn-to-nearly-Rs30bn-64075",
   "https://mettisglobal.news/SECP-CCRA-finalize-regulatory-framework-for-cannabis-sector-64074",
+  "https://mettisglobal.news/SECP-registers-5241-new-companies-in-September-total-tops-317000-64089",
   "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
   "https://mettisglobal.news/Suhail-Jute-Mills-struggles-to-sell-land-amid-KP-uncertainties-64061",
+  "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053",
   "https://mettisglobal.news/Trumps-trading-stays-on-the-launchpad-in-August-64087"
  ],
+ "count": 3,
  "ratings": {
   "KEL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "SHC interim stay on Nepra tribunal orders on KE's MYT FY24-30 review; ad-interim, notices issued",
+   "confidence": 0.6,
+   "reason": "SHC ad-interim suspends Nepra tribunal orders on KE MYT FY24-30 review; interim relief, hearing pending",
    "text_depth": "full",
    "sources": [
     "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
@@ -47,13 +49,24 @@
   },
   "DCR": {
    "rating": "positive",
-   "horizon": "single_session",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 profit up 58.8% to Rs12.69bn, EPU Rs5.70 vs 3.60",
+   "confidence": 0.6,
+   "reason": "FY26 profit +58.8% to Rs12.69bn, EPU Rs5.70 vs 3.60; reported earnings",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
+   ]
+  },
+  "MEBL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "Routine housing-finance scheme progress update; no new earnings mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme"
    ]
   }
  },
@@ -62,25 +75,24 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "ECC raised additional customs duty on imported tyres, protecting local makers' margins",
+   "confidence": 0.6,
+   "reason": "ECC raised additional customs duty on imported tyres; shields local makers' margins, headline only",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import",
-    "https://propakistani.pk/2026/10/09/prices-of-imported-tyres-and-bike-parts-set-to-rise/"
+    "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import"
    ]
   },
   "Oil & Gas Exploration": {
-   "rating": "positive",
+   "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent ~$103 on US-Iran tension, though peace hopes cap gains",
+   "reason": "Brent ~$103 easing on US-Iran talk hopes; offsetting weekly gain, no company mechanism",
    "text_depth": "full",
    "sources": [
+    "https://www.brecorder.com/news/40443405/oil-falls-over-1-as-trump-comments-on-iran-talks-ease-supply-concerns",
     "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085"
    ]
   }
- },
- "count": 2
+ }
 }
