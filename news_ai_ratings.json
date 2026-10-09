@@ -1,14 +1,15 @@
 {
- "as_of": "2026-10-09T04:38:38Z",
+ "as_of": "2026-10-09T05:38:31Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 26,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082",
   "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069",
   "https://mettisglobal.news/ECC-approves-over-Rs39bn-in-supplementary-grants-64077",
   "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
+  "https://mettisglobal.news/Gold-inches-towards-4180-on-softer-dollar-64084",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs600-per-tola-64066",
   "https://mettisglobal.news/Gold-steady-as-dollar-eases-from-18month-high-64055",
   "https://mettisglobal.news/Govt-directs-all-federal-ministries-to-provide-data-on-national-digital-platform-within-stipulated-timeframe-64065",
@@ -17,10 +18,11 @@
   "https://mettisglobal.news/Khaadi-heads-to-PSX-at-992x-face-value-64070",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64079",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64080",
+  "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
   "https://mettisglobal.news/Pakistan-Bahrain-look-to-turn-political-warmth-into-business-64081",
   "https://mettisglobal.news/Pakistan-Bangladesh-agree-to-deepen-ties-through-parliamentary-engagement-64073",
-  "https://mettisglobal.news/Pakistan-reaffirms-commitment-to-UN-Charter-and-multilateralism-64062",
+  "https://mettisglobal.news/Pakistan-seeks-deeper-trade-investment-and-defense-ties-with-Germany-64083",
   "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
   "https://mettisglobal.news/QTECH-clears-banking-debt-settles-liabilities-with-BOP-HMB-64064",
   "https://mettisglobal.news/SBP-reserves-rise-15m-to-21bn-64076",
@@ -28,16 +30,15 @@
   "https://mettisglobal.news/SECP-CCRA-finalize-regulatory-framework-for-cannabis-sector-64074",
   "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
   "https://mettisglobal.news/Suhail-Jute-Mills-struggles-to-sell-land-amid-KP-uncertainties-64061",
-  "https://mettisglobal.news/TPL-Insurance-officially-renamed-JazzSure-Insurance-64053"
+  "https://mettisglobal.news/Trumps-trading-stays-on-the-launchpad-in-August-64087"
  ],
- "count": 2,
  "ratings": {
   "KEL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.55,
-   "reason": "SHC suspends Nepra tariff-review orders on MYT FY24-30 (interim, appeal pending)",
+   "confidence": 0.5,
+   "reason": "SHC interim stay on Nepra tribunal orders on KE's MYT FY24-30 review; ad-interim, notices issued",
    "text_depth": "full",
    "sources": [
     "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
@@ -48,8 +49,8 @@
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "FY26 profit +59% to Rs12.69bn, EPU Rs5.70 vs 3.60; earnings out",
+   "confidence": 0.7,
+   "reason": "FY26 profit up 58.8% to Rs12.69bn, EPU Rs5.70 vs 3.60",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
@@ -57,64 +58,29 @@
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Brent ~$103 lifts E&P realisations; IMF push to end fuel relief a minor offset",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/IMF-says-phase-out-fuel-relief-promptly-64067",
-    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
-    "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082"
-   ]
-  },
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Higher crude and product price revisions; margin effect indirect",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
-    "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Petrol +Rs2.31, HSD +Rs0.78 pass-through; margins unchanged, volume risk",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
-    "https://mettisglobal.news/Asian-markets-tumble-oil-surges-tech-stocks-slide-64082"
-   ]
-  },
   "Tyre Manufacturing": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.55,
-   "reason": "ECC raises additional customs duty on imported tyres and bike parts",
+   "confidence": 0.5,
+   "reason": "ECC raised additional customs duty on imported tyres, protecting local makers' margins",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import"
+    "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import",
+    "https://propakistani.pk/2026/10/09/prices-of-imported-tyres-and-bike-parts-set-to-rise/"
    ]
   },
-  "Logistics/Ports": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Direct Karachi-Europe shipping restored; modest port volume upside",
-   "text_depth": "headline",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Brent ~$103 on US-Iran tension, though peace hopes cap gains",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2035853/direct-shipping-between-karachi-and-major-european-ports-restored"
+    "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085"
    ]
   }
- }
+ },
+ "count": 2
 }
