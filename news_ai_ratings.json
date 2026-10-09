@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-09T08:38:37Z",
+ "as_of": "2026-10-09T09:38:54Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -38,8 +38,8 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "SHC ad-interim stay of Nepra MYT review orders; relief on tariff, litigation pending",
+   "confidence": 0.5,
+   "reason": "SHC interim stay of Nepra MYT review orders K-Electric appealed; relief pending final ruling",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
@@ -48,10 +48,10 @@
   },
   "DCR": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 profit +59% to Rs12.69bn on higher rental income; results out",
+   "confidence": 0.65,
+   "reason": "FY26 profit +58.76% to Rs12.69bn, EPU Rs5.70 vs 3.60; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
@@ -61,8 +61,8 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Rs49bn financing approved under govt GHTA scheme; asset growth, headline only",
+   "confidence": 0.3,
+   "reason": "Rs49bn financing approved under govt GHTA scheme; headline only, loan growth",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443415/meezan-bank-approves-rs49bn-in-financing-under-govts-ghta-scheme"
@@ -83,10 +83,10 @@
   },
   "Logistics/Ports": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Direct Karachi-Europe shipping restored; port volume tailwind, early stage",
+   "reason": "Direct Karachi-Europe shipping restored; port volumes/freight, headline only",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2035853/direct-shipping-between-karachi-and-major-european-ports-restored"
