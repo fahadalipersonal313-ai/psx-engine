@@ -1,23 +1,42 @@
 {
- "as_of": "2026-10-12T04:38:16Z",
+ "as_of": "2026-10-12T05:39:05Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 1,
+ "articles_read": 9,
  "read_urls": [
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
+  "https://mettisglobal.news/Asian-markets-trade-mixed-amid-Middle-East-tensions-earnings-outlook-64115",
+  "https://mettisglobal.news/EV-boom-gives-Rawalpindi-Islamabad-a-charge-64116",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64113",
+  "https://mettisglobal.news/Pakistan-to-hold-60-global-engagements-at-World-BankIMF-meetings-64118",
+  "https://mettisglobal.news/Pakistan-urged-to-tap-Middle-East-Markets-to-boost-exports-64121",
+  "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
+  "https://mettisglobal.news/SPL-rebounds-to-Rs147m-profit-in-FY26-64114",
+  "https://mettisglobal.news/Sindh-eyes-9m-climateresilient-floating-agriculture-project-by-2029-64119"
  ],
- "count": 1,
+ "count": 2,
  "ratings": {
   "KEL": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "KE may need last-resort evening load management on RLNG shortfall; contingent, no number",
+   "confidence": 0.35,
+   "reason": "Possible peak-hour load management on RLNG shortfall; last-resort, cuts supply",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
+   ]
+  },
+  "PRL": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Chairman resignation; governance uncertainty, no stated cause",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/12/prl-chairman-tariq-kirmani-resigns/"
    ]
   }
  },
@@ -26,8 +45,8 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Industry warns of steep Oct-Dec export decline; hits volumes and earnings outlook",
+   "confidence": 0.4,
+   "reason": "Industry warns of steep Oct-Dec export decline",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
@@ -37,33 +56,34 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Textile makers warn of steep Oct-Dec export decline; weaker downstream demand",
+   "confidence": 0.35,
+   "reason": "Industry warns of steep Oct-Dec export decline",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
    ]
   },
-  "Oil & Gas Exploration": {
+  "Power Generation": {
    "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
+   "horizon": "multi_session",
+   "causality": "causal",
    "confidence": 0.25,
-   "reason": "Crude easing on Russia-Ukraine energy ceasefire hopes; price drift, no company mechanism",
+   "reason": "Tariff burden opposed and coal-deal limit contested; policy pending",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
+    "https://www.dawn.com/news/2036506/rs268bn-power-tariff-burden-on-consumers-opposed",
+    "https://propakistani.pk/2026/10/12/chinese-ipp-opposes-one-year-limit-on-coal-deals/"
    ]
   },
-  "Power Generation": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.2,
-   "reason": "Rs268bn tariff burden opposed by consumers; opposition only, no decision",
-   "text_depth": "headline",
+  "Gas Distribution": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Nationwide RLNG constraint from delayed cargoes",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2036506/rs268bn-power-tariff-burden-on-consumers-opposed"
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
    ]
   }
  }
