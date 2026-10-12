@@ -1,106 +1,69 @@
 {
- "as_of": "2026-10-09T10:39:03Z",
+ "as_of": "2026-10-12T04:38:16Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 1,
  "read_urls": [
-  "https://mettisglobal.news/Bitcoin-finds-its-footing-at-82000-as-Iran-fears-ease-64090",
-  "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069",
-  "https://mettisglobal.news/First-Capital-Equities-in-talks-with-creditors-on-favorable-terms-64058",
-  "https://mettisglobal.news/Gold-inches-towards-4180-on-softer-dollar-64084",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs5900-per-tola-64095",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs600-per-tola-64066",
-  "https://mettisglobal.news/Haji-Mohammad-Ismail-Mills-signs-MoU-for-reverse-merger-with-SEGO-Pakistan-64068",
-  "https://mettisglobal.news/Jam-Kamal-pushes-EXIM-Bank-on-exporter-support-64091",
-  "https://mettisglobal.news/Khaadi-heads-to-PSX-at-992x-face-value-64070",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64079",
-  "https://mettisglobal.news/OMO-Result-SBP-injects-around-Rs11tr-into-Market-64093",
-  "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085",
-  "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Under-Siege-64071",
-  "https://mettisglobal.news/Pakistan-Bahrain-look-to-turn-political-warmth-into-business-64081",
-  "https://mettisglobal.news/Pakistan-Ethiopia-discuss-education-cooperation-framework-draft-MoU-in-focus-64094",
-  "https://mettisglobal.news/Pakistan-Romania-eye-twinning-of-Constanta-and-Karachi-ports-64088",
-  "https://mettisglobal.news/Pakistan-seeks-deeper-trade-investment-and-defense-ties-with-Germany-64083",
-  "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078",
-  "https://mettisglobal.news/QTECH-clears-banking-debt-settles-liabilities-with-BOP-HMB-64064",
-  "https://mettisglobal.news/SCRA-balance-climbs-Rs2bn-to-nearly-Rs30bn-64075",
-  "https://mettisglobal.news/SECP-registers-5241-new-companies-in-September-total-tops-317000-64089",
-  "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063",
-  "https://mettisglobal.news/Suhail-Jute-Mills-struggles-to-sell-land-amid-KP-uncertainties-64061",
-  "https://mettisglobal.news/Trumps-trading-stays-on-the-launchpad-in-August-64087",
-  "https://mettisglobal.news/Weekly-SPI-increases-by-057-64092"
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
  ],
- "count": 2,
+ "count": 1,
  "ratings": {
   "KEL": {
-   "rating": "positive",
-   "horizon": "multi_session",
+   "rating": "negative",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "SHC ad-interim stay of NEPRA MYT review orders removes near-term tariff cut risk; interim only",
+   "confidence": 0.3,
+   "reason": "KE may need last-resort evening load management on RLNG shortfall; contingent, no number",
    "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2035828/sindh-high-court-suspends-nepra-orders-on-k-electric-tariff-review",
-    "https://mettisglobal.news/SHC-suspends-orders-challenged-by-KElectric-in-tariff-appeals-64063"
-   ]
-  },
-  "DCR": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.7,
-   "reason": "FY26 profit +59% to Rs12.69bn, EPU Rs5.70 on rental income +11.5% and lower costs",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Dolmen-City-REIT-profit-jumps-59-to-nearly-Rs13bn-in-FY26-64069"
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
    ]
   }
  },
  "sectors": {
-  "Tyre Manufacturing": {
-   "rating": "positive",
+  "Textile": {
+   "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "ECC raises import duty on tyres/bike parts; protects local makers, headline only",
+   "confidence": 0.5,
+   "reason": "Industry warns of steep Oct-Dec export decline; hits volumes and earnings outlook",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2035830/economic-coordination-committee-raises-duty-on-tyre-bike-parts-import"
+    "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Petrol +Rs2.31, HSD +Rs0.78 is routine pass-through pricing; no margin change",
-   "text_depth": "full",
+  "Textile/Synthetic Fibre": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Textile makers warn of steep Oct-Dec export decline; weaker downstream demand",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Brent slips on US-Iran peace hopes; drift, no mechanism for refining margins",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085",
-    "https://mettisglobal.news/Petrol-price-jumps-Rs231-HSD-rises-Rs078-from-Oct-9-64078"
+    "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
    ]
   },
   "Oil & Gas Exploration": {
-   "rating": "neutral",
+   "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Oil eases on peace hopes while Brent still up on week; no E&P cash-flow mechanism",
-   "text_depth": "full",
+   "confidence": 0.25,
+   "reason": "Crude easing on Russia-Ukraine energy ceasefire hopes; price drift, no company mechanism",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Oil-prices-slip-on-USIran-peace-hopes-Brent-set-for-weekly-gain-64085"
+    "https://www.brecorder.com/news/40443764/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies"
+   ]
+  },
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Rs268bn tariff burden opposed by consumers; opposition only, no decision",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2036506/rs268bn-power-tariff-burden-on-consumers-opposed"
    ]
   }
  }
