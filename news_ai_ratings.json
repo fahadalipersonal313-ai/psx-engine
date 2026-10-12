@@ -1,18 +1,18 @@
 {
- "as_of": "2026-10-12T08:39:15Z",
+ "as_of": "2026-10-12T09:39:13Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
  "articles_read": 17,
  "read_urls": [
   "https://mettisglobal.news/Dutch-delegation-finds-Pakistan-a-treat-for-trade-and-investment-64129",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs2100-per-tola-64133",
   "https://mettisglobal.news/Gold-trades-at-4185-on-softer-dollar-cheaper-oil-64123",
   "https://mettisglobal.news/Khaadi-Pakistan-gets-initial-longterm-AA-rating-as-it-readies-for-IPO-64127",
-  "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125",
   "https://mettisglobal.news/Pakistan-China-to-take-CPEC-beyond-infrastructure-64131",
   "https://mettisglobal.news/Pakistan-backs-V20-climate-finance-agenda-64132",
+  "https://mettisglobal.news/Pakistan-makes-2D-barcodes-mandatory-to-curb-counterfeit-medicines-64134",
   "https://mettisglobal.news/Pakistan-targets-over-4-growth-1bn-from-privatization-Muhammad-Aurangzeb-64126",
-  "https://mettisglobal.news/Pakistan-to-hold-60-global-engagements-at-World-BankIMF-meetings-64118",
   "https://mettisglobal.news/Pakistan-urged-to-tap-Middle-East-Markets-to-boost-exports-64121",
   "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130",
   "https://mettisglobal.news/SBP-targets-to-raise-Rs575tr-through-Tbills-PIBs-in-OctDec-2026-64128",
@@ -23,109 +23,74 @@
   "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124",
   "https://mettisglobal.news/World-Bank-mobilizes-32bn-in-private-capital-for-Pakistan-since-2022-64122"
  ],
- "count": 1,
  "ratings": {
   "PRL": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.2,
-   "reason": "Independent chairman resigns on health grounds; routine board change, no cash-flow mechanism",
+   "reason": "Chairman resigns on health grounds; no cash-flow mechanism stated",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443780/tariq-kirmani-steps-down-as-prl-chairman-on-health-grounds"
    ]
   }
  },
+ "count": 1,
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent above $105 easing on ceasefire hopes trims E&P price tailwind; Indus seismic is distant",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions",
-    "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125"
-   ]
-  },
   "Refinery": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Govt urges refiners to import Libyan crude; supply diversification, early-stage",
+   "reason": "Govt urges refiners to import Libyan crude; supply diversification, early stage",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Falling crude cuts inventory value but eases import cost; offsetting",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125"
-   ]
-  },
-  "Real Estate": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "SBP amends housing-finance rules to simplify documentation, easing mortgage origination",
-   "text_depth": "full",
+   "confidence": 0.3,
+   "reason": "Turkish seismic vessel due next month for Indus Basin data; early-stage exploration",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Rs5.75tr T-bill/PIB target and housing-finance easing roughly offset; fines routine",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130",
-    "https://mettisglobal.news/SBP-targets-to-raise-Rs575tr-through-Tbills-PIBs-in-OctDec-2026-64128"
+    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
    ]
   },
   "Textile": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "PTEA warns of steep Oct-Dec export fall on weak demand, freight, costs; seeks drawback",
+   "confidence": 0.5,
+   "reason": "PTEA warns of steep Oct-Dec export decline: weak demand, freight, costs",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
    ]
   },
-  "Textile/Synthetic Fibre": {
-   "rating": "negative",
+  "Real Estate": {
+   "rating": "positive",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Exporter warning of weaker Oct-Dec orders implies lower fibre demand",
-   "text_depth": "headline",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "SBP simplifies housing finance documentation, easing access to mortgages",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
+    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130"
    ]
   },
-  "Power Generation": {
+  "Pharmaceuticals": {
    "rating": "neutral",
    "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "FPCCI opposes Rs268bn tariff claims; Nepra decision pending, direction unclear",
-   "text_depth": "headline",
+   "causality": "causal",
+   "confidence": 0.25,
+   "reason": "Mandatory 2D barcodes add compliance cost but curb counterfeits; mixed",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2036506/rs268bn-power-tariff-burden-on-consumers-opposed"
+    "https://mettisglobal.news/Pakistan-makes-2D-barcodes-mandatory-to-curb-counterfeit-medicines-64134"
    ]
   }
  }
