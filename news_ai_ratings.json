@@ -1,16 +1,16 @@
 {
- "as_of": "2026-10-12T07:38:36Z",
+ "as_of": "2026-10-12T08:39:15Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 16,
+ "articles_read": 17,
  "read_urls": [
   "https://mettisglobal.news/Dutch-delegation-finds-Pakistan-a-treat-for-trade-and-investment-64129",
-  "https://mettisglobal.news/EV-boom-gives-Rawalpindi-Islamabad-a-charge-64116",
   "https://mettisglobal.news/Gold-trades-at-4185-on-softer-dollar-cheaper-oil-64123",
   "https://mettisglobal.news/Khaadi-Pakistan-gets-initial-longterm-AA-rating-as-it-readies-for-IPO-64127",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112",
   "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125",
+  "https://mettisglobal.news/Pakistan-China-to-take-CPEC-beyond-infrastructure-64131",
+  "https://mettisglobal.news/Pakistan-backs-V20-climate-finance-agenda-64132",
   "https://mettisglobal.news/Pakistan-targets-over-4-growth-1bn-from-privatization-Muhammad-Aurangzeb-64126",
   "https://mettisglobal.news/Pakistan-to-hold-60-global-engagements-at-World-BankIMF-meetings-64118",
   "https://mettisglobal.news/Pakistan-urged-to-tap-Middle-East-Markets-to-boost-exports-64121",
@@ -19,28 +19,18 @@
   "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
   "https://mettisglobal.news/SPL-rebounds-to-Rs147m-profit-in-FY26-64114",
   "https://mettisglobal.news/Sindh-eyes-9m-climateresilient-floating-agriculture-project-by-2029-64119",
+  "https://mettisglobal.news/Small-traders-demand-special-relief-in-power-bills-64120",
   "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124",
   "https://mettisglobal.news/World-Bank-mobilizes-32bn-in-private-capital-for-Pakistan-since-2022-64122"
  ],
- "count": 2,
+ "count": 1,
  "ratings": {
-  "KEL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Possible last-resort load management on RLNG shortage; unscheduled, only if necessitated",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
-   ]
-  },
   "PRL": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.2,
-   "reason": "Independent chairman resigned on health grounds; routine board change, no cash-flow mechanism",
+   "reason": "Independent chairman resigns on health grounds; routine board change, no cash-flow mechanism",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443780/tariq-kirmani-steps-down-as-prl-chairman-on-health-grounds"
@@ -49,15 +39,15 @@
  },
  "sectors": {
   "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Brent above $105 supports realisations; Turkish seismic vessel to start Indus Basin data work next month",
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Brent above $105 easing on ceasefire hopes trims E&P price tailwind; Indus seismic is distant",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125",
-    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
+    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions",
+    "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125"
    ]
   },
   "Refinery": {
@@ -65,18 +55,52 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Govt encourages Libyan crude imports to diversify supply; high oil prices, supply risk persists",
+   "reason": "Govt urges refiners to import Libyan crude; supply diversification, early-stage",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Falling crude cuts inventory value but eases import cost; offsetting",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-on-supply-hopes-trades-above-105-64125"
+   ]
+  },
+  "Real Estate": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.45,
+   "reason": "SBP amends housing-finance rules to simplify documentation, easing mortgage origination",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Rs5.75tr T-bill/PIB target and housing-finance easing roughly offset; fines routine",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130",
+    "https://mettisglobal.news/SBP-targets-to-raise-Rs575tr-through-Tbills-PIBs-in-OctDec-2026-64128"
    ]
   },
   "Textile": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "PTEA warns of steep Oct-Dec export decline: weak demand, freight, costs; relief asks unmet",
+   "confidence": 0.4,
+   "reason": "PTEA warns of steep Oct-Dec export fall on weak demand, freight, costs; seeks drawback",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
@@ -85,34 +109,23 @@
   "Textile/Synthetic Fibre": {
    "rating": "negative",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Exporters warn of steep Oct-Dec export decline on weak Western demand and rising costs",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Exporter warning of weaker Oct-Dec orders implies lower fibre demand",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
    ]
   },
-  "Real Estate": {
-   "rating": "positive",
+  "Power Generation": {
+   "rating": "neutral",
    "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "SBP simplifies housing finance title-document rules, easing bank lending to home buyers",
-   "text_depth": "full",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "FPCCI opposes Rs268bn tariff claims; Nepra decision pending, direction unclear",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Nationwide RLNG constraint from delayed cargoes may curtail supply; low-confidence, early stage",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64112"
+    "https://www.dawn.com/news/2036506/rs268bn-power-tariff-burden-on-consumers-opposed"
    ]
   }
  }
