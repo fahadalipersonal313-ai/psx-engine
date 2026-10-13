@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-13T08:46:17Z",
+ "as_of": "2026-10-13T09:48:14Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
   "https://mettisglobal.news/Crescent-Star-Insurance-enters-technology-space-as-CST-begins-operations-64163",
@@ -28,42 +28,54 @@
   "https://mettisglobal.news/Pakistan-seeks-unified-population-strategy-to-boost-jobs-human-capital-64160",
   "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
   "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
+  "https://mettisglobal.news/SECP-issues-TFS-guidebook-warns-of-fines-up-to-Rs100m-64165",
   "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124"
  ],
  "count": 0,
  "ratings": {},
  "sectors": {
-  "Auto Assembler": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.6,
-   "reason": "PAMA: Sept car sales -9.8% YoY, -20.3% MoM, second straight monthly drop",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164"
-   ]
-  },
   "Refinery": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Finance minister and Saudi Fund discussed refinery upgrade investment; early stage, no figure",
+   "reason": "Saudi Fund for Development discussing refinery upgrade financing; early-stage, no figure",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-Saudi-Fund-discuss-refinery-upgrades-new-investment-projects-64162"
    ]
   },
-  "Oil & Gas Exploration": {
+  "Auto Assembler": {
    "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.4,
-   "reason": "Brent -1.2% to $105 on Russian supply prospects; price drift, still high",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.6,
+   "reason": "September car sales -9.8% YoY, -20.3% MoM per PAMA; weaker volumes hit assemblers",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-falls-on-Russian-supply-prospects-SaudiHouthi-tensions-limit-losses-64161"
+    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "New MSC direct Europe service from Oct 26; KPT aims to double direct services by December",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2036749/msc-europe-service-from-26th"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "Petrol -Rs2.93, diesel +Re0.61 is routine fortnightly pricing; offsetting, no margin change",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2036662/petrol-price-down-by-rs293-per-litre-high-speed-diesel-rate-up-by-re061"
    ]
   }
  }
