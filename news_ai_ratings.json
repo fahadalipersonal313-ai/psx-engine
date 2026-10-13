@@ -1,96 +1,55 @@
 {
- "as_of": "2026-10-12T09:39:13Z",
+ "as_of": "2026-10-13T04:39:19Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 17,
+ "articles_read": 20,
  "read_urls": [
-  "https://mettisglobal.news/Dutch-delegation-finds-Pakistan-a-treat-for-trade-and-investment-64129",
+  "https://mettisglobal.news/Chinas-Shengtang-Group-eyes-10m-investment-in-Pakistan-64141",
+  "https://mettisglobal.news/EFU-Life-drops-plan-to-acquire-Waada-Digital-64145",
+  "https://mettisglobal.news/Finance-minister-Aurangzeb-calls-for-practical-cooperation-with-ESCAP-64144",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs2100-per-tola-64133",
   "https://mettisglobal.news/Gold-trades-at-4185-on-softer-dollar-cheaper-oil-64123",
+  "https://mettisglobal.news/Govt-borrows-Rs563bn-debt-in-a-week-64150",
   "https://mettisglobal.news/Khaadi-Pakistan-gets-initial-longterm-AA-rating-as-it-readies-for-IPO-64127",
-  "https://mettisglobal.news/Pakistan-China-to-take-CPEC-beyond-infrastructure-64131",
-  "https://mettisglobal.news/Pakistan-backs-V20-climate-finance-agenda-64132",
-  "https://mettisglobal.news/Pakistan-makes-2D-barcodes-mandatory-to-curb-counterfeit-medicines-64134",
-  "https://mettisglobal.news/Pakistan-targets-over-4-growth-1bn-from-privatization-Muhammad-Aurangzeb-64126",
-  "https://mettisglobal.news/Pakistan-urged-to-tap-Middle-East-Markets-to-boost-exports-64121",
-  "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130",
-  "https://mettisglobal.news/SBP-targets-to-raise-Rs575tr-through-Tbills-PIBs-in-OctDec-2026-64128",
+  "https://mettisglobal.news/Lucky-Investments-launches-Shariahcompliant-capital-protected-fund-plan-64142",
+  "https://mettisglobal.news/M2-rises-by-Rs942bn-in-a-week-64149",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64146",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64148",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Heavy-Red-Finish-64139",
+  "https://mettisglobal.news/Pakistan-reaffirms-commitment-to-multilateralism-peace-64137",
+  "https://mettisglobal.news/Pakistan-takes-chairmanship-of-borrowers-platform-at-World-BankIMF-meetings-64138",
+  "https://mettisglobal.news/Pakistan-targets-B-credit-rating-longerterm-debt-Muhammad-Aurangzeb-64140",
+  "https://mettisglobal.news/Petrol-price-cut-by-Rs293-diesel-rises-by-Rs061-64147",
   "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
   "https://mettisglobal.news/SPL-rebounds-to-Rs147m-profit-in-FY26-64114",
-  "https://mettisglobal.news/Sindh-eyes-9m-climateresilient-floating-agriculture-project-by-2029-64119",
-  "https://mettisglobal.news/Small-traders-demand-special-relief-in-power-bills-64120",
-  "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124",
-  "https://mettisglobal.news/World-Bank-mobilizes-32bn-in-private-capital-for-Pakistan-since-2022-64122"
+  "https://mettisglobal.news/Senator-Aurangzeb-IMFs-Dan-Katz-welcome-stafflevel-agreement-64143",
+  "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124"
  ],
- "ratings": {
-  "PRL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Chairman resigns on health grounds; no cash-flow mechanism stated",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40443780/tariq-kirmani-steps-down-as-prl-chairman-on-health-grounds"
-   ]
-  }
- },
- "count": 1,
+ "count": 0,
+ "ratings": {},
  "sectors": {
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Govt urges refiners to import Libyan crude; supply diversification, early stage",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
-   ]
-  },
   "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Turkish seismic vessel due next month for Indus Basin data; early-stage exploration",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40443789/pakistan-seeks-libyan-crude-as-it-diversifies-oil-supplies-amid-middle-east-supply-disruptions"
-   ]
-  },
-  "Textile": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "PTEA warns of steep Oct-Dec export decline: weak demand, freight, costs",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2036498/textile-makers-warn-of-steep-decline-in-exports-from-oct-to-dec"
-   ]
-  },
-  "Real Estate": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "SBP simplifies housing finance documentation, easing access to mortgages",
-   "text_depth": "full",
+   "reason": "Brent ~$106 on Saudi attacks lifts E&P realisations; headline-only",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/SBP-simplifies-housing-finance-documentation-requirements-64130"
+    "https://www.brecorder.com/news/40443931/oil-prices-rise-by-nearly-usd2",
+    "https://www.brecorder.com/news/40443946/oil-ticks-lower-as-russia-diesel-supply-prospects-counter-gulf-supply-risks"
    ]
   },
-  "Pharmaceuticals": {
-   "rating": "neutral",
-   "horizon": "long_term",
+  "Fertilizer": {
+   "rating": "negative",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Mandatory 2D barcodes add compliance cost but curb counterfeits; mixed",
-   "text_depth": "full",
+   "confidence": 0.3,
+   "reason": "Winter gas plan (Nov-Feb) prioritises domestic users over industry; pending CCoE nod",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Pakistan-makes-2D-barcodes-mandatory-to-curb-counterfeit-medicines-64134"
+    "https://www.brecorder.com/news/40443943/winter-gas-load-management-plan-pd-seeks-pm-led-ccoes-nod"
    ]
   }
  }
