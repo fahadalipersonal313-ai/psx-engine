@@ -1,53 +1,67 @@
 {
- "as_of": "2026-10-13T07:44:19Z",
+ "as_of": "2026-10-13T08:46:17Z",
  "provider": "claude-routine",
  "model": "claude-session",
- "depth": "headline",
- "articles_read": 0,
- "read_urls": [],
+ "depth": "full-text",
+ "articles_read": 24,
+ "read_urls": [
+  "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
+  "https://mettisglobal.news/Crescent-Star-Insurance-enters-technology-space-as-CST-begins-operations-64163",
+  "https://mettisglobal.news/EFU-Life-drops-plan-to-acquire-Waada-Digital-64145",
+  "https://mettisglobal.news/Finance-Secretary-Citibank-explore-ways-to-diversify-Pakistans-financing-sources-64152",
+  "https://mettisglobal.news/Gold-flat-at-4194-as-dollar-strength-limits-upside-64157",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs2100-per-tola-64133",
+  "https://mettisglobal.news/Gold-trades-at-4185-on-softer-dollar-cheaper-oil-64123",
+  "https://mettisglobal.news/Govt-borrows-Rs563bn-debt-in-a-week-64150",
+  "https://mettisglobal.news/IMF-raises-Pakistan-FY27-inflation-forecast-to-99-growth-seen-at-35-64156",
+  "https://mettisglobal.news/Khaadi-Pakistan-gets-initial-longterm-AA-rating-as-it-readies-for-IPO-64127",
+  "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
+  "https://mettisglobal.news/Lucky-Investments-launches-Shariahcompliant-capital-protected-fund-plan-64142",
+  "https://mettisglobal.news/M2-rises-by-Rs942bn-in-a-week-64149",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64146",
+  "https://mettisglobal.news/Oil-falls-on-Russian-supply-prospects-SaudiHouthi-tensions-limit-losses-64161",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Heavy-Red-Finish-64139",
+  "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
+  "https://mettisglobal.news/Pakistan-Saudi-Fund-discuss-refinery-upgrades-new-investment-projects-64162",
+  "https://mettisglobal.news/Pakistan-calls-for-global-financial-reforms-to-support-developing-economies-64153",
+  "https://mettisglobal.news/Pakistan-hints-at-more-panda-bonds-samurai-bond-debut-64154",
+  "https://mettisglobal.news/Pakistan-seeks-unified-population-strategy-to-boost-jobs-human-capital-64160",
+  "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
+  "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
+  "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124"
+ ],
  "count": 0,
  "ratings": {},
  "sectors": {
+  "Auto Assembler": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.6,
+   "reason": "PAMA: Sept car sales -9.8% YoY, -20.3% MoM, second straight monthly drop",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164"
+   ]
+  },
   "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Saudi Fund talks on refinery upgrades/investment: early-stage plan, no figure",
-   "text_depth": "headline",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-Saudi-Fund-discuss-refinery-upgrades-new-investment-projects-64162"
-   ]
-  },
-  "Cement": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Cement nearing Rs2,000/bag implies stronger retail prices and margins; headline only",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/13/cement-nears-rs-2000-per-bag/"
-   ]
-  },
-  "Pharmaceuticals": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.28,
-   "reason": "Ethiopia drug-registration fast-track eases export access; early-stage, no volumes",
-   "text_depth": "headline",
+   "confidence": 0.35,
+   "reason": "Finance minister and Saudi Fund discussed refinery upgrade investment; early stage, no figure",
+   "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40443959/pakistan-ethiopia-move-to-fast-track-drug-registration-for-exports"
+    "https://mettisglobal.news/Pakistan-Saudi-Fund-discuss-refinery-upgrades-new-investment-projects-64162"
    ]
   },
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Crude falls on Russian supply prospects; price drift hits E&P sentiment",
-   "text_depth": "headline",
+   "confidence": 0.4,
+   "reason": "Brent -1.2% to $105 on Russian supply prospects; price drift, still high",
+   "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-falls-on-Russian-supply-prospects-SaudiHouthi-tensions-limit-losses-64161"
    ]
