@@ -1,59 +1,55 @@
 {
- "as_of": "2026-10-13T06:42:49Z",
+ "as_of": "2026-10-13T07:44:19Z",
  "provider": "claude-routine",
  "model": "claude-session",
- "depth": "full-text",
- "articles_read": 24,
- "read_urls": [
-  "https://mettisglobal.news/Asian-markets-tumble-amid-rising-oil-supply-fears-64151",
-  "https://mettisglobal.news/EFU-Life-drops-plan-to-acquire-Waada-Digital-64145",
-  "https://mettisglobal.news/Finance-Secretary-Citibank-explore-ways-to-diversify-Pakistans-financing-sources-64152",
-  "https://mettisglobal.news/Finance-minister-Aurangzeb-calls-for-practical-cooperation-with-ESCAP-64144",
-  "https://mettisglobal.news/Gold-flat-at-4194-as-dollar-strength-limits-upside-64157",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs2100-per-tola-64133",
-  "https://mettisglobal.news/Gold-trades-at-4185-on-softer-dollar-cheaper-oil-64123",
-  "https://mettisglobal.news/Govt-borrows-Rs563bn-debt-in-a-week-64150",
-  "https://mettisglobal.news/IMF-raises-Pakistan-FY27-inflation-forecast-to-99-growth-seen-at-35-64156",
-  "https://mettisglobal.news/Khaadi-Pakistan-gets-initial-longterm-AA-rating-as-it-readies-for-IPO-64127",
-  "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
-  "https://mettisglobal.news/Lucky-Investments-launches-Shariahcompliant-capital-protected-fund-plan-64142",
-  "https://mettisglobal.news/M2-rises-by-Rs942bn-in-a-week-64149",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64146",
-  "https://mettisglobal.news/PSX-Closing-Bell-A-Heavy-Red-Finish-64139",
-  "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
-  "https://mettisglobal.news/Pakistan-calls-for-global-financial-reforms-to-support-developing-economies-64153",
-  "https://mettisglobal.news/Pakistan-hints-at-more-panda-bonds-samurai-bond-debut-64154",
-  "https://mettisglobal.news/Pakistan-seeks-unified-population-strategy-to-boost-jobs-human-capital-64160",
-  "https://mettisglobal.news/Petrol-price-cut-by-Rs293-diesel-rises-by-Rs061-64147",
-  "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
-  "https://mettisglobal.news/SE-Fruits-IPO-Rs12bn-in-Limbo-Investors-Await-Answers-64117",
-  "https://mettisglobal.news/SPL-rebounds-to-Rs147m-profit-in-FY26-64114",
-  "https://mettisglobal.news/TPL-REIT-FundIs-Saima-Mangrove-Residences-launch-draws-oversubscribed-response-64124"
- ],
+ "depth": "headline",
+ "articles_read": 0,
+ "read_urls": [],
  "count": 0,
  "ratings": {},
  "sectors": {
-  "Oil & Gas Exploration": {
+  "Refinery": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent above $106 on Saudi airport attack lifts E&P realisations; offset by weak KSE-100 tone",
-   "text_depth": "full",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Saudi Fund talks on refinery upgrades/investment: early-stage plan, no figure",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Asian-markets-tumble-amid-rising-oil-supply-fears-64151",
-    "https://www.brecorder.com/news/40443946/oil-falls-as-russia-diesel-supply-prospects-counter-gulf-supply-risks"
+    "https://mettisglobal.news/Pakistan-Saudi-Fund-discuss-refinery-upgrades-new-investment-projects-64162"
+   ]
+  },
+  "Cement": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Cement nearing Rs2,000/bag implies stronger retail prices and margins; headline only",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/13/cement-nears-rs-2000-per-bag/"
    ]
   },
   "Pharmaceuticals": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Pakistan-Ethiopia fast-track drug registration eases export access; early-stage, headline only",
+   "confidence": 0.28,
+   "reason": "Ethiopia drug-registration fast-track eases export access; early-stage, no volumes",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40443959/pakistan-ethiopia-move-to-fast-track-drug-registration-for-exports"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Crude falls on Russian supply prospects; price drift hits E&P sentiment",
+   "text_depth": "headline",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-on-Russian-supply-prospects-SaudiHouthi-tensions-limit-losses-64161"
    ]
   }
  }
