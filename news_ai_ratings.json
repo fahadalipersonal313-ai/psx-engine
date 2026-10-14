@@ -1,57 +1,46 @@
 {
- "as_of": "2026-10-14T05:38:42Z",
+ "as_of": "2026-10-14T06:39:48Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
  "articles_read": 24,
  "read_urls": [
   "https://mettisglobal.news/Applied-for-SE-Fruits-IPO-Your-Refund-Is-on-Its-Way-64174",
-  "https://mettisglobal.news/Asian-markets-trade-mixed-ahead-of-key-US-inflation-data-64180",
+  "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
   "https://mettisglobal.news/Crescent-Star-Insurance-enters-technology-space-as-CST-begins-operations-64163",
+  "https://mettisglobal.news/Foreign-currency-deposits-rise-by-31m-in-September-2026-64187",
   "https://mettisglobal.news/Gold-flat-at-4194-as-dollar-strength-limits-upside-64157",
   "https://mettisglobal.news/Gold-muted-as-market-waits-on-US-CPI-64181",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs900-per-tola-64166",
   "https://mettisglobal.news/Govt-flags-IPO-pipeline-power-sector-opportunities-to-global-investors-64176",
-  "https://mettisglobal.news/Govt-nears-satellite-internet-framework-to-attract-investment-64172",
   "https://mettisglobal.news/Govt-plans-new-bond-strategy-to-reduce-debt-rollover-risks-64182",
-  "https://mettisglobal.news/Govt-seeks-roadmap-to-reduce-poverty-improve-living-standards-64169",
   "https://mettisglobal.news/Kohinoor-Mills-adds-3MW-solar-takes-total-capacity-to-102MW-64168",
   "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64178",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64185",
-  "https://mettisglobal.news/NCCIA-cracks-down-on-AI-misuse-registers-case-over-murder-threats-64173",
   "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Retreat-64171",
   "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
-  "https://mettisglobal.news/Pakistan-Mashreq-Bank-explore-digital-finance-Panda-bonds-64175",
+  "https://mettisglobal.news/Pakistan-Brazil-reaffirm-defense-cooperation-64188",
+  "https://mettisglobal.news/Pakistan-EU-strengthen-bilateral-ties-expand-skilled-worker-opportunities-64190",
   "https://mettisglobal.news/Pakistan-Russia-must-turn-goodwill-into-trade-and-energy-gains-President-Zardari-64186",
   "https://mettisglobal.news/Pakistan-targets-4-plus-growth-in-FY27-Muhammad-Aurangzeb-tells-investors-64179",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
+  "https://mettisglobal.news/SBP-rolls-out-Banking-on-Equality-Policy-2026-64189",
   "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
   "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
  ],
- "count": 2,
+ "count": 1,
  "ratings": {
   "THCCL": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Routine scheduled sukuk profit/principal payment completed; no new cash-flow mechanism",
+   "confidence": 0.3,
+   "reason": "Routine Sukuk profit/principal payment completed per terms; no new cash-flow mechanism",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
-   ]
-  },
-  "TOMCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Headline-only performance/outlook piece; content unknown, no direction implied",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444087/the-organic-meat-company-limited-performance-and-outlook"
    ]
   }
  },
@@ -60,23 +49,36 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Brent above $106 on Saudi-Houthi escalation lifts realisations for E&Ps; geopolitical, may reverse",
+   "confidence": 0.5,
+   "reason": "Brent above $106 on Hormuz/Yemen supply fears lifts realised prices for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
+    "https://www.brecorder.com/news/40444129/oil-prices-climb-as-iran-deploys-new-tactics-to-target-ships-transiting-hormuz"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Petrol cut Rs2.71/L, diesel Rs0.03/L is formula pass-through; high crude adds inventory/volatility mix",
+   "confidence": 0.35,
+   "reason": "Elevated crude and disruption risk; product-price effect on margins indirect and mixed",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
+    "https://www.brecorder.com/news/40444129/oil-prices-climb-as-iran-deploys-new-tactics-to-target-ships-transiting-hormuz"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "September car sales down ~10% y/y, 20% m/m; HEV tax-policy delay curbs demand",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
+    "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september"
    ]
   }
  }
