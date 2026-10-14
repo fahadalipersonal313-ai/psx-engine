@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-14T06:39:48Z",
+ "as_of": "2026-10-14T07:42:12Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/Applied-for-SE-Fruits-IPO-Your-Refund-Is-on-Its-Way-64174",
   "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
@@ -12,8 +12,8 @@
   "https://mettisglobal.news/Gold-flat-at-4194-as-dollar-strength-limits-upside-64157",
   "https://mettisglobal.news/Gold-muted-as-market-waits-on-US-CPI-64181",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs900-per-tola-64166",
-  "https://mettisglobal.news/Govt-flags-IPO-pipeline-power-sector-opportunities-to-global-investors-64176",
   "https://mettisglobal.news/Govt-plans-new-bond-strategy-to-reduce-debt-rollover-risks-64182",
+  "https://mettisglobal.news/JSCL-approves-Rs87m-investment-in-EFU-Life-rights-shares-64192",
   "https://mettisglobal.news/Kohinoor-Mills-adds-3MW-solar-takes-total-capacity-to-102MW-64168",
   "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64178",
@@ -24,6 +24,7 @@
   "https://mettisglobal.news/Pakistan-Brazil-reaffirm-defense-cooperation-64188",
   "https://mettisglobal.news/Pakistan-EU-strengthen-bilateral-ties-expand-skilled-worker-opportunities-64190",
   "https://mettisglobal.news/Pakistan-Russia-must-turn-goodwill-into-trade-and-energy-gains-President-Zardari-64186",
+  "https://mettisglobal.news/Pakistan-US-fuel-talks-on-energy-imports-trade-framework-64191",
   "https://mettisglobal.news/Pakistan-targets-4-plus-growth-in-FY27-Muhammad-Aurangzeb-tells-investors-64179",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
   "https://mettisglobal.news/SBP-rolls-out-Banking-on-Equality-Policy-2026-64189",
@@ -36,8 +37,8 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Routine Sukuk profit/principal payment completed per terms; no new cash-flow mechanism",
+   "confidence": 0.2,
+   "reason": "Routine scheduled Sukuk profit/principal payment completed; no new cash-flow mechanism",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
@@ -50,35 +51,45 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "Brent above $106 on Hormuz/Yemen supply fears lifts realised prices for E&Ps",
+   "reason": "Brent above $106 on Saudi-Houthi supply risk lifts realised prices for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
-    "https://www.brecorder.com/news/40444129/oil-prices-climb-as-iran-deploys-new-tactics-to-target-ships-transiting-hormuz"
-   ]
-  },
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Elevated crude and disruption risk; product-price effect on margins indirect and mixed",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
-    "https://www.brecorder.com/news/40444129/oil-prices-climb-as-iran-deploys-new-tactics-to-target-ships-transiting-hormuz"
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
    ]
   },
   "Auto Assembler": {
-   "rating": "negative",
+   "rating": "neutral",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "September car sales down ~10% y/y, 20% m/m; HEV tax-policy delay curbs demand",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Sept sales down 10-12% YoY but 1QFY27 up 19%; HEV tax-policy clarity pending",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
     "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september"
+   ]
+  },
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Petrol cut Rs2.71 under pricing formula; crude spike offsets, no margin change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Petrol price cut and higher crude: inventory effect small, margins regulated",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177"
    ]
   }
  }
