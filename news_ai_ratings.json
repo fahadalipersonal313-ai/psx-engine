@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-14T04:39:02Z",
+ "as_of": "2026-10-14T05:38:42Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 21,
+ "articles_read": 24,
  "read_urls": [
   "https://mettisglobal.news/Applied-for-SE-Fruits-IPO-Your-Refund-Is-on-Its-Way-64174",
   "https://mettisglobal.news/Asian-markets-trade-mixed-ahead-of-key-US-inflation-data-64180",
@@ -18,23 +18,37 @@
   "https://mettisglobal.news/Kohinoor-Mills-adds-3MW-solar-takes-total-capacity-to-102MW-64168",
   "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64178",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64185",
   "https://mettisglobal.news/NCCIA-cracks-down-on-AI-misuse-registers-case-over-murder-threats-64173",
+  "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Retreat-64171",
   "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
   "https://mettisglobal.news/Pakistan-Mashreq-Bank-explore-digital-finance-Panda-bonds-64175",
-  "https://mettisglobal.news/Pakistan-pushes-for-quicker-pharma-market-access-in-Ethiopia-64167",
+  "https://mettisglobal.news/Pakistan-Russia-must-turn-goodwill-into-trade-and-energy-gains-President-Zardari-64186",
   "https://mettisglobal.news/Pakistan-targets-4-plus-growth-in-FY27-Muhammad-Aurangzeb-tells-investors-64179",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
-  "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159"
+  "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
+  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
  ],
- "count": 1,
+ "count": 2,
  "ratings": {
-  "TOMCL": {
+  "THCCL": {
    "rating": "neutral",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.2,
-   "reason": "Headline-only performance/outlook piece; direction not determinable",
+   "reason": "Routine scheduled sukuk profit/principal payment completed; no new cash-flow mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
+   ]
+  },
+  "TOMCL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Headline-only performance/outlook piece; content unknown, no direction implied",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40444087/the-organic-meat-company-limited-performance-and-outlook"
@@ -42,82 +56,27 @@
   }
  },
  "sectors": {
-  "Auto Assembler": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Quarterly auto sales up despite weak September; volume trend supports earnings",
-   "text_depth": "headline",
+   "reason": "Brent above $106 on Saudi-Houthi escalation lifts realisations for E&Ps; geopolitical, may reverse",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent firmer on Saudi supply risk; supports E&P realisations",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444129/oil-prices-climb-as-traders-weigh-saudi-supply-risk-russian-diesel-flow"
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
    ]
   },
   "Oil Marketing": {
    "rating": "neutral",
    "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Petrol cut Rs2.71 is formula pass-through; margins unchanged, small volume support",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177"
-   ]
-  },
-  "Textile": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "20 textile firms post Rs52bn profit; offset by exporters' decline complaints",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/13/20-textile-companies-earn-rs-52-billion-profit/",
-    "https://www.dawn.com/news/2037010/exporters-seek-govt-support-to-stem-decline"
-   ]
-  },
-  "Technology/Telecom": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "FSS satellite framework in final stage; opens new investment, timeline soft",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-nears-satellite-internet-framework-to-attract-investment-64172"
-   ]
-  },
-  "Pharmaceuticals": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Govt pushing faster Ethiopian approvals for Pakistani pharma; early-stage intent",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-pushes-for-quicker-pharma-market-access-in-Ethiopia-64167"
-   ]
-  },
-  "Power Generation": {
-   "rating": "positive",
-   "horizon": "long_term",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Govt pitches power opportunities to Barclays investors; no specific terms",
+   "reason": "Petrol cut Rs2.71/L, diesel Rs0.03/L is formula pass-through; high crude adds inventory/volatility mix",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Govt-flags-IPO-pipeline-power-sector-opportunities-to-global-investors-64176"
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
+    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
    ]
   }
  }
