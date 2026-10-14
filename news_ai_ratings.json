@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-14T07:42:12Z",
+ "as_of": "2026-10-14T08:38:30Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 26,
  "read_urls": [
   "https://mettisglobal.news/Applied-for-SE-Fruits-IPO-Your-Refund-Is-on-Its-Way-64174",
   "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
@@ -13,12 +13,12 @@
   "https://mettisglobal.news/Gold-muted-as-market-waits-on-US-CPI-64181",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs900-per-tola-64166",
   "https://mettisglobal.news/Govt-plans-new-bond-strategy-to-reduce-debt-rollover-risks-64182",
+  "https://mettisglobal.news/IMF-warns-shortterm-debt-could-raise-government-borrowing-costs-64194",
   "https://mettisglobal.news/JSCL-approves-Rs87m-investment-in-EFU-Life-rights-shares-64192",
   "https://mettisglobal.news/Kohinoor-Mills-adds-3MW-solar-takes-total-capacity-to-102MW-64168",
   "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64178",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64185",
-  "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Retreat-64171",
   "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
   "https://mettisglobal.news/Pakistan-Brazil-reaffirm-defense-cooperation-64188",
@@ -27,6 +27,7 @@
   "https://mettisglobal.news/Pakistan-US-fuel-talks-on-energy-imports-trade-framework-64191",
   "https://mettisglobal.news/Pakistan-targets-4-plus-growth-in-FY27-Muhammad-Aurangzeb-tells-investors-64179",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
+  "https://mettisglobal.news/QTECH-inks-strategic-cooperation-deal-with-Chinese-energy-technology-firm-Great-Power-64193",
   "https://mettisglobal.news/SBP-rolls-out-Banking-on-Equality-Policy-2026-64189",
   "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
   "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
@@ -37,8 +38,8 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Routine scheduled Sukuk profit/principal payment completed; no new cash-flow mechanism",
+   "confidence": 0.3,
+   "reason": "Routine scheduled Sukuk profit/principal payment completed per terms",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
@@ -46,50 +47,40 @@
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
+  "Textile": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent above $106 on Saudi-Houthi supply risk lifts realised prices for E&Ps",
-   "text_depth": "full",
+   "confidence": 0.3,
+   "reason": "Govt committees formed on export decline; support sought, no measures yet",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
+    "https://www.dawn.com/news/2037010/exporters-seek-govt-support-to-stem-decline",
+    "https://propakistani.pk/2026/10/14/govt-to-fix-textile-exports/"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Govt committees formed on export decline; support sought, no measures yet",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2037010/exporters-seek-govt-support-to-stem-decline",
+    "https://propakistani.pk/2026/10/14/govt-to-fix-textile-exports/"
    ]
   },
   "Auto Assembler": {
    "rating": "neutral",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Sept sales down 10-12% YoY but 1QFY27 up 19%; HEV tax-policy clarity pending",
+   "confidence": 0.35,
+   "reason": "Sept sales down y/y but 1QFY27 +19%; HEV/PHEV tax-policy clarity pending",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
-    "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Petrol cut Rs2.71 under pricing formula; crude spike offsets, no margin change",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177",
-    "https://mettisglobal.news/Oil-tops-106-after-Riyadh-airport-attack-64184"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Petrol price cut and higher crude: inventory effect small, margins regulated",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-falls-by-3-paisa-64177"
+    "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september",
+    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164"
    ]
   }
  }
