@@ -1,44 +1,41 @@
 {
- "as_of": "2026-10-14T09:39:09Z",
+ "as_of": "2026-10-15T04:38:45Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 26,
+ "articles_read": 23,
  "read_urls": [
-  "https://mettisglobal.news/Applied-for-SE-Fruits-IPO-Your-Refund-Is-on-Its-Way-64174",
-  "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164",
-  "https://mettisglobal.news/Crescent-Star-Insurance-enters-technology-space-as-CST-begins-operations-64163",
   "https://mettisglobal.news/Foreign-currency-deposits-rise-by-31m-in-September-2026-64187",
-  "https://mettisglobal.news/Gold-flat-at-4194-as-dollar-strength-limits-upside-64157",
+  "https://mettisglobal.news/GUTM-remains-nonoperational-as-asset-sale-proceeds-under-courtsanctioned-scheme-64202",
   "https://mettisglobal.news/Gold-muted-as-market-waits-on-US-CPI-64181",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64196",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs900-per-tola-64166",
-  "https://mettisglobal.news/Govt-plans-new-bond-strategy-to-reduce-debt-rollover-risks-64182",
-  "https://mettisglobal.news/IMF-warns-shortterm-debt-could-raise-government-borrowing-costs-64194",
+  "https://mettisglobal.news/Govt-reports-fiscal-gains-debt-falls-to-68-of-GDP-64205",
+  "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-end-economic-dependency-64198",
   "https://mettisglobal.news/JSCL-approves-Rs87m-investment-in-EFU-Life-rights-shares-64192",
-  "https://mettisglobal.news/Kohinoor-Mills-adds-3MW-solar-takes-total-capacity-to-102MW-64168",
-  "https://mettisglobal.news/LSE-SPACI-Ningbo-Green-Light-Energy-merger-gets-Lahore-High-Court-nod-64158",
-  "https://mettisglobal.news/PSX-Closing-Bell-A-Quiet-Retreat-64171",
-  "https://mettisglobal.news/PSX-withholds-action-against-PECO-after-company-submits-cheque-for-penalty-64155",
-  "https://mettisglobal.news/Pakistan-Brazil-reaffirm-defense-cooperation-64188",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64208",
+  "https://mettisglobal.news/PKR-holds-firm-against-USD-64203",
+  "https://mettisglobal.news/PSX-Closing-Bell-Green-Wave-Sweeps-In-64201",
   "https://mettisglobal.news/Pakistan-EU-strengthen-bilateral-ties-expand-skilled-worker-opportunities-64190",
-  "https://mettisglobal.news/Pakistan-Russia-must-turn-goodwill-into-trade-and-energy-gains-President-Zardari-64186",
   "https://mettisglobal.news/Pakistan-US-fuel-talks-on-energy-imports-trade-framework-64191",
   "https://mettisglobal.news/Pakistan-reports-22year-low-fiscal-deficit-37-growth-at-IMF-meeting-64197",
-  "https://mettisglobal.news/Pakistan-targets-4-plus-growth-in-FY27-Muhammad-Aurangzeb-tells-investors-64179",
+  "https://mettisglobal.news/Petrol-price-rises-by-Rs120-diesel-falls-by-Rs017-per-litre-64207",
+  "https://mettisglobal.news/Punjab-govt-offers-Rs16bn-interestfree-loans-to-livestock-farmers-64199",
   "https://mettisglobal.news/QTECH-inks-strategic-cooperation-deal-with-Chinese-energy-technology-firm-Great-Power-64193",
+  "https://mettisglobal.news/Ray-Dalio-warns-of-glut-in-debt-equity-supply-as-US-debt-burden-climbs-64200",
+  "https://mettisglobal.news/SBP-raises-Rs685bn-through-MTB-auction-64206",
   "https://mettisglobal.news/SBP-rolls-out-Banking-on-Equality-Policy-2026-64189",
-  "https://mettisglobal.news/SE-Fruits-IPO-Goes-Silent-Money-Stuck-Calls-Unanswered-64159",
   "https://mettisglobal.news/SECP-establishes-intelligence-unit-to-detect-financial-fraud-64195",
-  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
+  "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209",
+  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183",
+  "https://mettisglobal.news/US-President-Trump-touts-Greenland-oil-riches-strategic-location-64204"
  ],
  "ratings": {
   "THCCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
    "confidence": 0.3,
-   "reason": "Routine on-schedule Sukuk profit/principal payment; no new cash-flow mechanism",
+   "reason": "Sukuk profit and principal paid in full; debt servicing on schedule, mild deleveraging signal",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
@@ -46,49 +43,43 @@
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
+  "Real Estate": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Brent at $106 lifts E&P realisations and earnings outlook",
+   "reason": "PM orders banks to expand home lending; Apna Ghar paperwork cut to 5 documents (policy direction)",
    "text_depth": "headline",
    "sources": [
-    "https://propakistani.pk/2026/10/14/oil-prices-out-of-control-again/"
+    "https://www.brecorder.com/news/40444317/minister-calls-kp-emergency-unfortunate",
+    "https://www.brecorder.com/news/40444304/farmers-small-businesses-and-homeowners-pm-orders-banks-to-expand-lending",
+    "https://propakistani.pk/2026/10/14/exchange-5-documents-for-a-home-loan-in-pakistan/"
    ]
   },
-  "Auto Assembler": {
-   "rating": "neutral",
+  "Islamic Banking": {
+   "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Sept sales down 12% YoY but 1QFY27 up 19%; HEV tax-policy clarity pending",
+   "reason": "T-bill yields stay above 11.5% policy rate; supports bank investment income",
    "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2037009/quarterly-auto-sales-rise-despite-sluggish-september",
-    "https://mettisglobal.news/Auto-sales-decline-10-in-September-64164"
+    "https://www.dawn.com/news/2037216/govt-keeps-treasury-bill-returns-higher-over-policy-rate",
+    "https://www.brecorder.com/news/40444330/imf-warns-of-slowing-asian-growth-spillover-from-rising-yields",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64208"
    ]
   },
-  "Textile": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Exporters report sector downturn and seek state support; no relief announced yet",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2037010/exporters-seek-govt-support-to-stem-decline"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
+  "Oil & Gas Exploration": {
+   "rating": "positive",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Petrol cut Rs2.71/L, diesel flat; marginal effect on OMC margins",
+   "confidence": 0.3,
+   "reason": "Brent ~$106 on Hormuz/Houthi supply risk; supportive realisations, but volatile",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2036924/govt-reduces-petrol-price-by-rs271-per-litre-high-speed-diesel-rate-by-re003"
+    "https://www.dawn.com/news/2037213/stocks-stage-partial-recovery-amid-uncertainty",
+    "https://www.brecorder.com/news/40444322/oil-prices-fall-as-investors-weigh-supply-outlook-middle-east-tensions",
+    "https://www.dawn.com/news/2037215/oil-gains-on-renewed-supply-fears"
    ]
   }
  },
