@@ -1,19 +1,22 @@
 {
- "as_of": "2026-10-15T04:38:45Z",
+ "as_of": "2026-10-15T05:39:23Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 23,
+ "articles_read": 24,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-tumble-Kospi-sheds-over-78-64212",
   "https://mettisglobal.news/Foreign-currency-deposits-rise-by-31m-in-September-2026-64187",
   "https://mettisglobal.news/GUTM-remains-nonoperational-as-asset-sale-proceeds-under-courtsanctioned-scheme-64202",
   "https://mettisglobal.news/Gold-muted-as-market-waits-on-US-CPI-64181",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64196",
+  "https://mettisglobal.news/Govt-raises-Rs302bn-in-Hybrid-Sukuk-auction-64213",
   "https://mettisglobal.news/Govt-reports-fiscal-gains-debt-falls-to-68-of-GDP-64205",
   "https://mettisglobal.news/Govt-targets-100bn-exports-by-2035-to-end-economic-dependency-64198",
   "https://mettisglobal.news/JSCL-approves-Rs87m-investment-in-EFU-Life-rights-shares-64192",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64208",
-  "https://mettisglobal.news/PKR-holds-firm-against-USD-64203",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64211",
+  "https://mettisglobal.news/Oil-falls-to-104-supply-outlook-offsets-Hormuz-fears-64214",
   "https://mettisglobal.news/PSX-Closing-Bell-Green-Wave-Sweeps-In-64201",
   "https://mettisglobal.news/Pakistan-EU-strengthen-bilateral-ties-expand-skilled-worker-opportunities-64190",
   "https://mettisglobal.news/Pakistan-US-fuel-talks-on-energy-imports-trade-framework-64191",
@@ -21,21 +24,20 @@
   "https://mettisglobal.news/Petrol-price-rises-by-Rs120-diesel-falls-by-Rs017-per-litre-64207",
   "https://mettisglobal.news/Punjab-govt-offers-Rs16bn-interestfree-loans-to-livestock-farmers-64199",
   "https://mettisglobal.news/QTECH-inks-strategic-cooperation-deal-with-Chinese-energy-technology-firm-Great-Power-64193",
-  "https://mettisglobal.news/Ray-Dalio-warns-of-glut-in-debt-equity-supply-as-US-debt-burden-climbs-64200",
   "https://mettisglobal.news/SBP-raises-Rs685bn-through-MTB-auction-64206",
-  "https://mettisglobal.news/SBP-rolls-out-Banking-on-Equality-Policy-2026-64189",
   "https://mettisglobal.news/SECP-establishes-intelligence-unit-to-detect-financial-fraud-64195",
+  "https://mettisglobal.news/Senator-Aurangzeb-banks-on-JP-Morgan-stage-to-pitch-Pakistans-turnaround-64210",
   "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209",
-  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183",
-  "https://mettisglobal.news/US-President-Trump-touts-Greenland-oil-riches-strategic-location-64204"
+  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
  ],
+ "count": 1,
  "ratings": {
   "THCCL": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Sukuk profit and principal paid in full; debt servicing on schedule, mild deleveraging signal",
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "Routine scheduled Sukuk profit/principal payment completed; already expected",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
@@ -43,45 +45,40 @@
   }
  },
  "sectors": {
-  "Real Estate": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "PM orders banks to expand home lending; Apna Ghar paperwork cut to 5 documents (policy direction)",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444317/minister-calls-kp-emergency-unfortunate",
-    "https://www.brecorder.com/news/40444304/farmers-small-businesses-and-homeowners-pm-orders-banks-to-expand-lending",
-    "https://propakistani.pk/2026/10/14/exchange-5-documents-for-a-home-loan-in-pakistan/"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "positive",
+  "Oil & Gas Exploration": {
+   "rating": "neutral",
    "horizon": "multi_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "T-bill yields stay above 11.5% policy rate; supports bank investment income",
+   "reason": "Brent ~$104 easing ~1% on Hormuz risk vs supply outlook; elevated level still supportive",
    "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2037216/govt-keeps-treasury-bill-returns-higher-over-policy-rate",
-    "https://www.brecorder.com/news/40444330/imf-warns-of-slowing-asian-growth-spillover-from-rising-yields",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64208"
+    "https://mettisglobal.news/Oil-falls-to-104-supply-outlook-offsets-Hormuz-fears-64214",
+    "https://www.brecorder.com/news/40444322/oil-prices-fall-as-investors-weigh-supply-outlook-middle-east-tensions"
    ]
   },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Crude easing slightly from high levels; no refinery-specific policy or margin change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-to-104-supply-outlook-offsets-Hormuz-fears-64214",
+    "https://www.brecorder.com/news/40444322/oil-prices-fall-as-investors-weigh-supply-outlook-middle-east-tensions"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent ~$106 on Hormuz/Houthi supply risk; supportive realisations, but volatile",
-   "text_depth": "headline",
+   "reason": "Petrol +Rs1.20/HSD -Rs0.17 is cost pass-through of premium/freight; margins unchanged",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2037213/stocks-stage-partial-recovery-amid-uncertainty",
-    "https://www.brecorder.com/news/40444322/oil-prices-fall-as-investors-weigh-supply-outlook-middle-east-tensions",
-    "https://www.dawn.com/news/2037215/oil-gains-on-renewed-supply-fears"
+    "https://mettisglobal.news/Petrol-price-rises-by-Rs120-diesel-falls-by-Rs017-per-litre-64207"
    ]
   }
- },
- "count": 1
+ }
 }
