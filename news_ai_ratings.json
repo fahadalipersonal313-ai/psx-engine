@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-16T06:38:21Z",
+ "as_of": "2026-10-16T07:38:57Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 18,
+ "articles_read": 20,
  "read_urls": [
   "https://mettisglobal.news/FBR-extends-tax-return-filing-deadline-to-October-31-64247",
   "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
@@ -11,7 +11,9 @@
   "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
   "https://mettisglobal.news/MFL-receives-nonbinding-offer-from-IGI-Investments-for-100-stake-in-Matco-Corn-Products-64231",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64245",
+  "https://mettisglobal.news/NCCPL-adds-22-stocks-to-SLB-Category-A-removes-six-64258",
+  "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256",
+  "https://mettisglobal.news/NCCPL-revises-Margin-Eligible-Securities-list-adds-19-stocks-64257",
   "https://mettisglobal.news/Noventra-profit-surges-nearly-sixfold-to-Rs5bn-in-9MCY26-64227",
   "https://mettisglobal.news/Oil-slips-to-105-amid-Middle-East-conflict-supply-concerns-64255",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233",
@@ -24,42 +26,41 @@
   "https://mettisglobal.news/Senator-Aurangzeb-Atlantic-Council-discuss-Pakistans-path-to-sustainable-growth-64246",
   "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209"
  ],
- "count": 0,
- "ratings": {},
+ "count": 2,
+ "ratings": {
+  "CPHL": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "CPHL removed from MTS eligibility from 16 Nov; less margin financing demand",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
+   ]
+  },
+  "WAVES": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "WAVES removed from MTS eligibility from 16 Nov; less margin financing demand",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
+   ]
+  }
+ },
  "sectors": {
   "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Govt seeking Fitch roadmap to BB sovereign rating; early-stage, supports bank valuations",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
-    "https://www.brecorder.com/news/40444518/pakistan-seeks-fitchs-assessment-for-bb-sovereign-rating"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent slipping to ~$105 on tanker-easing talk; mild pressure on E&P realisations",
+   "reason": "Pakistan seeks Fitch path to BB sovereign rating; early-stage, no decision",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-slips-to-105-amid-Middle-East-conflict-supply-concerns-64255"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Petrol cut Rs3.63/l, diesel +Re0.31/l: routine price revision, mixed margin effect",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2037395/govt-reduces-petrol-price-by-rs363-per-litre-raises-high-speed-diesel-rate-by-re031",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242"
+    "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254"
    ]
   }
  }
