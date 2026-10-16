@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-16T04:38:51Z",
+ "as_of": "2026-10-16T05:39:10Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -9,35 +9,33 @@
   "https://mettisglobal.news/Breakup-of-Pakistans-trade-data-in-September-PBS-64240",
   "https://mettisglobal.news/FBR-extends-tax-return-filing-deadline-to-October-31-64247",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64234",
-  "https://mettisglobal.news/Govt-targets-marble-export-boom-through-industry-reforms-64236",
   "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
   "https://mettisglobal.news/MFL-receives-nonbinding-offer-from-IGI-Investments-for-100-stake-in-Matco-Corn-Products-64231",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64245",
   "https://mettisglobal.news/Noventra-profit-surges-nearly-sixfold-to-Rs5bn-in-9MCY26-64227",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233",
+  "https://mettisglobal.news/Pakistan-Canada-discuss-investment-protection-trade-expansion-64251",
+  "https://mettisglobal.news/Pakistan-China-review-Panda-Bond-success-eye-more-issuances-under-RMB-7bn-programme-64248",
+  "https://mettisglobal.news/Pakistan-IOM-explore-climate-mobility-skills-training-and-safe-migration-pathways-64250",
   "https://mettisglobal.news/Pakistan-Thailand-look-to-boost-trade-and-tourism-revive-highlevel-exchanges-64244",
-  "https://mettisglobal.news/Pakistan-targets-exportled-growth-longerterm-financing-64230",
+  "https://mettisglobal.news/Pakistan-eyes-more-IFC-backing-for-privatesectorled-growth-64252",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
-  "https://mettisglobal.news/SBP-reserves-rise-16m-to-215bn-64239",
-  "https://mettisglobal.news/SCRA-balance-falls-Rs1bn-to-Rs287bn-64238",
   "https://mettisglobal.news/Senator-Aurangzeb-Atlantic-Council-discuss-Pakistans-path-to-sustainable-growth-64246",
   "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209"
  ],
  "count": 0,
  "ratings": {},
  "sectors": {
-  "Oil Marketing": {
+  "Textile": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Petrol cut Rs3.63/L on lower crude may lift volumes; margins regulated, so modest",
-   "text_depth": "full",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Textile exports rising; exporters warn of slowdown without corrective measures (headline only)",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
-    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet"
+    "https://www.dawn.com/news/2037513/textile-exports-rise-as-exporters-warn-they-could-slow-down-if-no-corrective-measures-taken"
    ]
   },
   "Oil & Gas Exploration": {
@@ -45,25 +43,22 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent drifting down from ~$106 on shadow-fleet easing talk; slight realisation drag",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet",
-    "https://www.dawn.com/news/2037467/equities-extend-overnight-recovery-rally",
-    "https://www.brecorder.com/news/40444477/brent-steady-as-us-weighs-easing-curbs-on-global-shadow-fleet"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Brent roughly flat near $105; no refinery-specific mechanism in daily price revision",
+   "reason": "Brent edging down ~0.4% from $105; price drift, mild realisation headwind",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
-    "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
-    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet"
+    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet",
+    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "Routine daily price revision: petrol -Rs3.63, HSD +Rs0.31; margins unchanged",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241"
    ]
   }
  }
