@@ -1,100 +1,70 @@
 {
- "as_of": "2026-10-15T09:38:56Z",
+ "as_of": "2026-10-16T04:38:51Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 20,
+ "articles_read": 18,
  "read_urls": [
-  "https://mettisglobal.news/Bitcoin-falls-to-81000-on-US-inflation-fears-64221",
-  "https://mettisglobal.news/Finance-Minister-makes-case-for-stronger-Borrowers-Forum-Global-South-representation-64226",
-  "https://mettisglobal.news/Foreign-currency-deposits-rise-by-31m-in-September-2026-64187",
-  "https://mettisglobal.news/GUTM-remains-nonoperational-as-asset-sale-proceeds-under-courtsanctioned-scheme-64202",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64196",
-  "https://mettisglobal.news/JSCL-approves-Rs87m-investment-in-EFU-Life-rights-shares-64192",
-  "https://mettisglobal.news/PM-Shehbaz-seeks-swift-setting-up-of-centres-of-excellence-for-gems-sector-64216",
-  "https://mettisglobal.news/PSX-Closing-Bell-Green-Wave-Sweeps-In-64201",
-  "https://mettisglobal.news/Pakistan-ITFC-agree-technical-teams-to-explore-pricing-volume-adjustments-for-remaining-financing-tranche-64225",
-  "https://mettisglobal.news/Pakistan-Oman-sign-six-deals-to-expand-bilateral-cooperation-64217",
-  "https://mettisglobal.news/Pakistan-eyes-modern-agricultural-markets-to-cut-Rs88bn-crop-losses-64224",
-  "https://mettisglobal.news/Pakistan-shifts-from-aid-to-trade-investment-to-strengthen-global-ties-64219",
-  "https://mettisglobal.news/President-Zardari-urges-expansion-of-trade-and-investment-with-Trkiye-64215",
-  "https://mettisglobal.news/QTECH-inks-strategic-cooperation-deal-with-Chinese-energy-technology-firm-Great-Power-64193",
-  "https://mettisglobal.news/Russia-sees-significant-potential-for-expanding-trade-with-Pakistan-64218",
-  "https://mettisglobal.news/Senator-Aurangzeb-OPEC-Fund-take-up-M6-loan-agreement-next-tranches-64222",
-  "https://mettisglobal.news/Senator-Aurangzeb-seeks-Moodys-views-on-achieving-stronger-rating-64220",
-  "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209",
-  "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183",
-  "https://mettisglobal.news/The-Dollar-Test-Why-Pakistan-Needs-Joint-Ventures-64223"
+  "https://mettisglobal.news/Asian-markets-rebound-on-tech-gains-Wall-Street-rally-64243",
+  "https://mettisglobal.news/Breakup-of-Pakistans-trade-data-in-September-PBS-64240",
+  "https://mettisglobal.news/FBR-extends-tax-return-filing-deadline-to-October-31-64247",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64234",
+  "https://mettisglobal.news/Govt-targets-marble-export-boom-through-industry-reforms-64236",
+  "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
+  "https://mettisglobal.news/MFL-receives-nonbinding-offer-from-IGI-Investments-for-100-stake-in-Matco-Corn-Products-64231",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64245",
+  "https://mettisglobal.news/Noventra-profit-surges-nearly-sixfold-to-Rs5bn-in-9MCY26-64227",
+  "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233",
+  "https://mettisglobal.news/Pakistan-Thailand-look-to-boost-trade-and-tourism-revive-highlevel-exchanges-64244",
+  "https://mettisglobal.news/Pakistan-targets-exportled-growth-longerterm-financing-64230",
+  "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
+  "https://mettisglobal.news/SBP-reserves-rise-16m-to-215bn-64239",
+  "https://mettisglobal.news/SCRA-balance-falls-Rs1bn-to-Rs287bn-64238",
+  "https://mettisglobal.news/Senator-Aurangzeb-Atlantic-Council-discuss-Pakistans-path-to-sustainable-growth-64246",
+  "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209"
  ],
- "ratings": {
-  "PRL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Interim chairman after resignation; governance change, no cash-flow mechanism stated",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444366/pakistan-refinery-appoints-interim-chairman-after-kirmani-steps-down"
-   ]
-  },
-  "THCCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Scheduled sukuk profit/principal payment completed per terms; routine servicing",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/THCCL-completes-second-profit-principal-payment-on-Sukuk-certificates-64183"
-   ]
-  }
- },
+ "count": 0,
+ "ratings": {},
  "sectors": {
-  "Oil & Gas Exploration": {
+  "Oil Marketing": {
    "rating": "positive",
    "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Petrol cut Rs3.63/L on lower crude may lift volumes; margins regulated, so modest",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
+    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Oil prices up on renewed supply fears; benefits E&P realisations if sustained",
+   "reason": "Brent drifting down from ~$106 on shadow-fleet easing talk; slight realisation drag",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2037215/oil-gains-on-renewed-supply-fears"
+    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet",
+    "https://www.dawn.com/news/2037467/equities-extend-overnight-recovery-rally",
+    "https://www.brecorder.com/news/40444477/brent-steady-as-us-weighs-easing-curbs-on-global-shadow-fleet"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Petrol +Rs1.20, diesel -Re0.17 routine fortnightly pass-through; no margin change stated",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2037134/govt-raises-petrol-price-by-rs120-per-litre-reduces-high-speed-diesel-rate-by-re017"
-   ]
-  },
-  "Cement": {
+  "Refinery": {
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Closing-bell note of buying in cement; sentiment only, no sector mechanism",
+   "reason": "Brent roughly flat near $105; no refinery-specific mechanism in daily price revision",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/PSX-Closing-Bell-Green-Wave-Sweeps-In-64201"
-   ]
-  },
-  "Fertilizer": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Closing-bell note of buying in fertilizer; sentiment only, no sector mechanism",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PSX-Closing-Bell-Green-Wave-Sweeps-In-64201"
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
+    "https://mettisglobal.news/Petrol-price-cut-by-Rs363-diesel-rises-by-Rs031-per-litre-64241",
+    "https://www.brecorder.com/news/40444504/oil-edges-down-as-investors-weigh-possible-us-sanctions-on-shadow-fleet"
    ]
   }
- },
- "count": 2
+ }
 }
