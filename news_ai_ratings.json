@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-16T07:38:57Z",
+ "as_of": "2026-10-16T08:39:00Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -10,7 +10,6 @@
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64234",
   "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
   "https://mettisglobal.news/MFL-receives-nonbinding-offer-from-IGI-Investments-for-100-stake-in-Matco-Corn-Products-64231",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64242",
   "https://mettisglobal.news/NCCPL-adds-22-stocks-to-SLB-Category-A-removes-six-64258",
   "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256",
   "https://mettisglobal.news/NCCPL-revises-Margin-Eligible-Securities-list-adds-19-stocks-64257",
@@ -21,19 +20,19 @@
   "https://mettisglobal.news/Pakistan-China-review-Panda-Bond-success-eye-more-issuances-under-RMB-7bn-programme-64248",
   "https://mettisglobal.news/Pakistan-IOM-explore-climate-mobility-skills-training-and-safe-migration-pathways-64250",
   "https://mettisglobal.news/Pakistan-Thailand-look-to-boost-trade-and-tourism-revive-highlevel-exchanges-64244",
+  "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259",
   "https://mettisglobal.news/Pakistan-eyes-more-IFC-backing-for-privatesectorled-growth-64252",
   "https://mettisglobal.news/Pakistan-urges-IsDB-to-turn-56bn-indicative-financing-envelope-into-concrete-project-pipeline-64253",
   "https://mettisglobal.news/Senator-Aurangzeb-Atlantic-Council-discuss-Pakistans-path-to-sustainable-growth-64246",
   "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209"
  ],
- "count": 2,
  "ratings": {
   "CPHL": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "CPHL removed from MTS eligibility from 16 Nov; less margin financing demand",
+   "confidence": 0.6,
+   "reason": "NCCPL removes CPHL from MTS eligibility from 16 Nov; less leveraged demand",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
@@ -43,8 +42,8 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "WAVES removed from MTS eligibility from 16 Nov; less margin financing demand",
+   "confidence": 0.6,
+   "reason": "NCCPL removes WAVES from MTS eligibility from 16 Nov; less leveraged demand",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
@@ -56,12 +55,14 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Pakistan seeks Fitch path to BB sovereign rating; early-stage, no decision",
+   "confidence": 0.35,
+   "reason": "Pakistan seeks Fitch BB path, Sukuk/Panda plans; sovereign-credit tailwind, early stage",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254"
+    "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
+    "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259"
    ]
   }
- }
+ },
+ "count": 2
 }
