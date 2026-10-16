@@ -1,11 +1,10 @@
 {
- "as_of": "2026-10-16T08:39:00Z",
+ "as_of": "2026-10-16T09:38:43Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 20,
+ "articles_read": 19,
  "read_urls": [
-  "https://mettisglobal.news/FBR-extends-tax-return-filing-deadline-to-October-31-64247",
   "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64234",
   "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
@@ -14,25 +13,26 @@
   "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256",
   "https://mettisglobal.news/NCCPL-revises-Margin-Eligible-Securities-list-adds-19-stocks-64257",
   "https://mettisglobal.news/Noventra-profit-surges-nearly-sixfold-to-Rs5bn-in-9MCY26-64227",
+  "https://mettisglobal.news/OMO-Result-SBP-injects-Rs3tr-64261",
   "https://mettisglobal.news/Oil-slips-to-105-amid-Middle-East-conflict-supply-concerns-64255",
   "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233",
   "https://mettisglobal.news/Pakistan-Canada-discuss-investment-protection-trade-expansion-64251",
   "https://mettisglobal.news/Pakistan-China-review-Panda-Bond-success-eye-more-issuances-under-RMB-7bn-programme-64248",
   "https://mettisglobal.news/Pakistan-IOM-explore-climate-mobility-skills-training-and-safe-migration-pathways-64250",
-  "https://mettisglobal.news/Pakistan-Thailand-look-to-boost-trade-and-tourism-revive-highlevel-exchanges-64244",
+  "https://mettisglobal.news/Pakistan-LSMI-contracts-5-MoM-in-August-64262",
   "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259",
   "https://mettisglobal.news/Pakistan-eyes-more-IFC-backing-for-privatesectorled-growth-64252",
   "https://mettisglobal.news/Pakistan-urges-IsDB-to-turn-56bn-indicative-financing-envelope-into-concrete-project-pipeline-64253",
-  "https://mettisglobal.news/Senator-Aurangzeb-Atlantic-Council-discuss-Pakistans-path-to-sustainable-growth-64246",
-  "https://mettisglobal.news/Shifa-International-Hospitals-credits-78860-shares-under-SMCI-merger-64209"
+  "https://mettisglobal.news/Weekly-SPI-decreases-by-004-64260"
  ],
+ "count": 2,
  "ratings": {
   "CPHL": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "NCCPL removes CPHL from MTS eligibility from 16 Nov; less leveraged demand",
+   "confidence": 0.55,
+   "reason": "NCCPL removes CPHL from margin financing from 16 Nov; cuts leveraged demand",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
@@ -42,8 +42,8 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "NCCPL removes WAVES from MTS eligibility from 16 Nov; less leveraged demand",
+   "confidence": 0.55,
+   "reason": "NCCPL removes WAVES from margin financing from 16 Nov; cuts leveraged demand",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
@@ -55,14 +55,36 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Pakistan seeks Fitch BB path, Sukuk/Panda plans; sovereign-credit tailwind, early stage",
+   "confidence": 0.3,
+   "reason": "SBP Rs3tr OMO liquidity injection, Fitch BB-upgrade push and Sukuk plans ease funding",
    "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs3tr-64261",
     "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
-    "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259"
+    "https://www.brecorder.com/news/40444518/pakistan-seeks-fitchs-assessment-for-bb-sovereign-rating"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Brent slipping to $105 on tanker-easing talk trims realisation outlook",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-slips-to-105-amid-Middle-East-conflict-supply-concerns-64255"
+   ]
+  },
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Brent easing to $105 with no refining-margin mechanism stated",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-slips-to-105-amid-Middle-East-conflict-supply-concerns-64255"
    ]
   }
- },
- "count": 2
+ }
 }
