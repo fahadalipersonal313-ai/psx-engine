@@ -1,70 +1,139 @@
 {
- "as_of": "2026-10-16T10:38:23Z",
+ "as_of": "2026-10-19T04:38:29Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 21,
+ "articles_read": 3,
  "read_urls": [
-  "https://mettisglobal.news/China-hedges-its-bets-to-make-yuan-a-global-favourite-64264",
-  "https://mettisglobal.news/Crescent-Fibres-board-recommends-sale-of-Nooriabad-Spinning-Unit1-64265",
-  "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64234",
-  "https://mettisglobal.news/Khaadis-IPO-The-brand-you-know-the-numbers-you-should-64229",
-  "https://mettisglobal.news/MFL-receives-nonbinding-offer-from-IGI-Investments-for-100-stake-in-Matco-Corn-Products-64231",
-  "https://mettisglobal.news/NCCPL-adds-22-stocks-to-SLB-Category-A-removes-six-64258",
-  "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256",
-  "https://mettisglobal.news/NCCPL-revises-Margin-Eligible-Securities-list-adds-19-stocks-64257",
-  "https://mettisglobal.news/Noventra-profit-surges-nearly-sixfold-to-Rs5bn-in-9MCY26-64227",
-  "https://mettisglobal.news/OMO-Result-SBP-injects-Rs3tr-64261",
-  "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Storm-the-Gates-64233",
-  "https://mettisglobal.news/Pakistan-Canada-discuss-investment-protection-trade-expansion-64251",
-  "https://mettisglobal.news/Pakistan-IOM-explore-climate-mobility-skills-training-and-safe-migration-pathways-64250",
-  "https://mettisglobal.news/Pakistan-LSMI-contracts-5-MoM-in-August-64262",
-  "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259",
-  "https://mettisglobal.news/Pakistan-eyes-more-IFC-backing-for-privatesectorled-growth-64252",
-  "https://mettisglobal.news/Pakistan-seeks-green-innovation-partnership-with-Germany-64266",
-  "https://mettisglobal.news/Pakistan-urges-IsDB-to-turn-56bn-indicative-financing-envelope-into-concrete-project-pipeline-64253",
-  "https://mettisglobal.news/UBL-9MCY26-profit-rises-16-to-Rs116bn-declares-Rs8-dividend-64263",
-  "https://mettisglobal.news/Weekly-SPI-decreases-by-004-64260"
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64295",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64297",
+  "https://mettisglobal.news/USA-remains-top-export-destination-for-Pakistan-in-September-64296"
  ],
+ "count": 2,
  "ratings": {
-  "CPHL": {
-   "rating": "negative",
+  "PSO": {
+   "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Removed from NCCPL MTS from 16 Nov; loses leveraged-buying support, failed turnover benchmark",
-   "text_depth": "full",
+   "confidence": 0.5,
+   "reason": "Board nod to renewed 5-yr SPA with PARCO secures supply; reported, not final",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
+    "https://www.brecorder.com/news/40444861/pso-clears-renewed-spa-with-parco"
    ]
   },
-  "WAVES": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Removed from NCCPL MTS from 16 Nov; loses margin-financed demand",
-   "text_depth": "full",
+  "SNGP": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Routine temporary gas suspension in Islamabad areas; no earnings mechanism",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/NCCPL-removes-three-stocks-from-MTS-retains-64-in-quarterly-review-64256"
+    "https://propakistani.pk/2026/10/18/gas-supply-to-remain-suspended-in-several-islamabad-areas/"
    ]
   }
  },
  "sectors": {
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "PARCO 5-yr SPA renewal with PSO supports offtake certainty; oil macro items only context",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40444861/pso-clears-renewed-spa-with-parco"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "LPG price surge/daily pricing demand and softer oil: mixed for marketers",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038194/lpg-stakeholders-seek-daily-pricing-amid-soaring-rates",
+    "https://www.brecorder.com/news/40444883/oil-slips-as-trumps-sanction-waiver-may-lead-to-more-russian-fuel-supplies"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Brent down 1.3% on Russia sanction waiver; mild pressure on realisations",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40444883/oil-slips-as-trumps-sanction-waiver-may-lead-to-more-russian-fuel-supplies"
+   ]
+  },
   "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "SBP Rs3tr Shariah OMO injection, Sukuk/Fitch BB push ease liquidity and sovereign outlook",
-   "text_depth": "full",
+   "confidence": 0.25,
+   "reason": "SBP governor cites resilient economy, lower inflation; supportive sentiment, no direct mechanism",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs3tr-64261",
-    "https://mettisglobal.news/Pakistan-eyes-Sukuk-Panda-bonds-to-diversify-external-financing-64259",
-    "https://mettisglobal.news/Finance-Minister-seeks-Fitchs-view-on-requirements-for-BB-category-64254"
+    "https://propakistani.pk/2026/10/18/economy-now-strong-inflation-down-sbp-governor/"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "Rice cropping feature; no fertilizer cash-flow mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038227/agriculture-the-growing-threat-of-double-rice-cropping"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "Routine SNGPL maintenance suspension",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/18/gas-supply-to-remain-suspended-in-several-islamabad-areas/"
+   ]
+  },
+  "Textile": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "500 ginners and 150+ mills closed; textile crisis deepens, cost/input pressure",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Mill closures and local sale of re-export inputs signal sector stress",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
+   ]
+  },
+  "Real Estate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.05,
+   "reason": "NGO oversight meeting; unrelated to real estate",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40444854/punjab-charities-commission-reviews-ngo-oversight"
    ]
   }
- },
- "count": 2
+ }
 }
