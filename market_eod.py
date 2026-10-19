@@ -10,7 +10,7 @@ PDF, so it writes both here, in one small file on runtime-state:
 
     market_eod.json = {"source": ..., "sessions": {
         "2026-10-19": {"kse100": 165966.09,
-                       "stocks": {"PRL": [open, high, low, close, volume, ldcp], ...}}}}
+                       "stocks": {"PRL": [open, high, low, close, volume, ldcp, flags], ...}}}}
 
 Only completed sessions are written (the run's cutoff), only symbols that
 traded that day (psx_mkt_summary drops O=H=L=0 rows), and only the newest
@@ -18,6 +18,11 @@ KEEP sessions, so a consumer that misses a few days can catch up. `kse100` is
 null until the index close for that session is banked; consumers must wait for
 it rather than substitute anything. The content is deterministic (no run
 timestamps), so two runs that publish the same session write identical bytes.
+
+`ldcp` is PSX's previous close, which PSX lowers on an ex-date: by the cash
+amount for a dividend, by the ratio for a bonus or rights issue. `flags` is
+PSX's own marker for that ("XD", "XB", "XR", or "" on a normal day), so a
+consumer can tell the two apart instead of guessing from the size of the gap.
 
 This is a record for the paper test, not a decision input: nothing in the
 engine reads it back, and it never touches daily_ohlc.
@@ -31,7 +36,7 @@ import database as db
 PATH = os.environ.get("PSX_MARKET_EOD_PATH", os.path.join(config.BASE_DIR, "market_eod.json"))
 KEEP = 10
 SOURCE = ("PSX mkt_summary download (stocks) + PSX closing-rates PDF (KSE100); "
-          "fields open, high, low, close, volume, ldcp; close is PSX's official close")
+          "fields open, high, low, close, volume, ldcp, flags; close is PSX's official close")
 
 
 def _index_close(day):
@@ -56,8 +61,11 @@ def publish(cutoff, bars, path=None, keep=KEEP, index_close=None):
     sessions = data.get("sessions") or {}
     stocks = {}
     for b in bars:
+        if b["symbol"] in stocks:
+            # Never pick one of two rows for the same ticker and session silently.
+            raise ValueError(f"mkt_summary {cutoff}: {b['symbol']} appears more than once; not published")
         stocks[b["symbol"]] = [b["open"], b["high"], b["low"], b["close"],
-                               b["volume"], b.get("ldcp")]
+                               b["volume"], b.get("ldcp"), b.get("flags", "")]
     kse = index_close(cutoff) if index_close else _index_close(cutoff)
     sessions[cutoff] = {"kse100": kse, "stocks": dict(sorted(stocks.items()))}
     kept = dict(sorted(sessions.items())[-keep:])
