@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-19T07:39:05Z",
+ "as_of": "2026-10-19T08:38:31Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 14,
+ "articles_read": 15,
  "read_urls": [
   "https://mettisglobal.news/China-remains-Pakistans-top-import-source-in-September-64302",
   "https://mettisglobal.news/Citi-Pharma-gets-CCP-Nod-for-100-acquisition-of-Pakheim-International-Pharma-64300",
@@ -16,18 +16,19 @@
   "https://mettisglobal.news/PACRA-upgrades-Ghandhara-Automobiles-rating-to-A-64310",
   "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307",
   "https://mettisglobal.news/Pakistans-import-bill-surges-226-to-6bn-in-September-64304",
+  "https://mettisglobal.news/Power-purchase-price-may-hit-Rs27unit-in-CY27-64311",
   "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
   "https://mettisglobal.news/USA-remains-top-export-destination-for-Pakistan-in-September-64296",
   "https://mettisglobal.news/VIS-reaffirms-Fatima-Fertilizers-longterm-entity-rating-at-AA-64306"
  ],
- "count": 4,
+ "count": 3,
  "ratings": {
   "GAL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "PACRA upgrade to A+; revenue growth, share gains in trucks/pickups",
+   "confidence": 0.65,
+   "reason": "PACRA upgrade to A+ on revenue growth, profit and share gains; stronger credit standing",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PACRA-upgrades-Ghandhara-Automobiles-rating-to-A-64310"
@@ -38,7 +39,7 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "PACRA outlook to Positive; truck/bus leadership, higher volumes and profit",
+   "reason": "PACRA outlook raised to Positive; A+ held, truck/bus leadership and profit gains",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PACRA-revises-Ghandhara-Industries-outlook-to-positive-64309"
@@ -49,58 +50,69 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "CCP clears 100% Pakheim acquisition; regulatory hurdle removed",
+   "reason": "CCP approves 100% Pakheim acquisition; regulatory hurdle cleared, expansion proceeds",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Citi-Pharma-gets-CCP-Nod-for-100-acquisition-of-Pakheim-International-Pharma-64300",
-    "https://www.brecorder.com/news/40444895/citi-pharma-receives-ccp-nod-to-acquire-pakheim-international",
-    "https://propakistani.pk/2026/10/19/citi-pharma-gets-ccp-approval-to-acquire-pakheim-international-pharma/"
-   ]
-  },
-  "SNGP": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Local Peshawar maintenance gas suspension; no earnings mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/19/sngpl-to-suspend-gas-supply-in-several-parts-of-peshawar/"
+    "https://www.brecorder.com/news/40444895/citi-pharma-receives-ccp-nod-to-acquire-pakheim-international"
    ]
   }
  },
  "sectors": {
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Brent down 1.7% to $108 on Russian supply prospects; lower realisations, still high level",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Cooler crude eases input cost and working-capital pressure; Gulf supply risk persists",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305"
+   ]
+  },
   "Textile": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Sep exports +13% MoM to $1.62bn per SBP; YoY only +1.5%",
+   "reason": "Sept textile exports +13% MoM to $1.62bn, +1.5% YoY; modest volume support",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299"
    ]
   },
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Brent down 1.7% to ~$108 on Russian supply prospects",
+  "Textile/Synthetic Fibre": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Sept textile exports +13% MoM, only +1.5% YoY; modest demand support",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305"
+    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299"
    ]
   },
   "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "FX reserves $21.5bn, FY26 GDP 3.7%; macro-sentiment support",
+   "confidence": 0.35,
+   "reason": "FX reserves $21.5bn, GDP 3.7%; SBP adopts AAOIFI Tawarruq standard, supports Islamic banks",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307"
+    "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64295"
    ]
   }
  }
