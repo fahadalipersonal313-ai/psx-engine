@@ -1,61 +1,74 @@
 {
- "as_of": "2026-10-19T04:38:29Z",
+ "as_of": "2026-10-19T05:39:01Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 3,
+ "articles_read": 10,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-slide-on-Iran-tensions-AI-investment-fears-64298",
+  "https://mettisglobal.news/China-remains-Pakistans-top-import-source-in-September-64302",
+  "https://mettisglobal.news/Citi-Pharma-gets-CCP-Nod-for-100-acquisition-of-Pakheim-International-Pharma-64300",
+  "https://mettisglobal.news/EPQL-9MCY26-profit-drops-18-64301",
+  "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64295",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64297",
+  "https://mettisglobal.news/Pakistans-import-bill-surges-226-to-6bn-in-September-64304",
+  "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
   "https://mettisglobal.news/USA-remains-top-export-destination-for-Pakistan-in-September-64296"
  ],
- "count": 2,
  "ratings": {
+  "CPHL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.65,
+   "reason": "CCP clears 100% Pakheim acquisition; regulatory approval removes key hurdle to expansion",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Citi-Pharma-gets-CCP-Nod-for-100-acquisition-of-Pakheim-International-Pharma-64300",
+    "https://www.brecorder.com/news/40444895/citi-pharma-receives-ccp-nod-to-acquire-pakheim-international",
+    "https://propakistani.pk/2026/10/19/citi-pharma-gets-ccp-approval-to-acquire-pakheim-international-pharma/"
+   ]
+  },
   "PSO": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Board nod to renewed 5-yr SPA with PARCO secures supply; reported, not final",
+   "confidence": 0.3,
+   "reason": "Renewed PARCO supply agreement reportedly cleared; headline only, terms unknown",
    "text_depth": "headline",
    "sources": [
     "https://www.brecorder.com/news/40444861/pso-clears-renewed-spa-with-parco"
-   ]
-  },
-  "SNGP": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.15,
-   "reason": "Routine temporary gas suspension in Islamabad areas; no earnings mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/18/gas-supply-to-remain-suspended-in-several-islamabad-areas/"
    ]
   }
  },
  "sectors": {
-  "Refinery": {
+  "Textile": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "PARCO 5-yr SPA renewal with PSO supports offtake certainty; oil macro items only context",
-   "text_depth": "headline",
+   "confidence": 0.4,
+   "reason": "Sept textile exports +13% MoM to $1.62bn, but YoY only +1.5% and cotton crisis persists",
+   "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40444861/pso-clears-renewed-spa-with-parco"
+    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens",
+    "https://propakistani.pk/2026/10/19/sindh-stays-ahead-as-cotton-production-crosses-4-million-bales/",
+    "https://www.brecorder.com/news/40444853/talal-vows-support-to-phma-for-textile-sector-growth"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
+  "Textile/Synthetic Fibre": {
+   "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "LPG price surge/daily pricing demand and softer oil: mixed for marketers",
-   "text_depth": "headline",
+   "confidence": 0.3,
+   "reason": "Sept textile exports +13% MoM; thin YoY growth and cotton stress limit conviction",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2038194/lpg-stakeholders-seek-daily-pricing-amid-soaring-rates",
-    "https://www.brecorder.com/news/40444883/oil-slips-as-trumps-sanction-waiver-may-lead-to-more-russian-fuel-supplies"
+    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens",
+    "https://propakistani.pk/2026/10/19/sindh-stays-ahead-as-cotton-production-crosses-4-million-bales/",
+    "https://www.brecorder.com/news/40444853/talal-vows-support-to-phma-for-textile-sector-growth"
    ]
   },
   "Oil & Gas Exploration": {
@@ -63,77 +76,13 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Brent down 1.3% on Russia sanction waiver; mild pressure on realisations",
-   "text_depth": "headline",
+   "reason": "Crude slips on Trump Russian sanction waiver, softer realisations for E&Ps",
+   "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40444883/oil-slips-as-trumps-sanction-waiver-may-lead-to-more-russian-fuel-supplies"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "SBP governor cites resilient economy, lower inflation; supportive sentiment, no direct mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/18/economy-now-strong-inflation-down-sbp-governor/"
-   ]
-  },
-  "Fertilizer": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.1,
-   "reason": "Rice cropping feature; no fertilizer cash-flow mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2038227/agriculture-the-growing-threat-of-double-rice-cropping"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.1,
-   "reason": "Routine SNGPL maintenance suspension",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/18/gas-supply-to-remain-suspended-in-several-islamabad-areas/"
-   ]
-  },
-  "Textile": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "500 ginners and 150+ mills closed; textile crisis deepens, cost/input pressure",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
-   ]
-  },
-  "Textile/Synthetic Fibre": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Mill closures and local sale of re-export inputs signal sector stress",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
-   ]
-  },
-  "Real Estate": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.05,
-   "reason": "NGO oversight meeting; unrelated to real estate",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40444854/punjab-charities-commission-reviews-ngo-oversight"
+    "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
+    "https://www.brecorder.com/news/40444893/gold-edges-higher-on-softer-oil-fed-rate-outlook-in-focus"
    ]
   }
- }
+ },
+ "count": 2
 }
