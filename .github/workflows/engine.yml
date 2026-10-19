@@ -245,6 +245,11 @@ jobs:
             if [ "$run_ok" = "1" ] && [ -f dashboard_snapshot.json ]; then
               git add -- dashboard_snapshot.json
             fi
+            # Official full-market session for the paper-trading test
+            # (market_eod.py). Deterministic, so it only differs once a day.
+            if [ "$run_ok" = "1" ] && [ -f market_eod.json ]; then
+              git add -- market_eod.json
+            fi
             git add -f engine_last_error.log 2>/dev/null || true
             if git commit -m "Automated run $(date -u +'%Y-%m-%dT%H:%MZ')"; then
               # A push race is NOT the same thing as a database conflict, and

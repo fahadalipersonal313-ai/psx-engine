@@ -13,7 +13,8 @@ class MktSummaryParse(unittest.TestCase):
     def test_fields_map_to_open_high_low_close_volume(self):
         bars = {b["symbol"]: b for b in ms.parse(SAMPLE, "2026-09-29")}
         self.assertEqual(bars["AABS"], {"symbol": "AABS", "open": 777.0, "high": 787.99,
-                                        "low": 761.0, "close": 774.98, "volume": 172.0})
+                                        "low": 761.0, "close": 774.98, "volume": 172.0,
+                                        "ldcp": 783.09})
 
     def test_status_markers_are_not_part_of_the_symbol(self):
         bars = {b["symbol"]: b for b in ms.parse(SAMPLE, "2026-09-29")}
