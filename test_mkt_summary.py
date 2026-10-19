@@ -14,12 +14,13 @@ class MktSummaryParse(unittest.TestCase):
         bars = {b["symbol"]: b for b in ms.parse(SAMPLE, "2026-09-29")}
         self.assertEqual(bars["AABS"], {"symbol": "AABS", "open": 777.0, "high": 787.99,
                                         "low": 761.0, "close": 774.98, "volume": 172.0,
-                                        "ldcp": 783.09})
+                                        "ldcp": 783.09, "flags": ""})
 
     def test_status_markers_are_not_part_of_the_symbol(self):
         bars = {b["symbol"]: b for b in ms.parse(SAMPLE, "2026-09-29")}
         self.assertIn("OGDC", bars)
         self.assertEqual(bars["OGDC"]["volume"], 1234567.0)   # thousands separators
+        self.assertEqual(bars["OGDC"]["flags"], "XD")              # kept apart from the symbol
 
     def test_a_session_with_no_trades_is_not_a_price(self):
         """O=H=L=0 with only a stale close is dropped, as in psx_historical."""
