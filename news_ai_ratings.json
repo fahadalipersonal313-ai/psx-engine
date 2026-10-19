@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-19T05:39:01Z",
+ "as_of": "2026-10-19T06:39:17Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 10,
+ "articles_read": 12,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-slide-on-Iran-tensions-AI-investment-fears-64298",
   "https://mettisglobal.news/China-remains-Pakistans-top-import-source-in-September-64302",
@@ -11,18 +11,21 @@
   "https://mettisglobal.news/EPQL-9MCY26-profit-drops-18-64301",
   "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64295",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64297",
+  "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305",
+  "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307",
   "https://mettisglobal.news/Pakistans-import-bill-surges-226-to-6bn-in-September-64304",
   "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
-  "https://mettisglobal.news/USA-remains-top-export-destination-for-Pakistan-in-September-64296"
+  "https://mettisglobal.news/USA-remains-top-export-destination-for-Pakistan-in-September-64296",
+  "https://mettisglobal.news/VIS-reaffirms-Fatima-Fertilizers-longterm-entity-rating-at-AA-64306"
  ],
+ "count": 2,
  "ratings": {
   "CPHL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.65,
-   "reason": "CCP clears 100% Pakheim acquisition; regulatory approval removes key hurdle to expansion",
+   "confidence": 0.6,
+   "reason": "CCP approved 100% Pakheim acquisition; regulatory hurdle cleared, integration/earnings impact pending",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Citi-Pharma-gets-CCP-Nod-for-100-acquisition-of-Pakheim-International-Pharma-64300",
@@ -30,45 +33,29 @@
     "https://propakistani.pk/2026/10/19/citi-pharma-gets-ccp-approval-to-acquire-pakheim-international-pharma/"
    ]
   },
-  "PSO": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Renewed PARCO supply agreement reportedly cleared; headline only, terms unknown",
+  "SNGP": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Routine 8-hour local gas suspension in Peshawar for maintenance",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40444861/pso-clears-renewed-spa-with-parco"
+    "https://propakistani.pk/2026/10/19/sngpl-to-suspend-gas-supply-in-several-parts-of-peshawar/"
    ]
   }
  },
  "sectors": {
-  "Textile": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Sept textile exports +13% MoM to $1.62bn, but YoY only +1.5% and cotton crisis persists",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
-    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens",
-    "https://propakistani.pk/2026/10/19/sindh-stays-ahead-as-cotton-production-crosses-4-million-bales/",
-    "https://www.brecorder.com/news/40444853/talal-vows-support-to-phma-for-textile-sector-growth"
-   ]
-  },
-  "Textile/Synthetic Fibre": {
+  "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Sept textile exports +13% MoM; thin YoY growth and cotton stress limit conviction",
+   "confidence": 0.35,
+   "reason": "FX reserves $21.5bn and 3.7% FY26 GDP growth support macro; imports +23% offset",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
-    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens",
-    "https://propakistani.pk/2026/10/19/sindh-stays-ahead-as-cotton-production-crosses-4-million-bales/",
-    "https://www.brecorder.com/news/40444853/talal-vows-support-to-phma-for-textile-sector-growth"
+    "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307",
+    "https://mettisglobal.news/Pakistans-import-bill-surges-226-to-6bn-in-September-64304"
    ]
   },
   "Oil & Gas Exploration": {
@@ -76,13 +63,69 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Crude slips on Trump Russian sanction waiver, softer realisations for E&Ps",
+   "reason": "Crude easing to $108 on Russian supply prospects trims E&P price tailwind",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
-    "https://www.brecorder.com/news/40444893/gold-edges-higher-on-softer-oil-fed-rate-outlook-in-focus"
+    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Softer crude eases cost pressure but LPG pricing dispute unresolved",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305",
+    "https://www.dawn.com/news/2038194/lpg-stakeholders-seek-daily-pricing-amid-soaring-rates"
+   ]
+  },
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Crude pullback only; no refinery-specific policy or margin change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-falls-to-108-amid-Russian-supply-prospects-Gulf-tensions-64305"
+   ]
+  },
+  "Textile": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Sept exports +13% MoM but only +1.5% YoY; mill closures and cotton crisis offset",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Sept exports +13% MoM but only +1.5% YoY; mill closures and cotton crisis offset",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Textile-exports-rise-13-MoM-in-September-64299",
+    "https://www.dawn.com/news/2038192/cotton-arrivals-jump-75pc-as-textile-crisis-deepens"
+   ]
+  },
+  "Power Generation": {
+   "rating": "negative",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Chinese CPEC IPPs claim Rs498bn unpaid dues; receivables/circular debt strain persists",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/19/chinese-ipps-demand-rs-498-billion-in-unpaid-dues/"
    ]
   }
- },
- "count": 2
+ }
 }
