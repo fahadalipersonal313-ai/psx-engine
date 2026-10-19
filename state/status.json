@@ -1,0 +1,59 @@
+{
+ "updated_pkt": "2026-10-20T00:38+05:00",
+ "official_through": "2026-10-19",
+ "official_note": "No new official session since 2026-10-19 (newest in the file: 2026-10-19).",
+ "last_scan": {
+  "date": "2026-10-19",
+  "gates": {
+   "date": "2026-10-19",
+   "kse100": 165966.09,
+   "low20": 164776.44,
+   "gate1_level": 169719.74,
+   "bounce_pct": 0.72,
+   "gate1_open": false,
+   "breadth": 23.6,
+   "breadth_prev": 16.29,
+   "breadth_prev_date": "2026-10-12",
+   "gate2_open": true
+  },
+  "signals": [
+   {
+    "book": "B",
+    "sym": "PRL",
+    "list": "Shariah",
+    "signal_date": "2026-10-19",
+    "signal_close": 108.81,
+    "stop": 92.2,
+    "atr": 5.5361,
+    "note": "52-week-high breakout"
+   }
+  ],
+  "orders_placed": 0,
+  "recomputed": true
+ },
+ "orders": [],
+ "positions": [],
+ "closed": {
+  "n": 0
+ },
+ "recent_trades": [],
+ "live": {
+  "ok": false,
+  "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+ },
+ "config": {
+  "capital": 1000000,
+  "risk_per_trade_pct": 0.25,
+  "gate_bounce": 0.03,
+  "trail_atr": 3.0,
+  "time_stop": 30,
+  "min_turnover_mn": 25,
+  "vol_mult": 1.2,
+  "books": {
+   "B": "LIVE paper book - 52-week-high breakouts",
+   "A": "research book - washouts"
+  },
+  "notes": "Quarter size (0.25% of capital per trade) until 30 signals are logged. Paper capital Rs 1,000,000."
+ },
+ "note": "Paper test only: no real orders, zero weight in the engine's signals. Research, not investment advice."
+}
