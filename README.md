@@ -17,8 +17,9 @@ Every paper decision uses PSX's **official** end-of-day bars. The psx-engine wri
 previous close) and the KSE-100 close from PSX's closing-rates PDF. The trader reads that file (raw GitHub URL, or a
 partial `git fetch` of just that file), and finalises each new session exactly once, oldest first:
 
-1. Price-adjustment guard: if PSX's previous close differs from our stored close (bonus, split, rights), that stock's
-   history, open position and pending order are scaled by the same factor and the report says so.
+1. Ex-dates: PSX lowers its previous close by the dividend (marker XD) or by the bonus/rights ratio (XB/XR). Only XB/XR
+   rescale that stock's history, open position and pending order (as TradingView's research data does); XD is reported
+   and left unadjusted (TradingView does not adjust dividends either); an unmarked change is reported, never guessed.
 2. Orders placed at the previous close fill at this session's official open (cancelled if the open is more than
    0.3 ATR above the signal close, or if the stock did not trade).
 3. Positions: gap below the stop at the open exits at the open; a low through the stop exits at the stop; otherwise one
@@ -27,8 +28,9 @@ partial `git fetch` of just that file), and finalises each new session exactly o
    both gates are open.
 
 Re-running is harmless (a stored session is never processed twice) and a missed run is caught up by the next one.
-A session is refused if PSX's previous closes do not match our stored closes for at least 90% of stocks (a missing
-session), and waits if the official KSE-100 close is not yet published. Nothing is invented.
+A session is refused as a probable missing session if fewer than half of PSX's previous closes match our stored closes
+or more than 5% are higher (ex-dates only ever lower them), and it waits if the official KSE-100 close is not yet
+published. Nothing is invented.
 
 TradingView's public scanner, when reachable, adds an informational live line (KSE-100 now, live price vs stop, whether
 a pending order would fill at today's open). It never changes state.

@@ -36,7 +36,8 @@ S = lambda *p: os.path.join(ROOT, 'state', *p)
 CFG = json.load(open(os.path.join(ROOT, 'config.json')))
 PKT = datetime.timezone(datetime.timedelta(hours=5))
 OFFICIAL_URL = 'https://raw.githubusercontent.com/fahadalipersonal313-ai/psx-engine/runtime-state/market_eod.json'
-ADJUST_TOL = 0.005      # stored close vs PSX previous close; beyond this a price adjustment happened
+ADJUST_TOL = 0.005      # stored close vs PSX previous close; beyond this PSX adjusted the previous close
+CAPITAL_FLAGS = ('XB', 'XR')   # PSX's ex-bonus / ex-rights markers: history is rescaled (as TradingView's research data is)
 KEEP_BARS = 330
 
 
@@ -180,14 +181,17 @@ def scan(bars, uni, day, held):
 # ------------------------------------------------------------------ one official session
 def continuous(bars, uni, stocks, last):
     """Does this session directly follow our last stored session? PSX's previous close (LDCP) for each stock that
-    traded on our last day must equal our stored close; a missing session breaks that for nearly every stock, while a
-    bonus/split breaks it for one. Returns (ok, compared, matched)."""
-    n = m = 0
+    traded on our last day should equal our stored close. Ex-dates only ever LOWER it (dividend, bonus, rights), and
+    a busy book-closure day can lower it for many stocks; a missing session instead moves it both ways for most stocks.
+    So the test is: at least half match, and almost none (<= 5%) are HIGHER than our close.
+    Returns (ok, compared, matched, higher)."""
+    n = m = up = 0
     for s in uni['shariah'] + uni['non_shariah']:
         row, b = stocks.get(s), bars.get(s)
         if row and b and len(row) > 5 and row[5] and b[-1][0] == last:
-            n += 1; m += abs(b[-1][4] / row[5] - 1) <= ADJUST_TOL
-    return (n >= 20 and m >= 0.9 * n), n, m
+            r = b[-1][4] / row[5] - 1
+            n += 1; m += abs(r) <= ADJUST_TOL; up += r < -ADJUST_TOL
+    return (n >= 20 and m >= 0.5 * n and up <= 0.05 * n), n, m, up
 
 
 def finalise(day, sess, st, say):
@@ -196,26 +200,38 @@ def finalise(day, sess, st, say):
     risk_rs = CFG['capital'] * CFG['risk_per_trade_pct'] / 100
     say('## Session %s (PSX official file: %d stocks, KSE-100 %.2f)' % (day, len(stocks), sess['kse100']))
 
-    # 1. price adjustments: PSX's previous close already reflects a bonus/split/rights ex-date
+    # 1. ex-dates: PSX lowers its previous close by the dividend (XD) or by the bonus/rights ratio (XB/XR).
+    #    Only XB/XR rescale our history, matching the research data (TradingView adjusts those, not dividends).
+    exdiv = []
     for s in universe:
         row, b = stocks.get(s), bars.get(s)
         if not row or not b or len(row) < 6 or not row[5]:
             continue
-        prev, ldcp = b[-1][4], row[5]
-        if prev and abs(prev / ldcp - 1) > ADJUST_TOL:
-            f = ldcp / prev
-            bars[s] = [[x[0], x[1] * f, x[2] * f, x[3] * f, x[4] * f, x[5] / f] for x in b]
-            for p in st['positions']:
-                if p['sym'] == s:
-                    for k in ('entry', 'stop0', 'stop', 'hh', 'atr'):
-                        p[k] = round(p[k] * f, 4)
-                    p['shares'] = int(round(p['shares'] / f)); p['note'] = (p.get('note', '') + ' | adjusted x%.4f on %s' % (f, day)).strip(' |')
-            for od in st['orders']:
-                if od['sym'] == s:
-                    for k in ('signal_close', 'stop', 'atr'):
-                        od[k] = round(od[k] * f, 4)
-            say('PRICE ADJUSTMENT %s: stored close %.2f vs PSX previous close %.2f -> history, positions and orders scaled x%.4f'
-                % (s, prev, ldcp, f))
+        prev, ldcp = b[-1][4], row[5]; flags = row[6] if len(row) > 6 and row[6] else ''
+        if not prev or abs(prev / ldcp - 1) <= ADJUST_TOL:
+            continue
+        if not any(x in flags for x in CAPITAL_FLAGS):
+            if 'XD' in flags:
+                exdiv.append('%s Rs %.2f' % (s, prev - ldcp))
+            else:
+                say('UNEXPLAINED previous-close change %s: stored %.2f vs PSX %.2f with no ex-date marker (%r) - history left '
+                    'unchanged; check PSX announcements' % (s, prev, ldcp, flags))
+            continue
+        f = ldcp / prev
+        bars[s] = [[x[0], x[1] * f, x[2] * f, x[3] * f, x[4] * f, x[5] / f] for x in b]
+        for p in st['positions']:
+            if p['sym'] == s:
+                for k in ('entry', 'stop0', 'stop', 'hh', 'atr'):
+                    p[k] = round(p[k] * f, 4)
+                p['shares'] = int(round(p['shares'] / f)); p['note'] = (p.get('note', '') + ' | adjusted x%.4f on %s' % (f, day)).strip(' |')
+        for od in st['orders']:
+            if od['sym'] == s:
+                for k in ('signal_close', 'stop', 'atr'):
+                    od[k] = round(od[k] * f, 4)
+        say('PRICE ADJUSTMENT %s (%s): stored close %.2f vs PSX previous close %.2f -> history, positions and orders scaled x%.4f'
+            % (s, flags, prev, ldcp, f))
+    if exdiv:
+        say('ex-dividend today, history unchanged (as in the research data): ' + ', '.join(exdiv))
 
     # 2. fill orders placed at the previous session's close, at this session's official open
     for od in st['orders']:
@@ -332,10 +348,11 @@ def main():
             if sessions[d].get('kse100') is None:
                 official_note = 'PSX stock file for %s is in, but the official KSE-100 close is not yet - waiting.' % d
                 say(official_note); break
-            ok, n, m = continuous(st['bars'], st['uni'], sessions[d]['stocks'], st['bars']['KSE100'][-1][0])
+            ok, n, m, up = continuous(st['bars'], st['uni'], sessions[d]['stocks'], st['bars']['KSE100'][-1][0])
             if not ok:
-                official_note = ('HISTORY GAP: PSX\'s previous close in the %s file matches our stored close for only %d of %d stocks; '
-                                 'a session is probably missing. Nothing processed - this needs a deliberate backfill.' % (d, m, n))
+                official_note = ('HISTORY GAP: PSX\'s previous close in the %s file matches our stored close for %d of %d stocks and is '
+                                 'higher for %d; a session is probably missing. Nothing processed - this needs a deliberate backfill.'
+                                 % (d, m, n, up))
                 say(official_note); break
             finalise(d, sessions[d], st, say); done.append(d)
         last = st['bars']['KSE100'][-1][0]

@@ -60,14 +60,26 @@ class PaperTrade(unittest.TestCase):
 
     # ---- continuity and waiting
     def test_matching_previous_closes_are_continuous(self):
-        ok, n, m = self.m.continuous(self.st['bars'], self.st['uni'], self.session()['stocks'], self.last)
-        self.assertEqual((ok, n, m), (True, 25, 25))
+        ok, n, m, up = self.m.continuous(self.st['bars'], self.st['uni'], self.session()['stocks'], self.last)
+        self.assertEqual((ok, n, m, up), (True, 25, 25, 0))
 
-    def test_a_missing_session_is_detected_and_nothing_is_rescaled(self):
-        stocks = {s: [104.0, 105.0, 103.0, 104.0, 1e6, 103.0] for s in SYMS}   # previous close is not ours
-        ok, n, m = self.m.continuous(self.st['bars'], self.st['uni'], stocks, self.last)
+    def test_a_busy_ex_dividend_day_is_still_continuous(self):
+        over = {s: [97.0, 98.0, 96.0, 97.0, 1e6, 97.0, 'XD'] for s in SYMS[:10]}   # 40% book closures
+        ok, n, m, up = self.m.continuous(self.st['bars'], self.st['uni'], self.session(over)['stocks'], self.last)
+        self.assertEqual((ok, m, up), (True, 15, 0))
+
+    def test_a_missing_session_is_detected(self):
+        moves = [3.0, -2.0, 1.5, -4.0, 2.5]                       # the missing day moved stocks both ways
+        stocks = {s: [100.0, 101.0, 99.0, 100.0, 1e6, 100.0 + moves[i % 5]] for i, s in enumerate(SYMS)}
+        ok, n, m, up = self.m.continuous(self.st['bars'], self.st['uni'], stocks, self.last)
         self.assertFalse(ok)
-        self.assertEqual(m, 0)
+        self.assertEqual((m, up), (0, 15))
+
+    def test_a_missing_session_stops_the_run_before_anything_changes(self):
+        stocks = {s: [104.0, 105.0, 103.0, 104.0, 1e6, 103.0] for s in SYMS}
+        out = self.run_main(dict(sessions={'2026-01-01': dict(kse100=1000.0, stocks=stocks)}))
+        self.assertIn('HISTORY GAP', out.stdout)
+        self.assertIn('official data through %s' % self.last, out.stdout)
 
     # ---- orders
     def test_order_fills_at_the_official_open(self):
@@ -122,13 +134,25 @@ class PaperTrade(unittest.TestCase):
     # ---- price adjustment
     def test_bonus_issue_rescales_history_and_the_open_position(self):
         p = self.position()
-        self.m.finalise('2026-01-01', self.session({'S00': [50.2, 51.0, 49.8, 50.5, 2e6, 50.0]}), self.st, self.say)
+        self.m.finalise('2026-01-01', self.session({'S00': [50.2, 51.0, 49.8, 50.5, 2e6, 50.0, 'XB']}), self.st, self.say)
         self.assertEqual(self.st['bars']['S00'][-2][4], 50.0)       # stored history halved
         self.assertEqual(self.st['bars']['S00'][-2][5], 2e6)        # volume doubled
         self.assertEqual((p['entry'], p['stop0'], p['atr'], p['shares']), (50.0, 47.5, 1.0, 1000))
         self.assertEqual(p['stop'], 48.0)                 # then trailed by the session's high: 51 - 3 x 1.0
         self.assertEqual(self.trades(), [])
         self.assertTrue(any('PRICE ADJUSTMENT S00' in x for x in self.log))
+
+    def test_ex_dividend_is_reported_and_history_is_not_rescaled(self):
+        p = self.position()
+        self.m.finalise('2026-01-01', self.session({'S00': [97.2, 98.0, 96.5, 97.5, 1e6, 97.0, 'XD']}), self.st, self.say)
+        self.assertEqual(self.st['bars']['S00'][-2][4], 100.0)
+        self.assertEqual((p['entry'], p['stop0'], p['shares']), (100.0, 95.0, 500))
+        self.assertTrue(any('ex-dividend today' in x and 'S00 Rs 3.00' in x for x in self.log))
+
+    def test_an_unmarked_previous_close_change_is_reported_not_guessed(self):
+        self.m.finalise('2026-01-01', self.session({'S01': [80.0, 81.0, 79.0, 80.0, 1e6, 80.0]}), self.st, self.say)
+        self.assertEqual(self.st['bars']['S01'][-2][4], 100.0)
+        self.assertTrue(any(x.startswith('UNEXPLAINED previous-close change S01') for x in self.log))
 
     # ---- whole run: waits for the index, is idempotent
     def run_main(self, official, now='2026-01-02T16:45'):
