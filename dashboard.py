@@ -725,6 +725,9 @@ with tab_desk:
     else:
         opportunity_cards.show_swing(st, action.to_dict("records"), details=False, raw=_raw_news)
     st.caption("Each card lists that stock's own latest headlines (unrated) and the Claude and Codex reviews. Full evidence is in News; trade details are in Stock detail.")
+    # Separate forward test (paper-trading branch); zero weight in the signals above.
+    import paper_test_panel
+    paper_test_panel.render(st, paper_test_panel.fetch_status(), tile)
 
 with tab_watch:
     import opportunity_cards
