@@ -26,7 +26,7 @@ from pathlib import Path
 ENGINE = Path(__file__).resolve().parent.parent
 TARGET_OWNED = {"runtime_bootstrap.py", "test_dashboard_public_access.py"}
 TESTS = ["test_remote_cache.py", "test_remote_data.py", "test_news_desk.py",
-         "test_news_review_panel.py"]
+         "test_news_review_panel.py", "test_paper_test_panel.py"]
 DATA = ["data_lower_price_stocks.json", "data_stock_sectors.json"]
 # Retired 2026-10-07 (engine simplified to technical analysis + news review).
 RETIRED = [".github/workflows/candle-research.yml", "requirements-research.txt",
