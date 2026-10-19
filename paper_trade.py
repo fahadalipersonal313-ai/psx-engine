@@ -109,7 +109,8 @@ def main():
     now = datetime.datetime.now(PKT); today = args.date or now.strftime('%Y-%m-%d'); hm = now.hour * 100 + now.minute
     mode = args.mode
     if mode == 'auto':
-        mode = 'open' if hm < 1100 else ('intraday' if hm < 1530 else 'close')
+        close_at = 1630 if now.weekday() == 4 else 1530          # Friday session runs later
+        mode = 'open' if hm < 1100 else ('intraday' if hm < close_at else 'close')
         if now.weekday() >= 5:
             mode = 'close'
     bars = jload(S('bars.json')); uni = jload(S('universe.json')); breadth = jload(S('breadth.json'), {})
