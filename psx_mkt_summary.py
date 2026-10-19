@@ -104,7 +104,11 @@ def parse(text, day):
         if not sym:
             continue
         row = {"symbol": sym, "open": _num(f[4]), "high": _num(f[5]),
-               "low": _num(f[6]), "close": _num(f[7]), "volume": _num(f[8])}
+               "low": _num(f[6]), "close": _num(f[7]), "volume": _num(f[8]),
+               # PSX's previous close for the day (LDCP), already adjusted on an
+               # ex-date; market_eod publishes it so a consumer can detect a
+               # bonus/split in its own stored history. Not used for banking.
+               "ldcp": _num(f[9]) if len(f) > 9 else None}
         # Identical guards to psx_historical.parse: a bar with no high/low, or
         # O=H=L=0 (a session in which the name did not trade), is not a price.
         if row["high"] is None or row["low"] is None or row["close"] is None:

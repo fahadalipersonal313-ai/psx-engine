@@ -384,6 +384,13 @@ def full_run(fast=False):
         if bar['symbol'] in config.STOCKS:
             db.save_hl_bar(bar['symbol'], cutoff, bar['open'], bar['high'], bar['low'],
                            bar['close'], bar['volume'], psx_mkt_summary.SOURCE, overwrite=True)
+    # The paper-trading test reads the whole official session from this file
+    # (market_eod.py). A record, not an input -- it must never cost a run.
+    try:
+        import market_eod
+        log.info("market_eod: %s", market_eod.publish(cutoff, bars))
+    except Exception as exc:
+        log.warning("market_eod publish failed: %s", exc)
     account = portfolio_advisor.load_portfolio()
     holdings = account.get('holdings', [])
     with db.analysis_batch(len(config.STOCKS)) as batch_id:
