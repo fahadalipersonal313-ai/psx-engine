@@ -1,42 +1,55 @@
 {
- "as_of": "2026-10-20T04:38:55Z",
+ "as_of": "2026-10-20T05:38:34Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/AKD-Securities-wins-Pakistans-best-retail-broker-award-at-Euromoney-2026-64329",
+  "https://mettisglobal.news/APL-3MFY27-profit-jumps-74-64337",
+  "https://mettisglobal.news/ATRL-profit-soars-over-eightfold-to-Rs20bn-in-1QFY27-64336",
   "https://mettisglobal.news/Asian-markets-fall-while-Wall-Street-tech-stocks-recover-64333",
   "https://mettisglobal.news/Bank-deposit-rate-rises-by-12bps-in-Sep-64326",
-  "https://mettisglobal.news/China-State-Construction-to-rehabilitate-N5-in-Sindh-64316",
   "https://mettisglobal.news/EFERT-9MCY26-profit-jumps-14-64320",
   "https://mettisglobal.news/Ghani-Chemworld-halts-production-maintains-local-sales-through-existing-stocks-64323",
-  "https://mettisglobal.news/Ghani-Chemworld-suspends-production-on-export-disruption-64314",
   "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64325",
+  "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335",
   "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330",
   "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328",
+  "https://mettisglobal.news/Govt-retires-Rs464bn-debt-in-a-week-64339",
   "https://mettisglobal.news/Ishaq-Dar-heads-Pakistan-delegation-to-SCO-meeting-in-Dushanbe-64317",
   "https://mettisglobal.news/Kabir-Sidhu-to-peel-back-layers-of-SE-Fruits-IPO-prospectus-64319",
+  "https://mettisglobal.news/M2-falls-by-Rs759bn-in-a-week-64338",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64331",
+  "https://mettisglobal.news/Muhammad-Aurangzeb-Pakistan-must-shift-to-sustainable-exportled-growth-64340",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64332",
   "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321",
   "https://mettisglobal.news/Overseas-investors-repatriate-307m-in-September-2026-64327",
-  "https://mettisglobal.news/PACRA-upgrades-Ghandhara-Automobiles-rating-to-A-64310",
   "https://mettisglobal.news/POL-3MFY27-profit-surges-45-64334",
   "https://mettisglobal.news/PSX-Closing-Bell-Red-on-Tiptoe-64322",
-  "https://mettisglobal.news/Pakistans-FX-reserves-hit-21bn-GDP-growth-reaches-37-in-FY26-64307",
   "https://mettisglobal.news/Pakistans-economy-grows-2-in-Q4-FY26-64312",
-  "https://mettisglobal.news/Power-purchase-price-may-hit-Rs27unit-in-CY27-64311",
   "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
  ],
+ "count": 3,
  "ratings": {
-  "NRL": {
+  "ATRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.8,
-   "reason": "1QFY27 profit up 11x to Rs11.6bn, EPS Rs144.68; gross profit 5x",
+   "reason": "1QFY27 profit up 8x to Rs19.6bn, EPS Rs183.89; offset by HSD crack cap risk",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/ATRL-profit-soars-over-eightfold-to-Rs20bn-in-1QFY27-64336"
+   ]
+  },
+  "NRL": {
+   "rating": "highly_positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.75,
+   "reason": "1QFY27 profit up 11x to Rs11.6bn, EPS Rs144.68; mostly priced after Monday's release",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321"
@@ -46,61 +59,83 @@
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Rs1.9bn gasification capex adds consumers/regulated base; small, FY27 plan",
+   "confidence": 0.3,
+   "reason": "Rs1.9bn FY27 gasification capex for 46 villages; small, regulated-return network growth",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
-   ]
-  },
-  "GAL": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "PACRA upgrade to A+ on growth, profitability, share gains; cheaper funding",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PACRA-upgrades-Ghandhara-Automobiles-rating-to-A-64310"
    ]
   }
  },
  "sectors": {
   "Refinery": {
-   "rating": "positive",
+   "rating": "negative",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "NRL 11x profit signals strong sector margins; fuel price cut is pass-through",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Cabinet caps HSD crack at $38/bbl for 3 months (from $41.89); trims diesel margins, results already strong",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321",
-    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330"
+    "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335",
+    "https://propakistani.pk/2026/10/20/govt-refineries-agree-to-cut-diesel-prices/"
    ]
   },
-  "Oil & Gas Exploration": {
+  "Oil Marketing": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Gas sector overhaul plan targets circular debt, cuts receivable risk; early stage",
+   "confidence": 0.35,
+   "reason": "Diesel Rs7.69 and petrol Rs5.16 cut may lift volumes; crack cap does not hit OMC margins",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
+    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330"
    ]
   },
   "Gas Distribution": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Deregulation/restructuring plan aims at UFG and subsidies; stage is proposal",
+   "confidence": 0.35,
+   "reason": "Gas deregulation/restructuring plan targets circular debt and system losses; early stage",
    "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
+   ]
+  },
+  "Power Generation": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Gas/circular debt reform plan under review; early-stage, helps receivables outlook",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Brent ~$109 and gas-sector reform plan support E&P sentiment; no company-specific mechanism",
+   "text_depth": "headline",
+   "sources": [
     "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328",
-    "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
+    "https://www.brecorder.com/news/40445067/oil-eases-as-markets-assess-potential-waiver-on-russian-energy-middle-east-supply-risks"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Private sector retiring bank debt, M2 down Rs759bn WoW, FX profit repatriation up 93% YoY",
+   "text_depth": "headline",
+   "sources": [
+    "https://mettisglobal.news/M2-falls-by-Rs759bn-in-a-week-64338",
+    "https://www.dawn.com/news/2038419/businesses-repaying-bank-debt-amid-weak-investment"
    ]
   }
- },
- "count": 3
+ }
 }
