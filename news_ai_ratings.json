@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-20T07:38:12Z",
+ "as_of": "2026-10-20T08:38:17Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/AKD-Securities-wins-Pakistans-best-retail-broker-award-at-Euromoney-2026-64329",
   "https://mettisglobal.news/APL-3MFY27-profit-jumps-74-64337",
@@ -12,6 +12,7 @@
   "https://mettisglobal.news/EFERT-9MCY26-profit-jumps-14-64320",
   "https://mettisglobal.news/Ghani-Chemworld-halts-production-maintains-local-sales-through-existing-stocks-64323",
   "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3600-per-tola-64346",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64325",
   "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335",
   "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330",
@@ -30,14 +31,14 @@
   "https://mettisglobal.news/Pakistans-external-financing-hits-374bn-in-September-64344",
   "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
  ],
- "count": 3,
+ "count": 4,
  "ratings": {
   "ATRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.8,
-   "reason": "1QFY27 profit up 8x to Rs19.6bn, EPS 183.89; results out",
+   "confidence": 0.85,
+   "reason": "1QFY27 profit up 8x to Rs19.61bn, EPS Rs183.89 vs 22; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/ATRL-profit-soars-over-eightfold-to-Rs20bn-in-1QFY27-64336"
@@ -47,22 +48,33 @@
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.8,
-   "reason": "1QFY27 profit up 11x to Rs11.6bn, EPS 144.68; results out",
+   "confidence": 0.85,
+   "reason": "1QFY27 profit up 11x to Rs11.57bn, EPS Rs144.68 vs 12.82; results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321"
    ]
   },
   "SSGC": {
-   "rating": "neutral",
+   "rating": "positive",
    "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Rs1.9bn gasification, govt-funded mostly; routine network expansion",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Rs1.92bn FY27 gasification plan for 46 villages; small, early-stage network expansion",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
+   ]
+  },
+  "HUBC": {
+   "rating": "negative",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Data center project delayed on high power/tech costs; headline only",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/20/hubco-delays-data-center-project/"
    ]
   }
  },
@@ -71,23 +83,10 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "HSD crack capped at $38/bbl for 3 months and diesel price cut; limits windfall",
+   "confidence": 0.5,
+   "reason": "Cabinet caps HSD crack at $38/bbl for 3 months, limiting refinery diesel margins",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335",
-    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Diesel -Rs7.69, petrol -Rs5.16/l implies inventory loss; crack cap",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330",
     "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335"
    ]
   },
@@ -96,7 +95,7 @@
    "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Gas deregulation/circular-debt reform plan under review; early stage",
+   "reason": "Gas sector deregulation/circular-debt restructuring plan under review; early stage",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
@@ -104,24 +103,35 @@
   },
   "Oil & Gas Exploration": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Gas sector reform plan eyes circular debt cut; early stage",
+   "reason": "Gas sector reform plan to curb circular debt could ease E&P receivables; early stage",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
    ]
   },
-  "Power Generation": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Circular debt reform plan under review; early stage, no number",
+   "reason": "Fuel price cuts and HSD crack cap are pass-through; no clear OMC margin change",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
+    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Private sector retiring bank debt, M2 falling; weak credit demand",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038419/businesses-repaying-bank-debt-amid-weak-investment"
    ]
   }
  }
