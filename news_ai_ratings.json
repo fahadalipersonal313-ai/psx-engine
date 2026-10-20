@@ -1,80 +1,71 @@
 {
- "as_of": "2026-10-20T08:38:17Z",
+ "as_of": "2026-10-20T09:38:57Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 27,
  "read_urls": [
+  "https://mettisglobal.news/ACPL-3MFY27-profit-rises-29-64349",
   "https://mettisglobal.news/AKD-Securities-wins-Pakistans-best-retail-broker-award-at-Euromoney-2026-64329",
   "https://mettisglobal.news/APL-3MFY27-profit-jumps-74-64337",
   "https://mettisglobal.news/ATBA-swings-to-Rs336m-loss-in-1QFY27-64341",
   "https://mettisglobal.news/ATRL-profit-soars-over-eightfold-to-Rs20bn-in-1QFY27-64336",
-  "https://mettisglobal.news/EFERT-9MCY26-profit-jumps-14-64320",
+  "https://mettisglobal.news/Bank-deposit-rate-rises-by-12bps-in-Sep-64326",
   "https://mettisglobal.news/Ghani-Chemworld-halts-production-maintains-local-sales-through-existing-stocks-64323",
   "https://mettisglobal.news/Gold-climbs-to-4180-on-cooler-oil-prices-64303",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3600-per-tola-64346",
   "https://mettisglobal.news/Gold-price-in-Pakistan-remain-unchanged-64325",
   "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335",
   "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330",
-  "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328",
   "https://mettisglobal.news/Govt-retires-Rs464bn-debt-in-a-week-64339",
   "https://mettisglobal.news/Hormuz-squeeze-becomes-Americas-oil-bonanza-64345",
   "https://mettisglobal.news/M2-falls-by-Rs759bn-in-a-week-64338",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64331",
   "https://mettisglobal.news/Muhammad-Aurangzeb-Pakistan-must-shift-to-sustainable-exportled-growth-64340",
-  "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321",
+  "https://mettisglobal.news/Overseas-investors-repatriate-307m-in-September-2026-64327",
   "https://mettisglobal.news/POL-3MFY27-profit-surges-45-64334",
   "https://mettisglobal.news/PSX-Closing-Bell-Red-on-Tiptoe-64322",
   "https://mettisglobal.news/Pakistan-IMF-discuss-major-tax-reforms-to-boost-economic-growth-64343",
   "https://mettisglobal.news/Pakistan-must-broaden-tax-base-to-achieve-durable-growth-IMF-64342",
   "https://mettisglobal.news/Pakistans-economy-grows-2-in-Q4-FY26-64312",
   "https://mettisglobal.news/Pakistans-external-financing-hits-374bn-in-September-64344",
+  "https://mettisglobal.news/SECP-sets-up-modern-centre-to-combat-cyber-threats-64347",
+  "https://mettisglobal.news/SGPL-to-change-name-to-Crestwell-Healthcare-new-symbol-CWHC-64348",
   "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
  ],
- "count": 4,
+ "count": 3,
  "ratings": {
   "ATRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.85,
-   "reason": "1QFY27 profit up 8x to Rs19.61bn, EPS Rs183.89 vs 22; results out",
+   "confidence": 0.8,
+   "reason": "1QFY27 profit up 8x to Rs19.61bn, EPS Rs183.89 vs 22.5",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/ATRL-profit-soars-over-eightfold-to-Rs20bn-in-1QFY27-64336"
    ]
   },
-  "NRL": {
-   "rating": "highly_positive",
+  "HUBC": {
+   "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.85,
-   "reason": "1QFY27 profit up 11x to Rs11.57bn, EPS Rs144.68 vs 12.82; results out",
-   "text_depth": "full",
+   "confidence": 0.35,
+   "reason": "Mgmt reaffirms BYD plant launch by end-2026, 1,000-1,500 units/month target",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/NRL-profit-surges-11fold-to-Rs116bn-in-1QFY27-64321"
+    "https://www.brecorder.com/news/40445111/hubco-denies-byd-plant-delay-targets-end-2026-launch-report"
    ]
   },
   "SSGC": {
-   "rating": "positive",
+   "rating": "neutral",
    "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Rs1.92bn FY27 gasification plan for 46 villages; small, early-stage network expansion",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Rs1.9bn network extension to 46 villages; small capex, modest consumer adds",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SSGC-eyes-around-Rs2bn-gasification-drive-for-46-Sindh-villages-64324"
-   ]
-  },
-  "HUBC": {
-   "rating": "negative",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Data center project delayed on high power/tech costs; headline only",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/20/hubco-delays-data-center-project/"
    ]
   }
  },
@@ -90,48 +81,15 @@
     "https://mettisglobal.news/Govt-caps-HSD-crack-at-38-per-barrel-for-3-months-64335"
    ]
   },
-  "Gas Distribution": {
+  "Auto Assembler": {
    "rating": "positive",
-   "horizon": "long_term",
+   "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Gas sector deregulation/circular-debt restructuring plan under review; early stage",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Gas sector reform plan to curb circular debt could ease E&P receivables; early stage",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-eyes-gas-sector-overhaul-to-curb-circular-debt-attract-investment-64328"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Fuel price cuts and HSD crack cap are pass-through; no clear OMC margin change",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-cuts-diesel-price-by-Rs769-petrol-by-Rs516-per-litre-64330"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Private sector retiring bank debt, M2 falling; weak credit demand",
+   "reason": "PM reviews long-delayed auto policy, approval possible today; announcement-stage",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2038419/businesses-repaying-bank-debt-amid-weak-investment"
+    "https://propakistani.pk/2026/10/20/new-auto-policy-may-be-approved-today/"
    ]
   }
  }
