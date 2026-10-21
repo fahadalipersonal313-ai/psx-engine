@@ -16,6 +16,12 @@ Every paper decision is made from PSX's OFFICIAL end-of-day bars, one completed 
   A session that is already stored is never processed again, so re-running is harmless and a
   missed run is caught up by the next one (up to the sessions the file keeps).
 
+  Book C - buy-close-sell-open (BCSM, research book, runs in EVERY market - no gates): a Shariah stock at support
+  (near its 20-day low, or at a rising 50-day EMA) that closes green, above yesterday, in the upper half of its range,
+  on at least its 20-day average volume, is bought at that session's official CLOSE and sold at the next session's
+  official OPEN. Fixed notional per trade; results are reported after the round-trip cost and kept apart from the
+  Turn-Confirmation books (A, B), whose rules, stats and dashboard fields are unchanged.
+
   Live view (informational only, never changes state): TradingView's public scanner, when reachable.
 
 State lives in ./state, closed trades in ./trades.csv, run reports in ./runs, and a small summary for
@@ -149,6 +155,65 @@ def legA(b):
     return None
 
 
+def ema(vals, n):
+    k = 2 / (n + 1); e = vals[0]; out = []
+    for v in vals:
+        e = v * k + e * (1 - k); out.append(e)
+    return out
+
+
+def bcsm(b):
+    """Book C setup on today's final bar (same definitions as the research test, scripts/intraday_test.build).
+    Returns (kind, level, atr) or None. b includes today's final bar."""
+    C = CFG['bcsm']
+    if len(b) < 211 or turnover(b) < C['min_turnover_mn']:      # build() starts at index 210
+        return None
+    x, p = b[-1], b[-2]; a = atr14(b)
+    if not a or not x[1] or x[2] <= x[3]:
+        return None
+    v20 = sum(y[5] for y in b[-21:-1]) / 20
+    reversal = x[4] > x[1] and x[4] > p[4] and (x[4] - x[3]) >= 0.5 * (x[2] - x[3])
+    if not (reversal and v20 > 0 and x[5] >= v20):
+        return None
+    lo20 = min(y[3] for y in b[-20:])
+    if (x[4] - lo20) / a <= 1.5 and x[3] > lo20 and p[3] > lo20 - 1e-9 and min(y[3] for y in b[-20:-2]) <= lo20 + 1e-9:
+        return '20-day-low support', lo20, a
+    e = ema([y[4] for y in b], 50); sma200 = sum(y[4] for y in b[-200:]) / 200
+    if x[4] > sma200 and e[-1] > e[-11] and min(y[3] for y in b[-3:]) <= e[-1] * 1.01 and x[4] >= e[-1]:
+        return 'rising 50-day EMA', e[-1], a
+    return None
+
+
+def bcsm_scan(bars, uni, day):
+    sigs = []
+    for lst in CFG['bcsm']['lists']:
+        for s in uni[lst]:
+            b = bars.get(s)
+            if not b or b[-1][0] != day:
+                continue
+            r = bcsm(b)
+            if r:
+                c = b[-1][4]
+                sigs.append(dict(book='C', sym=s, list='Shariah' if lst == 'shariah' else 'non-Shariah', signal_date=day, signal_close=c,
+                                 stop=round(c - r[2], 2), atr=round(r[2], 4), note='%s %.2f' % (r[0], r[1])))
+    return sigs
+
+
+def bcsm_buy(sigs, st, day, say):
+    """Book C buys at the signal session's official close (a closing-session order). stop0 = close - 1 ATR is a
+    REFERENCE for R only: no stop is used, the position is always sold at the next official open."""
+    for sg in sigs:
+        c = sg['signal_close']; shares = int(CFG['bcsm']['notional_rs'] // c)
+        if shares <= 0 or any(p['book'] == 'C' and p['sym'] == sg['sym'] for p in st['positions']):
+            continue
+        st['positions'].append(dict(id='C-%s-%s' % (sg['sym'], day), book='C', sym=sg['sym'], list=sg['list'], signal_date=day,
+                                    entry_date=day, entry=round(c, 2), stop0=sg['stop'], stop=sg['stop'], atr=sg['atr'], hh=c,
+                                    shares=shares, days=0, note='buy-close-sell-open: ' + sg['note']))
+        say('FILLED C %s at %.2f (official close %s, %s) - %d shares, Rs %.0f; sells at the next official open'
+            % (sg['sym'], c, day, sg['note'], shares, shares * c))
+    st.setdefault('bcsm', {})['last_scanned'] = day
+
+
 # ------------------------------------------------------------------ gates and scan (pure functions of stored history)
 def gates(bars, breadth, day):
     ib = [x for x in bars['KSE100'] if x[0] <= day]
@@ -160,6 +225,11 @@ def gates(bars, breadth, day):
                 bounce_pct=round(100 * (close / lo20 - 1), 2), gate1_open=close / lo20 - 1 >= CFG['gate_bounce'],
                 breadth=now, breadth_prev=prev, breadth_prev_date=prev_day,
                 gate2_open=(prev is not None and now is not None and now > prev))
+
+
+def held_ab(st):
+    """Stocks held by the Turn-Confirmation books (A, B). Book C positions never block their scan."""
+    return {p['sym'] for p in st['positions'] if p['book'] != 'C'}
 
 
 def scan(bars, uni, day, held):
@@ -256,17 +326,39 @@ def finalise(day, sess, st, say):
     keep = []
     for p in st['positions']:
         row = stocks.get(p['sym'])
-        if not row:
-            keep.append(p); continue                      # did not trade: no bar, no session counted
-        o, h, l, c = row[:4]; exit_px = None; reason = ''
-        if p['entry_date'] != day and o <= p['stop']:
-            exit_px, reason = o, 'gap below stop at the open'
-        elif l <= p['stop']:
-            exit_px, reason = p['stop'], 'stop hit'
-        else:
+        if p['book'] == 'C':
+            # Book C: always sold at the next official open (no stop, no trail). The stock was bought cum, so if PSX
+            # lowered its previous close for an ex-date, that reduction is added back. PSX's file carries no reliable
+            # XD/XB/XR marker, so the reduction itself is the evidence: up to 10% it is treated as a cash dividend
+            # (rupees added back), above 10% as a bonus/rights ratio (open scaled up).
             p['days'] += 1
-            if p['days'] >= CFG['time_stop']:
-                exit_px, reason = c, 'time stop (%d sessions)' % CFG['time_stop']
+            if not row:
+                say('C %s did not trade on %s - still held, sells at its next official open' % (p['sym'], day))
+                keep.append(p); continue
+            exit_px, reason = row[0], 'next official open'
+            prev = bars[p['sym']][-1][4] if bars.get(p['sym']) else p['entry']
+            ldcp = row[5] if len(row) > 5 and row[5] else None
+            if ldcp and prev - ldcp > 0.005:
+                if ldcp >= 0.9 * prev:
+                    exit_px = row[0] + (prev - ldcp)
+                    reason += ' + Rs %.2f ex-date reduction added back (PSX previous close %.2f vs our close %.2f; dividend, bought cum)' % (prev - ldcp, ldcp, prev)
+                else:
+                    exit_px = row[0] * prev / ldcp
+                    reason += ' x %.4f ex-date ratio (PSX previous close %.2f vs our close %.2f; bonus/rights, bought cum)' % (prev / ldcp, ldcp, prev)
+            elif ldcp and ldcp - prev > 0.005:
+                say('C %s: PSX previous close %.2f is ABOVE our stored close %.2f - not adjusted; check the data' % (p['sym'], ldcp, prev))
+        elif not row:
+            keep.append(p); continue                      # did not trade: no bar, no session counted
+        else:
+            o, h, l, c = row[:4]; exit_px = None; reason = ''
+            if p['entry_date'] != day and o <= p['stop']:
+                exit_px, reason = o, 'gap below stop at the open'
+            elif l <= p['stop']:
+                exit_px, reason = p['stop'], 'stop hit'
+            else:
+                p['days'] += 1
+                if p['days'] >= CFG['time_stop']:
+                    exit_px, reason = c, 'time stop (%d sessions)' % CFG['time_stop']
         if exit_px is None:
             p['hh'] = max(p['hh'], h)
             new_stop = round(max(p['stop'], p['hh'] - CFG['trail_atr'] * p['atr']), 2)
@@ -296,7 +388,7 @@ def finalise(day, sess, st, say):
         % (g['kse100'], g['low20'], g['bounce_pct'], 'OPEN' if g['gate1_open'] else 'closed', g['gate1_level']))
     say('GATE 2 breadth: %.0f%% above 20-day avg vs %s on %s -> %s'
         % (g['breadth'] or 0, g['breadth_prev'], g['breadth_prev_date'], 'OPEN' if g['gate2_open'] else 'closed'))
-    sigs = scan(bars, uni, day, {p['sym'] for p in st['positions']})
+    sigs = scan(bars, uni, day, held_ab(st))
     for sg in sigs:
         say('SIGNAL %s %s (%s) close %.2f stop %.2f risk %.1f%% - %s' % (sg['book'], sg['sym'], sg['list'], sg['signal_close'], sg['stop'],
                                                                       100 * (1 - sg['stop'] / sg['signal_close']), sg['note']))
@@ -305,7 +397,10 @@ def finalise(day, sess, st, say):
         say('BOTH GATES OPEN -> %d paper orders placed for the next open.' % len(sigs))
     else:
         say('Gate(s) closed -> %d signal(s) logged, NO orders.' % len(sigs))
-    st['last_scan'] = dict(date=day, gates=g, signals=sigs, orders_placed=len(st['orders']))
+    csigs = bcsm_scan(bars, uni, day)
+    say('BOOK C (buy-close-sell-open, no gates): %d setup(s) at the %s close' % (len(csigs), day))
+    bcsm_buy(csigs, st, day, say)
+    st['last_scan'] = dict(date=day, gates=g, signals=sigs, orders_placed=len(st['orders']), bcsm=csigs)
 
 
 # ------------------------------------------------------------------ main
@@ -317,12 +412,25 @@ def live_summary(live):
 
 
 def closed_stats():
-    rows = list(csv.DictReader(open(os.path.join(ROOT, 'trades.csv'))))
-    if not rows:
-        return dict(n=0), rows
-    Rs = [float(r['R']) for r in rows]; gp = sum(x for x in Rs if x > 0); gl = -sum(x for x in Rs if x < 0)
-    return dict(n=len(Rs), total_R=round(sum(Rs), 2), pf=round(gp / gl, 2) if gl else None, win_pct=round(100 * sum(x > 0 for x in Rs) / len(Rs)),
-                pnl_rs=round(sum(float(r['pnl_rs']) for r in rows))), rows
+    """(Turn-Confirmation stats, their rows, book C stats, book C rows). The A/B figures are exactly as before book C
+    existed; book C is judged on % after the round-trip cost, because an overnight move is small next to the cost."""
+    allrows = list(csv.DictReader(open(os.path.join(ROOT, 'trades.csv'))))
+    rows = [r for r in allrows if r['book'] != 'C']; crows = [r for r in allrows if r['book'] == 'C']
+    if rows:
+        Rs = [float(r['R']) for r in rows]; gp = sum(x for x in Rs if x > 0); gl = -sum(x for x in Rs if x < 0)
+        stats = dict(n=len(Rs), total_R=round(sum(Rs), 2), pf=round(gp / gl, 2) if gl else None,
+                     win_pct=round(100 * sum(x > 0 for x in Rs) / len(Rs)), pnl_rs=round(sum(float(r['pnl_rs']) for r in rows)))
+    else:
+        stats = dict(n=0)
+    cost = CFG['bcsm']['cost_pct']
+    if crows:
+        net = [float(r['pct']) - cost for r in crows]; gp = sum(x for x in net if x > 0); gl = -sum(x for x in net if x < 0)
+        cstats = dict(n=len(net), cost_pct=cost, avg_net_pct=round(sum(net) / len(net), 3), pf_net=round(gp / gl, 2) if gl else None,
+                      win_pct=round(100 * sum(x > 0 for x in net) / len(net)),
+                      pnl_rs_net=round(sum(float(r['pnl_rs']) - cost / 100 * float(r['entry']) * float(r['shares']) for r in crows)))
+    else:
+        cstats = dict(n=0, cost_pct=cost)
+    return stats, rows, cstats, crows
 
 
 def main():
@@ -333,12 +441,22 @@ def main():
     args = ap.parse_args()
     now = datetime.datetime.fromisoformat(args.now).replace(tzinfo=PKT) if args.now else datetime.datetime.now(PKT)
     st = dict(bars=jload(S('bars.json')), uni=jload(S('universe.json')), breadth=jload(S('breadth.json'), {}),
-              positions=jload(S('positions.json'), []), orders=jload(S('orders.json'), []), last_scan=jload(S('last_scan.json')))
+              positions=jload(S('positions.json'), []), orders=jload(S('orders.json'), []), last_scan=jload(S('last_scan.json')),
+              bcsm=jload(S('bcsm.json'), dict(last_scanned=None)))
     log = []
     say = lambda s: (log.append(s), print(s))
     say('# Paper-trade run  %s PKT' % now.strftime('%Y-%m-%d %H:%M'))
     last = st['bars']['KSE100'][-1][0]
     official_note = ''
+    if (st['bcsm'].get('last_scanned') or '') < last:
+        # The newest stored session was finalised before book C existed: scan it now from its stored official bars,
+        # exactly as finalise() would have, so it is sold at the next session's official open.
+        say('BOOK C catch-up: session %s was finalised before book C ran - scanned now from its stored official bars.' % last)
+        csigs = bcsm_scan(st['bars'], st['uni'], last)
+        say('BOOK C (buy-close-sell-open, no gates): %d setup(s) at the %s close' % (len(csigs), last))
+        bcsm_buy(csigs, st, last, say)
+        if st['last_scan'] and st['last_scan'].get('date') == last:
+            st['last_scan']['bcsm'] = csigs
     try:
         off = fetch_official(args.official)
         sessions = off.get('sessions') or {}
@@ -367,8 +485,8 @@ def main():
     if st['last_scan'] is None or st['last_scan']['date'] != last:
         # Same pure computation as finalise(); recorded so the dashboard can show the latest stored session.
         g = gates(st['bars'], st['breadth'], last)
-        st['last_scan'] = dict(date=last, gates=g, signals=scan(st['bars'], st['uni'], last, {p['sym'] for p in st['positions']}),
-                               orders_placed=len(st['orders']), recomputed=True)
+        st['last_scan'] = dict(date=last, gates=g, signals=scan(st['bars'], st['uni'], last, held_ab(st)),
+                               orders_placed=len(st['orders']), recomputed=True, bcsm=bcsm_scan(st['bars'], st['uni'], last))
 
     # ---- informational live view (never changes state)
     live = dict(ok=False)
@@ -382,8 +500,15 @@ def main():
                 say('LIVE (TradingView, delayed, not official; no action taken): KSE-100 %.0f; Gate 1 needs an official close >= %.0f'
                     % (q['KSE100']['c'], g['gate1_level']))
             for p in st['positions']:
-                if p['sym'] in q:
-                    say('  live %s %.2f vs stop %.2f (%+.1f%% from entry %.2f)' % (p['sym'], q[p['sym']]['c'], p['stop'], 100 * (q[p['sym']]['c'] / p['entry'] - 1), p['entry']))
+                qq = q.get(p['sym'])
+                if not qq:
+                    continue
+                if p['book'] == 'C':
+                    if qq.get('o'):
+                        say('  live C %s: open %.2f (%+.2f%% vs entry %.2f, before costs) - the paper exit is the official open when '
+                            'PSX publishes it' % (p['sym'], qq['o'], 100 * (qq['o'] / p['entry'] - 1), p['entry']))
+                else:
+                    say('  live %s %.2f vs stop %.2f (%+.1f%% from entry %.2f)' % (p['sym'], qq['c'], p['stop'], 100 * (qq['c'] / p['entry'] - 1), p['entry']))
             for od in st['orders']:
                 qq = q.get(od['sym'])
                 if qq and qq.get('o'):
@@ -396,14 +521,29 @@ def main():
 
     jsave(S('bars.json'), st['bars']); jsave(S('breadth.json'), st['breadth'])
     jsave(S('positions.json'), st['positions']); jsave(S('orders.json'), st['orders']); jsave(S('last_scan.json'), st['last_scan'])
+    jsave(S('bcsm.json'), st['bcsm'])
     say('official data through %s | open positions: %d | pending orders: %d' % (last, len(st['positions']), len(st['orders'])))
     for p in st['positions']:
-        say('  %s %s entry %.2f stop %.2f last official close %.2f day %d' % (p['book'], p['sym'], p['entry'], p['stop'], p.get('last_close', p['entry']), p['days']))
-    stats, rows = closed_stats()
+        if p['book'] == 'C':
+            say('  C %s bought %.2f at the %s official close, %d shares - sells at the next official open' % (p['sym'], p['entry'], p['entry_date'], p['shares']))
+        else:
+            say('  %s %s entry %.2f stop %.2f last official close %.2f day %d' % (p['book'], p['sym'], p['entry'], p['stop'], p.get('last_close', p['entry']), p['days']))
+    stats, rows, cstats, crows = closed_stats()
     if stats['n']:
         say('closed trades so far: %d | total %+.2fR | PF %s | win %d%%' % (stats['n'], stats['total_R'], stats['pf'], stats['win_pct']))
+    if cstats['n']:
+        say('closed trades so far (book C, after %.2f%% costs): %d | avg %+.3f%% | PF %s | win %d%% | Rs %+d'
+            % (cstats['cost_pct'], cstats['n'], cstats['avg_net_pct'], cstats['pf_net'], cstats['win_pct'], cstats['pnl_rs_net']))
+    # The Turn-Confirmation fields (positions, closed, recent_trades) keep their old meaning for the dashboard;
+    # book C has its own block.
     jsave(S('status.json'), dict(updated_pkt=now.isoformat(timespec='minutes'), official_through=last, official_note=official_note,
-                                 last_scan=st['last_scan'], orders=st['orders'], positions=st['positions'], closed=stats, recent_trades=rows[-10:],
+                                 last_scan=st['last_scan'], orders=st['orders'], positions=[p for p in st['positions'] if p['book'] != 'C'],
+                                 closed=stats, recent_trades=rows[-10:],
+                                 bcsm=dict(about='Book C - buy at the official close of a support + reversal + volume day, sell at the next '
+                                                 'official open. %s stocks, every market (no gates), Rs %s per trade, research book.'
+                                                 % (' and '.join('Shariah' if x == 'shariah' else 'non-Shariah' for x in CFG['bcsm']['lists']), format(CFG['bcsm']['notional_rs'], ',')),
+                                           signals=st['last_scan'].get('bcsm', []), positions=[p for p in st['positions'] if p['book'] == 'C'],
+                                           closed=cstats, recent_trades=crows[-10:]),
                                  live=live_summary(live),
                                  config=CFG, note='Paper test only: no real orders, zero weight in the engine\'s signals. Research, not investment advice.'))
     os.makedirs(os.path.join(ROOT, 'runs'), exist_ok=True)

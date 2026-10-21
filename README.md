@@ -35,6 +35,28 @@ published. Nothing is invented.
 TradingView's public scanner, when reachable, adds an informational live line (KSE-100 now, live price vs stop, whether
 a pending order would fill at today's open). It never changes state.
 
+## Book C - buy-close-sell-open (added 21-Oct-2026, research book, NO gates)
+
+Trades in every market, including now (KSE-100 below its 50-day average and Gate 1 closed), so the paper test records
+trades while the Turn-Confirmation books wait. Kept completely apart from books A and B: its own block in `status.json`
+(`bcsm`), its own stats line, and the A/B fields (`positions`, `closed`, `recent_trades`) mean exactly what they did before.
+
+* Setup on a finalised session D, Shariah stocks with >= Rs 25m/day turnover:
+  support = near the 20-day low (close within 1.5 ATR of it, today's and yesterday's low above it, the low set earlier)
+  OR at a rising 50-day EMA (close above SMA200, EMA50 up over 10 sessions, a low within 1% of EMA50 in 3 sessions);
+  reversal = green close, above yesterday's close, in the upper half of the range; volume >= its 20-day average.
+* Buy at D's official close (a closing-session order), Rs 100,000 per trade. Sell at the next official open of a
+  session in which the stock trades. No stop, no trail. The stock was bought cum, so if PSX lowered its previous close
+  for an ex-date, the reduction is added back: up to 10% as rupees (cash dividend), above 10% as a ratio (bonus/rights).
+  PSX's file carries no reliable XD/XB/XR marker, so the previous-close reduction itself is the evidence.
+* `R` for book C = the overnight move in ATRs (`stop0` = entry - 1 ATR is a reference only). Book C is judged on % after
+  the 0.25% round-trip cost.
+* Honest limits: the setup is judged on D's final bar and bought at D's close, which assumes it can be spotted in the
+  closing session (15:00-15:30). PSX publishes the official file in the evening, so each trade is recorded a session
+  late. History (daily bars, 2015-2026, Shariah): 4,162 trades, PF 2.05 after costs; weak markets PF 1.28; but the
+  2026 weak market PF 0.61 (138 trades) - this book exists to measure that live.
+* First run: the newest stored session is scanned once from its stored official bars (catch-up), so no setup is lost.
+
 Rules: both gates open (KSE-100 >= 1.03 x its 20-day low AND breadth higher than 5 sessions ago) -> buy at the next official open.
 Leg B 52-week-high breakouts (live book) and Leg A washout demand closes (research book), liquid names (>= Rs 25m/day) only.
 Stops never move down.
