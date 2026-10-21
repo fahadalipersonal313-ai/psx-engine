@@ -1,12 +1,11 @@
 {
- "as_of": "2026-10-21T07:38:22Z",
+ "as_of": "2026-10-21T08:38:55Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 26,
+ "articles_read": 25,
  "read_urls": [
   "https://mettisglobal.news/AGTL-rebounds-to-Rs17bn-profit-in-9MFY26-64352",
-  "https://mettisglobal.news/Asian-markets-surge-on-renewed-AI-investment-hopes-64370",
   "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
   "https://mettisglobal.news/CDNS-raises-profit-rates-across-key-savings-instruments-64377",
   "https://mettisglobal.news/Dire-Straits-Not-for-Gulf-oil-as-flows-top-prewar-mark-64379",
@@ -20,6 +19,7 @@
   "https://mettisglobal.news/Loads-shareholders-approve-Rs903m-loans-for-subsidiary-64356",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64368",
   "https://mettisglobal.news/McCormick-targets-majority-control-of-Unilever-Pakistan-Foods-64378",
+  "https://mettisglobal.news/NCCIA-arrests-suspect-in-Lahore-over-Rs35bn-fraud-64380",
   "https://mettisglobal.news/NICL-1QFY27-profit-jumps-32-64354",
   "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375",
   "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
@@ -29,17 +29,16 @@
   "https://mettisglobal.news/Pakistan-promotes-PASBAN-scheme-to-boost-formal-remittances-64365",
   "https://mettisglobal.news/Pakistans-external-financing-hits-374bn-in-September-64344",
   "https://mettisglobal.news/Petrol-price-rises-by-Rs088-diesel-by-Rs053-per-litre-64367",
-  "https://mettisglobal.news/Punjab-churns-out-Rs1bn-plan-to-modernise-dairy-farms-64363",
-  "https://mettisglobal.news/Punjab-keeps-livestock-exports-on-the-hoof-up-43-YoY-64357"
+  "https://mettisglobal.news/Punjab-churns-out-Rs1bn-plan-to-modernise-dairy-farms-64363"
  ],
- "count": 4,
+ "count": 5,
  "ratings": {
   "PRL": {
-   "rating": "highly_positive",
-   "horizon": "multi_session",
+   "rating": "positive",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.85,
-   "reason": "1QFY27 profit Rs13.97bn vs Rs1.02bn, EPS 22.17; revenue 2x, margins up",
+   "confidence": 0.75,
+   "reason": "1QFY27 profit up 13.7x to Rs13.97bn; results out, likely partly priced",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
@@ -50,7 +49,7 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.7,
-   "reason": "9MCY26 swing to Rs399m profit from Rs2.83bn loss; margin and other income up",
+   "reason": "9MCY26 swing to Rs399m profit vs Rs2.83bn loss; earnings out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
@@ -60,54 +59,77 @@
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Removed from NITPGI at recomposition from Oct 21; passive index selling",
+   "confidence": 0.3,
+   "reason": "Removed from NIT Gateway Index on recomposition; passive selling flow",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
    ]
   },
   "HUBC": {
-   "rating": "positive",
+   "rating": "neutral",
    "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "BYD plant to localise up to 80% over time; initially import-reliant, early stage",
+   "causality": "noise",
+   "confidence": 0.25,
+   "reason": "BYD plant to rely on imports initially; localisation gradual, no near-term cash flow",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038641/byd-to-rely-on-imports-initially-hubco-says"
    ]
+  },
+  "LOADS": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "AGM approval of Rs903m subsidiary loans; routine intra-group funding",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Loads-shareholders-approve-Rs903m-loans-for-subsidiary-64356"
+   ]
   }
  },
  "sectors": {
-  "Auto Assembler": {
+  "Fertilizer": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "PM approved draft Auto Policy 2026-31 targeting $6bn exports, local production",
+   "reason": "Sept offtake +25.5% YoY to 371k t; demand rebound, supply seen adequate",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373",
+    "https://www.dawn.com/news/2038647/fertiliser-availability-for-rabi-reviewed"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.45,
+   "reason": "PM approved draft Auto Policy 2026-31 ($6bn exports target); pending cabinet",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038648/draft-auto-policy-sent-to-cabinet"
    ]
   },
-  "Fertilizer": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "Sept nutrient offtake +25.5% YoY to 371k tonnes; Rabi supply reviewed",
+   "confidence": 0.5,
+   "reason": "Brent back above $110 on supply-risk; higher realised prices for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373"
+    "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375"
    ]
   },
-  "Oil & Gas Exploration": {
+  "Refinery": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
+   "horizon": "multi_session",
+   "causality": "causal",
    "confidence": 0.4,
-   "reason": "Brent back above $110 on Middle East supply fears",
+   "reason": "Brent $110 and refinery margins/inventory gains; supply risk persists",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375"
