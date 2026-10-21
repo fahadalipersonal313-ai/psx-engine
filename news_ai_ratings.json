@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-21T05:38:43Z",
+ "as_of": "2026-10-21T06:38:47Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -8,7 +8,8 @@
   "https://mettisglobal.news/ACPL-3MFY27-profit-rises-29-64349",
   "https://mettisglobal.news/AGTL-rebounds-to-Rs17bn-profit-in-9MFY26-64352",
   "https://mettisglobal.news/Asian-markets-surge-on-renewed-AI-investment-hopes-64370",
-  "https://mettisglobal.news/Baku-to-host-3rd-Islamic-Finance-Forum-on-October-22-64366",
+  "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
+  "https://mettisglobal.news/CDNS-raises-profit-rates-across-key-savings-instruments-64377",
   "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372",
   "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373",
   "https://mettisglobal.news/Gold-dips-to-4119-on-oilled-inflation-fears-64374",
@@ -20,7 +21,7 @@
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64368",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64369",
   "https://mettisglobal.news/NICL-1QFY27-profit-jumps-32-64354",
-  "https://mettisglobal.news/OGRA-trims-HSD-crack-spread-to-38-per-barrel-64355",
+  "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375",
   "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
   "https://mettisglobal.news/PSX-Closing-Bell-Bears-Go-BacktoBack-64359",
   "https://mettisglobal.news/Pakistan-Post-in-the-red-as-losses-hit-Rs12bn-64360",
@@ -29,39 +30,38 @@
   "https://mettisglobal.news/Pakistans-external-financing-hits-374bn-in-September-64344",
   "https://mettisglobal.news/Petrol-price-rises-by-Rs088-diesel-by-Rs053-per-litre-64367",
   "https://mettisglobal.news/Punjab-churns-out-Rs1bn-plan-to-modernise-dairy-farms-64363",
-  "https://mettisglobal.news/Punjab-keeps-livestock-exports-on-the-hoof-up-43-YoY-64357",
-  "https://mettisglobal.news/SGPL-to-change-name-to-Crestwell-Healthcare-new-symbol-CWHC-64348"
+  "https://mettisglobal.news/Punjab-keeps-livestock-exports-on-the-hoof-up-43-YoY-64357"
  ],
- "count": 4,
+ "count": 5,
  "ratings": {
-  "EPCL": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.65,
-   "reason": "9MCY26 swing to Rs399m profit from Rs2.83bn loss; earnings turnaround",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
-   ]
-  },
   "PRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.8,
-   "reason": "1QFY27 profit up 13.7x to Rs13.97bn; refining margins strong",
+   "reason": "1QFY27 profit up 13.7x to Rs13.97bn; earnings out, quantified",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
+   ]
+  },
+  "EPCL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.65,
+   "reason": "9MCY26 swing to Rs399m profit from Rs2.83bn loss; earnings out",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
    ]
   },
   "HUBC": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "BYD plant to localise up to 80%; early-stage EV venture, imports initially",
+   "confidence": 0.35,
+   "reason": "BYD plant plans 80% localisation long term; early-stage, import-reliant start",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038641/byd-to-rely-on-imports-initially-hubco-says"
@@ -69,7 +69,7 @@
   },
   "LOADS": {
    "rating": "neutral",
-   "horizon": "long_term",
+   "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.2,
    "reason": "AGM approves Rs903m subsidiary loans; routine intra-group financing",
@@ -77,76 +77,63 @@
    "sources": [
     "https://mettisglobal.news/Loads-shareholders-approve-Rs903m-loans-for-subsidiary-64356"
    ]
+  },
+  "SYS": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Removed from NIT Pakistan Gateway Index; passive selling flow, small",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
+   ]
   }
  },
  "sectors": {
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "PRL 14x profit signals strong margins; Brent ~$110 adds inventory gains",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
-    "https://www.brecorder.com/news/40445237/oil-rises-on-middle-east-supply-worries"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "POL profit +51% on higher oil and gas output; Brent ~$110 lifts realisations",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40445152/pol-strong-earnings-mixed-production",
-    "https://www.brecorder.com/news/40445237/oil-rises-on-middle-east-supply-worries"
-   ]
-  },
   "Fertilizer": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Sept offtake +25.5% YoY; urea stocks healthy, DAP shortfall looms for Rabi",
+   "confidence": 0.55,
+   "reason": "Sept nutrient offtake +25.5% YoY; Rabi supply reviewed, demand rebound",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373",
-    "https://propakistani.pk/2026/10/21/dap-shortfall-looms-for-rabi-season-despite-healthy-urea-stocks/"
-   ]
-  },
-  "Cement": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "ACPL 1Q profit +29% points to healthy sector margins; sector bid at open",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/ACPL-3MFY27-profit-rises-29-64349"
+    "https://www.dawn.com/news/2038647/fertiliser-availability-for-rabi-reviewed"
    ]
   },
   "Auto Assembler": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "PM approved draft Auto Policy 2026-31 targeting $6bn exports; pending cabinet",
+   "confidence": 0.45,
+   "reason": "PM approved draft Auto Policy 2026-31 aiming $6bn exports; pending cabinet",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038648/draft-auto-policy-sent-to-cabinet"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Fuel prices nudged up Rs0.5-0.9/l; high crude offsets, no clear margin change",
+   "confidence": 0.45,
+   "reason": "Brent back above $110 on Middle East supply risk lifts realisations",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Petrol-price-rises-by-Rs088-diesel-by-Rs053-per-litre-64367"
+    "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375"
+   ]
+  },
+  "Technology/Telecom": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "5G live in 24 cities after $509m spectrum auction; network build-out stage",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-expands-5G-to-24-cities-after-509m-spectrum-auction-64364"
    ]
   }
  }
