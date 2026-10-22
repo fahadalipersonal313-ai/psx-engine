@@ -1,10 +1,11 @@
 {
- "as_of": "2026-10-22T08:38:42Z",
+ "as_of": "2026-10-22T09:38:34Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 24,
+ "articles_read": 23,
  "read_urls": [
+  "https://mettisglobal.news/Biafo-Industries-Q1-profit-falls-35-to-Rs101m-64416",
   "https://mettisglobal.news/CHCC-1QFY27-profit-rises-6-64408",
   "https://mettisglobal.news/Customs-foils-Rs50m-smuggling-bid-at-Sukkur-Barrage-64391",
   "https://mettisglobal.news/Faysal-Bank-9M-CY26-profit-edges-up-to-Rs16bn-declares-Rs15-dividend-64411",
@@ -13,158 +14,101 @@
   "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
   "https://mettisglobal.news/Govt-directs-better-coordination-on-wheat-imports-64407",
   "https://mettisglobal.news/HBL-9MCY26-profit-reaches-Rs54bn-64412",
-  "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385",
   "https://mettisglobal.news/IPOPakistan-takes-intellectual-property-services-to-Gujranwala-64402",
+  "https://mettisglobal.news/KOHE-1QFY27-profit-rises-nearly-3x-64415",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64397",
+  "https://mettisglobal.news/MTL-1QFY27-profit-sky-rockets-53-64417",
   "https://mettisglobal.news/Meezan-Bank-declares-Rs8-dividend-64410",
   "https://mettisglobal.news/NHA-Privatization-Commission-explore-PPP-route-for-major-motorway-projects-64401",
-  "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406",
   "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Modest-Encore-64387",
   "https://mettisglobal.news/PSX-proposes-Single-Stock-Options-Market-seeks-public-feedback-64409",
-  "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395",
   "https://mettisglobal.news/Pakistan-Qatar-Turkiye-Indonesia-sign-Badr-defense-pact-64403",
+  "https://mettisglobal.news/Pakistans-GDP-growth-seen-at-38-in-FY27-inflation-to-hit-82-64414",
   "https://mettisglobal.news/Pakistans-incomes-could-triple-by-2050-with-faster-reforms-World-Bank-64413",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-rises-by-Rs031-per-litre-64396",
-  "https://mettisglobal.news/President-Zardari-stresses-deeper-trade-investment-ties-with-Maldives-64405",
-  "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382",
-  "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
+  "https://mettisglobal.news/President-Zardari-stresses-deeper-trade-investment-ties-with-Maldives-64405"
  ],
- "count": 5,
+ "count": 3,
  "ratings": {
-  "FABL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "9M profit +0.8%, Rs1.5 interim dividend; flat, in line with prior payouts",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Faysal-Bank-9M-CY26-profit-edges-up-to-Rs16bn-declares-Rs15-dividend-64411"
-   ]
-  },
   "MEBL": {
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "9M profit +6%, Q3 +11%, Rs8 interim dividend declared",
+   "reason": "9M profit +6% to Rs74.65bn, Rs8 interim dividend declared",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Meezan-Bank-declares-Rs8-dividend-64410"
+   ]
+  },
+  "FABL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "9M profit +0.84% flat, Rs1.5 interim dividend; in line, little surprise",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Faysal-Bank-9M-CY26-profit-edges-up-to-Rs16bn-declares-Rs15-dividend-64411"
    ]
   },
   "POWER": {
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.65,
-   "reason": "1QFY27 profit +31% to Rs1.05bn, EPS up",
+   "confidence": 0.75,
+   "reason": "1QFY27 profit +31% on 36% revenue growth, results out",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398"
-   ]
-  },
-  "SEARL": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.65,
-   "reason": "1QFY27 profit +31% on revenue +15% and wider gross margin",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
-   ]
-  },
-  "HUBC": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "CPHGC Unit 1 (660MW) forced outage after transformer fault; repair time unknown",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385"
    ]
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent above $111 on Saudi attacks lifts E&P realisations",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406"
-   ]
-  },
   "Cement": {
    "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "POWER 1QFY27 profit +31%, CHCC +6%; sector earnings solid",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/CHCC-1QFY27-profit-rises-6-64408",
-    "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398"
-   ]
-  },
-  "Auto Assembler": {
-   "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Draft Auto Policy 2026-31 cuts tariffs, CBU imports rise; price cuts squeeze local assemblers",
-   "text_depth": "headline",
+   "confidence": 0.45,
+   "reason": "1QFY27 results: POWER profit +31%, CHCC +6% on lower finance costs",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
+    "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
+    "https://mettisglobal.news/CHCC-1QFY27-profit-rises-6-64408"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Crude rising on Houthi strikes in Saudi Arabia lifts E&P realisations",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404"
    ]
   },
   "Pharmaceuticals": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
+   "confidence": 0.3,
    "reason": "Pharma exports -25.5% in 1QFY27 on Afghan trade halt",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038899/afghan-trade-halt-hits-pharma-exports"
    ]
   },
-  "Textile": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Ginning sector threatens shutdowns after FBR raids and seizures",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2038902/cotton-sector-faces-complete-paralysis"
-   ]
-  },
-  "Technology/IT": {
-   "rating": "positive",
+  "Auto Assembler": {
+   "rating": "neutral",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "IT exports +21% annual growth, $435m in September",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
    "confidence": 0.3,
-   "reason": "IMF warns of tighter monetary policy if inflation risks persist",
+   "reason": "Draft Auto Policy 2026-31: lower prices lift demand but lower CBU tariffs hurt local makers",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445438/imf-flags-rising-inflation-risks-for-pakistan-amid-middle-east-conflict"
+    "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
    ]
   }
  }
