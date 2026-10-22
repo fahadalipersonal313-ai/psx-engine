@@ -57,6 +57,14 @@ trades while the Turn-Confirmation books wait. Kept completely apart from books 
   2026 weak market PF 0.61 (138 trades) - this book exists to measure that live.
 * First run: the newest stored session is scanned once from its stored official bars (catch-up), so no setup is lost.
 
+## Book D - breakouts with the gates ignored (added 22-Oct-2026, on the user's request)
+
+Every Leg B signal (52-week-high breakout, the live strategy) becomes a paper order for the next official open
+whatever the two gates say. Entry zone, stop, sizing (0.25% risk), 3-ATR trail and 30-session time stop are exactly
+book B's. It is its own book: its own stats line, its own `ungated` block in `status.json`, and its positions never
+block the gated scan. Books A and B are unchanged, so the forward test can still tell whether the gates add value.
+No history yet says ungated breakouts beat gated ones; that is what book D measures.
+
 Rules: both gates open (KSE-100 >= 1.03 x its 20-day low AND breadth higher than 5 sessions ago) -> buy at the next official open.
 Leg B 52-week-high breakouts (live book) and Leg A washout demand closes (research book), liquid names (>= Rs 25m/day) only.
 Stops never move down.

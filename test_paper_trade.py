@@ -201,9 +201,20 @@ class PaperTrade(unittest.TestCase):
         c = self.c_buy()
         self.assertEqual(len(c), 1)
         self.assertEqual((c[0]['sym'], c[0]['entry'], c[0]['entry_date'], c[0]['shares']), ('S02', 101.2, '2026-01-01', int(100000 // 101.2)))
-        self.assertEqual(self.st['orders'], [])                          # gates closed: no A/B orders
+        self.assertEqual([o for o in self.st['orders'] if o['book'] != 'D'], [])   # gates closed: no A/B orders
         self.assertTrue(any(x.startswith('FILLED C S02 at 101.20') for x in self.log))
         self.assertEqual(self.st['bcsm']['last_scanned'], '2026-01-01')
+
+    def test_book_d_orders_every_breakout_with_the_gates_closed(self):
+        self.c_buy()                                                     # S02's setup bar is also a 52-week-high breakout
+        self.assertTrue(any('Gate(s) closed' in x for x in self.log))
+        d = [o for o in self.st['orders'] if o['book'] == 'D']
+        self.assertEqual([(o['sym'], o['signal_close']) for o in d], [('S02', 101.2)])
+        self.assertTrue(any(x.startswith('BOOK D (breakouts, no gates): 1 paper order') for x in self.log))
+        self.m.finalise('2026-01-02', self.session({'S02': [101.5, 102.5, 100.8, 102.0, 1e6, 101.2]}), self.st, self.say)
+        pos = [p for p in self.st['positions'] if p['book'] == 'D']
+        self.assertEqual((pos[0]['sym'], pos[0]['entry'], pos[0]['entry_date']), ('S02', 101.5, '2026-01-02'))
+        self.assertEqual(self.m.ungated([dict(d[0], book='B')], self.st), [])   # already held by book D: no second order
 
     def test_book_c_sells_at_the_next_official_open(self):
         self.c_buy()

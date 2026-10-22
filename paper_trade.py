@@ -22,6 +22,10 @@ Every paper decision is made from PSX's OFFICIAL end-of-day bars, one completed 
   official OPEN. Fixed notional per trade; results are reported after the round-trip cost and kept apart from the
   Turn-Confirmation books (A, B), whose rules, stats and dashboard fields are unchanged.
 
+  Book D - ungated breakouts (added 22-Oct-2026 on the user's request): every Leg B signal (52-week-high breakout)
+  becomes a paper order for the next open WHATEVER the two gates say. Same entry zone, stop, sizing, trail and time
+  stop as book B; kept in its own book and stats so the gated books A and B still measure the gates.
+
   Live view (informational only, never changes state): TradingView's public scanner, when reachable.
 
 State lives in ./state, closed trades in ./trades.csv, run reports in ./runs, and a small summary for
@@ -228,8 +232,14 @@ def gates(bars, breadth, day):
 
 
 def held_ab(st):
-    """Stocks held by the Turn-Confirmation books (A, B). Book C positions never block their scan."""
-    return {p['sym'] for p in st['positions'] if p['book'] != 'C'}
+    """Stocks held by the Turn-Confirmation books (A, B). Book C and D positions never block their scan."""
+    return {p['sym'] for p in st['positions'] if p['book'] in ('A', 'B')}
+
+
+def ungated(sigs, st):
+    """Book D orders: every Leg B signal, gates ignored, unless book D already holds the stock."""
+    held = {p['sym'] for p in st['positions'] if p['book'] == 'D'}
+    return [dict(sg, book='D', note='52-week-high breakout, gates ignored') for sg in sigs if sg['book'] == 'B' and sg['sym'] not in held]
 
 
 def scan(bars, uni, day, held):
@@ -397,6 +407,10 @@ def finalise(day, sess, st, say):
         say('BOTH GATES OPEN -> %d paper orders placed for the next open.' % len(sigs))
     else:
         say('Gate(s) closed -> %d signal(s) logged, NO orders.' % len(sigs))
+    dsigs = ungated(sigs, st)
+    st['orders'] = st['orders'] + dsigs
+    say('BOOK D (breakouts, no gates): %d paper order(s) placed for the next open%s'
+        % (len(dsigs), ''.join(' | %s close %.2f stop %.2f' % (d['sym'], d['signal_close'], d['stop']) for d in dsigs)))
     csigs = bcsm_scan(bars, uni, day)
     say('BOOK C (buy-close-sell-open, no gates): %d setup(s) at the %s close' % (len(csigs), day))
     bcsm_buy(csigs, st, day, say)
@@ -412,16 +426,20 @@ def live_summary(live):
 
 
 def closed_stats():
-    """(Turn-Confirmation stats, their rows, book C stats, book C rows). The A/B figures are exactly as before book C
-    existed; book C is judged on % after the round-trip cost, because an overnight move is small next to the cost."""
+    """(Turn-Confirmation stats, their rows, book C stats, book C rows, book D stats, book D rows). The A/B figures are
+    exactly as before books C and D existed; book C is judged on % after the round-trip cost, because an overnight move
+    is small next to the cost; book D in R, like B."""
     allrows = list(csv.DictReader(open(os.path.join(ROOT, 'trades.csv'))))
-    rows = [r for r in allrows if r['book'] != 'C']; crows = [r for r in allrows if r['book'] == 'C']
-    if rows:
-        Rs = [float(r['R']) for r in rows]; gp = sum(x for x in Rs if x > 0); gl = -sum(x for x in Rs if x < 0)
-        stats = dict(n=len(Rs), total_R=round(sum(Rs), 2), pf=round(gp / gl, 2) if gl else None,
-                     win_pct=round(100 * sum(x > 0 for x in Rs) / len(Rs)), pnl_rs=round(sum(float(r['pnl_rs']) for r in rows)))
-    else:
-        stats = dict(n=0)
+    rows = [r for r in allrows if r['book'] in ('A', 'B')]; crows = [r for r in allrows if r['book'] == 'C']
+    drows = [r for r in allrows if r['book'] == 'D']
+
+    def rstats(rr):
+        if not rr:
+            return dict(n=0)
+        Rs = [float(r['R']) for r in rr]; gp = sum(x for x in Rs if x > 0); gl = -sum(x for x in Rs if x < 0)
+        return dict(n=len(Rs), total_R=round(sum(Rs), 2), pf=round(gp / gl, 2) if gl else None,
+                    win_pct=round(100 * sum(x > 0 for x in Rs) / len(Rs)), pnl_rs=round(sum(float(r['pnl_rs']) for r in rr)))
+    stats = rstats(rows)
     cost = CFG['bcsm']['cost_pct']
     if crows:
         net = [float(r['pct']) - cost for r in crows]; gp = sum(x for x in net if x > 0); gl = -sum(x for x in net if x < 0)
@@ -430,7 +448,7 @@ def closed_stats():
                       pnl_rs_net=round(sum(float(r['pnl_rs']) - cost / 100 * float(r['entry']) * float(r['shares']) for r in crows)))
     else:
         cstats = dict(n=0, cost_pct=cost)
-    return stats, rows, cstats, crows
+    return stats, rows, cstats, crows, rstats(drows), drows
 
 
 def main():
@@ -528,22 +546,30 @@ def main():
             say('  C %s bought %.2f at the %s official close, %d shares - sells at the next official open' % (p['sym'], p['entry'], p['entry_date'], p['shares']))
         else:
             say('  %s %s entry %.2f stop %.2f last official close %.2f day %d' % (p['book'], p['sym'], p['entry'], p['stop'], p.get('last_close', p['entry']), p['days']))
-    stats, rows, cstats, crows = closed_stats()
+    stats, rows, cstats, crows, dstats, drows = closed_stats()
     if stats['n']:
         say('closed trades so far: %d | total %+.2fR | PF %s | win %d%%' % (stats['n'], stats['total_R'], stats['pf'], stats['win_pct']))
     if cstats['n']:
         say('closed trades so far (book C, after %.2f%% costs): %d | avg %+.3f%% | PF %s | win %d%% | Rs %+d'
             % (cstats['cost_pct'], cstats['n'], cstats['avg_net_pct'], cstats['pf_net'], cstats['win_pct'], cstats['pnl_rs_net']))
+    if dstats['n']:
+        say('closed trades so far (book D, no gates): %d | total %+.2fR | PF %s | win %d%% | Rs %+d'
+            % (dstats['n'], dstats['total_R'], dstats['pf'], dstats['win_pct'], dstats['pnl_rs']))
     # The Turn-Confirmation fields (positions, closed, recent_trades) keep their old meaning for the dashboard;
-    # book C has its own block.
+    # books C and D have their own blocks.
     jsave(S('status.json'), dict(updated_pkt=now.isoformat(timespec='minutes'), official_through=last, official_note=official_note,
-                                 last_scan=st['last_scan'], orders=st['orders'], positions=[p for p in st['positions'] if p['book'] != 'C'],
+                                 last_scan=st['last_scan'], orders=[o for o in st['orders'] if o['book'] != 'D'],
+                                 positions=[p for p in st['positions'] if p['book'] in ('A', 'B')],
                                  closed=stats, recent_trades=rows[-10:],
                                  bcsm=dict(about='Book C - buy at the official close of a support + reversal + volume day, sell at the next '
                                                  'official open. %s stocks, every market (no gates), Rs %s per trade, research book.'
                                                  % (' and '.join('Shariah' if x == 'shariah' else 'non-Shariah' for x in CFG['bcsm']['lists']), format(CFG['bcsm']['notional_rs'], ',')),
                                            signals=st['last_scan'].get('bcsm', []), positions=[p for p in st['positions'] if p['book'] == 'C'],
                                            closed=cstats, recent_trades=crows[-10:]),
+                                 ungated=dict(about='Book D - every 52-week-high breakout (Leg B) bought at the next official open '
+                                                    'whatever the gates say; same stop, trail and time stop as book B.',
+                                              orders=[o for o in st['orders'] if o['book'] == 'D'],
+                                              positions=[p for p in st['positions'] if p['book'] == 'D'], closed=dstats, recent_trades=drows[-10:]),
                                  live=live_summary(live),
                                  config=CFG, note='Paper test only: no real orders, zero weight in the engine\'s signals. Research, not investment advice.'))
     os.makedirs(os.path.join(ROOT, 'runs'), exist_ok=True)
