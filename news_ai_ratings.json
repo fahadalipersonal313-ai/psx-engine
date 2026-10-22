@@ -1,9 +1,9 @@
 {
- "as_of": "2026-10-22T05:38:57Z",
+ "as_of": "2026-10-22T06:39:09Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 21,
+ "articles_read": 26,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-trade-mixed-amid-AI-boom-sustainability-concerns-64400",
   "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
@@ -12,6 +12,7 @@
   "https://mettisglobal.news/Gold-dips-to-4119-on-oilled-inflation-fears-64374",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs900-per-tola-64389",
   "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
+  "https://mettisglobal.news/Govt-directs-better-coordination-on-wheat-imports-64407",
   "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385",
   "https://mettisglobal.news/IPOPakistan-takes-intellectual-property-services-to-Gujranwala-64402",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64397",
@@ -19,22 +20,26 @@
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64399",
   "https://mettisglobal.news/NHA-Privatization-Commission-explore-PPP-route-for-major-motorway-projects-64401",
   "https://mettisglobal.news/Nishat-Chunian-Profit-more-than-triples-nears-Rs2bn-in-1QFY27-64381",
+  "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406",
   "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
   "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Modest-Encore-64387",
+  "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395",
   "https://mettisglobal.news/Pakistan-Qatar-Turkiye-Indonesia-sign-Badr-defense-pact-64403",
+  "https://mettisglobal.news/Pakistans-Constitutional-Court-joins-Baku-roundtable-on-AI-in-judiciary-64392",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-rises-by-Rs031-per-litre-64396",
+  "https://mettisglobal.news/President-Zardari-stresses-deeper-trade-investment-ties-with-Maldives-64405",
   "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382",
   "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
  ],
- "count": 7,
+ "count": 6,
  "ratings": {
   "PRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.82,
-   "reason": "1QFY27 profit up 13.7x to Rs13.97bn; earnings beat is decided and quantified",
+   "confidence": 0.85,
+   "reason": "1QFY27 profit Rs13.97bn vs Rs1.02bn, ~14x; reported results",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
@@ -42,9 +47,9 @@
   },
   "POWER": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.72,
+   "confidence": 0.75,
    "reason": "1QFY27 profit +31% to Rs1.05bn, EPS Rs0.80 vs 0.60; reported results",
    "text_depth": "full",
    "sources": [
@@ -53,10 +58,10 @@
   },
   "SEARL": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.72,
-   "reason": "1QFY27 profit +31% to Rs1.2bn on higher revenue and margin; reported results",
+   "confidence": 0.75,
+   "reason": "1QFY27 profit +31% to Rs1.20bn on higher revenue, margin, lower costs",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
@@ -64,10 +69,10 @@
   },
   "EPCL": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.68,
-   "reason": "Swing to Rs399m 9M profit from Rs2.83bn loss on margins; reported results",
+   "confidence": 0.7,
+   "reason": "9MCY26 swing to Rs399m profit from Rs2.83bn loss; margin and other income",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
@@ -75,32 +80,21 @@
   },
   "HUBC": {
    "rating": "negative",
-   "horizon": "single_session",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "CPHGC Unit 1 (660MW) forced outage on transformer fault; duration unknown, JV exposure",
+   "confidence": 0.55,
+   "reason": "CPHGC Unit 1 (660MW) forced outage on transformer fault; JV earnings at risk",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385"
-   ]
-  },
-  "SYS": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Removed from NIT Pakistan Gateway Index; passive rebalancing outflow, small",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
    ]
   },
   "ILP": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
-   "confidence": 0.28,
-   "reason": "Rs15bn dairy plant announced; diversification capex, headline only, returns distant",
+   "confidence": 0.3,
+   "reason": "Rs15bn dairy plant announced; diversification capex, headline only",
    "text_depth": "headline",
    "sources": [
     "https://propakistani.pk/2026/10/22/interloop-announces-rs-15-billion-dairy-plant/"
@@ -111,38 +105,55 @@
   "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.5,
-   "reason": "Crude rising on Houthi strikes in Saudi and US diplomat exit lifts E&P realisations",
+   "causality": "causal",
+   "confidence": 0.55,
+   "reason": "Brent ~$111 on Houthi attacks on Saudi; higher realised prices for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
-    "https://www.brecorder.com/news/40445414/indian-rupee-traders-weigh-jio-ipo-flows-against-oil-price-risks",
-    "https://www.brecorder.com/news/40445407/indian-shares-seen-opening-lower-as-high-oil-prices-fuel-inflation-worries"
+    "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406"
    ]
   },
   "Refinery": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Firm crude and PRL's 14x profit signal strong refining margins; sector sentiment lift",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Crude rally and supply fears; refining margin/inventory gain effect uncertain",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
-    "https://www.brecorder.com/news/40445414/indian-rupee-traders-weigh-jio-ipo-flows-against-oil-price-risks",
-    "https://www.brecorder.com/news/40445407/indian-shares-seen-opening-lower-as-high-oil-prices-fuel-inflation-worries"
+    "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Crude near $111 raises working-capital and import costs for OMCs",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Draft auto policy raises hopes of cheaper vehicles and volume; early stage",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
    ]
   },
   "Pharmaceuticals": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Pharma exports fell in FY26 and decline continues into Q1FY27; Afghan trade halt",
+   "confidence": 0.4,
+   "reason": "Pharma exports fell in FY26 and Q1FY27; Afghan trade halt hits exports",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445319/pharma-exports-fall-in-fy26-decline-extends-into-q1fy27",
     "https://www.dawn.com/news/2038899/afghan-trade-halt-hits-pharma-exports"
    ]
   },
@@ -150,12 +161,22 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Cotton sector reported near paralysis; supply and export risk, headline only",
+   "confidence": 0.35,
+   "reason": "Cotton sector said to face complete paralysis; input supply risk",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445328/prgmea-to-represent-apparel-sector-at-cop31",
     "https://www.dawn.com/news/2038902/cotton-sector-faces-complete-paralysis"
+   ]
+  },
+  "Technology/IT": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.4,
+   "reason": "IT exports +21% annually to $435m in September; steady growth trend",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395"
    ]
   }
  }
