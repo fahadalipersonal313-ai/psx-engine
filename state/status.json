@@ -1,46 +1,24 @@
 {
- "updated_pkt": "2026-10-22T16:47+05:00",
- "official_through": "2026-10-21",
- "official_note": "No new official session since 2026-10-21 (newest in the file: 2026-10-21).",
+ "updated_pkt": "2026-10-22T22:46+05:00",
+ "official_through": "2026-10-22",
+ "official_note": "Finalised 2026-10-22 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-21",
+  "date": "2026-10-22",
   "gates": {
-   "date": "2026-10-21",
-   "kse100": 165930.99,
-   "low20": 164776.44,
-   "gate1_level": 169719.74,
-   "bounce_pct": 0.7,
+   "date": "2026-10-22",
+   "kse100": 163924.32,
+   "low20": 163924.32,
+   "gate1_level": 168842.05,
+   "bounce_pct": 0.0,
    "gate1_open": false,
-   "breadth": 24.16,
-   "breadth_prev": 26.4,
-   "breadth_prev_date": "2026-10-14",
+   "breadth": 14.04,
+   "breadth_prev": 29.78,
+   "breadth_prev_date": "2026-10-15",
    "gate2_open": false
   },
-  "signals": [
-   {
-    "book": "B",
-    "sym": "TPLT",
-    "list": "non-Shariah",
-    "signal_date": "2026-10-21",
-    "signal_close": 37.61,
-    "stop": 31.86,
-    "atr": 1.9164,
-    "note": "52-week-high breakout"
-   }
-  ],
+  "signals": [],
   "orders_placed": 0,
-  "bcsm": [
-   {
-    "book": "C",
-    "sym": "NML",
-    "list": "Shariah",
-    "signal_date": "2026-10-21",
-    "signal_close": 126.29,
-    "stop": 122.7,
-    "atr": 3.5893,
-    "note": "20-day-low support 121.33"
-   }
-  ]
+  "bcsm": []
  },
  "orders": [],
  "positions": [],
@@ -50,19 +28,17 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [
-   {
-    "book": "C",
-    "sym": "NML",
-    "list": "Shariah",
-    "signal_date": "2026-10-21",
-    "signal_close": 126.29,
-    "stop": 122.7,
-    "atr": 3.5893,
-    "note": "20-day-low support 121.33"
-   }
-  ],
-  "positions": [
+  "signals": [],
+  "positions": [],
+  "closed": {
+   "n": 1,
+   "cost_pct": 0.25,
+   "avg_net_pct": -0.08,
+   "pf_net": 0.0,
+   "win_pct": 0,
+   "pnl_rs_net": -84
+  },
+  "recent_trades": [
    {
     "id": "C-NML-2026-10-21",
     "book": "C",
@@ -70,25 +46,22 @@
     "list": "Shariah",
     "signal_date": "2026-10-21",
     "entry_date": "2026-10-21",
-    "entry": 126.29,
-    "stop0": 122.7,
-    "stop": 122.7,
-    "atr": 3.5893,
-    "hh": 126.29,
-    "shares": 791,
-    "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 121.33"
+    "entry": "126.29",
+    "stop0": "122.7",
+    "exit_date": "2026-10-22",
+    "exit": "126.5",
+    "reason": "next official open",
+    "R": "0.06",
+    "pct": "0.17",
+    "days": "1",
+    "shares": "791",
+    "pnl_rs": "166"
    }
-  ],
-  "closed": {
-   "n": 0,
-   "cost_pct": 0.25
-  },
-  "recent_trades": []
+  ]
  },
  "live": {
   "ok": true,
-  "at": "2026-10-22T16:47+05:00",
+  "at": "2026-10-22T22:46+05:00",
   "kse100": 163924.3158
  },
  "config": {
