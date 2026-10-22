@@ -1,44 +1,63 @@
 {
- "as_of": "2026-10-21T09:39:06Z",
+ "as_of": "2026-10-22T04:39:00Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 22,
  "read_urls": [
   "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
-  "https://mettisglobal.news/CDNS-raises-profit-rates-across-key-savings-instruments-64377",
-  "https://mettisglobal.news/Dire-Straits-Not-for-Gulf-oil-as-flows-top-prewar-mark-64379",
+  "https://mettisglobal.news/Customs-foils-Rs50m-smuggling-bid-at-Sukkur-Barrage-64391",
   "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372",
-  "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373",
   "https://mettisglobal.news/Gold-dips-to-4119-on-oilled-inflation-fears-64374",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3600-per-tola-64346",
-  "https://mettisglobal.news/Govt-to-keep-EFS-curb-misuse-64362",
-  "https://mettisglobal.news/ISL-Profit-Surges-36x-to-Rs2bn-in-1QFY27-64353",
-  "https://mettisglobal.news/Loads-shareholders-approve-Rs903m-loans-for-subsidiary-64356",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64368",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs900-per-tola-64389",
+  "https://mettisglobal.news/Govt-vows-to-keep-urea-DAP-supplies-sufficient-for-Rabi-season-64394",
+  "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64397",
   "https://mettisglobal.news/McCormick-targets-majority-control-of-Unilever-Pakistan-Foods-64378",
-  "https://mettisglobal.news/NCCIA-arrests-suspect-in-Lahore-over-Rs35bn-fraud-64380",
-  "https://mettisglobal.news/NICL-1QFY27-profit-jumps-32-64354",
   "https://mettisglobal.news/Nishat-Chunian-Profit-more-than-triples-nears-Rs2bn-in-1QFY27-64381",
-  "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375",
+  "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
   "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
-  "https://mettisglobal.news/PSX-Closing-Bell-Bears-Go-BacktoBack-64359",
-  "https://mettisglobal.news/Pakistan-Post-in-the-red-as-losses-hit-Rs12bn-64360",
-  "https://mettisglobal.news/Pakistan-expands-5G-to-24-cities-after-509m-spectrum-auction-64364",
-  "https://mettisglobal.news/Pakistan-promotes-PASBAN-scheme-to-boost-formal-remittances-64365",
-  "https://mettisglobal.news/Pakistans-external-financing-hits-374bn-in-September-64344",
-  "https://mettisglobal.news/Petrol-price-rises-by-Rs088-diesel-by-Rs053-per-litre-64367",
-  "https://mettisglobal.news/Punjab-churns-out-Rs1bn-plan-to-modernise-dairy-farms-64363",
-  "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382"
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Modest-Encore-64387",
+  "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395",
+  "https://mettisglobal.news/Pakistan-Maldives-shore-up-ties-with-MoU-spree-64383",
+  "https://mettisglobal.news/Pakistan-UK-vow-closer-cooperation-on-reforms-capacity-building-64390",
+  "https://mettisglobal.news/Pakistan-cotton-arrivals-rise-8-to-4m-bales-64384",
+  "https://mettisglobal.news/Pakistans-Constitutional-Court-joins-Baku-roundtable-on-AI-in-judiciary-64392",
+  "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-rises-by-Rs031-per-litre-64396",
+  "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382",
+  "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386",
+  "https://mettisglobal.news/World-Bank-reaffirms-support-for-Pakistans-digital-economy-64393"
  ],
- "count": 5,
+ "count": 6,
  "ratings": {
+  "POWER": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "1QFY27 profit +31% on 36% revenue growth, strong South Zone dispatches",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398"
+   ]
+  },
+  "SEARL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.65,
+   "reason": "1QFY27 consolidated profit +31%, higher revenue, better margin, lower levies",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
+   ]
+  },
   "PRL": {
    "rating": "highly_positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.8,
-   "reason": "1QFY27 net profit Rs13.97bn vs Rs1.02bn, 13.7x surge; results out",
+   "confidence": 0.65,
+   "reason": "1QFY27 profit ~14x on refining margins; partly priced after yesterday's release",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
@@ -48,92 +67,79 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "9MCY26 swing to Rs399m profit vs Rs2.83bn loss, EPS Rs0.44",
+   "confidence": 0.6,
+   "reason": "9MCY26 swing to Rs399m profit from loss on better gross margin",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
+   ]
+  },
+  "HUBC": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "JV CPHGC Unit 1 forced outage after transformer fault; duration unknown",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385"
    ]
   },
   "SYS": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Removed from NITPGI at recomposition; small passive selling",
+   "confidence": 0.25,
+   "reason": "Removed from NIT Pakistan Gateway Index; mild passive-flow pressure",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
    ]
-  },
-  "LOADS": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "AGM approves Rs903m subsidiary loans; routine intragroup financing",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Loads-shareholders-approve-Rs903m-loans-for-subsidiary-64356"
-   ]
-  },
-  "HUBC": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "BYD plant to rely on imports initially; localisation gradual, no near cash flow",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2038641/byd-to-rely-on-imports-initially-hubco-says"
-   ]
   }
  },
  "sectors": {
-  "Fertilizer": {
+  "Textile": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.55,
-   "reason": "Sept nutrient offtake +25.5% YoY to 371k t; Rabi supply reviewed adequate",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Cotton arrivals +7.5% to 4.08m bales eases input supply",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Fertilizer-offtake-rises-255-YoY-in-September-2026-64373",
-    "https://www.dawn.com/news/2038647/fertiliser-availability-for-rabi-reviewed"
+    "https://mettisglobal.news/Pakistan-cotton-arrivals-rise-8-to-4m-bales-64384"
+   ]
+  },
+  "Technology/IT": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "IT exports +21% annually, $435m in September",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395"
    ]
   },
   "Auto Assembler": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "PM approves draft Auto Policy 2026-31 targeting $6bn exports, local production",
+   "confidence": 0.3,
+   "reason": "Draft auto policy raises hopes of cheaper vehicles; early stage",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2038648/draft-auto-policy-sent-to-cabinet"
+    "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
    ]
   },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
+  "Pharmaceuticals": {
+   "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent back above $110 on Mideast shipping risk lifts realised prices",
-   "text_depth": "full",
+   "confidence": 0.25,
+   "reason": "Pharma exports fell in FY26 and decline extends into Q1FY27",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Oil-reclaims-110-on-rising-Middle-East-shipping-risks-64375",
-    "https://www.brecorder.com/news/40445237/oil-rises-on-middle-east-supply-fears-us-inventory-drawdowns"
-   ]
-  },
-  "Technology/Telecom": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "5G live in 24 cities after $509m spectrum auction; capex and data demand",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-expands-5G-to-24-cities-after-509m-spectrum-auction-64364"
+    "https://www.brecorder.com/news/40445319/pharma-exports-fall-in-fy26-decline-extends-into-q1fy27"
    ]
   }
  }
