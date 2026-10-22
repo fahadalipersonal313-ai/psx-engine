@@ -1,7 +1,7 @@
 {
- "updated_pkt": "2026-10-21T22:46+05:00",
+ "updated_pkt": "2026-10-22T09:46+05:00",
  "official_through": "2026-10-21",
- "official_note": "Finalised 2026-10-21 from PSX official data.",
+ "official_note": "No new official session since 2026-10-21 (newest in the file: 2026-10-21).",
  "last_scan": {
   "date": "2026-10-21",
   "gates": {
@@ -28,7 +28,19 @@
     "note": "52-week-high breakout"
    }
   ],
-  "orders_placed": 0
+  "orders_placed": 0,
+  "bcsm": [
+   {
+    "book": "C",
+    "sym": "NML",
+    "list": "Shariah",
+    "signal_date": "2026-10-21",
+    "signal_close": 126.29,
+    "stop": 122.7,
+    "atr": 3.5893,
+    "note": "20-day-low support 121.33"
+   }
+  ]
  },
  "orders": [],
  "positions": [],
@@ -36,10 +48,48 @@
   "n": 0
  },
  "recent_trades": [],
+ "bcsm": {
+  "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
+  "signals": [
+   {
+    "book": "C",
+    "sym": "NML",
+    "list": "Shariah",
+    "signal_date": "2026-10-21",
+    "signal_close": 126.29,
+    "stop": 122.7,
+    "atr": 3.5893,
+    "note": "20-day-low support 121.33"
+   }
+  ],
+  "positions": [
+   {
+    "id": "C-NML-2026-10-21",
+    "book": "C",
+    "sym": "NML",
+    "list": "Shariah",
+    "signal_date": "2026-10-21",
+    "entry_date": "2026-10-21",
+    "entry": 126.29,
+    "stop0": 122.7,
+    "stop": 122.7,
+    "atr": 3.5893,
+    "hh": 126.29,
+    "shares": 791,
+    "days": 0,
+    "note": "buy-close-sell-open: 20-day-low support 121.33"
+   }
+  ],
+  "closed": {
+   "n": 0,
+   "cost_pct": 0.25
+  },
+  "recent_trades": []
+ },
  "live": {
   "ok": true,
-  "at": "2026-10-21T22:46+05:00",
-  "kse100": 165930.9862
+  "at": "2026-10-22T09:46+05:00",
+  "kse100": 166180.3234
  },
  "config": {
   "capital": 1000000,
@@ -51,9 +101,18 @@
   "vol_mult": 1.2,
   "books": {
    "B": "LIVE paper book - 52-week-high breakouts",
-   "A": "research book - washouts"
+   "A": "research book - washouts",
+   "C": "research book - buy-close-sell-open (BCSM), no gates"
   },
-  "notes": "Quarter size (0.25% of capital per trade) until 30 signals are logged. Paper capital Rs 1,000,000."
+  "notes": "Quarter size (0.25% of capital per trade) until 30 signals are logged. Paper capital Rs 1,000,000.",
+  "bcsm": {
+   "notional_rs": 100000,
+   "cost_pct": 0.25,
+   "min_turnover_mn": 25,
+   "lists": [
+    "shariah"
+   ]
+  }
  },
  "note": "Paper test only: no real orders, zero weight in the engine's signals. Research, not investment advice."
 }
