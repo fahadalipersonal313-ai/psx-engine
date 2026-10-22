@@ -1,31 +1,30 @@
 {
- "as_of": "2026-10-22T07:40:01Z",
+ "as_of": "2026-10-22T08:38:42Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 24,
  "read_urls": [
-  "https://mettisglobal.news/Asian-markets-trade-mixed-amid-AI-boom-sustainability-concerns-64400",
-  "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
   "https://mettisglobal.news/CHCC-1QFY27-profit-rises-6-64408",
   "https://mettisglobal.news/Customs-foils-Rs50m-smuggling-bid-at-Sukkur-Barrage-64391",
+  "https://mettisglobal.news/Faysal-Bank-9M-CY26-profit-edges-up-to-Rs16bn-declares-Rs15-dividend-64411",
   "https://mettisglobal.news/Gold-dips-to-4119-on-oilled-inflation-fears-64374",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs900-per-tola-64389",
   "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
   "https://mettisglobal.news/Govt-directs-better-coordination-on-wheat-imports-64407",
+  "https://mettisglobal.news/HBL-9MCY26-profit-reaches-Rs54bn-64412",
   "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385",
   "https://mettisglobal.news/IPOPakistan-takes-intellectual-property-services-to-Gujranwala-64402",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64397",
-  "https://mettisglobal.news/McCormick-targets-majority-control-of-Unilever-Pakistan-Foods-64378",
+  "https://mettisglobal.news/Meezan-Bank-declares-Rs8-dividend-64410",
   "https://mettisglobal.news/NHA-Privatization-Commission-explore-PPP-route-for-major-motorway-projects-64401",
-  "https://mettisglobal.news/Nishat-Chunian-Profit-more-than-triples-nears-Rs2bn-in-1QFY27-64381",
   "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406",
   "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Modest-Encore-64387",
   "https://mettisglobal.news/PSX-proposes-Single-Stock-Options-Market-seeks-public-feedback-64409",
   "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395",
   "https://mettisglobal.news/Pakistan-Qatar-Turkiye-Indonesia-sign-Badr-defense-pact-64403",
-  "https://mettisglobal.news/Pakistans-Constitutional-Court-joins-Baku-roundtable-on-AI-in-judiciary-64392",
+  "https://mettisglobal.news/Pakistans-incomes-could-triple-by-2050-with-faster-reforms-World-Bank-64413",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-rises-by-Rs031-per-litre-64396",
   "https://mettisglobal.news/President-Zardari-stresses-deeper-trade-investment-ties-with-Maldives-64405",
   "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382",
@@ -33,12 +32,34 @@
  ],
  "count": 5,
  "ratings": {
+  "FABL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "9M profit +0.8%, Rs1.5 interim dividend; flat, in line with prior payouts",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Faysal-Bank-9M-CY26-profit-edges-up-to-Rs16bn-declares-Rs15-dividend-64411"
+   ]
+  },
+  "MEBL": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.6,
+   "reason": "9M profit +6%, Q3 +11%, Rs8 interim dividend declared",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Meezan-Bank-declares-Rs8-dividend-64410"
+   ]
+  },
   "POWER": {
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "1QFY27 net profit +31% to Rs1.05bn; EPS Rs0.80 vs 0.60",
+   "confidence": 0.65,
+   "reason": "1QFY27 profit +31% to Rs1.05bn, EPS up",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398"
@@ -48,8 +69,8 @@
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "1QFY27 consolidated profit +30.8% to Rs1.20bn; EPS Rs1.95",
+   "confidence": 0.65,
+   "reason": "1QFY27 profit +31% on revenue +15% and wider gross margin",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
@@ -60,32 +81,10 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "CPHGC Unit 1 forced outage after main transformer fault; restart timing unknown",
+   "reason": "CPHGC Unit 1 (660MW) forced outage after transformer fault; repair time unknown",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385"
-   ]
-  },
-  "MEBL": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Removed from NIT Pakistan Gateway Index; minor passive-flow selling",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
-   ]
-  },
-  "SYS": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Removed from NIT Pakistan Gateway Index; minor passive-flow selling",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
    ]
   }
  },
@@ -95,7 +94,7 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "Brent up to $111 on fresh Saudi attacks lifts realisations; supply-risk stage",
+   "reason": "Brent above $111 on Saudi attacks lifts E&P realisations",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-tops-111-on-fresh-Saudi-attacks-supply-fears-64406"
@@ -106,7 +105,7 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.35,
-   "reason": "Sector 1QFY27 profits up (Power +31%, Cherat +6%); index selling today",
+   "reason": "POWER 1QFY27 profit +31%, CHCC +6%; sector earnings solid",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/CHCC-1QFY27-profit-rises-6-64408",
@@ -114,11 +113,11 @@
    ]
   },
   "Auto Assembler": {
-   "rating": "positive",
-   "horizon": "long_term",
+   "rating": "negative",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Draft Auto Policy 2026-31 cuts taxes, vehicle prices 8-20% lower; demand upside, draft stage",
+   "confidence": 0.4,
+   "reason": "Draft Auto Policy 2026-31 cuts tariffs, CBU imports rise; price cuts squeeze local assemblers",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
@@ -128,7 +127,7 @@
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.35,
+   "confidence": 0.4,
    "reason": "Pharma exports -25.5% in 1QFY27 on Afghan trade halt",
    "text_depth": "headline",
    "sources": [
@@ -137,16 +136,16 @@
   },
   "Textile": {
    "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "FBR raids threaten cotton ginning shutdowns; input supply risk",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Ginning sector threatens shutdowns after FBR raids and seizures",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2038902/cotton-sector-faces-complete-paralysis"
    ]
   },
-  "Technology/IT Exports": {
+  "Technology/IT": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
@@ -155,6 +154,17 @@
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "IMF warns of tighter monetary policy if inflation risks persist",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40445438/imf-flags-rising-inflation-risks-for-pakistan-amid-middle-east-conflict"
    ]
   }
  }
