@@ -1,41 +1,51 @@
 {
- "as_of": "2026-10-22T04:39:00Z",
+ "as_of": "2026-10-22T05:38:57Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 22,
+ "articles_read": 21,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-trade-mixed-amid-AI-boom-sustainability-concerns-64400",
   "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376",
   "https://mettisglobal.news/Customs-foils-Rs50m-smuggling-bid-at-Sukkur-Barrage-64391",
   "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372",
   "https://mettisglobal.news/Gold-dips-to-4119-on-oilled-inflation-fears-64374",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs900-per-tola-64389",
-  "https://mettisglobal.news/Govt-vows-to-keep-urea-DAP-supplies-sufficient-for-Rabi-season-64394",
+  "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
   "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385",
+  "https://mettisglobal.news/IPOPakistan-takes-intellectual-property-services-to-Gujranwala-64402",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64397",
   "https://mettisglobal.news/McCormick-targets-majority-control-of-Unilever-Pakistan-Foods-64378",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64399",
+  "https://mettisglobal.news/NHA-Privatization-Commission-explore-PPP-route-for-major-motorway-projects-64401",
   "https://mettisglobal.news/Nishat-Chunian-Profit-more-than-triples-nears-Rs2bn-in-1QFY27-64381",
   "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398",
   "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Modest-Encore-64387",
-  "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395",
-  "https://mettisglobal.news/Pakistan-Maldives-shore-up-ties-with-MoU-spree-64383",
-  "https://mettisglobal.news/Pakistan-UK-vow-closer-cooperation-on-reforms-capacity-building-64390",
-  "https://mettisglobal.news/Pakistan-cotton-arrivals-rise-8-to-4m-bales-64384",
-  "https://mettisglobal.news/Pakistans-Constitutional-Court-joins-Baku-roundtable-on-AI-in-judiciary-64392",
+  "https://mettisglobal.news/Pakistan-Qatar-Turkiye-Indonesia-sign-Badr-defense-pact-64403",
   "https://mettisglobal.news/Petrol-price-cut-by-Rs271-diesel-rises-by-Rs031-per-litre-64396",
   "https://mettisglobal.news/RMPL-9MCY26-profit-expands-11-64382",
-  "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386",
-  "https://mettisglobal.news/World-Bank-reaffirms-support-for-Pakistans-digital-economy-64393"
+  "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
  ],
- "count": 6,
+ "count": 7,
  "ratings": {
+  "PRL": {
+   "rating": "highly_positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.82,
+   "reason": "1QFY27 profit up 13.7x to Rs13.97bn; earnings beat is decided and quantified",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
+   ]
+  },
   "POWER": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.7,
-   "reason": "1QFY27 profit +31% on 36% revenue growth, strong South Zone dispatches",
+   "confidence": 0.72,
+   "reason": "1QFY27 profit +31% to Rs1.05bn, EPS Rs0.80 vs 0.60; reported results",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/POWER-1QFY27-profit-surges-31-64398"
@@ -45,30 +55,19 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.65,
-   "reason": "1QFY27 consolidated profit +31%, higher revenue, better margin, lower levies",
+   "confidence": 0.72,
+   "reason": "1QFY27 profit +31% to Rs1.2bn on higher revenue and margin; reported results",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Searle-profit-rises-31-to-Rs1bn-in-1QFY27-64386"
-   ]
-  },
-  "PRL": {
-   "rating": "highly_positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.65,
-   "reason": "1QFY27 profit ~14x on refining margins; partly priced after yesterday's release",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-1QFY27-profit-skyrockets-nearly-14fold-64371"
    ]
   },
   "EPCL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "9MCY26 swing to Rs399m profit from loss on better gross margin",
+   "confidence": 0.68,
+   "reason": "Swing to Rs399m 9M profit from Rs2.83bn loss on margins; reported results",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/EPCL-returns-to-profit-with-Rs399m-earnings-in-9MCY26-64372"
@@ -78,8 +77,8 @@
    "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "JV CPHGC Unit 1 forced outage after transformer fault; duration unknown",
+   "confidence": 0.4,
+   "reason": "CPHGC Unit 1 (660MW) forced outage on transformer fault; duration unknown, JV exposure",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/HUBCs-CPHGC-Unit-1-offline-after-main-transformer-fault-64385"
@@ -89,57 +88,74 @@
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Removed from NIT Pakistan Gateway Index; mild passive-flow pressure",
+   "confidence": 0.3,
+   "reason": "Removed from NIT Pakistan Gateway Index; passive rebalancing outflow, small",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Bank-AL-Habib-Systems-removed-from-NIT-Pakistan-Gateway-Index-64376"
    ]
+  },
+  "ILP": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.28,
+   "reason": "Rs15bn dairy plant announced; diversification capex, headline only, returns distant",
+   "text_depth": "headline",
+   "sources": [
+    "https://propakistani.pk/2026/10/22/interloop-announces-rs-15-billion-dairy-plant/"
+   ]
   }
  },
  "sectors": {
-  "Textile": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Cotton arrivals +7.5% to 4.08m bales eases input supply",
+   "confidence": 0.5,
+   "reason": "Crude rising on Houthi strikes in Saudi and US diplomat exit lifts E&P realisations",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Pakistan-cotton-arrivals-rise-8-to-4m-bales-64384"
+    "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
+    "https://www.brecorder.com/news/40445414/indian-rupee-traders-weigh-jio-ipo-flows-against-oil-price-risks",
+    "https://www.brecorder.com/news/40445407/indian-shares-seen-opening-lower-as-high-oil-prices-fuel-inflation-worries"
    ]
   },
-  "Technology/IT": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "IT exports +21% annually, $435m in September",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-IT-exports-grow-21-annually-reach-435m-in-September-64395"
-   ]
-  },
-  "Auto Assembler": {
+  "Refinery": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Draft auto policy raises hopes of cheaper vehicles; early stage",
-   "text_depth": "headline",
+   "confidence": 0.4,
+   "reason": "Firm crude and PRL's 14x profit signal strong refining margins; sector sentiment lift",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2038903/draft-auto-policy-revs-up-hopes-for-cheaper-vehicles"
+    "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
+    "https://www.brecorder.com/news/40445414/indian-rupee-traders-weigh-jio-ipo-flows-against-oil-price-risks",
+    "https://www.brecorder.com/news/40445407/indian-shares-seen-opening-lower-as-high-oil-prices-fuel-inflation-worries"
    ]
   },
   "Pharmaceuticals": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.25,
-   "reason": "Pharma exports fell in FY26 and decline extends into Q1FY27",
+   "confidence": 0.3,
+   "reason": "Pharma exports fell in FY26 and decline continues into Q1FY27; Afghan trade halt",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445319/pharma-exports-fall-in-fy26-decline-extends-into-q1fy27"
+    "https://www.brecorder.com/news/40445319/pharma-exports-fall-in-fy26-decline-extends-into-q1fy27",
+    "https://www.dawn.com/news/2038899/afghan-trade-halt-hits-pharma-exports"
+   ]
+  },
+  "Textile": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Cotton sector reported near paralysis; supply and export risk, headline only",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40445328/prgmea-to-represent-apparel-sector-at-cop31",
+    "https://www.dawn.com/news/2038902/cotton-sector-faces-complete-paralysis"
    ]
   }
  }
