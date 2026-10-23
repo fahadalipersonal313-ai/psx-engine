@@ -1,5 +1,5 @@
 {
- "as_of": "2026-10-23T08:38:54Z",
+ "as_of": "2026-10-23T09:39:50Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -35,8 +35,8 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.65,
-   "reason": "Board approved Rs6.5bn apparel/hosiery capex; capacity expansion, approved stage",
+   "confidence": 0.6,
+   "reason": "Board approved Rs6.5bn capex/BMR for apparel & hosiery capacity; approved, quantified",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40445591/pakistans-interloop-to-expand-production-with-235mn-investment",
@@ -45,29 +45,38 @@
   }
  },
  "sectors": {
+  "Islamic Banking": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Bloomberg: SBP likely to hike 50bps to 12% on Oct 26; higher rates lift bank margins",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452"
+   ]
+  },
   "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Brent above $114, 5-month high; higher realisations, but market sold off on conflict",
-   "text_depth": "headline",
+   "confidence": 0.4,
+   "reason": "Oil up ~4% on Middle East tensions lifts E&P realisations; broad market selling offsets",
+   "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40445590/psx-selling-continues-kse-100-down-over-1300-points",
-    "https://www.brecorder.com/news/40445599/indian-bonds-flattish-as-oil-spike-offset-by-falling-treasury-yields",
+    "https://mettisglobal.news/Gold-dips-to-4013-on-rate-hike-bets-64453",
+    "https://www.brecorder.com/news/40445600/gold-heads-for-steep-weekly-loss-as-oil-prices-fuel-fed-rate-concerns",
     "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
    ]
   },
   "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
+   "rating": "neutral",
+   "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Crude spike may lift margins/inventory gains; no refinery-specific policy",
+   "confidence": 0.2,
+   "reason": "Oil spike and risk-off market move together; no refinery-specific mechanism",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445590/psx-selling-continues-kse-100-down-over-1300-points",
-    "https://www.brecorder.com/news/40445599/indian-bonds-flattish-as-oil-spike-offset-by-falling-treasury-yields",
     "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
    ]
   },
@@ -75,44 +84,19 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Oil spike gives inventory gains but pressures demand/working capital; diesel +1.64, petrol -1.60",
+   "confidence": 0.2,
+   "reason": "Marginal petrol/diesel ex-depot revisions offset; oil spike is sentiment only",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445590/psx-selling-continues-kse-100-down-over-1300-points",
-    "https://www.brecorder.com/news/40445599/indian-bonds-flattish-as-oil-spike-offset-by-falling-treasury-yields",
     "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Bloomberg: SBP likely hikes 50bps to 12% on Oct 26; higher yields lift bank spreads",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452",
-    "https://mettisglobal.news/SBP-reserves-rise-19m-to-215bn-64438"
    ]
   },
   "Real Estate": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "PM housing loans up to Rs10mn said to stimulate construction; anecdotal builder view",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
-   ]
-  },
-  "Cement": {
-   "rating": "positive",
-   "horizon": "multi_session",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Housing-loan scheme supports construction demand; indirect, builder anecdote",
+   "reason": "Dawn headline: government loans stimulating real estate; thin sourcing",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
