@@ -1,92 +1,46 @@
 {
- "as_of": "2026-10-23T06:40:35Z",
+ "as_of": "2026-10-23T07:39:17Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 25,
+ "articles_read": 23,
  "read_urls": [
   "https://mettisglobal.news/AKBL-9MCY26-profit-accelerates-13-64430",
-  "https://mettisglobal.news/Asian-markets-sink-on-AI-spending-fears-oil-surge-64442",
+  "https://mettisglobal.news/BankIslami-9M-profit-falls-39-to-Rs3bn-64455",
   "https://mettisglobal.news/Diesel-price-rises-Rs164-petrol-falls-Rs160-per-litre-64439",
-  "https://mettisglobal.news/Fast-Cables-shareholders-approve-Rs748m-IPO-funds-for-working-capital-64428",
+  "https://mettisglobal.news/Gold-dips-to-4013-on-rate-hike-bets-64453",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64434",
   "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
-  "https://mettisglobal.news/Govt-identifies-agriculture-textiles-and-IT-as-key-sectors-to-drive-exportled-growth-64435",
   "https://mettisglobal.news/Govt-to-provide-Rs-160bn-for-Khyber-Pakhtunkhwa-development-projects-64449",
   "https://mettisglobal.news/HMB-9MCY26-profit-drops-19-64445",
   "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
   "https://mettisglobal.news/MCB-Bank-9M-profit-slips-to-Rs44bn-declares-Rs9-dividend-64426",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64441",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64443",
-  "https://mettisglobal.news/Oil-holds-near-114-amid-Saudi-supply-concerns-64446",
+  "https://mettisglobal.news/Murree-Brewery-profit-rises-22-to-Rs1bn-declares-Rs65-dividend-64459",
   "https://mettisglobal.news/PSX-Closing-Bell-A-Brutal-Red-Finish-64431",
   "https://mettisglobal.news/PSX-moves-Crestwell-Healthcare-from-Power-to-Pharmaceuticals-64440",
   "https://mettisglobal.news/Pakistan-as-an-Emerging-Power-in-Global-Minerals-64437",
   "https://mettisglobal.news/Privatisation-Commission-prequalifies-10-parties-for-IESCO-64450",
+  "https://mettisglobal.news/Qaiser-Ahmed-Sheikh-calls-for-investmentled-growth-policy-consistency-64454",
   "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452",
   "https://mettisglobal.news/SBP-reserves-rise-19m-to-215bn-64438",
   "https://mettisglobal.news/SCRA-balance-rises-by-Rs97bn-during-week-64436",
   "https://mettisglobal.news/SE-Fruits-refunds-entire-IPO-subscription-amount-to-investors-64451",
-  "https://mettisglobal.news/SECP-directs-firms-with-over-Rs200m-capital-to-appoint-legal-advisers-64429",
   "https://mettisglobal.news/SPEL-1QFY27-profit-surges-37-64447",
-  "https://mettisglobal.news/TOMCL-fully-utilizes-Rs-810mn-right-issue-proceeds-64427"
+  "https://mettisglobal.news/Weekly-SPI-increases-by-065-64457"
  ],
- "count": 5,
+ "count": 1,
  "ratings": {
   "ILP": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "Board approved Rs6.5bn capex/BMR for apparel and hosiery capacity; announced, quantified",
+   "confidence": 0.55,
+   "reason": "Board approved Rs6.5bn capex/BMR for apparel and hosiery; capacity expansion approved, not yet delivered",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
     "https://www.brecorder.com/news/40445591/pakistans-interloop-to-expand-production-with-235mn-investment"
-   ]
-  },
-  "OGDC": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "New Bitrism East-1 well in Khairpur starts gas/condensate output; volumes not stated",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/10/23/ogdc-starts-gas-production-from-new-well-in-khairpur/"
-   ]
-  },
-  "MEBL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Exchange of letters with UNIDO-ITPO/ICEI on SME support; no earnings mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40445572/meezan-bank-unido-itpo-bahrain-icei-join-hands"
-   ]
-  },
-  "FCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Shareholders approve Rs748m surplus IPO funds for working capital; routine reallocation",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Fast-Cables-shareholders-approve-Rs748m-IPO-funds-for-working-capital-64428"
-   ]
-  },
-  "TOMCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.25,
-   "reason": "Rs810mn right-issue proceeds fully utilised; disclosure of past use",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/TOMCL-fully-utilizes-Rs-810mn-right-issue-proceeds-64427"
    ]
   }
  },
@@ -94,12 +48,12 @@
   "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent at five-month high near $114 on Saudi-Houthi fighting lifts E&P realisations; war risk caps it",
-   "text_depth": "full",
+   "causality": "correlated",
+   "confidence": 0.4,
+   "reason": "Brent above $114 on Gulf conflict lifts E&P realisations, but market-wide selloff offsets",
+   "text_depth": "headline",
    "sources": [
-    "https://mettisglobal.news/Oil-holds-near-114-amid-Saudi-supply-concerns-64446"
+    "https://www.brecorder.com/news/40445599/indian-bonds-flattish-as-oil-spike-offset-by-falling-treasury-yields"
    ]
   },
   "Islamic Banking": {
@@ -107,41 +61,29 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "SBP seen hiking policy rate 50bps to 12% on Oct 26; higher yields help bank spreads",
+   "reason": "Bloomberg: SBP likely to hike 50bps to 12% on Oct 26; higher yields help bank margins, not confirmed",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452"
    ]
   },
-  "Textile": {
+  "Real Estate": {
    "rating": "positive",
    "horizon": "long_term",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Govt TRUST framework names textiles a key export-growth sector; early-stage, plus Interloop capex",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-identifies-agriculture-textiles-and-IT-as-key-sectors-to-drive-exportled-growth-64435"
-   ]
-  },
-  "Real Estate": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Punjab/PM interest-free housing loans stimulating builders and construction demand",
+   "reason": "PM housing loan scheme up to Rs10mn reported to have lifted builders' activity over 12 months",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445576/punjab-approves-224000-interest-free-housing-loans",
     "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
    ]
   },
   "Cement": {
    "rating": "positive",
-   "horizon": "multi_session",
+   "horizon": "long_term",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Housing loan schemes support construction demand; indirect link to cement offtake",
+   "reason": "Housing-loan scheme supports construction demand; indirect link, headline only",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
