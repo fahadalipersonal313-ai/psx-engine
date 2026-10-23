@@ -1,106 +1,83 @@
 {
- "as_of": "2026-10-23T09:39:50Z",
+ "as_of": "2026-10-23T10:40:19Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
  "articles_read": 23,
  "read_urls": [
-  "https://mettisglobal.news/AKBL-9MCY26-profit-accelerates-13-64430",
   "https://mettisglobal.news/BankIslami-9M-profit-falls-39-to-Rs3bn-64455",
   "https://mettisglobal.news/Diesel-price-rises-Rs164-petrol-falls-Rs160-per-litre-64439",
+  "https://mettisglobal.news/Finance-Minister-calls-for-sustainable-financing-for-climate-resilience-64464",
   "https://mettisglobal.news/Gold-dips-to-4013-on-rate-hike-bets-64453",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64434",
-  "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
   "https://mettisglobal.news/Govt-to-provide-Rs-160bn-for-Khyber-Pakhtunkhwa-development-projects-64449",
   "https://mettisglobal.news/HMB-9MCY26-profit-drops-19-64445",
   "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
   "https://mettisglobal.news/KAPCOs-profit-jumps-over-100-folds-in-1QFY27-64460",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64441",
   "https://mettisglobal.news/Murree-Brewery-profit-rises-22-to-Rs1bn-declares-Rs65-dividend-64459",
-  "https://mettisglobal.news/PSX-Closing-Bell-A-Brutal-Red-Finish-64431",
+  "https://mettisglobal.news/NBP-approve-compensation-package-of-PresidentCEO-Imran-Sarwar-64463",
+  "https://mettisglobal.news/OMO-Result-SBP-injects-Rs13tr-64462",
   "https://mettisglobal.news/PSX-moves-Crestwell-Healthcare-from-Power-to-Pharmaceuticals-64440",
   "https://mettisglobal.news/Pakistan-as-an-Emerging-Power-in-Global-Minerals-64437",
   "https://mettisglobal.news/Privatisation-Commission-prequalifies-10-parties-for-IESCO-64450",
   "https://mettisglobal.news/Qaiser-Ahmed-Sheikh-calls-for-investmentled-growth-policy-consistency-64454",
   "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452",
   "https://mettisglobal.news/SBP-reserves-rise-19m-to-215bn-64438",
-  "https://mettisglobal.news/SCRA-balance-rises-by-Rs97bn-during-week-64436",
   "https://mettisglobal.news/SE-Fruits-refunds-entire-IPO-subscription-amount-to-investors-64451",
   "https://mettisglobal.news/SPEL-1QFY27-profit-surges-37-64447",
+  "https://mettisglobal.news/Service-Long-March-Tyres-profit-rises-23-to-Rs4bn-64461",
   "https://mettisglobal.news/Weekly-SPI-increases-by-065-64457"
  ],
- "count": 1,
  "ratings": {
+  "SLM": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.75,
+   "reason": "Q1 profit +23% to Rs3.69bn on 34% revenue growth; earnings out",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Service-Long-March-Tyres-profit-rises-23-to-Rs4bn-64461"
+   ]
+  },
   "ILP": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "Board approved Rs6.5bn capex/BMR for apparel & hosiery capacity; approved, quantified",
+   "confidence": 0.55,
+   "reason": "Board approved Rs6.5bn capex/BMR to expand apparel and hosiery capacity",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40445591/pakistans-interloop-to-expand-production-with-235mn-investment",
-    "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444"
+    "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
+    "https://www.brecorder.com/news/40445591/pakistans-interloop-to-expand-production-with-235mn-investment"
    ]
   }
  },
  "sectors": {
-  "Islamic Banking": {
+  "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Bloomberg: SBP likely to hike 50bps to 12% on Oct 26; higher rates lift bank margins",
+   "reason": "Brent above $114 on Houthi attacks on Saudi lifts E&P realisations; market selling tempers",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40445599/indian-bonds-flattish-as-oil-spike-offset-by-falling-treasury-yields",
+    "https://mettisglobal.news/Gold-dips-to-4013-on-rate-hike-bets-64453"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Bloomberg: SBP likely to hike 50bps to 12% on Oct 26; wider spreads help banks",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SBP-likely-to-raise-policy-rate-by-50bps-to-12-Bloomberg-64452"
    ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Oil up ~4% on Middle East tensions lifts E&P realisations; broad market selling offsets",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Gold-dips-to-4013-on-rate-hike-bets-64453",
-    "https://www.brecorder.com/news/40445600/gold-heads-for-steep-weekly-loss-as-oil-prices-fuel-fed-rate-concerns",
-    "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.2,
-   "reason": "Oil spike and risk-off market move together; no refinery-specific mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.2,
-   "reason": "Marginal petrol/diesel ex-depot revisions offset; oil spike is sentiment only",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
-   ]
-  },
-  "Real Estate": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Dawn headline: government loans stimulating real estate; thin sourcing",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
-   ]
   }
- }
+ },
+ "count": 2
 }
