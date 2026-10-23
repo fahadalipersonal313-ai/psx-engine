@@ -1,43 +1,19 @@
 {
- "as_of": "2026-10-23T04:38:50Z",
+ "as_of": "2026-10-23T05:42:38Z",
  "provider": "claude-routine",
  "model": "claude-session",
- "depth": "full-text",
- "articles_read": 23,
- "read_urls": [
-  "https://mettisglobal.news/AKBL-9MCY26-profit-accelerates-13-64430",
-  "https://mettisglobal.news/Asian-markets-sink-on-AI-spending-fears-oil-surge-64442",
-  "https://mettisglobal.news/BAHL-9MCY26-profit-drops-9-64425",
-  "https://mettisglobal.news/Diesel-price-rises-Rs164-petrol-falls-Rs160-per-litre-64439",
-  "https://mettisglobal.news/Fast-Cables-shareholders-approve-Rs748m-IPO-funds-for-working-capital-64428",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3000-per-tola-64434",
-  "https://mettisglobal.news/Gold-slides-to-4087-as-oildriven-inflation-worries-weigh-64404",
-  "https://mettisglobal.news/Govt-directs-better-coordination-on-wheat-imports-64407",
-  "https://mettisglobal.news/Govt-identifies-agriculture-textiles-and-IT-as-key-sectors-to-drive-exportled-growth-64435",
-  "https://mettisglobal.news/HMB-9MCY26-profit-drops-19-64445",
-  "https://mettisglobal.news/IDRT-puts-mill-production-on-hold-64424",
-  "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
-  "https://mettisglobal.news/MCB-Bank-9M-profit-slips-to-Rs44bn-declares-Rs9-dividend-64426",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64441",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64443",
-  "https://mettisglobal.news/PSX-Closing-Bell-A-Brutal-Red-Finish-64431",
-  "https://mettisglobal.news/PSX-moves-Crestwell-Healthcare-from-Power-to-Pharmaceuticals-64440",
-  "https://mettisglobal.news/Pakistans-GDP-growth-seen-at-38-in-FY27-inflation-to-hit-82-64414",
-  "https://mettisglobal.news/Pakistans-incomes-could-triple-by-2050-with-faster-reforms-World-Bank-64413",
-  "https://mettisglobal.news/SBP-reserves-rise-19m-to-215bn-64438",
-  "https://mettisglobal.news/SCRA-balance-rises-by-Rs97bn-during-week-64436",
-  "https://mettisglobal.news/SECP-directs-firms-with-over-Rs200m-capital-to-appoint-legal-advisers-64429",
-  "https://mettisglobal.news/TOMCL-fully-utilizes-Rs-810mn-right-issue-proceeds-64427"
- ],
- "count": 6,
+ "depth": "headline",
+ "articles_read": 0,
+ "read_urls": [],
+ "count": 3,
  "ratings": {
   "ILP": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.75,
-   "reason": "1QFY27 profit +53% to Rs4.3bn; board approves Rs6.5bn capex/BMR",
-   "text_depth": "full",
+   "confidence": 0.7,
+   "reason": "1QFY27 profit +53% to Rs4.3bn and Rs6.5bn capex approved; headline only",
+   "text_depth": "headline",
    "sources": [
     "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
     "https://www.brecorder.com/news/40445569/interloop-profit-rises-53pc-to-rs43bn-in-1qfy27"
@@ -48,32 +24,10 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Gas/condensate production begins at Bitrism East-1 well; Brent at 5-month high",
+   "reason": "New Khairpur well gas production started; adds output, size unquantified",
    "text_depth": "headline",
    "sources": [
     "https://propakistani.pk/2026/10/23/ogdc-starts-gas-production-from-new-well-in-khairpur/"
-   ]
-  },
-  "MEBL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "MoUs with UNIDO-ITPO/ICEI; no cash-flow mechanism",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40445572/meezan-bank-unido-itpo-bahrain-icei-join-hands"
-   ]
-  },
-  "SNGP": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Lobby advice on MD appointment; no decision",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40445532/govt-advised-to-appoint-a-technically-qualified-md-sngpl"
    ]
   },
   "FCL": {
@@ -81,114 +35,66 @@
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.3,
-   "reason": "Routine approval to use surplus IPO funds for working capital",
-   "text_depth": "full",
+   "reason": "Shareholders approve use of IPO funds for working capital; routine",
+   "text_depth": "headline",
    "sources": [
     "https://mettisglobal.news/Fast-Cables-shareholders-approve-Rs748m-IPO-funds-for-working-capital-64428"
-   ]
-  },
-  "TOMCL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Right-issue proceeds reported fully utilised; routine disclosure",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/TOMCL-fully-utilizes-Rs-810mn-right-issue-proceeds-64427"
    ]
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent ~$113, 5-month high on Houthi/Saudi supply risk lifts E&P realisations",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40445578/oil-little-changed-as-supply-concern-lingers-amid-houthi-attacks-on-saudi-arabia",
-    "https://mettisglobal.news/Asian-markets-sink-on-AI-spending-fears-oil-surge-64442"
-   ]
-  },
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Surging crude and tight supply lift product prices/inventory gains; margin impact unclear",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40445578/oil-little-changed-as-supply-concern-lingers-amid-houthi-attacks-on-saudi-arabia",
-    "https://mettisglobal.news/Asian-markets-sink-on-AI-spending-fears-oil-surge-64442"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Rising crude raises working-capital cost; regulated margins offset",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Asian-markets-sink-on-AI-spending-fears-oil-surge-64442"
-   ]
-  },
   "Textile": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Govt names textiles a key export growth sector; Interloop Rs6.5bn capex",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Govt-identifies-agriculture-textiles-and-IT-as-key-sectors-to-drive-exportled-growth-64435",
-    "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444"
-   ]
-  },
-  "Islamic Banking": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Rate hike expected Oct 26 mixed for banks; Middle East risk-off",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40445533/industrialists-warn-against-policy-rate-hikes"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "LPG price complaints and MD advice; no tariff decision",
+   "confidence": 0.35,
+   "reason": "Interloop Rs6.5bn apparel/hosiery capex and govt export-led push; sector read-through",
    "text_depth": "headline",
    "sources": [
-    "https://www.brecorder.com/news/40445573/pbif-chief-expresses-concern-over-lpg-prices"
+    "https://mettisglobal.news/Interloop-approves-Rs65bn-additional-investment-in-Apparel-Hosiery-64444",
+    "https://mettisglobal.news/Govt-identifies-agriculture-textiles-and-IT-as-key-sectors-to-drive-exportled-growth-64435"
    ]
   },
   "Real Estate": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Housing loan schemes already running; no new policy",
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Punjab 224k interest-free housing loans approved; demand stimulus for property",
    "text_depth": "headline",
    "sources": [
+    "https://www.brecorder.com/news/40445576/punjab-approves-224000-interest-free-housing-loans",
+    "https://www.brecorder.com/news/40445568/fgeha-holds-special-investors-conference",
     "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
    ]
   },
-  "Cement": {
-   "rating": "neutral",
-   "horizon": "long_term",
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.2,
-   "reason": "Housing-demand commentary only; no new policy",
+   "confidence": 0.3,
+   "reason": "Houthi/Middle East supply risk supports oil, but PSX in broad selloff",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2039183/govt-loans-turn-out-to-be-stimulant-for-real-estate"
+    "https://www.brecorder.com/news/40445590/psx-selling-continues-kse-100-down-300-points-in-early-trade",
+    "https://www.brecorder.com/news/40445586/flight-to-safety-rising-oil-put-indian-rupees-recovery-to-the-test",
+    "https://www.brecorder.com/news/40445580/indian-shares-seen-opening-higher-after-3-session-drop-oil-surge-clouds-outlook",
+    "https://www.brecorder.com/news/40445579/yen-shines-as-ai-jitters-spur-safe-haven-rush",
+    "https://www.brecorder.com/news/40445578/oil-little-changed-as-supply-concern-lingers-amid-houthi-attacks-on-saudi-arabia",
+    "https://www.dawn.com/news/2039178/middle-east-tensions-dent-investor-confidence"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Industry lobbying for lower policy rate; no SBP decision yet",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40445574/pcdma-urges-sbp-for-lower-policy-rate",
+    "https://www.dawn.com/news/2039180/state-bank-of-pakistans-reserves-rise-by-19m",
+    "https://propakistani.pk/2026/10/22/sbp-reserves-under-22-billion/"
    ]
   }
  }
