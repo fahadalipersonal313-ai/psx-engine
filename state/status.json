@@ -1,7 +1,7 @@
 {
- "updated_pkt": "2026-10-22T22:46+05:00",
+ "updated_pkt": "2026-10-23T09:46+05:00",
  "official_through": "2026-10-22",
- "official_note": "Finalised 2026-10-22 from PSX official data.",
+ "official_note": "No new official session since 2026-10-22 (newest in the file: 2026-10-22).",
  "last_scan": {
   "date": "2026-10-22",
   "gates": {
@@ -59,10 +59,19 @@
    }
   ]
  },
+ "ungated": {
+  "about": "Book D - every 52-week-high breakout (Leg B) bought at the next official open whatever the gates say; same stop, trail and time stop as book B.",
+  "orders": [],
+  "positions": [],
+  "closed": {
+   "n": 0
+  },
+  "recent_trades": []
+ },
  "live": {
   "ok": true,
-  "at": "2026-10-22T22:46+05:00",
-  "kse100": 163924.3158
+  "at": "2026-10-23T09:46+05:00",
+  "kse100": 163342.6006
  },
  "config": {
   "capital": 1000000,
@@ -75,7 +84,8 @@
   "books": {
    "B": "LIVE paper book - 52-week-high breakouts",
    "A": "research book - washouts",
-   "C": "research book - buy-close-sell-open (BCSM), no gates"
+   "C": "research book - buy-close-sell-open (BCSM), no gates",
+   "D": "52-week-high breakouts (Leg B) with the gates ignored - added 22-Oct-2026 on the user's request"
   },
   "notes": "Quarter size (0.25% of capital per trade) until 30 signals are logged. Paper capital Rs 1,000,000.",
   "bcsm": {
