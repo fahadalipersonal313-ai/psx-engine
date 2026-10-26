@@ -1,34 +1,34 @@
 {
- "updated_pkt": "2026-10-26T15:46+05:00",
- "official_through": "2026-10-23",
- "official_note": "No new official session since 2026-10-23 (newest in the file: 2026-10-23).",
+ "updated_pkt": "2026-10-26T16:47+05:00",
+ "official_through": "2026-10-26",
+ "official_note": "Finalised 2026-10-26 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-23",
+  "date": "2026-10-26",
   "gates": {
-   "date": "2026-10-23",
-   "kse100": 162374.88,
+   "date": "2026-10-26",
+   "kse100": 163038.47,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 0.0,
+   "bounce_pct": 0.41,
    "gate1_open": false,
-   "breadth": 12.43,
-   "breadth_prev": 32.58,
-   "breadth_prev_date": "2026-10-16",
+   "breadth": 13.64,
+   "breadth_prev": 23.6,
+   "breadth_prev_date": "2026-10-19",
    "gate2_open": false
   },
   "signals": [
    {
-    "book": "B",
-    "sym": "TPLT",
-    "list": "non-Shariah",
-    "signal_date": "2026-10-23",
-    "signal_close": 38.47,
-    "stop": 32.2,
-    "atr": 2.0905,
-    "note": "52-week-high breakout"
+    "book": "A",
+    "sym": "IPAK",
+    "list": "Shariah",
+    "signal_date": "2026-10-26",
+    "signal_close": 29.48,
+    "stop": 28.59,
+    "atr": 1.2187,
+    "note": "washout 2026-10-21 + demand close (research book)"
    }
   ],
-  "orders_placed": 1,
+  "orders_placed": 0,
   "bcsm": []
  },
  "orders": [],
@@ -72,19 +72,26 @@
  },
  "ungated": {
   "about": "Book D - every 52-week-high breakout (Leg B) bought at the next official open whatever the gates say; same stop, trail and time stop as book B.",
-  "orders": [
+  "orders": [],
+  "positions": [
    {
+    "id": "D-TPLT-2026-10-26",
     "book": "D",
     "sym": "TPLT",
     "list": "non-Shariah",
     "signal_date": "2026-10-23",
-    "signal_close": 38.47,
-    "stop": 32.2,
+    "entry_date": "2026-10-26",
+    "entry": 38.47,
+    "stop0": 32.2,
+    "stop": 33.17,
     "atr": 2.0905,
-    "note": "52-week-high breakout, gates ignored"
+    "hh": 39.44,
+    "shares": 398,
+    "days": 1,
+    "note": "52-week-high breakout, gates ignored",
+    "last_close": 38.21
    }
   ],
-  "positions": [],
   "closed": {
    "n": 0
   },
@@ -92,7 +99,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-10-26T15:46+05:00",
+  "at": "2026-10-26T16:47+05:00",
   "kse100": 163038.4679
  },
  "config": {
