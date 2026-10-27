@@ -1,35 +1,56 @@
 {
- "updated_pkt": "2026-10-27T16:49+05:00",
- "official_through": "2026-10-26",
- "official_note": "No new official session since 2026-10-26 (newest in the file: 2026-10-26).",
+ "updated_pkt": "2026-10-27T22:47+05:00",
+ "official_through": "2026-10-27",
+ "official_note": "Finalised 2026-10-27 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "gates": {
-   "date": "2026-10-26",
-   "kse100": 163038.47,
+   "date": "2026-10-27",
+   "kse100": 164467.2,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 0.41,
+   "bounce_pct": 1.29,
    "gate1_open": false,
-   "breadth": 13.64,
+   "breadth": 21.47,
    "breadth_prev": 23.6,
-   "breadth_prev_date": "2026-10-19",
+   "breadth_prev_date": "2026-10-20",
    "gate2_open": false
   },
   "signals": [
    {
-    "book": "A",
-    "sym": "IPAK",
-    "list": "Shariah",
-    "signal_date": "2026-10-26",
-    "signal_close": 29.48,
-    "stop": 28.59,
-    "atr": 1.2187,
-    "note": "washout 2026-10-21 + demand close (research book)"
+    "book": "B",
+    "sym": "TPLT",
+    "list": "non-Shariah",
+    "signal_date": "2026-10-27",
+    "signal_close": 39.62,
+    "stop": 33.06,
+    "atr": 2.186,
+    "note": "52-week-high breakout"
    }
   ],
   "orders_placed": 0,
-  "bcsm": []
+  "bcsm": [
+   {
+    "book": "C",
+    "sym": "EFERT",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "signal_close": 192.22,
+    "stop": 189.32,
+    "atr": 2.8985,
+    "note": "20-day-low support 189.80"
+   },
+   {
+    "book": "C",
+    "sym": "HCAR",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "signal_close": 200.14,
+    "stop": 193.9,
+    "atr": 6.24,
+    "note": "20-day-low support 191.00"
+   }
+  ]
  },
  "orders": [],
  "positions": [],
@@ -39,8 +60,62 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [],
-  "positions": [],
+  "signals": [
+   {
+    "book": "C",
+    "sym": "EFERT",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "signal_close": 192.22,
+    "stop": 189.32,
+    "atr": 2.8985,
+    "note": "20-day-low support 189.80"
+   },
+   {
+    "book": "C",
+    "sym": "HCAR",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "signal_close": 200.14,
+    "stop": 193.9,
+    "atr": 6.24,
+    "note": "20-day-low support 191.00"
+   }
+  ],
+  "positions": [
+   {
+    "id": "C-EFERT-2026-10-27",
+    "book": "C",
+    "sym": "EFERT",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "entry_date": "2026-10-27",
+    "entry": 192.22,
+    "stop0": 189.32,
+    "stop": 189.32,
+    "atr": 2.8985,
+    "hh": 192.22,
+    "shares": 520,
+    "days": 0,
+    "note": "buy-close-sell-open: 20-day-low support 189.80"
+   },
+   {
+    "id": "C-HCAR-2026-10-27",
+    "book": "C",
+    "sym": "HCAR",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "entry_date": "2026-10-27",
+    "entry": 200.14,
+    "stop0": 193.9,
+    "stop": 193.9,
+    "atr": 6.24,
+    "hh": 200.14,
+    "shares": 499,
+    "days": 0,
+    "note": "buy-close-sell-open: 20-day-low support 191.00"
+   }
+  ],
   "closed": {
    "n": 1,
    "cost_pct": 0.25,
@@ -83,13 +158,13 @@
     "entry_date": "2026-10-26",
     "entry": 38.47,
     "stop0": 32.2,
-    "stop": 33.17,
+    "stop": 33.97,
     "atr": 2.0905,
-    "hh": 39.44,
+    "hh": 40.24,
     "shares": 398,
-    "days": 1,
+    "days": 2,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 38.21
+    "last_close": 39.62
    }
   ],
   "closed": {
@@ -99,7 +174,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-10-27T16:49+05:00",
+  "at": "2026-10-27T22:47+05:00",
   "kse100": 164467.2021
  },
  "config": {

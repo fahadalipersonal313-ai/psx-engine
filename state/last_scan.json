@@ -1,29 +1,50 @@
 {
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "gates": {
-  "date": "2026-10-26",
-  "kse100": 163038.47,
+  "date": "2026-10-27",
+  "kse100": 164467.2,
   "low20": 162374.88,
   "gate1_level": 167246.13,
-  "bounce_pct": 0.41,
+  "bounce_pct": 1.29,
   "gate1_open": false,
-  "breadth": 13.64,
+  "breadth": 21.47,
   "breadth_prev": 23.6,
-  "breadth_prev_date": "2026-10-19",
+  "breadth_prev_date": "2026-10-20",
   "gate2_open": false
  },
  "signals": [
   {
-   "book": "A",
-   "sym": "IPAK",
-   "list": "Shariah",
-   "signal_date": "2026-10-26",
-   "signal_close": 29.48,
-   "stop": 28.59,
-   "atr": 1.2187,
-   "note": "washout 2026-10-21 + demand close (research book)"
+   "book": "B",
+   "sym": "TPLT",
+   "list": "non-Shariah",
+   "signal_date": "2026-10-27",
+   "signal_close": 39.62,
+   "stop": 33.06,
+   "atr": 2.186,
+   "note": "52-week-high breakout"
   }
  ],
  "orders_placed": 0,
- "bcsm": []
+ "bcsm": [
+  {
+   "book": "C",
+   "sym": "EFERT",
+   "list": "Shariah",
+   "signal_date": "2026-10-27",
+   "signal_close": 192.22,
+   "stop": 189.32,
+   "atr": 2.8985,
+   "note": "20-day-low support 189.80"
+  },
+  {
+   "book": "C",
+   "sym": "HCAR",
+   "list": "Shariah",
+   "signal_date": "2026-10-27",
+   "signal_close": 200.14,
+   "stop": 193.9,
+   "atr": 6.24,
+   "note": "20-day-low support 191.00"
+  }
+ ]
 }
