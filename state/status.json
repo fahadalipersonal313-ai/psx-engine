@@ -1,30 +1,30 @@
 {
- "updated_pkt": "2026-10-28T15:47+05:00",
- "official_through": "2026-10-27",
- "official_note": "No new official session since 2026-10-27 (newest in the file: 2026-10-27).",
+ "updated_pkt": "2026-10-28T16:47+05:00",
+ "official_through": "2026-10-28",
+ "official_note": "Finalised 2026-10-28 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "gates": {
-   "date": "2026-10-27",
-   "kse100": 164467.2,
+   "date": "2026-10-28",
+   "kse100": 165736.76,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 1.29,
+   "bounce_pct": 2.07,
    "gate1_open": false,
-   "breadth": 21.47,
-   "breadth_prev": 23.6,
-   "breadth_prev_date": "2026-10-20",
-   "gate2_open": false
+   "breadth": 30.51,
+   "breadth_prev": 24.16,
+   "breadth_prev_date": "2026-10-21",
+   "gate2_open": true
   },
   "signals": [
    {
     "book": "B",
     "sym": "TPLT",
     "list": "non-Shariah",
-    "signal_date": "2026-10-27",
-    "signal_close": 39.62,
-    "stop": 33.06,
-    "atr": 2.186,
+    "signal_date": "2026-10-28",
+    "signal_close": 43.58,
+    "stop": 36.64,
+    "atr": 2.3127,
     "note": "52-week-high breakout"
    }
   ],
@@ -32,23 +32,43 @@
   "bcsm": [
    {
     "book": "C",
-    "sym": "EFERT",
+    "sym": "FATIMA",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "signal_close": 192.22,
-    "stop": 189.32,
-    "atr": 2.8985,
-    "note": "20-day-low support 189.80"
+    "signal_date": "2026-10-28",
+    "signal_close": 135.18,
+    "stop": 131.9,
+    "atr": 3.2773,
+    "note": "20-day-low support 131.00"
    },
    {
     "book": "C",
-    "sym": "HCAR",
+    "sym": "ILP",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "signal_close": 200.14,
-    "stop": 193.9,
-    "atr": 6.24,
-    "note": "20-day-low support 191.00"
+    "signal_date": "2026-10-28",
+    "signal_close": 93.2,
+    "stop": 90.81,
+    "atr": 2.3944,
+    "note": "20-day-low support 90.03"
+   },
+   {
+    "book": "C",
+    "sym": "SSGC",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "signal_close": 22.94,
+    "stop": 22.27,
+    "atr": 0.6683,
+    "note": "20-day-low support 22.06"
+   },
+   {
+    "book": "C",
+    "sym": "TATM",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "signal_close": 144.66,
+    "stop": 138.17,
+    "atr": 6.4903,
+    "note": "20-day-low support 135.17"
    }
   ]
  },
@@ -63,66 +83,118 @@
   "signals": [
    {
     "book": "C",
-    "sym": "EFERT",
+    "sym": "FATIMA",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "signal_close": 192.22,
-    "stop": 189.32,
-    "atr": 2.8985,
-    "note": "20-day-low support 189.80"
+    "signal_date": "2026-10-28",
+    "signal_close": 135.18,
+    "stop": 131.9,
+    "atr": 3.2773,
+    "note": "20-day-low support 131.00"
    },
    {
     "book": "C",
-    "sym": "HCAR",
+    "sym": "ILP",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "signal_close": 200.14,
-    "stop": 193.9,
-    "atr": 6.24,
-    "note": "20-day-low support 191.00"
+    "signal_date": "2026-10-28",
+    "signal_close": 93.2,
+    "stop": 90.81,
+    "atr": 2.3944,
+    "note": "20-day-low support 90.03"
+   },
+   {
+    "book": "C",
+    "sym": "SSGC",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "signal_close": 22.94,
+    "stop": 22.27,
+    "atr": 0.6683,
+    "note": "20-day-low support 22.06"
+   },
+   {
+    "book": "C",
+    "sym": "TATM",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "signal_close": 144.66,
+    "stop": 138.17,
+    "atr": 6.4903,
+    "note": "20-day-low support 135.17"
    }
   ],
   "positions": [
    {
-    "id": "C-EFERT-2026-10-27",
+    "id": "C-FATIMA-2026-10-28",
     "book": "C",
-    "sym": "EFERT",
+    "sym": "FATIMA",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "entry_date": "2026-10-27",
-    "entry": 192.22,
-    "stop0": 189.32,
-    "stop": 189.32,
-    "atr": 2.8985,
-    "hh": 192.22,
-    "shares": 520,
+    "signal_date": "2026-10-28",
+    "entry_date": "2026-10-28",
+    "entry": 135.18,
+    "stop0": 131.9,
+    "stop": 131.9,
+    "atr": 3.2773,
+    "hh": 135.18,
+    "shares": 739,
     "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 189.80"
+    "note": "buy-close-sell-open: 20-day-low support 131.00"
    },
    {
-    "id": "C-HCAR-2026-10-27",
+    "id": "C-ILP-2026-10-28",
     "book": "C",
-    "sym": "HCAR",
+    "sym": "ILP",
     "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "entry_date": "2026-10-27",
-    "entry": 200.14,
-    "stop0": 193.9,
-    "stop": 193.9,
-    "atr": 6.24,
-    "hh": 200.14,
-    "shares": 499,
+    "signal_date": "2026-10-28",
+    "entry_date": "2026-10-28",
+    "entry": 93.2,
+    "stop0": 90.81,
+    "stop": 90.81,
+    "atr": 2.3944,
+    "hh": 93.2,
+    "shares": 1072,
     "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 191.00"
+    "note": "buy-close-sell-open: 20-day-low support 90.03"
+   },
+   {
+    "id": "C-SSGC-2026-10-28",
+    "book": "C",
+    "sym": "SSGC",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "entry_date": "2026-10-28",
+    "entry": 22.94,
+    "stop0": 22.27,
+    "stop": 22.27,
+    "atr": 0.6683,
+    "hh": 22.94,
+    "shares": 4359,
+    "days": 0,
+    "note": "buy-close-sell-open: 20-day-low support 22.06"
+   },
+   {
+    "id": "C-TATM-2026-10-28",
+    "book": "C",
+    "sym": "TATM",
+    "list": "Shariah",
+    "signal_date": "2026-10-28",
+    "entry_date": "2026-10-28",
+    "entry": 144.66,
+    "stop0": 138.17,
+    "stop": 138.17,
+    "atr": 6.4903,
+    "hh": 144.66,
+    "shares": 691,
+    "days": 0,
+    "note": "buy-close-sell-open: 20-day-low support 135.17"
    }
   ],
   "closed": {
-   "n": 1,
+   "n": 3,
    "cost_pct": 0.25,
-   "avg_net_pct": -0.08,
-   "pf_net": 0.0,
-   "win_pct": 0,
-   "pnl_rs_net": -84
+   "avg_net_pct": 0.207,
+   "pf_net": 3.0,
+   "win_pct": 33,
+   "pnl_rs_net": 616
   },
   "recent_trades": [
    {
@@ -142,6 +214,42 @@
     "days": "1",
     "shares": "791",
     "pnl_rs": "166"
+   },
+   {
+    "id": "C-EFERT-2026-10-27",
+    "book": "C",
+    "sym": "EFERT",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "entry_date": "2026-10-27",
+    "entry": "192.22",
+    "stop0": "189.32",
+    "exit_date": "2026-10-28",
+    "exit": "192.26",
+    "reason": "next official open",
+    "R": "0.01",
+    "pct": "0.02",
+    "days": "1",
+    "shares": "520",
+    "pnl_rs": "21"
+   },
+   {
+    "id": "C-HCAR-2026-10-27",
+    "book": "C",
+    "sym": "HCAR",
+    "list": "Shariah",
+    "signal_date": "2026-10-27",
+    "entry_date": "2026-10-27",
+    "entry": "200.14",
+    "stop0": "193.9",
+    "exit_date": "2026-10-28",
+    "exit": "202.5",
+    "reason": "next official open",
+    "R": "0.38",
+    "pct": "1.18",
+    "days": "1",
+    "shares": "499",
+    "pnl_rs": "1178"
    }
   ]
  },
@@ -158,13 +266,13 @@
     "entry_date": "2026-10-26",
     "entry": 38.47,
     "stop0": 32.2,
-    "stop": 33.97,
+    "stop": 37.31,
     "atr": 2.0905,
-    "hh": 40.24,
+    "hh": 43.58,
     "shares": 398,
-    "days": 2,
+    "days": 3,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 39.62
+    "last_close": 43.58
    }
   ],
   "closed": {
@@ -174,7 +282,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-10-28T15:47+05:00",
+  "at": "2026-10-28T16:47+05:00",
   "kse100": 165736.7555
  },
  "config": {
