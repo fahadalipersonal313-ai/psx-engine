@@ -1,64 +1,43 @@
 {
- "updated_pkt": "2026-10-30T16:47+05:00",
- "official_through": "2026-10-29",
- "official_note": "No new official session since 2026-10-29 (newest in the file: 2026-10-29).",
+ "updated_pkt": "2026-10-30T22:46+05:00",
+ "official_through": "2026-10-30",
+ "official_note": "Finalised 2026-10-30 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "gates": {
-   "date": "2026-10-29",
-   "kse100": 167193.44,
+   "date": "2026-10-30",
+   "kse100": 166409.25,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 2.97,
+   "bounce_pct": 2.48,
    "gate1_open": false,
-   "breadth": 35.59,
-   "breadth_prev": 14.04,
-   "breadth_prev_date": "2026-10-22",
+   "breadth": 30.51,
+   "breadth_prev": 12.43,
+   "breadth_prev_date": "2026-10-23",
    "gate2_open": true
   },
-  "signals": [
-   {
-    "book": "A",
-    "sym": "PTC",
-    "list": "non-Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 46.02,
-    "stop": 40.71,
-    "atr": 2.7886,
-    "note": "washout 2026-10-23 + demand close (research book)"
-   }
-  ],
+  "signals": [],
   "orders_placed": 0,
   "bcsm": [
    {
     "book": "C",
-    "sym": "CNERGY",
+    "sym": "BFBIO",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 14.08,
-    "stop": 13.52,
-    "atr": 0.5557,
-    "note": "rising 50-day EMA 12.64"
+    "signal_date": "2026-10-30",
+    "signal_close": 126.27,
+    "stop": 122.28,
+    "atr": 3.9936,
+    "note": "20-day-low support 121.00"
    },
    {
     "book": "C",
-    "sym": "MARI",
+    "sym": "MEBL",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 636.22,
-    "stop": 626.75,
-    "atr": 9.4725,
-    "note": "20-day-low support 622.25"
-   },
-   {
-    "book": "C",
-    "sym": "NRL",
-    "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 575.79,
-    "stop": 548.96,
-    "atr": 26.8305,
-    "note": "rising 50-day EMA 561.37"
+    "signal_date": "2026-10-30",
+    "signal_close": 528.61,
+    "stop": 520.12,
+    "atr": 8.4939,
+    "note": "20-day-low support 516.06"
    }
   ]
  },
@@ -73,92 +52,66 @@
   "signals": [
    {
     "book": "C",
-    "sym": "CNERGY",
+    "sym": "BFBIO",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 14.08,
-    "stop": 13.52,
-    "atr": 0.5557,
-    "note": "rising 50-day EMA 12.64"
+    "signal_date": "2026-10-30",
+    "signal_close": 126.27,
+    "stop": 122.28,
+    "atr": 3.9936,
+    "note": "20-day-low support 121.00"
    },
    {
     "book": "C",
-    "sym": "MARI",
+    "sym": "MEBL",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 636.22,
-    "stop": 626.75,
-    "atr": 9.4725,
-    "note": "20-day-low support 622.25"
-   },
-   {
-    "book": "C",
-    "sym": "NRL",
-    "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "signal_close": 575.79,
-    "stop": 548.96,
-    "atr": 26.8305,
-    "note": "rising 50-day EMA 561.37"
+    "signal_date": "2026-10-30",
+    "signal_close": 528.61,
+    "stop": 520.12,
+    "atr": 8.4939,
+    "note": "20-day-low support 516.06"
    }
   ],
   "positions": [
    {
-    "id": "C-CNERGY-2026-10-29",
+    "id": "C-BFBIO-2026-10-30",
     "book": "C",
-    "sym": "CNERGY",
+    "sym": "BFBIO",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "entry_date": "2026-10-29",
-    "entry": 14.08,
-    "stop0": 13.52,
-    "stop": 13.52,
-    "atr": 0.5557,
-    "hh": 14.08,
-    "shares": 7102,
+    "signal_date": "2026-10-30",
+    "entry_date": "2026-10-30",
+    "entry": 126.27,
+    "stop0": 122.28,
+    "stop": 122.28,
+    "atr": 3.9936,
+    "hh": 126.27,
+    "shares": 791,
     "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 12.64"
+    "note": "buy-close-sell-open: 20-day-low support 121.00"
    },
    {
-    "id": "C-MARI-2026-10-29",
+    "id": "C-MEBL-2026-10-30",
     "book": "C",
-    "sym": "MARI",
+    "sym": "MEBL",
     "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "entry_date": "2026-10-29",
-    "entry": 636.22,
-    "stop0": 626.75,
-    "stop": 626.75,
-    "atr": 9.4725,
-    "hh": 636.22,
-    "shares": 157,
+    "signal_date": "2026-10-30",
+    "entry_date": "2026-10-30",
+    "entry": 528.61,
+    "stop0": 520.12,
+    "stop": 520.12,
+    "atr": 8.4939,
+    "hh": 528.61,
+    "shares": 189,
     "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 622.25"
-   },
-   {
-    "id": "C-NRL-2026-10-29",
-    "book": "C",
-    "sym": "NRL",
-    "list": "Shariah",
-    "signal_date": "2026-10-29",
-    "entry_date": "2026-10-29",
-    "entry": 575.79,
-    "stop0": 548.96,
-    "stop": 548.96,
-    "atr": 26.8305,
-    "hh": 575.79,
-    "shares": 173,
-    "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 561.37"
+    "note": "buy-close-sell-open: 20-day-low support 516.06"
    }
   ],
   "closed": {
-   "n": 7,
+   "n": 10,
    "cost_pct": 0.25,
-   "avg_net_pct": -0.19,
-   "pf_net": 0.53,
-   "win_pct": 43,
-   "pnl_rs_net": -1337
+   "avg_net_pct": -0.137,
+   "pf_net": 0.61,
+   "win_pct": 40,
+   "pnl_rs_net": -1370
   },
   "recent_trades": [
    {
@@ -286,6 +239,60 @@
     "days": "1",
     "shares": "691",
     "pnl_rs": "-41"
+   },
+   {
+    "id": "C-CNERGY-2026-10-29",
+    "book": "C",
+    "sym": "CNERGY",
+    "list": "Shariah",
+    "signal_date": "2026-10-29",
+    "entry_date": "2026-10-29",
+    "entry": "14.08",
+    "stop0": "13.52",
+    "exit_date": "2026-10-30",
+    "exit": "14.2",
+    "reason": "next official open",
+    "R": "0.21",
+    "pct": "0.85",
+    "days": "1",
+    "shares": "7102",
+    "pnl_rs": "852"
+   },
+   {
+    "id": "C-MARI-2026-10-29",
+    "book": "C",
+    "sym": "MARI",
+    "list": "Shariah",
+    "signal_date": "2026-10-29",
+    "entry_date": "2026-10-29",
+    "entry": "636.22",
+    "stop0": "626.75",
+    "exit_date": "2026-10-30",
+    "exit": "636.22",
+    "reason": "next official open",
+    "R": "0.0",
+    "pct": "0.0",
+    "days": "1",
+    "shares": "157",
+    "pnl_rs": "0"
+   },
+   {
+    "id": "C-NRL-2026-10-29",
+    "book": "C",
+    "sym": "NRL",
+    "list": "Shariah",
+    "signal_date": "2026-10-29",
+    "entry_date": "2026-10-29",
+    "entry": "575.79",
+    "stop0": "548.96",
+    "exit_date": "2026-10-30",
+    "exit": "575.0",
+    "reason": "next official open",
+    "R": "-0.03",
+    "pct": "-0.14",
+    "days": "1",
+    "shares": "173",
+    "pnl_rs": "-137"
    }
   ]
  },
@@ -302,13 +309,13 @@
     "entry_date": "2026-10-26",
     "entry": 38.47,
     "stop0": 32.2,
-    "stop": 40.33,
+    "stop": 40.73,
     "atr": 2.0905,
-    "hh": 46.6,
+    "hh": 47.0,
     "shares": 398,
-    "days": 4,
+    "days": 5,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 42.95
+    "last_close": 45.54
    }
   ],
   "closed": {
@@ -318,7 +325,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-10-30T16:47+05:00",
+  "at": "2026-10-30T22:46+05:00",
   "kse100": 166409.2521
  },
  "config": {
