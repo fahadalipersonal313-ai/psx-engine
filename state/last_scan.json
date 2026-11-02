@@ -1,39 +1,40 @@
 {
- "date": "2026-10-30",
+ "date": "2026-11-02",
  "gates": {
-  "date": "2026-10-30",
-  "kse100": 166409.25,
+  "date": "2026-11-02",
+  "kse100": 166564.07,
   "low20": 162374.88,
   "gate1_level": 167246.13,
-  "bounce_pct": 2.48,
+  "bounce_pct": 2.58,
   "gate1_open": false,
-  "breadth": 30.51,
-  "breadth_prev": 12.43,
-  "breadth_prev_date": "2026-10-23",
+  "breadth": 28.25,
+  "breadth_prev": 13.64,
+  "breadth_prev_date": "2026-10-26",
   "gate2_open": true
  },
- "signals": [],
+ "signals": [
+  {
+   "book": "A",
+   "sym": "MSOT",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-02",
+   "signal_close": 139.47,
+   "stop": 111.58,
+   "atr": 12.6847,
+   "note": "washout 2026-10-30 + demand close (research book)"
+  }
+ ],
  "orders_placed": 0,
  "bcsm": [
   {
    "book": "C",
-   "sym": "BFBIO",
+   "sym": "MTL",
    "list": "Shariah",
-   "signal_date": "2026-10-30",
-   "signal_close": 126.27,
-   "stop": 122.28,
-   "atr": 3.9936,
-   "note": "20-day-low support 121.00"
-  },
-  {
-   "book": "C",
-   "sym": "MEBL",
-   "list": "Shariah",
-   "signal_date": "2026-10-30",
-   "signal_close": 528.61,
-   "stop": 520.12,
-   "atr": 8.4939,
-   "note": "20-day-low support 516.06"
+   "signal_date": "2026-11-02",
+   "signal_close": 280.71,
+   "stop": 275.51,
+   "atr": 5.198,
+   "note": "20-day-low support 276.00"
   }
  ]
 }

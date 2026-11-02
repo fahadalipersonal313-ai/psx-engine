@@ -1,43 +1,44 @@
 {
- "updated_pkt": "2026-11-02T16:46+05:00",
- "official_through": "2026-10-30",
- "official_note": "No new official session since 2026-10-30 (newest in the file: 2026-10-30).",
+ "updated_pkt": "2026-11-02T22:46+05:00",
+ "official_through": "2026-11-02",
+ "official_note": "Finalised 2026-11-02 from PSX official data.",
  "last_scan": {
-  "date": "2026-10-30",
+  "date": "2026-11-02",
   "gates": {
-   "date": "2026-10-30",
-   "kse100": 166409.25,
+   "date": "2026-11-02",
+   "kse100": 166564.07,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 2.48,
+   "bounce_pct": 2.58,
    "gate1_open": false,
-   "breadth": 30.51,
-   "breadth_prev": 12.43,
-   "breadth_prev_date": "2026-10-23",
+   "breadth": 28.25,
+   "breadth_prev": 13.64,
+   "breadth_prev_date": "2026-10-26",
    "gate2_open": true
   },
-  "signals": [],
+  "signals": [
+   {
+    "book": "A",
+    "sym": "MSOT",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-02",
+    "signal_close": 139.47,
+    "stop": 111.58,
+    "atr": 12.6847,
+    "note": "washout 2026-10-30 + demand close (research book)"
+   }
+  ],
   "orders_placed": 0,
   "bcsm": [
    {
     "book": "C",
-    "sym": "BFBIO",
+    "sym": "MTL",
     "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "signal_close": 126.27,
-    "stop": 122.28,
-    "atr": 3.9936,
-    "note": "20-day-low support 121.00"
-   },
-   {
-    "book": "C",
-    "sym": "MEBL",
-    "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "signal_close": 528.61,
-    "stop": 520.12,
-    "atr": 8.4939,
-    "note": "20-day-low support 516.06"
+    "signal_date": "2026-11-02",
+    "signal_close": 280.71,
+    "stop": 275.51,
+    "atr": 5.198,
+    "note": "20-day-low support 276.00"
    }
   ]
  },
@@ -52,104 +53,42 @@
   "signals": [
    {
     "book": "C",
-    "sym": "BFBIO",
+    "sym": "MTL",
     "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "signal_close": 126.27,
-    "stop": 122.28,
-    "atr": 3.9936,
-    "note": "20-day-low support 121.00"
-   },
-   {
-    "book": "C",
-    "sym": "MEBL",
-    "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "signal_close": 528.61,
-    "stop": 520.12,
-    "atr": 8.4939,
-    "note": "20-day-low support 516.06"
+    "signal_date": "2026-11-02",
+    "signal_close": 280.71,
+    "stop": 275.51,
+    "atr": 5.198,
+    "note": "20-day-low support 276.00"
    }
   ],
   "positions": [
    {
-    "id": "C-BFBIO-2026-10-30",
+    "id": "C-MTL-2026-11-02",
     "book": "C",
-    "sym": "BFBIO",
+    "sym": "MTL",
     "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "entry_date": "2026-10-30",
-    "entry": 126.27,
-    "stop0": 122.28,
-    "stop": 122.28,
-    "atr": 3.9936,
-    "hh": 126.27,
-    "shares": 791,
+    "signal_date": "2026-11-02",
+    "entry_date": "2026-11-02",
+    "entry": 280.71,
+    "stop0": 275.51,
+    "stop": 275.51,
+    "atr": 5.198,
+    "hh": 280.71,
+    "shares": 356,
     "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 121.00"
-   },
-   {
-    "id": "C-MEBL-2026-10-30",
-    "book": "C",
-    "sym": "MEBL",
-    "list": "Shariah",
-    "signal_date": "2026-10-30",
-    "entry_date": "2026-10-30",
-    "entry": 528.61,
-    "stop0": 520.12,
-    "stop": 520.12,
-    "atr": 8.4939,
-    "hh": 528.61,
-    "shares": 189,
-    "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 516.06"
+    "note": "buy-close-sell-open: 20-day-low support 276.00"
    }
   ],
   "closed": {
-   "n": 10,
+   "n": 12,
    "cost_pct": 0.25,
-   "avg_net_pct": -0.137,
-   "pf_net": 0.61,
-   "win_pct": 40,
-   "pnl_rs_net": -1370
+   "avg_net_pct": -0.199,
+   "pf_net": 0.47,
+   "win_pct": 33,
+   "pnl_rs_net": -2390
   },
   "recent_trades": [
-   {
-    "id": "C-NML-2026-10-21",
-    "book": "C",
-    "sym": "NML",
-    "list": "Shariah",
-    "signal_date": "2026-10-21",
-    "entry_date": "2026-10-21",
-    "entry": "126.29",
-    "stop0": "122.7",
-    "exit_date": "2026-10-22",
-    "exit": "126.5",
-    "reason": "next official open",
-    "R": "0.06",
-    "pct": "0.17",
-    "days": "1",
-    "shares": "791",
-    "pnl_rs": "166"
-   },
-   {
-    "id": "C-EFERT-2026-10-27",
-    "book": "C",
-    "sym": "EFERT",
-    "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "entry_date": "2026-10-27",
-    "entry": "192.22",
-    "stop0": "189.32",
-    "exit_date": "2026-10-28",
-    "exit": "192.26",
-    "reason": "next official open",
-    "R": "0.01",
-    "pct": "0.02",
-    "days": "1",
-    "shares": "520",
-    "pnl_rs": "21"
-   },
    {
     "id": "C-HCAR-2026-10-27",
     "book": "C",
@@ -293,6 +232,42 @@
     "days": "1",
     "shares": "173",
     "pnl_rs": "-137"
+   },
+   {
+    "id": "C-BFBIO-2026-10-30",
+    "book": "C",
+    "sym": "BFBIO",
+    "list": "Shariah",
+    "signal_date": "2026-10-30",
+    "entry_date": "2026-10-30",
+    "entry": "126.27",
+    "stop0": "122.28",
+    "exit_date": "2026-11-02",
+    "exit": "126.0",
+    "reason": "next official open",
+    "R": "-0.07",
+    "pct": "-0.21",
+    "days": "1",
+    "shares": "791",
+    "pnl_rs": "-214"
+   },
+   {
+    "id": "C-MEBL-2026-10-30",
+    "book": "C",
+    "sym": "MEBL",
+    "list": "Shariah",
+    "signal_date": "2026-10-30",
+    "entry_date": "2026-10-30",
+    "entry": "528.61",
+    "stop0": "520.12",
+    "exit_date": "2026-11-02",
+    "exit": "526.99",
+    "reason": "next official open",
+    "R": "-0.19",
+    "pct": "-0.31",
+    "days": "1",
+    "shares": "189",
+    "pnl_rs": "-306"
    }
   ]
  },
@@ -313,9 +288,9 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 5,
+    "days": 6,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 45.54
+    "last_close": 43.69
    }
   ],
   "closed": {
@@ -325,7 +300,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-02T16:46+05:00",
+  "at": "2026-11-02T22:46+05:00",
   "kse100": 166564.065
  },
  "config": {
