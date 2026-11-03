@@ -1,48 +1,48 @@
 {
- "updated_pkt": "2026-11-03T16:47+05:00",
- "official_through": "2026-11-02",
- "official_note": "No new official session since 2026-11-02 (newest in the file: 2026-11-02).",
+ "updated_pkt": "2026-11-03T22:46+05:00",
+ "official_through": "2026-11-03",
+ "official_note": "Finalised 2026-11-03 from PSX official data.",
  "last_scan": {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "gates": {
-   "date": "2026-11-02",
-   "kse100": 166564.07,
+   "date": "2026-11-03",
+   "kse100": 168018.87,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 2.58,
-   "gate1_open": false,
-   "breadth": 28.25,
-   "breadth_prev": 13.64,
-   "breadth_prev_date": "2026-10-26",
+   "bounce_pct": 3.48,
+   "gate1_open": true,
+   "breadth": 32.2,
+   "breadth_prev": 21.47,
+   "breadth_prev_date": "2026-10-27",
    "gate2_open": true
   },
   "signals": [
    {
     "book": "A",
-    "sym": "MSOT",
+    "sym": "SPSL",
     "list": "non-Shariah",
-    "signal_date": "2026-11-02",
-    "signal_close": 139.47,
-    "stop": 111.58,
-    "atr": 12.6847,
-    "note": "washout 2026-10-30 + demand close (research book)"
+    "signal_date": "2026-11-03",
+    "signal_close": 12.2,
+    "stop": 11.38,
+    "atr": 0.574,
+    "note": "washout 2026-11-02 + demand close (research book)"
    }
   ],
-  "orders_placed": 0,
-  "bcsm": [
-   {
-    "book": "C",
-    "sym": "MTL",
-    "list": "Shariah",
-    "signal_date": "2026-11-02",
-    "signal_close": 280.71,
-    "stop": 275.51,
-    "atr": 5.198,
-    "note": "20-day-low support 276.00"
-   }
-  ]
+  "orders_placed": 1,
+  "bcsm": []
  },
- "orders": [],
+ "orders": [
+  {
+   "book": "A",
+   "sym": "SPSL",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-03",
+   "signal_close": 12.2,
+   "stop": 11.38,
+   "atr": 0.574,
+   "note": "washout 2026-11-02 + demand close (research book)"
+  }
+ ],
  "positions": [],
  "closed": {
   "n": 0
@@ -50,63 +50,17 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [
-   {
-    "book": "C",
-    "sym": "MTL",
-    "list": "Shariah",
-    "signal_date": "2026-11-02",
-    "signal_close": 280.71,
-    "stop": 275.51,
-    "atr": 5.198,
-    "note": "20-day-low support 276.00"
-   }
-  ],
-  "positions": [
-   {
-    "id": "C-MTL-2026-11-02",
-    "book": "C",
-    "sym": "MTL",
-    "list": "Shariah",
-    "signal_date": "2026-11-02",
-    "entry_date": "2026-11-02",
-    "entry": 280.71,
-    "stop0": 275.51,
-    "stop": 275.51,
-    "atr": 5.198,
-    "hh": 280.71,
-    "shares": 356,
-    "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 276.00"
-   }
-  ],
+  "signals": [],
+  "positions": [],
   "closed": {
-   "n": 12,
+   "n": 13,
    "cost_pct": 0.25,
-   "avg_net_pct": -0.199,
-   "pf_net": 0.47,
-   "win_pct": 33,
-   "pnl_rs_net": -2390
+   "avg_net_pct": -0.329,
+   "pf_net": 0.33,
+   "win_pct": 31,
+   "pnl_rs_net": -4278
   },
   "recent_trades": [
-   {
-    "id": "C-HCAR-2026-10-27",
-    "book": "C",
-    "sym": "HCAR",
-    "list": "Shariah",
-    "signal_date": "2026-10-27",
-    "entry_date": "2026-10-27",
-    "entry": "200.14",
-    "stop0": "193.9",
-    "exit_date": "2026-10-28",
-    "exit": "202.5",
-    "reason": "next official open",
-    "R": "0.38",
-    "pct": "1.18",
-    "days": "1",
-    "shares": "499",
-    "pnl_rs": "1178"
-   },
    {
     "id": "C-FATIMA-2026-10-28",
     "book": "C",
@@ -268,6 +222,24 @@
     "days": "1",
     "shares": "189",
     "pnl_rs": "-306"
+   },
+   {
+    "id": "C-MTL-2026-11-02",
+    "book": "C",
+    "sym": "MTL",
+    "list": "Shariah",
+    "signal_date": "2026-11-02",
+    "entry_date": "2026-11-02",
+    "entry": "280.71",
+    "stop0": "275.51",
+    "exit_date": "2026-11-03",
+    "exit": "276.11",
+    "reason": "next official open",
+    "R": "-0.88",
+    "pct": "-1.64",
+    "days": "1",
+    "shares": "356",
+    "pnl_rs": "-1638"
    }
   ]
  },
@@ -288,9 +260,9 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 6,
+    "days": 7,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 43.69
+    "last_close": 43.67
    }
   ],
   "closed": {
@@ -300,7 +272,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-03T16:47+05:00",
+  "at": "2026-11-03T22:46+05:00",
   "kse100": 168018.8685
  },
  "config": {
