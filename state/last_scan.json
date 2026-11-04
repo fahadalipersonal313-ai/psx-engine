@@ -1,29 +1,130 @@
 {
- "date": "2026-11-03",
+ "date": "2026-11-04",
  "gates": {
-  "date": "2026-11-03",
-  "kse100": 168018.87,
+  "date": "2026-11-04",
+  "kse100": 172013.48,
   "low20": 162374.88,
   "gate1_level": 167246.13,
-  "bounce_pct": 3.48,
+  "bounce_pct": 5.94,
   "gate1_open": true,
-  "breadth": 32.2,
-  "breadth_prev": 21.47,
-  "breadth_prev_date": "2026-10-27",
+  "breadth": 46.33,
+  "breadth_prev": 30.51,
+  "breadth_prev_date": "2026-10-28",
   "gate2_open": true
  },
  "signals": [
   {
    "book": "A",
-   "sym": "SPSL",
+   "sym": "IPAK",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 27.58,
+   "stop": 26.49,
+   "atr": 1.0594,
+   "note": "washout 2026-10-22 + demand close (research book)"
+  },
+  {
+   "book": "A",
+   "sym": "MUGHAL",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 60.21,
+   "stop": 56.98,
+   "atr": 2.0995,
+   "note": "washout 2026-11-03 + demand close (research book)"
+  },
+  {
+   "book": "A",
+   "sym": "MSOT",
    "list": "non-Shariah",
-   "signal_date": "2026-11-03",
-   "signal_close": 12.2,
-   "stop": 11.38,
-   "atr": 0.574,
-   "note": "washout 2026-11-02 + demand close (research book)"
+   "signal_date": "2026-11-04",
+   "signal_close": 154.91,
+   "stop": 111.44,
+   "atr": 13.2518,
+   "note": "washout 2026-10-30 + demand close (research book)"
+  },
+  {
+   "book": "B",
+   "sym": "PASL",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 5.96,
+   "stop": 4.31,
+   "atr": 0.5505,
+   "note": "52-week-high breakout"
+  },
+  {
+   "book": "A",
+   "sym": "PTC",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 46.19,
+   "stop": 40.76,
+   "atr": 2.5935,
+   "note": "washout 2026-10-23 + demand close (research book)"
   }
  ],
- "orders_placed": 1,
- "bcsm": []
+ "orders_placed": 6,
+ "bcsm": [
+  {
+   "book": "C",
+   "sym": "EFERT",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 207.96,
+   "stop": 203.89,
+   "atr": 4.0732,
+   "note": "rising 50-day EMA 193.42"
+  },
+  {
+   "book": "C",
+   "sym": "FCL",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 23.0,
+   "stop": 22.26,
+   "atr": 0.7395,
+   "note": "20-day-low support 21.95"
+  },
+  {
+   "book": "C",
+   "sym": "GHNI",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 1172.13,
+   "stop": 1124.21,
+   "atr": 47.9227,
+   "note": "rising 50-day EMA 1095.27"
+  },
+  {
+   "book": "C",
+   "sym": "HCAR",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 199.5,
+   "stop": 193.59,
+   "atr": 5.9099,
+   "note": "20-day-low support 191.00"
+  },
+  {
+   "book": "C",
+   "sym": "PREMA",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 30.5,
+   "stop": 29.23,
+   "atr": 1.2663,
+   "note": "20-day-low support 28.95"
+  },
+  {
+   "book": "C",
+   "sym": "TOMCL",
+   "list": "Shariah",
+   "signal_date": "2026-11-04",
+   "signal_close": 27.96,
+   "stop": 26.81,
+   "atr": 1.1477,
+   "note": "20-day-low support 26.79"
+  }
+ ]
 }
