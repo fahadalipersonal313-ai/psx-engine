@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-06T08:38:31Z",
+ "as_of": "2026-11-06T09:38:24Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -8,11 +8,12 @@
   "https://mettisglobal.news/ABHI-IPO-The-Gold-Behind-the-Glitter-64826",
   "https://mettisglobal.news/Ahsan-Iqbal-seeks-synergy-between-URAAN-Pakistan-Saudi-Vision-2030-64833",
   "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs9000-per-ton-64843",
+  "https://mettisglobal.news/First-IBL-Modaraba-plans-subsidiary-for-EV-Mobility-Trading-64846",
   "https://mettisglobal.news/Gold-climbs-to-4113-as-dollar-Treasury-yields-slip-64806",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs9600-per-tola-64821",
   "https://mettisglobal.news/Gold-weakens-as-oil-rebounds-64838",
-  "https://mettisglobal.news/LSE-Capital-approves-JV-with-LABLINK-for-Sindh-project-64805",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64827",
+  "https://mettisglobal.news/OMO-Result-SBP-injects-Rs138tr-64845",
   "https://mettisglobal.news/Oil-nears-100-as-USIran-military-escalation-fears-grow-64837",
   "https://mettisglobal.news/PM-directs-coordinated-polio-eradication-strategy-64839",
   "https://mettisglobal.news/PM-directs-removal-of-80-export-condition-for-SME-longterm-financing-64841",
@@ -24,14 +25,11 @@
   "https://mettisglobal.news/Pakistans-trade-deficit-widens-to-39bn-in-October-64844",
   "https://mettisglobal.news/Petrol-price-slashed-by-Rs941-diesel-by-Rs556-per-litre-64825",
   "https://mettisglobal.news/Pioneer-Cement-signs-deal-for-15MW-battery-storage-10MW-solar-installation-64836",
-  "https://mettisglobal.news/SBP-reserves-rise-39m-to-216bn-64824",
   "https://mettisglobal.news/SNGP-declares-Rs3-per-share-dividend-64816",
   "https://mettisglobal.news/SPEL-nears-completion-of-new-Rahim-Yar-Khan-plant-64831",
   "https://mettisglobal.news/SSGC-FY26-profit-drops-26-to-Rs25bn-64814",
   "https://mettisglobal.news/Thatta-Cement-FY26-profit-slips-3-to-Rs2bn-64808",
   "https://mettisglobal.news/Weekly-SPI-increase-by-029-64842",
-  "https://www.brecorder.com/news/40447724/softbank-credit-risk-jumps-to-4-year-high-as-ai-fears-roil-market",
-  "https://www.brecorder.com/news/40447725/psx-selling-engulfs-bourse-kse-100-sheds-nearly-1500-points",
   "https://www.brecorder.com/news/40447726/pakistan-urges-oic-to-boost-intra-bloc-trade-ease-sme-financing",
   "https://www.brecorder.com/news/40447727/singapore-airlines-to-splash-16-billion-on-luxury-long-haul-cabins-as-rivals-up-their-game",
   "https://www.brecorder.com/news/40447728/gold-drops-over-1-on-higher-oil-prices-us-payrolls-data-in-focus",
@@ -59,106 +57,51 @@
   "https://www.brecorder.com/news/40447752/pm-shehbaz-approves-reforms-to-modernise-tdap-boost-pakistans-exports",
   "https://www.brecorder.com/news/40447753/pakistan-appoints-mustafa-ramday-as-pso-chairman",
   "https://www.brecorder.com/news/40447754/european-shares-fall-as-global-ai-rout-gathers-pace",
-  "https://www.brecorder.com/news/40447755/qatars-emir-trump-discuss-mediation-efforts-to-end-regional-crisis"
+  "https://www.brecorder.com/news/40447755/qatars-emir-trump-discuss-mediation-efforts-to-end-regional-crisis",
+  "https://www.brecorder.com/news/40447756/pakistans-trade-deficit-surges-20-yoy-to-39bn-in-october-2026",
+  "https://www.brecorder.com/news/40447757/gold-price-drops-rs6500-per-tola-in-pakistan"
  ],
- "count": 10,
+ "count": 8,
  "ratings": {
-  "PSO": {
+  "FIBLM": {
    "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "JSMFI inclusion effective today (passive demand) plus new board chair; mostly priced",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832",
-    "https://www.brecorder.com/news/40447753/pakistan-appoints-mustafa-ramday-as-pso-chairman"
-   ]
-  },
-  "PRL": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Added to JSMFI effective today; index-flow demand, already announced",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
-   ]
-  },
-  "CNERGY": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Added to JSMFI effective today; index-flow demand, already announced",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
-   ]
-  },
-  "GHNI": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Added to JSMFI effective today; index-flow demand, already announced",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
-   ]
-  },
-  "TREET": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Added to JSMFI effective today; index-flow demand, already announced",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
-   ]
-  },
-  "FFC": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "JSMFI inclusion; NBP Growth Index weight rebalance is routine",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
-   ]
-  },
-  "THCCL": {
-   "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "FY26 EPS down 15% on 3x finance cost and new levy; offset by JSMFI entry",
+   "confidence": 0.3,
+   "reason": "In-principle approval of EV/trading subsidiary; early stage, regulatory approvals pending",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Thatta-Cement-FY26-profit-slips-3-to-Rs2bn-64808",
-    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
+    "https://mettisglobal.news/First-IBL-Modaraba-plans-subsidiary-for-EV-Mobility-Trading-64846"
    ]
   },
   "ASL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.55,
-   "reason": "CRC price hike Rs9,000/t effective Nov 5 lifts steel margins if it sticks",
+   "confidence": 0.6,
+   "reason": "CRC prices raised Rs9,000/ton effective 5 Nov; direct margin lever",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs9000-per-ton-64843"
    ]
   },
-  "SNGP": {
-   "rating": "neutral",
+  "THCCL": {
+   "rating": "negative",
    "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "FY26 profit +1%, Rs3 dividend; in line, no new mechanism",
+   "confidence": 0.5,
+   "reason": "FY26 profit -2.9%, EPS -15% to Rs4.80; results out",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Thatta-Cement-FY26-profit-slips-3-to-Rs2bn-64808"
+   ]
+  },
+  "SNGP": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "FY26 profit +1% to Rs14.81bn with Rs3/share dividend declared",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SNGP-declares-Rs3-per-share-dividend-64816"
@@ -166,13 +109,46 @@
   },
   "SSGC": {
    "rating": "negative",
-   "horizon": "multi_session",
+   "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.6,
-   "reason": "FY26 profit -26% on 34% lower gross profit, higher finance cost and tax",
+   "reason": "FY26 profit -26% to Rs2.54bn, EPS Rs2.89 vs Rs3.91",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/SSGC-FY26-profit-drops-26-to-Rs25bn-64814"
+   ]
+  },
+  "PSO": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Board chair appointment and index inclusion; no cash-flow mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40447753/pakistan-appoints-mustafa-ramday-as-pso-chairman"
+   ]
+  },
+  "PRL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "JSMFI index inclusion; minor passive flow only",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
+   ]
+  },
+  "CNERGY": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "JSMFI index inclusion; minor passive flow only",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PRL-CNERGY-PSO-join-JSMFI-in-latest-recomposition-64832"
    ]
   }
  },
@@ -180,34 +156,12 @@
   "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.4,
-   "reason": "Brent near $99 on US-Iran escalation fears supports E&P realisations",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "Brent nears $100 on US-Iran escalation fears; realised-price tailwind for E&Ps",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-nears-100-as-USIran-military-escalation-fears-grow-64837"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Petrol cut Rs9.41/l, diesel Rs5.56/l from Nov 6 risks inventory losses",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Petrol-price-slashed-by-Rs941-diesel-by-Rs556-per-litre-64825"
-   ]
-  },
-  "Fertilizer": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Engro urea price +Rs50/bag signals firm pricing; headline only",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/11/06/engro-fertilizers-hikes-urea-by-rs-50-to-rs-4585-a-bag/"
    ]
   }
  }
