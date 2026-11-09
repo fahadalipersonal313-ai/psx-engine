@@ -1,11 +1,14 @@
 {
- "as_of": "2026-11-09T05:37:51Z",
+ "as_of": "2026-11-09T06:38:16Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 30,
+ "articles_read": 33,
  "read_urls": [
+  "https://mettisglobal.news/Asian-markets-retreat-on-tech-selloff-concerns-Japan-rallies-64865",
+  "https://mettisglobal.news/Gold-gains-over-1-on-softer-oil-weaker-dollar-64867",
   "https://mettisglobal.news/Govt-earmarks-Rs300bn-for-SME-exporters-under-Pak-EXIM-scheme-64864",
+  "https://mettisglobal.news/Oil-drops-to-97-amid-hopes-of-USIran-peace-deal-64866",
   "https://www.brecorder.com/news/40448040/cm-maryam-felicitates-hindu-community-on-diwali",
   "https://www.brecorder.com/news/40448041/ali-dar-attends-diwali-celebrations-in-lahore",
   "https://www.brecorder.com/news/40448042/visit-to-china-balochistan-delegation-discusses-cpec-gwadar-port",
@@ -16,15 +19,6 @@
   "https://www.brecorder.com/news/40448049/epz-risalpur-unit-customs-uncovers-import-irregularities-shortage-of-goods",
   "https://www.brecorder.com/news/40448050/russian-strikes-cut-power-to-hundreds-of-thousands-in-ukraine",
   "https://www.brecorder.com/news/40448051/migrant-boat-sinks-off-senegal-21-killed",
-  "https://www.brecorder.com/news/40448052/husband-held-as-anchorperson-shot-dead-in-rawalpindi",
-  "https://www.brecorder.com/news/40448053/turkiye-azerbaijan-leaders-vow-unity-after-tensions",
-  "https://www.brecorder.com/news/40448054/phc-rules-fed-on-unprocessed-tobacco-is-illegal",
-  "https://www.brecorder.com/news/40448055/performance-of-performance-review-panel-criticized",
-  "https://www.brecorder.com/news/40448061/us-bonds-fall-after-thursdays-rally",
-  "https://www.brecorder.com/news/40448063/150th-birth-anniversary-of-allama-iqbal-pm-announces-launch-of-year-long-celebrations",
-  "https://www.brecorder.com/news/40448064/democrats-plan-probes-of-musk-miller-corporate-america",
-  "https://www.brecorder.com/news/40448065/riyadh-financial-district-targeted-aramco-skyscraper-damaged",
-  "https://www.brecorder.com/news/40448066/trump-says-resumption-of-war-with-iran-highly-unlikely",
   "https://www.brecorder.com/news/40448082/bilawal-extends-warm-diwali-greetings-to-hindu-community",
   "https://www.brecorder.com/news/40448085/gold-rises-over-1-as-softer-oil-prices-ease-inflation-worries",
   "https://www.brecorder.com/news/40448086/oil-falls-as-trump-says-new-iran-attacks-unlikely",
@@ -34,7 +28,16 @@
   "https://www.brecorder.com/news/40448090/nvidia-probes-whether-ceo-huang-was-target-of-foreign-spying-as-he-admits-affair",
   "https://www.brecorder.com/news/40448091/hasina-seeks-new-passport-in-clearest-sign-of-bangladesh-return",
   "https://www.brecorder.com/news/40448092/indian-shares-edge-lower-as-market-consolidates-after-last-weeks-surge",
-  "https://www.brecorder.com/news/40448093/trump-calls-nvidias-huang-honorable-says-he-has-not-discussed-allegations-with-him"
+  "https://www.brecorder.com/news/40448093/trump-calls-nvidias-huang-honorable-says-he-has-not-discussed-allegations-with-him",
+  "https://www.brecorder.com/news/40448094/cryptocurrencies-slide-to-two-month-lows-after-us-midterms",
+  "https://www.brecorder.com/news/40448095/anz-misses-some-expectations-warns-capital-competition-to-keep-rates-higher",
+  "https://www.brecorder.com/news/40448096/iran-says-no-unauthorised-vessels-transited-strait-of-hormuz-overnight-after-navigation-aids-destroyed",
+  "https://www.brecorder.com/news/40448097/trump-thinks-he-will-meet-xi-and-putin-at-china-apec-summit",
+  "https://www.brecorder.com/news/40448098/delhi-air-quality-deteriorates-as-revellers-mark-diwali-with-illegal-fireworks",
+  "https://www.brecorder.com/news/40448099/chinas-factory-gate-inflation-at-fastest-in-nearly-4-12-years-in-october-while-cpi-rise-moderates",
+  "https://www.brecorder.com/news/40448100/train-collision-in-egypt-kills-at-least-7-injures-dozens-health-ministry-says",
+  "https://www.brecorder.com/news/40448101/australia-axe-labuschagne-for-new-zealand-test-series",
+  "https://www.brecorder.com/news/40448102/after-winning-paris-masters-alcaraz-high-on-confidence-ahead-of-atp-finals"
  ],
  "count": 0,
  "ratings": {},
@@ -42,11 +45,12 @@
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Crude falling as Trump says new Iran attacks unlikely; lower realisations for E&Ps",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Brent down ~1% to $97 on US-Iran peace hopes; lower crude realisations, not yet a local mechanism",
    "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/Oil-drops-to-97-amid-hopes-of-USIran-peace-deal-64866",
     "https://www.brecorder.com/news/40448086/oil-falls-as-trump-says-new-iran-attacks-unlikely"
    ]
   },
@@ -55,7 +59,7 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Record vessel calls from ME disruption lift volumes; lasting hub status hinges on reforms",
+   "reason": "Record vessel calls from ME disruption lift port volumes; lasting gain hinges on reforms",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2043249/pakistans-ports-ride-me-disruption-to-record-vessel-calls-but-lasting-hub-status-hinges-on-reforms-and-road-links"
