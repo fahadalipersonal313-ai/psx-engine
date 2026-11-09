@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-09T07:38:15Z",
+ "as_of": "2026-11-09T08:40:41Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -40,7 +40,7 @@
   "https://www.brecorder.com/news/40448105/krakow-mass-shooting-assailant-died-in-hospital-polish-police-say",
   "https://www.brecorder.com/news/40448106/greece-recovers-12-dead-migrants-from-boat-off-of-crete-coast-guard-says",
   "https://www.brecorder.com/news/40448107/south-african-rand-firms-on-softer-oil-coalition-talks-in-focus",
-  "https://www.brecorder.com/news/40448108/pia-conducts-deep-cleaning-of-its-aircraft",
+  "https://www.brecorder.com/news/40448108/karachi-wins-pias-aircraft-cabin-cleanliness-competition",
   "https://www.brecorder.com/news/40448109/pm-shehbaz-condemns-continued-israeli-restrictions-on-humanitarian-aid-to-gaza"
  ],
  "count": 0,
@@ -51,33 +51,33 @@
    "horizon": "single_session",
    "causality": "causal",
    "confidence": 0.4,
-   "reason": "Brent down ~1% to 7 on US-Iran peace hopes; lower realised price for E&Ps, deal not final",
+   "reason": "Brent down ~1% to $97 on US-Iran peace hopes lowers E&P realisations; already volatile, stage: market move",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Oil-drops-to-97-amid-hopes-of-USIran-peace-deal-64866",
     "https://www.brecorder.com/news/40448086/oil-steadies-after-trump-signals-restraint-on-iran-hormuz-risks-persist"
    ]
   },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Softer crude eases input costs but inventory loss offsets; no PSX-specific mechanism",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-drops-to-97-amid-hopes-of-USIran-peace-deal-64866"
-   ]
-  },
   "Logistics/Ports": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
+   "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Dawn: ports at record vessel calls on ME disruption; lasting hub status hinges on reforms",
+   "reason": "Record vessel calls at Pakistani ports on ME disruption, but lasting hub status hinges on reforms",
    "text_depth": "headline",
    "sources": [
     "https://www.dawn.com/news/2043249/pakistans-ports-ride-me-disruption-to-record-vessel-calls-but-lasting-hub-status-hinges-on-reforms-and-road-links"
+   ]
+  },
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Industry protests ICP/two-part tariff; demand for audit only, no decision",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2043139/industrialists-demand-third-party-audit-for-power-sector-data-verification"
    ]
   }
  }
