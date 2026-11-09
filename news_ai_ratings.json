@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-09T04:37:44Z",
+ "as_of": "2026-11-09T05:37:51Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
@@ -25,51 +25,40 @@
   "https://www.brecorder.com/news/40448064/democrats-plan-probes-of-musk-miller-corporate-america",
   "https://www.brecorder.com/news/40448065/riyadh-financial-district-targeted-aramco-skyscraper-damaged",
   "https://www.brecorder.com/news/40448066/trump-says-resumption-of-war-with-iran-highly-unlikely",
-  "https://www.brecorder.com/news/40448067/pm-raises-youth-loan-limit-to-rs25m",
-  "https://www.brecorder.com/news/40448068/kati-urges-leghari-to-order-audit-of-ppmc-ismo",
-  "https://www.brecorder.com/news/40448069/pmif26-commences-in-islamabad-on-12th",
-  "https://www.brecorder.com/news/40448070/iesco-backs-transfer-of-assets-liabilities-to-phl-ahead-of-sell-off",
-  "https://www.brecorder.com/news/40448073/world-bank-team-to-discuss-energy-sector-portfolio",
-  "https://www.brecorder.com/news/40448074/bisp-assistance-is-a-right-not-charity-rubina",
-  "https://www.brecorder.com/news/40448075/companies-sign-jv-with-turkish-powerhouse",
-  "https://www.brecorder.com/news/40448076/hcstsi-delegation-visits-rto-hyderabad",
-  "https://www.brecorder.com/news/40448077/homage-paid-to-allama-iqbal",
-  "https://www.brecorder.com/news/40448082/bilawal-extends-warm-diwali-greetings-to-hindu-community"
+  "https://www.brecorder.com/news/40448082/bilawal-extends-warm-diwali-greetings-to-hindu-community",
+  "https://www.brecorder.com/news/40448085/gold-rises-over-1-as-softer-oil-prices-ease-inflation-worries",
+  "https://www.brecorder.com/news/40448086/oil-falls-as-trump-says-new-iran-attacks-unlikely",
+  "https://www.brecorder.com/news/40448087/indian-rupee-extends-rally-putting-rbis-dollar-buying-threshold-in-focus",
+  "https://www.brecorder.com/news/40448088/us-dollar-holds-onto-payrolls-gains-nz-dollar-rises-after-election",
+  "https://www.brecorder.com/news/40448089/asian-stocks-bounce-as-ai-mideast-jitters-recede-dollar-firm-on-fed-bets",
+  "https://www.brecorder.com/news/40448090/nvidia-probes-whether-ceo-huang-was-target-of-foreign-spying-as-he-admits-affair",
+  "https://www.brecorder.com/news/40448091/hasina-seeks-new-passport-in-clearest-sign-of-bangladesh-return",
+  "https://www.brecorder.com/news/40448092/indian-shares-edge-lower-as-market-consolidates-after-last-weeks-surge",
+  "https://www.brecorder.com/news/40448093/trump-calls-nvidias-huang-honorable-says-he-has-not-discussed-allegations-with-him"
  ],
  "count": 0,
  "ratings": {},
  "sectors": {
-  "Refinery": {
-   "rating": "neutral",
+  "Oil & Gas Exploration": {
+   "rating": "negative",
    "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Houthi strike on Aramco tower lifts oil risk; refiner margin link indirect",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Crude falling as Trump says new Iran attacks unlikely; lower realisations for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448065/riyadh-financial-district-targeted-aramco-skyscraper-damaged"
+    "https://www.brecorder.com/news/40448086/oil-falls-as-trump-says-new-iran-attacks-unlikely"
    ]
   },
-  "Fertilizer": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.2,
-   "reason": "Youth agri loan limit raised to Rs25m; no fertiliser demand mechanism shown",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448067/pm-raises-youth-loan-limit-to-rs25m"
-   ]
-  },
-  "Power Generation": {
-   "rating": "neutral",
+  "Logistics/Ports": {
+   "rating": "positive",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.2,
-   "reason": "Industry demands audit of power data/tariff; lobbying only, no decision",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Record vessel calls from ME disruption lift volumes; lasting hub status hinges on reforms",
    "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2043139/industrialists-demand-third-party-audit-for-power-sector-data-verification"
+    "https://www.dawn.com/news/2043249/pakistans-ports-ride-me-disruption-to-record-vessel-calls-but-lasting-hub-status-hinges-on-reforms-and-road-links"
    ]
   }
  }
