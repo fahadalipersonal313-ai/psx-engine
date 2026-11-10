@@ -1,38 +1,34 @@
 {
- "as_of": "2026-11-10T07:38:48Z",
+ "as_of": "2026-11-10T08:38:31Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
  "articles_read": 48,
  "read_urls": [
-  "https://mettisglobal.news/Asian-markets-rally-as-tech-stocks-rebound-Kospi-surges-over-5-64877",
   "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
   "https://mettisglobal.news/Fitch-flags-soft-sukuk-liquidity-64884",
   "https://mettisglobal.news/Gold-gains-over-1-on-softer-oil-weaker-dollar-64867",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs3200-per-tola-64874",
   "https://mettisglobal.news/Gold-steady-at-4116-ahead-of-US-inflation-data-64886",
+  "https://mettisglobal.news/High-net-worth-individuals-get-largest-share-of-AMFBL-IPO-64888",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64875",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64880",
   "https://mettisglobal.news/NCCIA-recovers-Rs14m-in-Rs21m-online-investment-scam-64871",
   "https://mettisglobal.news/NCCIA-warns-citizens-against-fake-Rs13000-PM-cash-reward-messages-64872",
-  "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878",
   "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869",
   "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883",
+  "https://mettisglobal.news/SECP-puts-Khaadi-IPO-Prospectus-under-lens-64887",
   "https://mettisglobal.news/SIFC-Jazz-explore-investment-in-data-centres-AI-factories-64879",
   "https://mettisglobal.news/SIFC-assures-KP-business-community-of-help-in-resolving-bottlenecks-64870",
   "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
   "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885",
   "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881",
-  "https://www.brecorder.com/news/40448197/interview-with-nabila-yazdani-director-strategy-amp-company-spokesperson-zong",
-  "https://www.brecorder.com/news/40448198/lahores-smog-where-are-the-results",
-  "https://www.brecorder.com/news/40448199/tcp-invites-fresh-bids-for-sugar-export",
-  "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
   "https://www.brecorder.com/news/40448221/asian-stocks-climb-as-sliding-oil-prices-buoy-sentiment",
   "https://www.brecorder.com/news/40448222/dollar-sellers-hit-pause-for-us-inflation-data",
   "https://www.brecorder.com/news/40448223/saudi-led-coalition-says-it-intercepts-two-houthi-missiles-fired-towards-riyadh",
   "https://www.brecorder.com/news/40448224/warner-backs-khawajas-comments-about-ball-tampering-scandal",
   "https://www.brecorder.com/news/40448225/cricket-australia-ceo-says-will-not-open-another-investigation-into-sandpapergate",
-  "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-2",
+  "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
   "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
   "https://www.brecorder.com/news/40448228/south-koreas-lee-says-seoul-must-build-bipartisan-support-in-us-congress",
   "https://www.brecorder.com/news/40448229/australian-shares-hit-2-12-month-high-as-lower-oil-prices-fuel-broad-rally",
@@ -52,7 +48,11 @@
   "https://www.brecorder.com/news/40448243/japans-nikkei-extends-rebound-as-ai-related-stocks-advance",
   "https://www.brecorder.com/news/40448244/trump-nominates-natalie-baker-as-us-ambassador-to-pakistan",
   "https://www.brecorder.com/news/40448245/asean-countries-need-up-to-71-trillion-for-infrastructure-but-face-funding-gap-adb-says",
-  "https://www.brecorder.com/news/40448246/thai-bahtus-dollar-little-changed-on-tuesday"
+  "https://www.brecorder.com/news/40448246/thai-bahtus-dollar-little-changed-on-tuesday",
+  "https://www.brecorder.com/news/40448247/shakeel-nears-century-as-pakistan-score-390-6-in-first-test",
+  "https://www.brecorder.com/news/40448248/third-new-zealand-india-one-day-international-washed-out",
+  "https://www.brecorder.com/news/40448249/trump-says-fbi-probing-nvidia-ceo-huang-as-china-controversy-deepens",
+  "https://www.brecorder.com/news/40448250/meghan-wife-of-prince-harry-will-no-longer-speak-at-brussels-event"
  ],
  "count": 0,
  "ratings": {},
@@ -60,12 +60,25 @@
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Brent falling on Iran de-escalation lowers realisation outlook for E&Ps",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Oil prices plunge on US-Iran de-escalation; lowers realised-price outlook for E&Ps",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran"
+    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
+    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Falling crude eases import cost/inventory-loss risk; broad market rally supportive",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
+    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
    ]
   },
   "Refinery": {
@@ -73,29 +86,19 @@
    "horizon": "single_session",
    "causality": "correlated",
    "confidence": 0.25,
-   "reason": "Lower crude eases input cost but margin effect unclear; no refinery-specific story",
+   "reason": "Lower oil mixed for refiners; no refinery-specific mechanism in articles",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Falling crude mixed for OMC inventory gains/losses; no OMC-specific mechanism",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran"
+    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
+    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
    ]
   },
   "Technology/Telecom": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "VEON Pakistan 3QCY26 revenue +26.6%, EBIT +53.1% signals strong telecom earnings",
+   "confidence": 0.4,
+   "reason": "VEON Pakistan 3Q revenue +26.6%, EBIT +53%; sector demand/pricing strength",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885"
@@ -105,8 +108,8 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Remittances +13.8% YoY to $3.89bn supports external account and deposits",
+   "confidence": 0.3,
+   "reason": "Oct remittances +13.8% YoY to $3.9bn supports deposits and FX reserves",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026"
@@ -116,44 +119,11 @@
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.4,
-   "reason": "TCP re-tenders 108k t surplus sugar with no price floor, easing stock overhang",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448199/tcp-invites-fresh-bids-for-sugar-export"
-   ]
-  },
-  "Gas Distribution": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "PSO/SSGCL gain LPG pricing authority from OGRA; headline only",
-   "text_depth": "headline",
-   "sources": [
-    "https://propakistani.pk/2026/11/10/ogra-sidelined-as-pso-ssgcl-get-authority-to-set-lpg-prices/"
-   ]
-  },
-  "Cement": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Broad PSX rally on Iran de-escalation led by cement among others",
+   "reason": "Fresh 108k t sugar export tender drops $660 floor; raises odds of export sale",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-2"
-   ]
-  },
-  "Auto Assembler": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Broad PSX rally on Iran de-escalation led by autos among others",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-2"
+    "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883"
    ]
   }
  }
