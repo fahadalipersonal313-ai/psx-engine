@@ -1,21 +1,22 @@
 {
- "as_of": "2026-11-10T08:38:31Z",
+ "as_of": "2026-11-10T09:44:02Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 48,
+ "articles_read": 49,
  "read_urls": [
   "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
+  "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
   "https://mettisglobal.news/Fitch-flags-soft-sukuk-liquidity-64884",
   "https://mettisglobal.news/Gold-gains-over-1-on-softer-oil-weaker-dollar-64867",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs3200-per-tola-64874",
   "https://mettisglobal.news/Gold-steady-at-4116-ahead-of-US-inflation-data-64886",
   "https://mettisglobal.news/High-net-worth-individuals-get-largest-share-of-AMFBL-IPO-64888",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64875",
-  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64880",
   "https://mettisglobal.news/NCCIA-recovers-Rs14m-in-Rs21m-online-investment-scam-64871",
   "https://mettisglobal.news/NCCIA-warns-citizens-against-fake-Rs13000-PM-cash-reward-messages-64872",
   "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869",
+  "https://mettisglobal.news/Pakistan-Trkiye-to-cooperate-on-FMD-control-vaccines-64890",
   "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883",
   "https://mettisglobal.news/SECP-puts-Khaadi-IPO-Prospectus-under-lens-64887",
   "https://mettisglobal.news/SIFC-Jazz-explore-investment-in-data-centres-AI-factories-64879",
@@ -23,9 +24,7 @@
   "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
   "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885",
   "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881",
-  "https://www.brecorder.com/news/40448221/asian-stocks-climb-as-sliding-oil-prices-buoy-sentiment",
-  "https://www.brecorder.com/news/40448222/dollar-sellers-hit-pause-for-us-inflation-data",
-  "https://www.brecorder.com/news/40448223/saudi-led-coalition-says-it-intercepts-two-houthi-missiles-fired-towards-riyadh",
+  "https://www.brecorder.com/news/40447413/why-russia-lost-its-seat-and-the-g7-lost-its-innocence",
   "https://www.brecorder.com/news/40448224/warner-backs-khawajas-comments-about-ball-tampering-scandal",
   "https://www.brecorder.com/news/40448225/cricket-australia-ceo-says-will-not-open-another-investigation-into-sandpapergate",
   "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
@@ -52,79 +51,91 @@
   "https://www.brecorder.com/news/40448247/shakeel-nears-century-as-pakistan-score-390-6-in-first-test",
   "https://www.brecorder.com/news/40448248/third-new-zealand-india-one-day-international-washed-out",
   "https://www.brecorder.com/news/40448249/trump-says-fbi-probing-nvidia-ceo-huang-as-china-controversy-deepens",
-  "https://www.brecorder.com/news/40448250/meghan-wife-of-prince-harry-will-no-longer-speak-at-brussels-event"
+  "https://www.brecorder.com/news/40448250/meghan-wife-of-prince-harry-will-no-longer-speak-at-brussels-event",
+  "https://www.brecorder.com/news/40448251/beyond-the-order-the-logistics-behind-pakistans-export-ambitions",
+  "https://www.brecorder.com/news/40448252/govt-approves-board-changes-at-hesco-sepco-amp-nespak"
  ],
- "count": 0,
- "ratings": {},
+ "ratings": {
+  "FCCL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.6,
+   "reason": "Rs3.37bn early loan repayment cuts KIBOR-linked debt servicing cost",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889"
+   ]
+  }
+ },
  "sectors": {
+  "Islamic Banking": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Remittances +13.8% YoY eases external pressure; indirect for banks",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
+    "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881"
+   ]
+  },
   "Oil & Gas Exploration": {
    "rating": "negative",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Oil prices plunge on US-Iran de-escalation; lowers realised-price outlook for E&Ps",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "Crude sliding on Iran de-escalation lowers E&P realisations",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
-    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Falling crude eases import cost/inventory-loss risk; broad market rally supportive",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
-    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
-   ]
-  },
-  "Refinery": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Lower oil mixed for refiners; no refinery-specific mechanism in articles",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
-    "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys"
+    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points"
    ]
   },
   "Technology/Telecom": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "causal",
+   "causality": "correlated",
    "confidence": 0.4,
-   "reason": "VEON Pakistan 3Q revenue +26.6%, EBIT +53%; sector demand/pricing strength",
+   "reason": "VEON Pakistan 3Q revenue +27%, EBIT +53%: strong sector demand read-across",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885"
    ]
   },
-  "Islamic Banking": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Oct remittances +13.8% YoY to $3.9bn supports deposits and FX reserves",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026"
-   ]
-  },
   "Food": {
-   "rating": "positive",
+   "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "Fresh 108k t sugar export tender drops $660 floor; raises odds of export sale",
+   "reason": "Sugar export tender drops price floor after no bids: weak realisations",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883"
    ]
+  },
+  "Fertilizer": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Youth agri loan cap raised to Rs25mn: modest farm-input demand support",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Used-car gift-scheme imports persist; vendors unhappy with new auto policy",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2043373/used-car-imports-under-gift-scheme-persist-despite-tough-restrictions-say-vendors"
+   ]
   }
- }
+ },
+ "count": 1
 }
