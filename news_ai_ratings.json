@@ -1,11 +1,12 @@
 {
- "as_of": "2026-11-10T05:38:45Z",
+ "as_of": "2026-11-10T06:38:38Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 42,
+ "articles_read": 45,
  "read_urls": [
   "https://mettisglobal.news/Asian-markets-rally-as-tech-stocks-rebound-Kospi-surges-over-5-64877",
+  "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
   "https://mettisglobal.news/Gold-gains-over-1-on-softer-oil-weaker-dollar-64867",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs3200-per-tola-64874",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64875",
@@ -14,12 +15,11 @@
   "https://mettisglobal.news/NCCIA-warns-citizens-against-fake-Rs13000-PM-cash-reward-messages-64872",
   "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878",
   "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869",
+  "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883",
   "https://mettisglobal.news/SIFC-Jazz-explore-investment-in-data-centres-AI-factories-64879",
   "https://mettisglobal.news/SIFC-assures-KP-business-community-of-help-in-resolving-bottlenecks-64870",
   "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
   "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881",
-  "https://www.brecorder.com/news/40448138/a-world-record-nobody-wants",
-  "https://www.brecorder.com/news/40448139/auto-policy",
   "https://www.brecorder.com/news/40448197/interview-with-nabila-yazdani-director-strategy-amp-company-spokesperson-zong",
   "https://www.brecorder.com/news/40448198/lahores-smog-where-are-the-results",
   "https://www.brecorder.com/news/40448199/tcp-invites-fresh-bids-for-sugar-export",
@@ -34,103 +34,49 @@
   "https://www.brecorder.com/news/40448209/legal-software-houses-amp-it-cos-nccia-raids-condemnable-p-at-sha",
   "https://www.brecorder.com/news/40448210/all-workers-rescued-after-tarbela-dam-embankment-breach",
   "https://www.brecorder.com/news/40448211/lpg-association-postpones-strike",
-  "https://www.brecorder.com/news/40448212/iraqs-khor-mor-gas-field-halted-after-drone-attack",
-  "https://www.brecorder.com/news/40448214/trump-revives-election-fraud-claims-after-crushing-midterm-defeat",
-  "https://www.brecorder.com/news/40448216/rape-sexual-assault-uks-russell-sentenced-to-10-and-a-half-years-in-jail",
-  "https://www.brecorder.com/news/40448217/france-says-irans-guards-behind-cyberattacks-on-fridges",
-  "https://www.brecorder.com/news/40448218/g7-ministers-press-rubio-on-iran-ukraine-at-paris-talks",
-  "https://www.brecorder.com/news/40448219/iran-war-republican-launches-impeachment-against-hegseth",
   "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
   "https://www.brecorder.com/news/40448221/asian-stocks-climb-as-sliding-oil-prices-buoy-sentiment",
   "https://www.brecorder.com/news/40448222/dollar-sellers-hit-pause-for-us-inflation-data",
   "https://www.brecorder.com/news/40448223/saudi-led-coalition-says-it-intercepts-two-houthi-missiles-fired-towards-riyadh",
   "https://www.brecorder.com/news/40448224/warner-backs-khawajas-comments-about-ball-tampering-scandal",
   "https://www.brecorder.com/news/40448225/cricket-australia-ceo-says-will-not-open-another-investigation-into-sandpapergate",
-  "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-up-nearly-3300-points"
+  "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-2",
+  "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
+  "https://www.brecorder.com/news/40448228/south-koreas-lee-says-seoul-must-build-bipartisan-support-in-us-congress",
+  "https://www.brecorder.com/news/40448229/australian-shares-hit-2-12-month-high-as-lower-oil-prices-fuel-broad-rally",
+  "https://www.brecorder.com/news/40448230/wheat-near-multi-month-lows-as-traders-eye-russia-ukraine-talks",
+  "https://www.brecorder.com/news/40448231/russia-hits-two-cargo-vessels-tanker-in-black-sea-ifx-cites-defence-ministry",
+  "https://www.brecorder.com/news/40448232/erdogan-says-crude-oil-output-from-turkeys-gabar-fields-to-exceed-100000-bpd-next-year",
+  "https://www.brecorder.com/news/40448233/us-aircraft-evacuated-from-second-uk-base-due-to-iran-threat-wsj-reports",
+  "https://www.brecorder.com/news/40448234/malaysias-october-palm-oil-stocks-hit-new-peak-as-output-surges",
+  "https://www.brecorder.com/news/40448235/gold-edges-lower-as-focus-shifts-to-us-inflation-data"
  ],
- "count": 4,
+ "count": 1,
  "ratings": {
-  "HUBC": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Named among index-heavy gainers in broad PSX rally; no company-specific driver",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-up-nearly-3300-points"
-   ]
-  },
-  "OGDC": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Index-heavy gainer in rally, but oil falling ~6% offsets; no company-specific driver",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-up-nearly-3300-points"
-   ]
-  },
-  "PSO": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "SNGPL warns power-sector arrears could cause PSO/PLL RLNG default; circular-debt stress, stage: warning",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl"
-   ]
-  },
   "SNGP": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Rs169bn power-sector dues impair SNGPL cash flow and upstream payments; stage: urgent letter",
+   "confidence": 0.6,
+   "reason": "Rs169bn power-sector arrears; SNGPL says upstream payments impaired (decided, quantified)",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl"
+    "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl",
+    "https://propakistani.pk/2026/11/10/sngpl-warns-of-payment-crisis-as-electricity-sector-bills-hit-rs-169-billion/"
    ]
   }
  },
  "sectors": {
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Brent down ~6% to ~$92 on easing Iran tension cuts E&P realisations",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878",
-    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
-    "https://www.brecorder.com/news/40448204/oil-down-over-usd7-a-barrel-in-post-settlement-trade"
-   ]
-  },
-  "Refinery": {
-   "rating": "negative",
-   "horizon": "single_session",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "Sharp crude drop risks inventory losses for refiners; offset by easing risk premium",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878",
-    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
-    "https://www.brecorder.com/news/40448204/oil-down-over-usd7-a-barrel-in-post-settlement-trade"
-   ]
-  },
   "Gas Distribution": {
    "rating": "negative",
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.5,
-   "reason": "Rs169bn power-sector arrears strain SNGPL cash flow and upstream payments",
+   "reason": "SNGPL Rs169bn power arrears squeeze cash and upstream payments",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl"
+    "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl",
+    "https://propakistani.pk/2026/11/10/sngpl-warns-of-payment-crisis-as-electricity-sector-bills-hit-rs-169-billion/"
    ]
   },
   "Power Generation": {
@@ -138,32 +84,47 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.35,
-   "reason": "Large unpaid gas dues to IPPs/GPPs signal receivable and circular-debt pressure",
+   "reason": "Circular-debt arrears chain: CPPA-G unpaid gas bills add liquidity stress",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40448202/power-sector-arrears-upstream-supplies-at-risk-as-recoveries-surge-to-rs16927bn-sngpl"
    ]
   },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Brent slipping to ~$92 on easing Iran tension trims E&P realisations",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
+    "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Falling crude eases working capital; broad market rally on lower oil",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448220/oil-falls-as-trump-downplays-prospect-of-escalation-with-iran",
+    "https://mettisglobal.news/Oil-extends-losses-trades-near-92-on-hopes-of-easing-Iran-tensions-64878",
+    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-2"
+   ]
+  },
   "Islamic Banking": {
    "rating": "positive",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Remittances +13.8% YoY to $3.89bn aids FX inflows and deposit sentiment",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881"
-   ]
-  },
-  "Food": {
-   "rating": "positive",
-   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.35,
-   "reason": "TCP tender to export 108k t sugar without reserve price clears surplus stock; sugar sector",
+   "confidence": 0.4,
+   "reason": "Oct remittances +13.8% YoY to $3.89bn support FX, liquidity and deposits",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448199/tcp-invites-fresh-bids-for-sugar-export"
+    "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
+    "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881"
    ]
   },
   "Technology/IT": {
@@ -171,21 +132,10 @@
    "horizon": "multi_session",
    "causality": "causal",
    "confidence": 0.3,
-   "reason": "NCCIA raids on legitimate IT firms flagged by P@SHA raise operating/regulatory risk",
+   "reason": "NCCIA raids on software houses raise regulatory/operational risk, P@SHA protests",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40448209/legal-software-houses-amp-it-cos-nccia-raids-condemnable-p-at-sha"
-   ]
-  },
-  "Auto Assembler": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "New auto policy draft approved; NEV incentives vs assembler lobbying leaves net impact uncertain",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448139/auto-policy"
    ]
   }
  }
