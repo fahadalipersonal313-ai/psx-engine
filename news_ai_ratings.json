@@ -1,14 +1,16 @@
 {
-  "as_of": "2026-11-11T04:39:16Z",
+  "as_of": "2026-11-11T05:39:03Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 51,
+  "articles_read": 53,
   "read_urls": [
     "https://mettisglobal.news/Asian-markets-open-mixed-amid-US-inflation-concerns-64904",
     "https://mettisglobal.news/Bahria-Town-set-to-exit-Escorts-Investment-Bank-64891",
     "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
     "https://mettisglobal.news/Customs-seizes-Rs1bn-heroin-Rs52m-smuggled-goods-64898",
+    "https://mettisglobal.news/FBR-allows-late-filers-to-join-ATL-without-Rs25000-surcharge-64907",
+    "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
     "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs1500-per-tola-64893",
     "https://mettisglobal.news/Gold-steady-at-4116-ahead-of-US-inflation-data-64886",
     "https://mettisglobal.news/Govt-approves-board-changes-at-NESPAK-HESCO-and-SEPCO-64894",
@@ -16,15 +18,15 @@
     "https://mettisglobal.news/High-net-worth-individuals-get-largest-share-of-AMFBL-IPO-64888",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64905",
-    "https://mettisglobal.news/PKR-edges-higher-against-USD-64897",
+    "https://mettisglobal.news/OGDC-strikes-gas-condensate-discovery-in-Khairpur-64908",
     "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903",
     "https://mettisglobal.news/PM-Shehbaz-to-call-for-predictable-climate-finance-for-developing-countries-at-COP31-64899",
     "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
     "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Deliver-a-Knockout-64896",
     "https://mettisglobal.news/Pakistan-China-ties-to-deepen-on-strategic-cooperation-trade-64895",
-    "https://mettisglobal.news/Pakistan-Trkiye-to-cooperate-on-FMD-control-vaccines-64890",
     "https://mettisglobal.news/SECP-puts-Khaadi-IPO-Prospectus-under-lens-64887",
     "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
+    "https://mettisglobal.news/Shifa-International-subsidiary-set-for-voluntary-windinguap-64906",
     "https://mettisglobal.news/TPL-Insurance-rebrands-as-JazzSure-gets-new-PSX-symbol-64892",
     "https://www.brecorder.com/news/40448286/a-lot-of-ai-nothing-said",
     "https://www.brecorder.com/news/40448296/widening-trade-deficit",
@@ -46,8 +48,6 @@
     "https://www.brecorder.com/news/40448333/values-of-imported-eva-sheets-from-china-revised",
     "https://www.brecorder.com/news/40448334/elections-act-2017-senate-body-calls-for-review-of-overlapping-jurisdictions",
     "https://www.brecorder.com/news/40448335/kinnow-exports-uzbekistan-approves-184-exporters-and-39-packhouses",
-    "https://www.brecorder.com/news/40448336/fia-directed-to-provide-update-on-offloading-complaints",
-    "https://www.brecorder.com/news/40448337/1m-homes-for-families-hit-by-floods-in-sindh-ppp-leader-terms-completion-of-project-a-commendable-achievement",
     "https://www.brecorder.com/news/40448384/us-house-blocks-bid-to-impeach-defense-secretary-hegseth",
     "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
     "https://www.brecorder.com/news/40448386/indian-stocks-poised-for-higher-open-on-softer-crude-robust-foreign-buying",
@@ -55,69 +55,110 @@
     "https://www.brecorder.com/news/40448388/dollar-gains-traction-as-fed-speakers-warn-of-risks-from-inflation",
     "https://www.brecorder.com/news/40448389/oil-relief-to-revive-rupee-rally-us-yields-surge-could-act-as-brake",
     "https://www.brecorder.com/news/40448390/world-leaders-to-address-cop31-as-turkiye-pushes-for-new-climate-deal",
-    "https://www.brecorder.com/news/40448391/three-dead-after-vehicle-hits-pedestrians-in-los-angeles-fire-department-says"
+    "https://www.brecorder.com/news/40448391/three-dead-after-vehicle-hits-pedestrians-in-los-angeles-fire-department-says",
+    "https://www.brecorder.com/news/40448392/ogdcl-discovers-hydrocarbon-reserves-in-sindhs-khairpur",
+    "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
   ],
-  "count": 2,
+  "count": 4,
   "ratings": {
-    "SSGC": {
+    "OGDC": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Govt hands SSGC LPG pricing and import role; new business line, but state aim is lower prices",
+      "confidence": 0.65,
+      "reason": "Bitrisim NW-1 gas/condensate discovery tested 12.8mmscfd + 175bpd; adds reserves and output",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900"
+        "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
+        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901",
+        "https://mettisglobal.news/OGDC-strikes-gas-condensate-discovery-in-Khairpur-64908",
+        "https://mettisglobal.news/TPL-Insurance-rebrands-as-JazzSure-gets-new-PSX-symbol-64892",
+        "https://propakistani.pk/2026/11/11/ogdcl-reports-new-gas-discovery-in-sindh/"
+      ]
+    },
+    "FCCL": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.6,
+      "reason": "Rs3.37bn early repayment of KIBOR loan cuts finance costs; done, filed with PSX",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889"
       ]
     },
     "PSO": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "PSO given LPG import/pricing role; partly offset by inventory loss from Rs8 petrol cut",
+      "confidence": 0.4,
+      "reason": "Govt gives PSO LPG pricing authority and import role; new volumes, execution still unclear",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
-        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901"
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900"
+      ]
+    },
+    "SSGC": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "SSGC handed LPG pricing/import role under govt overhaul; early stage, margin impact unclear",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900"
       ]
     }
   },
   "sectors": {
-    "Cement": {
-      "rating": "positive",
-      "horizon": "long_term",
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Sindh PPP board approves 16.5km Shahrah-e-Bhutto expressway; modest future cement demand",
+      "confidence": 0.5,
+      "reason": "Petrol cut Rs8, diesel Rs7 with crude at 2-month lows implies inventory losses for OMCs",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
-        "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903"
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
+        "https://www.brecorder.com/news/40448386/indian-stocks-poised-for-higher-open-on-softer-crude-robust-foreign-buying",
+        "https://www.brecorder.com/news/40448389/oil-relief-to-revive-rupee-rally-us-yields-surge-could-act-as-brake",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
       ]
     },
-    "Cement/Conglomerate": {
-      "rating": "positive",
-      "horizon": "long_term",
+    "Refinery": {
+      "rating": "negative",
+      "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.25,
-      "reason": "Approved Karachi expressway adds modest construction demand; flood housing already complete",
+      "confidence": 0.45,
+      "reason": "Crude at two-month lows and product price cuts squeeze refiners' inventory values",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
-        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel"
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
+        "https://www.brecorder.com/news/40448386/indian-stocks-poised-for-higher-open-on-softer-crude-robust-foreign-buying",
+        "https://www.brecorder.com/news/40448389/oil-relief-to-revive-rupee-rally-us-yields-surge-could-act-as-brake"
       ]
     },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Completed flood housing and nuclear milestone carry no new mechanism for listed real estate",
+    "Oil & Gas Exploration": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Brent down to ~$90, two-month low, lowers E&P realised prices; Hormuz risk keeps it volatile",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
-        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor"
+        "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Deliver-a-Knockout-64896",
+        "https://propakistani.pk/2026/11/11/ogdcl-reports-new-gas-discovery-in-sindh/",
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
+        "https://www.brecorder.com/news/40448386/indian-stocks-poised-for-higher-open-on-softer-crude-robust-foreign-buying",
+        "https://www.brecorder.com/news/40448389/oil-relief-to-revive-rupee-rally-us-yields-surge-could-act-as-brake"
       ]
     },
     "Islamic Banking": {
@@ -125,47 +166,12 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.5,
-      "reason": "Remittances +14% and bank earnings estimates revised up 11-30% on deposit and fee growth",
+      "reason": "Remittances up 14% in 4M FY27 and bank earnings estimates raised 11-30% on deposit growth",
       "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
         "https://www.brecorder.com/news/40448322/ubl-hbl-and-bafl-earnings-estimates-revised-upward",
         "https://www.dawn.com/news/2043625/remittances-increase-14pc-to-148bn-in-four-months"
-      ]
-    },
-    "Refinery": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Crude at two-month lows implies inventory losses for refiners; Hormuz risk keeps it volatile",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
-        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Rs8 petrol / Rs7 diesel cut effective Nov 11 brings inventory losses for OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901",
-        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Brent at two-month low (~$90) on Iran de-escalation lowers E&P realised prices",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
-        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes"
       ]
     },
     "Logistics/Ports": {
@@ -173,33 +179,100 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.3,
-      "reason": "Approved expressway linking Karachi Port East Wharf to Qayyumabad eases cargo movement",
+      "reason": "Sindh approves Karachi Port-Qayyumabad expressway under PPP; distant timeline",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor"
+        "https://mettisglobal.news/Customs-seizes-Rs1bn-heroin-Rs52m-smuggled-goods-64898",
+        "https://www.brecorder.com/news/40448320/smuggled-goods-narcotics-worth-rs157bn-seized",
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
       ]
     },
-    "Gas Distribution": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "SSGC gains LPG import and pricing authority under govt overhaul; vessels due next week",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902"
-      ]
-    },
-    "Fertilizer": {
+    "Auto Assembler": {
       "rating": "negative",
       "horizon": "multi_session",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Interior ministry curbs block fertiliser dispatch to KP and Balochistan during Rabi sowing",
+      "confidence": 0.25,
+      "reason": "Carmakers lack official copy of new auto policy; policy uncertainty, headline only",
+      "text_depth": "full",
+      "sources": [
+        "https://propakistani.pk/2026/11/11/carmakers-ask-govt-official-copy-auto-policy/",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
+      ]
+    },
+    "Cement": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Early selling in cement on Hormuz worries; no sector-wide mechanism, FCCL item is company-specific",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
+        "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903",
+        "https://propakistani.pk/2026/11/10/chashma-5-nuclear-plant-dome-placement/",
+        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Same market-wide selling as cement; no conglomerate-specific mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
+        "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903",
+        "https://propakistani.pk/2026/11/10/chashma-5-nuclear-plant-dome-placement/",
+        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "LPG pricing shift is SSGC-specific; fuel price cuts don't reprice gas utilities",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
+        "https://www.brecorder.com/news/40448393/psx-selling-at-bourse-kse-100-down-over-500-points",
+        "https://www.dawn.com/news/2043557/govt-slashes-petrol-price-by-rs8-per-litre-high-speed-diesel-by-rs7-in-another-reduction"
+      ]
+    },
+    "Real Estate": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "ATL surcharge waiver, flood housing and Chashma-5 milestone give no clear property mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/FBR-allows-late-filers-to-join-ATL-without-Rs25000-surcharge-64907",
+        "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903",
+        "https://propakistani.pk/2026/11/10/chashma-5-nuclear-plant-dome-placement/",
+        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "KP/Balochistan supply curbs hurt offtake but Punjab 16.5m-acre wheat drive supports demand",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40448297/fertiliser-under-lock-and-key",
+        "https://www.brecorder.com/news/40448298/tharparkars-drought-cycle",
         "https://www.brecorder.com/news/40448327/wheat-cultivation-ensured-on-over-165m-acres-in-punjab-kirmani"
       ]
     }
