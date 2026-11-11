@@ -1,141 +1,207 @@
 {
- "as_of": "2026-11-10T09:44:02Z",
- "provider": "claude-routine",
- "model": "claude-session",
- "depth": "full-text",
- "articles_read": 49,
- "read_urls": [
-  "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
-  "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889",
-  "https://mettisglobal.news/Fitch-flags-soft-sukuk-liquidity-64884",
-  "https://mettisglobal.news/Gold-gains-over-1-on-softer-oil-weaker-dollar-64867",
-  "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs3200-per-tola-64874",
-  "https://mettisglobal.news/Gold-steady-at-4116-ahead-of-US-inflation-data-64886",
-  "https://mettisglobal.news/High-net-worth-individuals-get-largest-share-of-AMFBL-IPO-64888",
-  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64875",
-  "https://mettisglobal.news/NCCIA-recovers-Rs14m-in-Rs21m-online-investment-scam-64871",
-  "https://mettisglobal.news/NCCIA-warns-citizens-against-fake-Rs13000-PM-cash-reward-messages-64872",
-  "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869",
-  "https://mettisglobal.news/Pakistan-Trkiye-to-cooperate-on-FMD-control-vaccines-64890",
-  "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883",
-  "https://mettisglobal.news/SECP-puts-Khaadi-IPO-Prospectus-under-lens-64887",
-  "https://mettisglobal.news/SIFC-Jazz-explore-investment-in-data-centres-AI-factories-64879",
-  "https://mettisglobal.news/SIFC-assures-KP-business-community-of-help-in-resolving-bottlenecks-64870",
-  "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
-  "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885",
-  "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881",
-  "https://www.brecorder.com/news/40447413/why-russia-lost-its-seat-and-the-g7-lost-its-innocence",
-  "https://www.brecorder.com/news/40448224/warner-backs-khawajas-comments-about-ball-tampering-scandal",
-  "https://www.brecorder.com/news/40448225/cricket-australia-ceo-says-will-not-open-another-investigation-into-sandpapergate",
-  "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points",
-  "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
-  "https://www.brecorder.com/news/40448228/south-koreas-lee-says-seoul-must-build-bipartisan-support-in-us-congress",
-  "https://www.brecorder.com/news/40448229/australian-shares-hit-2-12-month-high-as-lower-oil-prices-fuel-broad-rally",
-  "https://www.brecorder.com/news/40448230/wheat-near-multi-month-lows-as-traders-eye-russia-ukraine-talks",
-  "https://www.brecorder.com/news/40448231/russia-hits-two-cargo-vessels-tanker-in-black-sea-ifx-cites-defence-ministry",
-  "https://www.brecorder.com/news/40448232/erdogan-says-crude-oil-output-from-turkeys-gabar-fields-to-exceed-100000-bpd-next-year",
-  "https://www.brecorder.com/news/40448233/us-aircraft-evacuated-from-second-uk-base-due-to-iran-threat-wsj-reports",
-  "https://www.brecorder.com/news/40448234/malaysias-october-palm-oil-stocks-hit-new-peak-as-output-surges",
-  "https://www.brecorder.com/news/40448235/gold-edges-lower-as-focus-shifts-to-us-inflation-data",
-  "https://www.brecorder.com/news/40448236/ptpa-presses-player-fatigue-concerns-after-rybakinas-wta-finals-withdrawal",
-  "https://www.brecorder.com/news/40448237/hormuz-lng-traffic-hits-highest-in-october-since-iran-war-began",
-  "https://www.brecorder.com/news/40448238/tech-lifts-china-hk-shares-amid-risk-on-mood",
-  "https://www.brecorder.com/news/40448239/copper-edges-up-as-tech-rebound-lower-oil-lift-risk-appetite",
-  "https://www.brecorder.com/news/40448240/china-october-soybean-imports-fall-on-high-inventories-weak-crush-margins",
-  "https://www.brecorder.com/news/40448241/yuan-steady-after-dollar-softens-awaits-us-cpi",
-  "https://www.brecorder.com/news/40448242/aussie-steadies-as-oil-fuelled-risk-rally-offsets-weak-domestic-surveys",
-  "https://www.brecorder.com/news/40448243/japans-nikkei-extends-rebound-as-ai-related-stocks-advance",
-  "https://www.brecorder.com/news/40448244/trump-nominates-natalie-baker-as-us-ambassador-to-pakistan",
-  "https://www.brecorder.com/news/40448245/asean-countries-need-up-to-71-trillion-for-infrastructure-but-face-funding-gap-adb-says",
-  "https://www.brecorder.com/news/40448246/thai-bahtus-dollar-little-changed-on-tuesday",
-  "https://www.brecorder.com/news/40448247/shakeel-nears-century-as-pakistan-score-390-6-in-first-test",
-  "https://www.brecorder.com/news/40448248/third-new-zealand-india-one-day-international-washed-out",
-  "https://www.brecorder.com/news/40448249/trump-says-fbi-probing-nvidia-ceo-huang-as-china-controversy-deepens",
-  "https://www.brecorder.com/news/40448250/meghan-wife-of-prince-harry-will-no-longer-speak-at-brussels-event",
-  "https://www.brecorder.com/news/40448251/beyond-the-order-the-logistics-behind-pakistans-export-ambitions",
-  "https://www.brecorder.com/news/40448252/govt-approves-board-changes-at-hesco-sepco-amp-nespak"
- ],
- "ratings": {
-  "FCCL": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.6,
-   "reason": "Rs3.37bn early loan repayment cuts KIBOR-linked debt servicing cost",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/FCCL-makes-Rs3bn-early-repayment-to-cut-debt-costs-64889"
-   ]
+  "as_of": "2026-11-11T04:39:16Z",
+  "provider": "claude-routine",
+  "model": "claude-session",
+  "depth": "full-text",
+  "articles_read": 51,
+  "read_urls": [
+    "https://mettisglobal.news/Asian-markets-open-mixed-amid-US-inflation-concerns-64904",
+    "https://mettisglobal.news/Bahria-Town-set-to-exit-Escorts-Investment-Bank-64891",
+    "https://mettisglobal.news/Crestwell-Healthcare-gets-Shariahcompliance-nod-from-AlHilal-64882",
+    "https://mettisglobal.news/Customs-seizes-Rs1bn-heroin-Rs52m-smuggled-goods-64898",
+    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs1500-per-tola-64893",
+    "https://mettisglobal.news/Gold-steady-at-4116-ahead-of-US-inflation-data-64886",
+    "https://mettisglobal.news/Govt-approves-board-changes-at-NESPAK-HESCO-and-SEPCO-64894",
+    "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901",
+    "https://mettisglobal.news/High-net-worth-individuals-get-largest-share-of-AMFBL-IPO-64888",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902",
+    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64905",
+    "https://mettisglobal.news/PKR-edges-higher-against-USD-64897",
+    "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903",
+    "https://mettisglobal.news/PM-Shehbaz-to-call-for-predictable-climate-finance-for-developing-countries-at-COP31-64899",
+    "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
+    "https://mettisglobal.news/PSX-Closing-Bell-Bulls-Deliver-a-Knockout-64896",
+    "https://mettisglobal.news/Pakistan-China-ties-to-deepen-on-strategic-cooperation-trade-64895",
+    "https://mettisglobal.news/Pakistan-Trkiye-to-cooperate-on-FMD-control-vaccines-64890",
+    "https://mettisglobal.news/SECP-puts-Khaadi-IPO-Prospectus-under-lens-64887",
+    "https://mettisglobal.news/SaudiPakistan-Joint-Business-Council-signs-MoU-to-set-up-private-equity-fund-64876",
+    "https://mettisglobal.news/TPL-Insurance-rebrands-as-JazzSure-gets-new-PSX-symbol-64892",
+    "https://www.brecorder.com/news/40448286/a-lot-of-ai-nothing-said",
+    "https://www.brecorder.com/news/40448296/widening-trade-deficit",
+    "https://www.brecorder.com/news/40448297/fertiliser-under-lock-and-key",
+    "https://www.brecorder.com/news/40448298/tharparkars-drought-cycle",
+    "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+    "https://www.brecorder.com/news/40448318/makkah-accord-aimed-at-achieving-regional-stability-dar",
+    "https://www.brecorder.com/news/40448320/smuggled-goods-narcotics-worth-rs157bn-seized",
+    "https://www.brecorder.com/news/40448321/hbl-elevates-client-experience-with-launch-of-visa-infinite-creditcard",
+    "https://www.brecorder.com/news/40448322/ubl-hbl-and-bafl-earnings-estimates-revised-upward",
+    "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
+    "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+    "https://www.brecorder.com/news/40448325/sindh-governor-for-affordable-cardiac-facilities-for-all",
+    "https://www.brecorder.com/news/40448327/wheat-cultivation-ensured-on-over-165m-acres-in-punjab-kirmani",
+    "https://www.brecorder.com/news/40448329/punjab-assembly-pacs-recover-over-rs1188bn",
+    "https://www.brecorder.com/news/40448330/ihc-for-arranging-meetings-between-ik-bushra-lawyers",
+    "https://www.brecorder.com/news/40448331/media-workers-na-body-concerned-at-non-payment-of-salaries",
+    "https://www.brecorder.com/news/40448332/new-values-for-spray-dispensing-components-issued",
+    "https://www.brecorder.com/news/40448333/values-of-imported-eva-sheets-from-china-revised",
+    "https://www.brecorder.com/news/40448334/elections-act-2017-senate-body-calls-for-review-of-overlapping-jurisdictions",
+    "https://www.brecorder.com/news/40448335/kinnow-exports-uzbekistan-approves-184-exporters-and-39-packhouses",
+    "https://www.brecorder.com/news/40448336/fia-directed-to-provide-update-on-offloading-complaints",
+    "https://www.brecorder.com/news/40448337/1m-homes-for-families-hit-by-floods-in-sindh-ppp-leader-terms-completion-of-project-a-commendable-achievement",
+    "https://www.brecorder.com/news/40448384/us-house-blocks-bid-to-impeach-defense-secretary-hegseth",
+    "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes",
+    "https://www.brecorder.com/news/40448386/indian-stocks-poised-for-higher-open-on-softer-crude-robust-foreign-buying",
+    "https://www.brecorder.com/news/40448387/bonds-reel-as-hot-inflation-fuels-jumbo-fed-hike-fears",
+    "https://www.brecorder.com/news/40448388/dollar-gains-traction-as-fed-speakers-warn-of-risks-from-inflation",
+    "https://www.brecorder.com/news/40448389/oil-relief-to-revive-rupee-rally-us-yields-surge-could-act-as-brake",
+    "https://www.brecorder.com/news/40448390/world-leaders-to-address-cop31-as-turkiye-pushes-for-new-climate-deal",
+    "https://www.brecorder.com/news/40448391/three-dead-after-vehicle-hits-pedestrians-in-los-angeles-fire-department-says"
+  ],
+  "count": 2,
+  "ratings": {
+    "SSGC": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Govt hands SSGC LPG pricing and import role; new business line, but state aim is lower prices",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900"
+      ]
+    },
+    "PSO": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "PSO given LPG import/pricing role; partly offset by inventory loss from Rs8 petrol cut",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
+        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901"
+      ]
+    }
+  },
+  "sectors": {
+    "Cement": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "Sindh PPP board approves 16.5km Shahrah-e-Bhutto expressway; modest future cement demand",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+        "https://mettisglobal.news/PM-Shehbaz-lauds-Chashma5-dome-placement-milestone-64903"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.25,
+      "reason": "Approved Karachi expressway adds modest construction demand; flood housing already complete",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor",
+        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel"
+      ]
+    },
+    "Real Estate": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Completed flood housing and nuclear milestone carry no new mechanism for listed real estate",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448323/1m-houses-for-flood-hit-people-completed-sharjeel",
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.5,
+      "reason": "Remittances +14% and bank earnings estimates revised up 11-30% on deposit and fee growth",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448322/ubl-hbl-and-bafl-earnings-estimates-revised-upward",
+        "https://www.dawn.com/news/2043625/remittances-increase-14pc-to-148bn-in-four-months"
+      ]
+    },
+    "Refinery": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "Crude at two-month lows implies inventory losses for refiners; Hormuz risk keeps it volatile",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "single_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "Rs8 petrol / Rs7 diesel cut effective Nov 11 brings inventory losses for OMCs",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Govt-slashes-petrol-price-by-Rs8-diesel-by-Rs7-64901",
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.4,
+      "reason": "Brent at two-month low (~$90) on Iran de-escalation lowers E&P realised prices",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448313/oil-prices-hit-two-month-lows",
+        "https://www.brecorder.com/news/40448385/oil-rises-from-two-month-low-as-hormuz-shipping-attacks-offset-iran-truce-hopes"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "Approved expressway linking Karachi Port East Wharf to Qayyumabad eases cargo movement",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448324/karachi-port-to-qayyumabad-cm-approves-construction-of-shahrah-e-bhutto-corridor"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "SSGC gains LPG import and pricing authority under govt overhaul; vessels due next week",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/PSO-SSGC-to-set-LPG-prices-instead-of-OGRA-64900",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64902"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.4,
+      "reason": "Interior ministry curbs block fertiliser dispatch to KP and Balochistan during Rabi sowing",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40448297/fertiliser-under-lock-and-key",
+        "https://www.brecorder.com/news/40448327/wheat-cultivation-ensured-on-over-165m-acres-in-punjab-kirmani"
+      ]
+    }
   }
- },
- "sectors": {
-  "Islamic Banking": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Remittances +13.8% YoY eases external pressure; indirect for banks",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448227/pakistan-records-39bn-in-remittances-for-october-2026",
-    "https://mettisglobal.news/Worker-remittances-rise-14-YoY-in-October-2026-64881"
-   ]
-  },
-  "Oil & Gas Exploration": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.4,
-   "reason": "Crude sliding on Iran de-escalation lowers E&P realisations",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448226/psx-stocks-surge-kse-100-gains-over-4700-points"
-   ]
-  },
-  "Technology/Telecom": {
-   "rating": "positive",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.4,
-   "reason": "VEON Pakistan 3Q revenue +27%, EBIT +53%: strong sector demand read-across",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/VEON-Pakistan-Revenue-Jumps-266-to-Rs145bn-in-3QCY26-64885"
-   ]
-  },
-  "Food": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "causal",
-   "confidence": 0.3,
-   "reason": "Sugar export tender drops price floor after no bids: weak realisations",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Pakistan-drops-660-price-floor-in-fresh-108000ton-sugar-export-tender-64883"
-   ]
-  },
-  "Fertilizer": {
-   "rating": "positive",
-   "horizon": "long_term",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Youth agri loan cap raised to Rs25mn: modest farm-input demand support",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/PM-lifts-personal-loan-cap-to-Rs25m-under-youth-schemes-64869"
-   ]
-  },
-  "Auto Assembler": {
-   "rating": "negative",
-   "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "Used-car gift-scheme imports persist; vendors unhappy with new auto policy",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.dawn.com/news/2043373/used-car-imports-under-gift-scheme-persist-despite-tough-restrictions-say-vendors"
-   ]
-  }
- },
- "count": 1
 }
