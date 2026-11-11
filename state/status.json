@@ -1,87 +1,87 @@
 {
- "updated_pkt": "2026-11-11T16:47+05:00",
- "official_through": "2026-11-10",
- "official_note": "No new official session since 2026-11-10 (newest in the file: 2026-11-10).",
+ "updated_pkt": "2026-11-11T22:47+05:00",
+ "official_through": "2026-11-11",
+ "official_note": "Finalised 2026-11-11 from PSX official data.",
  "last_scan": {
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "gates": {
-   "date": "2026-11-10",
-   "kse100": 179335.24,
+   "date": "2026-11-11",
+   "kse100": 179083.8,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 10.45,
+   "bounce_pct": 10.29,
    "gate1_open": true,
-   "breadth": 75.14,
-   "breadth_prev": 28.25,
-   "breadth_prev_date": "2026-11-02",
+   "breadth": 76.27,
+   "breadth_prev": 32.2,
+   "breadth_prev_date": "2026-11-03",
    "gate2_open": true
   },
   "signals": [
    {
-    "book": "B",
-    "sym": "FCCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 63.61,
-    "stop": 57.92,
-    "atr": 1.897,
-    "note": "52-week-high breakout"
+    "book": "A",
+    "sym": "MSOT",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-11",
+    "signal_close": 143.55,
+    "stop": 111.38,
+    "atr": 13.4721,
+    "note": "washout 2026-10-30 + demand close (research book)"
    },
    {
-    "book": "A",
-    "sym": "MUGHAL",
-    "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 63.9,
-    "stop": 56.94,
-    "atr": 2.2236,
-    "note": "washout 2026-11-03 + demand close (research book)"
+    "book": "B",
+    "sym": "PASL",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-11",
+    "signal_close": 9.96,
+    "stop": 7.79,
+    "atr": 0.7237,
+    "note": "52-week-high breakout"
    }
   ],
   "orders_placed": 3,
   "bcsm": [
    {
     "book": "C",
-    "sym": "ILP",
+    "sym": "PSO",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 105.69,
-    "stop": 102.28,
-    "atr": 3.4067,
-    "note": "rising 50-day EMA 97.33"
+    "signal_date": "2026-11-11",
+    "signal_close": 374.68,
+    "stop": 365.29,
+    "atr": 9.3893,
+    "note": "rising 50-day EMA 356.38"
    },
    {
     "book": "C",
-    "sym": "MARI",
+    "sym": "THCCL",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 665.9,
-    "stop": 653.61,
-    "atr": 12.2865,
-    "note": "rising 50-day EMA 644.81"
+    "signal_date": "2026-11-11",
+    "signal_close": 77.23,
+    "stop": 73.92,
+    "atr": 3.3112,
+    "note": "rising 50-day EMA 71.34"
    }
   ]
  },
  "orders": [
   {
-   "book": "B",
-   "sym": "FCCL",
-   "list": "Shariah",
-   "signal_date": "2026-11-10",
-   "signal_close": 63.61,
-   "stop": 57.92,
-   "atr": 1.897,
-   "note": "52-week-high breakout"
+   "book": "A",
+   "sym": "MSOT",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-11",
+   "signal_close": 143.55,
+   "stop": 111.38,
+   "atr": 13.4721,
+   "note": "washout 2026-10-30 + demand close (research book)"
   },
   {
-   "book": "A",
-   "sym": "MUGHAL",
-   "list": "Shariah",
-   "signal_date": "2026-11-10",
-   "signal_close": 63.9,
-   "stop": 56.94,
-   "atr": 2.2236,
-   "note": "washout 2026-11-03 + demand close (research book)"
+   "book": "B",
+   "sym": "PASL",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-11",
+   "signal_close": 9.96,
+   "stop": 7.79,
+   "atr": 0.7237,
+   "note": "52-week-high breakout"
   }
  ],
  "positions": [
@@ -94,13 +94,47 @@
    "entry_date": "2026-11-04",
    "entry": 12.2,
    "stop0": 11.38,
-   "stop": 11.68,
+   "stop": 12.28,
    "atr": 0.574,
-   "hh": 13.4,
+   "hh": 14.0,
    "shares": 3048,
-   "days": 4,
+   "days": 5,
    "note": "washout 2026-11-02 + demand close (research book)",
-   "last_close": 13.06
+   "last_close": 13.38
+  },
+  {
+   "id": "B-FCCL-2026-11-11",
+   "book": "B",
+   "sym": "FCCL",
+   "list": "Shariah",
+   "signal_date": "2026-11-10",
+   "entry_date": "2026-11-11",
+   "entry": 63.0,
+   "stop0": 57.92,
+   "stop": 58.05,
+   "atr": 1.897,
+   "hh": 63.74,
+   "shares": 492,
+   "days": 1,
+   "note": "52-week-high breakout",
+   "last_close": 62.09
+  },
+  {
+   "id": "A-MUGHAL-2026-11-11",
+   "book": "A",
+   "sym": "MUGHAL",
+   "list": "Shariah",
+   "signal_date": "2026-11-10",
+   "entry_date": "2026-11-11",
+   "entry": 63.9,
+   "stop0": 56.94,
+   "stop": 58.01,
+   "atr": 2.2236,
+   "hh": 64.68,
+   "shares": 359,
+   "days": 1,
+   "note": "washout 2026-11-03 + demand close (research book)",
+   "last_close": 63.1
   }
  ],
  "closed": {
@@ -112,104 +146,68 @@
   "signals": [
    {
     "book": "C",
-    "sym": "ILP",
+    "sym": "PSO",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 105.69,
-    "stop": 102.28,
-    "atr": 3.4067,
-    "note": "rising 50-day EMA 97.33"
+    "signal_date": "2026-11-11",
+    "signal_close": 374.68,
+    "stop": 365.29,
+    "atr": 9.3893,
+    "note": "rising 50-day EMA 356.38"
    },
    {
     "book": "C",
-    "sym": "MARI",
+    "sym": "THCCL",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 665.9,
-    "stop": 653.61,
-    "atr": 12.2865,
-    "note": "rising 50-day EMA 644.81"
+    "signal_date": "2026-11-11",
+    "signal_close": 77.23,
+    "stop": 73.92,
+    "atr": 3.3112,
+    "note": "rising 50-day EMA 71.34"
    }
   ],
   "positions": [
    {
-    "id": "C-ILP-2026-11-10",
+    "id": "C-PSO-2026-11-11",
     "book": "C",
-    "sym": "ILP",
+    "sym": "PSO",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "entry_date": "2026-11-10",
-    "entry": 105.69,
-    "stop0": 102.28,
-    "stop": 102.28,
-    "atr": 3.4067,
-    "hh": 105.69,
-    "shares": 946,
+    "signal_date": "2026-11-11",
+    "entry_date": "2026-11-11",
+    "entry": 374.68,
+    "stop0": 365.29,
+    "stop": 365.29,
+    "atr": 9.3893,
+    "hh": 374.68,
+    "shares": 266,
     "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 97.33"
+    "note": "buy-close-sell-open: rising 50-day EMA 356.38"
    },
    {
-    "id": "C-MARI-2026-11-10",
+    "id": "C-THCCL-2026-11-11",
     "book": "C",
-    "sym": "MARI",
+    "sym": "THCCL",
     "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "entry_date": "2026-11-10",
-    "entry": 665.9,
-    "stop0": 653.61,
-    "stop": 653.61,
-    "atr": 12.2865,
-    "hh": 665.9,
-    "shares": 150,
+    "signal_date": "2026-11-11",
+    "entry_date": "2026-11-11",
+    "entry": 77.23,
+    "stop0": 73.92,
+    "stop": 73.92,
+    "atr": 3.3112,
+    "hh": 77.23,
+    "shares": 1294,
     "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 644.81"
+    "note": "buy-close-sell-open: rising 50-day EMA 71.34"
    }
   ],
   "closed": {
-   "n": 22,
+   "n": 24,
    "cost_pct": 0.25,
-   "avg_net_pct": -0.001,
-   "pf_net": 1.0,
-   "win_pct": 45,
-   "pnl_rs_net": -20
+   "avg_net_pct": 0.004,
+   "pf_net": 1.01,
+   "win_pct": 50,
+   "pnl_rs_net": 89
   },
   "recent_trades": [
-   {
-    "id": "C-MTL-2026-11-02",
-    "book": "C",
-    "sym": "MTL",
-    "list": "Shariah",
-    "signal_date": "2026-11-02",
-    "entry_date": "2026-11-02",
-    "entry": "280.71",
-    "stop0": "275.51",
-    "exit_date": "2026-11-03",
-    "exit": "276.11",
-    "reason": "next official open",
-    "R": "-0.88",
-    "pct": "-1.64",
-    "days": "1",
-    "shares": "356",
-    "pnl_rs": "-1638"
-   },
-   {
-    "id": "C-EFERT-2026-11-04",
-    "book": "C",
-    "sym": "EFERT",
-    "list": "Shariah",
-    "signal_date": "2026-11-04",
-    "entry_date": "2026-11-04",
-    "entry": "207.96",
-    "stop0": "203.89",
-    "exit_date": "2026-11-05",
-    "exit": "208.1",
-    "reason": "next official open",
-    "R": "0.03",
-    "pct": "0.07",
-    "days": "1",
-    "shares": "480",
-    "pnl_rs": "67"
-   },
    {
     "id": "C-FCL-2026-11-04",
     "book": "C",
@@ -353,6 +351,42 @@
     "days": "1",
     "shares": "4001",
     "pnl_rs": "-1160"
+   },
+   {
+    "id": "C-ILP-2026-11-10",
+    "book": "C",
+    "sym": "ILP",
+    "list": "Shariah",
+    "signal_date": "2026-11-10",
+    "entry_date": "2026-11-10",
+    "entry": "105.69",
+    "stop0": "102.28",
+    "exit_date": "2026-11-11",
+    "exit": "106.0",
+    "reason": "next official open",
+    "R": "0.09",
+    "pct": "0.29",
+    "days": "1",
+    "shares": "946",
+    "pnl_rs": "293"
+   },
+   {
+    "id": "C-MARI-2026-11-10",
+    "book": "C",
+    "sym": "MARI",
+    "list": "Shariah",
+    "signal_date": "2026-11-10",
+    "entry_date": "2026-11-10",
+    "entry": "665.9",
+    "stop0": "653.61",
+    "exit_date": "2026-11-11",
+    "exit": "668.0",
+    "reason": "next official open",
+    "R": "0.17",
+    "pct": "0.32",
+    "days": "1",
+    "shares": "150",
+    "pnl_rs": "315"
    }
   ]
  },
@@ -361,12 +395,12 @@
   "orders": [
    {
     "book": "D",
-    "sym": "FCCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-10",
-    "signal_close": 63.61,
-    "stop": 57.92,
-    "atr": 1.897,
+    "sym": "PASL",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-11",
+    "signal_close": 9.96,
+    "stop": 7.79,
+    "atr": 0.7237,
     "note": "52-week-high breakout, gates ignored"
    }
   ],
@@ -384,9 +418,26 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 11,
+    "days": 12,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 45.98
+    "last_close": 45.1
+   },
+   {
+    "id": "D-FCCL-2026-11-11",
+    "book": "D",
+    "sym": "FCCL",
+    "list": "Shariah",
+    "signal_date": "2026-11-10",
+    "entry_date": "2026-11-11",
+    "entry": 63.0,
+    "stop0": 57.92,
+    "stop": 58.05,
+    "atr": 1.897,
+    "hh": 63.74,
+    "shares": 492,
+    "days": 1,
+    "note": "52-week-high breakout, gates ignored",
+    "last_close": 62.09
    }
   ],
   "closed": {
@@ -396,7 +447,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-11T16:47+05:00",
+  "at": "2026-11-11T22:47+05:00",
   "kse100": 179083.8045
  },
  "config": {
