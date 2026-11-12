@@ -1,89 +1,26 @@
 {
- "updated_pkt": "2026-11-12T16:46+05:00",
- "official_through": "2026-11-11",
- "official_note": "No new official session since 2026-11-11 (newest in the file: 2026-11-11).",
+ "updated_pkt": "2026-11-12T22:49+05:00",
+ "official_through": "2026-11-12",
+ "official_note": "Finalised 2026-11-12 from PSX official data.",
  "last_scan": {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "gates": {
-   "date": "2026-11-11",
-   "kse100": 179083.8,
+   "date": "2026-11-12",
+   "kse100": 177373.76,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 10.29,
+   "bounce_pct": 9.24,
    "gate1_open": true,
-   "breadth": 76.27,
-   "breadth_prev": 32.2,
-   "breadth_prev_date": "2026-11-03",
+   "breadth": 76.84,
+   "breadth_prev": 46.33,
+   "breadth_prev_date": "2026-11-04",
    "gate2_open": true
   },
-  "signals": [
-   {
-    "book": "A",
-    "sym": "MSOT",
-    "list": "non-Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 143.55,
-    "stop": 111.38,
-    "atr": 13.4721,
-    "note": "washout 2026-10-30 + demand close (research book)"
-   },
-   {
-    "book": "B",
-    "sym": "PASL",
-    "list": "non-Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 9.96,
-    "stop": 7.79,
-    "atr": 0.7237,
-    "note": "52-week-high breakout"
-   }
-  ],
-  "orders_placed": 3,
-  "bcsm": [
-   {
-    "book": "C",
-    "sym": "PSO",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 374.68,
-    "stop": 365.29,
-    "atr": 9.3893,
-    "note": "rising 50-day EMA 356.38"
-   },
-   {
-    "book": "C",
-    "sym": "THCCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 77.23,
-    "stop": 73.92,
-    "atr": 3.3112,
-    "note": "rising 50-day EMA 71.34"
-   }
-  ]
+  "signals": [],
+  "orders_placed": 0,
+  "bcsm": []
  },
- "orders": [
-  {
-   "book": "A",
-   "sym": "MSOT",
-   "list": "non-Shariah",
-   "signal_date": "2026-11-11",
-   "signal_close": 143.55,
-   "stop": 111.38,
-   "atr": 13.4721,
-   "note": "washout 2026-10-30 + demand close (research book)"
-  },
-  {
-   "book": "B",
-   "sym": "PASL",
-   "list": "non-Shariah",
-   "signal_date": "2026-11-11",
-   "signal_close": 9.96,
-   "stop": 7.79,
-   "atr": 0.7237,
-   "note": "52-week-high breakout"
-  }
- ],
+ "orders": [],
  "positions": [
   {
    "id": "A-SPSL-2026-11-04",
@@ -98,9 +35,9 @@
    "atr": 0.574,
    "hh": 14.0,
    "shares": 3048,
-   "days": 5,
+   "days": 6,
    "note": "washout 2026-11-02 + demand close (research book)",
-   "last_close": 13.38
+   "last_close": 13.21
   },
   {
    "id": "B-FCCL-2026-11-11",
@@ -115,9 +52,9 @@
    "atr": 1.897,
    "hh": 63.74,
    "shares": 492,
-   "days": 1,
+   "days": 2,
    "note": "52-week-high breakout",
-   "last_close": 62.09
+   "last_close": 61.54
   },
   {
    "id": "A-MUGHAL-2026-11-11",
@@ -132,9 +69,26 @@
    "atr": 2.2236,
    "hh": 64.68,
    "shares": 359,
-   "days": 1,
+   "days": 2,
    "note": "washout 2026-11-03 + demand close (research book)",
-   "last_close": 63.1
+   "last_close": 61.99
+  },
+  {
+   "id": "A-MSOT-2026-11-12",
+   "book": "A",
+   "sym": "MSOT",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-11",
+   "entry_date": "2026-11-12",
+   "entry": 145.15,
+   "stop0": 111.38,
+   "stop": 117.49,
+   "atr": 13.4721,
+   "hh": 157.91,
+   "shares": 74,
+   "days": 1,
+   "note": "washout 2026-10-30 + demand close (research book)",
+   "last_close": 153.22
   }
  ],
  "closed": {
@@ -143,107 +97,17 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [
-   {
-    "book": "C",
-    "sym": "PSO",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 374.68,
-    "stop": 365.29,
-    "atr": 9.3893,
-    "note": "rising 50-day EMA 356.38"
-   },
-   {
-    "book": "C",
-    "sym": "THCCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 77.23,
-    "stop": 73.92,
-    "atr": 3.3112,
-    "note": "rising 50-day EMA 71.34"
-   }
-  ],
-  "positions": [
-   {
-    "id": "C-PSO-2026-11-11",
-    "book": "C",
-    "sym": "PSO",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "entry_date": "2026-11-11",
-    "entry": 374.68,
-    "stop0": 365.29,
-    "stop": 365.29,
-    "atr": 9.3893,
-    "hh": 374.68,
-    "shares": 266,
-    "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 356.38"
-   },
-   {
-    "id": "C-THCCL-2026-11-11",
-    "book": "C",
-    "sym": "THCCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-11",
-    "entry_date": "2026-11-11",
-    "entry": 77.23,
-    "stop0": 73.92,
-    "stop": 73.92,
-    "atr": 3.3112,
-    "hh": 77.23,
-    "shares": 1294,
-    "days": 0,
-    "note": "buy-close-sell-open: rising 50-day EMA 71.34"
-   }
-  ],
+  "signals": [],
+  "positions": [],
   "closed": {
-   "n": 24,
+   "n": 26,
    "cost_pct": 0.25,
-   "avg_net_pct": 0.004,
-   "pf_net": 1.01,
-   "win_pct": 50,
-   "pnl_rs_net": 89
+   "avg_net_pct": 0.038,
+   "pf_net": 1.1,
+   "win_pct": 54,
+   "pnl_rs_net": 996
   },
   "recent_trades": [
-   {
-    "id": "C-FCL-2026-11-04",
-    "book": "C",
-    "sym": "FCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-04",
-    "entry_date": "2026-11-04",
-    "entry": "23.0",
-    "stop0": "22.26",
-    "exit_date": "2026-11-05",
-    "exit": "23.25",
-    "reason": "next official open",
-    "R": "0.34",
-    "pct": "1.09",
-    "days": "1",
-    "shares": "4347",
-    "pnl_rs": "1087"
-   },
-   {
-    "id": "C-GHNI-2026-11-04",
-    "book": "C",
-    "sym": "GHNI",
-    "list": "Shariah",
-    "signal_date": "2026-11-04",
-    "entry_date": "2026-11-04",
-    "entry": "1172.13",
-    "stop0": "1124.21",
-    "exit_date": "2026-11-05",
-    "exit": "1200.0",
-    "reason": "next official open",
-    "R": "0.58",
-    "pct": "2.38",
-    "days": "1",
-    "shares": "85",
-    "pnl_rs": "2369"
-   },
    {
     "id": "C-HCAR-2026-11-04",
     "book": "C",
@@ -387,23 +251,48 @@
     "days": "1",
     "shares": "150",
     "pnl_rs": "315"
+   },
+   {
+    "id": "C-PSO-2026-11-11",
+    "book": "C",
+    "sym": "PSO",
+    "list": "Shariah",
+    "signal_date": "2026-11-11",
+    "entry_date": "2026-11-11",
+    "entry": "374.68",
+    "stop0": "365.29",
+    "exit_date": "2026-11-12",
+    "exit": "376.9",
+    "reason": "next official open",
+    "R": "0.24",
+    "pct": "0.59",
+    "days": "1",
+    "shares": "266",
+    "pnl_rs": "591"
+   },
+   {
+    "id": "C-THCCL-2026-11-11",
+    "book": "C",
+    "sym": "THCCL",
+    "list": "Shariah",
+    "signal_date": "2026-11-11",
+    "entry_date": "2026-11-11",
+    "entry": "77.23",
+    "stop0": "73.92",
+    "exit_date": "2026-11-12",
+    "exit": "77.86",
+    "reason": "next official open",
+    "R": "0.19",
+    "pct": "0.82",
+    "days": "1",
+    "shares": "1294",
+    "pnl_rs": "815"
    }
   ]
  },
  "ungated": {
   "about": "Book D - every 52-week-high breakout (Leg B) bought at the next official open whatever the gates say; same stop, trail and time stop as book B.",
-  "orders": [
-   {
-    "book": "D",
-    "sym": "PASL",
-    "list": "non-Shariah",
-    "signal_date": "2026-11-11",
-    "signal_close": 9.96,
-    "stop": 7.79,
-    "atr": 0.7237,
-    "note": "52-week-high breakout, gates ignored"
-   }
-  ],
+  "orders": [],
   "positions": [
    {
     "id": "D-TPLT-2026-10-26",
@@ -418,9 +307,9 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 12,
+    "days": 13,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 45.1
+    "last_close": 45.2
    },
    {
     "id": "D-FCCL-2026-11-11",
@@ -435,9 +324,9 @@
     "atr": 1.897,
     "hh": 63.74,
     "shares": 492,
-    "days": 1,
+    "days": 2,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 62.09
+    "last_close": 61.54
    }
   ],
   "closed": {
@@ -447,7 +336,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-12T16:46+05:00",
+  "at": "2026-11-12T22:49+05:00",
   "kse100": 177373.7646
  },
  "config": {
