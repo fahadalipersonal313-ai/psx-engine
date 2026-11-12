@@ -1,26 +1,29 @@
 {
- "as_of": "2026-11-12T04:39:31Z",
+ "as_of": "2026-11-12T05:41:36Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 49,
+ "articles_read": 52,
  "read_urls": [
   "https://mettisglobal.news/ADB-approves-500m-facility-for-Pakistans-disaster-resilience-64917",
   "https://mettisglobal.news/Asian-markets-trade-mixed-Japan-gains-while-Korea-slips-64933",
+  "https://mettisglobal.news/Gold-falls-below-4000-ahead-of-US-PPI-data-64938",
   "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3400-per-tola-64928",
-  "https://mettisglobal.news/Govt-borrows-Rs571bn-debt-in-a-week-64914",
+  "https://mettisglobal.news/Govt-raises-Rs70bn-in-Hybrid-Sukuk-auction-64937",
   "https://mettisglobal.news/Govt-reviews-EFS-changes-to-cut-exporters-compliance-costs-64932",
   "https://mettisglobal.news/Govt-utilizes-only-Rs104bn-under-PSDP-in-4-months-64920",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64931",
+  "https://mettisglobal.news/MSCI-adds-ATRL-drops-FLYNG-PAKOXY-in-November-review-64934",
+  "https://mettisglobal.news/NADRA-flags-unauthorized-use-of-its-name-warns-of-Jail-terms-64915",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-64936",
   "https://mettisglobal.news/OGDC-strikes-gas-condensate-discovery-in-Khairpur-64908",
+  "https://mettisglobal.news/Oil-slips-on-peace-hopes-Brent-hovers-near-91-64935",
   "https://mettisglobal.news/PSX-Closing-Bell-Just-Off-the-Highs-64923",
   "https://mettisglobal.news/PSYL-expands-capacity-invests-in-10MW20MWh-battery-system-64922",
   "https://mettisglobal.news/Pakistan-eyes-export-growth-wider-SME-financing-to-boost-economy-64927",
   "https://mettisglobal.news/Pakistan-pitches-IT-agriculture-minerals-energy-to-global-investors-64921",
   "https://mettisglobal.news/Pakistan-targets-1m-AIskilled-youth-global-market-eyes-5tr-64924",
   "https://mettisglobal.news/Petrol-falls-Rs3-diesel-Rs7-per-litre-from-November-12-64930",
-  "https://mettisglobal.news/RKR-gains-USD-falls-to-Rs27662-64925",
-  "https://mettisglobal.news/SBP-raises-nearly-Rs587bn-through-MTB-auction-64929",
   "https://mettisglobal.news/Shifa-International-subsidiary-set-for-voluntary-windinguap-64906",
   "https://mettisglobal.news/Sindh-Modaraba-set-to-receive-Ribafree-fund-of-up-to-Rs1bn-64916",
   "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919",
@@ -31,9 +34,6 @@
   "https://www.brecorder.com/news/40448463/psma-seeks-export-of-400000-mt-of-surplus-sugar-deregulation",
   "https://www.brecorder.com/news/40448464/ppp-sindh-govt-respect-press-freedom-sharjeel",
   "https://www.brecorder.com/news/40448465/banking-industry-playing-key-role-in-economic-growth-masud",
-  "https://www.brecorder.com/news/40448466/karachi-to-face-water-shortfall-during-dhabeji-shutdown-on-13th",
-  "https://www.brecorder.com/news/40448467/illicit-tobacco-trade-pakistan-suffers-usd1bn-revenue-loss",
-  "https://www.brecorder.com/news/40448468/customs-values-of-various-dyes-revised",
   "https://www.brecorder.com/news/40448525/ahsan-for-setting-deadline-for-submitting-audited-reports-to-pac",
   "https://www.brecorder.com/news/40448526/bahawalpur-holds-distinctive-position-in-agri-landscape-minister",
   "https://www.brecorder.com/news/40448527/resolution-of-issues-business-community-calls-for-setting-up-of-united-front",
@@ -53,27 +53,30 @@
   "https://www.brecorder.com/news/40448542/revival-in-foreign-flows-to-back-indian-rupee-dollar-strength-offers-resistance",
   "https://www.brecorder.com/news/40448543/asian-stocks-fragile-nvidia-plummets-as-board-to-decide-ceos-fate",
   "https://www.brecorder.com/news/40448544/dollar-rises-to-19-month-high-as-fed-hike-bets-grow-yen-softens",
-  "https://www.brecorder.com/news/40448545/south-korea-sees-little-prospect-of-us-north-korea-contact-around-apec"
+  "https://www.brecorder.com/news/40448545/south-korea-sees-little-prospect-of-us-north-korea-contact-around-apec",
+  "https://www.brecorder.com/news/40448546/khaadi-ipo-delayed-to-december-amid-se-fruits-fiasco",
+  "https://www.brecorder.com/news/40448547/psx-buying-at-bourse-kse-100-up-900-points",
+  "https://www.brecorder.com/news/40448548/pakistan-seeks-global-mining-partners-to-unlock-mineral-wealth"
  ],
  "count": 3,
  "ratings": {
-  "KEL": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Routine annual Dhabeji grid maintenance shutdown; scheduled, no earnings mechanism",
+  "ATRL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "MSCI adds ATRL to Frontier Markets Index effective 30 Nov close; passive index buying ahead",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448466/karachi-to-face-water-shortfall-during-dhabeji-shutdown-on-13th"
+    "https://mettisglobal.news/MSCI-adds-ATRL-drops-FLYNG-PAKOXY-in-November-review-64934"
    ]
   },
   "THCCL": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.5,
-   "reason": "Definitive agreement signed with Fauji Foundation on Pakistan Services restructuring; approvals pending",
+   "confidence": 0.4,
+   "reason": "Definitive deal signed with Fauji Foundation on Pakistan Services restructuring; terms undisclosed, approvals due",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919"
@@ -81,10 +84,10 @@
   },
   "OGDC": {
    "rating": "positive",
-   "horizon": "single_session",
+   "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.6,
-   "reason": "Khairpur discovery tested 12.8 MMSCFD gas, 175 bpd condensate at 95% interest; small versus output",
+   "confidence": 0.55,
+   "reason": "Khairpur find tested 12.8 MMSCFD gas, 175 bpd condensate at 95% interest; small vs base, tie-in pending",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/OGDC-strikes-gas-condensate-discovery-in-Khairpur-64908"
@@ -92,56 +95,79 @@
   }
  },
  "sectors": {
-  "Auto Assembler": {
-   "rating": "neutral",
-   "horizon": "long_term",
-   "causality": "noise",
-   "confidence": 0.25,
-   "reason": "Adviser restates already-announced auto policy aims; no new measure or number",
-   "text_depth": "headline",
+  "Oil Marketing": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.5,
+   "reason": "OGRA cut petrol Rs3, diesel Rs7 from 12 Nov as crude slips; inventory losses on stock held",
+   "text_depth": "full",
    "sources": [
-    "https://www.dawn.com/news/2043895/auto-policy-envisages-indigenisation-export-growth-pms-adviser-haroon"
+    "https://mettisglobal.news/Petrol-falls-Rs3-diesel-Rs7-per-litre-from-November-12-64930",
+    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets",
+    "https://mettisglobal.news/Oil-slips-on-peace-hopes-Brent-hovers-near-91-64935"
    ]
   },
   "Refinery": {
    "rating": "negative",
    "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent down 1.2% to $91.6 and repeated ex-depot cuts point to inventory losses on falling prices",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64931",
-    "https://www.dawn.com/news/2043820/fuel-prices-slashed-once-again-high-speed-diesel-cut-by-rs7-per-litre-petrol-by-rs3",
-    "https://mettisglobal.news/Petrol-falls-Rs3-diesel-Rs7-per-litre-from-November-12-64930",
-    "https://propakistani.pk/2026/11/11/petrol-price-reduced-7th-day-in-a-row/"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "negative",
-   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "OGRA cut petrol Rs3 and HSD Rs7 effective Nov 12; inventory losses on stock held at old prices",
+   "confidence": 0.4,
+   "reason": "Ex-depot price cut and Brent down 1.2% imply inventory losses; ATRL index add is single-name",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64931",
-    "https://www.dawn.com/news/2043820/fuel-prices-slashed-once-again-high-speed-diesel-cut-by-rs7-per-litre-petrol-by-rs3",
     "https://mettisglobal.news/Petrol-falls-Rs3-diesel-Rs7-per-litre-from-November-12-64930",
-    "https://propakistani.pk/2026/11/11/petrol-price-reduced-7th-day-in-a-row/"
+    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets",
+    "https://mettisglobal.news/Oil-slips-on-peace-hopes-Brent-hovers-near-91-64935"
    ]
   },
   "Oil & Gas Exploration": {
    "rating": "negative",
    "horizon": "single_session",
    "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Brent off 1.2% to $91.6 on peace-talk hopes lowers realised crude prices; modest daily drift",
+   "confidence": 0.3,
+   "reason": "Brent down about 1.2% to ~$91.5 on peace-talk hopes; modest drag on realised prices",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets"
+    "https://www.brecorder.com/news/40448540/oil-prices-drop-more-than-1-as-hopes-for-iran-ukraine-peace-talks-pressure-markets",
+    "https://mettisglobal.news/Oil-slips-on-peace-hopes-Brent-hovers-near-91-64935"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "Only single-name items (FLYNG MSCI small-cap drop, THCCL deal) and a market roundup; no sector mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MSCI-adds-ATRL-drops-FLYNG-PAKOXY-in-November-review-64934",
+    "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919",
+    "https://www.brecorder.com/news/40448547/psx-buying-at-bourse-kse-100-up-900-points"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "Single-name items and a market roundup only; nothing reprices the group",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MSCI-adds-ATRL-drops-FLYNG-PAKOXY-in-November-review-64934",
+    "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919",
+    "https://www.brecorder.com/news/40448547/psx-buying-at-bourse-kse-100-up-900-points"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Adviser restates already-announced auto policy aims (indigenisation, exports); no new measure",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2043895/auto-policy-envisages-indigenisation-export-growth-pms-adviser-haroon"
    ]
   },
   "Gas Distribution": {
@@ -149,11 +175,9 @@
    "horizon": "single_session",
    "causality": "noise",
    "confidence": 0.3,
-   "reason": "Petrol/diesel price revision only; no gas tariff or margin mechanism in the stories",
+   "reason": "Petrol and diesel price cut does not touch gas utility tariffs or returns",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64931",
-    "https://www.dawn.com/news/2043820/fuel-prices-slashed-once-again-high-speed-diesel-cut-by-rs7-per-litre-petrol-by-rs3",
     "https://mettisglobal.news/Petrol-falls-Rs3-diesel-Rs7-per-litre-from-November-12-64930"
    ]
   },
@@ -161,44 +185,44 @@
    "rating": "neutral",
    "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Routine scheduled T-bill auction, Rs587bn raised against Rs400bn target; no Islamic-bank mechanism",
-   "text_depth": "full",
+   "confidence": 0.2,
+   "reason": "Routine T-bill auction raised Rs587bn vs Rs400bn target; headline only, no sector mechanism",
+   "text_depth": "headline",
    "sources": [
-    "https://www.dawn.com/news/2043893/govt-raises-rs587bn-via-t-bill-auction",
-    "https://mettisglobal.news/SBP-raises-nearly-Rs587bn-through-MTB-auction-64929"
+    "https://www.dawn.com/news/2043893/govt-raises-rs587bn-via-t-bill-auction"
    ]
   },
   "Real Estate": {
    "rating": "neutral",
-   "horizon": "long_term",
+   "horizon": "single_session",
    "causality": "noise",
-   "confidence": 0.25,
-   "reason": "Political remarks and general bank lending commentary; no property-sector measure",
+   "confidence": 0.3,
+   "reason": "Political statements, bank lending remarks and a NADRA notice; no property-sector mechanism",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40448536/ppp-leaders-urge-govt-opposition-to-end-confrontation",
-    "https://www.brecorder.com/news/40448465/banking-industry-playing-key-role-in-economic-growth-masud"
+    "https://www.brecorder.com/news/40448465/banking-industry-playing-key-role-in-economic-growth-masud",
+    "https://mettisglobal.news/NADRA-flags-unauthorized-use-of-its-name-warns-of-Jail-terms-64915"
    ]
   },
   "Fertilizer": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Sindh Rs17bn Rabi wheat-grower subsidy from Nov 20 plus Punjab sowing push supports fertiliser offtake",
+   "confidence": 0.4,
+   "reason": "Sindh Rs17bn Rabi wheat subsidy to 550,000 growers from 20 Nov supports input buying at sowing",
    "text_depth": "full",
    "sources": [
-    "https://www.brecorder.com/news/40448526/bahawalpur-holds-distinctive-position-in-agri-landscape-minister",
-    "https://www.brecorder.com/news/40448462/sindh-tags-rs17bn-subsidy-for-wheat-growers"
+    "https://www.brecorder.com/news/40448462/sindh-tags-rs17bn-subsidy-for-wheat-growers",
+    "https://www.brecorder.com/news/40448526/bahawalpur-holds-distinctive-position-in-agri-landscape-minister"
    ]
   },
   "Food": {
-   "rating": "neutral",
+   "rating": "negative",
    "horizon": "multi_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "PSMA lobbying on 1.1mn MT sugar surplus is sugar-mill specific and undecided; not sector-wide",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Sugar mills hold ~1.1m MT unsold surplus, export not allowed; crushing start may slip past December",
    "text_depth": "full",
    "sources": [
     "https://www.brecorder.com/news/40448463/psma-seeks-export-of-400000-mt-of-surplus-sugar-deregulation"
@@ -208,33 +232,11 @@
    "rating": "neutral",
    "horizon": "long_term",
    "causality": "noise",
-   "confidence": 0.25,
-   "reason": "Generic investment pitch at Geneva conference; no pharma-specific measure",
+   "confidence": 0.2,
+   "reason": "Generic investment pitch at a Geneva conference naming many sectors; no measure",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/Pakistan-pitches-IT-agriculture-minerals-energy-to-global-investors-64921"
-   ]
-  },
-  "Cement": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Thatta Cement's Pakistan Services deal is single-company; no sector-wide repricing",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919"
-   ]
-  },
-  "Cement/Conglomerate": {
-   "rating": "neutral",
-   "horizon": "multi_session",
-   "causality": "noise",
-   "confidence": 0.3,
-   "reason": "Thatta Cement's Pakistan Services deal is single-company; no sector-wide repricing",
-   "text_depth": "full",
-   "sources": [
-    "https://mettisglobal.news/Thatta-Cement-Fauji-Foundation-sign-deal-for-Pakistan-Services-restructuring-64919"
    ]
   }
  }
