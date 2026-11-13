@@ -1,18 +1,40 @@
 {
- "date": "2026-11-12",
+ "date": "2026-11-13",
  "gates": {
-  "date": "2026-11-12",
-  "kse100": 177373.76,
+  "date": "2026-11-13",
+  "kse100": 177873.88,
   "low20": 162374.88,
   "gate1_level": 167246.13,
-  "bounce_pct": 9.24,
+  "bounce_pct": 9.55,
   "gate1_open": true,
-  "breadth": 76.84,
-  "breadth_prev": 46.33,
-  "breadth_prev_date": "2026-11-04",
+  "breadth": 79.66,
+  "breadth_prev": 64.97,
+  "breadth_prev_date": "2026-11-05",
   "gate2_open": true
  },
- "signals": [],
- "orders_placed": 0,
- "bcsm": []
+ "signals": [
+  {
+   "book": "B",
+   "sym": "ZUMA",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-13",
+   "signal_close": 33.75,
+   "stop": 28.49,
+   "atr": 1.7542,
+   "note": "52-week-high breakout"
+  }
+ ],
+ "orders_placed": 2,
+ "bcsm": [
+  {
+   "book": "C",
+   "sym": "FATIMA",
+   "list": "Shariah",
+   "signal_date": "2026-11-13",
+   "signal_close": 152.86,
+   "stop": 147.28,
+   "atr": 5.5772,
+   "note": "rising 50-day EMA 143.87"
+  }
+ ]
 }

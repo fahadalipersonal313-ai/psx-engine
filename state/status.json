@@ -1,26 +1,59 @@
 {
- "updated_pkt": "2026-11-13T16:46+05:00",
- "official_through": "2026-11-12",
- "official_note": "No new official session since 2026-11-12 (newest in the file: 2026-11-12).",
+ "updated_pkt": "2026-11-13T22:49+05:00",
+ "official_through": "2026-11-13",
+ "official_note": "Finalised 2026-11-13 from PSX official data.",
  "last_scan": {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "gates": {
-   "date": "2026-11-12",
-   "kse100": 177373.76,
+   "date": "2026-11-13",
+   "kse100": 177873.88,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 9.24,
+   "bounce_pct": 9.55,
    "gate1_open": true,
-   "breadth": 76.84,
-   "breadth_prev": 46.33,
-   "breadth_prev_date": "2026-11-04",
+   "breadth": 79.66,
+   "breadth_prev": 64.97,
+   "breadth_prev_date": "2026-11-05",
    "gate2_open": true
   },
-  "signals": [],
-  "orders_placed": 0,
-  "bcsm": []
+  "signals": [
+   {
+    "book": "B",
+    "sym": "ZUMA",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-13",
+    "signal_close": 33.75,
+    "stop": 28.49,
+    "atr": 1.7542,
+    "note": "52-week-high breakout"
+   }
+  ],
+  "orders_placed": 2,
+  "bcsm": [
+   {
+    "book": "C",
+    "sym": "FATIMA",
+    "list": "Shariah",
+    "signal_date": "2026-11-13",
+    "signal_close": 152.86,
+    "stop": 147.28,
+    "atr": 5.5772,
+    "note": "rising 50-day EMA 143.87"
+   }
+  ]
  },
- "orders": [],
+ "orders": [
+  {
+   "book": "B",
+   "sym": "ZUMA",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-13",
+   "signal_close": 33.75,
+   "stop": 28.49,
+   "atr": 1.7542,
+   "note": "52-week-high breakout"
+  }
+ ],
  "positions": [
   {
    "id": "A-SPSL-2026-11-04",
@@ -35,9 +68,9 @@
    "atr": 0.574,
    "hh": 14.0,
    "shares": 3048,
-   "days": 6,
+   "days": 7,
    "note": "washout 2026-11-02 + demand close (research book)",
-   "last_close": 13.21
+   "last_close": 13.39
   },
   {
    "id": "B-FCCL-2026-11-11",
@@ -52,9 +85,9 @@
    "atr": 1.897,
    "hh": 63.74,
    "shares": 492,
-   "days": 2,
+   "days": 3,
    "note": "52-week-high breakout",
-   "last_close": 61.54
+   "last_close": 61.71
   },
   {
    "id": "A-MUGHAL-2026-11-11",
@@ -69,9 +102,9 @@
    "atr": 2.2236,
    "hh": 64.68,
    "shares": 359,
-   "days": 2,
+   "days": 3,
    "note": "washout 2026-11-03 + demand close (research book)",
-   "last_close": 61.99
+   "last_close": 62.06
   },
   {
    "id": "A-MSOT-2026-11-12",
@@ -86,9 +119,9 @@
    "atr": 13.4721,
    "hh": 157.91,
    "shares": 74,
-   "days": 1,
+   "days": 2,
    "note": "washout 2026-10-30 + demand close (research book)",
-   "last_close": 153.22
+   "last_close": 146.99
   }
  ],
  "closed": {
@@ -97,8 +130,36 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [],
-  "positions": [],
+  "signals": [
+   {
+    "book": "C",
+    "sym": "FATIMA",
+    "list": "Shariah",
+    "signal_date": "2026-11-13",
+    "signal_close": 152.86,
+    "stop": 147.28,
+    "atr": 5.5772,
+    "note": "rising 50-day EMA 143.87"
+   }
+  ],
+  "positions": [
+   {
+    "id": "C-FATIMA-2026-11-13",
+    "book": "C",
+    "sym": "FATIMA",
+    "list": "Shariah",
+    "signal_date": "2026-11-13",
+    "entry_date": "2026-11-13",
+    "entry": 152.86,
+    "stop0": 147.28,
+    "stop": 147.28,
+    "atr": 5.5772,
+    "hh": 152.86,
+    "shares": 654,
+    "days": 0,
+    "note": "buy-close-sell-open: rising 50-day EMA 143.87"
+   }
+  ],
   "closed": {
    "n": 26,
    "cost_pct": 0.25,
@@ -292,7 +353,18 @@
  },
  "ungated": {
   "about": "Book D - every 52-week-high breakout (Leg B) bought at the next official open whatever the gates say; same stop, trail and time stop as book B.",
-  "orders": [],
+  "orders": [
+   {
+    "book": "D",
+    "sym": "ZUMA",
+    "list": "non-Shariah",
+    "signal_date": "2026-11-13",
+    "signal_close": 33.75,
+    "stop": 28.49,
+    "atr": 1.7542,
+    "note": "52-week-high breakout, gates ignored"
+   }
+  ],
   "positions": [
    {
     "id": "D-TPLT-2026-10-26",
@@ -307,7 +379,7 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 13,
+    "days": 14,
     "note": "52-week-high breakout, gates ignored",
     "last_close": 45.2
    },
@@ -324,9 +396,9 @@
     "atr": 1.897,
     "hh": 63.74,
     "shares": 492,
-    "days": 2,
+    "days": 3,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 61.54
+    "last_close": 61.71
    }
   ],
   "closed": {
@@ -336,7 +408,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-13T16:46+05:00",
+  "at": "2026-11-13T22:49+05:00",
   "kse100": 177873.8777
  },
  "config": {
