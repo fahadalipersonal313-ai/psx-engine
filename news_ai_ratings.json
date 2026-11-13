@@ -1,275 +1,266 @@
 {
-  "as_of": "2026-11-13T06:39:20Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 56,
-  "read_urls": [
-    "https://mettisglobal.news/Ahsan-Iqbal-pushes-NokundiGwadar-corridor-with-Barrick-Mining-64972",
-    "https://mettisglobal.news/Biafo-Industries-unveils-new-corporate-logo-64976",
-    "https://mettisglobal.news/Buying-a-car-Wait-for-the-Auto-Policy-64949",
-    "https://mettisglobal.news/Crescent-Fibres-approves-Rs1bn-sale-of-Nooriabad-property-64948",
-    "https://mettisglobal.news/FCC-slams-the-door-on-super-tax-review-64957",
-    "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944",
-    "https://mettisglobal.news/Gold-falls-below-4000-ahead-of-US-PPI-data-64938",
-    "https://mettisglobal.news/Gold-holds-above-3900-as-focus-shifts-to-US-inflation-data-64973",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs10900-per-tola-64952",
-    "https://mettisglobal.news/High-Court-approves-Gatron-Nova-Frontiers-Ghani-Tayub-scheme-of-arrangement-64941",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64966",
-    "https://mettisglobal.news/Mari-Minerals-Ivanhoe-Mines-sign-agreement-to-explore-copper-gold-in-Chagai-64960",
-    "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974",
-    "https://mettisglobal.news/PACRA-places-NIMIR-Industrial-Chemicals-ratings-on-Rating-Watch-64979",
-    "https://mettisglobal.news/PM-Shehbaz-presses-for-grantbased-climate-financing-at-COP31-64963",
-    "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977",
-    "https://mettisglobal.news/PSX-Closing-Bell-Red-Refuses-to-Leave-64955",
-    "https://mettisglobal.news/PSX-Intraday-Red-Sets-the-Tone-64946",
-    "https://mettisglobal.news/Pakistan-corporate-profits-surge-25-in-9M2026-64959",
-    "https://mettisglobal.news/Petrol-price-drops-by-Rs3-diesel-by-Rs4-per-litre-64965",
-    "https://mettisglobal.news/SBP-raises-currency-transaction-reporting-threshold-for-FMU-to-Rs3m-64975",
-    "https://mettisglobal.news/SBP-reserves-rise-11m-to-216bn-64964",
-    "https://mettisglobal.news/SBP-targets-Rs7tr-through-Tbills-PIBs-in-NovJan-64971",
-    "https://mettisglobal.news/SCRA-ends-week-around-Rs37bn-64961",
-    "https://mettisglobal.news/Sindh-records-nearly-40fold-rise-in-thirdparty-insurance-policies-64978",
-    "https://mettisglobal.news/UNIC-to-sell-Apna-Microfinance-Bank-stake-to-Mobilink-Bank-64970",
-    "https://www.brecorder.com/news/40448697/captain-asim-tariq-murder-case-atc-records-statements-of-three-more-witnesses",
-    "https://www.brecorder.com/news/40448698/cjp-invites-bar-nominations-for-draft-e-filing-review",
-    "https://www.brecorder.com/news/40448699/fbr-sets-tax-stamp-price-for-cement-manufacturers",
-    "https://www.brecorder.com/news/40448700/football-body-striving-to-meet-fifa-requirements",
-    "https://www.brecorder.com/news/40448701/gohar-inquires-after-qureshi-at-pic",
-    "https://www.brecorder.com/news/40448703/govt-squeezing-blood-of-public-through-utility-bills-pdp",
-    "https://www.brecorder.com/news/40448704/leather-industry-seeks-slaughter-houses-kasur-plant-revival",
-    "https://www.brecorder.com/news/40448705/mobilink-bank-to-acquire-8251pc-stake-in-apna-bank",
-    "https://www.brecorder.com/news/40448706/rapid-population-growth-npc-body-urges-govts-to-join-forces",
-    "https://www.brecorder.com/news/40448707/heart-diseases-over-rs15bn-provided-for-the-free-patients-treatment",
-    "https://www.brecorder.com/news/40448716/kpc-blues-win-kpc-super-sixes-cricket-tournament",
-    "https://www.brecorder.com/news/40448719/dollar-near-19-month-high-on-fed-hike-bets-yen-tests-160",
-    "https://www.brecorder.com/news/40448720/stocks-recover-from-nvidia-whiplash-dollar-climbs-with-us-yields",
-    "https://www.brecorder.com/news/40448721/irans-guards-say-they-targeted-a-us-early-warning-radar-in-bahrain",
-    "https://www.brecorder.com/news/40448722/indian-shares-likely-to-open-flat-as-oil-surge-counters-strong-foreign-inflows",
-    "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-to-stay-with-iran-blockade",
-    "https://www.brecorder.com/news/40448724/colette-kress-the-cfo-who-challenged-huangs-bets-is-nvidias-interim-ceo",
-    "https://www.brecorder.com/news/40448725/indian-rupee-faltering-rally-faces-returning-oil-pressure-surging-us-yields",
-    "https://www.brecorder.com/news/40448726/psx-buying-at-bourse-kse-100-gains-over-600-points",
-    "https://www.brecorder.com/news/40448727/palm-rangebound-but-poised-for-first-weekly-gain-in-three-weeks",
-    "https://www.brecorder.com/news/40448728/gold-rises-on-bargain-hunting-but-heads-for-weekly-decline",
-    "https://www.brecorder.com/news/40448729/india-bonds-under-pressure-before-debt-supply-hot-inflation-prints-pinch-further",
-    "https://www.brecorder.com/news/40448730/chinas-yuan-inches-higher-as-companies-convert-cash-holdings",
-    "https://www.brecorder.com/news/40448731/adnocs-second-pipeline-to-be-competed-by-around-january-inpex-executive-says",
-    "https://www.brecorder.com/news/40448732/k-pops-stray-kids-to-take-run-it-tour-to-north-america-and-europe-in-2027",
-    "https://www.brecorder.com/news/40448733/wheat-rebounds-from-4-12-month-low-on-black-sea-supply-concerns",
-    "https://www.brecorder.com/news/40448734/pakistan-seeks-two-lng-cargoes-for-dec-jan-as-winter-looms",
-    "https://www.brecorder.com/news/40448735/delhi-overtakes-lahore-as-worlds-most-polluted-city-as-air-quality-drops",
-    "https://www.brecorder.com/news/40448736/jessica-pegula-survives-linda-noskova-reaches-wta-finals-semis",
-    "https://www.brecorder.com/news/40448737/sindh-registers-40x-rise-in-third-party-motor-insurance-policies"
-  ],
-  "count": 3,
-  "ratings": {
-    "PSO": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "KPC partnership widened to bonded storage, refining, shipping; exploratory, terms revised, no figures",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977"
-      ]
-    },
-    "MARI": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "MoU with Ivanhoe Mines for Mari Minerals exploration; early stage, no numbers",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2044014/canadian-mining-company-signs-mou-with-mari-energies-in-south-asia-push"
-      ]
-    },
-    "FCL": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.3,
-      "reason": "Shareholders approve routing Rs750m surplus IPO cash to working capital; routine",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944"
-      ]
-    }
+ "as_of": "2026-11-13T07:42:13Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 55,
+ "read_urls": [
+  "https://mettisglobal.news/Ahsan-Iqbal-pushes-NokundiGwadar-corridor-with-Barrick-Mining-64972",
+  "https://mettisglobal.news/Biafo-Industries-unveils-new-corporate-logo-64976",
+  "https://mettisglobal.news/Buying-a-car-Wait-for-the-Auto-Policy-64949",
+  "https://mettisglobal.news/Crescent-Fibres-approves-Rs1bn-sale-of-Nooriabad-property-64948",
+  "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944",
+  "https://mettisglobal.news/Gold-falls-below-4000-ahead-of-US-PPI-data-64938",
+  "https://mettisglobal.news/Gold-holds-above-3900-as-focus-shifts-to-US-inflation-data-64973",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs10900-per-tola-64952",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64966",
+  "https://mettisglobal.news/Mari-Energies-discovers-significant-coppergold-mineralization-64983",
+  "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974",
+  "https://mettisglobal.news/PACRA-places-NIMIR-Industrial-Chemicals-ratings-on-Rating-Watch-64979",
+  "https://mettisglobal.news/PM-Shehbaz-presses-for-grantbased-climate-financing-at-COP31-64963",
+  "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977",
+  "https://mettisglobal.news/PSX-Closing-Bell-Red-Refuses-to-Leave-64955",
+  "https://mettisglobal.news/PSX-Intraday-Red-Sets-the-Tone-64946",
+  "https://mettisglobal.news/Pakistan-Trkiye-seal-the-deal-on-speeding-up-ongoing-initiatives-64981",
+  "https://mettisglobal.news/Pakistan-corporate-profits-surge-25-in-9M2026-64959",
+  "https://mettisglobal.news/Pakistans-shortterm-FX-liabilities-nears-22bn-in-September-2026-64982",
+  "https://mettisglobal.news/Petrol-price-drops-by-Rs3-diesel-by-Rs4-per-litre-64965",
+  "https://mettisglobal.news/SBP-raises-currency-transaction-reporting-threshold-for-FMU-to-Rs3m-64975",
+  "https://mettisglobal.news/SBP-reserves-rise-11m-to-216bn-64964",
+  "https://mettisglobal.news/SCRA-ends-week-around-Rs37bn-64961",
+  "https://mettisglobal.news/Sindh-records-nearly-40fold-rise-in-thirdparty-insurance-policies-64978",
+  "https://mettisglobal.news/UNIC-to-sell-Apna-Microfinance-Bank-stake-to-Mobilink-Bank-64970",
+  "https://www.brecorder.com/news/40448418/how-can-carbon-credits-add-up-to-20-to-revenues-of-green-projects-in-pakistan",
+  "https://www.brecorder.com/news/40448722/indian-shares-likely-to-open-flat-as-oil-surge-counters-strong-foreign-inflows",
+  "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-sticks-with-iran-blockade",
+  "https://www.brecorder.com/news/40448724/colette-kress-the-cfo-who-challenged-huangs-bets-is-nvidias-interim-ceo",
+  "https://www.brecorder.com/news/40448725/indian-rupee-faltering-rally-faces-returning-oil-pressure-surging-us-yields",
+  "https://www.brecorder.com/news/40448726/psx-buying-at-bourse-kse-100-gains-over-1000-points",
+  "https://www.brecorder.com/news/40448727/palm-rangebound-but-poised-for-first-weekly-gain-in-three-weeks",
+  "https://www.brecorder.com/news/40448728/gold-rises-on-bargain-hunting-but-heads-for-weekly-decline",
+  "https://www.brecorder.com/news/40448729/india-bonds-under-pressure-before-debt-supply-hot-inflation-prints-pinch-further",
+  "https://www.brecorder.com/news/40448730/chinas-yuan-inches-higher-as-companies-convert-cash-holdings",
+  "https://www.brecorder.com/news/40448731/adnocs-second-pipeline-to-be-competed-by-around-january-inpex-executive-says",
+  "https://www.brecorder.com/news/40448732/k-pops-stray-kids-to-take-run-it-tour-to-north-america-and-europe-in-2027",
+  "https://www.brecorder.com/news/40448733/wheat-rebounds-from-4-12-month-low-on-black-sea-supply-concerns",
+  "https://www.brecorder.com/news/40448734/pakistan-seeks-two-lng-cargoes-for-dec-jan-as-winter-looms",
+  "https://www.brecorder.com/news/40448735/delhi-overtakes-lahore-as-worlds-most-polluted-city-as-air-quality-drops",
+  "https://www.brecorder.com/news/40448736/jessica-pegula-survives-linda-noskova-reaches-wta-finals-semis",
+  "https://www.brecorder.com/news/40448737/sindh-registers-40x-rise-in-third-party-motor-insurance-policies",
+  "https://www.brecorder.com/news/40448738/utter-nonsense-australia-skipper-cummins-denies-involvement-in-sandpaper-plot",
+  "https://www.brecorder.com/news/40448739/japans-nikkei-on-track-for-best-week-in-5-months-despite-nvidia-turmoil",
+  "https://www.brecorder.com/news/40448740/australian-shares-retreat-as-oil-surges-banks-and-miners-weigh",
+  "https://www.brecorder.com/news/40448741/australian-dollar-plumbs-10-month-lows-as-us-yields-keep-climbing",
+  "https://www.brecorder.com/news/40448742/security-forces-kill-74-terrorists-in-balochistan-kp-operations-ispr",
+  "https://www.brecorder.com/news/40448743/tiktok-owner-bytedance-plans-buyback-at-400-billion-valuation-the-information-reports",
+  "https://www.brecorder.com/news/40448744/thai-bahtus-dollar-steady-on-friday",
+  "https://www.brecorder.com/news/40448745/govt-moves-to-continue-subsidy-for-raast-qr-payments",
+  "https://www.brecorder.com/news/40448746/russia-says-four-killed-in-major-ukraine-drone-barrage",
+  "https://www.brecorder.com/news/40448747/beardman-takes-six-on-debut-as-england-crash-to-131",
+  "https://www.brecorder.com/news/40448748/takaichi-to-attend-apec-in-first-china-trip-as-pm",
+  "https://www.brecorder.com/news/40448749/manshas-nishat-group-to-invest-in-pakistans-new-port",
+  "https://www.brecorder.com/news/40448750/indias-pant-clears-fitness-test-ahead-of-new-zealand-tests"
+ ],
+ "count": 3,
+ "ratings": {
+  "MARI": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.55,
+   "reason": "Porphyry copper-gold discovery at ESD-1 near Reko Diq plus Ivanhoe MoU; early-stage, unquantified",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Mari-Energies-discovers-significant-coppergold-mineralization-64983"
+   ]
   },
-  "sectors": {
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "OGRA cut petrol Rs3, diesel Rs4 from Nov 13; inventory losses for OMCs, oil down 2nd week",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-drops-by-Rs3-diesel-by-Rs4-per-litre-64965",
-        "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974",
-        "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-to-stay-with-iran-blockade"
-      ]
-    },
-    "Refinery": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Falling crude and product prices imply inventory losses; KPC refining talk exploratory only",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974",
-        "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-to-stay-with-iran-blockade",
-        "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent ~$95 heading for second weekly decline as Iran supply fears ease",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974",
-        "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-to-stay-with-iran-blockade"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Political complaints over gas bills and fuel price cut; no mechanism for gas utilities",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448726/psx-buying-at-bourse-kse-100-gains-over-600-points",
-        "https://www.brecorder.com/news/40448703/govt-squeezing-blood-of-public-through-utility-bills-pdp",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64966",
-        "https://mettisglobal.news/Petrol-price-drops-by-Rs3-diesel-by-Rs4-per-litre-64965",
-        "https://www.dawn.com/news/2044067/high-speed-diesel-price-dips-by-rs4-per-litre-petrol-by-rs3"
-      ]
-    },
-    "Cement": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "FBR fixes tax stamp price Rs1,140.64/1,000 UIMs; negligible cost per bag",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448699/fbr-sets-tax-stamp-price-for-cement-manufacturers"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Cherat Cement's NICL share purchase is company-specific, not sector-wide",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/PACRA-places-NIMIR-Industrial-Chemicals-ratings-on-Rating-Watch-64979"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "PLL tenders two winter LNG cargoes at Port Qasim; routine import activity",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448734/pakistan-seeks-two-lng-cargoes-for-dec-jan-as-winter-looms"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Global wheat rebound and Nepra industrial tariff package; no direct urea pricing change",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40448733/wheat-rebounds-from-4-12-month-low-on-black-sea-supply-concerns",
-        "https://www.dawn.com/news/2044061/nepra-notifies-rs2530-per-unit-revised-special-industrial-tariff-despite-concerns"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Govt targets Rs7.25tr T-bill/PIB borrowing Nov-Jan; CTR threshold raised; flat reserves",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/SBP-raises-currency-transaction-reporting-threshold-for-FMU-to-Rs3m-64975",
-        "https://mettisglobal.news/SBP-targets-Rs7tr-through-Tbills-PIBs-in-NovJan-64971",
-        "https://www.dawn.com/news/2044162/threshold-for-currency-transaction-report-raised-to-rs3m",
-        "https://www.brecorder.com/news/40448705/mobilink-bank-to-acquire-8251pc-stake-in-apna-bank",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64966",
-        "https://mettisglobal.news/SBP-reserves-rise-11m-to-216bn-64964"
-      ]
-    },
-    "Logistics/Transport": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Minister urges Nokundi-Gwadar corridor fast-track; no funding or listed beneficiary",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Ahsan-Iqbal-pushes-NokundiGwadar-corridor-with-Barrick-Mining-64972"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "negative",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Draft auto policy cuts imported car prices (BYD 5.34m->3.62m), more competition; buyers deferring",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2044238/auto-policy-2026-31-ambition-without-scale",
-        "https://www.dawn.com/news/2044163/auto-policy-not-shared-with-assemblers",
-        "https://propakistani.pk/2026/11/12/toyota-and-honda-sales-decline-despite-41-yoy-jump-in-pakistan-car-market/",
-        "https://mettisglobal.news/Buying-a-car-Wait-for-the-Auto-Policy-64949"
-      ]
-    },
-    "Power Generation": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Nepra notifies Rs25.30/unit incremental industrial tariff to lift demand; dissent noted",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2044061/nepra-notifies-rs2530-per-unit-revised-special-industrial-tariff-despite-concerns"
-      ]
-    },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Crescent Fibres' Rs1.25bn land sale is company-specific",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Crescent-Fibres-approves-Rs1bn-sale-of-Nooriabad-property-64948"
-      ]
-    },
-    "Electrical Goods": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "FCL IPO proceeds reallocation is routine and company-specific",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944"
-      ]
-    }
+  "PSO": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "KPC partnership widened to explore refining, storage, shipping investment; supply continues, no numbers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977"
+   ]
+  },
+  "FCL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.6,
+   "reason": "Shareholders approve redirecting Rs750m unused IPO proceeds to working capital; routine",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944"
+   ]
   }
+ },
+ "sectors": {
+  "Oil Marketing": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.45,
+   "reason": "OGRA cut petrol Rs3, diesel Rs4 from Nov 13; inventory losses for OMCs as crude eases",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Brent ~$95 heading for second weekly decline; lower realised prices for E&Ps",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448723/oil-prices-set-for-second-weekly-decline-as-trump-sticks-with-iran-blockade",
+    "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974"
+   ]
+  },
+  "Refinery": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "KPC to explore refining investment, no plan or number; crude drift mixed for margins",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSO-KPC-to-explore-investment-in-Pakistans-gas-refining-and-shipping-64977",
+    "https://mettisglobal.news/Oil-prices-set-for-second-straight-weekly-decline-64974"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "negative",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.4,
+   "reason": "New auto policy draft cuts car prices via duties; buyers deferring purchases, policy text unpublished",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2044238/auto-policy-2026-31-ambition-without-scale",
+    "https://www.dawn.com/news/2044163/auto-policy-not-shared-with-assemblers",
+    "https://propakistani.pk/2026/11/12/toyota-and-honda-sales-decline-despite-41-yoy-jump-in-pakistan-car-market/",
+    "https://mettisglobal.news/Buying-a-car-Wait-for-the-Auto-Policy-64949"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Nishat willing to invest in proposed new port; intention only, no listed port mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448749/manshas-nishat-group-to-invest-in-pakistans-new-port"
+   ]
+  },
+  "Logistics/Transport": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Minister urges fast-tracking Nokundi-Gwadar road corridor; proposal, no funding",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Ahsan-Iqbal-pushes-NokundiGwadar-corridor-with-Barrick-Mining-64972"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "SBP CTR threshold raised and flat reserves; no margin or volume mechanism for banks",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/SBP-raises-currency-transaction-reporting-threshold-for-FMU-to-Rs3m-64975",
+    "https://mettisglobal.news/SBP-reserves-rise-11m-to-216bn-64964"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "Carbon credit, wheat futures and ICP tariff stories carry no fertilizer cash-flow mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40448418/how-can-carbon-credits-add-up-to-20-to-revenues-of-green-projects-in-pakistan",
+    "https://www.brecorder.com/news/40448733/wheat-rebounds-from-4-12-month-low-on-black-sea-supply-concerns",
+    "https://www.dawn.com/news/2044061/nepra-notifies-rs2530-per-unit-revised-special-industrial-tariff-despite-concerns"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "Cherat's NICL acquisition is company-specific; no sector repricing",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PACRA-places-NIMIR-Industrial-Chemicals-ratings-on-Rating-Watch-64979"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "PACRA watch on NICL over Cherat purchase; company-specific",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PACRA-places-NIMIR-Industrial-Chemicals-ratings-on-Rating-Watch-64979"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "Petrol/diesel price cut does not affect regulated gas utility returns",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-64966",
+    "https://mettisglobal.news/Petrol-price-drops-by-Rs3-diesel-by-Rs4-per-litre-64965",
+    "https://www.dawn.com/news/2044067/high-speed-diesel-price-dips-by-rs4-per-litre-petrol-by-rs3"
+   ]
+  },
+  "Power Generation": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Nepra ICP Rs25.30/unit aims at demand; little direct effect on IPP capacity payments",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2044061/nepra-notifies-rs2530-per-unit-revised-special-industrial-tariff-despite-concerns"
+   ]
+  },
+  "Real Estate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "Crescent Fibres land sale is a single-company disposal",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Crescent-Fibres-approves-Rs1bn-sale-of-Nooriabad-property-64948"
+   ]
+  },
+  "Electrical Goods": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.5,
+   "reason": "FCL IPO-proceeds reallocation is routine and company-specific",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/FCL-secures-approval-to-redirect-Rs750m-unused-IPO-proceeds-64944"
+   ]
+  }
+ }
 }
