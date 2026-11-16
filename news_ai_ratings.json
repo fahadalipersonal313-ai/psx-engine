@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-16T08:38:36Z",
+  "as_of": "2026-11-16T09:38:54Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -8,18 +8,15 @@
     "https://mettisglobal.news/DPM-urges-ECO-members-to-turn-geographic-proximity-into-greater-connectivity-65019",
     "https://mettisglobal.news/Foreign-currency-deposits-fall-by-67m-in-October-2026-65017",
     "https://mettisglobal.news/Gold-holds-near-3870-ahead-of-Fed-Chair-remarks-65016",
+    "https://mettisglobal.news/Govt-HBL-explore-broader-financing-for-SMEs-agriculture-housing-65025",
     "https://mettisglobal.news/Gul-Ahmed-Textile-approves-1575MW-wind-turbine-procurement-65015",
     "https://mettisglobal.news/HUBCO-eyes-300000tonne-aluminum-smelter-project-65018",
     "https://mettisglobal.news/Jubilee-General-Insurance-board-approves-sale-of-Lahore-property-65011",
     "https://mettisglobal.news/Lucky-Cementbacked-NRL-confirms-8-coppergold-discoveries-65022",
-    "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
     "https://mettisglobal.news/PSX-recomposes-KMI-All-Share-Islamic-Index-9-companies-in-and-26-out-65013",
     "https://mettisglobal.news/Pakistan-Customs-seizes-115kg-of-opium-worth-Rs585m-65024",
     "https://mettisglobal.news/VIS-revises-outlook-on-GCWL-ratings-to-Negative-from-Stable-65023",
     "https://mettisglobal.news/Zafar-Masud-gets-threeyear-extension-as-Bank-of-Punjab-president-65020",
-    "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo",
-    "https://www.brecorder.com/news/40449137/australian-shares-slip-as-miners-extend-losses-on-commodity-price-weakness",
-    "https://www.brecorder.com/news/40449138/indias-shah-elected-for-second-term-as-icc-chair",
     "https://www.brecorder.com/news/40449139/jgb-yields-rise-tracking-us-yields-as-fed-hike-bets-build",
     "https://www.brecorder.com/news/40449140/hubco-subsidiary-to-study-300000-tpa-aluminium-smelter-project",
     "https://www.brecorder.com/news/40449141/chinese-premier-lauds-extraordinary-ties-with-asean-ahead-of-trump-visit",
@@ -46,16 +43,19 @@
     "https://www.brecorder.com/news/40449162/japanese-economy-flat-in-third-quarter-official-data",
     "https://www.brecorder.com/news/40449163/england-made-statement-by-beating-world-champions-spain-tuchel",
     "https://www.brecorder.com/news/40449164/zverev-too-strong-for-debutant-jodar-in-atp-finals",
-    "https://www.brecorder.com/news/40449165/hollywood-salutes-glenn-close-and-ridley-scott-with-honorary-oscars"
+    "https://www.brecorder.com/news/40449165/hollywood-salutes-glenn-close-and-ridley-scott-with-honorary-oscars",
+    "https://www.brecorder.com/news/40449169/unbeaten-andreeva-captures-wta-finals-crown-on-debut",
+    "https://www.brecorder.com/news/40449170/aurangzeb-urges-banks-to-boost-financing-for-priority-sectors",
+    "https://www.brecorder.com/news/40449171/bushra-bibi-seeks-urgent-hospital-transfer-alleges-poor-prison-conditions-eye-problems"
   ],
-  "count": 3,
+  "count": 2,
   "ratings": {
     "LUCK": {
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Associate NRL confirms 8 Chagai copper-gold discoveries; MRE next, BFS by decade end",
+      "confidence": 0.4,
+      "reason": "Associate NRL reports 8 copper-gold porphyry finds in Chagai; pre-resource-estimate stage, long runway",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Lucky-Cementbacked-NRL-confirms-8-coppergold-discoveries-65022"
@@ -65,36 +65,61 @@
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.4,
-      "reason": "Subsidiary commissions bankable feasibility study for 300k tpa aluminium smelter; diversification, early stage",
+      "confidence": 0.35,
+      "reason": "Subsidiary signs bankable feasibility study for 300k tpa aluminium smelter; diversification, early stage",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449140/hubco-subsidiary-to-study-300000-tpa-aluminium-smelter-project",
         "https://mettisglobal.news/HUBCO-eyes-300000tonne-aluminum-smelter-project-65018"
       ]
-    },
-    "FFL": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.3,
-      "reason": "Acting CEO appointment (internal CFO); routine management change, no cash-flow mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo"
-      ]
     }
   },
   "sectors": {
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Urea demand recovering but DAP offtake weak on affordability; mixed sector outlook",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2044623/fertiliser-sector-hopes-and-hurdles",
+        "https://mettisglobal.news/Govt-HBL-explore-broader-financing-for-SMEs-agriculture-housing-65025",
+        "https://www.brecorder.com/news/40449170/aurangzeb-urges-banks-to-boost-financing-for-priority-sectors"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "FinMin urges banks to lend more to SMEs/agri/housing; moral suasion, no policy mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Govt-HBL-explore-broader-financing-for-SMEs-agriculture-housing-65025",
+        "https://www.brecorder.com/news/40449170/aurangzeb-urges-banks-to-boost-financing-for-priority-sectors"
+      ]
+    },
+    "Real Estate": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Govt pushes housing finance via banks; discussion only, no scheme or number",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Govt-HBL-explore-broader-financing-for-SMEs-agriculture-housing-65025",
+        "https://www.brecorder.com/news/40449170/aurangzeb-urges-banks-to-boost-financing-for-priority-sectors"
+      ]
+    },
     "Oil & Gas Exploration": {
       "rating": "negative",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Brent slips toward $95 on supply-surplus outlook after 16% weekly fall; lowers E&P realised prices",
-      "text_depth": "full",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Oil market fears shift to glut, pressuring crude-linked E&P realisations; headline only",
+      "text_depth": "headline",
       "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
         "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
       ]
     },
@@ -102,57 +127,34 @@
       "rating": "negative",
       "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Falling crude on glut fears risks inventory losses for refiners; margin effect unclear",
-      "text_depth": "full",
+      "confidence": 0.2,
+      "reason": "Crude glut narrative risks inventory losses for refiners; headline only",
+      "text_depth": "headline",
       "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
         "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
       ]
     },
     "Oil Marketing": {
       "rating": "negative",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Sliding crude implies inventory losses on next price revision for OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
-        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Urea demand recovering but DAP offtake weak on affordability; mixed sector outlook",
+      "confidence": 0.2,
+      "reason": "Falling crude outlook implies inventory losses for OMCs; headline only",
       "text_depth": "headline",
       "sources": [
-        "https://www.dawn.com/news/2044623/fertiliser-sector-hopes-and-hurdles"
+        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
       ]
     },
     "Food": {
       "rating": "neutral",
-      "horizon": "multi_session",
+      "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Punjab sugar millers resist crushing start pending support price; policy standoff, outcome unclear",
+      "confidence": 0.2,
+      "reason": "Punjab sugar millers resist crushing order pending support price; headline only, unclear direction",
       "text_depth": "headline",
       "sources": [
-        "https://www.dawn.com/news/2044893/punjab-sugar-millers-snub-order-to-begin-crushing-from-weekend-demand-support-price-announcement"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "PTA considering cutting per-CNIC voice SIM limit 5 to 3; could trim subscriber base, plan stage",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/11/16/pta-voice-sim-limit-cnic-5-to-3/"
+        "https://www.dawn.com/news/2044893/punjab-sugar-millers-snub-order-to-begin-crushing-from-weekend-demand-support-price-announcement",
+        "https://www.dawn.com/news/2044895/sugar-exports-price-spikes-imports-a-cycle-successive-govts-have-failed-to-break"
       ]
     }
   }
