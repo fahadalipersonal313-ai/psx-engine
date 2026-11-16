@@ -1,11 +1,15 @@
 {
-  "as_of": "2026-11-16T04:38:03Z",
+  "as_of": "2026-11-16T05:39:12Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 36,
+  "articles_read": 40,
   "read_urls": [
     "https://mettisglobal.news/Asian-markets-slide-South-Koreas-Kospi-suffers-sharpest-loss-65012",
+    "https://mettisglobal.news/Foreign-currency-deposits-fall-by-67m-in-October-2026-65017",
+    "https://mettisglobal.news/Gold-holds-near-3870-ahead-of-Fed-Chair-remarks-65016",
+    "https://mettisglobal.news/Gul-Ahmed-Textile-approves-1575MW-wind-turbine-procurement-65015",
+    "https://mettisglobal.news/HUBCO-eyes-300000tonne-aluminum-smelter-project-65018",
     "https://mettisglobal.news/Jubilee-General-Insurance-board-approves-sale-of-Lahore-property-65011",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65009",
     "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65010",
@@ -29,8 +33,6 @@
     "https://www.brecorder.com/news/40449069/an-interview-with-david-dangelo-us-venture-investor-a-startup-is-a-marathon-not-a-sprint",
     "https://www.brecorder.com/news/40449071/advanced-farm-mechanisation-technology-transfer-agri-team-visits-italy-to-explore-opportunities",
     "https://www.brecorder.com/news/40449080/araghchi-arrives-in-islamabad",
-    "https://www.brecorder.com/news/40449081/islamabad-model-special-economic-zone-business-community-approaches-govt-for-allocation-of-land",
-    "https://www.brecorder.com/news/40449082/bilawal-slams-govt-actions-against-jui-f",
     "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus",
     "https://www.brecorder.com/news/40449126/asian-shares-fall-before-nvidia-earnings-anthropic-ipo-test-tech-rally",
     "https://www.brecorder.com/news/40449127/indian-rupee-caught-between-external-pressures-and-foreign-inflows",
@@ -40,118 +42,179 @@
     "https://www.brecorder.com/news/40449131/yen-steady-against-euro-and-dollar-after-soft-japanese-gdp-data",
     "https://www.brecorder.com/news/40449132/fire-in-phuket-shophouse-kills-11-injures-16-police-say",
     "https://www.brecorder.com/news/40449133/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers",
-    "https://www.brecorder.com/news/40449134/jensen-huang-discusses-comeback-as-nvidia-ceo-with-allies-ft-reports"
+    "https://www.brecorder.com/news/40449134/jensen-huang-discusses-comeback-as-nvidia-ceo-with-allies-ft-reports",
+    "https://www.brecorder.com/news/40449135/psx-stocks-surge-kse-100-up-over-1000-points",
+    "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo"
   ],
-  "count": 0,
-  "ratings": {},
+  "count": 2,
+  "ratings": {
+    "HUBC": {
+      "rating": "positive",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.35,
+      "reason": "Subsidiary signs bankable feasibility study for 300k tpa aluminium smelter; early-stage diversification",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/HUBCO-eyes-300000tonne-aluminum-smelter-project-65018"
+      ]
+    },
+    "FFL": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Routine acting CEO appointment; no cash-flow mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo"
+      ]
+    }
+  },
   "sectors": {
     "Oil & Gas Exploration": {
       "rating": "negative",
       "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.5,
-      "reason": "Brent slipping to ~$95 as Hormuz flows restore and IEA sees Q4 surplus lowers E&P realised prices",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
-        "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus",
-        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
-      ]
-    },
-    "Refinery": {
-      "rating": "negative",
-      "horizon": "multi_session",
       "causality": "correlated",
       "confidence": 0.4,
-      "reason": "Falling crude on surplus outlook risks inventory losses and softer product prices for refiners",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
-        "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus",
-        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Crude decline toward $95 implies inventory losses on OMC stock ahead of next price revision",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
-        "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus",
-        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Global oil price story; no mechanism to Pakistani port volumes",
+      "reason": "Brent slipping to ~$95 on Hormuz flows restored and IEA Q4 surplus forecast; lower realised prices",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
         "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus"
       ]
     },
-    "Real Estate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Single JGICL property sale and municipal works; nothing repricing the sector",
+    "Refinery": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Falling crude on surplus outlook risks inventory losses for refiners",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Jubilee-General-Insurance-board-approves-sale-of-Lahore-property-65011",
-        "https://www.brecorder.com/news/40449050/mayor-lays-foundation-stone-for-adam-road-project"
+        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
+        "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "negative",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Crude glut and falling prices imply inventory losses on OMC stocks",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Hormuz shipments near pre-war levels; no direct port-volume mechanism for PSX names",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
+        "https://www.brecorder.com/news/40449125/oil-prices-fall-on-expectations-of-coming-supply-surplus"
       ]
     },
     "Cement": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Small municipal road/restoration schemes (Rs60m); immaterial to cement demand",
+      "confidence": 0.2,
+      "reason": "Small municipal road/WASA projects; immaterial to sector demand",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449050/mayor-lays-foundation-stone-for-adam-road-project",
-        "https://www.brecorder.com/news/40449055/wasa-md-directs-acceleration-of-work-on-uplift-projects"
+        "https://www.brecorder.com/news/40449055/wasa-md-directs-acceleration-of-work-on-uplift-projects",
+        "https://propakistani.pk/2026/11/15/lahore-to-restore-historic-area-using-british-era-construction-techniques/"
       ]
     },
     "Cement/Conglomerate": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Small municipal road/restoration schemes; immaterial to sector cash flows",
+      "confidence": 0.2,
+      "reason": "Small municipal projects only; immaterial to sector",
       "text_depth": "full",
       "sources": [
-        "https://www.brecorder.com/news/40449050/mayor-lays-foundation-stone-for-adam-road-project"
+        "https://www.brecorder.com/news/40449050/mayor-lays-foundation-stone-for-adam-road-project",
+        "https://www.brecorder.com/news/40449055/wasa-md-directs-acceleration-of-work-on-uplift-projects",
+        "https://propakistani.pk/2026/11/15/lahore-to-restore-historic-area-using-british-era-construction-techniques/"
       ]
     },
-    "Fertilizer": {
+    "Auto Assembler": {
       "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Analysis: urea demand recovering but DAP offtake weak on affordability; mixed, no new policy",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Only intraday market-rally mention; no sector-specific mechanism",
       "text_depth": "full",
       "sources": [
-        "https://www.dawn.com/news/2044623/fertiliser-sector-hopes-and-hurdles",
-        "https://www.brecorder.com/news/40449071/advanced-farm-mechanisation-technology-transfer-agri-team-visits-italy-to-explore-opportunities"
+        "https://www.brecorder.com/news/40449135/psx-stocks-surge-kse-100-up-over-1000-points"
+      ]
+    },
+    "Islamic Banking": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Small monthly FCY deposit decline; routine data, no sector repricing",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Foreign-currency-deposits-fall-by-67m-in-October-2026-65017"
+      ]
+    },
+    "Textile": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "GATM wind turbine LOI is single-company captive power, not a sector event",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Gul-Ahmed-Textile-approves-1575MW-wind-turbine-procurement-65015"
+      ]
+    },
+    "Textile/Synthetic Fibre": {
+      "rating": "neutral",
+      "horizon": "long_term",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "GATM wind turbine LOI is single-company, not sector-wide",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Gul-Ahmed-Textile-approves-1575MW-wind-turbine-procurement-65015"
+      ]
+    },
+    "Real Estate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Insurer property sale and unrelated stories; no sector mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Jubilee-General-Insurance-board-approves-sale-of-Lahore-property-65011",
+        "https://www.brecorder.com/news/40449132/fire-in-phuket-shophouse-kills-11-injures-16-police-say",
+        "https://www.brecorder.com/news/40449050/mayor-lays-foundation-stone-for-adam-road-project",
+        "https://www.brecorder.com/news/40449055/wasa-md-directs-acceleration-of-work-on-uplift-projects",
+        "https://www.brecorder.com/news/40449063/jui-f-stages-rallies-in-kp-against-its-media-trial",
+        "https://propakistani.pk/2026/11/15/lahore-to-restore-historic-area-using-british-era-construction-techniques/"
       ]
     },
     "Food": {
       "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Opinion piece on sugar export-import cycle; no new policy decision",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.2,
+      "reason": "Punjab sugar millers resist crushing pending support price; headline only, direction unclear",
       "text_depth": "headline",
       "sources": [
-        "https://www.dawn.com/news/2044895/sugar-exports-price-spikes-imports-a-cycle-successive-govts-have-failed-to-break"
+        "https://www.dawn.com/news/2044895/sugar-exports-price-spikes-imports-a-cycle-successive-govts-have-failed-to-break",
+        "https://www.dawn.com/news/2044893/punjab-sugar-millers-snub-order-to-begin-crushing-from-weekend-demand-support-price-announcement"
       ]
     },
     "Logistics/Transport": {
@@ -159,10 +222,22 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.1,
-      "reason": "SK Hynix supplier spending; unrelated to PSX transport names",
+      "reason": "SK Hynix supplier spend is unrelated to PSX logistics",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449133/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers"
+      ]
+    },
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Mixed outlook: urea demand recovering but DAP offtake weak on affordability",
+      "text_depth": "full",
+      "sources": [
+        "https://www.dawn.com/news/2044623/fertiliser-sector-hopes-and-hurdles",
+        "https://www.brecorder.com/news/40449071/advanced-farm-mechanisation-technology-transfer-agri-team-visits-italy-to-explore-opportunities"
       ]
     }
   }
