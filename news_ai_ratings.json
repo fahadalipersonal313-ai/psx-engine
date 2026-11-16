@@ -1,11 +1,10 @@
 {
-  "as_of": "2026-11-16T07:41:19Z",
+  "as_of": "2026-11-16T08:38:36Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 41,
+  "articles_read": 42,
   "read_urls": [
-    "https://mettisglobal.news/Asian-markets-slide-South-Koreas-Kospi-suffers-sharpest-loss-65012",
     "https://mettisglobal.news/DPM-urges-ECO-members-to-turn-geographic-proximity-into-greater-connectivity-65019",
     "https://mettisglobal.news/Foreign-currency-deposits-fall-by-67m-in-October-2026-65017",
     "https://mettisglobal.news/Gold-holds-near-3870-ahead-of-Fed-Chair-remarks-65016",
@@ -15,17 +14,9 @@
     "https://mettisglobal.news/Lucky-Cementbacked-NRL-confirms-8-coppergold-discoveries-65022",
     "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
     "https://mettisglobal.news/PSX-recomposes-KMI-All-Share-Islamic-Index-9-companies-in-and-26-out-65013",
+    "https://mettisglobal.news/Pakistan-Customs-seizes-115kg-of-opium-worth-Rs585m-65024",
+    "https://mettisglobal.news/VIS-revises-outlook-on-GCWL-ratings-to-Negative-from-Stable-65023",
     "https://mettisglobal.news/Zafar-Masud-gets-threeyear-extension-as-Bank-of-Punjab-president-65020",
-    "https://www.brecorder.com/news/40449126/asian-shares-fall-before-nvidia-earnings-anthropic-ipo-test-tech-rally",
-    "https://www.brecorder.com/news/40449127/indian-rupee-caught-between-external-pressures-and-foreign-inflows",
-    "https://www.brecorder.com/news/40449128/deleted-from-indias-voter-rolls-some-muslims-face-detention-deportation",
-    "https://www.brecorder.com/news/40449129/indian-shares-expected-to-open-higher-on-record-foreign-flows-crude-price-drop",
-    "https://www.brecorder.com/news/40449130/gold-edges-higher-as-investors-await-warsh-remarks-for-rate-signals",
-    "https://www.brecorder.com/news/40449131/yen-steady-against-euro-and-dollar-after-soft-japanese-gdp-data",
-    "https://www.brecorder.com/news/40449132/fire-in-phuket-shophouse-kills-11-injures-16-police-say",
-    "https://www.brecorder.com/news/40449133/sk-hynix-to-spend-1-billion-over-five-years-to-support-chip-suppliers",
-    "https://www.brecorder.com/news/40449134/jensen-huang-discusses-comeback-as-nvidia-ceo-with-allies-ft-reports",
-    "https://www.brecorder.com/news/40449135/psx-stocks-surge-kse-100-up-over-1400-points",
     "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo",
     "https://www.brecorder.com/news/40449137/australian-shares-slip-as-miners-extend-losses-on-commodity-price-weakness",
     "https://www.brecorder.com/news/40449138/indias-shah-elected-for-second-term-as-icc-chair",
@@ -44,17 +35,27 @@
     "https://www.brecorder.com/news/40449151/wheat-falls-towards-multi-month-lows-on-firmer-dollar-harvest-pressure",
     "https://www.brecorder.com/news/40449152/uks-prince-william-princess-kate-arrive-in-mumbai-for-three-day-trip",
     "https://www.brecorder.com/news/40449153/yuan-steady-as-disappointing-economic-data-offset-by-robust-corporate-year-end-demand",
-    "https://www.brecorder.com/news/40449154/afghanistan-must-address-terrorism-concerns-for-economic-partnerships-dar",
-    "https://www.brecorder.com/news/40449155/australia-nz-dollars-hit-new-multi-month-lows-as-yield-support-vanishes"
+    "https://www.brecorder.com/news/40449154/afghanistan-must-address-terrorism-concerns-for-economic-partnerships-dpm-dar",
+    "https://www.brecorder.com/news/40449155/australia-nz-dollars-hit-new-multi-month-lows-as-yield-support-vanishes",
+    "https://www.brecorder.com/news/40449156/japans-nikkei-sinks-under-weight-of-tech-shares-in-big-week-for-ai",
+    "https://www.brecorder.com/news/40449157/palm-opens-lower-on-weaker-rival-oils-crude",
+    "https://www.brecorder.com/news/40449158/us-investor-says-pakistani-startups-should-prioritise-revenue-over-venture-capital",
+    "https://www.brecorder.com/news/40449159/sudan-army-strike-kills-15-including-children-rights-group-survivor",
+    "https://www.brecorder.com/news/40449160/un-climate-chief-highlights-ais-potential-and-peril-at-cop31",
+    "https://www.brecorder.com/news/40449161/ex-bangladesh-pm-hasina-to-return-home-despite-threat-of-death",
+    "https://www.brecorder.com/news/40449162/japanese-economy-flat-in-third-quarter-official-data",
+    "https://www.brecorder.com/news/40449163/england-made-statement-by-beating-world-champions-spain-tuchel",
+    "https://www.brecorder.com/news/40449164/zverev-too-strong-for-debutant-jodar-in-atp-finals",
+    "https://www.brecorder.com/news/40449165/hollywood-salutes-glenn-close-and-ridley-scott-with-honorary-oscars"
   ],
   "count": 3,
   "ratings": {
     "LUCK": {
       "rating": "positive",
-      "horizon": "multi_session",
+      "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Associate NRL confirms 8 copper-gold porphyry finds in Chagai; MRE pending, value upside not yet quantified",
+      "confidence": 0.5,
+      "reason": "Associate NRL confirms 8 Chagai copper-gold discoveries; MRE next, BFS by decade end",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Lucky-Cementbacked-NRL-confirms-8-coppergold-discoveries-65022"
@@ -64,8 +65,8 @@
       "rating": "positive",
       "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Subsidiary commissions bankable feasibility study for 300k tpa aluminium smelter; early-stage diversification",
+      "confidence": 0.4,
+      "reason": "Subsidiary commissions bankable feasibility study for 300k tpa aluminium smelter; diversification, early stage",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449140/hubco-subsidiary-to-study-300000-tpa-aluminium-smelter-project",
@@ -77,7 +78,7 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.3,
-      "reason": "Routine acting-CEO appointment (CFO promoted); no cash-flow mechanism",
+      "reason": "Acting CEO appointment (internal CFO); routine management change, no cash-flow mechanism",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449136/fauji-foods-appoints-waseem-haider-as-acting-ceo"
@@ -88,9 +89,21 @@
     "Oil & Gas Exploration": {
       "rating": "negative",
       "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.45,
+      "reason": "Brent slips toward $95 on supply-surplus outlook after 16% weekly fall; lowers E&P realised prices",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
+        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
+      ]
+    },
+    "Refinery": {
+      "rating": "negative",
+      "horizon": "multi_session",
       "causality": "correlated",
       "confidence": 0.35,
-      "reason": "Brent slipping toward $95 on supply-surplus outlook trims E&P realised price expectations",
+      "reason": "Falling crude on glut fears risks inventory losses for refiners; margin effect unclear",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
@@ -101,20 +114,8 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Falling crude implies inventory losses on OMC stocks at next price revision",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
-        "https://www.dawn.com/news/2044896/crude-reality-oils-fear-flips-from-shortage-to-glut"
-      ]
-    },
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.2,
-      "reason": "Lower crude cuts input cost but risks inventory losses; no margin-policy change",
+      "confidence": 0.3,
+      "reason": "Sliding crude implies inventory losses on next price revision for OMCs",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-slips-toward-95-on-global-supply-surplus-concerns-65014",
@@ -123,13 +124,35 @@
     },
     "Fertilizer": {
       "rating": "neutral",
-      "horizon": "multi_session",
+      "horizon": "long_term",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Urea demand recovering but DAP offtake weak on farmer affordability; mixed outlook",
+      "confidence": 0.3,
+      "reason": "Urea demand recovering but DAP offtake weak on affordability; mixed sector outlook",
       "text_depth": "headline",
       "sources": [
         "https://www.dawn.com/news/2044623/fertiliser-sector-hopes-and-hurdles"
+      ]
+    },
+    "Food": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Punjab sugar millers resist crushing start pending support price; policy standoff, outcome unclear",
+      "text_depth": "headline",
+      "sources": [
+        "https://www.dawn.com/news/2044893/punjab-sugar-millers-snub-order-to-begin-crushing-from-weekend-demand-support-price-announcement"
+      ]
+    },
+    "Technology/Telecom": {
+      "rating": "negative",
+      "horizon": "long_term",
+      "causality": "causal",
+      "confidence": 0.3,
+      "reason": "PTA considering cutting per-CNIC voice SIM limit 5 to 3; could trim subscriber base, plan stage",
+      "text_depth": "headline",
+      "sources": [
+        "https://propakistani.pk/2026/11/16/pta-voice-sim-limit-cnic-5-to-3/"
       ]
     }
   }
