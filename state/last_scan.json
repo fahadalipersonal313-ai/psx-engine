@@ -1,29 +1,39 @@
 {
- "date": "2026-11-16",
+ "date": "2026-11-17",
  "gates": {
-  "date": "2026-11-16",
-  "kse100": 178182.95,
+  "date": "2026-11-17",
+  "kse100": 177517.74,
   "low20": 162374.88,
   "gate1_level": 167246.13,
-  "bounce_pct": 9.74,
+  "bounce_pct": 9.33,
   "gate1_open": true,
-  "breadth": 83.62,
-  "breadth_prev": 60.45,
-  "breadth_prev_date": "2026-11-06",
+  "breadth": 82.49,
+  "breadth_prev": 75.14,
+  "breadth_prev_date": "2026-11-10",
   "gate2_open": true
  },
- "signals": [],
- "orders_placed": 0,
- "bcsm": [
+ "signals": [
   {
-   "book": "C",
-   "sym": "NRSL",
+   "book": "B",
+   "sym": "DNCC",
    "list": "Shariah",
-   "signal_date": "2026-11-16",
-   "signal_close": 36.41,
-   "stop": 34.72,
-   "atr": 1.6865,
-   "note": "rising 50-day EMA 34.74"
+   "signal_date": "2026-11-17",
+   "signal_close": 29.16,
+   "stop": 22.87,
+   "atr": 2.0977,
+   "note": "52-week-high breakout"
+  },
+  {
+   "book": "B",
+   "sym": "ZUMA",
+   "list": "non-Shariah",
+   "signal_date": "2026-11-17",
+   "signal_close": 38.82,
+   "stop": 32.81,
+   "atr": 2.0017,
+   "note": "52-week-high breakout"
   }
- ]
+ ],
+ "orders_placed": 4,
+ "bcsm": []
 }
