@@ -1,69 +1,26 @@
 {
- "updated_pkt": "2026-11-19T16:46+05:00",
- "official_through": "2026-11-18",
- "official_note": "No new official session since 2026-11-18 (newest in the file: 2026-11-18).",
+ "updated_pkt": "2026-11-19T22:46+05:00",
+ "official_through": "2026-11-19",
+ "official_note": "Finalised 2026-11-19 from PSX official data.",
  "last_scan": {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "gates": {
-   "date": "2026-11-18",
-   "kse100": 176294.33,
+   "date": "2026-11-19",
+   "kse100": 176772.19,
    "low20": 162374.88,
    "gate1_level": 167246.13,
-   "bounce_pct": 8.57,
+   "bounce_pct": 8.87,
    "gate1_open": true,
-   "breadth": 79.66,
-   "breadth_prev": 76.27,
-   "breadth_prev_date": "2026-11-11",
+   "breadth": 83.05,
+   "breadth_prev": 76.84,
+   "breadth_prev_date": "2026-11-12",
    "gate2_open": true
   },
-  "signals": [
-   {
-    "book": "B",
-    "sym": "DNCC",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 32.08,
-    "stop": 25.61,
-    "atr": 2.1564,
-    "note": "52-week-high breakout"
-   }
-  ],
-  "orders_placed": 2,
-  "bcsm": [
-   {
-    "book": "C",
-    "sym": "ATRL",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 952.41,
-    "stop": 917.55,
-    "atr": 34.8626,
-    "note": "20-day-low support 931.51"
-   },
-   {
-    "book": "C",
-    "sym": "CNERGY",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 11.9,
-    "stop": 11.32,
-    "atr": 0.5832,
-    "note": "20-day-low support 11.22"
-   }
-  ]
+  "signals": [],
+  "orders_placed": 0,
+  "bcsm": []
  },
- "orders": [
-  {
-   "book": "B",
-   "sym": "DNCC",
-   "list": "Shariah",
-   "signal_date": "2026-11-18",
-   "signal_close": 32.08,
-   "stop": 25.61,
-   "atr": 2.1564,
-   "note": "52-week-high breakout"
-  }
- ],
+ "orders": [],
  "positions": [
   {
    "id": "A-SPSL-2026-11-04",
@@ -78,9 +35,9 @@
    "atr": 0.574,
    "hh": 14.0,
    "shares": 3048,
-   "days": 10,
+   "days": 11,
    "note": "washout 2026-11-02 + demand close (research book)",
-   "last_close": 13.09
+   "last_close": 13.03
   },
   {
    "id": "B-FCCL-2026-11-11",
@@ -95,9 +52,9 @@
    "atr": 1.897,
    "hh": 63.74,
    "shares": 492,
-   "days": 6,
+   "days": 7,
    "note": "52-week-high breakout",
-   "last_close": 59.49
+   "last_close": 59.29
   },
   {
    "id": "A-MUGHAL-2026-11-11",
@@ -112,9 +69,9 @@
    "atr": 2.2236,
    "hh": 64.68,
    "shares": 359,
-   "days": 6,
+   "days": 7,
    "note": "washout 2026-11-03 + demand close (research book)",
-   "last_close": 61.36
+   "last_close": 61.01
   },
   {
    "id": "A-MSOT-2026-11-12",
@@ -129,9 +86,9 @@
    "atr": 13.4721,
    "hh": 164.07,
    "shares": 74,
-   "days": 5,
+   "days": 6,
    "note": "washout 2026-10-30 + demand close (research book)",
-   "last_close": 155.24
+   "last_close": 158.35
   },
   {
    "id": "B-ZUMA-2026-11-18",
@@ -146,9 +103,9 @@
    "atr": 2.0017,
    "hh": 42.4,
    "shares": 379,
-   "days": 1,
+   "days": 2,
    "note": "52-week-high breakout",
-   "last_close": 39.59
+   "last_close": 39.58
   }
  ],
  "closed": {
@@ -157,107 +114,17 @@
  "recent_trades": [],
  "bcsm": {
   "about": "Book C - buy at the official close of a support + reversal + volume day, sell at the next official open. Shariah stocks, every market (no gates), Rs 100,000 per trade, research book.",
-  "signals": [
-   {
-    "book": "C",
-    "sym": "ATRL",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 952.41,
-    "stop": 917.55,
-    "atr": 34.8626,
-    "note": "20-day-low support 931.51"
-   },
-   {
-    "book": "C",
-    "sym": "CNERGY",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 11.9,
-    "stop": 11.32,
-    "atr": 0.5832,
-    "note": "20-day-low support 11.22"
-   }
-  ],
-  "positions": [
-   {
-    "id": "C-ATRL-2026-11-18",
-    "book": "C",
-    "sym": "ATRL",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "entry_date": "2026-11-18",
-    "entry": 952.41,
-    "stop0": 917.55,
-    "stop": 917.55,
-    "atr": 34.8626,
-    "hh": 952.41,
-    "shares": 104,
-    "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 931.51"
-   },
-   {
-    "id": "C-CNERGY-2026-11-18",
-    "book": "C",
-    "sym": "CNERGY",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "entry_date": "2026-11-18",
-    "entry": 11.9,
-    "stop0": 11.32,
-    "stop": 11.32,
-    "atr": 0.5832,
-    "hh": 11.9,
-    "shares": 8403,
-    "days": 0,
-    "note": "buy-close-sell-open: 20-day-low support 11.22"
-   }
-  ],
+  "signals": [],
+  "positions": [],
   "closed": {
-   "n": 28,
+   "n": 30,
    "cost_pct": 0.25,
-   "avg_net_pct": 0.005,
-   "pf_net": 1.01,
-   "win_pct": 50,
-   "pnl_rs_net": 149
+   "avg_net_pct": 0.053,
+   "pf_net": 1.15,
+   "win_pct": 53,
+   "pnl_rs_net": 1596
   },
   "recent_trades": [
-   {
-    "id": "C-TOMCL-2026-11-04",
-    "book": "C",
-    "sym": "TOMCL",
-    "list": "Shariah",
-    "signal_date": "2026-11-04",
-    "entry_date": "2026-11-04",
-    "entry": "27.96",
-    "stop0": "26.81",
-    "exit_date": "2026-11-05",
-    "exit": "28.35",
-    "reason": "next official open",
-    "R": "0.34",
-    "pct": "1.39",
-    "days": "1",
-    "shares": "3576",
-    "pnl_rs": "1395"
-   },
-   {
-    "id": "C-BERG-2026-11-05",
-    "book": "C",
-    "sym": "BERG",
-    "list": "Shariah",
-    "signal_date": "2026-11-05",
-    "entry_date": "2026-11-05",
-    "entry": "105.97",
-    "stop0": "101.54",
-    "exit_date": "2026-11-06",
-    "exit": "104.51",
-    "reason": "next official open",
-    "R": "-0.33",
-    "pct": "-1.38",
-    "days": "1",
-    "shares": "943",
-    "pnl_rs": "-1377"
-   },
    {
     "id": "C-THCCL-2026-11-05",
     "book": "C",
@@ -401,23 +268,48 @@
     "days": "1",
     "shares": "2746",
     "pnl_rs": "-439"
+   },
+   {
+    "id": "C-ATRL-2026-11-18",
+    "book": "C",
+    "sym": "ATRL",
+    "list": "Shariah",
+    "signal_date": "2026-11-18",
+    "entry_date": "2026-11-18",
+    "entry": "952.41",
+    "stop0": "917.55",
+    "exit_date": "2026-11-19",
+    "exit": "959.0",
+    "reason": "next official open",
+    "R": "0.19",
+    "pct": "0.69",
+    "days": "1",
+    "shares": "104",
+    "pnl_rs": "685"
+   },
+   {
+    "id": "C-CNERGY-2026-11-18",
+    "book": "C",
+    "sym": "CNERGY",
+    "list": "Shariah",
+    "signal_date": "2026-11-18",
+    "entry_date": "2026-11-18",
+    "entry": "11.9",
+    "stop0": "11.32",
+    "exit_date": "2026-11-19",
+    "exit": "12.05",
+    "reason": "next official open",
+    "R": "0.26",
+    "pct": "1.26",
+    "days": "1",
+    "shares": "8403",
+    "pnl_rs": "1260"
    }
   ]
  },
  "ungated": {
   "about": "Book D - every 52-week-high breakout (Leg B) bought at the next official open whatever the gates say; same stop, trail and time stop as book B.",
-  "orders": [
-   {
-    "book": "D",
-    "sym": "DNCC",
-    "list": "Shariah",
-    "signal_date": "2026-11-18",
-    "signal_close": 32.08,
-    "stop": 25.61,
-    "atr": 2.1564,
-    "note": "52-week-high breakout, gates ignored"
-   }
-  ],
+  "orders": [],
   "positions": [
    {
     "id": "D-TPLT-2026-10-26",
@@ -432,9 +324,9 @@
     "atr": 2.0905,
     "hh": 47.0,
     "shares": 398,
-    "days": 17,
+    "days": 18,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 44.82
+    "last_close": 45.24
    },
    {
     "id": "D-FCCL-2026-11-11",
@@ -449,9 +341,9 @@
     "atr": 1.897,
     "hh": 63.74,
     "shares": 492,
-    "days": 6,
+    "days": 7,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 59.49
+    "last_close": 59.29
    },
    {
     "id": "D-ZUMA-2026-11-18",
@@ -466,9 +358,9 @@
     "atr": 2.0017,
     "hh": 42.4,
     "shares": 379,
-    "days": 1,
+    "days": 2,
     "note": "52-week-high breakout, gates ignored",
-    "last_close": 39.59
+    "last_close": 39.58
    }
   ],
   "closed": {
@@ -478,7 +370,7 @@
  },
  "live": {
   "ok": true,
-  "at": "2026-11-19T16:46+05:00",
+  "at": "2026-11-19T22:46+05:00",
   "kse100": 176772.1887
  },
  "config": {
