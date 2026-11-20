@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-20T07:38:24Z",
+  "as_of": "2026-11-20T08:38:07Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -32,7 +32,6 @@
     "https://mettisglobal.news/Zarea-opens-Rs3bn-right-issue-subscription-on-November-26-65139",
     "https://www.brecorder.com/news/40449864/tarar-highlights-strategic-partnership-with-turkiye",
     "https://www.brecorder.com/news/40449865/indus-waters-treaty-weaponising-shared-natural-resource-violates-intl-law-pakistan",
-    "https://www.brecorder.com/news/40449951/dollar-near-19-month-peak-as-ai-jitters-sap-risk-appetite",
     "https://www.brecorder.com/news/40449952/indian-stocks-seen-falling-from-nine-month-highs-asia-market-rout-deepens",
     "https://www.brecorder.com/news/40449953/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate",
     "https://www.brecorder.com/news/40449954/global-risk-jitters-bolster-rupee-as-investors-turn-to-indian-assets",
@@ -59,7 +58,8 @@
     "https://www.brecorder.com/news/40449975/turkish-seismic-vessel-arrives-in-karachi-to-begin-offshore-oil-gas-survey",
     "https://www.brecorder.com/news/40449976/tashima-says-no-plan-at-this-point-to-step-aside-in-fifa-election-race",
     "https://www.brecorder.com/news/40449977/cummins-manager-hits-out-at-hysteria-around-sandpapergate",
-    "https://www.brecorder.com/news/40449978/pakistan-condemns-houthi-attack-on-riyadhs-financial-district"
+    "https://www.brecorder.com/news/40449978/pakistan-condemns-houthi-attack-on-riyadhs-financial-district",
+    "https://www.brecorder.com/news/40449979/pakistans-regulator-reinforces-audit-report-verification-through-udin"
   ],
   "count": 1,
   "ratings": {
@@ -67,8 +67,8 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.3,
-      "reason": "VIS reaffirmed existing A/A2 rating; no change to cash flows",
+      "confidence": 0.6,
+      "reason": "VIS maintains A/A2 rating; routine reaffirmation, no cash-flow change",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
@@ -78,74 +78,61 @@
   "sectors": {
     "Oil & Gas Exploration": {
       "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.45,
-      "reason": "Brent firm near $92 on Gulf supply risk lifts realised prices; offshore seismic survey begins",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125",
-        "https://www.brecorder.com/news/40449975/turkish-seismic-vessel-arrives-in-karachi-to-begin-offshore-oil-gas-survey"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "positive",
-      "horizon": "single_session",
+      "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.35,
-      "reason": "Petrol ex-depot +Rs1/l ends cut spree, small inventory gain; diesel unchanged",
+      "reason": "Turkish seismic vessel begins offshore survey of newly auctioned blocks; early-stage exploration revival",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+        "https://www.brecorder.com/news/40449975/turkish-seismic-vessel-arrives-in-karachi-to-begin-offshore-oil-gas-survey",
         "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
       ]
     },
     "Refinery": {
-      "rating": "positive",
+      "rating": "neutral",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Petrol price uptick and firm crude modestly support product margins/inventory values",
+      "confidence": 0.4,
+      "reason": "Petrol +Rs1, HSD flat; Brent ~$92 heading for weekly loss; no margin change",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
         "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
       ]
     },
-    "Fertilizer": {
+    "Oil Marketing": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Prior-session sector buying only; no new fertilizer-specific mechanism",
+      "confidence": 0.4,
+      "reason": "Petrol +Rs1/litre, diesel unchanged; marginal inventory effect, no margin policy change",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
       ]
     },
     "Islamic Banking": {
       "rating": "positive",
       "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Auto financing boom per SBP data and stable reserves support bank lending volumes",
+      "confidence": 0.25,
+      "reason": "SBP data shows auto-financing growth (headline only); reserves broadly stable",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128",
-        "https://www.dawn.com/news/2045863/auto-financing-boom-continues-as-outstanding-car-loans-rise-state-bank-data-shows"
+        "https://www.dawn.com/news/2045863/auto-financing-boom-continues-as-outstanding-car-loans-rise-state-bank-data-shows",
+        "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128"
       ]
     },
-    "Technology/Telecom": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "Telcos seek cheaper power tariff from PM; early request, would cut opex if granted",
-      "text_depth": "headline",
+    "Fertilizer": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Only prior-session buying mentioned in market wrap; no sector mechanism",
+      "text_depth": "full",
       "sources": [
-        "https://propakistani.pk/2026/11/20/2-billion-5g-fiber-push-telcos-pm-shehbaz-cheaper-electricity/"
+        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
       ]
     }
   }
