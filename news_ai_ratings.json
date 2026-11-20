@@ -1,250 +1,195 @@
 {
-  "as_of": "2026-11-20T04:38:05Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 50,
-  "read_urls": [
-    "https://mettisglobal.news/Bank-of-Punjab-bags-Product-Innovation-of-the-Year-award-65133",
-    "https://mettisglobal.news/FM-seeks-diaspora-support-to-boost-investment-in-Pakistan-65115",
-    "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3700-per-tola-65127",
-    "https://mettisglobal.news/Govt-reviews-EFS-amendments-to-simplify-exporter-procedures-65132",
-    "https://mettisglobal.news/KAPCOs-BESOS-shares-transferred-back-to-WAPDA-65116",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
-    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65134",
-    "https://mettisglobal.news/NEXT-signs-MoU-with-JazzCash-PSX-to-enable-retail-investment-in-GoP-Ijarah-Sukuk-65107",
-    "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125",
-    "https://mettisglobal.news/PSX-seeks-public-comments-on-revised-draft-prospectus-of-AurionAI-Limited-65120",
-    "https://mettisglobal.news/Pakistan-ASEAN-resolve-to-strengthen-ties-across-peopletopeople-connectivity-65119",
-    "https://mettisglobal.news/Pakistan-LSMI-rises-3-MoM-in-September-65122",
-    "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-    "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128",
-    "https://mettisglobal.news/SCRA-balance-falls-Rs1bn-to-Rs355bn-65129",
-    "https://mettisglobal.news/SECP-orders-transfer-of-unclaimed-dividends-to-govt-account-65118",
-    "https://mettisglobal.news/SHC-freezes-Unity-Foods-assets-orders-board-election-SECP-to-act-within-7-days-65108",
-    "https://mettisglobal.news/Senator-Aurangzeb-woos-World-Bank-IFC-GFTN-on-SMEs-and-fintech-65135",
-    "https://mettisglobal.news/VIS-reaffirms-Macter-Internationals-longterm-rating-at-A-65123",
-    "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124",
-    "https://www.brecorder.com/news/40449807/president-greets-oman-on-56th-national-day",
-    "https://www.brecorder.com/news/40449809/various-sectors-pakistan-asean-agree-to-strengthen-cooperation",
-    "https://www.brecorder.com/news/40449811/cos-asked-to-deposit-dividends-in-designated-govt-account",
-    "https://www.brecorder.com/news/40449814/govt-to-grant-industrial-status-to-gems-jewellery-sector-sharjeel",
-    "https://www.brecorder.com/news/40449820/mian-idress-praises-pak-qatar-takaful",
-    "https://www.brecorder.com/news/40449821/usd179bn-in-textile-exports-at-risk-over-green-compliance-bzu-summit-warns",
-    "https://www.brecorder.com/news/40449822/aptma-german-vfi-agree-to-strengthen-trade",
-    "https://www.brecorder.com/news/40449823/engro-fertilizers-waseela-join-hands-to-support-farmers",
-    "https://www.brecorder.com/news/40449851/drought-preparedness-in-sindh-vulnerable-districts-adviser-asks-un-agencies-to-prioritise-relief-measures",
-    "https://www.brecorder.com/news/40449852/bilawals-press-conference-reflects-national-unity-nasir",
-    "https://www.brecorder.com/news/40449853/vitamin-d-deficiency-call-to-avoid-unnecessary-testing-indiscriminate-high-dose-supplementation",
-    "https://www.brecorder.com/news/40449854/comprehensive-roadmap-initiated-to-transform-islamabads-public-school-system",
-    "https://www.brecorder.com/news/40449855/delegation-of-34-senior-bd-civil-servants-arrives-in-karachi",
-    "https://www.brecorder.com/news/40449856/gree-introduces-new-air-purifier-range",
-    "https://www.brecorder.com/news/40449857/ji-karachi-chief-slams-bilawals-bloodshed-threat",
-    "https://www.brecorder.com/news/40449858/kes-clarification-on-excessive-load-shedding-in-landhi",
-    "https://www.brecorder.com/news/40449859/kmc-undertaking-uplift-projects-through-better-resource-management",
-    "https://www.brecorder.com/news/40449860/loreal-pakistan-locally-manufactures-over-90pc-of-its-products",
-    "https://www.brecorder.com/news/40449861/opposition-accuses-govt-of-failing-to-provide-relief-to-growers",
-    "https://www.brecorder.com/news/40449862/punjab-proposes-amendments-to-consumer-protection-act-2026",
-    "https://www.brecorder.com/news/40449863/sbp-launches-digital-platform-to-streamline-sme-financing",
-    "https://www.brecorder.com/news/40449864/tarar-highlights-strategic-partnership-with-turkiye",
-    "https://www.brecorder.com/news/40449865/indus-waters-treaty-weaponising-shared-natural-resource-violates-intl-law-pakistan",
-    "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
-    "https://www.brecorder.com/news/40449951/dollar-near-19-month-peak-as-ai-jitters-sap-risk-appetite",
-    "https://www.brecorder.com/news/40449952/indian-stocks-seen-falling-from-nine-month-highs-asia-market-rout-deepens",
-    "https://www.brecorder.com/news/40449953/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate",
-    "https://www.brecorder.com/news/40449954/global-risk-jitters-bolster-rupee-as-investors-turn-to-indian-assets",
-    "https://www.brecorder.com/news/40449955/haiti-police-operation-kills-34-suspected-gang-members-in-capital",
-    "https://www.brecorder.com/news/40449956/trump-says-nuclear-arms-limits-with-china-russia-will-be-very-hard-to-achieve"
-  ],
-  "count": 2,
-  "ratings": {
-    "KEL": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Routine clarification on local load-shedding; no tariff or cash-flow mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449858/kes-clarification-on-excessive-load-shedding-in-landhi"
-      ]
-    },
-    "THCCL": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.25,
-      "reason": "VIS maintained A/A2 rating; reaffirmation, no change, already priced",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
-      ]
-    }
+ "as_of": "2026-11-20T05:38:52Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 53,
+ "read_urls": [
+  "https://mettisglobal.news/Asian-markets-tumble-South-Korea-leads-regional-losses-65136",
+  "https://mettisglobal.news/BOP-issues-523m-shares-to-Punjab-govt-against-first-Rs20bn-tranche-65137",
+  "https://mettisglobal.news/Bank-of-Punjab-bags-Product-Innovation-of-the-Year-award-65133",
+  "https://mettisglobal.news/Gold-price-in-Pakistan-falls-Rs3700-per-tola-65127",
+  "https://mettisglobal.news/Govt-reviews-EFS-amendments-to-simplify-exporter-procedures-65132",
+  "https://mettisglobal.news/KAPCOs-BESOS-shares-transferred-back-to-WAPDA-65116",
+  "https://mettisglobal.news/LSEFSL-launches-AI-order-management-system-65138",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65134",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125",
+  "https://mettisglobal.news/PSX-seeks-public-comments-on-revised-draft-prospectus-of-AurionAI-Limited-65120",
+  "https://mettisglobal.news/Pakistan-ASEAN-resolve-to-strengthen-ties-across-peopletopeople-connectivity-65119",
+  "https://mettisglobal.news/Pakistan-LSMI-rises-3-MoM-in-September-65122",
+  "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+  "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128",
+  "https://mettisglobal.news/SCRA-balance-falls-Rs1bn-to-Rs355bn-65129",
+  "https://mettisglobal.news/SECP-orders-transfer-of-unclaimed-dividends-to-govt-account-65118",
+  "https://mettisglobal.news/SHC-freezes-Unity-Foods-assets-orders-board-election-SECP-to-act-within-7-days-65108",
+  "https://mettisglobal.news/SIFC-Endeavor-Pakistan-discuss-linking-local-startups-with-international-investors-65140",
+  "https://mettisglobal.news/Senator-Aurangzeb-woos-World-Bank-IFC-GFTN-on-SMEs-and-fintech-65135",
+  "https://mettisglobal.news/VIS-reaffirms-Macter-Internationals-longterm-rating-at-A-65123",
+  "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124",
+  "https://mettisglobal.news/Zarea-opens-Rs3bn-right-issue-subscription-on-November-26-65139",
+  "https://www.brecorder.com/news/40449807/president-greets-oman-on-56th-national-day",
+  "https://www.brecorder.com/news/40449809/various-sectors-pakistan-asean-agree-to-strengthen-cooperation",
+  "https://www.brecorder.com/news/40449811/cos-asked-to-deposit-dividends-in-designated-govt-account",
+  "https://www.brecorder.com/news/40449814/govt-to-grant-industrial-status-to-gems-jewellery-sector-sharjeel",
+  "https://www.brecorder.com/news/40449820/mian-idress-praises-pak-qatar-takaful",
+  "https://www.brecorder.com/news/40449821/usd179bn-in-textile-exports-at-risk-over-green-compliance-bzu-summit-warns",
+  "https://www.brecorder.com/news/40449851/drought-preparedness-in-sindh-vulnerable-districts-adviser-asks-un-agencies-to-prioritise-relief-measures",
+  "https://www.brecorder.com/news/40449852/bilawals-press-conference-reflects-national-unity-nasir",
+  "https://www.brecorder.com/news/40449853/vitamin-d-deficiency-call-to-avoid-unnecessary-testing-indiscriminate-high-dose-supplementation",
+  "https://www.brecorder.com/news/40449854/comprehensive-roadmap-initiated-to-transform-islamabads-public-school-system",
+  "https://www.brecorder.com/news/40449855/delegation-of-34-senior-bd-civil-servants-arrives-in-karachi",
+  "https://www.brecorder.com/news/40449856/gree-introduces-new-air-purifier-range",
+  "https://www.brecorder.com/news/40449857/ji-karachi-chief-slams-bilawals-bloodshed-threat",
+  "https://www.brecorder.com/news/40449858/kes-clarification-on-excessive-load-shedding-in-landhi",
+  "https://www.brecorder.com/news/40449859/kmc-undertaking-uplift-projects-through-better-resource-management",
+  "https://www.brecorder.com/news/40449860/loreal-pakistan-locally-manufactures-over-90pc-of-its-products",
+  "https://www.brecorder.com/news/40449861/opposition-accuses-govt-of-failing-to-provide-relief-to-growers",
+  "https://www.brecorder.com/news/40449862/punjab-proposes-amendments-to-consumer-protection-act-2026",
+  "https://www.brecorder.com/news/40449863/sbp-launches-digital-platform-to-streamline-sme-financing",
+  "https://www.brecorder.com/news/40449864/tarar-highlights-strategic-partnership-with-turkiye",
+  "https://www.brecorder.com/news/40449865/indus-waters-treaty-weaponising-shared-natural-resource-violates-intl-law-pakistan",
+  "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
+  "https://www.brecorder.com/news/40449951/dollar-near-19-month-peak-as-ai-jitters-sap-risk-appetite",
+  "https://www.brecorder.com/news/40449952/indian-stocks-seen-falling-from-nine-month-highs-asia-market-rout-deepens",
+  "https://www.brecorder.com/news/40449953/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate",
+  "https://www.brecorder.com/news/40449954/global-risk-jitters-bolster-rupee-as-investors-turn-to-indian-assets",
+  "https://www.brecorder.com/news/40449955/haiti-police-operation-kills-34-suspected-gang-members-in-capital",
+  "https://www.brecorder.com/news/40449956/trump-says-nuclear-arms-limits-with-china-russia-will-be-very-hard-to-achieve",
+  "https://www.brecorder.com/news/40449957/psx-kse-100-sheds-over-500-points-in-early-trade",
+  "https://www.brecorder.com/news/40449958/pakistans-lse-financial-services-launches-ai-powered-trading-system-for-brokers"
+ ],
+ "count": 2,
+ "ratings": {
+  "KEL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Routine clarification on Landhi load-shedding; no tariff or cash-flow change",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449858/kes-clarification-on-excessive-load-shedding-in-landhi"
+   ]
   },
-  "sectors": {
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Petrol +Re1/l after 12 cuts, Brent flat-to-up; minor inventory effect only",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
-        "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged",
-        "https://propakistani.pk/2026/11/19/petrol-price-increased-after-12-sessions/",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Petrol +Re1/l, diesel unchanged; negligible inventory gain for OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
-        "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged",
-        "https://propakistani.pk/2026/11/19/petrol-price-increased-after-12-sessions/",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
-      ]
-    },
-    "Gas Distribution": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Petrol price revision has no mechanism to gas utilities' regulated returns",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged"
-      ]
-    },
-    "Oil & Gas Exploration": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Brent ~$92 edging up on Houthi risk but set for weekly decline; drift only",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
-      ]
-    },
-    "Islamic Banking": {
-      "rating": "neutral",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "SBP SME platform launch, reserves +$14.5m; supportive backdrop, no margin change",
-      "text_depth": "full",
-      "sources": [
-        "https://www.dawn.com/news/2045863/auto-financing-boom-continues-as-outstanding-car-loans-rise-state-bank-data-shows",
-        "https://www.brecorder.com/news/40449863/sbp-launches-digital-platform-to-streamline-sme-financing",
-        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
-        "https://www.brecorder.com/news/40449820/mian-idress-praises-pak-qatar-takaful",
-        "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128",
-        "https://propakistani.pk/2026/11/19/total-forex-reserves-down-by-64-million/"
-      ]
-    },
-    "Logistics/Ports": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.1,
-      "reason": "Haiti police story; unrelated to Pakistani ports",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449955/haiti-police-operation-kills-34-suspected-gang-members-in-capital"
-      ]
-    },
-    "Pharmaceuticals": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Vitamin D awareness summit; no pricing or volume mechanism",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449853/vitamin-d-deficiency-call-to-avoid-unnecessary-testing-indiscriminate-high-dose-supplementation"
-      ]
-    },
-    "Textile": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "ESG compliance warning and APTMA-VFI trade understanding; distant, unquantified",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449821/usd179bn-in-textile-exports-at-risk-over-green-compliance-bzu-summit-warns",
-        "https://www.brecorder.com/news/40449822/aptma-german-vfi-agree-to-strengthen-trade"
-      ]
-    },
-    "Textile/Synthetic Fibre": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Apparel ESG/trade talks don't reprice synthetic fibre makers",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449821/usd179bn-in-textile-exports-at-risk-over-green-compliance-bzu-summit-warns",
-        "https://www.brecorder.com/news/40449822/aptma-german-vfi-agree-to-strengthen-trade"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Engro-Waseela advisory tie-up routine; prior-day sector buying is sentiment only",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40449823/engro-fertilizers-waseela-join-hands-to-support-farmers",
-        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
-      ]
-    },
-    "Cement": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Single-company rating reaffirmation; nothing sector-wide",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.15,
-      "reason": "Single-company rating reaffirmation; nothing sector-wide",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Low-volume LC300 hybrid launch by IMC; no sector-wide demand mechanism",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/11/19/toyota-land-cruiser-300-hybrid-launched-in-pakistan-prices-specs-and-features/"
-      ]
-    }
+  "THCCL": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.3,
+   "reason": "VIS maintained A/A2 rating; reaffirmation, no change to cash flows",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
+   ]
   }
+ },
+ "sectors": {
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "Petrol ex-depot +Re1/l and Brent near $92 support small inventory gains; diesel flat",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+    "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.3,
+   "reason": "Petrol +Re1/l ends 12-session cut run, mild inventory gain; HSD unchanged",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+    "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131"
+   ]
+  },
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Brent edges to $92 on Houthi/Hormuz supply fears, though set for weekly decline",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449950/oil-prices-edge-higher-as-houthi-attacks-on-riyadh-raise-supply-concerns",
+    "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+   ]
+  },
+  "Cement": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "KSE-100 down 500+ early on Asian selloff with cement among sectors sold",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449957/psx-kse-100-sheds-over-500-points-in-early-trade"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "negative",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Autos among sectors sold in early Asian-led decline; LC300 hybrid launch is niche",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449957/psx-kse-100-sheds-over-500-points-in-early-trade"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "SBP SMEConnect platform and flat SBP reserves; no direct margin mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449863/sbp-launches-digital-platform-to-streamline-sme-financing",
+    "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128"
+   ]
+  },
+  "Textile": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Summit warning on green compliance; no new policy, duty or order change",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40449821/usd179bn-in-textile-exports-at-risk-over-green-compliance-bzu-summit-warns"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Prior-session buying in fertilizers noted in market wrap; no new mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Petroleum price note only; no gas tariff or circular-debt change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131"
+   ]
+  }
+ }
 }
