@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-20T08:38:07Z",
+  "as_of": "2026-11-20T09:38:17Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
@@ -13,6 +13,7 @@
     "https://mettisglobal.news/KAPCOs-BESOS-shares-transferred-back-to-WAPDA-65116",
     "https://mettisglobal.news/LSEFSL-launches-AI-order-management-system-65138",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+    "https://mettisglobal.news/OMO-Result-SBP-injects-Rs135tr-65148",
     "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141",
     "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125",
     "https://mettisglobal.news/PSX-seeks-public-comments-on-revised-draft-prospectus-of-AurionAI-Limited-65120",
@@ -22,7 +23,6 @@
     "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128",
     "https://mettisglobal.news/SCRA-balance-falls-Rs1bn-to-Rs355bn-65129",
     "https://mettisglobal.news/SECP-tightens-UDIN-compliance-for-companies-audit-reports-65147",
-    "https://mettisglobal.news/SHC-freezes-Unity-Foods-assets-orders-board-election-SECP-to-act-within-7-days-65108",
     "https://mettisglobal.news/SIFC-Endeavor-Pakistan-discuss-linking-local-startups-with-international-investors-65140",
     "https://mettisglobal.news/Senator-Aurangzeb-woos-World-Bank-IFC-GFTN-on-SMEs-and-fintech-65135",
     "https://mettisglobal.news/VIS-reaffirms-Macter-Internationals-longterm-rating-at-A-65123",
@@ -30,7 +30,6 @@
     "https://mettisglobal.news/VIS-upgrades-HiTech-Lubricants-longterm-rating-to-A-65146",
     "https://mettisglobal.news/Xi-Jinping-calls-for-peaceful-coexistence-cooperation-among-major-powers-65142",
     "https://mettisglobal.news/Zarea-opens-Rs3bn-right-issue-subscription-on-November-26-65139",
-    "https://www.brecorder.com/news/40449864/tarar-highlights-strategic-partnership-with-turkiye",
     "https://www.brecorder.com/news/40449865/indus-waters-treaty-weaponising-shared-natural-resource-violates-intl-law-pakistan",
     "https://www.brecorder.com/news/40449952/indian-stocks-seen-falling-from-nine-month-highs-asia-market-rout-deepens",
     "https://www.brecorder.com/news/40449953/asian-shares-head-for-worst-week-since-2020-as-ai-trade-gloom-fails-to-abate",
@@ -59,7 +58,8 @@
     "https://www.brecorder.com/news/40449976/tashima-says-no-plan-at-this-point-to-step-aside-in-fifa-election-race",
     "https://www.brecorder.com/news/40449977/cummins-manager-hits-out-at-hysteria-around-sandpapergate",
     "https://www.brecorder.com/news/40449978/pakistan-condemns-houthi-attack-on-riyadhs-financial-district",
-    "https://www.brecorder.com/news/40449979/pakistans-regulator-reinforces-audit-report-verification-through-udin"
+    "https://www.brecorder.com/news/40449979/pakistans-regulator-reinforces-audit-report-verification-through-udin",
+    "https://www.brecorder.com/news/40449982/field-marshal-munir-visits-north-waziristan-reviews-security-situation"
   ],
   "count": 1,
   "ratings": {
@@ -68,7 +68,7 @@
       "horizon": "single_session",
       "causality": "noise",
       "confidence": 0.6,
-      "reason": "VIS maintains A/A2 rating; routine reaffirmation, no cash-flow change",
+      "reason": "VIS reaffirmed A/A2 ratings unchanged; routine maintenance, no cash-flow change",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
@@ -76,63 +76,121 @@
     }
   },
   "sectors": {
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Turkish seismic vessel begins offshore survey of newly auctioned blocks; early-stage exploration revival",
+    "Logistics/Ports": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.25,
+      "reason": "Seismic vessel docking and Haiti story carry no port-volume or tariff mechanism",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40449975/turkish-seismic-vessel-arrives-in-karachi-to-begin-offshore-oil-gas-survey",
-        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
-      ]
-    },
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Petrol +Rs1, HSD flat; Brent ~$92 heading for weekly loss; no margin change",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Petrol +Rs1/litre, diesel unchanged; marginal inventory effect, no margin policy change",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
-        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141"
+        "https://www.brecorder.com/news/40449955/haiti-police-operation-kills-34-suspected-gang-members-in-capital"
       ]
     },
     "Islamic Banking": {
-      "rating": "positive",
-      "horizon": "multi_session",
+      "rating": "neutral",
+      "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "SBP data shows auto-financing growth (headline only); reserves broadly stable",
+      "confidence": 0.3,
+      "reason": "Routine OMO injection and flat SBP reserves; no change to policy rate or spreads",
       "text_depth": "full",
       "sources": [
+        "https://mettisglobal.news/OMO-Result-SBP-injects-Rs135tr-65148",
         "https://www.dawn.com/news/2045863/auto-financing-boom-continues-as-outstanding-car-loans-rise-state-bank-data-shows",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
         "https://mettisglobal.news/SBP-reserves-rise-145m-to-216bn-65128"
       ]
     },
     "Fertilizer": {
       "rating": "neutral",
       "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Only prior-session buying mentioned in market wrap; no sector mechanism",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Licence curbs target overcharging dealers, not makers' prices; prior-day buying already traded",
       "text_depth": "full",
       "sources": [
+        "https://www.brecorder.com/news/40449966/xi-hails-comprehensive-turnaround-in-china-australia-ties",
+        "https://propakistani.pk/2026/11/20/licenses-of-overcharging-fertilizer-dealers-to-be-cancelled/",
         "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+      ]
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Rs1/l petrol rise, diesel flat and Brent ~$92 on weekly loss: minimal margin impact",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged",
+        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Rs1/l petrol rise gives trivial inventory gain; diesel unchanged, no margin revision",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141",
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged",
+        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125",
+        "https://mettisglobal.news/Pakistan-LSMI-rises-3-MoM-in-September-65122"
+      ]
+    },
+    "Oil & Gas Exploration": {
+      "rating": "positive",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.35,
+      "reason": "Brent firming near $92 on Mideast supply risk supports E&P realised prices",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-holds-near-92-amid-renewed-Middle-East-supply-concerns-65141",
+        "https://mettisglobal.news/PSX-Closing-Bell-A-Green-Footnote-65125"
+      ]
+    },
+    "Gas Distribution": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Only petrol price stories; no gas tariff or UFG decision",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65131",
+        "https://mettisglobal.news/Petrol-price-up-by-Rs1-diesel-rates-unchanged-65130",
+        "https://www.dawn.com/news/2045695/govt-snaps-petrol-price-reduction-spree-as-rate-raised-by-re1-per-litre-diesel-remains-unchanged"
+      ]
+    },
+    "Cement": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Single-company rating reaffirmation does not reprice the sector",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
+      ]
+    },
+    "Cement/Conglomerate": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "noise",
+      "confidence": 0.2,
+      "reason": "Single-company rating reaffirmation does not reprice the sector",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/VIS-reaffirms-Thatta-Cements-AA2-entity-ratings-65124"
       ]
     }
   }
