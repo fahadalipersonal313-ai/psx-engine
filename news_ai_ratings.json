@@ -1,10 +1,11 @@
 {
-  "as_of": "2026-11-23T08:38:50Z",
+  "as_of": "2026-11-23T09:38:07Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 43,
+  "articles_read": 44,
   "read_urls": [
+    "https://mettisglobal.news/AI-spending-falling-oil-to-keep-global-growth-steady-in-2027-65180",
     "https://mettisglobal.news/Airlink-Communication-retains-A-long-term-entity-rating-65169",
     "https://mettisglobal.news/Banks-foreign-borrowings-rise-5-MoM-in-October-65176",
     "https://mettisglobal.news/DRAP-digitizes-licensing-registration-for-alternative-medicines-65172",
@@ -19,7 +20,6 @@
     "https://mettisglobal.news/SECP-registers-2-new-REIT-schemes-total-rises-to-31-65175",
     "https://mettisglobal.news/TDAPs-FoodAg-soft-launch-showcases-Pakistans-agrifood-export-potential-65171",
     "https://www.brecorder.com/news/40448907/fintech-neem-secures-investment-from-adb-ventures-to-expand-pakistans-financial-infrastructure",
-    "https://www.brecorder.com/news/40450315/new-zealand-rearguard-frustrates-india-as-first-test-ends-in-draw",
     "https://www.brecorder.com/news/40450316/pop-star-miley-cyrus-weds-drummer-maxx-morando-in-california",
     "https://www.brecorder.com/news/40450317/psx-stocks-surge-kse-100-up-nearly-1200-points",
     "https://www.brecorder.com/news/40450318/india-bonds-give-up-marginal-opening-gains-as-profit-booking-takes-over",
@@ -47,7 +47,8 @@
     "https://www.brecorder.com/news/40450340/alcaraz-charges-past-world-number-one-zverev-to-clinch-atp-finals-title",
     "https://www.brecorder.com/news/40450341/pakistans-mobile-phone-import-bill-falls-72-in-first-four-months-of-fy27",
     "https://www.brecorder.com/news/40450342/punjabs-anti-smog-plan-shows-encouraging-results-as-aqi-drops-within-hours-of-on-ground-action",
-    "https://www.brecorder.com/news/40450343/the-vertical-introduces-v6-an-exclusive-commercial-address-with-just-six-distinctive-units"
+    "https://www.brecorder.com/news/40450343/the-vertical-introduces-v6-an-exclusive-commercial-address-with-just-six-distinctive-units",
+    "https://www.brecorder.com/news/40450344/european-stocks-recover-after-steep-technology-led-selloff"
   ],
   "count": 2,
   "ratings": {
@@ -56,7 +57,7 @@
       "horizon": "multi_session",
       "causality": "causal",
       "confidence": 0.6,
-      "reason": "Signed $200m OQT supply credit line eases PSO fuel-import financing and supply security",
+      "reason": "Signed $200m OQT credit line + supply deal eases PSO fuel-import financing and supply risk",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/PSO-secures-200m-credit-facility-from-Omans-OQT-65168",
@@ -67,8 +68,8 @@
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.6,
-      "reason": "PACRA maintained A+/A1 stable; unchanged rating, no new mechanism",
+      "confidence": 0.3,
+      "reason": "PACRA maintained A+/A1 stable; routine unchanged rating, no cash-flow change",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Airlink-Communication-retains-A-long-term-entity-rating-65169"
@@ -76,34 +77,12 @@
     }
   },
   "sectors": {
-    "Logistics/Ports": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.55,
-      "reason": "FCC struck down Sindh/KP infrastructure cess on imports/exports; lowers trade-flow costs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/FCC-bars-the-door-on-port-cess-65174"
-      ]
-    },
     "Oil & Gas Exploration": {
       "rating": "negative",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Brent down third week near $92 trims E&P realised price expectations",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-extends-3week-slide-amid-global-market-rout-65178"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.3,
-      "reason": "Mild crude slide implies small inventory effect; PSO credit line is company-specific",
+      "confidence": 0.4,
+      "reason": "Brent down third straight week (~$92) trims realized oil prices for E&Ps",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-extends-3week-slide-amid-global-market-rout-65178"
@@ -111,21 +90,44 @@
     },
     "Refinery": {
       "rating": "neutral",
-      "horizon": "single_session",
+      "horizon": "multi_session",
       "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "Crude drift lower with no product-margin or policy change reported",
+      "confidence": 0.3,
+      "reason": "Crude slide: inventory loss risk vs cheaper feedstock; no direct margin mechanism",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Oil-extends-3week-slide-amid-global-market-rout-65178"
+      ]
+    },
+    "Oil Marketing": {
+      "rating": "neutral",
+      "horizon": "multi_session",
+      "causality": "correlated",
+      "confidence": 0.3,
+      "reason": "Falling crude implies inventory losses; offset by PSO supply-financing deal",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-extends-3week-slide-amid-global-market-rout-65178",
+        "https://mettisglobal.news/PSO-secures-200m-credit-facility-from-Omans-OQT-65168"
+      ]
+    },
+    "Logistics/Ports": {
+      "rating": "positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.55,
+      "reason": "FCC struck down Sindh/KP infrastructure cess on imports/exports, cutting trade costs",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/FCC-bars-the-door-on-port-cess-65174"
       ]
     },
     "Islamic Banking": {
       "rating": "neutral",
       "horizon": "single_session",
       "causality": "noise",
-      "confidence": 0.3,
-      "reason": "SBP data on bank FX borrowings/deposits; no earnings mechanism for the sector",
+      "confidence": 0.25,
+      "reason": "Monthly SBP data on bank FX borrowing/deposits; no margin mechanism",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Banks-foreign-borrowings-rise-5-MoM-in-October-65176"
@@ -136,7 +138,7 @@
       "horizon": "long_term",
       "causality": "correlated",
       "confidence": 0.25,
-      "reason": "SECP registered two new REIT schemes; incremental sector development, no listed cash-flow impact",
+      "reason": "Two new REIT schemes registered (total 31); incremental, no listed-name impact",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40450332/secp-registers-two-new-reit-schemes",
@@ -147,55 +149,22 @@
       "rating": "neutral",
       "horizon": "long_term",
       "causality": "noise",
-      "confidence": 0.3,
-      "reason": "DRAP digitised alternative-medicine licensing; procedural, no margin effect",
+      "confidence": 0.2,
+      "reason": "DRAP digital licensing for alternative medicines; procedural only",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/DRAP-digitizes-licensing-registration-for-alternative-medicines-65172"
       ]
     },
-    "Fertilizer": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Only named in intraday market wrap; no sector-specific news",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40450317/psx-stocks-surge-kse-100-up-nearly-1200-points"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Only named in intraday market wrap; no sector-specific news",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40450317/psx-stocks-surge-kse-100-up-nearly-1200-points"
-      ]
-    },
-    "Cement": {
+    "Technology/Telecom": {
       "rating": "neutral",
       "horizon": "long_term",
       "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Opinion piece on hydropower liabilities; no project or demand change",
+      "confidence": 0.15,
+      "reason": "PTA proposes database to block foreign SIM misuse; early-stage, no cash-flow link",
       "text_depth": "headline",
       "sources": [
-        "https://www.dawn.com/news/2046472/big-dams-bigger-liabilities"
-      ]
-    },
-    "Cement/Conglomerate": {
-      "rating": "neutral",
-      "horizon": "long_term",
-      "causality": "noise",
-      "confidence": 0.2,
-      "reason": "Opinion piece on hydropower liabilities; no project or demand change",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2046472/big-dams-bigger-liabilities"
+        "https://propakistani.pk/2026/11/23/pta-plans-central-database-to-track-and-block-foreign-sim-users/"
       ]
     }
   }
