@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-11-25T07:38:51Z",
+  "as_of": "2026-11-25T08:38:39Z",
   "provider": "claude-routine",
   "model": "claude-session",
   "depth": "full-text",
-  "articles_read": 51,
+  "articles_read": 52,
   "read_urls": [
     "https://mettisglobal.news/ABHI-Microfinance-Bank-successfully-lists-on-PSX-65215",
     "https://mettisglobal.news/CDNS-mobilizes-Rs700bn-in-JulyNov-23-eyes-Rs15tr-for-FY27-65221",
@@ -14,6 +14,7 @@
     "https://mettisglobal.news/Gold-extends-rebound-from-14month-low-65201",
     "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs1300-per-tola-65219",
     "https://mettisglobal.news/Govt-picks-Commerzbank-JP-Morgan-Standard-Chartered-for-500m-MIGAbacked-facility-65225",
+    "https://mettisglobal.news/Hinopak-Motors-H1-profit-edges-up-5-to-Rs567m-65238",
     "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227",
     "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65223",
     "https://mettisglobal.news/Money-supply-slips-below-Rs50tr-in-October-65220",
@@ -26,10 +27,6 @@
     "https://mettisglobal.news/Pakistan-customs-seizes-Rs27m-worth-of-marijuana-65230",
     "https://mettisglobal.news/Second-Panda-bond-for-Pakistan-likely-within-months-Standard-Chartered-65237",
     "https://mettisglobal.news/Wahdat-Poultry-reports-IPO-fund-usage-65206",
-    "https://www.brecorder.com/news/40450650/chinas-shenzhou-24-docks-at-space-station-with-pakistani-national-as-first-foreign-astronaut",
-    "https://www.brecorder.com/news/40450651/oil-slips-over-1-as-supply-glut-prospect-offsets-middle-east-disruption-fears",
-    "https://www.brecorder.com/news/40450652/indian-rupee-to-resume-rally-on-positive-flow-backdrop-turn-in-market-sentiment",
-    "https://www.brecorder.com/news/40450653/indian-shares-may-open-higher-as-foreign-inflows-lower-oil-prices-aid-sentiment",
     "https://www.brecorder.com/news/40450654/nvidias-huang-said-he-violated-code-of-conduct-source-says",
     "https://www.brecorder.com/news/40450655/dollar-takes-breather-ahead-of-us-data-on-fed-path-aussie-jumps-on-cpi",
     "https://www.brecorder.com/news/40450656/stocks-retreat-as-ai-rebound-stumbles-tariff-threats-loom",
@@ -55,19 +52,24 @@
     "https://www.brecorder.com/news/40450676/london-copper-steadies-after-overnight-rout-as-ai-relief-rally-fizzles",
     "https://www.brecorder.com/news/40450677/chinas-yuan-touches-3-week-high-but-trade-tension-worries-cap-gains",
     "https://www.brecorder.com/news/40450678/soybeans-ease-from-four-week-top-brazilian-planting-weighs",
-    "https://www.brecorder.com/news/40450679/japans-nikkei-falls-more-than-3-dragged-down-by-plunges-for-ai-stocks"
+    "https://www.brecorder.com/news/40450679/japans-nikkei-falls-more-than-3-dragged-down-by-plunges-for-ai-stocks",
+    "https://www.brecorder.com/news/40450680/south-korean-stocks-slide-as-wall-street-tech-slump-revives-ai-doubts",
+    "https://www.brecorder.com/news/40450681/pakistan-secures-first-tuna-quota-eyes-maldives-investment",
+    "https://www.brecorder.com/news/40450682/khawaja-says-disappointed-by-cummins-sandpapergate-attack",
+    "https://www.brecorder.com/news/40450683/sooryavanshi-says-yuvraj-singh-advice-inspired-record-breaking-204"
   ],
-  "count": 2,
+  "count": 3,
   "ratings": {
-    "HCAR": {
-      "rating": "highly_positive",
-      "horizon": "multi_session",
+    "PSO": {
+      "rating": "positive",
+      "horizon": "long_term",
       "causality": "causal",
-      "confidence": 0.8,
-      "reason": "H1 profit up 2.5x to Rs3.93bn, EPS Rs27.55 vs Rs11.00; results out",
-      "text_depth": "full",
+      "confidence": 0.35,
+      "reason": "G2G deal for Chinese investment in PSO fuel/LPG storage terminals; early-stage, no figure",
+      "text_depth": "headline",
       "sources": [
-        "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
+        "https://www.dawn.com/news/2046979/pakistan-china-agree-on-government-to-government-arrangements-for-fuel-storage-terminal-facilities",
+        "https://www.brecorder.com/news/40450673/pakistan-amp-china-agree-to-fast-track-lpg-mogas-projects"
       ]
     },
     "CNERGY": {
@@ -75,10 +77,21 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.45,
-      "reason": "Seeking $150-300mn foreign financing for $1.2-1.5bn upgrade; plan stage, higher-value fuels",
+      "reason": "Seeking $150-300m financing for $1.2-1.5bn upgrade to higher-value fuels; plan stage",
       "text_depth": "full",
       "sources": [
         "https://www.brecorder.com/news/40450667/pakistans-largest-oil-refinery-seeks-up-to-300-million-in-foreign-financing-for-refinery-upgrade-report"
+      ]
+    },
+    "HCAR": {
+      "rating": "highly_positive",
+      "horizon": "multi_session",
+      "causality": "causal",
+      "confidence": 0.8,
+      "reason": "H1 profit up 2.5x to Rs3.93bn, EPS Rs27.55, on 34% revenue growth plus Rs3.39bn cess reversal",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
       ]
     }
   },
@@ -87,37 +100,35 @@
       "rating": "negative",
       "horizon": "single_session",
       "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Brent down ~1.6% to ~$90 on surplus fears; lowers realised prices if sustained",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-retreats-on-surplus-fears-despite-rising-Middle-East-tensions-65236",
-        "https://www.brecorder.com/news/40450651/oil-slips-over-1-as-supply-glut-prospect-offsets-middle-east-disruption-fears"
-      ]
-    },
-    "Refinery": {
-      "rating": "neutral",
-      "horizon": "single_session",
-      "causality": "correlated",
       "confidence": 0.3,
-      "reason": "Softer crude offsets; Cnergy upgrade plan is company-specific, not sector repricing",
+      "reason": "Brent down 1.6% to ~$90 on surplus fears; lower realised prices drift",
       "text_depth": "full",
       "sources": [
-        "https://mettisglobal.news/Oil-retreats-on-surplus-fears-despite-rising-Middle-East-tensions-65236",
-        "https://www.brecorder.com/news/40450651/oil-slips-over-1-as-supply-glut-prospect-offsets-middle-east-disruption-fears",
-        "https://www.brecorder.com/news/40450667/pakistans-largest-oil-refinery-seeks-up-to-300-million-in-foreign-financing-for-refinery-upgrade-report"
+        "https://mettisglobal.news/Oil-retreats-on-surplus-fears-despite-rising-Middle-East-tensions-65236"
       ]
     },
     "Oil Marketing": {
       "rating": "negative",
       "horizon": "single_session",
       "causality": "causal",
-      "confidence": 0.35,
-      "reason": "OGRA cut diesel Rs4, petrol Rs1 from Nov 25; small inventory losses for OMCs",
+      "confidence": 0.4,
+      "reason": "OGRA cut diesel Rs4/petrol Rs1 per litre; inventory losses on held stock",
       "text_depth": "full",
       "sources": [
         "https://mettisglobal.news/Diesel-price-cut-by-Rs4-petrol-by-Rs1-per-litre-65222",
         "https://mettisglobal.news/Oil-retreats-on-surplus-fears-despite-rising-Middle-East-tensions-65236"
+      ]
+    },
+    "Refinery": {
+      "rating": "neutral",
+      "horizon": "single_session",
+      "causality": "correlated",
+      "confidence": 0.25,
+      "reason": "Crude retreat and one refiner's upgrade plan; no sector-wide margin mechanism",
+      "text_depth": "full",
+      "sources": [
+        "https://mettisglobal.news/Oil-retreats-on-surplus-fears-despite-rising-Middle-East-tensions-65236",
+        "https://www.brecorder.com/news/40450667/pakistans-largest-oil-refinery-seeks-up-to-300-million-in-foreign-financing-for-refinery-upgrade-report"
       ]
     },
     "Food": {
@@ -125,33 +136,10 @@
       "horizon": "long_term",
       "causality": "causal",
       "confidence": 0.4,
-      "reason": "Cabinet approved sugar deregulation (IMF benchmark), free inter-provincial movement",
+      "reason": "Cabinet approved sugar deregulation with free interprovincial movement; IMF benchmark",
       "text_depth": "headline",
       "sources": [
         "https://www.dawn.com/news/2046808/cabinet-approves-deregulation-of-sugar-sector-to-meet-imf-benchmark"
-      ]
-    },
-    "Technology/Telecom": {
-      "rating": "negative",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.25,
-      "reason": "PTA considering mandatory solar at outage-hit towers; capex burden, early stage",
-      "text_depth": "headline",
-      "sources": [
-        "https://propakistani.pk/2026/11/25/pta-may-force-telcos-to-solar-power-their-mobile-towers/"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.35,
-      "reason": "Buying interest in autos at open; HCAR 2.5x H1 profit lifts peer sentiment",
-      "text_depth": "full",
-      "sources": [
-        "https://www.brecorder.com/news/40450666/psx-buying-interest-at-bourse-kse-100-gains-over-300-points",
-        "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
       ]
     }
   }
