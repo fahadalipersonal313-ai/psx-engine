@@ -1,170 +1,266 @@
 {
-  "as_of": "2026-11-26T06:39:05Z",
-  "provider": "claude-routine",
-  "model": "claude-session",
-  "depth": "full-text",
-  "articles_read": 54,
-  "read_urls": [
-    "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257",
-    "https://mettisglobal.news/Asia-markets-climb-as-tech-shares-recover-65251",
-    "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252",
-    "https://mettisglobal.news/Gold-drops-to-3521-ahead-of-US-PCE-data-65233",
-    "https://mettisglobal.news/Govt-adds-new-tier-to-PM-Youth-Business-and-Agriculture-Loan-Scheme-65256",
-    "https://mettisglobal.news/Hinopak-Motors-H1-profit-edges-up-5-to-Rs567m-65238",
-    "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65249",
-    "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65253",
-    "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
-    "https://mettisglobal.news/PM-orders-fasttracking-of-NCCIA-overhaul-65240",
-    "https://mettisglobal.news/PSX-Closing-Bell-A-Hint-of-Retreat-65242",
-    "https://mettisglobal.news/Pakistan-Brazil-explore-expanded-agri-trade-livestock-modernisation-65231",
-    "https://mettisglobal.news/Pakistan-China-agree-to-fasttrack-LPG-MoGas-projects-65232",
-    "https://mettisglobal.news/Pakistan-Qatars-Baladna-explore-joint-ventures-in-dairy-livestock-and-animal-feed-65234",
-    "https://mettisglobal.news/Pakistan-invites-Maldives-to-invest-in-tuna-processing-65239",
-    "https://mettisglobal.news/Pakistan-secures-250m-ADB-financing-to-strengthen-PPP-framework-65241",
-    "https://mettisglobal.news/Petrol-price-falls-by-Rs4-diesel-gets-Rs5-cut-65248",
-    "https://mettisglobal.news/President-Zardari-urges-forwardlooking-ties-with-Bangladesh-65255",
-    "https://mettisglobal.news/Roshan-Packages-upbeat-on-growth-in-FY27-65244",
-    "https://mettisglobal.news/SBP-raises-Rs690bn-through-MTB-auction-65246",
-    "https://mettisglobal.news/SECPs-HUM-report-not-connected-Senate-panel-65245",
-    "https://mettisglobal.news/Second-Panda-bond-for-Pakistan-likely-within-months-Standard-Chartered-65237",
-    "https://mettisglobal.news/US-prepares-fresh-tariffs-on-14-economies-65250",
-    "https://www.brecorder.com/news/40450812/concern-voiced-over-decline-in-foreign-investors-confidence",
-    "https://www.brecorder.com/news/40450813/ml-1-project-to-transform-railways-as-modern-transport-hcstsi-chief",
-    "https://www.brecorder.com/news/40450814/pakistan-seeks-italys-support-to-modernise-marble-industry",
-    "https://www.brecorder.com/news/40450815/pia-cancels-two-uk-flights",
-    "https://www.brecorder.com/news/40450816/sau-sets-up-fruit-protection-paper-bag-unit-to-boost-mango-exports",
-    "https://www.brecorder.com/news/40450817/asia-shares-bounce-ai-and-tariffs-lurk-in-background",
-    "https://www.brecorder.com/news/40450818/bok-raises-base-rate-by-25-bps-to-325-as-expected",
-    "https://www.brecorder.com/news/40450819/indian-shares-set-to-extend-gains-on-strong-foreign-flows-us-tariffs-in-focus",
-    "https://www.brecorder.com/news/40450820/indian-rupee-to-dip-on-oil-rise-ai-trade-finding-tentative-footing",
-    "https://www.brecorder.com/news/40450821/dollar-steady-as-sliding-yields-temper-safe-haven-bid",
-    "https://www.brecorder.com/news/40450822/duran-duran-guitarist-and-songwriter-andy-taylor-dies-at-65",
-    "https://www.brecorder.com/news/40450823/russian-forces-hit-kyiv-with-ballistic-missiles-mayor-says",
-    "https://www.brecorder.com/news/40450824/indonesian-rescuers-resume-search-for-13-people-trapped-inside-illegal-mine-after-13-confirmed-dead",
-    "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships",
-    "https://www.brecorder.com/news/40450826/new-york-court-upholds-mayor-mamdanis-rent-freeze",
-    "https://www.brecorder.com/news/40450827/gold-steadies-after-hitting-over-1-year-low-fed-outlook-in-focus",
-    "https://www.brecorder.com/news/40450828/us-officials-divided-over-chinese-spying-allegations-following-jensen-huangs-return",
-    "https://www.brecorder.com/news/40450829/thirty-one-killed-in-fire-after-vehicle-overturns-in-egypt",
-    "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points",
-    "https://www.brecorder.com/news/40450831/pakistan-dairy-firm-cuts-energy-costs-with-600-kw-solar-plant",
-    "https://www.brecorder.com/news/40450832/musk-pledges-two-spacex-shares-for-every-american-child",
-    "https://www.brecorder.com/news/40450833/australia-shares-end-higher-as-investors-return-to-battered-mining-stocks",
-    "https://www.brecorder.com/news/40450834/pakistan-maldives-eye-may-2027-for-direct-flights",
-    "https://www.brecorder.com/news/40450835/jannik-sinner-to-miss-australian-open-after-undergoing-surgery-on-knee-injury",
-    "https://www.brecorder.com/news/40450836/palm-oil-rises-on-indonesias-proposed-new-export-charge",
-    "https://www.brecorder.com/news/40450837/india-orders-tougher-surveillance-of-packaged-water-scrutiny-set-to-cover-pepsico-coca-cola",
-    "https://www.brecorder.com/news/40450838/govt-proposes-at-least-5-value-addition-target-for-seafood-exporters",
-    "https://www.brecorder.com/news/40450839/nvidia-halts-chip-shipments-to-southeast-asia-ft-reports",
-    "https://www.brecorder.com/news/40450840/yuan-holds-steady-near-three-week-high-despite-tariff-risk",
-    "https://www.brecorder.com/news/40450841/china-japan-south-korea-and-asean-launch-talks-on-digital-payments-across-borders"
-  ],
-  "count": 3,
-  "ratings": {
-    "ASL": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.65,
-      "reason": "CRC price raised Rs2,000/t effective Nov 26, reaching peer parity; direct margin lift",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257"
-      ]
-    },
-    "HCAR": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.6,
-      "reason": "H1 profit up 2.5x to Rs3.93bn on 34% revenue growth; results out Nov 25, partly priced",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
-      ]
-    },
-    "PSO": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "Pakistan-China agree to pursue G2G investment in fuel/LPG storage with PSO; early-stage",
-      "text_depth": "headline",
-      "sources": [
-        "https://www.dawn.com/news/2046979/pakistan-china-agree-on-government-to-government-arrangements-for-fuel-storage-terminal-facilities"
-      ]
-    }
+ "as_of": "2026-11-26T07:38:18Z",
+ "provider": "claude-routine",
+ "model": "claude-session",
+ "depth": "full-text",
+ "articles_read": 55,
+ "read_urls": [
+  "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257",
+  "https://mettisglobal.news/Asia-markets-climb-as-tech-shares-recover-65251",
+  "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252",
+  "https://mettisglobal.news/Gold-drops-to-3521-ahead-of-US-PCE-data-65233",
+  "https://mettisglobal.news/Gold-holds-above-3568-after-oneyear-low-65258",
+  "https://mettisglobal.news/Govt-adds-new-tier-to-PM-Youth-Business-and-Agriculture-Loan-Scheme-65256",
+  "https://mettisglobal.news/Govt-proposes-5-of-seafood-exports-be-allocated-to-valueadded-products-65259",
+  "https://mettisglobal.news/Hinopak-Motors-H1-profit-edges-up-5-to-Rs567m-65238",
+  "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227",
+  "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65249",
+  "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65253",
+  "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
+  "https://mettisglobal.news/PM-orders-fasttracking-of-NCCIA-overhaul-65240",
+  "https://mettisglobal.news/PSX-Closing-Bell-A-Hint-of-Retreat-65242",
+  "https://mettisglobal.news/Pakistan-China-agree-to-fasttrack-LPG-MoGas-projects-65232",
+  "https://mettisglobal.news/Pakistan-Qatars-Baladna-explore-joint-ventures-in-dairy-livestock-and-animal-feed-65234",
+  "https://mettisglobal.news/Pakistan-invites-Maldives-to-invest-in-tuna-processing-65239",
+  "https://mettisglobal.news/Pakistan-secures-250m-ADB-financing-to-strengthen-PPP-framework-65241",
+  "https://mettisglobal.news/Petrol-price-falls-by-Rs4-diesel-gets-Rs5-cut-65248",
+  "https://mettisglobal.news/President-Zardari-urges-forwardlooking-ties-with-Bangladesh-65255",
+  "https://mettisglobal.news/Roshan-Packages-upbeat-on-growth-in-FY27-65244",
+  "https://mettisglobal.news/SBP-raises-Rs690bn-through-MTB-auction-65246",
+  "https://mettisglobal.news/SECPs-HUM-report-not-connected-Senate-panel-65245",
+  "https://mettisglobal.news/Second-Panda-bond-for-Pakistan-likely-within-months-Standard-Chartered-65237",
+  "https://mettisglobal.news/US-prepares-fresh-tariffs-on-14-economies-65250",
+  "https://www.brecorder.com/news/40450820/indian-rupee-to-dip-on-oil-rise-ai-trade-finding-tentative-footing",
+  "https://www.brecorder.com/news/40450821/dollar-steady-as-sliding-yields-temper-safe-haven-bid",
+  "https://www.brecorder.com/news/40450822/duran-duran-guitarist-and-songwriter-andy-taylor-dies-at-65",
+  "https://www.brecorder.com/news/40450823/russian-forces-hit-kyiv-with-ballistic-missiles-mayor-says",
+  "https://www.brecorder.com/news/40450824/indonesian-rescuers-resume-search-for-13-people-trapped-inside-illegal-mine-after-13-confirmed-dead",
+  "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships",
+  "https://www.brecorder.com/news/40450826/new-york-court-upholds-mayor-mamdanis-rent-freeze",
+  "https://www.brecorder.com/news/40450827/gold-ticks-up-after-hitting-15-month-low-fed-outlook-in-focus",
+  "https://www.brecorder.com/news/40450828/us-officials-divided-over-chinese-spying-allegations-following-jensen-huangs-return",
+  "https://www.brecorder.com/news/40450829/thirty-one-killed-in-fire-after-vehicle-overturns-in-egypt",
+  "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points",
+  "https://www.brecorder.com/news/40450831/pakistan-dairy-firm-cuts-energy-costs-with-600-kw-solar-plant",
+  "https://www.brecorder.com/news/40450832/musk-pledges-two-spacex-shares-for-every-american-child",
+  "https://www.brecorder.com/news/40450833/australia-shares-end-higher-as-investors-return-to-battered-mining-stocks",
+  "https://www.brecorder.com/news/40450834/pakistan-maldives-eye-may-2027-for-direct-flights",
+  "https://www.brecorder.com/news/40450835/jannik-sinner-to-miss-australian-open-after-undergoing-surgery-on-knee-injury",
+  "https://www.brecorder.com/news/40450836/palm-oil-rises-on-indonesias-proposed-new-export-charge",
+  "https://www.brecorder.com/news/40450837/india-orders-tougher-surveillance-of-packaged-water-scrutiny-set-to-cover-pepsico-coca-cola",
+  "https://www.brecorder.com/news/40450838/govt-proposes-at-least-5-value-addition-target-for-seafood-exporters",
+  "https://www.brecorder.com/news/40450839/nvidia-halts-chip-shipments-to-southeast-asia-ft-reports",
+  "https://www.brecorder.com/news/40450840/yuan-holds-steady-near-three-week-high-despite-tariff-risk",
+  "https://www.brecorder.com/news/40450841/china-japan-south-korea-and-asean-launch-talks-on-digital-payments-across-borders",
+  "https://www.brecorder.com/news/40450842/china-shares-flat-as-markets-struggle-to-shake-off-tariff-risks",
+  "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+  "https://www.brecorder.com/news/40450844/copper-bounces-back-toward-12000-as-us-tariff-fears-ease",
+  "https://www.brecorder.com/news/40450845/singapore-very-disappointed-over-new-tariffs-urges-us-to-reconsider",
+  "https://www.brecorder.com/news/40450846/australian-dollar-finds-support-in-data-centre-boom-kiwi-edges-away-from-17-year-low",
+  "https://www.brecorder.com/news/40450847/japans-nikkei-bounces-as-dip-buyers-scoop-up-ai-stocks",
+  "https://www.brecorder.com/news/40450849/security-forces-kill-12-terrorists-in-four-balochistan-districts-ispr",
+  "https://www.brecorder.com/news/40450850/trumps-new-tariffs-aim-to-prise-global-trade-from-chinas-grip"
+ ],
+ "count": 3,
+ "ratings": {
+  "ASL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.7,
+   "reason": "CRC price raised Rs2,000/t effective today, near parity with ISL; direct margin lift",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257"
+   ]
   },
-  "sectors": {
-    "Oil & Gas Exploration": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "causal",
-      "confidence": 0.65,
-      "reason": "Brent up 4.3% above $95 on Houthi refinery attack and Hormuz mines; lifts E&P realisations",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
-        "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships"
-      ]
-    },
-    "Refinery": {
-      "rating": "positive",
-      "horizon": "single_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "Crude spike may bring inventory gains, but cracks uncertain; sentiment-led",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
-        "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships"
-      ]
-    },
-    "Oil Marketing": {
-      "rating": "negative",
-      "horizon": "single_session",
-      "causality": "causal",
-      "confidence": 0.35,
-      "reason": "OGRA cut petrol Rs4, diesel Rs5 from Nov 26; inventory losses for OMCs",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Petrol-price-falls-by-Rs4-diesel-gets-Rs5-cut-65248"
-      ]
-    },
-    "Auto Assembler": {
-      "rating": "positive",
-      "horizon": "multi_session",
-      "causality": "correlated",
-      "confidence": 0.4,
-      "reason": "HCAR earnings surge signals strong car demand; fuel price cut supportive",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227",
-        "https://mettisglobal.news/Petrol-price-falls-by-Rs4-diesel-gets-Rs5-cut-65248"
-      ]
-    },
-    "Food": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "causal",
-      "confidence": 0.3,
-      "reason": "Qatar's Baladna exploring dairy/feed JVs and sourcing in Pakistan; exploratory, no number",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Pakistan-Qatars-Baladna-explore-joint-ventures-in-dairy-livestock-and-animal-feed-65234"
-      ]
-    },
-    "Fertilizer": {
-      "rating": "positive",
-      "horizon": "long_term",
-      "causality": "correlated",
-      "confidence": 0.25,
-      "reason": "New Rs25mn tier at 8% in PM agri loan scheme may support farm input demand",
-      "text_depth": "full",
-      "sources": [
-        "https://mettisglobal.news/Govt-adds-new-tier-to-PM-Youth-Business-and-Agriculture-Loan-Scheme-65256"
-      ]
-    }
+  "PSO": {
+   "rating": "positive",
+   "horizon": "long_term",
+   "causality": "causal",
+   "confidence": 0.35,
+   "reason": "G2G Chinese investment in fuel/LPG storage terminals agreed in principle; no amount, early stage",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.dawn.com/news/2046979/pakistan-china-agree-on-government-to-government-arrangements-for-fuel-storage-terminal-facilities"
+   ]
+  },
+  "HCAR": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "causal",
+   "confidence": 0.55,
+   "reason": "H1 profit 2.5x on 34% revenue rise, aided by one-off Rs3.4bn SIDC reversal; results out 25 Nov",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
+   ]
   }
+ },
+ "sectors": {
+  "Oil & Gas Exploration": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.6,
+   "reason": "Brent above $95 on Houthi refinery attack and Hormuz mine strikes lifts E&P realised prices",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships",
+    "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+    "https://www.brecorder.com/news/40450833/australia-shares-end-higher-as-investors-return-to-battered-mining-stocks",
+    "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
+    "https://www.brecorder.com/news/40450820/indian-rupee-to-dip-on-oil-rise-ai-trade-finding-tentative-footing"
+   ]
+  },
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Attack on Saudi refinery may widen product cracks; crude spike also raises feedstock cost",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships",
+    "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+    "https://www.brecorder.com/news/40450833/australia-shares-end-higher-as-investors-return-to-battered-mining-stocks",
+    "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
+    "https://www.brecorder.com/news/40450820/indian-rupee-to-dip-on-oil-rise-ai-trade-finding-tentative-footing",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65249"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Rising crude implies inventory gains later, but Nov 26 price cut trims stock value now",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450825/oil-rises-on-supply-concerns-as-iran-claims-mine-strikes-on-ships",
+    "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+    "https://www.brecorder.com/news/40450833/australia-shares-end-higher-as-investors-return-to-battered-mining-stocks",
+    "https://mettisglobal.news/Oil-climbs-above-95-on-Houthi-refinery-attack-claim-65254",
+    "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points",
+    "https://www.brecorder.com/news/40450829/thirty-one-killed-in-fire-after-vehicle-overturns-in-egypt"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Routine T-bill auction and loan scheme tier tweak; no sector-wide earnings mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+    "https://mettisglobal.news/Govt-adds-new-tier-to-PM-Youth-Business-and-Agriculture-Loan-Scheme-65256",
+    "https://mettisglobal.news/Asia-markets-climb-as-tech-shares-recover-65251",
+    "https://mettisglobal.news/SBP-raises-Rs690bn-through-MTB-auction-65246",
+    "https://mettisglobal.news/SECPs-HUM-report-not-connected-Senate-panel-65245"
+   ]
+  },
+  "Food": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.25,
+   "reason": "Baladna JV talks exploratory, no number; GDL solar install is company-specific",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450843/india-bonds-tumble-as-brent-tops-95-per-barrel-rbi-flags-food-inflation",
+    "https://www.brecorder.com/news/40450831/pakistan-dairy-firm-cuts-energy-costs-with-600-kw-solar-plant",
+    "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252",
+    "https://www.dawn.com/news/2047126/qatari-firm-eyes-farm-investment-in-pakistan",
+    "https://mettisglobal.news/Roshan-Packages-upbeat-on-growth-in-FY27-65244",
+    "https://mettisglobal.news/Pakistan-Qatars-Baladna-explore-joint-ventures-in-dairy-livestock-and-animal-feed-65234"
+   ]
+  },
+  "Logistics/Ports": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Fuel terminal G2G and Maldives flights are early-stage; no listed port earnings link",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450839/nvidia-halts-chip-shipments-to-southeast-asia-ft-reports",
+    "https://www.brecorder.com/news/40450834/pakistan-maldives-eye-may-2027-for-direct-flights",
+    "https://www.dawn.com/news/2046979/pakistan-china-agree-on-government-to-government-arrangements-for-fuel-storage-terminal-facilities"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Agri loan tier and Baladna feed sourcing interest give no fertilizer margin mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Govt-adds-new-tier-to-PM-Youth-Business-and-Agriculture-Loan-Scheme-65256",
+    "https://www.brecorder.com/news/40450831/pakistan-dairy-firm-cuts-energy-costs-with-600-kw-solar-plant",
+    "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252",
+    "https://www.dawn.com/news/2047126/qatari-firm-eyes-farm-investment-in-pakistan",
+    "https://propakistani.pk/2026/11/26/qatari-company-plans-big-investment-in-pakistans-agriculture/"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Mentioned only in broad intraday PSX selling; no cement-specific driver",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "Mentioned only in broad intraday PSX selling; no specific driver",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Sector sold in early trade; HCAR beat is company-specific and one-off aided",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450830/psx-selling-at-bourse-kse-100-down-300-points",
+    "https://mettisglobal.news/Honda-Atlas-Cars-H1-profit-surges-25fold-to-Rs4bn-65227"
+   ]
+  },
+  "Real Estate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.1,
+   "reason": "New York rent freeze ruling; no PSX real-estate link",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40450826/new-york-court-upholds-mayor-mamdanis-rent-freeze"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Petrol/diesel price cut does not change regulated gas utility returns",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65249",
+    "https://www.dawn.com/news/2047017/petrol-diesel-price-for-nov-26-2026",
+    "https://mettisglobal.news/Petrol-price-falls-by-Rs4-diesel-gets-Rs5-cut-65248"
+   ]
+  }
+ }
 }
