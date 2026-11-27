@@ -1,19 +1,24 @@
 {
- "as_of": "2026-11-27T04:38:33Z",
+ "as_of": "2026-11-27T05:38:28Z",
  "provider": "claude-routine",
  "model": "claude-session",
  "depth": "full-text",
- "articles_read": 19,
+ "articles_read": 24,
  "read_urls": [
   "https://mettisglobal.news/APCPLA-hails-Rs300bn-SME-financing-package-as-boost-for-industry-65271",
   "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257",
+  "https://mettisglobal.news/Asian-markets-open-higher-on-global-equity-recovery-65280",
   "https://mettisglobal.news/Askari-Bank-approves-Rs1bn-investment-in-Foundation-Securities-65261",
+  "https://mettisglobal.news/Attock-Refinery-to-shut-main-crude-distillation-unit-for-56-days-65285",
+  "https://mettisglobal.news/Exide-Pakistan-swings-to-Rs6m-loss-65282",
   "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252",
   "https://mettisglobal.news/Gold-holds-above-3568-after-oneyear-low-65258",
   "https://mettisglobal.news/Gold-price-in-Pakistan-rises-Rs4700-per-tola-65269",
+  "https://mettisglobal.news/Gold-rebounds-to-3636-as-selling-pressure-eases-65283",
   "https://mettisglobal.news/Govt-considers-importing-additional-500000-tonnes-of-wheat-65279",
   "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65276",
   "https://mettisglobal.news/NBP-issues-foreign-exchange-rates-65278",
+  "https://mettisglobal.news/Oil-set-for-first-weekly-gain-in-4-weeks-amid-supply-fears-65281",
   "https://mettisglobal.news/PM-directs-internationalstandard-gemstone-labs-65277",
   "https://mettisglobal.news/PSX-Closing-Bell-Just-Below-the-Mark-65268",
   "https://mettisglobal.news/PSX-recomposes-PSXDIV20-Index-65272",
@@ -25,75 +30,89 @@
   "https://mettisglobal.news/VIS-maintains-AA-longterm-A1-shortterm-ratings-of-EPQL-65266",
   "https://mettisglobal.news/ZUMA-subsidiary-gets-Ofcom-clarity-on-UK-telecom-international-eSIM-operations-65262"
  ],
- "count": 2,
+ "count": 3,
  "ratings": {
-  "ASL": {
-   "rating": "positive",
-   "horizon": "multi_session",
+  "ATRL": {
+   "rating": "negative",
+   "horizon": "single_session",
    "causality": "causal",
-   "confidence": 0.65,
-   "reason": "CRC price raised Rs2,000/t effective Nov 26, near parity with peers; direct margin lift",
+   "confidence": 0.55,
+   "reason": "Main 32,400 bpsd CDU shut 5-6 days from Nov 29: lost throughput, maintenance cost",
    "text_depth": "full",
    "sources": [
-    "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257"
+    "https://mettisglobal.news/Attock-Refinery-to-shut-main-crude-distillation-unit-for-56-days-65285",
+    "https://mettisglobal.news/Petrol-falls-to-Rs313-diesel-drops-to-Rs346-per-litre-65275"
    ]
   },
   "PPL": {
    "rating": "positive",
    "horizon": "single_session",
-   "causality": "causal",
+   "causality": "correlated",
    "confidence": 0.3,
-   "reason": "Added to PSXDIV20 index from Tuesday; modest passive/tracker demand",
+   "reason": "Added to PSXDIV20 from Dec 1; modest index-tracking demand, no cash-flow change",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/PSX-recomposes-PSXDIV20-Index-65272"
    ]
+  },
+  "ASL": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "causal",
+   "confidence": 0.65,
+   "reason": "CRC price raised Rs2,000/ton effective Nov 26, near parity with ISL; margin support",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Aisha-Steel-raises-CRC-prices-by-Rs2000-per-ton-65257"
+   ]
   }
  },
  "sectors": {
+  "Refinery": {
+   "rating": "positive",
+   "horizon": "multi_session",
+   "causality": "correlated",
+   "confidence": 0.35,
+   "reason": "Brent near month high ~$96 on Hormuz/Saudi supply fears; inventory gains; ATRL outage firm-specific",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Attock-Refinery-to-shut-main-crude-distillation-unit-for-56-days-65285",
+    "https://mettisglobal.news/Oil-set-for-first-weekly-gain-in-4-weeks-amid-supply-fears-65281",
+    "https://www.brecorder.com/news/40450989/indian-rupee-rally-faces-oil-test-inflows-positive-sentiment-provide-cushion",
+    "https://www.brecorder.com/news/40450988/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain",
+    "https://www.brecorder.com/news/40450986/brent-trades-near-months-high-as-mideast-conflict-threatens-supply",
+    "https://www.brecorder.com/news/40450984/fuel-price-hike-pm-body-to-oversee-implementation-of-ji-proposals"
+   ]
+  },
+  "Oil Marketing": {
+   "rating": "positive",
+   "horizon": "single_session",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "Firmer crude supports inventory gains; offset by political pressure on fuel prices",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Attock-Refinery-to-shut-main-crude-distillation-unit-for-56-days-65285",
+    "https://mettisglobal.news/Oil-set-for-first-weekly-gain-in-4-weeks-amid-supply-fears-65281",
+    "https://www.brecorder.com/news/40450989/indian-rupee-rally-faces-oil-test-inflows-positive-sentiment-provide-cushion",
+    "https://www.brecorder.com/news/40450988/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain",
+    "https://www.brecorder.com/news/40450986/brent-trades-near-months-high-as-mideast-conflict-threatens-supply",
+    "https://www.brecorder.com/news/40450984/fuel-price-hike-pm-body-to-oversee-implementation-of-ji-proposals"
+   ]
+  },
   "Oil & Gas Exploration": {
    "rating": "positive",
    "horizon": "multi_session",
    "causality": "causal",
-   "confidence": 0.45,
-   "reason": "Brent ~$96 near month high on Hormuz/Saudi attacks; lifts realised oil/gas prices",
-   "text_depth": "headline",
-   "sources": [
-    "https://www.brecorder.com/news/40450989/indian-rupee-rally-faces-oil-test-inflows-positive-sentiment-provide-cushion",
-    "https://www.brecorder.com/news/40450988/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain",
-    "https://www.brecorder.com/news/40450986/brent-trades-near-months-high-as-mideast-conflict-threatens-supply",
-    "https://www.brecorder.com/news/40450944/oil-prices-rise"
-   ]
-  },
-  "Refinery": {
-   "rating": "positive",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.35,
-   "reason": "Crude supply fears near month high support product cracks and inventory gains",
+   "confidence": 0.5,
+   "reason": "Brent ~$96, first weekly gain in 4 weeks on supply attacks lifts E&P realised prices",
    "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/Attock-Refinery-to-shut-main-crude-distillation-unit-for-56-days-65285",
+    "https://mettisglobal.news/Oil-set-for-first-weekly-gain-in-4-weeks-amid-supply-fears-65281",
     "https://www.brecorder.com/news/40450989/indian-rupee-rally-faces-oil-test-inflows-positive-sentiment-provide-cushion",
     "https://www.brecorder.com/news/40450988/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain",
     "https://www.brecorder.com/news/40450986/brent-trades-near-months-high-as-mideast-conflict-threatens-supply",
-    "https://www.brecorder.com/news/40450984/fuel-price-hike-pm-body-to-oversee-implementation-of-ji-proposals",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65276",
-    "https://www.brecorder.com/news/40450944/oil-prices-rise"
-   ]
-  },
-  "Oil Marketing": {
-   "rating": "neutral",
-   "horizon": "single_session",
-   "causality": "correlated",
-   "confidence": 0.3,
-   "reason": "Small Re1/Rs2 pump cut vs rising crude; inventory effects roughly offset",
-   "text_depth": "full",
-   "sources": [
-    "https://www.brecorder.com/news/40450989/indian-rupee-rally-faces-oil-test-inflows-positive-sentiment-provide-cushion",
-    "https://www.brecorder.com/news/40450988/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain",
-    "https://www.brecorder.com/news/40450986/brent-trades-near-months-high-as-mideast-conflict-threatens-supply",
-    "https://www.brecorder.com/news/40450984/fuel-price-hike-pm-body-to-oversee-implementation-of-ji-proposals",
-    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65276",
     "https://www.brecorder.com/news/40450944/oil-prices-rise"
    ]
   },
@@ -101,23 +120,118 @@
    "rating": "negative",
    "horizon": "long_term",
    "causality": "correlated",
-   "confidence": 0.25,
-   "reason": "UNCTAD sees zero global maritime trade growth in 2026 on Mideast disruption",
-   "text_depth": "headline",
+   "confidence": 0.3,
+   "reason": "UNCTAD projects zero 2026 maritime trade growth amid Mideast shipping disruption",
+   "text_depth": "full",
    "sources": [
+    "https://mettisglobal.news/Oil-set-for-first-weekly-gain-in-4-weeks-amid-supply-fears-65281",
     "https://www.dawn.com/news/2047351/maritime-trade-set-for-zero-growth-un",
     "https://www.brecorder.com/news/40450961/global-maritime-trade-set-for-zero-growth-in-2026-un"
+   ]
+  },
+  "Cement": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Intraday opening dip report; no sector mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40451001/psx-stocks-slip-lower-kse-100-down-nearly-200-points"
+   ]
+  },
+  "Cement/Conglomerate": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Intraday opening dip report; no sector mechanism",
+   "text_depth": "headline",
+   "sources": [
+    "https://www.brecorder.com/news/40451001/psx-stocks-slip-lower-kse-100-down-nearly-200-points"
+   ]
+  },
+  "Auto Assembler": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Opening dip and structural stagnation commentary; no new policy or demand change",
+   "text_depth": "full",
+   "sources": [
+    "https://www.brecorder.com/news/40451001/psx-stocks-slip-lower-kse-100-down-nearly-200-points",
+    "https://www.brecorder.com/news/40450541/pakistans-car-sales-stagnate-over-two-decades-despite-600000-unit-production-capacity",
+    "https://mettisglobal.news/PSX-recomposes-PSXDIV20-Index-65272"
+   ]
+  },
+  "Islamic Banking": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "SBP reserves +$8m WoW to $21.6bn; routine weekly data, no sector mechanism",
+   "text_depth": "full",
+   "sources": [
+    "https://www.dawn.com/news/2047345/state-bank-of-pakistans-reserves-up-8m",
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65276",
+    "https://mettisglobal.news/SBP-reserves-rise-8m-to-216bn-65274"
+   ]
+  },
+  "Gas Distribution": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.2,
+   "reason": "Petrol/diesel price cut Rs1-2 effective Nov 27; no gas tariff or margin change",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/MG-Morning-Breeze-Updates-to-Skim-before-Market-65276",
+    "https://mettisglobal.news/Petrol-falls-to-Rs313-diesel-drops-to-Rs346-per-litre-65275",
+    "https://www.dawn.com/news/2047227/govt-reduces-petrol-price-by-re1-per-litre-diesel-by-rs2-per-litre"
    ]
   },
   "Textile": {
    "rating": "positive",
    "horizon": "long_term",
-   "causality": "causal",
-   "confidence": 0.35,
-   "reason": "PM's Rs300bn concessional SME loan package eases financing for weaving/textile SMEs",
+   "causality": "correlated",
+   "confidence": 0.3,
+   "reason": "PM Rs300bn concessional SME loan package eases financing for weaving/loom units",
    "text_depth": "full",
    "sources": [
     "https://mettisglobal.news/APCPLA-hails-Rs300bn-SME-financing-package-as-boost-for-industry-65271"
+   ]
+  },
+  "Textile/Synthetic Fibre": {
+   "rating": "neutral",
+   "horizon": "long_term",
+   "causality": "correlated",
+   "confidence": 0.2,
+   "reason": "SME loan package aids power looms; indirect for listed fibre makers",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/APCPLA-hails-Rs300bn-SME-financing-package-as-boost-for-industry-65271"
+   ]
+  },
+  "Fertilizer": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Ghani Dairies 600kW solar install is company-specific; no sector repricing",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252"
+   ]
+  },
+  "Food": {
+   "rating": "neutral",
+   "horizon": "single_session",
+   "causality": "noise",
+   "confidence": 0.15,
+   "reason": "Ghani Dairies 600kW solar install is company-specific; no sector repricing",
+   "text_depth": "full",
+   "sources": [
+    "https://mettisglobal.news/Ghani-Dairies-installs-600-kW-solar-energy-system-at-dairy-farm-65252"
    ]
   }
  }
